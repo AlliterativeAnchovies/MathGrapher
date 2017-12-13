@@ -150,6 +150,9 @@ Interpolation* Graph::smoothMoveGridSize(double x,double y,int timeInterval,bool
     if (doNow) {interpolations.push_back(toReturn);}
     return toReturn;
 }
+void Graph::addInterpolation(Interpolation *i) {
+    interpolations.push_back(i);
+}
 
 //returns surface of drawn graph, and stores its position in the input pointers
 SDL_Surface* Graph::draw(double* x,double* y) {
@@ -157,6 +160,56 @@ SDL_Surface* Graph::draw(double* x,double* y) {
     *y = py;
     SDL_Surface* toReturn = createBlankSurfaceWithSize(sx, sy);
     
+    //draw grid
+    double centerx = ox;
+    double centery = oy;
+    //first lets do the "x" grid
+    double sinex,cosinex = 0;
+    fastSineCosine(&sinex, &cosinex, gridAngleY);
+    double deltax = sinex*gridSpacingX;
+    double deltay = cosinex*gridSpacingX;
+    double startingx = centerx;
+    double startingy = centery;
+    while (pointInBounds(startingx, startingy, -1, sx, -1, sy)) {
+        //draw line
+        drawLineThroughPointWithAngleInBounds(toReturn,startingx,startingy,gridAngleX,0,sx,0,sy,0xff999999);
+        startingx+=deltax;
+        startingy+=deltay;
+    }
+    startingx = centerx;
+    startingy = centery;
+    while (pointInBounds(startingx, startingy, -1, sx, -1, sy)) {
+        //draw line
+        drawLineThroughPointWithAngleInBounds(toReturn,startingx,startingy,gridAngleX,0,sx,0,sy,0xff999999);
+        startingx-=deltax;
+        startingy-=deltay;
+    }
+    //axis time
+    drawLineThroughPointWithAngleInBounds(toReturn,centerx,centery,gridAngleX,0,sx,0,sy,0xff000000);
+    //now lets do the "y" grid
+    double siney,cosiney = 0;
+    fastSineCosine(&siney, &cosiney, gridAngleX);
+    deltax = siney*gridSpacingY;
+    deltay = cosiney*gridSpacingY;
+    startingx = centerx;
+    startingy = centery;
+    while (pointInBounds(startingx, startingy, -1, sx, -1, sy)) {
+        //draw line
+        drawLineThroughPointWithAngleInBounds(toReturn,startingx,startingy,gridAngleY,0,sx,0,sy,0xff999999);
+        startingx+=deltax;
+        startingy+=deltay;
+    }
+    startingx = centerx;
+    startingy = centery;
+    while (pointInBounds(startingx, startingy, -1, sx, -1, sy)) {
+        //draw line
+        drawLineThroughPointWithAngleInBounds(toReturn,startingx,startingy,gridAngleY,0,sx,0,sy,0xff999999);
+        startingx-=deltax;
+        startingy-=deltay;
+    }
+    //axis time
+    drawLineThroughPointWithAngleInBounds(toReturn,centerx,centery,gridAngleY,0,sx,0,sy,0xff000000);
+    /*
     //=======================draw grid lines====================
     double centerx = ox;
     double centery = oy;
@@ -176,6 +229,7 @@ SDL_Surface* Graph::draw(double* x,double* y) {
     }
     //draw non-axis x grid lines first
     int offx = 0;
+    int ohmygodjuststopalready = 0;
     while(true) {
         int left = 0;
         int right = 0;
@@ -195,19 +249,26 @@ SDL_Surface* Graph::draw(double* x,double* y) {
         else {
             double rawx1 = centerx+centery/tangentx;
             double rawx2 = centerx-southOfCenter/tangentx;
-            left = (rawx1>rawx2)?rawx1-offx_x:rawx2-offx_x;
-            right = (rawx1>rawx2)?rawx2+offx_x:rawx1+offx_x;
-            drawLineOnSurface(toReturn, rawx1+offx_x, 0, rawx2+offx_x, sy, 0xff999999);
-            drawLineOnSurface(toReturn, rawx1-offx_x, 0, rawx2-offx_x, sy, 0xff999999);
+            if (!(rawx1>1000 || rawx1<-1000 || rawx2>1000 || rawx2<-1000)) {
+                left = (rawx1>rawx2)?rawx1-offx_x:rawx2-offx_x;
+                right = (rawx1>rawx2)?rawx2+offx_x:rawx1+offx_x;
+                drawLineOnSurface(toReturn, rawx1+offx_x, 0, rawx2+offx_x, sy, 0xff999999);
+                drawLineOnSurface(toReturn, rawx1-offx_x, 0, rawx2-offx_x, sy, 0xff999999);
+            }
         }
         offx+=gridSpacingX;
+        ohmygodjuststopalready++;
         if (right>=sx&&left<0) {
+            break;
+        }
+        if (ohmygodjuststopalready>1000) {
             break;
         }
     }
     
     //draw other y grid lines
     int offy = 0;
+    ohmygodjuststopalready = 0;
     while(true) {
         int left = 0;
         int right = 0;
@@ -227,13 +288,19 @@ SDL_Surface* Graph::draw(double* x,double* y) {
         else {
             double rawy1 = centery+centerx*tangenty;
             double rawy2 = centery-rightOfCenter*tangenty;
-            left = (rawy1>rawy2)?rawy1-offy_y:rawy2-offy_y;
-            right = (rawy1>rawy2)?rawy2+offy_y:rawy1+offy_y;
-            drawLineOnSurface(toReturn, 0, rawy1+offy_y, sx, rawy2+offy_y, 0xff999999);
-            drawLineOnSurface(toReturn, 0, rawy1-offy_y, sx, rawy2-offy_y, 0xff999999);
+            if (!(rawy1>1000 || rawy1<-1000 || rawy2>1000 || rawy2<-1000)) {
+                left = (rawy1>rawy2)?rawy1-offy_y:rawy2-offy_y;
+                right = (rawy1>rawy2)?rawy2+offy_y:rawy1+offy_y;
+                drawLineOnSurface(toReturn, 0, rawy1+offy_y, sx, rawy2+offy_y, 0xff999999);
+                drawLineOnSurface(toReturn, 0, rawy1-offy_y, sx, rawy2-offy_y, 0xff999999);
+            }
         }
         offy+=gridSpacingY;
+        ohmygodjuststopalready++;
         if (right>=sy&&left<0) {
+            break;
+        }
+        if (ohmygodjuststopalready>1000) {
             break;
         }
     }
@@ -258,6 +325,37 @@ SDL_Surface* Graph::draw(double* x,double* y) {
     }
     else {
         drawLineOnSurface(toReturn, 0, centery+centerx*tangenty, sx, centery-rightOfCenter*tangenty, 0xff000000);
+    }
+    */
+    
+    //now draw the functions
+    for (int i = 0;i<functions.size();i++) {
+        Function* f = functions[i];
+        //we should have 1 value per pixel
+        //however keep into account that we may have a scaled grid
+        double pixelToXValRatio = 1/gridSpacingX;
+        double pixelToYValRatio = 1/gridSpacingY;
+        //to account for rotated grid
+        //we need to create a function that will map from pixel on screen to x-axis value.
+        //and one that will take a function output, and put it on the y-axis counterpart
+        //the second one is easier
+        //it's yval * sin(PI - theta)
+        //can be seen with trig
+        double s,c = 0;
+        fastSineCosine(&s, &c, M_PI-gridAngleX);
+        double s2,c2 = 0;
+        fastSineCosine(&s2, &c2, M_PI/2-gridAngleY);
+        double prevY = s2*s*(*f)(-ox,0)/pixelToYValRatio;
+        double prevX = prevY*c+prevY*c2;
+        for (int j = 1;j<sx;j++) {
+            double yval = (*f)((j-ox)*pixelToXValRatio,0)/pixelToYValRatio;
+            double xval = j+yval*c+yval*c2;
+            yval*=s*s2;//to account for y rotations
+            drawLineOnSurface(toReturn, prevX, prevY+oy, xval, yval+oy, 0xffff0000);
+            prevY = yval;
+            prevX = xval;
+        }
+        
     }
     
     return toReturn;
@@ -284,6 +382,11 @@ void Graph::update() {
         }
     }
     interpolations = temp;
+}
+
+//add a function to draw
+void Graph::addFunction(Function* function) {
+    functions.push_back(function);
 }
 
 //returns true if completed interpolation
@@ -346,4 +449,26 @@ std::vector<Interpolation*> Interpolation::getFollowups() {
 
 void Interpolation::wait() {
     waiting = true;
+}
+
+Interpolation* Interpolation::cloneTo(Graph* concernedWith,bool addImmediately) {
+    Interpolation* toReturn = new Interpolation(type,px,py,timeInterval,concernedWith);
+    if (addImmediately) {concernedWith->addInterpolation(toReturn);};
+    return toReturn;
+}
+
+Interpolation* Interpolation::cloneTo(Interpolation* concernedWith,bool addImmediately) {
+    Interpolation* toReturn = new Interpolation(type,px,py,timeInterval,concernedWith->relatedGraph);
+    if (addImmediately) {concernedWith->addFollowup(toReturn);};
+    return toReturn;
+}
+
+Function::Function(std::function<double(double,double)> f) {
+    function = f;
+}
+double Function::eval(double x,double time) {
+    return function(x,time);
+}
+double Function::operator() (double x,double time) {
+    return eval(x,time);
 }

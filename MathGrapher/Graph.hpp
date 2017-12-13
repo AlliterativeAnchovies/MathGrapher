@@ -28,6 +28,7 @@ enum INTERPOLATIONS {
 
 class Graph;
 class Interpolation;
+class Function;
 
 class Interpolation {
     private:
@@ -50,6 +51,8 @@ class Interpolation {
         Interpolation(Uint8 t,double x,double y,int time_interval,Graph* rg);
         void addFollowup(Interpolation* i);
         std::vector<Interpolation*> getFollowups();
+        Interpolation* cloneTo(Graph* concernedWith,bool addImmediately = true);
+        Interpolation* cloneTo(Interpolation* concernedWith,bool addImmediately = true);
 };
 
 class Graph {
@@ -69,6 +72,8 @@ class Graph {
         double gridAngleY = 0;
         //stores current interpolation data
         std::vector<Interpolation*> interpolations = {};
+        //all functions it should draw
+        std::vector<Function*> functions = {};
     public:
         //full constructor
         Graph(double x,double y,double sizex,double sizey,double grid_spacing_x,double grid_spacing_y,double grid_angle_x,double grid_angle_y);
@@ -109,6 +114,19 @@ class Graph {
         void moveGridSize(double x,double y,bool moveCenter = true);
         //resizes grid smoothly
         Interpolation* smoothMoveGridSize(double x,double y,int timeInterval,bool moveCenter = true,bool doNow = true);
+        //add a function to draw
+        void addFunction(Function* function);
+        //add an interpolation
+        void addInterpolation(Interpolation* i);
+};
+
+class Function {
+    private:
+        std::function<double(double,double)> function;
+    public:
+        Function(std::function<double(double,double)> f);
+        double eval(double x,double time);
+        double operator() (double x,double time);
 };
 
 

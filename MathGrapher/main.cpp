@@ -121,6 +121,8 @@ int main(int argc, const char * argv[]) {
     Interpolation* sixth = testGraph->smoothMoveGridSize(100, 100, 120,true,false);
     Interpolation* seventh = new Interpolation(DELAY,0,0,60,testGraph);
     Interpolation* eigth = testGraph->smoothMoveGridAngle(0, -M_PI/4, 240,false);
+    Interpolation* ninth = new Interpolation(DELAY,0,0,60,testGraph);
+    Interpolation* tenth = testGraph->smoothMoveGridAngle(2*M_PI, 0, 240,false);
     first->addFollowup(second);
     second->addFollowup(third);
     third->addFollowup(fourth);
@@ -128,7 +130,23 @@ int main(int argc, const char * argv[]) {
     fifth->addFollowup(sixth);
     sixth->addFollowup(seventh);
     seventh->addFollowup(eigth);
+    eigth->addFollowup(ninth);
+    ninth->addFollowup(tenth);
     graphs.push_back(testGraph);
+    
+    Graph* testGraph2 = new Graph(330,200,201,201);
+    std::function<double(double,double)> temp = [](double x,double t){return sin(x);};
+    testGraph2->addFunction(new Function(temp));
+    Interpolation* delay = new Interpolation(DELAY,0,0,60,testGraph);
+    testGraph2->addInterpolation(delay);
+    Interpolation* scaleGraph = testGraph2->smoothMoveGridScale(20, 40, 240,false);
+    delay->addFollowup(scaleGraph);
+    Interpolation* delay2 = delay->cloneTo(scaleGraph);
+    Interpolation* rotateYAxis = testGraph2->smoothMoveGridAngle(M_PI/4, 0, 240,false);
+    Interpolation* rotateXAxis = testGraph2->smoothMoveGridAngle(0, M_PI/4, 240,false);
+    delay2->addFollowup(rotateYAxis);
+    rotateYAxis->addFollowup(rotateXAxis);
+    graphs.push_back(testGraph2);
     
     std::cout << "PRESS SPACE TO START!\n";
     while(controlFlow()) {SDL_Delay(1000/60.0);/*60 fps*/};
