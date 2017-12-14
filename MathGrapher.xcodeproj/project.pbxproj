@@ -145,9 +145,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86928C731FE1319B00CBB286 /* RenderingUtilities.cpp in Sources */,
 				86928C701FE12B0600CBB286 /* Graph.cpp in Sources */,
 				86928C631FE125BF00CBB286 /* main.cpp in Sources */,
-				86928C731FE1319B00CBB286 /* RenderingUtilities.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

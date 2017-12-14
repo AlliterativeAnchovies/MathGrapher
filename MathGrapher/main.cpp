@@ -26,8 +26,17 @@ SDL_Window* gWindow = NULL;
 SDL_Surface* gScreenSurface = NULL;
 SDL_Renderer* gRenderer = NULL;
 
+//Filepath stuffs
+std::string dumstupidcurrentdirectorybs="";
+
+//Font stuffs
+Font* fontgrab=NULL;
+
 //Graphs to draw
 std::vector<Graph*> graphs = {};
+
+//Popups to draw
+std::vector<Popup*> popups = {};
 
 //"header" function definitions
 void close();
@@ -37,10 +46,14 @@ void drawGraph(Graph* g);
 //this is the real "main" loop
 SDL_Event e;
 bool STARTED = false;
+std::vector<Graph*> selectedGraphs = {};
 bool controlFlow() {
     //Fill screen to white
-    drawRect(gRenderer, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 0xffffffff);
-    
+    drawRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 0xffffffff);
+    int mouseX, mouseY;
+    bool leftMouseClicked = false;
+    bool shiftClicked = false;
+    SDL_GetMouseState(&mouseX, &mouseY);
     //get keyboard events
     while( SDL_PollEvent( &e ) != 0 ) {
         //Clicked the "x" in top left corner of window
@@ -60,13 +73,70 @@ bool controlFlow() {
                     break;
             }
         }
+        else if (e.type == SDL_MOUSEBUTTONDOWN) {
+            if (e.button.button == SDL_BUTTON_LEFT) {
+                leftMouseClicked = true;
+            }
+        }
     }
+    const Uint8* keystates = SDL_GetKeyboardState(NULL);
+    if (keystates[SDL_SCANCODE_LSHIFT]||keystates[SDL_SCANCODE_RSHIFT]) {
+        shiftClicked = true;
+    }
+    for (Graph* g : selectedGraphs) {g->highlight();}
+    for (int i = 0;i<graphs.size();i++) {
+            if (leftMouseClicked&&graphs[i]->clickedIn(mouseX,mouseY)) {
+                if (!shiftClicked) {
+                    selectedGraphs = {graphs[i]};
+                }
+                else {
+                    selectedGraphs.push_back(graphs[i]);
+                }
+                leftMouseClicked = false;
+            }
+            drawGraph(graphs[i]);
+        }
     
-    if (STARTED) {
+    /*if (STARTED) {
         //actually draw stuff
         for (int i = 0;i<graphs.size();i++) {
             graphs[i]->update();
             drawGraph(graphs[i]);
+        }
+    }*/
+    
+    //draw control bar
+    drawBorderedRect(0, SCREEN_HEIGHT-100, SCREEN_WIDTH, 100, 0xffffcf9e, 0xff000000);
+    
+    std::vector<Popup*> newpopups = {};
+    for (int i = 0;i<popups.size();i++) {
+        if (popups[i]==NULL) {break;}
+        if (!popups[i]->isTagged()) {
+            Uint8 handling = popups[i]->handle(mouseX, mouseY, leftMouseClicked);
+            if (handling==0x00) {
+                //did not click in popup
+                newpopups.push_back(popups[i]);
+            }
+            else if (handling==0x01) {
+                //clicked in popup but should not delete
+                newpopups.push_back(popups[i]);
+                leftMouseClicked = false;
+            }
+            else if (handling==0x02) {
+                //clicked, should delete
+                leftMouseClicked = false;
+            }
+            else {
+                delete popups[i];
+                popups[i] = NULL;
+            }
+        }
+    }
+    popups = newpopups;
+    
+    if (leftMouseClicked) {
+        if (mouseY<SCREEN_HEIGHT-100) {
+            createPopup(ADD_OBJECT_POPUP, mouseX, mouseY);
         }
     }
     
@@ -88,9 +158,12 @@ int main(int argc, const char * argv[]) {
         printf( "SDL could not initialize! SDL_Error: %s\n", SDL_GetError() );
         throw std::runtime_error("Do better.");
     }
+    else if (TTF_Init() == -1) {
+        throw std::runtime_error("TTF Failed");
+    }
     else {
         //Create window
-        gWindow = SDL_CreateWindow( "MathGrapher", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN );
+        gWindow = SDL_CreateWindow( "MathGrapher", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
         if( gWindow == NULL ) {
             printf( "Window could not be created! SDL_Error: %s\n", SDL_GetError() );
         }
@@ -110,6 +183,31 @@ int main(int argc, const char * argv[]) {
         }
     }
     
+    #ifdef DEBUG
+        std::cout << "Warning: Using a development build!\n";
+        //dumstupidcurrentdirectorybs = getcwd(NULL, 0);
+        dumstupidcurrentdirectorybs = "/Users/baileyandrew/Desktop/MathGrapher";
+    #else
+        //grab location
+        char path[1024];
+        uint32_t size = sizeof(path);
+        _NSGetExecutablePath(path,&size);
+        std::string fixedPath = realpath(path, NULL);
+        //this location includes the name of the executable, so we need to
+        //find last few / and cut everything after and including out of it.
+        //size()-1 works for this, it will be able to grab everything at the same
+        //file-level.
+        std::vector<std::string> splitPath = split(fixedPath, '/');
+        std::string pathToUse = splitPath[0];
+        for (int i = 1;i<splitPath.size()-1;i++) {
+            pathToUse+="/"+splitPath[i];
+        }
+        dumstupidcurrentdirectorybs = pathToUse;
+    #endif
+    
+    fontgrab = new Font(24);
+    
+    /*
     //create a graph for testing
     Graph* testGraph = new Graph(20,20,101,101);
     testGraph->moveOrigin(30,30);
@@ -135,11 +233,11 @@ int main(int argc, const char * argv[]) {
     graphs.push_back(testGraph);
     
     Graph* testGraph2 = new Graph(330,200,201,201);
-    std::function<double(double,double)> temp = [](double x,double t){return sin(x);};
+    std::function<double(double,double)> temp = [](double x,double t){return cos(x);};
     testGraph2->addFunction(new Function(temp));
     Interpolation* delay = new Interpolation(DELAY,0,0,60,testGraph);
     testGraph2->addInterpolation(delay);
-    Interpolation* scaleGraph = testGraph2->smoothMoveGridScale(10, 20, 240,false);
+    Interpolation* scaleGraph = testGraph2->smoothMoveGridScale(20, 20, 240,false);
     delay->addFollowup(scaleGraph);
     Interpolation* delay2 = delay->cloneTo(scaleGraph);
     Interpolation* rotateXAxis = testGraph2->smoothMoveGridAngle(M_PI, 0, 480,false);
@@ -147,8 +245,8 @@ int main(int argc, const char * argv[]) {
     delay2->addFollowup(rotateXAxis);
     rotateXAxis->addFollowup(rotateYAxis);
     graphs.push_back(testGraph2);
+    */
     
-    std::cout << "PRESS SPACE TO START!\n";
     while(controlFlow()) {SDL_Delay(1000/60.0);/*60 fps*/};
     
     //Destroy window
@@ -193,7 +291,11 @@ void drawGraph(Graph* g) {
         //grab the whole image).  But I couldn't be bothered yet...
     }
     SDL_Texture* tempTexture = SDL_CreateTextureFromSurface(gRenderer,tempSurf);
-    drawGraphic(gRenderer, xdraw, ydraw, tempSurf->w, tempSurf->h, tempTexture);
+    drawGraphic(xdraw, ydraw, tempSurf->w, tempSurf->h, tempTexture);
     SDL_FreeSurface(tempSurf);
     SDL_DestroyTexture(tempTexture);
+}
+
+void addGraph(double x,double y) {
+    graphs.push_back(new Graph(x,y,100,100));
 }

@@ -115,6 +115,10 @@ class Graph {
         void addFunction(Function* function);
         //add an interpolation
         void addInterpolation(Interpolation* i);
+        //check if clicked on graph
+        bool clickedIn(double mouseX,double mouseY);
+        //draws rect around graph to indicate it is selected
+        void highlight();
 };
 
 class Function {

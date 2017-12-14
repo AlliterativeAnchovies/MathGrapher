@@ -235,12 +235,15 @@ SDL_Surface* Graph::draw(double* x,double* y) {
         double prevY = 0;
         double prevX = 0;
         for (int j = 0;j<sx;j++) {
+            /*
+            Can convert to rotated coordinates using change-of-basis matrix:
+                | c1/scaleX   s1/scaleY |
+                | -s2/scaleX  c2/scaleY |
+            */
             double rawX = (j-ox)*pixelToXValRatio;//rawX is not in terms of screen pixels
             double rawY = (*f)(rawX,0);//rawY is not in terms of screen pixels
-            double finalX = rawX*c1-rawY*s2;
-            double finalY = rawX*s1+rawY*c2;
-            finalX/=pixelToXValRatio;//now in terms of screen pixels
-            finalY/=pixelToYValRatio;//now in terms of screen pixels
+            double finalX = rawX*c1/pixelToXValRatio-rawY*s2/pixelToYValRatio;
+            double finalY = rawX*s1/pixelToXValRatio+rawY*c2/pixelToYValRatio;
             finalX+=ox;
             finalY*=-1;//invert y coord because programming coords start in top not bottom
             finalY+=oy;
@@ -251,29 +254,6 @@ SDL_Surface* Graph::draw(double* x,double* y) {
             prevY = finalY;
         }
     }
-    /*for (int i = 0;i<functions.size();i++) {
-        Function* f = functions[i];
-        //we should have 1 value per pixel
-        //however keep into account that we may have a scaled grid
-        double pixelToXValRatio = 1/gridSpacingX;
-        double pixelToYValRatio = 1/gridSpacingY;
-        //to account for rotated grid:
-        double s,c = 0;
-        fastSineCosine(&s, &c, M_PI-gridAngleX);
-        double s2,c2 = 0;
-        fastSineCosine(&s2, &c2, M_PI/2-gridAngleY);
-        double prevY = s*(*f)(-ox,0)/pixelToYValRatio;
-        double prevX = prevY*c;
-        for (int j = 1;j<sx;j++) {
-            double yval = (*f)((j-ox)*pixelToXValRatio,0);
-            double xval = j-(yval*c+yval*c2)/pixelToXValRatio;
-            yval*=s*s2/pixelToYValRatio;//to account for y rotations
-            drawLineOnSurface(toReturn, prevX, prevY+oy, xval, yval+oy, 0xffff0000);
-            prevY = yval;
-            prevX = xval;
-        }
-        
-    }*/
     
     return toReturn;
 }
@@ -304,6 +284,16 @@ void Graph::update() {
 //add a function to draw
 void Graph::addFunction(Function* function) {
     functions.push_back(function);
+}
+
+//check if clicked on graph
+bool Graph::clickedIn(double mouseX,double mouseY) {
+    return pointInBounds(mouseX, mouseY, px, px+sx, py, py+sy);
+}
+
+//draws rect around graph to indicate it is selected
+void Graph::highlight() {
+    drawBorderedRect(px, py, sx, sy, 0x2200ff00, 0xff000000);
 }
 
 //returns true if completed interpolation
