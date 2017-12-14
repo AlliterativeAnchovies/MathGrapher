@@ -11,7 +11,7 @@
 
 //full constructor
 Graph::Graph(   double x,double y,double sizex,double sizey,double grid_spacing_x,
-                double grid_spacing_y,double grid_angle_x,double grid_angle_y) {
+                double grid_spacing_y,double grid_angle_x,double grid_angle_y,std::string n) {
     px = x;
     py = y;
     gridSpacingX = grid_spacing_x;
@@ -22,17 +22,19 @@ Graph::Graph(   double x,double y,double sizex,double sizey,double grid_spacing_
     sy = sizey;
     ox = sx/2;
     oy = sy/2;
+    name = n;
 }
 //degenerate constructors for ease of use
-Graph::Graph(double x,double y,double sizex,double sizey) {
+Graph::Graph(double x,double y,double sizex,double sizey,std::string n) {
     px = x;
     py = y;
     sx = sizex;
     sy = sizey;
     ox = sx/2;
     oy = sy/2;
+    name = n;
 }
-Graph::Graph(double x,double y,double sizex,double sizey,double grid_spacing_x,double grid_spacing_y) {
+Graph::Graph(double x,double y,double sizex,double sizey,double grid_spacing_x,double grid_spacing_y,std::string n) {
     px = x;
     py = y;
     gridSpacingX = grid_spacing_x;
@@ -41,6 +43,7 @@ Graph::Graph(double x,double y,double sizex,double sizey,double grid_spacing_x,d
     sy = sizey;
     ox = sx/2;
     oy = sy/2;
+    name = n;
 }
 //moves incrementally
 void Graph::move(double x,double y) {
@@ -170,7 +173,7 @@ SDL_Surface* Graph::draw(double* x,double* y) {
     double deltax = cosinex*gridSpacingX;
     double startingx = centerx;
     double startingy = centery;
-    double maxAmountOfLines = 2*sx/gridSpacingX;
+    double maxAmountOfLines = (gridSpacingX<1)?0:2*sx/gridSpacingX;
     int quitCount = 0;
     while (quitCount<maxAmountOfLines) {
         //draw line
@@ -198,7 +201,7 @@ SDL_Surface* Graph::draw(double* x,double* y) {
     deltax = cosiney*gridSpacingY;
     startingx = centerx;
     startingy = centery;
-    maxAmountOfLines = 2*sy/gridSpacingY;
+    maxAmountOfLines = (gridSpacingY<1)?0:2*sy/gridSpacingY;
     quitCount = 0;
     while (quitCount<maxAmountOfLines) {
         //draw line
@@ -296,6 +299,36 @@ void Graph::highlight() {
     drawBorderedRect(px, py, sx, sy, 0x2200ff00, 0xff000000);
 }
 
+//get name of graph
+std::string Graph::getName() {
+    return name;
+}
+
+//change name of graph
+void Graph::changeName(std::string newname) {
+    name = newname;
+}
+
+//get position
+Point<double> Graph::getPosition() {
+    return Point<double>(px,py);
+}
+
+//get size
+Point<double> Graph::getSize() {
+    return Point<double>(sx,sy);
+}
+
+//get grid scale
+Point<double> Graph::getGridScale() {
+    return Point<double>(gridSpacingX,gridSpacingY);
+}
+
+//get grid angles
+Point<double> Graph::getGridAngle() {
+    return Point<double>(gridAngleX,gridAngleY);
+}
+
 //returns true if completed interpolation
 bool Interpolation::update() {
     if (canceled) {return true;}
@@ -379,3 +412,4 @@ double Function::eval(double x,double time) {
 double Function::operator() (double x,double time) {
     return eval(x,time);
 }
+

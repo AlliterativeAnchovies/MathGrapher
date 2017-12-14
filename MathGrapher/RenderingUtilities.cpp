@@ -8,6 +8,9 @@
 
 #include "RenderingUtilities.hpp"
 
+std::string instring="";
+void* thingForInString=NULL;
+int instringswitch=0;
 
 Uint32 get_pixel32(SDL_Surface *surface, int x, int y) {
     //Convert the pixels to 32 bit
@@ -218,75 +221,90 @@ TTF_Font* Font::operator() (int which) {
     return fonts[which];
 }
 
-Popup::Popup(Uint8 popup_id,double x,double y,double xsize,double ysize) {
-    popupID = popup_id;
-    px = x;
-    py = y;
-    sx = xsize;
-    sy = ysize;
-}
-//returns 0 if nothing happened,
-//return  2 if should delete,
-//return  1 if clicked in
-Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
-    Uint8 toReturn = 0x00;
-    switch (popupID) {
-        case NULL_POPUP:
-            return 0x02;
-        case ADD_OBJECT_POPUP:
-            //main backgroundd
-            drawBorderedRect(px, py, sx, sy, 0xff9fc9f2, 0xff000000);
-            drawText("Add Object", 24, px+5, py+5, 0xff000000);
-            drawTextWithBackground(" Graph ", 20, px+5, py+35, 0xff000000, 0xffffcf9e, 0xff000000);
-            int w,h;
-            TTF_SizeUTF8((*fontgrab)(20), " Graph ", &w, &h);
-            if (clicked&&pointInBounds(mouseX, mouseY, px+5, px+5+w, py+35, py+35+h)) {
-                //add graph!
-                addGraph(px, py);
-                clicked = false;
-                toReturn = 0x02;
+double numberFromString(std::string theString) {
+    double finalNumber = 0;
+    bool isAfterDecimalPoint = false;
+    int decimalPointDivider = 1;
+    bool isNegative = false;
+    //std::cout<<"In: "<<input<<"\n";
+    for (int hexCounter=0;hexCounter<theString.size();hexCounter++) {
+        if (theString[hexCounter]=='.') {//decimal point
+            isAfterDecimalPoint = true;
+        }
+        else if (theString[hexCounter]=='-') {
+            isNegative = true;
+        }
+        else {
+            int numToAdd = hexCharToInt(theString[hexCounter]);
+            //std::cout<<numToAdd<<"\n";
+            if (isAfterDecimalPoint) {
+                finalNumber+=numToAdd*pow(10, (int)(theString.size())-hexCounter-1);
+                decimalPointDivider*=10;
             }
-            break;
-    }
-    return toReturn;
-}
-
-void Popup::tag() {
-    taggedForDeletion = true;
-}
-
-bool Popup::isTagged() {
-    return taggedForDeletion;
-}
-
-Uint8 Popup::getID() {
-    return popupID;
-}
-
-bool isQuickCloser(Uint8 popup_id) {
-    return popup_id==ADD_OBJECT_POPUP;
-}
-
-void createPopup(Uint8 popup_id,double x,double y) {
-    double sx = 0;
-    double sy = 0;
-    switch (popup_id) {
-        case NULL_POPUP:
-            throw std::runtime_error("Tried to create null popup");
-            break;
-        case ADD_OBJECT_POPUP:
-            sx = 150;
-            sy = 200;
-            break;
-    }
-    
-    Popup* blargh = new Popup(popup_id,x,y,sx,sy);
-    for (int i = 0;i<popups.size();i++) {
-        //get rid of all popups that close upon the creation of a new one
-        if (popups[i]==NULL) {break;}
-        if (isQuickCloser(popup_id)) {
-            popups[i]->tag();
+            else {
+                //std::cout<<"S:"<<input.size()<<" H:"<<hexCounter<<" C:"<<(int)(input.size())-hexCounter-2<<" P:"<<pow(10, input.size()-hexCounter-2)<<"\n";
+                finalNumber+=numToAdd*pow(10, (int)(theString.size())-hexCounter-2);
+            }
         }
     }
-    popups.push_back(blargh);
+    if (isAfterDecimalPoint) {
+        finalNumber/=decimalPointDivider;
+    }
+    else {
+        finalNumber*=10;
+    }
+    if (isNegative) {
+        finalNumber*=-1;
+    }
+    return finalNumber;
+}
+
+int hexCharToInt(char in) {
+    switch (in) {
+        case '0':
+            return 0;
+        case '1':
+            return 1;
+        case '2':
+            return 2;
+        case '3':
+            return 3;
+        case '4':
+            return 4;
+        case '5':
+            return 5;
+        case '6':
+            return 6;
+        case '7':
+            return 7;
+        case '8':
+            return 8;
+        case '9':
+            return 9;
+        case 'A':
+            return 10;
+        case 'B':
+            return 11;
+        case 'C':
+            return 12;
+        case 'D':
+            return 13;
+        case 'E':
+            return 14;
+        case 'F':
+            return 15;
+        case 'a':
+            return 10;
+        case 'b':
+            return 11;
+        case 'c':
+            return 12;
+        case 'd':
+            return 13;
+        case 'e':
+            return 14;
+        case 'f':
+            return 15;
+    }
+    return -1;
 }

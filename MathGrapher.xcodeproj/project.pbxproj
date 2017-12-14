@@ -12,6 +12,7 @@
 		86928C6D1FE1260500CBB286 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86928C6B1FE1260500CBB286 /* SDL2.framework */; };
 		86928C701FE12B0600CBB286 /* Graph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86928C6E1FE12B0600CBB286 /* Graph.cpp */; };
 		86928C731FE1319B00CBB286 /* RenderingUtilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86928C711FE1319B00CBB286 /* RenderingUtilities.cpp */; };
+		86928C761FE2C73300CBB286 /* Popup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86928C741FE2C73300CBB286 /* Popup.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -35,6 +36,8 @@
 		86928C6F1FE12B0600CBB286 /* Graph.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Graph.hpp; sourceTree = "<group>"; };
 		86928C711FE1319B00CBB286 /* RenderingUtilities.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RenderingUtilities.cpp; sourceTree = "<group>"; };
 		86928C721FE1319B00CBB286 /* RenderingUtilities.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = RenderingUtilities.hpp; sourceTree = "<group>"; };
+		86928C741FE2C73300CBB286 /* Popup.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Popup.cpp; sourceTree = "<group>"; };
+		86928C751FE2C73300CBB286 /* Popup.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Popup.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +78,8 @@
 				86928C6F1FE12B0600CBB286 /* Graph.hpp */,
 				86928C711FE1319B00CBB286 /* RenderingUtilities.cpp */,
 				86928C721FE1319B00CBB286 /* RenderingUtilities.hpp */,
+				86928C741FE2C73300CBB286 /* Popup.cpp */,
+				86928C751FE2C73300CBB286 /* Popup.hpp */,
 			);
 			path = MathGrapher;
 			sourceTree = "<group>";
@@ -147,6 +152,7 @@
 			files = (
 				86928C731FE1319B00CBB286 /* RenderingUtilities.cpp in Sources */,
 				86928C701FE12B0600CBB286 /* Graph.cpp in Sources */,
+				86928C761FE2C73300CBB286 /* Popup.cpp in Sources */,
 				86928C631FE125BF00CBB286 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -67,16 +67,18 @@ class Graph {
         double gridSpacingY = 10;
         double gridAngleX = M_PI/2;
         double gridAngleY = 0;
+        std::string name = "-NONAME-";
         //stores current interpolation data
         std::vector<Interpolation*> interpolations = {};
         //all functions it should draw
         std::vector<Function*> functions = {};
     public:
         //full constructor
-        Graph(double x,double y,double sizex,double sizey,double grid_spacing_x,double grid_spacing_y,double grid_angle_x,double grid_angle_y);
+        Graph(double x,double y,double sizex,double sizey,double grid_spacing_x,double grid_spacing_y,double grid_angle_x,double grid_angle_y,std::string n="-NONAME-");
         //degenerate constructors for ease of use
-        Graph(double x,double y,double sizex,double sizey);
-        Graph(double x,double y,double sizex,double sizey,double grid_spacing_x,double grid_spacing_y);
+        Graph(double x,double y,double sizex,double sizey,std::string n="-NONAME-");
+        Graph(double x,double y,double sizex,double sizey,double grid_spacing_x,double grid_spacing_y,
+            std::string n="-NONAME-");
         //moves incrementally
         void move(double x,double y);
         //moves smoothly
@@ -119,6 +121,18 @@ class Graph {
         bool clickedIn(double mouseX,double mouseY);
         //draws rect around graph to indicate it is selected
         void highlight();
+        //get name of graph
+        std::string getName();
+        //change name of graph
+        void changeName(std::string newname);
+        //get position
+        Point<double> getPosition();
+        //get size
+        Point<double> getSize();
+        //get grid scale
+        Point<double> getGridScale();
+        //get grid angles
+        Point<double> getGridAngle();
 };
 
 class Function {

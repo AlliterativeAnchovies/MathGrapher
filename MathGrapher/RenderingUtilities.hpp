@@ -22,9 +22,6 @@
 //0xffaaf2aa - nice hover over border highlights
 //0x2200ff00 - nice green highlight
 
-//Some functions that are needed to be declared here to interface well with main.cpp
-//they are defined in main
-void addGraph(double x,double y);
 
 //Graphics drawing variables
 extern SDL_Window* gWindow;
@@ -35,6 +32,14 @@ class Font;
 extern Font* fontgrab;
 class Popup;
 extern std::vector<Popup*> popups;
+//Screen dimension constants
+extern const int SCREEN_WIDTH;
+extern const int SCREEN_HEIGHT;
+//screen reading constants
+extern std::string instring;
+extern void* thingForInString;
+extern int instringswitch;
+extern int ticks;
 
 class Font {
     private:
@@ -61,7 +66,8 @@ Uint8 getR(Uint32 color);
 Uint8 getG(Uint32 color);
 Uint8 getB(Uint32 color);
 void drawBorderedRect(int px,int py,int wid,int hei,Uint32 fillColor,Uint32 borderColor);
-
+double numberFromString(std::string theString);
+int hexCharToInt(char in);
 
 template<typename T> void fastSineCosine(T* sine,T* cosine,T angle) {
     //It's faster if I need a sine and cosine of 1 angle to use this
@@ -69,29 +75,44 @@ template<typename T> void fastSineCosine(T* sine,T* cosine,T angle) {
     *sine = sin(angle);
     *cosine = sqrt(1-((*sine)*(*sine)))*((angle>M_PI/2&&angle<3*M_PI/2)?-1:1);
 }
+template<class A,class B,class C> C foldr(A f1,std::vector<B> vec,C first) {
+    C output = first;
+    for (int i = 0;i<vec.size();i++) {
+        output = f1(vec[i],output);
+    }
+    return output;
+}
+template<class A,class B> B foldr1(A f1,std::vector<B> vec) {
+    B output = vec[0];
+    for (int i = 1;i<vec.size();i++) {
+        output = f1(vec[i],output);
+    }
+    return output;
+}
+template<class A,class B> auto map(A toMap,std::vector<B> mapOnto) {
+    auto toReturn = std::vector<decltype(toMap(mapOnto[0]))>(mapOnto.size());
+    for (int i = 0;i<mapOnto.size();i++) {
+        toReturn[i] = toMap(mapOnto[i]);
+    }
+    return toReturn;
+}
+template<class A,class B> auto mapWithIndex(A toMap,std::vector<B> mapOnto) {
+    auto toReturn = std::vector<decltype(toMap(mapOnto[0],0))>(mapOnto.size());
+    for (int i = 0;i<mapOnto.size();i++) {
+        toReturn[i] = toMap(mapOnto[i],i);
+    }
+    return toReturn;
+}
 
-enum POPUP_IDS {
-    NULL_POPUP,
-    ADD_OBJECT_POPUP
-};
-
-class Popup {
-    private:
-        Uint8 popupID = NULL_POPUP;
-        double px = 0;
-        double py = 0;
-        double sx = 0;
-        double sy = 0;
-        bool taggedForDeletion = false;
+template<typename T> class Point {
     public:
-        Popup(Uint8 popup_id,double x,double y,double xsize,double ysize);
-        Uint8 handle(double mouseX,double mouseY,bool clicked);
-        void tag();
-        bool isTagged();
-        Uint8 getID();
+        T x=0;
+        T y=0;
+        Point(T inx,T iny) {
+            x = inx;
+            y = iny;
+        }
 };
 
-void createPopup(Uint8 popup_id,double x,double y);
-bool isQuickCloser(Uint8 popup_id);
 
 #endif /* RenderingUtilities_hpp */

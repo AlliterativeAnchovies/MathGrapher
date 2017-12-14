@@ -6,11 +6,12 @@
 //  Copyright © 2017 Alliterative Anchovies. All rights reserved.
 //
 
-#include <iostream>
-#include "SDL2/SDL.h"
-#include "SDL2_ttf/SDL_ttf.h"
-#include <vector>
-#include "Graph.hpp"
+//#include <iostream>
+//#include "SDL2/SDL.h"
+//#include "SDL2_ttf/SDL_ttf.h"
+//#include <vector>
+//#include "Graph.hpp"
+#include "Popup.hpp"
 
 //Screen dimension constants
 const int SCREEN_WIDTH = 640;
@@ -38,21 +39,36 @@ std::vector<Graph*> graphs = {};
 //Popups to draw
 std::vector<Popup*> popups = {};
 
+//Total graphs ever added
+int TOTAL_GRAPHS = 0;
+
+//Tick counter
+int ticks = 0;
+
 //"header" function definitions
 void close();
 bool loadMedia();
 void drawGraph(Graph* g);
+SDL_Event e;
+void doInStringCalcs(Uint8 keypressed);
+void beepInString();
 
 //this is the real "main" loop
-SDL_Event e;
 bool STARTED = false;
 std::vector<Graph*> selectedGraphs = {};
+bool CAPS_LOCK = false;
 bool controlFlow() {
+    ticks++;
+    beepInString();
     //Fill screen to white
     drawRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 0xffffffff);
     int mouseX, mouseY;
     bool leftMouseClicked = false;
+    bool leftMouseHadBeenClicked = false;
+    bool leftMouseReleased = false;
+    bool leftMouseHadBeenReleased = false;
     bool shiftClicked = false;
+    bool overPopup = false;
     SDL_GetMouseState(&mouseX, &mouseY);
     //get keyboard events
     while( SDL_PollEvent( &e ) != 0 ) {
@@ -70,12 +86,25 @@ bool controlFlow() {
                     return false;
                 case SDLK_SPACE:
                     STARTED = true;
+                    instring+=" ";
                     break;
+                case SDLK_CAPSLOCK:
+                    CAPS_LOCK = !CAPS_LOCK;
+                    break;
+                default:
+                    doInStringCalcs(e.key.keysym.sym);
             }
         }
         else if (e.type == SDL_MOUSEBUTTONDOWN) {
             if (e.button.button == SDL_BUTTON_LEFT) {
                 leftMouseClicked = true;
+                leftMouseHadBeenClicked = true;
+            }
+        }
+        else if (e.type == SDL_MOUSEBUTTONUP) {
+            if (e.button.button == SDL_BUTTON_LEFT) {
+                leftMouseReleased = true;
+                leftMouseHadBeenReleased = true;
             }
         }
     }
@@ -83,16 +112,38 @@ bool controlFlow() {
     if (keystates[SDL_SCANCODE_LSHIFT]||keystates[SDL_SCANCODE_RSHIFT]) {
         shiftClicked = true;
     }
+    
+    
+    //check if over popup
+    //if so, we can't click, because popup should have priority
+    for (int i = 0;i<popups.size();i++) {
+        if (popups[i]==NULL) {break;}
+        overPopup = overPopup || popups[i]->inBounds(mouseX, mouseY);
+    }
+    
+    
     for (Graph* g : selectedGraphs) {g->highlight();}
     for (int i = 0;i<graphs.size();i++) {
-            if (leftMouseClicked&&graphs[i]->clickedIn(mouseX,mouseY)) {
+            if (leftMouseReleased&&!overPopup&&graphs[i]->clickedIn(mouseX,mouseY)) {
                 if (!shiftClicked) {
                     selectedGraphs = {graphs[i]};
                 }
                 else {
-                    selectedGraphs.push_back(graphs[i]);
+                    bool isInSelectedGraphs = foldr([](bool a,bool b){return a||b;},map([&](Graph* g){return g==graphs[i];}, selectedGraphs),false);
+                    if (!isInSelectedGraphs) {
+                        selectedGraphs.push_back(graphs[i]);
+                    }
+                    else {
+                        typeof(selectedGraphs) newselects = {};
+                        for (Graph* g : selectedGraphs) {
+                            if (g!=graphs[i]) {
+                                newselects.push_back(g);
+                            }
+                        }
+                        selectedGraphs = newselects;
+                    }
                 }
-                leftMouseClicked = false;
+                leftMouseReleased = false;
             }
             drawGraph(graphs[i]);
         }
@@ -106,25 +157,67 @@ bool controlFlow() {
     }*/
     
     //draw control bar
-    drawBorderedRect(0, SCREEN_HEIGHT-100, SCREEN_WIDTH, 100, 0xffffcf9e, 0xff000000);
+    double controlBarY = SCREEN_HEIGHT-100;
+    drawBorderedRect(0, controlBarY, SCREEN_WIDTH, 100, 0xffffcf9e, 0xff000000);
+    double totoff = 10;
+    typeof(selectedGraphs) newselectedgraphs = {};
+    for (int i = 0;i<selectedGraphs.size();i++) {
+        int w,h,w2,h2,w3,h3,w4,h4;
+        //draw name of graph
+        std::string name = selectedGraphs[i]->getName();
+        drawText(name, 16, totoff, controlBarY+5, 0xff000000);
+        TTF_SizeUTF8((*fontgrab)(16), name.c_str(), &w, &h);
+        double newtotoff = totoff+5+w;
+        //draw run button
+        TTF_SizeUTF8((*fontgrab)(16), "Run", &w2, &h2);
+        drawTextWithBackground("Run", 16, totoff, controlBarY+5+h, 0xff000000,0xff9fc9f2,0xff000000);
+        //draw edit button
+        TTF_SizeUTF8((*fontgrab)(16), "Edit", &w3, &h3);
+        drawTextWithBackground("Edit", 16, totoff, controlBarY+5+h+h2, 0xff000000,0xff9fc9f2,0xff000000);
+        if (leftMouseReleased&&!overPopup&&pointInBounds(mouseX, mouseY, totoff, totoff+w3, controlBarY+5+h+h2, controlBarY+5+h+h2+h3)) {
+            Popup* blargh = createPopup(EDIT_OBJECT_POPUP, 10, 10);
+            blargh->concernWith(selectedGraphs[i]);
+            leftMouseReleased = false;
+        }
+        //draw delete button
+        TTF_SizeUTF8((*fontgrab)(16), "Delete", &w4, &h4);
+        drawTextWithBackground("Delete", 16, totoff, controlBarY+5+h+h2+h3, 0xff000000,0xff9fc9f2,0xff000000);
+        if (leftMouseReleased&&!overPopup&&pointInBounds(mouseX, mouseY, totoff, totoff+w4, controlBarY+5+h+h2+h3, controlBarY+5+h+h2+h3+h4)) {
+            typeof(graphs) newgraphs = {};
+            for (int j = 0;j<graphs.size();j++) {
+                if (graphs[j]!=selectedGraphs[i]) {newgraphs.push_back(graphs[j]);}
+            }
+            delete selectedGraphs[i];
+            selectedGraphs[i] = NULL;
+            graphs = newgraphs;
+            leftMouseReleased = false;
+        }
+        else {newselectedgraphs.push_back(selectedGraphs[i]);}
+        totoff=newtotoff;
+    }
+    selectedGraphs=newselectedgraphs;
     
     std::vector<Popup*> newpopups = {};
     for (int i = 0;i<popups.size();i++) {
         if (popups[i]==NULL) {break;}
         if (!popups[i]->isTagged()) {
-            Uint8 handling = popups[i]->handle(mouseX, mouseY, leftMouseClicked);
+            Uint8 handling = popups[i]->handle(mouseX, mouseY, leftMouseReleased);
             if (handling==0x00) {
                 //did not click in popup
-                newpopups.push_back(popups[i]);
+                if (!(isQuickCloser(popups[i]->getID()) && leftMouseHadBeenReleased)) {
+                    //is either not a quick closer, or is a quick closer but mouse was
+                    //not clicked elsewhere
+                    newpopups.push_back(popups[i]);
+                }
             }
             else if (handling==0x01) {
                 //clicked in popup but should not delete
                 newpopups.push_back(popups[i]);
-                leftMouseClicked = false;
+                leftMouseReleased = false;
             }
             else if (handling==0x02) {
                 //clicked, should delete
-                leftMouseClicked = false;
+                leftMouseReleased = false;
             }
             else {
                 delete popups[i];
@@ -134,7 +227,7 @@ bool controlFlow() {
     }
     popups = newpopups;
     
-    if (leftMouseClicked) {
+    if (leftMouseReleased&&!overPopup) {
         if (mouseY<SCREEN_HEIGHT-100) {
             createPopup(ADD_OBJECT_POPUP, mouseX, mouseY);
         }
@@ -297,5 +390,84 @@ void drawGraph(Graph* g) {
 }
 
 void addGraph(double x,double y) {
-    graphs.push_back(new Graph(x,y,100,100));
+    graphs.push_back(new Graph(x,y,100,100,"Graph "+std::to_string(TOTAL_GRAPHS)));
+    TOTAL_GRAPHS++;
+}
+
+void beepInString() {
+    std::string cursorBeeper = (ticks%60<30)?"|":" ";
+    if (thingForInString!=NULL) {
+        switch (instringswitch) {
+            case 0:
+                ((Graph*)thingForInString)->changeName(instring+cursorBeeper);
+                break;
+        }
+    }
+}
+
+void changeToInString() {
+    if (thingForInString!=NULL) {
+        switch (instringswitch) {
+            case 0:
+                ((Graph*)thingForInString)->changeName(instring);
+                break;
+            case 1:
+                ((Graph*)thingForInString)->changePosition(numberFromString(instring),(((Graph*)thingForInString)->getPosition()).y);
+                break;
+            case 2:
+                ((Graph*)thingForInString)->changePosition((((Graph*)thingForInString)->getPosition()).x,numberFromString(instring));
+                break;
+            case 3:
+                ((Graph*)thingForInString)->resizeGrid(numberFromString(instring),(((Graph*)thingForInString)->getSize()).y);
+                break;
+            case 4:
+                ((Graph*)thingForInString)->resizeGrid((((Graph*)thingForInString)->getSize()).x,numberFromString(instring));
+                break;
+            case 5:
+                ((Graph*)thingForInString)->changeGridScale(numberFromString(instring),
+                    (((Graph*)thingForInString)->getGridScale()).y);
+                break;
+            case 6:
+                ((Graph*)thingForInString)->changeGridScale((((Graph*)thingForInString)->getGridScale()).x, numberFromString(instring));
+                break;
+            //7 and 8 swapped order on purpose, programmatically the x angle is the one made with the
+            //y axis (for good reasons, but it's still counterintuitive), so for the end user we swap them
+            case 7:
+                ((Graph*)thingForInString)->changeGridAngle((((Graph*)thingForInString)->getGridAngle()).x, numberFromString(instring)*M_PI/180);
+                break;
+            case 8:
+                ((Graph*)thingForInString)->changeGridAngle(numberFromString(instring)*M_PI/180,
+                    (((Graph*)thingForInString)->getGridAngle()).y);
+                break;
+        }
+    }
+}
+
+void doInStringCalcs(Uint8 keypressed) {
+    if (thingForInString!=NULL) {
+        switch (keypressed) {
+            case SDLK_RETURN:
+                changeToInString();
+                instringswitch = 0;
+                thingForInString = NULL;
+                instring = "";
+                break;
+            case SDLK_BACKSPACE:
+            case SDLK_DELETE:
+                if (instring!="") {
+                    instring.pop_back();
+                    changeToInString();
+                }
+                break;
+            default:
+                std::string thing = SDL_GetKeyName(keypressed);
+                if (thing.size()==1) {
+                    if (instringswitch==0||isnumber(thing[0])) {
+                        instring+=(CAPS_LOCK?toupper:tolower)(thing[0]);
+                        changeToInString();
+                    }
+                }
+                break;
+        }
+    }
 }
