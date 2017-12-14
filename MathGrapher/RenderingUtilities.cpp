@@ -10,7 +10,7 @@
 
 std::string instring="";
 void* thingForInString=NULL;
-int instringswitch=0;
+int instringswitch=-1;
 
 Uint32 get_pixel32(SDL_Surface *surface, int x, int y) {
     //Convert the pixels to 32 bit

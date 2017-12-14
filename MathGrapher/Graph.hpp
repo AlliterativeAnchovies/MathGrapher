@@ -72,6 +72,7 @@ class Graph {
         std::vector<Interpolation*> interpolations = {};
         //all functions it should draw
         std::vector<Function*> functions = {};
+        std::vector<Function*> yfunctions = {};
     public:
         //full constructor
         Graph(double x,double y,double sizex,double sizey,double grid_spacing_x,double grid_spacing_y,double grid_angle_x,double grid_angle_y,std::string n="-NONAME-");
@@ -114,7 +115,8 @@ class Graph {
         //resizes grid smoothly
         Interpolation* smoothMoveGridSize(double x,double y,int timeInterval,bool moveCenter = true,bool doNow = true);
         //add a function to draw
-        void addFunction(Function* function);
+        void addXFunction(Function* function);
+        void addYFunction(Function* function);
         //add an interpolation
         void addInterpolation(Interpolation* i);
         //check if clicked on graph
@@ -133,15 +135,33 @@ class Graph {
         Point<double> getGridScale();
         //get grid angles
         Point<double> getGridAngle();
+        //get grid origin
+        Point<double> getOrigin();
+        //get x functions
+        std::vector<Function*> getXFunctions();
+        //get y functions
+        std::vector<Function*> getYFunctions();
+        //get rid of tagged functions
+        void cleanFunctions();
 };
 
 class Function {
     private:
         std::function<double(double,double)> function;
+        std::function<bool(double,double)> range;
+        std::string name = "-FUNCTION-";
+        bool tagged = false;
     public:
         Function(std::function<double(double,double)> f);
+        Function(std::function<double(double,double)> f,std::function<bool(double,double)> r,std::string n);
         double eval(double x,double time);
         double operator() (double x,double time);
+        double inRange(double x,double time);
+        std::string getName();
+        void setName(std::string n);
+        void tag() {tagged=true;}
+        bool isTagged() {return tagged;}
+        Function(Function* a);
 };
 
 

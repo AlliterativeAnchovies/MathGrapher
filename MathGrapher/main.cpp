@@ -51,7 +51,6 @@ bool loadMedia();
 void drawGraph(Graph* g);
 SDL_Event e;
 void doInStringCalcs(Uint8 keypressed);
-void beepInString();
 
 //this is the real "main" loop
 bool STARTED = false;
@@ -59,7 +58,6 @@ std::vector<Graph*> selectedGraphs = {};
 bool CAPS_LOCK = false;
 bool controlFlow() {
     ticks++;
-    beepInString();
     //Fill screen to white
     drawRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 0xffffffff);
     int mouseX, mouseY;
@@ -175,7 +173,7 @@ bool controlFlow() {
         TTF_SizeUTF8((*fontgrab)(16), "Edit", &w3, &h3);
         drawTextWithBackground("Edit", 16, totoff, controlBarY+5+h+h2, 0xff000000,0xff9fc9f2,0xff000000);
         if (leftMouseReleased&&!overPopup&&pointInBounds(mouseX, mouseY, totoff, totoff+w3, controlBarY+5+h+h2, controlBarY+5+h+h2+h3)) {
-            Popup* blargh = createPopup(EDIT_OBJECT_POPUP, 10, 10);
+            Popup* blargh = createPopup(EDIT_GRAPH_POPUP, 10, 10);
             blargh->concernWith(selectedGraphs[i]);
             leftMouseReleased = false;
         }
@@ -197,6 +195,13 @@ bool controlFlow() {
     }
     selectedGraphs=newselectedgraphs;
     
+    //find out what popup the mouse is over
+    for (int i = (int)popups.size()-1;i>=0;i--) {
+        if (popups[i]->raycast(mouseX, mouseY)) {
+            break;
+        }
+    }
+    
     std::vector<Popup*> newpopups = {};
     for (int i = 0;i<popups.size();i++) {
         if (popups[i]==NULL) {break;}
@@ -204,7 +209,7 @@ bool controlFlow() {
             Uint8 handling = popups[i]->handle(mouseX, mouseY, leftMouseReleased);
             if (handling==0x00) {
                 //did not click in popup
-                if (!(isQuickCloser(popups[i]->getID()) && leftMouseHadBeenReleased)) {
+                if (!(isQuickCloser(popups[i]->getID()) && leftMouseHadBeenReleased && !popups[i]->newborn())) {
                     //is either not a quick closer, or is a quick closer but mouse was
                     //not clicked elsewhere
                     newpopups.push_back(popups[i]);
@@ -226,12 +231,15 @@ bool controlFlow() {
         }
     }
     popups = newpopups;
+    map([](Popup* x){x->age();x->resetRays();return NULL;}, popups);
     
     if (leftMouseReleased&&!overPopup) {
         if (mouseY<SCREEN_HEIGHT-100) {
             createPopup(ADD_OBJECT_POPUP, mouseX, mouseY);
         }
     }
+    
+    for (Graph* g : graphs) {g->cleanFunctions();}
     
     //draw stuff on screen
     SDL_RenderPresent(gRenderer);
@@ -299,6 +307,7 @@ int main(int argc, const char * argv[]) {
     #endif
     
     fontgrab = new Font(24);
+    initBuiltins();
     
     /*
     //create a graph for testing
@@ -394,16 +403,6 @@ void addGraph(double x,double y) {
     TOTAL_GRAPHS++;
 }
 
-void beepInString() {
-    std::string cursorBeeper = (ticks%60<30)?"|":" ";
-    if (thingForInString!=NULL) {
-        switch (instringswitch) {
-            case 0:
-                ((Graph*)thingForInString)->changeName(instring+cursorBeeper);
-                break;
-        }
-    }
-}
 
 void changeToInString() {
     if (thingForInString!=NULL) {
@@ -439,6 +438,13 @@ void changeToInString() {
                 ((Graph*)thingForInString)->changeGridAngle(numberFromString(instring)*M_PI/180,
                     (((Graph*)thingForInString)->getGridAngle()).y);
                 break;
+            case 9:
+                ((Graph*)thingForInString)->changeOrigin(numberFromString(instring),
+                    (((Graph*)thingForInString)->getOrigin()).y);
+                break;
+            case 10:
+                ((Graph*)thingForInString)->changeOrigin((((Graph*)thingForInString)->getOrigin()).x, numberFromString(instring));
+                break;
         }
     }
 }
@@ -448,7 +454,7 @@ void doInStringCalcs(Uint8 keypressed) {
         switch (keypressed) {
             case SDLK_RETURN:
                 changeToInString();
-                instringswitch = 0;
+                instringswitch = -1;
                 thingForInString = NULL;
                 instring = "";
                 break;

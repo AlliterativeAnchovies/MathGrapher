@@ -119,8 +119,8 @@ Interpolation* Graph::smoothMoveGridScale(double x,double y,int timeInterval,boo
 //resizes grid immediately
 void Graph::resizeGrid(double x,double y,bool moveCenter) {
     if (moveCenter) {
-        ox = (ox/sx)*x;
-        oy = (oy/sy)*y;
+        ox = (sx==0)?0:(ox/sx)*x;
+        oy = (sy==0)?0:(oy/sy)*y;
     }
     else {
         if (ox>=sx) {ox = sx-1;}
@@ -173,7 +173,7 @@ SDL_Surface* Graph::draw(double* x,double* y) {
     double deltax = cosinex*gridSpacingX;
     double startingx = centerx;
     double startingy = centery;
-    double maxAmountOfLines = (gridSpacingX<1)?0:2*sx/gridSpacingX;
+    double maxAmountOfLines = (gridSpacingX<1)?0:5*sx/gridSpacingX;
     int quitCount = 0;
     while (quitCount<maxAmountOfLines) {
         //draw line
@@ -201,7 +201,7 @@ SDL_Surface* Graph::draw(double* x,double* y) {
     deltax = cosiney*gridSpacingY;
     startingx = centerx;
     startingy = centery;
-    maxAmountOfLines = (gridSpacingY<1)?0:2*sy/gridSpacingY;
+    maxAmountOfLines = (gridSpacingY<1)?0:5*sy/gridSpacingY;
     quitCount = 0;
     while (quitCount<maxAmountOfLines) {
         //draw line
@@ -224,6 +224,7 @@ SDL_Surface* Graph::draw(double* x,double* y) {
     drawLineThroughPointWithAngleInBounds(toReturn,centerx,centery,gridAngleY,0,sx,0,sy,0xff000000,100);
     
     //now draw the functions
+    bool lastOutOfRange = true;
     for (int i = 0;i<functions.size();i++) {
         Function* f = functions[i];
         //we should have 1 value per pixel
@@ -244,6 +245,49 @@ SDL_Surface* Graph::draw(double* x,double* y) {
                 | -s2/scaleX  c2/scaleY |
             */
             double rawX = (j-ox)*pixelToXValRatio;//rawX is not in terms of screen pixels
+            if (!f->inRange(rawX,0)) {
+                lastOutOfRange = true;
+            }
+            double rawY = (*f)(rawX,0);//rawY is not in terms of screen pixels
+            double finalX = rawX*c1/pixelToXValRatio-rawY*s2/pixelToYValRatio;
+            double finalY = rawX*s1/pixelToXValRatio+rawY*c2/pixelToYValRatio;
+            finalX+=ox;
+            finalY*=-1;//invert y coord because programming coords start in top not bottom
+            finalY+=oy;
+            if (!lastOutOfRange) {
+                drawLineOnSurface(toReturn, prevX, prevY, finalX, finalY, 0xffff0000);
+            }
+            prevX = finalX;
+            prevY = finalY;
+            lastOutOfRange = false;
+        }
+    }
+    
+    //and the y-axis functions
+    lastOutOfRange = true;
+    for (int i = 0;i<yfunctions.size();i++) {
+        Function* f = yfunctions[i];
+        //we should have 1 value per pixel
+        //however keep into account that we may have a scaled grid
+        double pixelToXValRatio = 1/gridSpacingX;
+        double pixelToYValRatio = 1/gridSpacingY;
+        //to account for rotated grid:
+        double s1,c1 = 0;
+        fastSineCosine(&s1, &c1, gridAngleX);//x axis angle
+        double s2,c2 = 0;
+        fastSineCosine(&s2, &c2, gridAngleY-M_PI/2);//y axis angle
+        double prevY = 0;
+        double prevX = 0;
+        for (int j = 0;j<sx;j++) {
+            /*
+            Can convert to rotated coordinates using change-of-basis matrix:
+                | c1/scaleX   s1/scaleY |
+                | -s2/scaleX  c2/scaleY |
+            */
+            double rawX = (j-ox)*pixelToXValRatio;//rawX is not in terms of screen pixels
+            if (!f->inRange(rawX,0)) {
+                lastOutOfRange = true;
+            }
             double rawY = (*f)(rawX,0);//rawY is not in terms of screen pixels
             double finalX = rawX*c1/pixelToXValRatio-rawY*s2/pixelToYValRatio;
             double finalY = rawX*s1/pixelToXValRatio+rawY*c2/pixelToYValRatio;
@@ -255,6 +299,7 @@ SDL_Surface* Graph::draw(double* x,double* y) {
             }
             prevX = finalX;
             prevY = finalY;
+            lastOutOfRange = false;
         }
     }
     
@@ -281,12 +326,16 @@ void Graph::update() {
             temp.push_back(interpolations[i]);
         }
     }
+    
     interpolations = temp;
 }
 
 //add a function to draw
-void Graph::addFunction(Function* function) {
-    functions.push_back(function);
+void Graph::addXFunction(Function* function) {
+    functions.push_back(new Function(function));
+}
+void Graph::addYFunction(Function* function) {
+    yfunctions.push_back(new Function(function));
 }
 
 //check if clicked on graph
@@ -327,6 +376,33 @@ Point<double> Graph::getGridScale() {
 //get grid angles
 Point<double> Graph::getGridAngle() {
     return Point<double>(gridAngleX,gridAngleY);
+}
+
+//get grid angles
+Point<double> Graph::getOrigin() {
+    return Point<double>(ox,oy);
+}
+
+//get x functions
+std::vector<Function*> Graph::getXFunctions() {
+    return functions;
+}
+
+//get y functions
+std::vector<Function*> Graph::getYFunctions() {
+    return yfunctions;
+}
+
+//get rid of tagged functions
+void Graph::cleanFunctions() {
+    auto oldfunctions = filter([](Function* f){return f->isTagged();},functions);
+    auto oldyfunctions = filter([](Function* f){return f->isTagged();},yfunctions);
+    auto newfunctions = filter([](Function* f){return !f->isTagged();},functions);
+    auto newyfunctions = filter([](Function* f){return !f->isTagged();},yfunctions);
+    for (auto f : oldfunctions) {delete f;}
+    for (auto f : oldyfunctions) {delete f;}
+    functions = newfunctions;
+    yfunctions = newyfunctions;
 }
 
 //returns true if completed interpolation
@@ -406,10 +482,34 @@ Interpolation* Interpolation::cloneTo(Interpolation* concernedWith,bool addImmed
 Function::Function(std::function<double(double,double)> f) {
     function = f;
 }
+
+Function::Function(std::function<double(double,double)> f,std::function<bool(double,double)> r,std::string n) {
+    function = f;
+    name = n;
+    range = r;
+}
+
 double Function::eval(double x,double time) {
     return function(x,time);
 }
 double Function::operator() (double x,double time) {
     return eval(x,time);
+}
+
+double Function::inRange(double x,double time) {
+    return range(x,time);
+}
+
+std::string Function::getName() {
+    return name;
+}
+void Function::setName(std::string n) {
+    name = n;
+}
+
+Function::Function(Function* a) {
+    name = a->name;
+    function = a->function;
+    range = a->range;
 }
 

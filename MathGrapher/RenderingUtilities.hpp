@@ -104,6 +104,14 @@ template<class A,class B> auto mapWithIndex(A toMap,std::vector<B> mapOnto) {
     return toReturn;
 }
 
+template<class A,class B> auto filter(A toFilter,std::vector<B> filterOnto) {
+    std::vector<B> toReturn = {};
+    for (B b : filterOnto) {
+        if (toFilter(b)) {toReturn.push_back(b);}
+    }
+    return toReturn;
+}
+
 template<typename T> class Point {
     public:
         T x=0;
@@ -112,6 +120,11 @@ template<typename T> class Point {
             x = inx;
             y = iny;
         }
+};
+
+template<typename A,typename B> struct Wrap2 {
+    A x;
+    B y;
 };
 
 
