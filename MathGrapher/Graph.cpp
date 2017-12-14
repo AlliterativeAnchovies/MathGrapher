@@ -166,167 +166,59 @@ SDL_Surface* Graph::draw(double* x,double* y) {
     //first lets do the "x" grid
     double sinex,cosinex = 0;
     fastSineCosine(&sinex, &cosinex, gridAngleY);
-    double deltax = sinex*gridSpacingX;
-    double deltay = cosinex*gridSpacingX;
+    double deltay = sinex*gridSpacingX;
+    double deltax = cosinex*gridSpacingX;
     double startingx = centerx;
     double startingy = centery;
-    while (pointInBounds(startingx, startingy, -1, sx, -1, sy)) {
+    double maxAmountOfLines = 2*sx/gridSpacingX;
+    int quitCount = 0;
+    while (quitCount<maxAmountOfLines) {
         //draw line
-        drawLineThroughPointWithAngleInBounds(toReturn,startingx,startingy,gridAngleX,0,sx,0,sy,0xff999999);
+        drawLineThroughPointWithAngleInBounds(toReturn,startingx,startingy,gridAngleX,0,sx,0,sy,0xff999999,100);
         startingx+=deltax;
         startingy+=deltay;
+        quitCount++;
     }
     startingx = centerx;
     startingy = centery;
-    while (pointInBounds(startingx, startingy, -1, sx, -1, sy)) {
+    quitCount = 0;
+    while (quitCount<maxAmountOfLines) {
         //draw line
-        drawLineThroughPointWithAngleInBounds(toReturn,startingx,startingy,gridAngleX,0,sx,0,sy,0xff999999);
+        drawLineThroughPointWithAngleInBounds(toReturn,startingx,startingy,gridAngleX,0,sx,0,sy,0xff999999,100);
         startingx-=deltax;
         startingy-=deltay;
+        quitCount++;
     }
     //axis time
-    drawLineThroughPointWithAngleInBounds(toReturn,centerx,centery,gridAngleX,0,sx,0,sy,0xff000000);
+    drawLineThroughPointWithAngleInBounds(toReturn,centerx,centery,gridAngleX,0,sx,0,sy,0xff000000,100);
     //now lets do the "y" grid
     double siney,cosiney = 0;
     fastSineCosine(&siney, &cosiney, gridAngleX);
-    deltax = siney*gridSpacingY;
-    deltay = cosiney*gridSpacingY;
+    deltay = siney*gridSpacingY;
+    deltax = cosiney*gridSpacingY;
     startingx = centerx;
     startingy = centery;
-    while (pointInBounds(startingx, startingy, -1, sx, -1, sy)) {
+    maxAmountOfLines = 2*sy/gridSpacingY;
+    quitCount = 0;
+    while (quitCount<maxAmountOfLines) {
         //draw line
-        drawLineThroughPointWithAngleInBounds(toReturn,startingx,startingy,gridAngleY,0,sx,0,sy,0xff999999);
+        drawLineThroughPointWithAngleInBounds(toReturn,startingx,startingy,gridAngleY,0,sx,0,sy,0xff999999,100);
         startingx+=deltax;
         startingy+=deltay;
+        quitCount++;
     }
     startingx = centerx;
     startingy = centery;
-    while (pointInBounds(startingx, startingy, -1, sx, -1, sy)) {
+    quitCount = 0;
+    while (quitCount<maxAmountOfLines) {
         //draw line
-        drawLineThroughPointWithAngleInBounds(toReturn,startingx,startingy,gridAngleY,0,sx,0,sy,0xff999999);
+        drawLineThroughPointWithAngleInBounds(toReturn,startingx,startingy,gridAngleY,0,sx,0,sy,0xff999999,100);
         startingx-=deltax;
         startingy-=deltay;
+        quitCount++;
     }
     //axis time
-    drawLineThroughPointWithAngleInBounds(toReturn,centerx,centery,gridAngleY,0,sx,0,sy,0xff000000);
-    /*
-    //=======================draw grid lines====================
-    double centerx = ox;
-    double centery = oy;
-    double rightOfCenter = sx-ox;
-    double southOfCenter = sy-oy;
-    double sinex,cosinex = 0;
-    fastSineCosine(&sinex, &cosinex, gridAngleX);
-    double tangentx = 0;
-    if (cosinex!=0) {
-        tangentx = sinex/cosinex;
-    }
-    double siney,cosiney = 0;
-    fastSineCosine(&siney, &cosiney, gridAngleY);
-    double tangenty = 0;
-    if (cosiney!=0) {
-        tangenty = siney/cosiney;
-    }
-    //draw non-axis x grid lines first
-    int offx = 0;
-    int ohmygodjuststopalready = 0;
-    while(true) {
-        int left = 0;
-        int right = 0;
-        double offx_x = offx * cosiney;
-        if (cosinex == 0) {
-            left = centerx-offx_x;
-            right = centerx+offx_x;
-            drawLineOnSurface(toReturn, centerx+offx_x, 0, centerx+offx_x, sy, 0xff999999);
-            drawLineOnSurface(toReturn, centerx-offx_x, 0, centerx-offx_x, sy, 0xff999999);
-        }
-        else if (sinex == 0) {
-            left = -offx_x;
-            right = offx_x;
-            drawLineOnSurface(toReturn, 0, offx_x, sx, offx_x, 0xff999999);
-            drawLineOnSurface(toReturn, 0, -offx_x, sx, -offx_x, 0xff999999);
-        }
-        else {
-            double rawx1 = centerx+centery/tangentx;
-            double rawx2 = centerx-southOfCenter/tangentx;
-            if (!(rawx1>1000 || rawx1<-1000 || rawx2>1000 || rawx2<-1000)) {
-                left = (rawx1>rawx2)?rawx1-offx_x:rawx2-offx_x;
-                right = (rawx1>rawx2)?rawx2+offx_x:rawx1+offx_x;
-                drawLineOnSurface(toReturn, rawx1+offx_x, 0, rawx2+offx_x, sy, 0xff999999);
-                drawLineOnSurface(toReturn, rawx1-offx_x, 0, rawx2-offx_x, sy, 0xff999999);
-            }
-        }
-        offx+=gridSpacingX;
-        ohmygodjuststopalready++;
-        if (right>=sx&&left<0) {
-            break;
-        }
-        if (ohmygodjuststopalready>1000) {
-            break;
-        }
-    }
-    
-    //draw other y grid lines
-    int offy = 0;
-    ohmygodjuststopalready = 0;
-    while(true) {
-        int left = 0;
-        int right = 0;
-        double offy_y = offy * sinex;
-        if (cosiney == 0) {
-            left = centery-offy_y;
-            right = centery+offy_y;
-            drawLineOnSurface(toReturn, centerx, offy_y, centerx, sy, 0xff999999);
-            drawLineOnSurface(toReturn, centerx, -offy_y, centerx, sy, 0xff999999);
-        }
-        else if (siney == 0) {
-            left = -offy_y;
-            right = offy_y;
-            drawLineOnSurface(toReturn, 0, offy_y, sx, offy_y, 0xff999999);
-            drawLineOnSurface(toReturn, 0, -offy_y, sx, -offy_y, 0xff999999);
-        }
-        else {
-            double rawy1 = centery+centerx*tangenty;
-            double rawy2 = centery-rightOfCenter*tangenty;
-            if (!(rawy1>1000 || rawy1<-1000 || rawy2>1000 || rawy2<-1000)) {
-                left = (rawy1>rawy2)?rawy1-offy_y:rawy2-offy_y;
-                right = (rawy1>rawy2)?rawy2+offy_y:rawy1+offy_y;
-                drawLineOnSurface(toReturn, 0, rawy1+offy_y, sx, rawy2+offy_y, 0xff999999);
-                drawLineOnSurface(toReturn, 0, rawy1-offy_y, sx, rawy2-offy_y, 0xff999999);
-            }
-        }
-        offy+=gridSpacingY;
-        ohmygodjuststopalready++;
-        if (right>=sy&&left<0) {
-            break;
-        }
-        if (ohmygodjuststopalready>1000) {
-            break;
-        }
-    }
-    
-    //draw axes last
-    //main x grid line (the y axis)
-    if (cosinex == 0) {
-        drawLineOnSurface(toReturn, centerx, 0, centerx, sy, 0xff000000);
-    }
-    else if (sinex == 0) {
-        drawLineOnSurface(toReturn, 0, centery, sx, centery, 0xff000000);
-    }
-    else {
-        drawLineOnSurface(toReturn, centerx+centery/tangentx, 0, centerx-southOfCenter/tangentx, sy, 0xff000000);
-    }
-    //main y grid line (the x axis)
-    if (cosiney == 0) {
-        drawLineOnSurface(toReturn, centerx, 0, centerx, sy, 0xff000000);
-    }
-    else if (siney == 0) {
-        drawLineOnSurface(toReturn, 0, centery, sx, centery, 0xff000000);
-    }
-    else {
-        drawLineOnSurface(toReturn, 0, centery+centerx*tangenty, sx, centery-rightOfCenter*tangenty, 0xff000000);
-    }
-    */
+    drawLineThroughPointWithAngleInBounds(toReturn,centerx,centery,gridAngleY,0,sx,0,sy,0xff000000,100);
     
     //now draw the functions
     for (int i = 0;i<functions.size();i++) {
@@ -335,28 +227,53 @@ SDL_Surface* Graph::draw(double* x,double* y) {
         //however keep into account that we may have a scaled grid
         double pixelToXValRatio = 1/gridSpacingX;
         double pixelToYValRatio = 1/gridSpacingY;
-        //to account for rotated grid
-        //we need to create a function that will map from pixel on screen to x-axis value.
-        //and one that will take a function output, and put it on the y-axis counterpart
-        //the second one is easier
-        //it's yval * sin(PI - theta)
-        //can be seen with trig
+        //to account for rotated grid:
+        double s1,c1 = 0;
+        fastSineCosine(&s1, &c1, gridAngleY);//x axis angle
+        double s2,c2 = 0;
+        fastSineCosine(&s2, &c2, gridAngleX-M_PI/2);//y axis angle
+        double prevY = 0;
+        double prevX = 0;
+        for (int j = 0;j<sx;j++) {
+            double rawX = (j-ox)*pixelToXValRatio;//rawX is not in terms of screen pixels
+            double rawY = (*f)(rawX,0);//rawY is not in terms of screen pixels
+            double finalX = rawX*c1-rawY*s2;
+            double finalY = rawX*s1+rawY*c2;
+            finalX/=pixelToXValRatio;//now in terms of screen pixels
+            finalY/=pixelToYValRatio;//now in terms of screen pixels
+            finalX+=ox;
+            finalY*=-1;//invert y coord because programming coords start in top not bottom
+            finalY+=oy;
+            if (j>0) {
+                drawLineOnSurface(toReturn, prevX, prevY, finalX, finalY, 0xffff0000);
+            }
+            prevX = finalX;
+            prevY = finalY;
+        }
+    }
+    /*for (int i = 0;i<functions.size();i++) {
+        Function* f = functions[i];
+        //we should have 1 value per pixel
+        //however keep into account that we may have a scaled grid
+        double pixelToXValRatio = 1/gridSpacingX;
+        double pixelToYValRatio = 1/gridSpacingY;
+        //to account for rotated grid:
         double s,c = 0;
         fastSineCosine(&s, &c, M_PI-gridAngleX);
         double s2,c2 = 0;
         fastSineCosine(&s2, &c2, M_PI/2-gridAngleY);
-        double prevY = s2*s*(*f)(-ox,0)/pixelToYValRatio;
-        double prevX = prevY*c+prevY*c2;
+        double prevY = s*(*f)(-ox,0)/pixelToYValRatio;
+        double prevX = prevY*c;
         for (int j = 1;j<sx;j++) {
-            double yval = (*f)((j-ox)*pixelToXValRatio,0)/pixelToYValRatio;
-            double xval = j+yval*c+yval*c2;
-            yval*=s*s2;//to account for y rotations
+            double yval = (*f)((j-ox)*pixelToXValRatio,0);
+            double xval = j-(yval*c+yval*c2)/pixelToXValRatio;
+            yval*=s*s2/pixelToYValRatio;//to account for y rotations
             drawLineOnSurface(toReturn, prevX, prevY+oy, xval, yval+oy, 0xffff0000);
             prevY = yval;
             prevX = xval;
         }
         
-    }
+    }*/
     
     return toReturn;
 }

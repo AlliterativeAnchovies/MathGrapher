@@ -139,13 +139,13 @@ int main(int argc, const char * argv[]) {
     testGraph2->addFunction(new Function(temp));
     Interpolation* delay = new Interpolation(DELAY,0,0,60,testGraph);
     testGraph2->addInterpolation(delay);
-    Interpolation* scaleGraph = testGraph2->smoothMoveGridScale(20, 40, 240,false);
+    Interpolation* scaleGraph = testGraph2->smoothMoveGridScale(10, 20, 240,false);
     delay->addFollowup(scaleGraph);
     Interpolation* delay2 = delay->cloneTo(scaleGraph);
-    Interpolation* rotateYAxis = testGraph2->smoothMoveGridAngle(M_PI/4, 0, 240,false);
-    Interpolation* rotateXAxis = testGraph2->smoothMoveGridAngle(0, M_PI/4, 240,false);
-    delay2->addFollowup(rotateYAxis);
-    rotateYAxis->addFollowup(rotateXAxis);
+    Interpolation* rotateXAxis = testGraph2->smoothMoveGridAngle(M_PI, 0, 480,false);
+    Interpolation* rotateYAxis = testGraph2->smoothMoveGridAngle(0, M_PI, 480,false);
+    delay2->addFollowup(rotateXAxis);
+    rotateXAxis->addFollowup(rotateYAxis);
     graphs.push_back(testGraph2);
     
     std::cout << "PRESS SPACE TO START!\n";
@@ -194,4 +194,6 @@ void drawGraph(Graph* g) {
     }
     SDL_Texture* tempTexture = SDL_CreateTextureFromSurface(gRenderer,tempSurf);
     drawGraphic(gRenderer, xdraw, ydraw, tempSurf->w, tempSurf->h, tempTexture);
+    SDL_FreeSurface(tempSurf);
+    SDL_DestroyTexture(tempTexture);
 }

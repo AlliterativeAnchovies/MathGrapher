@@ -20,7 +20,7 @@ void drawGraphic(SDL_Renderer* gRenderer,int px,int py,int wid,int hei,SDL_Textu
 void drawRect(SDL_Renderer* gRenderer,int px,int py,int wid,int hei, Uint32 color);
 void drawLineThroughPointWithAngleInBounds(SDL_Surface* surface, double px,double py,double angle,
                                         double xbound_low,double xbound_high,double ybound_low,double ybound_high,
-                                        Uint32 color=0xff000000);
+                                        Uint32 color,double wiggleroom = 0);
 bool pointInBounds(int px,int py,int bx,int bxf,int by,int byf);
 
 template<typename T> void fastSineCosine(T* sine,T* cosine,T angle) {

@@ -29,17 +29,19 @@ SDL_Surface* createBlankSurfaceWithSize(int sx,int sy) {
 
 void drawLineThroughPointWithAngleInBounds(SDL_Surface* surface, double px,double py,double angle,
                                         double xbound_low,double xbound_high,double ybound_low,double ybound_high,
-                                        Uint32 color) {
+                                        Uint32 color,double wiggleroom) {
     double deltax = 0;
     double deltay = 0;
-    fastSineCosine(&deltax, &deltay, angle);
+    fastSineCosine(&deltay, &deltax, angle);
     double totalOffsetX = 0;
     double totalOffsetY = 0;
     bool firstInBounds = true;
     bool secondInBounds = true;
     while (firstInBounds||secondInBounds) {
-        firstInBounds = pointInBounds(px+totalOffsetX,py+totalOffsetY,xbound_low,xbound_high,ybound_low,ybound_high);
-        secondInBounds = pointInBounds(px-totalOffsetX,py-totalOffsetY,xbound_low,xbound_high,ybound_low,ybound_high);
+        firstInBounds = pointInBounds(px+totalOffsetX,py+totalOffsetY,
+                xbound_low-wiggleroom,xbound_high+wiggleroom,ybound_low-wiggleroom,ybound_high+wiggleroom);
+        secondInBounds = pointInBounds(px-totalOffsetX,py-totalOffsetY,
+                xbound_low-wiggleroom,xbound_high+wiggleroom,ybound_low-wiggleroom,ybound_high+wiggleroom);
         if (firstInBounds) {
             if (py+totalOffsetY>=0&&py+totalOffsetY<surface->h&&px+totalOffsetX>=0&&px+totalOffsetX<surface->w) {
                 put_pixel32(surface, px+totalOffsetX, py+totalOffsetY, color);
@@ -51,7 +53,7 @@ void drawLineThroughPointWithAngleInBounds(SDL_Surface* surface, double px,doubl
             }
         }
         totalOffsetX+=deltax;
-        totalOffsetY+=deltay;
+        totalOffsetY-=deltay;
     }
 }
 

@@ -63,9 +63,6 @@ class Graph {
         double sy = 0;
         double ox = 0;
         double oy = 0;
-        //important note: X grids point vertically, because they're
-        //keeping track of the changes on the x axis independent of y axis.
-        //Don't get confused, as it's easy to think the x grid points horizontally.
         double gridSpacingX = 10;
         double gridSpacingY = 10;
         double gridAngleX = M_PI/2;
