@@ -20,7 +20,7 @@ Popup::Popup(Uint8 popup_id,double x,double y,double xsize,double ysize) {
 //return  1 if clicked in
 Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
     Uint8 toReturn = 0x00;
-    clicked = clicked&&successfulRaycast;
+    clicked = clicked&&successfulRaycast&&!locked;
     switch (popupID) {
         case NULL_POPUP:
             return 0x02;
@@ -286,6 +286,8 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                     drawText(std::to_string(i*60), 16, px+sx-24, interpolationy+i*60, 0xff000000);
                 }
                 std::vector<int> slots = {};
+                int interpolhovering = -1;
+                int interpolhoveringoffset = 0;
                 for (int i = 0;i<interpolations.size();i++) {
                     int intstart = interpolationy+interpolations[i]->getStart();
                     int intend = interpolations[i]->getDuration();
@@ -310,9 +312,49 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                         }
                     }
                     slots.push_back(offset);
-                    drawBorderedRect(           interpolationx+10+15*offset, intstart,
+                    if (pointInBounds(mouseX, mouseY, interpolationx+10+15*offset, interpolationx+10+15*offset+10, intstart, intstart+intend) && successfulRaycast) {
+                        //hovering over!  draw full info
+                        interpolhovering = i;
+                        interpolhoveringoffset = offset;
+                    }
+                    else {
+                        drawBorderedRect(       interpolationx+10+15*offset, intstart,
                                                 10,intend,
                                                 getColorOfInterpolation(interpolations[i]),0xff000000);
+                    }
+                    
+                }
+                
+                if (interpolhovering>=0&&!locked) {
+                    //draw hovered over interpolation
+                    Interpolation* relevantInterpol = interpolations[interpolhovering];
+                    int intystart = interpolationy+relevantInterpol->getStart();
+                    int intyend = relevantInterpol->getDuration();
+                    if (intyend<70) {intyend=70;}
+                    int intxstart = interpolationx+10+15*interpolhoveringoffset-170;
+                    drawBorderedRect(       intxstart, intystart,
+                                            180,intyend,
+                                            getColorOfInterpolation(relevantInterpol),0xff000000);
+                    //draw data
+                    drawText(relevantInterpol->getDisplay(), 12, intxstart+5, intystart+5, 0xff000000);
+                    drawText("Start Time: "+relevantInterpol->getStartDisplay(), 12, intxstart+5, intystart+20, 0xff000000);
+                    drawText("Duration: "+relevantInterpol->getDurationDisplay(), 12, intxstart+5, intystart+35, 0xff000000);
+                    drawText("Space to Edit, Backspace to Delete", 12, intxstart+5, intystart+50, 0xff000000);
+                    if (spacePressed) {
+                        Uint8 newID = CREATE_SIMPLE_INTERPOLATION;
+                        if (relevantInterpol->getType()==SMOOTH_GRID_RESIZE_SMART_CENTER||
+                            relevantInterpol->getType()==SMOOTH_GRID_RESIZE_STATIC_CENTER) {
+                            newID = CREATE_RESIZE_INTERPOLATION;
+                        }
+                        createPopup(newID, mouseX-150, mouseY)
+                            ->concernWith(graphConcerned)
+                            ->concernWith(relevantInterpol)
+                            ->concernWith(this)
+                            ->concernWith(stringifyID(relevantInterpol->getType()));
+                    }
+                    else if (backspacePressed) {
+                        relevantInterpol->cancel();
+                    }
                 }
                 
                 
@@ -368,21 +410,24 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                 if (clicked&&pointInBounds(mouseX, mouseY, px+5, px+5+movesx, cury, cury+movesy)) {
                     createPopup(CREATE_SIMPLE_INTERPOLATION, mouseX, mouseY)
                         ->concernWith(graphConcerned)
-                        ->concernWith(std::string("Move"));
+                        ->concernWith(std::string("Move"))
+                        ->setUpInterpolation();
                 }
                 
                 drawTextWithBackground("Resize", 16, px+5+movesx+5, cury, 0xff000000, 0xffffcf9e, 0xff000000);
                 if (clicked&&pointInBounds(mouseX, mouseY, px+5+movesx+5, px+5+movesx+5+resizesx, cury, cury+resizesy)) {
                     createPopup(CREATE_RESIZE_INTERPOLATION, mouseX, mouseY)
                         ->concernWith(graphConcerned)
-                        ->concernWith(std::string("Resize"));
+                        ->concernWith(std::string("Resize"))
+                        ->setUpInterpolation();
                 }
                 
                 drawTextWithBackground("Rescale", 16, px+5+movesx+5+resizesx+5, cury, 0xff000000, 0xffffcf9e, 0xff000000);
                 if (clicked&&pointInBounds(mouseX, mouseY, px+5+movesx+5+resizesx+5, px+5+movesx+5+resizesx+5+scalesx, cury, cury+scalesy)) {
                     createPopup(CREATE_SIMPLE_INTERPOLATION, mouseX, mouseY)
                         ->concernWith(graphConcerned)
-                        ->concernWith(std::string("Rescale"));
+                        ->concernWith(std::string("Rescale"))
+                        ->setUpInterpolation();
                 }
                 
                 cury+=movesy+5;
@@ -390,14 +435,16 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                 if (clicked&&pointInBounds(mouseX, mouseY, px+5, px+5+rotatesx, cury, cury+rotatesy)) {
                     createPopup(CREATE_SIMPLE_INTERPOLATION, mouseX, mouseY)
                         ->concernWith(graphConcerned)
-                        ->concernWith(std::string("Rotate"));
+                        ->concernWith(std::string("Rotate"))
+                        ->setUpInterpolation();
                 }
                 
                 drawTextWithBackground("Re-Origin", 16, px+5+rotatesx+5, cury, 0xff000000, 0xffffcf9e, 0xff000000);
                 if (clicked&&pointInBounds(mouseX, mouseY, px+5+rotatesx+5, px+5+rotatesx+5+originsx, cury, cury+originsy)) {
                     createPopup(CREATE_SIMPLE_INTERPOLATION, mouseX, mouseY)
                         ->concernWith(graphConcerned)
-                        ->concernWith(std::string("Re-Origin"));
+                        ->concernWith(std::string("Re-Origin"))
+                        ->setUpInterpolation();
                 }
                 
             }
@@ -488,7 +535,14 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                 if (clicked&&pointInBounds(mouseX, mouseY, px+sx-40, px+sx-40+addx, py+5, py+5+addy)) {
                     clicked = false;
                     toReturn = 0x02;
-                    graphConcerned->addInterpolation(interpolationConcerned);
+                    if (popupConcerned==NULL) {
+                        graphConcerned->addInterpolation(interpolationConcerned);
+                        //if not NULL, then the interpolation already exists,
+                        //shouldn't add it twice!
+                    }
+                    else {
+                        popupConcerned->unlock();
+                    }
                     instring = "";
                     thingForInString = NULL;
                     instringswitch = -1;
@@ -528,14 +582,16 @@ Popup* Popup::concernWith(bool b) {
 
 Popup* Popup::concernWith(std::string s) {
     stringConcerned = s;
-    if (popupID == CREATE_SIMPLE_INTERPOLATION || popupID == CREATE_RESIZE_INTERPOLATION) {
-        setUpInterpolation();
-    }
     return this;
 }
 
 Popup* Popup::concernWith(Interpolation* i) {
     interpolationConcerned = i;
+    return this;
+}
+
+Popup* Popup::concernWith(Popup* p) {
+    popupConcerned = p;
     return this;
 }
 
@@ -597,6 +653,7 @@ Popup* createPopup(Uint8 popup_id,double x,double y) {
 }
 
 void Popup::setUpInterpolation() {
+    //called when concerning with a string
     if (stringConcerned=="Move") {
         interpolationConcerned = new Interpolation(SMOOTH_TRANSLATE,0,0,60,graphConcerned);
     }
@@ -616,3 +673,13 @@ void Popup::setUpInterpolation() {
         throw std::runtime_error("Invalid Interpolation To Set Up");
     }
 }
+
+void Popup::lock() {
+    locked = true;
+}
+
+void Popup::unlock() {
+    locked = false;
+}
+
+

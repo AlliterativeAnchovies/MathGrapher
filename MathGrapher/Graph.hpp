@@ -82,6 +82,8 @@ class Interpolation {
         int getStart() {return timeStartCounter;}
         //get duration
         int getDuration() {return timeInterval;}
+        //see if canceled
+        bool isCanceled() {return canceled;}
 };
 
 struct GraphImage {
@@ -209,6 +211,8 @@ class Graph {
         void reset();
         //checks if graph is running
         bool isRunning();
+        //gets rid of canceled interpolations
+        void cleanInterpolations();
 };
 
 class Function {
@@ -232,6 +236,6 @@ class Function {
 };
 
 Uint32 getColorOfInterpolation(Interpolation* i);
-
+std::string stringifyID(Uint8 id);
 
 #endif /* Graph_hpp */

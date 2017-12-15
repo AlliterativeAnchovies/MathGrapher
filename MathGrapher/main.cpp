@@ -51,11 +51,14 @@ bool loadMedia();
 void drawGraph(Graph* g);
 SDL_Event e;
 void doInStringCalcs(Uint8 keypressed);
+void changeToInString();
 
 //this is the real "main" loop
 std::vector<Graph*> selectedGraphs = {};
 bool CAPS_LOCK = false;
 bool runningVideo = false;
+bool spacePressed = false;
+bool backspacePressed = false;
 bool controlFlow() {
     ticks++;
     //Fill screen to white
@@ -67,6 +70,8 @@ bool controlFlow() {
     bool leftMouseHadBeenReleased = false;
     bool shiftClicked = false;
     bool overPopup = false;
+    spacePressed = false;
+    backspacePressed = false;
     SDL_GetMouseState(&mouseX, &mouseY);
     //get keyboard events
     while( SDL_PollEvent( &e ) != 0 ) {
@@ -88,9 +93,18 @@ bool controlFlow() {
                         for (Graph* g : graphs) {g->reset();}
                     }
                     instring+=" ";
+                    spacePressed = true;
                     break;
                 case SDLK_CAPSLOCK:
                     CAPS_LOCK = !CAPS_LOCK;
+                    break;
+                case SDLK_BACKSPACE:
+                case SDLK_DELETE:
+                    if (instring!="") {
+                        instring.pop_back();
+                        changeToInString();
+                    }
+                    backspacePressed = true;
                     break;
                 default:
                     doInStringCalcs(e.key.keysym.sym);
@@ -252,6 +266,7 @@ bool controlFlow() {
     //update graphs
     for (Graph* g : graphs) {
         g->cleanFunctions();
+        g->cleanInterpolations();
         if (g->isRunning()) {g->update();}
     }
     
@@ -485,13 +500,6 @@ void doInStringCalcs(Uint8 keypressed) {
                 instringswitch = -1;
                 thingForInString = NULL;
                 instring = "";
-                break;
-            case SDLK_BACKSPACE:
-            case SDLK_DELETE:
-                if (instring!="") {
-                    instring.pop_back();
-                    changeToInString();
-                }
                 break;
             default:
                 std::string thing = SDL_GetKeyName(keypressed);

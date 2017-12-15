@@ -41,6 +41,8 @@ extern std::string instring;
 extern void* thingForInString;
 extern int instringswitch;
 extern int ticks;
+extern bool spacePressed;
+extern bool backspacePressed;
 
 class Font {
     private:

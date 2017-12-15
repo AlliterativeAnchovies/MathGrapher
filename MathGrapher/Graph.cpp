@@ -410,6 +410,14 @@ void Graph::cleanFunctions() {
     yfunctions = newyfunctions;
 }
 
+//gets rid of canceled interpolations
+void Graph::cleanInterpolations() {
+    auto oldinterpolations = filter([](Interpolation* i){return i->isCanceled();},interpolations);
+    auto newinterpolations = filter([](Interpolation* i){return !i->isCanceled();},interpolations);
+    for (auto i : oldinterpolations) {delete i;}
+    interpolations = newinterpolations;
+}
+
 //run graph interpolations
 void Graph::run() {
     running = true;
@@ -502,6 +510,8 @@ std::string Interpolation::getDisplay() {
             return "Resize Grid by ("+std::to_string((int)px)+","+std::to_string((int)py)+") [static]";
         case SMOOTH_GRID_RESIZE_SMART_CENTER:
             return "Resize Grid by ("+std::to_string((int)px)+","+std::to_string((int)py)+") [smart]";
+        case SMOOTH_GRID_SCALE:
+            return "Scale Grid by ("+std::to_string((int)px)+","+std::to_string((int)py)+")";
         case DELAY:
             return "-DELAY-";
     }
@@ -653,7 +663,7 @@ Uint32 getColorOfInterpolation(Interpolation* i) {
         case SMOOTH_GRID_ROTATE:
             return 0xffff0000;
         case SMOOTH_ORIGIN_TRANSLATE:
-            return 0xff003300;
+            return 0xff00aa00;
         case SMOOTH_GRID_RESIZE_SMART_CENTER:
         case SMOOTH_GRID_RESIZE_STATIC_CENTER:
             return 0xff00ffff;
@@ -661,3 +671,19 @@ Uint32 getColorOfInterpolation(Interpolation* i) {
     throw std::runtime_error("ERROR! Interpolation has no color.");
 }
 
+std::string stringifyID(Uint8 id) {
+    switch (id) {
+        case SMOOTH_TRANSLATE:
+            return "Move";
+        case SMOOTH_GRID_RESIZE_STATIC_CENTER:
+        case SMOOTH_GRID_RESIZE_SMART_CENTER:
+            return "Resize";
+        case SMOOTH_GRID_SCALE:
+            return "Rescale";
+        case SMOOTH_GRID_ROTATE:
+            return "Rotate";
+        case SMOOTH_ORIGIN_TRANSLATE:
+            return "Re-Origin";
+    }
+    throw std::runtime_error("ERROR NO SUCH INTERPOLATION TO STRINGIFY");
+}

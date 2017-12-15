@@ -43,8 +43,10 @@ class Popup {
         bool boolConcerned = false;
         std::string stringConcerned = "";
         Interpolation* interpolationConcerned = NULL;
+        Popup* popupConcerned = NULL;
         bool isNewborn = true;
         bool successfulRaycast = false;
+        bool locked = false;
     public:
         Popup(Uint8 popup_id,double x,double y,double xsize,double ysize);
         Uint8 handle(double mouseX,double mouseY,bool clicked);
@@ -55,6 +57,7 @@ class Popup {
         Popup* concernWith(bool b);
         Popup* concernWith(std::string s);
         Popup* concernWith(Interpolation* i);
+        Popup* concernWith(Popup* p);
         bool inBounds(double mouseX,double mouseY);
         bool newborn() {return isNewborn;}
         void age() {isNewborn=false;}
@@ -64,6 +67,8 @@ class Popup {
         }
         void resetRays() {successfulRaycast=false;}
         void setUpInterpolation();
+        void lock();
+        void unlock();
 };
 
 Popup* createPopup(Uint8 popup_id,double x,double y);
