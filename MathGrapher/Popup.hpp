@@ -23,7 +23,10 @@ enum POPUP_IDS {
     NULL_POPUP,
     ADD_OBJECT_POPUP,
     EDIT_GRAPH_POPUP,
-    CHOOSE_FUNCTION_POPUP
+    CHOOSE_FUNCTION_POPUP,
+    CHOOSE_INTERPOLATION_POPUP,
+    CREATE_SIMPLE_INTERPOLATION, //move/rescale/rotate - just the ones that require x/y, start time & duration
+    CREATE_RESIZE_INTERPOLATION  //not "simple", requires "smart resize" tickbox as well
 };
 
 const bool X_AXIS = true;
@@ -38,6 +41,8 @@ class Popup {
         bool taggedForDeletion = false;
         Graph* graphConcerned = NULL;
         bool boolConcerned = false;
+        std::string stringConcerned = "";
+        Interpolation* interpolationConcerned = NULL;
         bool isNewborn = true;
         bool successfulRaycast = false;
     public:
@@ -48,6 +53,8 @@ class Popup {
         Uint8 getID();
         Popup* concernWith(Graph* g);
         Popup* concernWith(bool b);
+        Popup* concernWith(std::string s);
+        Popup* concernWith(Interpolation* i);
         bool inBounds(double mouseX,double mouseY);
         bool newborn() {return isNewborn;}
         void age() {isNewborn=false;}
@@ -56,6 +63,7 @@ class Popup {
             return successfulRaycast;
         }
         void resetRays() {successfulRaycast=false;}
+        void setUpInterpolation();
 };
 
 Popup* createPopup(Uint8 popup_id,double x,double y);

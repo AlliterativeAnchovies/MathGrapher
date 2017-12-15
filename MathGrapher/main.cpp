@@ -53,9 +53,9 @@ SDL_Event e;
 void doInStringCalcs(Uint8 keypressed);
 
 //this is the real "main" loop
-bool STARTED = false;
 std::vector<Graph*> selectedGraphs = {};
 bool CAPS_LOCK = false;
+bool runningVideo = false;
 bool controlFlow() {
     ticks++;
     //Fill screen to white
@@ -83,7 +83,10 @@ bool controlFlow() {
                     close();
                     return false;
                 case SDLK_SPACE:
-                    STARTED = true;
+                    if (runningVideo) {
+                        runningVideo = false;
+                        for (Graph* g : graphs) {g->reset();}
+                    }
                     instring+=" ";
                     break;
                 case SDLK_CAPSLOCK:
@@ -146,54 +149,60 @@ bool controlFlow() {
             drawGraph(graphs[i]);
         }
     
-    /*if (STARTED) {
-        //actually draw stuff
-        for (int i = 0;i<graphs.size();i++) {
-            graphs[i]->update();
-            drawGraph(graphs[i]);
-        }
-    }*/
-    
     //draw control bar
     double controlBarY = SCREEN_HEIGHT-100;
     drawBorderedRect(0, controlBarY, SCREEN_WIDTH, 100, 0xffffcf9e, 0xff000000);
-    double totoff = 10;
-    typeof(selectedGraphs) newselectedgraphs = {};
-    for (int i = 0;i<selectedGraphs.size();i++) {
-        int w,h,w2,h2,w3,h3,w4,h4;
-        //draw name of graph
-        std::string name = selectedGraphs[i]->getName();
-        drawText(name, 16, totoff, controlBarY+5, 0xff000000);
-        TTF_SizeUTF8((*fontgrab)(16), name.c_str(), &w, &h);
-        double newtotoff = totoff+5+w;
-        //draw run button
-        TTF_SizeUTF8((*fontgrab)(16), "Run", &w2, &h2);
-        drawTextWithBackground("Run", 16, totoff, controlBarY+5+h, 0xff000000,0xff9fc9f2,0xff000000);
-        //draw edit button
-        TTF_SizeUTF8((*fontgrab)(16), "Edit", &w3, &h3);
-        drawTextWithBackground("Edit", 16, totoff, controlBarY+5+h+h2, 0xff000000,0xff9fc9f2,0xff000000);
-        if (leftMouseReleased&&!overPopup&&pointInBounds(mouseX, mouseY, totoff, totoff+w3, controlBarY+5+h+h2, controlBarY+5+h+h2+h3)) {
-            Popup* blargh = createPopup(EDIT_GRAPH_POPUP, 10, 10);
-            blargh->concernWith(selectedGraphs[i]);
-            leftMouseReleased = false;
-        }
-        //draw delete button
-        TTF_SizeUTF8((*fontgrab)(16), "Delete", &w4, &h4);
-        drawTextWithBackground("Delete", 16, totoff, controlBarY+5+h+h2+h3, 0xff000000,0xff9fc9f2,0xff000000);
-        if (leftMouseReleased&&!overPopup&&pointInBounds(mouseX, mouseY, totoff, totoff+w4, controlBarY+5+h+h2+h3, controlBarY+5+h+h2+h3+h4)) {
-            typeof(graphs) newgraphs = {};
-            for (int j = 0;j<graphs.size();j++) {
-                if (graphs[j]!=selectedGraphs[i]) {newgraphs.push_back(graphs[j]);}
-            }
-            delete selectedGraphs[i];
-            selectedGraphs[i] = NULL;
-            graphs = newgraphs;
-            leftMouseReleased = false;
-        }
-        else {newselectedgraphs.push_back(selectedGraphs[i]);}
-        totoff=newtotoff;
+    if (runningVideo) {
+        drawText("PRESS SPACE TO RETURN", 36, 10, controlBarY+10, 0xffff0000);
+        drawText("    TO EDIT MODE     ", 36, 10, controlBarY+50, 0xffff0000);
     }
-    selectedGraphs=newselectedgraphs;
+    else {
+        double totoff = 10;
+        typeof(selectedGraphs) newselectedgraphs = {};
+        for (int i = 0;i<selectedGraphs.size();i++) {
+            int w,h,w2,h2,w3,h3,w4,h4;
+            //draw name of graph
+            std::string name = selectedGraphs[i]->getName();
+            drawText(name, 16, totoff, controlBarY+5, 0xff000000);
+            TTF_SizeUTF8((*fontgrab)(16), name.c_str(), &w, &h);
+            double newtotoff = totoff+5+w;
+            //draw run button
+            TTF_SizeUTF8((*fontgrab)(16), "Run", &w2, &h2);
+            drawTextWithBackground("Run", 16, totoff, controlBarY+5+h, 0xff000000,0xff9fc9f2,0xff000000);
+            if (leftMouseReleased&&!overPopup&&pointInBounds(mouseX, mouseY, totoff, totoff+w2, controlBarY+5+h, controlBarY+5+h+h2)) {
+                selectedGraphs[i]->run();
+                runningVideo = true;
+                selectedGraphs = {};
+                newselectedgraphs = {};
+                leftMouseReleased = false;
+                break;
+            }
+            //draw edit button
+            TTF_SizeUTF8((*fontgrab)(16), "Edit", &w3, &h3);
+            drawTextWithBackground("Edit", 16, totoff, controlBarY+5+h+h2, 0xff000000,0xff9fc9f2,0xff000000);
+            if (leftMouseReleased&&!overPopup&&pointInBounds(mouseX, mouseY, totoff, totoff+w3, controlBarY+5+h+h2, controlBarY+5+h+h2+h3)) {
+                Popup* blargh = createPopup(EDIT_GRAPH_POPUP, 10, 10);
+                blargh->concernWith(selectedGraphs[i]);
+                leftMouseReleased = false;
+            }
+            //draw delete button
+            TTF_SizeUTF8((*fontgrab)(16), "Delete", &w4, &h4);
+            drawTextWithBackground("Delete", 16, totoff, controlBarY+5+h+h2+h3, 0xff000000,0xff9fc9f2,0xff000000);
+            if (leftMouseReleased&&!overPopup&&pointInBounds(mouseX, mouseY, totoff, totoff+w4, controlBarY+5+h+h2+h3, controlBarY+5+h+h2+h3+h4)) {
+                typeof(graphs) newgraphs = {};
+                for (int j = 0;j<graphs.size();j++) {
+                    if (graphs[j]!=selectedGraphs[i]) {newgraphs.push_back(graphs[j]);}
+                }
+                delete selectedGraphs[i];
+                selectedGraphs[i] = NULL;
+                graphs = newgraphs;
+                leftMouseReleased = false;
+            }
+            else {newselectedgraphs.push_back(selectedGraphs[i]);}
+            totoff=newtotoff;
+        }
+        selectedGraphs=newselectedgraphs;
+    }
     
     //find out what popup the mouse is over
     for (int i = (int)popups.size()-1;i>=0;i--) {
@@ -233,13 +242,20 @@ bool controlFlow() {
     popups = newpopups;
     map([](Popup* x){x->age();x->resetRays();return NULL;}, popups);
     
-    if (leftMouseReleased&&!overPopup) {
+    if (leftMouseReleased&&!overPopup&&!runningVideo) {
         if (mouseY<SCREEN_HEIGHT-100) {
             createPopup(ADD_OBJECT_POPUP, mouseX, mouseY);
+            selectedGraphs = {};
         }
     }
     
-    for (Graph* g : graphs) {g->cleanFunctions();}
+    //update graphs
+    for (Graph* g : graphs) {
+        g->cleanFunctions();
+        if (g->isRunning()) {g->update();}
+    }
+    
+    
     
     //draw stuff on screen
     SDL_RenderPresent(gRenderer);
@@ -444,6 +460,18 @@ void changeToInString() {
                 break;
             case 10:
                 ((Graph*)thingForInString)->changeOrigin((((Graph*)thingForInString)->getOrigin()).x, numberFromString(instring));
+                break;
+            case 11:
+                ((Interpolation*)thingForInString)->changePX(numberFromString(instring));
+                break;
+            case 12:
+                ((Interpolation*)thingForInString)->changePY(numberFromString(instring));
+                break;
+            case 13:
+                ((Interpolation*)thingForInString)->changeStart(numberFromString(instring));
+                break;
+            case 14:
+                ((Interpolation*)thingForInString)->changeDuration(numberFromString(instring));
                 break;
         }
     }

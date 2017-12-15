@@ -37,6 +37,8 @@ class Interpolation {
         double py = 0;
         int timeInterval = 1;//time measured in ticks
         int timeAt = 0;
+        int timeStart = 0;
+        int timeStartCounter = 0;
         bool paused = false;//ignores interpolation until told otherwise
         bool canceled = false;//deletes interpolation
         bool waiting = false;//ignores interpolation for 1 tick
@@ -53,10 +55,53 @@ class Interpolation {
         std::vector<Interpolation*> getFollowups();
         Interpolation* cloneTo(Graph* concernedWith,bool addImmediately = true);
         Interpolation* cloneTo(Interpolation* concernedWith,bool addImmediately = true);
+        std::string getDisplay();
+        //get px string
+        std::string getPXDisplay();
+        //get py string
+        std::string getPYDisplay();
+        //get start string
+        std::string getStartDisplay();
+        //get duration string
+        std::string getDurationDisplay();
+        //get type
+        Uint8 getType() {return type;}
+        //toggle smart move origin
+        void toggleSmartMove();
+        //change px
+        void changePX(double a);
+        //change py
+        void changePY(double a);
+        //change start time
+        void changeStart(int a);
+        //change duration
+        void changeDuration(int a);
+        //reset for re-running
+        void reset();
+        //get start time
+        int getStart() {return timeStartCounter;}
+        //get duration
+        int getDuration() {return timeInterval;}
+};
+
+struct GraphImage {
+    //stores starting information for graphs
+    //so they can reset after running.
+    double px = 0;
+    double py = 0;
+    double sx = 0;
+    double sy = 0;
+    double ox = 0;
+    double oy = 0;
+    double gridSpacingX = 10;
+    double gridSpacingY = 10;
+    double gridAngleX = M_PI/2;
+    double gridAngleY = 0;
 };
 
 class Graph {
     private:
+        GraphImage image;
         double px = 0;
         double py = 0;
         double sx = 0;
@@ -73,6 +118,11 @@ class Graph {
         //all functions it should draw
         std::vector<Function*> functions = {};
         std::vector<Function*> yfunctions = {};
+        //some asthetic choices:
+        bool showGrid = true;
+        bool showAxes = true;
+        //tagged for running interpolations
+        bool running = false;
     public:
         //full constructor
         Graph(double x,double y,double sizex,double sizey,double grid_spacing_x,double grid_spacing_y,double grid_angle_x,double grid_angle_y,std::string n="-NONAME-");
@@ -143,6 +193,22 @@ class Graph {
         std::vector<Function*> getYFunctions();
         //get rid of tagged functions
         void cleanFunctions();
+        //toggle showing grid
+        void toggleGrid() {showGrid=!showGrid;}
+        //toggle showing axes
+        void toggleAxes() {showAxes=!showAxes;}
+        //get showing grid
+        bool showingGrid() {return showGrid;}
+        //get showing axes
+        bool showingAxes() {return showAxes;}
+        //get interpolations
+        std::vector<Interpolation*> getInterpolations() {return interpolations;}
+        //run graph interpolations
+        void run();
+        //resets graph interpolations
+        void reset();
+        //checks if graph is running
+        bool isRunning();
 };
 
 class Function {
@@ -162,7 +228,10 @@ class Function {
         void tag() {tagged=true;}
         bool isTagged() {return tagged;}
         Function(Function* a);
+        void reset();
 };
+
+Uint32 getColorOfInterpolation(Interpolation* i);
 
 
 #endif /* Graph_hpp */

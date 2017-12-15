@@ -21,6 +21,7 @@
 //0xffbd854d - nice darker brown
 //0xffaaf2aa - nice hover over border highlights
 //0x2200ff00 - nice green highlight
+//0xff597bf5 - nice darker blue
 
 
 //Graphics drawing variables

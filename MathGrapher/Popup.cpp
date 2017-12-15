@@ -185,7 +185,26 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                     toReturn = 0x01;
                 }
                 
-                int x_functionsy = py+5+h+5+h3+5+5+h5+h2+5+h7+5+h9+10;
+                int showgridy = py+5+h+5+h3+5+5+h5+h2+5+h7+5+h9+10;
+                int gx,gy;
+                drawTextWithBackground((graphConcerned->showingGrid())?"Showing Grid":"Not Showing Grid", 20, px+10, showgridy, 0xff000000, (graphConcerned->showingGrid())?0xffffcf9e:0xffbd854d, 0xff000000);
+                TTF_SizeUTF8((*fontgrab)(20), (graphConcerned->showingGrid())?"Showing Grid":"Not Showing Grid", &gx, &gy);
+                if (clicked&&pointInBounds(mouseX, mouseY, px+10, px+10+gx, showgridy, showgridy+gy)) {
+                    clicked = false;
+                    toReturn = 0x01;
+                    graphConcerned->toggleGrid();
+                }
+                int ax,ay;
+                drawTextWithBackground((graphConcerned->showingAxes())?"Showing Axes":"Not Showing Axes", 20, px+10+gx+10, showgridy, 0xff000000, (graphConcerned->showingAxes())?0xffffcf9e:0xffbd854d, 0xff000000);
+                TTF_SizeUTF8((*fontgrab)(20), (graphConcerned->showingAxes())?"Showing Grid":"Not Showing Grid", &ax, &ay);
+                if (clicked&&pointInBounds(mouseX, mouseY, px+10+gx+10, px+10+gx+10+ax, showgridy, showgridy+ay)) {
+                    clicked = false;
+                    toReturn = 0x01;
+                    graphConcerned->toggleAxes();
+                }
+                
+                
+                int x_functionsy = showgridy+35;
                 drawText("X Functions:", 24, px+5, x_functionsy, 0xff000000);
                 auto xfunctionlist = graphConcerned->getXFunctions();
                 x_functionsy+=30;
@@ -247,6 +266,56 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                 }
                 
                 
+                //now we'll do the Interpolations stuff
+                int interpolationx = px+5*sx/8;
+                int interpolationy = py;
+                drawBorderedRect(interpolationx, interpolationy, 3*sx/8+1, sy, 0xff597bf5, 0xff000000);
+                drawText("Interpolations", 24, interpolationx+5, interpolationy, 0xff000000);
+                auto interpolations = graphConcerned->getInterpolations();
+                interpolationy+=30;
+                drawTextWithBackground("Add Interpolation", 20, interpolationx+5, interpolationy, 0xff000000, 0xffffcf9e, 0xff000000);
+                int intrplx,intrply;
+                TTF_SizeUTF8((*fontgrab)(20),"Add Interpolation",&intrplx,&intrply);
+                if (clicked&&pointInBounds(mouseX, mouseY, interpolationx+5, interpolationx+5+intrplx, interpolationy, interpolationy+intrply)) {
+                    createPopup(CHOOSE_INTERPOLATION_POPUP, mouseX-150, mouseY)
+                        ->concernWith(graphConcerned);
+                }
+                interpolationy+=35;
+                SDL_RenderDrawLine(gRenderer, interpolationx, interpolationy-1, px+sx-1, interpolationy-1);
+                for (int i = 0;i<sy/60;i++) {
+                    drawText(std::to_string(i*60), 16, px+sx-24, interpolationy+i*60, 0xff000000);
+                }
+                std::vector<int> slots = {};
+                for (int i = 0;i<interpolations.size();i++) {
+                    int intstart = interpolationy+interpolations[i]->getStart();
+                    int intend = interpolations[i]->getDuration();
+                    int offset = 0;
+                    std::vector<int> illegalslots = {};
+                    for (int j = 0;j<i;j++) {
+                        int theirintstart = interpolationy+interpolations[j]->getStart();
+                        int theirintend = interpolations[j]->getDuration();
+                        if (  pointInBounds(theirintstart, 10, intstart, intstart+intend, 0, 20)
+                            ||pointInBounds(theirintstart+theirintend, 10, intstart, intstart+intend, 0, 20)
+                            ||pointInBounds(intstart, 10, theirintstart, theirintstart+theirintend, 0, 20)
+                            ||pointInBounds(intstart+intend, 10, theirintstart, theirintstart+theirintend, 0, 20)) {
+                            illegalslots.push_back(slots[j]);
+                        }
+                    }
+                    if (!illegalslots.empty()) {
+                        std::sort(illegalslots.begin(), illegalslots.end(), [](int a,int b){return b>a;});
+                        illegalslots.erase( unique( illegalslots.begin(), illegalslots.end() ), illegalslots.end() );
+                        for (int a : illegalslots) {
+                            if (a==offset) {offset=a+1;}
+                            else {break;}
+                        }
+                    }
+                    slots.push_back(offset);
+                    drawBorderedRect(           interpolationx+10+15*offset, intstart,
+                                                10,intend,
+                                                getColorOfInterpolation(interpolations[i]),0xff000000);
+                }
+                
+                
                 drawBorderedRect(px+sx-20, py, 20, 20, 0xffff0000, 0xff000000);
                 drawText("x", 20, px+sx-20+5, py-3, 0xff000000);
                 if (clicked&&pointInBounds(mouseX, mouseY, px+sx-20, px+sx, py, py+20)) {
@@ -284,6 +353,149 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                 }
             }
             break;
+        case CHOOSE_INTERPOLATION_POPUP:
+            {
+                drawBorderedRect(px, py, sx, sy, 0xffaaf2aa, 0xff000000);
+                drawText("Interpolations", 22, px, py, 0xff000000);
+                double cury = py+30;
+                int movesx,movesy,resizesx,resizesy,scalesx,scalesy,rotatesx,rotatesy,originsx,originsy;
+                TTF_SizeUTF8((*fontgrab)(16),"Move",&movesx,&movesy);
+                TTF_SizeUTF8((*fontgrab)(16),"Resize",&resizesx,&resizesy);
+                TTF_SizeUTF8((*fontgrab)(16),"Rescale",&scalesx,&scalesy);
+                TTF_SizeUTF8((*fontgrab)(16),"Rotate",&rotatesx,&rotatesy);
+                TTF_SizeUTF8((*fontgrab)(16),"Re-Origin",&originsx,&originsy);
+                drawTextWithBackground("Move", 16, px+5, cury, 0xff000000, 0xffffcf9e, 0xff000000);
+                if (clicked&&pointInBounds(mouseX, mouseY, px+5, px+5+movesx, cury, cury+movesy)) {
+                    createPopup(CREATE_SIMPLE_INTERPOLATION, mouseX, mouseY)
+                        ->concernWith(graphConcerned)
+                        ->concernWith(std::string("Move"));
+                }
+                
+                drawTextWithBackground("Resize", 16, px+5+movesx+5, cury, 0xff000000, 0xffffcf9e, 0xff000000);
+                if (clicked&&pointInBounds(mouseX, mouseY, px+5+movesx+5, px+5+movesx+5+resizesx, cury, cury+resizesy)) {
+                    createPopup(CREATE_RESIZE_INTERPOLATION, mouseX, mouseY)
+                        ->concernWith(graphConcerned)
+                        ->concernWith(std::string("Resize"));
+                }
+                
+                drawTextWithBackground("Rescale", 16, px+5+movesx+5+resizesx+5, cury, 0xff000000, 0xffffcf9e, 0xff000000);
+                if (clicked&&pointInBounds(mouseX, mouseY, px+5+movesx+5+resizesx+5, px+5+movesx+5+resizesx+5+scalesx, cury, cury+scalesy)) {
+                    createPopup(CREATE_SIMPLE_INTERPOLATION, mouseX, mouseY)
+                        ->concernWith(graphConcerned)
+                        ->concernWith(std::string("Rescale"));
+                }
+                
+                cury+=movesy+5;
+                drawTextWithBackground("Rotate", 16, px+5, cury, 0xff000000, 0xffffcf9e, 0xff000000);
+                if (clicked&&pointInBounds(mouseX, mouseY, px+5, px+5+rotatesx, cury, cury+rotatesy)) {
+                    createPopup(CREATE_SIMPLE_INTERPOLATION, mouseX, mouseY)
+                        ->concernWith(graphConcerned)
+                        ->concernWith(std::string("Rotate"));
+                }
+                
+                drawTextWithBackground("Re-Origin", 16, px+5+rotatesx+5, cury, 0xff000000, 0xffffcf9e, 0xff000000);
+                if (clicked&&pointInBounds(mouseX, mouseY, px+5+rotatesx+5, px+5+rotatesx+5+originsx, cury, cury+originsy)) {
+                    createPopup(CREATE_SIMPLE_INTERPOLATION, mouseX, mouseY)
+                        ->concernWith(graphConcerned)
+                        ->concernWith(std::string("Re-Origin"));
+                }
+                
+            }
+            break;
+        case CREATE_RESIZE_INTERPOLATION:
+        case CREATE_SIMPLE_INTERPOLATION:
+            {
+                drawBorderedRect(px, py, sx, sy, 0xffaaf2aa, 0xff000000);
+                drawText(stringConcerned, 24, px+5, py+5, 0xff000000);
+                std::string beep = (ticks%60<30)?"|":" ";
+                int inputsx = px+10;
+                int inputsy = py+35;
+                int delxx,delxy,delyx,delyy,starttx,startty,durx,dury;
+                int delxx_o,delxy_o,delyx_o,delyy_o,starttx_o,startty_o,durx_o,dury_o;
+                int editx,edity;
+                TTF_SizeUTF8((*fontgrab)(12),"Edit",&editx,&edity);
+                TTF_SizeUTF8((*fontgrab)(20),"∆X:",&delxx,&delxy);
+                TTF_SizeUTF8((*fontgrab)(20),"∆Y:",&delyx,&delyy);
+                TTF_SizeUTF8((*fontgrab)(20),"Start Time:",&starttx,&startty);
+                TTF_SizeUTF8((*fontgrab)(20),"Duration:",&durx,&dury);
+                TTF_SizeUTF8((*fontgrab)(20),(interpolationConcerned->getPXDisplay()+((instringswitch==11)?(beep):"")).c_str(),&delxx_o,&delxy_o);
+                TTF_SizeUTF8((*fontgrab)(20),(interpolationConcerned->getPYDisplay()+((instringswitch==12)?(beep):"")).c_str(),&delyx_o,&delyy_o);
+                TTF_SizeUTF8((*fontgrab)(20),(interpolationConcerned->getStartDisplay()+((instringswitch==13)?(beep):"")).c_str(),&starttx_o,&startty_o);
+                TTF_SizeUTF8((*fontgrab)(20),(interpolationConcerned->getDurationDisplay()+((instringswitch==14)?(beep):"")).c_str(),&durx_o,&dury_o);
+                drawText("∆X:", 20, inputsx, inputsy, 0xff000000);
+                drawText(interpolationConcerned->getPXDisplay()+((instringswitch==11)?(beep):""), 20, inputsx+5+delxx, inputsy, 0xff000000);
+                drawTextWithBackground("Edit", 12, inputsx+5+delxx+5+delxx_o+5, inputsy, 0xff000000, 0xffffcf9e, 0xff000000);
+                if (clicked&&pointInBounds(mouseX, mouseY, inputsx+5+delxx+5+delxx_o+5, inputsx+5+delxx+5+delxx_o+5+editx, inputsy, inputsy+edity)) {
+                    clicked = false;
+                    toReturn = 0x01;
+                    instring = interpolationConcerned->getPXDisplay();
+                    thingForInString = interpolationConcerned;
+                    instringswitch = 11;
+                }
+                
+                drawText("∆Y:", 20, inputsx+5+delxx+5+delxx_o+5+editx+5, inputsy, 0xff000000);
+                drawText(interpolationConcerned->getPYDisplay()+((instringswitch==12)?(beep):""), 20, inputsx+5+delxx+5+delxx_o+5+editx+5+delyx+5, inputsy, 0xff000000);
+                drawTextWithBackground("Edit", 12, inputsx+5+delxx+5+delxx_o+5+editx+5+delyx+5+delyx_o+5, inputsy, 0xff000000, 0xffffcf9e, 0xff000000);
+                if (clicked&&pointInBounds(mouseX, mouseY, inputsx+5+delxx+5+delxx_o+5+editx+5+delyx+5+delyx_o+5, inputsx+5+delxx+5+delxx_o+5+editx+5+delyx+5+delyx_o+5+editx, inputsy, inputsy+edity)) {
+                    clicked = false;
+                    toReturn = 0x01;
+                    instring = interpolationConcerned->getPYDisplay();
+                    thingForInString = interpolationConcerned;
+                    instringswitch = 12;
+                }
+                
+                inputsy+=25;
+                drawText("Start Time:", 20, inputsx, inputsy, 0xff000000);
+                drawText(interpolationConcerned->getStartDisplay()+((instringswitch==13)?(beep):""), 20, inputsx+5+starttx, inputsy, 0xff000000);
+                drawTextWithBackground("Edit", 12, inputsx+5+starttx+5+starttx_o+5, inputsy, 0xff000000, 0xffffcf9e, 0xff000000);
+                if (clicked&&pointInBounds(mouseX, mouseY, inputsx+5+starttx+5+starttx_o+5, inputsx+5+starttx+5+starttx_o+5+editx, inputsy, inputsy+edity)) {
+                    clicked = false;
+                    toReturn = 0x01;
+                    instring = interpolationConcerned->getPYDisplay();
+                    thingForInString = interpolationConcerned;
+                    instringswitch = 13;
+                }
+                
+                inputsy+=25;
+                drawText("Duration:", 20, inputsx, inputsy, 0xff000000);
+                drawText(interpolationConcerned->getDurationDisplay()+((instringswitch==14)?(beep):""), 20, inputsx+5+durx, inputsy, 0xff000000);
+                drawTextWithBackground("Edit", 12, inputsx+5+durx+5+durx_o+5, inputsy, 0xff000000, 0xffffcf9e, 0xff000000);
+                if (clicked&&pointInBounds(mouseX, mouseY, inputsx+5+durx+5+durx_o+5, inputsx+5+durx+5+durx_o+5+editx, inputsy, inputsy+edity)) {
+                    clicked = false;
+                    toReturn = 0x01;
+                    instring = interpolationConcerned->getPYDisplay();
+                    thingForInString = interpolationConcerned;
+                    instringswitch = 14;
+                }
+                
+                
+                if (popupID==CREATE_RESIZE_INTERPOLATION) {
+                    inputsy+=25;
+                    bool smart = interpolationConcerned->getType()==SMOOTH_GRID_RESIZE_SMART_CENTER;
+                    int smartx,smarty;
+                    TTF_SizeUTF8((*fontgrab)(20),(smart)?"Scales Origin":"Maintains Origin",&smartx,&smarty);
+                    drawTextWithBackground((smart)?"Scales Origin":"Maintains Origin", 20, inputsx, inputsy, 0xff000000, 0xffffcf9e, 0xff000000);
+                    if (clicked&&pointInBounds(mouseX, mouseY, inputsx, inputsx+smartx, inputsy, inputsy+smarty)) {
+                        clicked = false;
+                        toReturn = 0x01;
+                        interpolationConcerned->toggleSmartMove();
+                    }
+                }
+                
+                int addx,addy;
+                TTF_SizeUTF8((*fontgrab)(16)," Add ",&addx,&addy);
+                drawTextWithBackground(" Add ", 16, px+sx-40, py+5, 0xff000000, 0xffffcf9e, 0xff000000);
+                if (clicked&&pointInBounds(mouseX, mouseY, px+sx-40, px+sx-40+addx, py+5, py+5+addy)) {
+                    clicked = false;
+                    toReturn = 0x02;
+                    graphConcerned->addInterpolation(interpolationConcerned);
+                    instring = "";
+                    thingForInString = NULL;
+                    instringswitch = -1;
+                }
+                
+            }
+            break;
     }
     return toReturn;
 }
@@ -314,8 +526,25 @@ Popup* Popup::concernWith(bool b) {
     return this;
 }
 
+Popup* Popup::concernWith(std::string s) {
+    stringConcerned = s;
+    if (popupID == CREATE_SIMPLE_INTERPOLATION || popupID == CREATE_RESIZE_INTERPOLATION) {
+        setUpInterpolation();
+    }
+    return this;
+}
+
+Popup* Popup::concernWith(Interpolation* i) {
+    interpolationConcerned = i;
+    return this;
+}
+
 bool isQuickCloser(Uint8 popup_id) {
-    return popup_id==ADD_OBJECT_POPUP||popup_id==CHOOSE_FUNCTION_POPUP;
+    return popup_id==ADD_OBJECT_POPUP||
+           popup_id==CHOOSE_FUNCTION_POPUP||
+           popup_id==CHOOSE_INTERPOLATION_POPUP||
+           popup_id==CREATE_SIMPLE_INTERPOLATION||
+           popup_id==CREATE_RESIZE_INTERPOLATION;
 }
 
 bool isMajor(Uint8 popup_id) {
@@ -341,6 +570,18 @@ Popup* createPopup(Uint8 popup_id,double x,double y) {
             sx = 150;
             sy = 200;
             break;
+        case CHOOSE_INTERPOLATION_POPUP:
+            sx = 150;
+            sy = 200;
+            break;
+        case CREATE_SIMPLE_INTERPOLATION:
+            sx = 200;
+            sy = 120;
+            break;
+        case CREATE_RESIZE_INTERPOLATION:
+            sx = 200;
+            sy = 150;
+            break;
     }
     
     Popup* blargh = new Popup(popup_id,x,y,sx,sy);
@@ -353,4 +594,25 @@ Popup* createPopup(Uint8 popup_id,double x,double y) {
     }
     popups.push_back(blargh);
     return blargh;
+}
+
+void Popup::setUpInterpolation() {
+    if (stringConcerned=="Move") {
+        interpolationConcerned = new Interpolation(SMOOTH_TRANSLATE,0,0,60,graphConcerned);
+    }
+    else if (stringConcerned=="Resize") {
+        interpolationConcerned = new Interpolation(SMOOTH_GRID_RESIZE_SMART_CENTER,0,0,60,graphConcerned);
+    }
+    else if (stringConcerned=="Rescale") {
+        interpolationConcerned = new Interpolation(SMOOTH_GRID_SCALE,0,0,60,graphConcerned);
+    }
+    else if (stringConcerned=="Rotate") {
+        interpolationConcerned = new Interpolation(SMOOTH_GRID_ROTATE,0,0,60,graphConcerned);
+    }
+    else if (stringConcerned=="Re-Origin") {
+        interpolationConcerned = new Interpolation(SMOOTH_ORIGIN_TRANSLATE,0,0,60,graphConcerned);
+    }
+    else {
+        throw std::runtime_error("Invalid Interpolation To Set Up");
+    }
 }

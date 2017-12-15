@@ -175,7 +175,7 @@ SDL_Surface* Graph::draw(double* x,double* y) {
     double startingy = centery;
     double maxAmountOfLines = (gridSpacingX<1)?0:5*sx/gridSpacingX;
     int quitCount = 0;
-    while (quitCount<maxAmountOfLines) {
+    while (quitCount<maxAmountOfLines&&showGrid) {
         //draw line
         drawLineThroughPointWithAngleInBounds(toReturn,startingx,startingy,gridAngleX,0,sx,0,sy,0xff999999,100);
         startingx+=deltax;
@@ -185,7 +185,7 @@ SDL_Surface* Graph::draw(double* x,double* y) {
     startingx = centerx;
     startingy = centery;
     quitCount = 0;
-    while (quitCount<maxAmountOfLines) {
+    while (quitCount<maxAmountOfLines&&showGrid) {
         //draw line
         drawLineThroughPointWithAngleInBounds(toReturn,startingx,startingy,gridAngleX,0,sx,0,sy,0xff999999,100);
         startingx-=deltax;
@@ -193,7 +193,9 @@ SDL_Surface* Graph::draw(double* x,double* y) {
         quitCount++;
     }
     //axis time
-    drawLineThroughPointWithAngleInBounds(toReturn,centerx,centery,gridAngleX,0,sx,0,sy,0xff000000,100);
+    if (showAxes) {
+        drawLineThroughPointWithAngleInBounds(toReturn,centerx,centery,gridAngleX,0,sx,0,sy,0xff000000,100);
+    }
     //now lets do the "y" grid
     double siney,cosiney = 0;
     fastSineCosine(&siney, &cosiney, gridAngleX);
@@ -203,7 +205,7 @@ SDL_Surface* Graph::draw(double* x,double* y) {
     startingy = centery;
     maxAmountOfLines = (gridSpacingY<1)?0:5*sy/gridSpacingY;
     quitCount = 0;
-    while (quitCount<maxAmountOfLines) {
+    while (quitCount<maxAmountOfLines&&showGrid) {
         //draw line
         drawLineThroughPointWithAngleInBounds(toReturn,startingx,startingy,gridAngleY,0,sx,0,sy,0xff999999,100);
         startingx+=deltax;
@@ -213,7 +215,7 @@ SDL_Surface* Graph::draw(double* x,double* y) {
     startingx = centerx;
     startingy = centery;
     quitCount = 0;
-    while (quitCount<maxAmountOfLines) {
+    while (quitCount<maxAmountOfLines&&showGrid) {
         //draw line
         drawLineThroughPointWithAngleInBounds(toReturn,startingx,startingy,gridAngleY,0,sx,0,sy,0xff999999,100);
         startingx-=deltax;
@@ -221,7 +223,9 @@ SDL_Surface* Graph::draw(double* x,double* y) {
         quitCount++;
     }
     //axis time
-    drawLineThroughPointWithAngleInBounds(toReturn,centerx,centery,gridAngleY,0,sx,0,sy,0xff000000,100);
+    if (showAxes) {
+        drawLineThroughPointWithAngleInBounds(toReturn,centerx,centery,gridAngleY,0,sx,0,sy,0xff000000,100);
+    }
     
     //now draw the functions
     bool lastOutOfRange = true;
@@ -314,20 +318,21 @@ void Graph::update() {
                 followups[j]->wait();
                 interpolations.push_back(followups[j]);
             }
-            delete interpolations[i];
-            interpolations[i] = NULL;
+            //delete interpolations[i];
+            //interpolations[i] = NULL;
+            interpolations[i]->pause();
         }
     }
     
     //get rid of trimmed interpolations
-    std::vector<Interpolation*> temp = {};
+    /*std::vector<Interpolation*> temp = {};
     for (int i = 0;i<interpolations.size();i++) {
         if (interpolations[i]!=NULL) {
             temp.push_back(interpolations[i]);
         }
     }
     
-    interpolations = temp;
+    interpolations = temp;*/
 }
 
 //add a function to draw
@@ -405,11 +410,52 @@ void Graph::cleanFunctions() {
     yfunctions = newyfunctions;
 }
 
+//run graph interpolations
+void Graph::run() {
+    running = true;
+    image.px = px;
+    image.py = py;
+    image.sx = sx;
+    image.sy = sy;
+    image.ox = ox;
+    image.oy = oy;
+    image.gridSpacingX = gridSpacingX;
+    image.gridSpacingY = gridSpacingY;
+    image.gridAngleX = gridAngleX;
+    image.gridAngleY = gridAngleY;
+}
+void Graph::reset() {
+    running = false;
+    px = image.px;
+    py = image.py;
+    sx = image.sx;
+    sy = image.sy;
+    ox = image.ox;
+    oy = image.oy;
+    gridSpacingX = image.gridSpacingX;
+    gridSpacingY = image.gridSpacingY;
+    gridAngleX = image.gridAngleX;
+    gridAngleY = image.gridAngleY;
+    for (int i = 0;i<interpolations.size();i++) {
+        interpolations[i]->reset();
+    }
+    for (int i = 0;i<functions.size();i++) {
+        functions[i]->reset();
+    }
+    for (int i = 0;i<yfunctions.size();i++) {
+        yfunctions[i]->reset();
+    }
+}
+bool Graph::isRunning() {
+    return running;
+}
+
 //returns true if completed interpolation
 bool Interpolation::update() {
     if (canceled) {return true;}
     if (paused) {return false;}
     if (waiting) {waiting = false;return false;}
+    if (timeStart>0) {timeStart--;return false;}
     
     switch (type) {
         case NULL_INTERPOLATION:
@@ -439,6 +485,59 @@ bool Interpolation::update() {
     timeAt+=1;
     return timeAt>=timeInterval;
 }
+
+std::string Interpolation::getDisplay() {
+    std::string toReturn = "";
+    switch (type) {
+        case NULL_INTERPOLATION:
+            throw std::runtime_error("Empty Interpolation Was Displayed");
+        case SMOOTH_TRANSLATE:
+            return "Translate by ("+std::to_string((int)px)+","+std::to_string((int)py)+")";
+        case SMOOTH_ORIGIN_TRANSLATE:
+            return "Move Origin by ("+std::to_string((int)px)+","+std::to_string((int)py)+")";
+        case SMOOTH_GRID_ROTATE:
+            //x and y flipped on purpose, because programmatically y theta is x axis theta & vice versa
+            return "Rotate Axes by ("+std::to_string((int)(py*180/M_PI))+","+std::to_string((int)(px*180/M_PI))+")";
+        case SMOOTH_GRID_RESIZE_STATIC_CENTER:
+            return "Resize Grid by ("+std::to_string((int)px)+","+std::to_string((int)py)+") [static]";
+        case SMOOTH_GRID_RESIZE_SMART_CENTER:
+            return "Resize Grid by ("+std::to_string((int)px)+","+std::to_string((int)py)+") [smart]";
+        case DELAY:
+            return "-DELAY-";
+    }
+    throw std::runtime_error("Unknown interpolation!");
+}
+
+std::string Interpolation::getPXDisplay() {
+    if (type==SMOOTH_GRID_ROTATE) {return std::to_string((int)(py*180/M_PI));}
+    return std::to_string((int)px);
+}
+
+std::string Interpolation::getPYDisplay() {
+    if (type==SMOOTH_GRID_ROTATE) {return std::to_string((int)(px*180/M_PI));}
+    return std::to_string((int)py);
+}
+
+std::string Interpolation::getStartDisplay() {
+    return std::to_string((int)timeStart);
+}
+
+std::string Interpolation::getDurationDisplay() {
+    return std::to_string((int)timeInterval);
+}
+
+void Interpolation::toggleSmartMove() {
+    if (type==SMOOTH_GRID_RESIZE_SMART_CENTER) {
+        type = SMOOTH_GRID_RESIZE_STATIC_CENTER;
+    }
+    else if (type==SMOOTH_GRID_RESIZE_STATIC_CENTER) {
+        type = SMOOTH_GRID_RESIZE_SMART_CENTER;
+    }
+    else {
+        throw std::runtime_error("ERROR! Interpolation not valid type to toggle smart move.");
+    }
+}
+
 void Interpolation::pause() {
     paused = true;
 }
@@ -448,6 +547,34 @@ void Interpolation::unpause() {
 void Interpolation::cancel() {
     canceled = true;
 }
+
+//change px
+void Interpolation::changePX(double a) {
+    if (type==SMOOTH_GRID_ROTATE) {py = M_PI*a/180;}
+    else {px = a;}
+}
+//change py
+void Interpolation::changePY(double a) {
+    if (type==SMOOTH_GRID_ROTATE) {px = M_PI*a/180;}
+    else {py = a;}
+}
+//change start time
+void Interpolation::changeStart(int a) {
+    timeStart = a;
+    timeStartCounter = a;
+}
+//change duration
+void Interpolation::changeDuration(int a) {
+    timeInterval = a;
+}
+//resets for re-running
+void Interpolation::reset() {
+    timeStart = timeStartCounter;
+    paused = false;
+    waiting = false;
+    timeAt = 0;
+}
+
 Interpolation::Interpolation(Uint8 t,double x,double y,int time_interval,Graph* rg) {
     px = x;
     py = y;
@@ -511,5 +638,26 @@ Function::Function(Function* a) {
     name = a->name;
     function = a->function;
     range = a->range;
+}
+
+void Function::reset() {
+    //do nothing for now
+}
+
+Uint32 getColorOfInterpolation(Interpolation* i) {
+    switch (i->getType()) {
+        case SMOOTH_TRANSLATE:
+            return 0xff00ff00;
+        case SMOOTH_GRID_SCALE:
+            return 0xff0000ff;
+        case SMOOTH_GRID_ROTATE:
+            return 0xffff0000;
+        case SMOOTH_ORIGIN_TRANSLATE:
+            return 0xff003300;
+        case SMOOTH_GRID_RESIZE_SMART_CENTER:
+        case SMOOTH_GRID_RESIZE_STATIC_CENTER:
+            return 0xff00ffff;
+    }
+    throw std::runtime_error("ERROR! Interpolation has no color.");
 }
 
