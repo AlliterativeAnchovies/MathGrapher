@@ -26,7 +26,10 @@ enum POPUP_IDS {
     CHOOSE_FUNCTION_POPUP,
     CHOOSE_INTERPOLATION_POPUP,
     CREATE_SIMPLE_INTERPOLATION, //move/rescale/rotate - just the ones that require x/y, start time & duration
-    CREATE_RESIZE_INTERPOLATION  //not "simple", requires "smart resize" tickbox as well
+    CREATE_RESIZE_INTERPOLATION, //not "simple", requires "smart resize" tickbox as well
+    EDIT_FUNCTION_POPUP,
+    CHOOSE_FUNCTION_INTERPOLATION,
+    CREATE_FUNCTION_RUN_INTERPOLATION
 };
 
 const bool X_AXIS = true;
@@ -44,6 +47,7 @@ class Popup {
         std::string stringConcerned = "";
         Interpolation* interpolationConcerned = NULL;
         Popup* popupConcerned = NULL;
+        Function* functionConcerned = NULL;
         bool isNewborn = true;
         bool successfulRaycast = false;
         bool locked = false;
@@ -58,6 +62,7 @@ class Popup {
         Popup* concernWith(std::string s);
         Popup* concernWith(Interpolation* i);
         Popup* concernWith(Popup* p);
+        Popup* concernWith(Function* f);
         bool inBounds(double mouseX,double mouseY);
         bool newborn() {return isNewborn;}
         void age() {isNewborn=false;}

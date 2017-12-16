@@ -23,6 +23,8 @@ enum INTERPOLATIONS {
     SMOOTH_GRID_SCALE,
     SMOOTH_GRID_RESIZE_STATIC_CENTER,
     SMOOTH_GRID_RESIZE_SMART_CENTER,
+    SMOOTH_FUNCTION_RUN,
+    SMOOTH_FUNCTION_STRETCH,
     DELAY,
 };
 
@@ -43,6 +45,7 @@ class Interpolation {
         bool canceled = false;//deletes interpolation
         bool waiting = false;//ignores interpolation for 1 tick
         Graph* relatedGraph = NULL;
+        Function* relatedFunction = NULL;
         std::vector<Interpolation*> followups = {};//when interpolation is complete, automatically call these interpolations
     public:
         bool update(); //returns true if completed interpolation
@@ -84,6 +87,8 @@ class Interpolation {
         int getDuration() {return timeInterval;}
         //see if canceled
         bool isCanceled() {return canceled;}
+        //relates to function
+        void relateFunction(Function* f) {relatedFunction = f;}
 };
 
 struct GraphImage {
@@ -215,24 +220,53 @@ class Graph {
         void cleanInterpolations();
 };
 
+typedef std::function<double(double,double,double,double)> internalFunc;
+
+struct FunctionImage {
+    double stretchx;
+    double stretchy;
+    double time;
+    bool visible;
+};
+
 class Function {
     private:
-        std::function<double(double,double)> function;
+        internalFunc function;
         std::function<bool(double,double)> range;
         std::string name = "-FUNCTION-";
         bool tagged = false;
+        double stretchx = 1;
+        double stretchy = 1;
+        double time = 0;
+        std::string stretchxstring = "1";
+        std::string stretchystring = "1";
+        bool visible = true;
+        FunctionImage image;
     public:
-        Function(std::function<double(double,double)> f);
-        Function(std::function<double(double,double)> f,std::function<bool(double,double)> r,std::string n);
-        double eval(double x,double time);
-        double operator() (double x,double time);
-        double inRange(double x,double time);
+        Function(internalFunc f);
+        Function(internalFunc f,std::function<bool(double,double)> r,std::string n);
+        double eval(double x);
+        double operator() (double x);
+        double inRange(double x);
         std::string getName();
         void setName(std::string n);
         void tag() {tagged=true;}
         bool isTagged() {return tagged;}
         Function(Function* a);
         void reset();
+        double getTime() {return time;}
+        double getStretchX() {return stretchx;}
+        double getStretchY() {return stretchy;}
+        std::string getStretchXString() {return stretchxstring;}
+        std::string getStretchYString() {return stretchystring;}
+        void setStretchX(std::string s) {stretchxstring = s;stretchx=numberFromString(s);}
+        void setStretchY(std::string s) {stretchystring = s;stretchy=numberFromString(s);}
+        void setTime(double t) {time = t;}
+        bool isVisible() {return visible;}
+        void toggleVisibility() {visible=!visible;}
+        void stretch(double x,double y) {stretchx+=x;stretchy+=y;}
+        void run(double x) {time+=x;}
+        void saveImage();
 };
 
 Uint32 getColorOfInterpolation(Interpolation* i);

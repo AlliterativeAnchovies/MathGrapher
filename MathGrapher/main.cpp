@@ -488,6 +488,15 @@ void changeToInString() {
             case 14:
                 ((Interpolation*)thingForInString)->changeDuration(numberFromString(instring));
                 break;
+            case 15:
+                ((Function*)thingForInString)->setTime(numberFromString(instring));
+                break;
+            case 16:
+                ((Function*)thingForInString)->setStretchX(instring);
+                break;
+            case 17:
+                ((Function*)thingForInString)->setStretchY(instring);
+                break;
         }
     }
 }
@@ -500,6 +509,18 @@ void doInStringCalcs(Uint8 keypressed) {
                 instringswitch = -1;
                 thingForInString = NULL;
                 instring = "";
+                break;
+            case SDLK_PERIOD:
+                if (instringswitch==16||instringswitch==17) {
+                    instring+=".";
+                    changeToInString();
+                }
+                break;
+            case SDLK_MINUS:
+                if (instringswitch==16||instringswitch==17) {
+                    instring+="-";
+                    changeToInString();
+                }
                 break;
             default:
                 std::string thing = SDL_GetKeyName(keypressed);

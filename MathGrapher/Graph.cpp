@@ -249,16 +249,16 @@ SDL_Surface* Graph::draw(double* x,double* y) {
                 | -s2/scaleX  c2/scaleY |
             */
             double rawX = (j-ox)*pixelToXValRatio;//rawX is not in terms of screen pixels
-            if (!f->inRange(rawX,0)) {
+            if (!f->inRange(rawX)) {
                 lastOutOfRange = true;
             }
-            double rawY = (*f)(rawX,0);//rawY is not in terms of screen pixels
+            double rawY = (*f)(rawX);//rawY is not in terms of screen pixels
             double finalX = rawX*c1/pixelToXValRatio-rawY*s2/pixelToYValRatio;
             double finalY = rawX*s1/pixelToXValRatio+rawY*c2/pixelToYValRatio;
             finalX+=ox;
             finalY*=-1;//invert y coord because programming coords start in top not bottom
             finalY+=oy;
-            if (!lastOutOfRange) {
+            if (!lastOutOfRange&&f->isVisible()) {
                 drawLineOnSurface(toReturn, prevX, prevY, finalX, finalY, 0xffff0000);
             }
             prevX = finalX;
@@ -289,16 +289,16 @@ SDL_Surface* Graph::draw(double* x,double* y) {
                 | -s2/scaleX  c2/scaleY |
             */
             double rawX = (j-ox)*pixelToXValRatio;//rawX is not in terms of screen pixels
-            if (!f->inRange(rawX,0)) {
+            if (!f->inRange(rawX)) {
                 lastOutOfRange = true;
             }
-            double rawY = (*f)(rawX,0);//rawY is not in terms of screen pixels
+            double rawY = (*f)(rawX);//rawY is not in terms of screen pixels
             double finalX = rawX*c1/pixelToXValRatio-rawY*s2/pixelToYValRatio;
             double finalY = rawX*s1/pixelToXValRatio+rawY*c2/pixelToYValRatio;
             finalX+=ox;
             finalY*=-1;//invert y coord because programming coords start in top not bottom
             finalY+=oy;
-            if (j>0) {
+            if (!lastOutOfRange&&f->isVisible()) {
                 drawLineOnSurface(toReturn, prevX, prevY, finalX, finalY, 0xffff0000);
             }
             prevX = finalX;
@@ -431,6 +431,12 @@ void Graph::run() {
     image.gridSpacingY = gridSpacingY;
     image.gridAngleX = gridAngleX;
     image.gridAngleY = gridAngleY;
+    for (int i = 0;i<functions.size();i++) {
+        functions[i]->saveImage();
+    }
+    for (int i = 0;i<yfunctions.size();i++) {
+        yfunctions[i]->saveImage();
+    }
 }
 void Graph::reset() {
     running = false;
@@ -486,6 +492,12 @@ bool Interpolation::update() {
         case SMOOTH_GRID_RESIZE_SMART_CENTER:
             relatedGraph->moveGridSize(px/timeInterval, py/timeInterval,true);
             break;
+        case SMOOTH_FUNCTION_STRETCH:
+            relatedFunction->stretch(px/timeInterval,py/timeInterval);
+            break;
+        case SMOOTH_FUNCTION_RUN:
+            relatedFunction->run(px/timeInterval);
+            break;
         case DELAY:
             break;
     }
@@ -512,6 +524,10 @@ std::string Interpolation::getDisplay() {
             return "Resize Grid by ("+std::to_string((int)px)+","+std::to_string((int)py)+") [smart]";
         case SMOOTH_GRID_SCALE:
             return "Scale Grid by ("+std::to_string((int)px)+","+std::to_string((int)py)+")";
+        case SMOOTH_FUNCTION_STRETCH:
+            return "Stretch Function by ("+std::to_string(px)+","+std::to_string(py)+")";
+        case SMOOTH_FUNCTION_RUN:
+            return "Run Function by "+std::to_string((int)px);
         case DELAY:
             return "-DELAY-";
     }
@@ -616,24 +632,24 @@ Interpolation* Interpolation::cloneTo(Interpolation* concernedWith,bool addImmed
     return toReturn;
 }
 
-Function::Function(std::function<double(double,double)> f) {
+Function::Function(internalFunc f) {
     function = f;
 }
 
-Function::Function(std::function<double(double,double)> f,std::function<bool(double,double)> r,std::string n) {
+Function::Function(internalFunc f,std::function<bool(double,double)> r,std::string n) {
     function = f;
     name = n;
     range = r;
 }
 
-double Function::eval(double x,double time) {
-    return function(x,time);
+double Function::eval(double x) {
+    return function(x,time,stretchx,stretchy);
 }
-double Function::operator() (double x,double time) {
-    return eval(x,time);
+double Function::operator() (double x) {
+    return eval(x);
 }
 
-double Function::inRange(double x,double time) {
+double Function::inRange(double x) {
     return range(x,time);
 }
 
@@ -651,7 +667,19 @@ Function::Function(Function* a) {
 }
 
 void Function::reset() {
-    //do nothing for now
+    stretchx = image.stretchx;
+    stretchy = image.stretchy;
+    time    = image.time;
+    visible = image.visible;
+    stretchxstring = std::to_string(stretchx);
+    stretchystring = std::to_string(stretchy);
+}
+
+void Function::saveImage() {
+    image.stretchx = stretchx;
+    image.stretchy = stretchy;
+    image.time = time;
+    image.visible = visible;
 }
 
 Uint32 getColorOfInterpolation(Interpolation* i) {
@@ -667,6 +695,10 @@ Uint32 getColorOfInterpolation(Interpolation* i) {
         case SMOOTH_GRID_RESIZE_SMART_CENTER:
         case SMOOTH_GRID_RESIZE_STATIC_CENTER:
             return 0xff00ffff;
+        case SMOOTH_FUNCTION_RUN:
+            return 0xffff8800;
+        case SMOOTH_FUNCTION_STRETCH:
+            return 0xff0088ff;
     }
     throw std::runtime_error("ERROR! Interpolation has no color.");
 }
@@ -684,6 +716,10 @@ std::string stringifyID(Uint8 id) {
             return "Rotate";
         case SMOOTH_ORIGIN_TRANSLATE:
             return "Re-Origin";
+        case SMOOTH_FUNCTION_RUN:
+            return "Run";
+        case SMOOTH_FUNCTION_STRETCH:
+            return "Stretch";
     }
     throw std::runtime_error("ERROR NO SUCH INTERPOLATION TO STRINGIFY");
 }
