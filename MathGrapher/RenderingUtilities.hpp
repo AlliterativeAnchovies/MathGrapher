@@ -22,6 +22,7 @@
 //0xffaaf2aa - nice hover over border highlights
 //0x2200ff00 - nice green highlight
 //0xff597bf5 - nice darker blue
+//0xffffe8e2 - nice light white brown
 
 
 //Graphics drawing variables
@@ -71,6 +72,7 @@ Uint8 getB(Uint32 color);
 void drawBorderedRect(int px,int py,int wid,int hei,Uint32 fillColor,Uint32 borderColor);
 double numberFromString(std::string theString);
 int hexCharToInt(char in);
+void drawCircleOnSurface(SDL_Surface* theSurface,int centx,int centy,float radius,Uint32 color);
 
 template<typename T> void fastSineCosine(T* sine,T* cosine,T angle) {
     //It's faster if I need a sine and cosine of 1 angle to use this

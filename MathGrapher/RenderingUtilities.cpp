@@ -308,3 +308,13 @@ int hexCharToInt(char in) {
     }
     return -1;
 }
+
+void drawCircleOnSurface(SDL_Surface* theSurface,int centx,int centy,float radius,Uint32 color) {
+    for (int wi = 0;wi<theSurface->w;wi++) {
+        for (int hi = 0;hi<theSurface->h;hi++) {
+            if (sqrt((wi-centx)*(wi-centx)+(hi-centy)*(hi-centy))<=radius) {
+                put_pixel32( theSurface, wi, hi, color );
+            }
+        }
+    }
+}

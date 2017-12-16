@@ -14,7 +14,7 @@
 #include "Popup.hpp"
 
 //Screen dimension constants
-const int SCREEN_WIDTH = 640;
+const int SCREEN_WIDTH = 640+150;
 const int SCREEN_HEIGHT = 480;
 
 //Graphics constaints
@@ -61,8 +61,8 @@ bool spacePressed = false;
 bool backspacePressed = false;
 bool controlFlow() {
     ticks++;
-    //Fill screen to white
-    drawRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 0xffffffff);
+    //Fill screen to background
+    drawRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 0xffffe8e2);
     int mouseX, mouseY;
     bool leftMouseClicked = false;
     bool leftMouseHadBeenClicked = false;
@@ -216,6 +216,43 @@ bool controlFlow() {
             totoff=newtotoff;
         }
         selectedGraphs=newselectedgraphs;
+        //draw run all button
+        int rax,ray;
+        TTF_SizeUTF8((*fontgrab)(16), "Run All", &rax, &ray);
+        drawTextWithBackground("Run All", 16, SCREEN_WIDTH-200, controlBarY+5, 0xff000000,0xff9fc9f2,0xff000000);
+        if (leftMouseReleased&&!overPopup&&pointInBounds(mouseX, mouseY, SCREEN_WIDTH-200, SCREEN_WIDTH-200+rax,controlBarY+5,controlBarY+5+ray)) {
+            for (Graph* g : graphs) {
+                g->run();
+            }
+            runningVideo = true;
+            selectedGraphs = {};
+            newselectedgraphs = {};
+            leftMouseReleased = false;
+        }
+        //draw run selected button
+        int rsx,rsy;
+        TTF_SizeUTF8((*fontgrab)(16), "Run Selected", &rsx, &rsy);
+        drawTextWithBackground("Run Selected", 16, SCREEN_WIDTH-200-5-rsx, controlBarY+5, 0xff000000,0xff9fc9f2,0xff000000);
+        if (leftMouseReleased&&!overPopup&&pointInBounds(mouseX, mouseY, SCREEN_WIDTH-200-5-rsx, SCREEN_WIDTH-200-5-rsx+rsx,controlBarY+5,controlBarY+5+rsy)) {
+            for (Graph* g : selectedGraphs) {
+                g->run();
+            }
+            runningVideo = true;
+            selectedGraphs = {};
+            newselectedgraphs = {};
+            leftMouseReleased = false;
+        }
+    }
+    //draw points of interest bar
+    double interestBarX = SCREEN_WIDTH-150;
+    drawBorderedRect(interestBarX, 0, 150, SCREEN_HEIGHT, 0xff597bf5, 0xff000000);
+    drawText("Points of Interest", 20, interestBarX+5, 5, 0xff000000);
+    if (pointsOfInterest.empty()) {
+        drawText("None", 16, interestBarX+5, 30, 0xff000000);
+    }
+    for (int i = 0;i<pointsOfInterest.size();i++) {
+        drawText(pointsOfInterest[i]->getDisplayLocation(), 16, interestBarX+5, 30+i*40, 0xff000000);
+        drawText("  "+pointsOfInterest[i]->getDisplayPoint(), 12, interestBarX+5, 30+i*40+20, 0xff000000);
     }
     
     //find out what popup the mouse is over
@@ -497,6 +534,9 @@ void changeToInString() {
             case 17:
                 ((Function*)thingForInString)->setStretchY(instring);
                 break;
+            case 18:
+                ((Popup*)thingForInString)->concernWith(instring);
+                break;
         }
     }
 }
@@ -511,13 +551,13 @@ void doInStringCalcs(Uint8 keypressed) {
                 instring = "";
                 break;
             case SDLK_PERIOD:
-                if (instringswitch==16||instringswitch==17) {
+                if (instringswitch==16||instringswitch==17||instringswitch==18) {
                     instring+=".";
                     changeToInString();
                 }
                 break;
             case SDLK_MINUS:
-                if (instringswitch==16||instringswitch==17) {
+                if (instringswitch==16||instringswitch==17||instringswitch==18) {
                     instring+="-";
                     changeToInString();
                 }

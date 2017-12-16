@@ -31,6 +31,9 @@ enum INTERPOLATIONS {
 class Graph;
 class Interpolation;
 class Function;
+class PointOfInterest;
+
+extern std::vector<PointOfInterest*> pointsOfInterest;
 
 class Interpolation {
     private:
@@ -242,6 +245,7 @@ class Function {
         std::string stretchystring = "1";
         bool visible = true;
         FunctionImage image;
+        std::vector<PointOfInterest*> importantPoints = {};
     public:
         Function(internalFunc f);
         Function(internalFunc f,std::function<bool(double,double)> r,std::string n);
@@ -267,6 +271,23 @@ class Function {
         void stretch(double x,double y) {stretchx+=x;stretchy+=y;}
         void run(double x) {time+=x;}
         void saveImage();
+        void addPoint(PointOfInterest* p) {importantPoints.push_back(p);};
+        typeof(importantPoints) getImportantPoints() {return importantPoints;}
+};
+
+class PointOfInterest {
+    private:
+        Graph* graphOn = NULL;
+        Function* functionOn = NULL;
+        double px = 0;
+        bool visible = true;
+    public:
+        std::string getDisplay();
+        PointOfInterest(Graph* g,Function* f,double d,bool v);
+        bool isVisible() {return visible;}
+        std::string getDisplayLocation();
+        std::string getDisplayPoint();
+        double getPX() {return px;}
 };
 
 Uint32 getColorOfInterpolation(Interpolation* i);

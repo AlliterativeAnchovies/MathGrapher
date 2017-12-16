@@ -8,6 +8,7 @@
 
 #include "Graph.hpp"
 
+std::vector<PointOfInterest*> pointsOfInterest = {};
 
 //full constructor
 Graph::Graph(   double x,double y,double sizex,double sizey,double grid_spacing_x,
@@ -161,7 +162,7 @@ void Graph::addInterpolation(Interpolation *i) {
 SDL_Surface* Graph::draw(double* x,double* y) {
     *x = px;
     *y = py;
-    SDL_Surface* toReturn = createBlankSurfaceWithSize(sx, sy);
+    SDL_Surface* toReturn = createBlankSurfaceWithSize(sx+1, sy+1);
     
     //draw grid
     double centerx = ox;
@@ -177,7 +178,7 @@ SDL_Surface* Graph::draw(double* x,double* y) {
     int quitCount = 0;
     while (quitCount<maxAmountOfLines&&showGrid) {
         //draw line
-        drawLineThroughPointWithAngleInBounds(toReturn,startingx,startingy,gridAngleX,0,sx,0,sy,0xff999999,100);
+        drawLineThroughPointWithAngleInBounds(toReturn,startingx,startingy,gridAngleX,0,sx,0,sy,0xffaaaaaa,100);
         startingx+=deltax;
         startingy+=deltay;
         quitCount++;
@@ -187,14 +188,10 @@ SDL_Surface* Graph::draw(double* x,double* y) {
     quitCount = 0;
     while (quitCount<maxAmountOfLines&&showGrid) {
         //draw line
-        drawLineThroughPointWithAngleInBounds(toReturn,startingx,startingy,gridAngleX,0,sx,0,sy,0xff999999,100);
+        drawLineThroughPointWithAngleInBounds(toReturn,startingx,startingy,gridAngleX,0,sx,0,sy,0xffaaaaaa,100);
         startingx-=deltax;
         startingy-=deltay;
         quitCount++;
-    }
-    //axis time
-    if (showAxes) {
-        drawLineThroughPointWithAngleInBounds(toReturn,centerx,centery,gridAngleX,0,sx,0,sy,0xff000000,100);
     }
     //now lets do the "y" grid
     double siney,cosiney = 0;
@@ -207,7 +204,7 @@ SDL_Surface* Graph::draw(double* x,double* y) {
     quitCount = 0;
     while (quitCount<maxAmountOfLines&&showGrid) {
         //draw line
-        drawLineThroughPointWithAngleInBounds(toReturn,startingx,startingy,gridAngleY,0,sx,0,sy,0xff999999,100);
+        drawLineThroughPointWithAngleInBounds(toReturn,startingx,startingy,gridAngleY,0,sx,0,sy,0xffaaaaaa,100);
         startingx+=deltax;
         startingy+=deltay;
         quitCount++;
@@ -217,13 +214,14 @@ SDL_Surface* Graph::draw(double* x,double* y) {
     quitCount = 0;
     while (quitCount<maxAmountOfLines&&showGrid) {
         //draw line
-        drawLineThroughPointWithAngleInBounds(toReturn,startingx,startingy,gridAngleY,0,sx,0,sy,0xff999999,100);
+        drawLineThroughPointWithAngleInBounds(toReturn,startingx,startingy,gridAngleY,0,sx,0,sy,0xffaaaaaa,100);
         startingx-=deltax;
         startingy-=deltay;
         quitCount++;
     }
     //axis time
     if (showAxes) {
+        drawLineThroughPointWithAngleInBounds(toReturn,centerx,centery,gridAngleX,0,sx,0,sy,0xff000000,100);
         drawLineThroughPointWithAngleInBounds(toReturn,centerx,centery,gridAngleY,0,sx,0,sy,0xff000000,100);
     }
     
@@ -242,7 +240,7 @@ SDL_Surface* Graph::draw(double* x,double* y) {
         fastSineCosine(&s2, &c2, gridAngleX-M_PI/2);//y axis angle
         double prevY = 0;
         double prevX = 0;
-        for (int j = 0;j<sx;j++) {
+        for (int j = 0;j<sx+1;j++) {
             /*
             Can convert to rotated coordinates using change-of-basis matrix:
                 | c1/scaleX   s1/scaleY |
@@ -265,6 +263,20 @@ SDL_Surface* Graph::draw(double* x,double* y) {
             prevY = finalY;
             lastOutOfRange = false;
         }
+        //draw all important points of a function!
+        auto importantPoints = f->getImportantPoints();
+        for (int j = 0;j<importantPoints.size();j++) {
+            if (!importantPoints[j]->isVisible()) {continue;}
+            double rawX = importantPoints[j]->getPX();
+            if (!f->inRange(rawX)) {continue;}
+            double rawY = (*f)(rawX);
+            double finalX = rawX*c1/pixelToXValRatio-rawY*s2/pixelToYValRatio;
+            double finalY = rawX*s1/pixelToXValRatio+rawY*c2/pixelToYValRatio;
+            finalX+=ox;
+            finalY*=-1;//invert y coord because programming coords start in top not bottom
+            finalY+=oy;
+            drawCircleOnSurface(toReturn, finalX, finalY, 3, 0xff000099);
+        }
     }
     
     //and the y-axis functions
@@ -282,7 +294,7 @@ SDL_Surface* Graph::draw(double* x,double* y) {
         fastSineCosine(&s2, &c2, gridAngleY-M_PI/2);//y axis angle
         double prevY = 0;
         double prevX = 0;
-        for (int j = 0;j<sx;j++) {
+        for (int j = 0;j<sx+1;j++) {
             /*
             Can convert to rotated coordinates using change-of-basis matrix:
                 | c1/scaleX   s1/scaleY |
@@ -304,6 +316,20 @@ SDL_Surface* Graph::draw(double* x,double* y) {
             prevX = finalX;
             prevY = finalY;
             lastOutOfRange = false;
+        }
+        //draw all important points of a function!
+        auto importantPoints = f->getImportantPoints();
+        for (int j = 0;j<importantPoints.size();j++) {
+            if (!importantPoints[j]->isVisible()) {continue;}
+            double rawX = importantPoints[j]->getPX();
+            if (!f->inRange(rawX)) {continue;}
+            double rawY = (*f)(rawX);
+            double finalX = rawX*c1/pixelToXValRatio-rawY*s2/pixelToYValRatio;
+            double finalY = rawX*s1/pixelToXValRatio+rawY*c2/pixelToYValRatio;
+            finalX+=ox;
+            finalY*=-1;//invert y coord because programming coords start in top not bottom
+            finalY+=oy;
+            drawCircleOnSurface(toReturn, finalX, finalY, 3, 0xff000099);
         }
     }
     
@@ -439,6 +465,7 @@ void Graph::run() {
     }
 }
 void Graph::reset() {
+    if (!running) {return;}
     running = false;
     px = image.px;
     py = image.py;
@@ -680,6 +707,27 @@ void Function::saveImage() {
     image.stretchy = stretchy;
     image.time = time;
     image.visible = visible;
+}
+
+std::string PointOfInterest::getDisplay() {
+    //return "On "+functionOn->getName()+"; "+graphOn->getName()+" @("+std::to_string(px)+","+std::to_string((*functionOn)(px))+")";
+    return "("+std::to_string(px)+","+std::to_string((*functionOn)(px))+") @"+functionOn->getName()+";"+graphOn->getName();
+}
+
+std::string PointOfInterest::getDisplayLocation() {
+    return "@"+functionOn->getName()+";"+graphOn->getName();
+}
+
+std::string PointOfInterest::getDisplayPoint() {
+    return "("+std::to_string(px)+","+std::to_string((*functionOn)(px))+")";
+}
+
+
+PointOfInterest::PointOfInterest(Graph* g,Function* f,double d,bool v) {
+    graphOn = g;
+    functionOn = f;
+    px = d;
+    visible = v;
 }
 
 Uint32 getColorOfInterpolation(Interpolation* i) {

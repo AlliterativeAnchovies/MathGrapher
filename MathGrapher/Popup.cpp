@@ -702,6 +702,18 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                         ->concernWith(functionConcerned);
                 }
                 
+                //draw add points of interest
+                int poix,poiy;
+                drawTextWithBackground("Add Point of Interest", 16, inputsx+intpx+5, inputsy, 0xff000000, 0xffffcf9e, 0xff000000);
+                TTF_SizeUTF8((*fontgrab)(16),"Add Point of Interest",&poix,&poiy);
+                if (clicked&&pointInBounds(mouseX, mouseY, inputsx+intpx+5, inputsx+intpx+5+poix, inputsy, inputsy+poiy)) {
+                    clicked = false;
+                    toReturn = 0x01;
+                    createPopup(CREATE_POINT_OF_INTEREST, mouseX, mouseY)
+                        ->concernWith(graphConcerned)
+                        ->concernWith(functionConcerned);
+                }
+                
                 
             }
             break;
@@ -733,6 +745,53 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                     clicked = false;
                     toReturn = 0x00;
                 }
+            }
+            break;
+        case CREATE_POINT_OF_INTEREST:
+            {
+                std::string beep = (ticks%60<30)?"|":" ";
+                drawBorderedRect(px, py, sx, sy, 0xffaaf2aa, 0xff000000);
+                drawText("Point of Interest", 24, px, py, 0xff000000);
+                int pxx,pxy,visiblex,visibley;
+                TTF_SizeUTF8((*fontgrab)(16),("px: "+((stringConcerned=="")?"0":stringConcerned)+((instringswitch==18)?beep:"")).c_str(),&pxx,&pxy);
+                TTF_SizeUTF8((*fontgrab)(16),boolConcerned?"Is Visible":"Is Hidden",&visiblex,&visibley);
+                drawText("px: "+((stringConcerned=="")?"0":stringConcerned)+((instringswitch==18)?beep:""), 16, px, py+30, 0xff000000);
+                int editx,edity;
+                TTF_SizeUTF8((*fontgrab)(12),"Edit",&editx,&edity);
+                drawTextWithBackground("Edit", 12, px+pxx+5, py+30, 0xff000000, 0xffffcf9e, 0xff000000);
+                if (clicked&&pointInBounds(mouseX, mouseY, px+pxx+5, px+pxx+5+editx, py+30, py+30+edity)) {
+                    clicked = false;
+                    toReturn = 0x01;
+                    instringswitch = 18;
+                    instring = stringConcerned;
+                    thingForInString = this;
+                }
+                std::string outputOfFunc = (instringswitch==18)?"?":
+                    std::to_string((*functionConcerned)(numberFromString(stringConcerned)));
+                drawText("py: "+outputOfFunc, 16, px+pxx+5+editx+5, py+30, 0xff000000);
+                drawTextWithBackground(!boolConcerned?"Is Visible":"Is Hidden", 16, px+5, py+50, 0xff000000, !boolConcerned?0xffffcf9e:0xffbd854d, 0xff000000);
+                if (clicked&&pointInBounds(mouseX, mouseY, px+5, px+5+visiblex, py+50, py+50+visibley)) {
+                    clicked = false;
+                    toReturn = 0x01;
+                    boolConcerned=!boolConcerned;
+                }
+                
+                int addx,addy;
+                TTF_SizeUTF8((*fontgrab)(16)," Add ",&addx,&addy);
+                drawTextWithBackground(" Add ", 16, px+sx-40, py+5, 0xff000000, 0xffffcf9e, 0xff000000);
+                if (clicked&&pointInBounds(mouseX, mouseY, px+sx-40, px+sx-40+addx, py+5, py+5+addy)) {
+                    clicked = false;
+                    toReturn = 0x02;
+                    stringConcerned = stringConcerned==""?"0":stringConcerned;
+                    PointOfInterest* newpoint = new PointOfInterest(graphConcerned,functionConcerned,numberFromString(stringConcerned),!boolConcerned);
+                    pointsOfInterest.push_back(newpoint);
+                    functionConcerned->addPoint(newpoint);
+                    instring = "";
+                    thingForInString = NULL;
+                    instringswitch = -1;
+                }
+                
+                
             }
             break;
     }
@@ -792,7 +851,8 @@ bool isQuickCloser(Uint8 popup_id) {
            popup_id==CREATE_SIMPLE_INTERPOLATION||
            popup_id==CREATE_RESIZE_INTERPOLATION||
            popup_id==EDIT_FUNCTION_POPUP||
-           popup_id==CHOOSE_FUNCTION_INTERPOLATION;
+           popup_id==CHOOSE_FUNCTION_INTERPOLATION||
+           popup_id==CREATE_POINT_OF_INTEREST;
 }
 
 bool isMajor(Uint8 popup_id) {
@@ -811,7 +871,7 @@ Popup* createPopup(Uint8 popup_id,double x,double y) {
             sy = 200;
             break;
         case EDIT_GRAPH_POPUP:
-            sx = SCREEN_WIDTH-20;
+            sx = SCREEN_WIDTH-20-150;
             sy = SCREEN_HEIGHT-20;
             break;
         case CHOOSE_FUNCTION_POPUP:
@@ -831,7 +891,7 @@ Popup* createPopup(Uint8 popup_id,double x,double y) {
             sy = 150;
             break;
         case EDIT_FUNCTION_POPUP:
-            sx = 250;
+            sx = 260;
             sy = 120;
             break;
         case CHOOSE_FUNCTION_INTERPOLATION:
@@ -839,6 +899,10 @@ Popup* createPopup(Uint8 popup_id,double x,double y) {
             sy = 200;
             break;
         case CREATE_FUNCTION_RUN_INTERPOLATION:
+            sx = 200;
+            sy = 120;
+            break;
+        case CREATE_POINT_OF_INTEREST:
             sx = 200;
             sy = 120;
             break;
