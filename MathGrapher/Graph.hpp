@@ -224,6 +224,7 @@ class Graph {
 };
 
 typedef std::function<double(double,double,double,double)> internalFunc;
+typedef std::function<bool(double,double,double,double)> internalRange;
 
 struct FunctionImage {
     double stretchx;
@@ -234,8 +235,10 @@ struct FunctionImage {
 
 class Function {
     private:
-        internalFunc function;
-        std::function<bool(double,double)> range;
+        internalFunc function=NULL;
+        internalFunc function2=NULL;//if parametric
+        bool parametric = false;
+        internalRange range;
         std::string name = "-FUNCTION-";
         bool tagged = false;
         double stretchx = 1;
@@ -247,10 +250,15 @@ class Function {
         FunctionImage image;
         std::vector<PointOfInterest*> importantPoints = {};
     public:
+        //basic definition ('degenerate')
         Function(internalFunc f);
-        Function(internalFunc f,std::function<bool(double,double)> r,std::string n);
+        //standard definition
+        Function(internalFunc f,internalRange r,std::string n);
+        //parametric definition
+        Function(internalFunc f,internalFunc f2,internalRange r,std::string n);
         double eval(double x);
         double operator() (double x);
+        Point<double> parametricEval(double x);
         double inRange(double x);
         std::string getName();
         void setName(std::string n);
@@ -273,6 +281,7 @@ class Function {
         void saveImage();
         void addPoint(PointOfInterest* p) {importantPoints.push_back(p);};
         typeof(importantPoints) getImportantPoints() {return importantPoints;}
+        bool isParametric() {return parametric;}
 };
 
 class PointOfInterest {

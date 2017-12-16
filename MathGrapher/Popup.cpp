@@ -753,9 +753,11 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                 drawBorderedRect(px, py, sx, sy, 0xffaaf2aa, 0xff000000);
                 drawText("Point of Interest", 24, px, py, 0xff000000);
                 int pxx,pxy,visiblex,visibley;
-                TTF_SizeUTF8((*fontgrab)(16),("px: "+((stringConcerned=="")?"0":stringConcerned)+((instringswitch==18)?beep:"")).c_str(),&pxx,&pxy);
+                std::string header = " px: ";
+                if (functionConcerned->isParametric()) {header = " t: ";}
+                TTF_SizeUTF8((*fontgrab)(16),(header+((stringConcerned=="")?"0":stringConcerned)+((instringswitch==18)?beep:"")).c_str(),&pxx,&pxy);
                 TTF_SizeUTF8((*fontgrab)(16),boolConcerned?"Is Visible":"Is Hidden",&visiblex,&visibley);
-                drawText("px: "+((stringConcerned=="")?"0":stringConcerned)+((instringswitch==18)?beep:""), 16, px, py+30, 0xff000000);
+                drawText(header+((stringConcerned=="")?"0":stringConcerned)+((instringswitch==18)?beep:""), 16, px, py+30, 0xff000000);
                 int editx,edity;
                 TTF_SizeUTF8((*fontgrab)(12),"Edit",&editx,&edity);
                 drawTextWithBackground("Edit", 12, px+pxx+5, py+30, 0xff000000, 0xffffcf9e, 0xff000000);
@@ -766,9 +768,14 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                     instring = stringConcerned;
                     thingForInString = this;
                 }
-                std::string outputOfFunc = (instringswitch==18)?"?":
-                    std::to_string((*functionConcerned)(numberFromString(stringConcerned)));
-                drawText("py: "+outputOfFunc, 16, px+pxx+5+editx+5, py+30, 0xff000000);
+                std::string outputOfFunc = "py: "+((instringswitch==18)?"?":
+                    std::to_string((*functionConcerned)(numberFromString(stringConcerned))));
+                if (functionConcerned->isParametric()) {
+                    auto bothvals = functionConcerned->parametricEval(numberFromString(stringConcerned));
+                    outputOfFunc = "px: "+((instringswitch==18)?"?":std::to_string(bothvals.x))+
+                                "   py: "+((instringswitch==18)?"?":std::to_string(bothvals.y));
+                }
+                drawText(outputOfFunc, 16, px+pxx+5+editx+5, py+30, 0xff000000);
                 drawTextWithBackground(!boolConcerned?"Is Visible":"Is Hidden", 16, px+5, py+50, 0xff000000, !boolConcerned?0xffffcf9e:0xffbd854d, 0xff000000);
                 if (clicked&&pointInBounds(mouseX, mouseY, px+5, px+5+visiblex, py+50, py+50+visibley)) {
                     clicked = false;
@@ -903,8 +910,8 @@ Popup* createPopup(Uint8 popup_id,double x,double y) {
             sy = 120;
             break;
         case CREATE_POINT_OF_INTEREST:
-            sx = 200;
-            sy = 120;
+            sx = 250;
+            sy = 80;
             break;
     }
     

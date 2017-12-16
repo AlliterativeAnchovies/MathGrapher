@@ -229,6 +229,7 @@ SDL_Surface* Graph::draw(double* x,double* y) {
     bool lastOutOfRange = true;
     for (int i = 0;i<functions.size();i++) {
         Function* f = functions[i];
+        if (f->isParametric()) {continue;}
         //we should have 1 value per pixel
         //however keep into account that we may have a scaled grid
         double pixelToXValRatio = 1/gridSpacingX;
@@ -279,10 +280,11 @@ SDL_Surface* Graph::draw(double* x,double* y) {
         }
     }
     
-    //and the y-axis functions
+    //and now the x-axis parametric functions
     lastOutOfRange = true;
-    for (int i = 0;i<yfunctions.size();i++) {
-        Function* f = yfunctions[i];
+    for (int i = 0;i<functions.size();i++) {
+        Function* f = functions[i];
+        if (!f->isParametric()) {continue;}
         //we should have 1 value per pixel
         //however keep into account that we may have a scaled grid
         double pixelToXValRatio = 1/gridSpacingX;
@@ -294,13 +296,61 @@ SDL_Surface* Graph::draw(double* x,double* y) {
         fastSineCosine(&s2, &c2, gridAngleY-M_PI/2);//y axis angle
         double prevY = 0;
         double prevX = 0;
-        for (int j = 0;j<sx+1;j++) {
+        int t = 0;
+        //t increments 1 at a time
+        while (f->inRange(t)) {
+            Point<double> rawPoint = f->parametricEval(t);
+            double finalX = rawPoint.x*c1/pixelToXValRatio-rawPoint.y*s2/pixelToYValRatio;
+            double finalY = rawPoint.x*s1/pixelToXValRatio+rawPoint.y*c2/pixelToYValRatio;
+            finalX+=ox;
+            finalY*=-1;//invert y coord because programming coords start in top not bottom
+            finalY+=oy;
+            if (!lastOutOfRange&&f->isVisible()) {
+                drawLineOnSurface(toReturn, prevX, prevY, finalX, finalY, 0xffff0000);
+            }
+            prevX = finalX;
+            prevY = finalY;
+            lastOutOfRange = false;
+            t++;
+        }
+        //draw all important points of a function!
+        auto importantPoints = f->getImportantPoints();
+        for (int j = 0;j<importantPoints.size();j++) {
+            if (!importantPoints[j]->isVisible()) {continue;}
+            Point<double> rawPoint = f->parametricEval(importantPoints[j]->getPX());
+            double finalX = rawPoint.x*c1/pixelToXValRatio-rawPoint.y*s2/pixelToYValRatio;
+            double finalY = rawPoint.x*s1/pixelToXValRatio+rawPoint.y*c2/pixelToYValRatio;
+            finalX+=ox;
+            finalY*=-1;//invert y coord because programming coords start in top not bottom
+            finalY+=oy;
+            drawCircleOnSurface(toReturn, finalX, finalY, 3, 0xff000099);
+        }
+    }
+    
+    
+    //and the y-axis functions
+    lastOutOfRange = true;
+    for (int i = 0;i<yfunctions.size();i++) {
+        Function* f = yfunctions[i];
+        if (f->isParametric()) {continue;}
+        //we should have 1 value per pixel
+        //however keep into account that we may have a scaled grid
+        double pixelToXValRatio = 1/gridSpacingX;
+        double pixelToYValRatio = 1/gridSpacingY;
+        //to account for rotated grid:
+        double s1,c1 = 0;
+        fastSineCosine(&s1, &c1, gridAngleX);//x axis angle
+        double s2,c2 = 0;
+        fastSineCosine(&s2, &c2, gridAngleY-M_PI/2);//y axis angle
+        double prevY = 0;
+        double prevX = 0;
+        for (int j = 0;j<sy+1;j++) {
             /*
             Can convert to rotated coordinates using change-of-basis matrix:
                 | c1/scaleX   s1/scaleY |
                 | -s2/scaleX  c2/scaleY |
             */
-            double rawX = (j-ox)*pixelToXValRatio;//rawX is not in terms of screen pixels
+            double rawX = (j-oy)*pixelToXValRatio;//rawX is not in terms of screen pixels
             if (!f->inRange(rawX)) {
                 lastOutOfRange = true;
             }
@@ -333,6 +383,53 @@ SDL_Surface* Graph::draw(double* x,double* y) {
         }
     }
     
+    //and finally the y-axis parametric functions
+    lastOutOfRange = true;
+    for (int i = 0;i<yfunctions.size();i++) {
+        Function* f = yfunctions[i];
+        if (!f->isParametric()) {continue;}
+        //we should have 1 value per pixel
+        //however keep into account that we may have a scaled grid
+        double pixelToXValRatio = 1/gridSpacingX;
+        double pixelToYValRatio = 1/gridSpacingY;
+        //to account for rotated grid:
+        double s1,c1 = 0;
+        fastSineCosine(&s1, &c1, gridAngleX);//x axis angle
+        double s2,c2 = 0;
+        fastSineCosine(&s2, &c2, gridAngleY-M_PI/2);//y axis angle
+        double prevY = 0;
+        double prevX = 0;
+        int t = 0;
+        //t increments 1 at a time
+        while (f->inRange(t)) {
+            Point<double> rawPoint = f->parametricEval(t);
+            double finalX = rawPoint.y*c1/pixelToXValRatio-rawPoint.x*s2/pixelToYValRatio;
+            double finalY = rawPoint.y*s1/pixelToXValRatio+rawPoint.x*c2/pixelToYValRatio;
+            finalX+=ox;
+            finalY*=-1;//invert y coord because programming coords start in top not bottom
+            finalY+=oy;
+            if (!lastOutOfRange&&f->isVisible()) {
+                drawLineOnSurface(toReturn, prevX, prevY, finalX, finalY, 0xffff0000);
+            }
+            prevX = finalX;
+            prevY = finalY;
+            lastOutOfRange = false;
+            t++;
+        }
+        //draw all important points of a function!
+        auto importantPoints = f->getImportantPoints();
+        for (int j = 0;j<importantPoints.size();j++) {
+            if (!importantPoints[j]->isVisible()) {continue;}
+            Point<double> rawPoint = f->parametricEval(importantPoints[j]->getPX());
+            double finalX = rawPoint.y*c1/pixelToXValRatio-rawPoint.x*s2/pixelToYValRatio;
+            double finalY = rawPoint.y*s1/pixelToXValRatio+rawPoint.x*c2/pixelToYValRatio;
+            finalX+=ox;
+            finalY*=-1;//invert y coord because programming coords start in top not bottom
+            finalY+=oy;
+            drawCircleOnSurface(toReturn, finalX, finalY, 3, 0xff000099);
+        }
+    }
+    
     return toReturn;
 }
 //updates the Graph so it can smoothly animate things
@@ -344,21 +441,10 @@ void Graph::update() {
                 followups[j]->wait();
                 interpolations.push_back(followups[j]);
             }
-            //delete interpolations[i];
-            //interpolations[i] = NULL;
             interpolations[i]->pause();
         }
     }
     
-    //get rid of trimmed interpolations
-    /*std::vector<Interpolation*> temp = {};
-    for (int i = 0;i<interpolations.size();i++) {
-        if (interpolations[i]!=NULL) {
-            temp.push_back(interpolations[i]);
-        }
-    }
-    
-    interpolations = temp;*/
 }
 
 //add a function to draw
@@ -661,12 +747,22 @@ Interpolation* Interpolation::cloneTo(Interpolation* concernedWith,bool addImmed
 
 Function::Function(internalFunc f) {
     function = f;
+    parametric = false;
 }
 
-Function::Function(internalFunc f,std::function<bool(double,double)> r,std::string n) {
+Function::Function(internalFunc f,internalRange r,std::string n) {
     function = f;
     name = n;
     range = r;
+    parametric = false;
+}
+
+Function::Function(internalFunc f,internalFunc f2,internalRange r,std::string n) {
+    function = f;
+    function2 = f2;
+    name = n;
+    range = r;
+    parametric = true;
 }
 
 double Function::eval(double x) {
@@ -675,9 +771,12 @@ double Function::eval(double x) {
 double Function::operator() (double x) {
     return eval(x);
 }
+Point<double> Function::parametricEval(double x) {
+    return Point<double>(function(x,time,stretchx,stretchy),function2(x,time,stretchx,stretchy));
+}
 
 double Function::inRange(double x) {
-    return range(x,time);
+    return range(x,time,stretchx,stretchy);
 }
 
 std::string Function::getName() {
@@ -690,6 +789,8 @@ void Function::setName(std::string n) {
 Function::Function(Function* a) {
     name = a->name;
     function = a->function;
+    function2 = a->function2;
+    parametric = a->parametric;
     range = a->range;
 }
 
@@ -711,7 +812,8 @@ void Function::saveImage() {
 
 std::string PointOfInterest::getDisplay() {
     //return "On "+functionOn->getName()+"; "+graphOn->getName()+" @("+std::to_string(px)+","+std::to_string((*functionOn)(px))+")";
-    return "("+std::to_string(px)+","+std::to_string((*functionOn)(px))+") @"+functionOn->getName()+";"+graphOn->getName();
+    throw std::runtime_error("Don't use this.");
+    //return "("+std::to_string(px)+","+std::to_string((*functionOn)(px))+") @"+functionOn->getName()+";"+graphOn->getName();
 }
 
 std::string PointOfInterest::getDisplayLocation() {
@@ -719,7 +821,13 @@ std::string PointOfInterest::getDisplayLocation() {
 }
 
 std::string PointOfInterest::getDisplayPoint() {
-    return "("+std::to_string(px)+","+std::to_string((*functionOn)(px))+")";
+    if (functionOn->isParametric()) {
+        auto thePoint = functionOn->parametricEval(px);
+        return "("+std::to_string(thePoint.x)+","+std::to_string(thePoint.y)+")";
+    }
+    else {
+        return "("+std::to_string(px)+","+std::to_string((*functionOn)(px))+")";
+    }
 }
 
 
