@@ -537,6 +537,12 @@ void changeToInString() {
             case 18:
                 ((Popup*)thingForInString)->concernWith(instring);
                 break;
+            case 19:
+                ((Interpolation*)thingForInString)->changeSX(numberFromString(instring));
+                break;
+            case 20:
+                ((Interpolation*)thingForInString)->changeSY(numberFromString(instring));
+                break;
         }
     }
 }

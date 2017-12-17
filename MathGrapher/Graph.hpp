@@ -25,6 +25,7 @@ enum INTERPOLATIONS {
     SMOOTH_GRID_RESIZE_SMART_CENTER,
     SMOOTH_FUNCTION_RUN,
     SMOOTH_FUNCTION_STRETCH,
+    HIGHLIGHT_GRAPH,
     DELAY,
 };
 
@@ -40,6 +41,8 @@ class Interpolation {
         Uint8 type = NULL_INTERPOLATION;
         double px = 0;
         double py = 0;
+        double sx = 0;
+        double sy = 0;
         int timeInterval = 1;//time measured in ticks
         int timeAt = 0;
         int timeStart = 0;
@@ -92,6 +95,16 @@ class Interpolation {
         bool isCanceled() {return canceled;}
         //relates to function
         void relateFunction(Function* f) {relatedFunction = f;}
+        //get sx string
+        std::string getSXDisplay();
+        //get sy string
+        std::string getSYDisplay();
+        //change sx
+        void changeSX(double a) {sx=a;}
+        //change sy
+        void changeSY(double a) {sy=a;}
+        //return true if still working
+        bool isActive() {return timeAt<timeInterval&&!paused;}
 };
 
 struct GraphImage {

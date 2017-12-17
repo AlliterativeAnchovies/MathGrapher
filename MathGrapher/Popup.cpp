@@ -370,6 +370,9 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                             relevantInterpol->getType()==SMOOTH_GRID_RESIZE_STATIC_CENTER) {
                             newID = CREATE_RESIZE_INTERPOLATION;
                         }
+                        else if (relevantInterpol->getType()==HIGHLIGHT_GRAPH) {
+                            newID = CREATE_HIGHLIGHT_INTERPOLATION;
+                        }
                         createPopup(newID, mouseX-150, mouseY)
                             ->concernWith(graphConcerned)
                             ->concernWith(relevantInterpol)
@@ -425,11 +428,13 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                 drawText("Interpolations", 22, px, py, 0xff000000);
                 double cury = py+30;
                 int movesx,movesy,resizesx,resizesy,scalesx,scalesy,rotatesx,rotatesy,originsx,originsy;
+                int highlightx,highlighty;
                 TTF_SizeUTF8((*fontgrab)(16),"Move",&movesx,&movesy);
                 TTF_SizeUTF8((*fontgrab)(16),"Resize",&resizesx,&resizesy);
                 TTF_SizeUTF8((*fontgrab)(16),"Rescale",&scalesx,&scalesy);
                 TTF_SizeUTF8((*fontgrab)(16),"Rotate",&rotatesx,&rotatesy);
                 TTF_SizeUTF8((*fontgrab)(16),"Re-Origin",&originsx,&originsy);
+                TTF_SizeUTF8((*fontgrab)(16),"Highlight",&highlightx,&highlighty);
                 drawTextWithBackground("Move", 16, px+5, cury, 0xff000000, 0xffffcf9e, 0xff000000);
                 if (clicked&&pointInBounds(mouseX, mouseY, px+5, px+5+movesx, cury, cury+movesy)) {
                     createPopup(CREATE_SIMPLE_INTERPOLATION, mouseX, mouseY)
@@ -468,6 +473,15 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                     createPopup(CREATE_SIMPLE_INTERPOLATION, mouseX, mouseY)
                         ->concernWith(graphConcerned)
                         ->concernWith(std::string("Re-Origin"))
+                        ->setUpInterpolation();
+                }
+                
+                cury+=rotatesy+5;
+                drawTextWithBackground("Highlight", 16, px+5, cury, 0xff000000, 0xffffcf9e, 0xff000000);
+                if (clicked&&pointInBounds(mouseX, mouseY, px+5, px+5+highlightx, cury, cury+highlighty)) {
+                    createPopup(CREATE_HIGHLIGHT_INTERPOLATION, mouseX, mouseY)
+                        ->concernWith(graphConcerned)
+                        ->concernWith(std::string("Highlight"))
                         ->setUpInterpolation();
                 }
                 
@@ -801,6 +815,126 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                 
             }
             break;
+        case CREATE_HIGHLIGHT_INTERPOLATION:
+            {
+                drawBorderedRect(px, py, sx, sy, 0xffaaf2aa, 0xff000000);
+                drawText(stringConcerned, 24, px+5, py+5, 0xff000000);
+                std::string beep = (ticks%60<30)?"|":" ";
+                int inputsx = px+10;
+                int inputsy = py+35;
+                int p1xx,  p1yx,  p2xx,  p2yx  ;
+                int p1xx_o,p1yx_o,p2xx_o,p2yx_o;
+                int p1xy,  p1yy,  p2xy,  p2yy;
+                int p1xy_o,p1yy_o,p2xy_o,p2yy_o;
+                int stimex,  stimey,  durationx,  durationy;
+                int stimex_o,stimey_o,durationx_o,durationy_o;
+                int editx,edity;
+                TTF_SizeUTF8((*fontgrab)(16),"Top Left X: ",&p1xx,&p1xy);
+                TTF_SizeUTF8((*fontgrab)(16),"Top Left Y: ",&p1yx,&p1yy);
+                TTF_SizeUTF8((*fontgrab)(16),"Bottom Right X: ",&p2xx,&p2xy);
+                TTF_SizeUTF8((*fontgrab)(16),"Bottom Right Y: ",&p2yx,&p2yy);
+                TTF_SizeUTF8((*fontgrab)(16),"Start Time: ",&stimex,&stimey);
+                TTF_SizeUTF8((*fontgrab)(16),"Duration: ",&durationx,&durationy);
+                TTF_SizeUTF8((*fontgrab)(12),"Edit: ",&editx,&edity);
+                TTF_SizeUTF8((*fontgrab)(16),(interpolationConcerned->getPXDisplay()+((instringswitch==11)?(beep):"")).c_str(),&p1xx_o,&p1xy_o);
+                TTF_SizeUTF8((*fontgrab)(16),(interpolationConcerned->getPYDisplay()+((instringswitch==12)?(beep):"")).c_str(),&p1yx_o,&p1yy_o);
+                TTF_SizeUTF8((*fontgrab)(16),(interpolationConcerned->getSXDisplay()+((instringswitch==19)?(beep):"")).c_str(),&p2xx_o,&p2xy_o);
+                TTF_SizeUTF8((*fontgrab)(16),(interpolationConcerned->getSYDisplay()+((instringswitch==20)?(beep):"")).c_str(),&p2yx_o,&p2yy_o);
+                TTF_SizeUTF8((*fontgrab)(16),(interpolationConcerned->getStartDisplay()+((instringswitch==13)?(beep):"")).c_str(),&stimex_o,&stimey_o);
+                TTF_SizeUTF8((*fontgrab)(16),(interpolationConcerned->getDurationDisplay()+((instringswitch==14)?(beep):"")).c_str(),&durationx_o,&durationy_o);
+                drawText("Top Left X: ", 16, inputsx, inputsy, 0xff000000);
+                drawText((interpolationConcerned->getPXDisplay()+((instringswitch==11)?(beep):"")), 16, inputsx+p1xx+5, inputsy, 0xff000000);
+                drawTextWithBackground("Edit", 12, inputsx+p1xx+p1xx_o+10, inputsy, 0xff000000, 0xffffcf9e, 0xff000000);
+                if (clicked && pointInBounds(mouseX, mouseY, inputsx+p1xx+p1xx_o+10, inputsx+p1xx+p1xx_o+10+editx, inputsy, inputsy+edity)) {
+                        clicked = false;
+                        toReturn = 0x01;
+                        instring = interpolationConcerned->getPXDisplay();
+                        thingForInString = interpolationConcerned;
+                        instringswitch = 11;
+                }
+                
+                inputsy+=20;
+                drawText("Top Left Y: ", 16, inputsx, inputsy, 0xff000000);
+                drawText((interpolationConcerned->getPYDisplay()+((instringswitch==12)?(beep):"")), 16, inputsx+p1yx+5, inputsy, 0xff000000);
+                drawTextWithBackground("Edit", 12, inputsx+p1yx+p1yx_o+10, inputsy, 0xff000000, 0xffffcf9e, 0xff000000);
+                if (clicked && pointInBounds(mouseX, mouseY, inputsx+p1yx+p1yx_o+10, inputsx+p1yx+p1yx_o+10+editx, inputsy, inputsy+edity)) {
+                        clicked = false;
+                        toReturn = 0x01;
+                        instring = interpolationConcerned->getPYDisplay();
+                        thingForInString = interpolationConcerned;
+                        instringswitch = 12;
+                }
+                
+                
+                inputsy+=20;
+                drawText("Bottom Right X", 16, inputsx, inputsy, 0xff000000);
+                drawText((interpolationConcerned->getSXDisplay()+((instringswitch==19)?(beep):"")), 16, inputsx+p2xx+5, inputsy, 0xff000000);
+                drawTextWithBackground("Edit", 12, inputsx+p2xx+p2xx_o+10, inputsy, 0xff000000, 0xffffcf9e, 0xff000000);
+                if (clicked && pointInBounds(mouseX, mouseY, inputsx+p2xx+p2xx_o+10, inputsx+p2xx+p2xx_o+10+editx, inputsy, inputsy+edity)) {
+                        clicked = false;
+                        toReturn = 0x01;
+                        instring = interpolationConcerned->getSXDisplay();
+                        thingForInString = interpolationConcerned;
+                        instringswitch = 19;
+                }
+                
+                inputsy+=20;
+                drawText("Bottom Right Y: ", 16, inputsx, inputsy, 0xff000000);
+                drawText((interpolationConcerned->getSYDisplay()+((instringswitch==20)?(beep):"")), 16, inputsx+p2yx+5, inputsy, 0xff000000);
+                drawTextWithBackground("Edit", 12, inputsx+p2yx+p2yx_o+10, inputsy, 0xff000000, 0xffffcf9e, 0xff000000);
+                if (clicked && pointInBounds(mouseX, mouseY, inputsx+p2yx+p2yx_o+10, inputsx+p2yx+p2yx_o+10+editx, inputsy, inputsy+edity)) {
+                        clicked = false;
+                        toReturn = 0x01;
+                        instring = interpolationConcerned->getSYDisplay();
+                        thingForInString = interpolationConcerned;
+                        instringswitch = 20;
+                }
+                
+                inputsy+=20;
+                drawText("Start Time: ", 16, inputsx, inputsy, 0xff000000);
+                drawText((interpolationConcerned->getStartDisplay()+((instringswitch==13)?(beep):"")), 16, inputsx+stimex+5, inputsy, 0xff000000);
+                drawTextWithBackground("Edit", 12, inputsx+stimex+stimex_o+10, inputsy, 0xff000000, 0xffffcf9e, 0xff000000);
+                if (clicked && pointInBounds(mouseX, mouseY, inputsx+stimex+stimex_o+10, inputsx+stimex+stimex_o+10+editx, inputsy, inputsy+edity)) {
+                        clicked = false;
+                        toReturn = 0x01;
+                        instring = interpolationConcerned->getStartDisplay();
+                        thingForInString = interpolationConcerned;
+                        instringswitch = 13;
+                }
+                
+                inputsy+=20;
+                drawText("Duration: ", 16, inputsx, inputsy, 0xff000000);
+                drawText((interpolationConcerned->getDurationDisplay()+((instringswitch==14)?(beep):"")), 16, inputsx+durationx+5, inputsy, 0xff000000);
+                drawTextWithBackground("Edit", 12, inputsx+durationx+durationx_o+10, inputsy, 0xff000000, 0xffffcf9e, 0xff000000);
+                if (clicked && pointInBounds(mouseX, mouseY, inputsx+durationx+durationx_o+10, inputsx+durationx+durationx_o+10+editx, inputsy, inputsy+edity)) {
+                        clicked = false;
+                        toReturn = 0x01;
+                        instring = interpolationConcerned->getDurationDisplay();
+                        thingForInString = interpolationConcerned;
+                        instringswitch = 14;
+                }
+                
+                int addx,addy;
+                TTF_SizeUTF8((*fontgrab)(16)," Add ",&addx,&addy);
+                drawTextWithBackground(" Add ", 16, px+sx-40, py+5, 0xff000000, 0xffffcf9e, 0xff000000);
+                if (clicked&&pointInBounds(mouseX, mouseY, px+sx-40, px+sx-40+addx, py+5, py+5+addy)) {
+                    clicked = false;
+                    toReturn = 0x02;
+                    if (popupConcerned==NULL) {
+                        graphConcerned->addInterpolation(interpolationConcerned);
+                        interpolationConcerned->relateFunction(functionConcerned);
+                        //if not NULL, then the interpolation already exists,
+                        //shouldn't add it twice!
+                    }
+                    else {
+                        popupConcerned->unlock();
+                    }
+                    instring = "";
+                    thingForInString = NULL;
+                    instringswitch = -1;
+                }
+            }
+            break;
     }
     return toReturn;
 }
@@ -859,7 +993,8 @@ bool isQuickCloser(Uint8 popup_id) {
            popup_id==CREATE_RESIZE_INTERPOLATION||
            popup_id==EDIT_FUNCTION_POPUP||
            popup_id==CHOOSE_FUNCTION_INTERPOLATION||
-           popup_id==CREATE_POINT_OF_INTEREST;
+           popup_id==CREATE_POINT_OF_INTEREST||
+           popup_id==CREATE_HIGHLIGHT_INTERPOLATION;
 }
 
 bool isMajor(Uint8 popup_id) {
@@ -913,6 +1048,10 @@ Popup* createPopup(Uint8 popup_id,double x,double y) {
             sx = 250;
             sy = 80;
             break;
+        case CREATE_HIGHLIGHT_INTERPOLATION:
+            sx = 200;
+            sy = 170;
+            break;
     }
     
     Popup* blargh = new Popup(popup_id,x,y,sx,sy);
@@ -949,6 +1088,9 @@ void Popup::setUpInterpolation() {
     }
     else if (stringConcerned=="Run") {
         interpolationConcerned = new Interpolation(SMOOTH_FUNCTION_RUN,0,0,60,graphConcerned);
+    }
+    else if (stringConcerned=="Highlight") {
+        interpolationConcerned = new Interpolation(HIGHLIGHT_GRAPH,0,0,60,graphConcerned);
     }
     else {
         throw std::runtime_error("Invalid Interpolation To Set Up");

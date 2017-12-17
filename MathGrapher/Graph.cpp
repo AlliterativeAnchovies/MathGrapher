@@ -170,8 +170,10 @@ SDL_Surface* Graph::draw(double* x,double* y) {
     //first lets do the "x" grid
     double sinex,cosinex = 0;
     fastSineCosine(&sinex, &cosinex, gridAngleY);
-    double deltay = sinex*gridSpacingX;
-    double deltax = cosinex*gridSpacingX;
+    //double deltay = sinex*gridSpacingX;
+    //double deltax = cosinex*gridSpacingX;
+    double deltax = cosinex*gridSpacingX+sinex*gridSpacingY;
+    double deltay = -sinex*gridSpacingX+cosinex*gridSpacingY;
     double startingx = centerx;
     double startingy = centery;
     double maxAmountOfLines = (gridSpacingX<1)?0:5*sx/gridSpacingX;
@@ -196,8 +198,10 @@ SDL_Surface* Graph::draw(double* x,double* y) {
     //now lets do the "y" grid
     double siney,cosiney = 0;
     fastSineCosine(&siney, &cosiney, gridAngleX);
-    deltay = siney*gridSpacingY;
-    deltax = cosiney*gridSpacingY;
+    //deltay = siney*gridSpacingY;
+    //deltax = cosiney*gridSpacingY;
+    deltax = cosiney*gridSpacingX+siney*gridSpacingY;
+    deltay = -siney*gridSpacingX+cosiney*gridSpacingY;
     startingx = centerx;
     startingy = centery;
     maxAmountOfLines = (gridSpacingY<1)?0:5*sy/gridSpacingY;
@@ -226,19 +230,19 @@ SDL_Surface* Graph::draw(double* x,double* y) {
     }
     
     //now draw the functions
+    //we should have 1 value per pixel
+    //however keep into account that we may have a scaled grid
+    double pixelToXValRatio = 1/gridSpacingX;
+    double pixelToYValRatio = 1/gridSpacingY;
+    //to account for rotated grid:
+    double s1,c1 = 0;
+    fastSineCosine(&s1, &c1, gridAngleY);//x axis angle
+    double s2,c2 = 0;
+    fastSineCosine(&s2, &c2, gridAngleX-M_PI/2);//y axis angle
     bool lastOutOfRange = true;
     for (int i = 0;i<functions.size();i++) {
         Function* f = functions[i];
         if (f->isParametric()) {continue;}
-        //we should have 1 value per pixel
-        //however keep into account that we may have a scaled grid
-        double pixelToXValRatio = 1/gridSpacingX;
-        double pixelToYValRatio = 1/gridSpacingY;
-        //to account for rotated grid:
-        double s1,c1 = 0;
-        fastSineCosine(&s1, &c1, gridAngleY);//x axis angle
-        double s2,c2 = 0;
-        fastSineCosine(&s2, &c2, gridAngleX-M_PI/2);//y axis angle
         double prevY = 0;
         double prevX = 0;
         for (int j = 0;j<sx+1;j++) {
@@ -285,15 +289,6 @@ SDL_Surface* Graph::draw(double* x,double* y) {
     for (int i = 0;i<functions.size();i++) {
         Function* f = functions[i];
         if (!f->isParametric()) {continue;}
-        //we should have 1 value per pixel
-        //however keep into account that we may have a scaled grid
-        double pixelToXValRatio = 1/gridSpacingX;
-        double pixelToYValRatio = 1/gridSpacingY;
-        //to account for rotated grid:
-        double s1,c1 = 0;
-        fastSineCosine(&s1, &c1, gridAngleX);//x axis angle
-        double s2,c2 = 0;
-        fastSineCosine(&s2, &c2, gridAngleY-M_PI/2);//y axis angle
         double prevY = 0;
         double prevX = 0;
         int t = 0;
@@ -329,19 +324,18 @@ SDL_Surface* Graph::draw(double* x,double* y) {
     
     
     //and the y-axis functions
+    
+    //we should have 1 value per pixel
+    //however keep into account that we may have a scaled grid
+    pixelToXValRatio = 1/gridSpacingX;
+    pixelToYValRatio = 1/gridSpacingY;
+    //to account for rotated grid:
+    fastSineCosine(&s1, &c1, gridAngleX);//x axis angle
+    fastSineCosine(&s2, &c2, gridAngleY-M_PI/2);//y axis angle
     lastOutOfRange = true;
     for (int i = 0;i<yfunctions.size();i++) {
         Function* f = yfunctions[i];
         if (f->isParametric()) {continue;}
-        //we should have 1 value per pixel
-        //however keep into account that we may have a scaled grid
-        double pixelToXValRatio = 1/gridSpacingX;
-        double pixelToYValRatio = 1/gridSpacingY;
-        //to account for rotated grid:
-        double s1,c1 = 0;
-        fastSineCosine(&s1, &c1, gridAngleX);//x axis angle
-        double s2,c2 = 0;
-        fastSineCosine(&s2, &c2, gridAngleY-M_PI/2);//y axis angle
         double prevY = 0;
         double prevX = 0;
         for (int j = 0;j<sy+1;j++) {
@@ -388,15 +382,6 @@ SDL_Surface* Graph::draw(double* x,double* y) {
     for (int i = 0;i<yfunctions.size();i++) {
         Function* f = yfunctions[i];
         if (!f->isParametric()) {continue;}
-        //we should have 1 value per pixel
-        //however keep into account that we may have a scaled grid
-        double pixelToXValRatio = 1/gridSpacingX;
-        double pixelToYValRatio = 1/gridSpacingY;
-        //to account for rotated grid:
-        double s1,c1 = 0;
-        fastSineCosine(&s1, &c1, gridAngleX);//x axis angle
-        double s2,c2 = 0;
-        fastSineCosine(&s2, &c2, gridAngleY-M_PI/2);//y axis angle
         double prevY = 0;
         double prevX = 0;
         int t = 0;
@@ -428,6 +413,47 @@ SDL_Surface* Graph::draw(double* x,double* y) {
             finalY+=oy;
             drawCircleOnSurface(toReturn, finalX, finalY, 3, 0xff000099);
         }
+    }
+    
+    //highlights!
+    pixelToXValRatio = 1/gridSpacingX;
+    pixelToYValRatio = 1/gridSpacingY;
+    //to account for rotated grid:
+    fastSineCosine(&s1, &c1, gridAngleY);//x axis angle
+    fastSineCosine(&s2, &c2, gridAngleX-M_PI/2);//y axis angle
+    for (int i = 0;i<interpolations.size();i++) {
+        Interpolation* intpol = interpolations[i];
+        if (intpol->getType()!=HIGHLIGHT_GRAPH) {continue;}
+        if (!intpol->isActive()) {continue;}
+        int rawX1 = numberFromString(intpol->getPXDisplay());//top left
+        int rawY1 = numberFromString(intpol->getPYDisplay());
+        int rawX2 = numberFromString(intpol->getSXDisplay());//bottom right
+        int rawY2 = numberFromString(intpol->getSYDisplay());
+        int rawX3 = numberFromString(intpol->getSXDisplay());//top right
+        int rawY3 = numberFromString(intpol->getPYDisplay());
+        int rawX4 = numberFromString(intpol->getPXDisplay());//bottom left
+        int rawY4 = numberFromString(intpol->getSYDisplay());
+        double finalX1 = rawX1*c1/pixelToXValRatio-rawY1*s2/pixelToYValRatio;
+        double finalY1 = rawX1*s1/pixelToXValRatio+rawY1*c2/pixelToYValRatio;
+        double finalX2 = rawX2*c1/pixelToXValRatio-rawY2*s2/pixelToYValRatio;
+        double finalY2 = rawX2*s1/pixelToXValRatio+rawY2*c2/pixelToYValRatio;
+        double finalX3 = rawX3*c1/pixelToXValRatio-rawY3*s2/pixelToYValRatio;
+        double finalY3 = rawX3*s1/pixelToXValRatio+rawY3*c2/pixelToYValRatio;
+        double finalX4 = rawX4*c1/pixelToXValRatio-rawY4*s2/pixelToYValRatio;
+        double finalY4 = rawX4*s1/pixelToXValRatio+rawY4*c2/pixelToYValRatio;
+        finalX1+=ox;finalY1*=-1;finalY1+=oy;
+        finalX2+=ox;finalY2*=-1;finalY2+=oy;
+        finalX3+=ox;finalY3*=-1;finalY3+=oy;
+        finalX4+=ox;finalY4*=-1;finalY4+=oy;
+        /*
+        drawCircleOnSurface(toReturn, finalX1, finalY1, 3, 0xff000099);
+        drawCircleOnSurface(toReturn, finalX1, finalY2, 3, 0xff000099);
+        drawCircleOnSurface(toReturn, finalX2, finalY1, 3, 0xff000099);
+        drawCircleOnSurface(toReturn, finalX2, finalY2, 3, 0xff000099);*/
+        Point<double> topLeft = Point<double>(finalX1,finalY1);
+        Point<double> direc1  = Point<double>(finalX3-finalX1,finalY3-finalY1);
+        Point<double> direc2  = Point<double>(finalX4-finalX1,finalY4-finalY1);
+        drawParallelogramOnSurface(toReturn, topLeft, direc1, direc2, 0xff000000);
     }
     
     return toReturn;
@@ -611,6 +637,9 @@ bool Interpolation::update() {
         case SMOOTH_FUNCTION_RUN:
             relatedFunction->run(px/timeInterval);
             break;
+        case HIGHLIGHT_GRAPH:
+            //do nothing! handled in Graph
+            break;
         case DELAY:
             break;
     }
@@ -625,22 +654,23 @@ std::string Interpolation::getDisplay() {
         case NULL_INTERPOLATION:
             throw std::runtime_error("Empty Interpolation Was Displayed");
         case SMOOTH_TRANSLATE:
-            return "Translate by ("+std::to_string((int)px)+","+std::to_string((int)py)+")";
+            return "Translate by ("+getPXDisplay()+","+getPYDisplay()+")";
         case SMOOTH_ORIGIN_TRANSLATE:
-            return "Move Origin by ("+std::to_string((int)px)+","+std::to_string((int)py)+")";
+            return "Move Origin by ("+getPXDisplay()+","+getPYDisplay()+")";
         case SMOOTH_GRID_ROTATE:
-            //x and y flipped on purpose, because programmatically y theta is x axis theta & vice versa
-            return "Rotate Axes by ("+std::to_string((int)(py*180/M_PI))+","+std::to_string((int)(px*180/M_PI))+")";
+            return "Rotate Axes by ("+getPXDisplay()+","+getPYDisplay()+")";
         case SMOOTH_GRID_RESIZE_STATIC_CENTER:
-            return "Resize Grid by ("+std::to_string((int)px)+","+std::to_string((int)py)+") [static]";
+            return "Resize Grid by ("+getPXDisplay()+","+getPYDisplay()+") [static]";
         case SMOOTH_GRID_RESIZE_SMART_CENTER:
-            return "Resize Grid by ("+std::to_string((int)px)+","+std::to_string((int)py)+") [smart]";
+            return "Resize Grid by ("+getPXDisplay()+","+getPYDisplay()+") [smart]";
         case SMOOTH_GRID_SCALE:
-            return "Scale Grid by ("+std::to_string((int)px)+","+std::to_string((int)py)+")";
+            return "Scale Grid by ("+getPXDisplay()+","+getPYDisplay()+")";
         case SMOOTH_FUNCTION_STRETCH:
-            return "Stretch Function by ("+std::to_string(px)+","+std::to_string(py)+")";
+            return "Stretch Function by ("+getPXDisplay()+","+getPYDisplay()+")";
         case SMOOTH_FUNCTION_RUN:
-            return "Run Function by "+std::to_string((int)px);
+            return "Run Function by "+getPXDisplay();
+        case HIGHLIGHT_GRAPH:
+            return "Highlight ("+getPXDisplay()+","+getPYDisplay()+") to ("+getSXDisplay()+","+getSYDisplay()+")";
         case DELAY:
             return "-DELAY-";
     }
@@ -655,6 +685,14 @@ std::string Interpolation::getPXDisplay() {
 std::string Interpolation::getPYDisplay() {
     if (type==SMOOTH_GRID_ROTATE) {return std::to_string((int)(px*180/M_PI));}
     return std::to_string((int)py);
+}
+
+std::string Interpolation::getSXDisplay() {
+    return std::to_string((int)sx);
+}
+
+std::string Interpolation::getSYDisplay() {
+    return std::to_string((int)sy);
 }
 
 std::string Interpolation::getStartDisplay() {
@@ -855,6 +893,8 @@ Uint32 getColorOfInterpolation(Interpolation* i) {
             return 0xffff8800;
         case SMOOTH_FUNCTION_STRETCH:
             return 0xff0088ff;
+        case HIGHLIGHT_GRAPH:
+            return 0xffffff00;
     }
     throw std::runtime_error("ERROR! Interpolation has no color.");
 }
@@ -876,6 +916,8 @@ std::string stringifyID(Uint8 id) {
             return "Run";
         case SMOOTH_FUNCTION_STRETCH:
             return "Stretch";
+        case HIGHLIGHT_GRAPH:
+            return "Highlight";
     }
     throw std::runtime_error("ERROR NO SUCH INTERPOLATION TO STRINGIFY");
 }

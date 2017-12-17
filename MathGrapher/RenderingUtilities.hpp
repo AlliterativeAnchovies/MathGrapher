@@ -125,12 +125,56 @@ template<typename T> class Point {
             x = inx;
             y = iny;
         }
+        T magnitude() {return sqrt(x*x+y*y);}
+        Point<T> norm() {return *this/magnitude();};
 };
+template<typename T> Point<T> operator-(Point<T> a,Point<T> b) {
+    return Point<T>(b.x-a.x,b.y-a.y);
+}
+template<typename T> Point<T> operator+(Point<T> a,Point<T> b) {
+    return Point<T>(b.x+a.x,b.y+a.y);
+}
+template<typename T> Point<T> operator*(Point<T> a,T b) {
+    return Point<T>(a.x*b,a.y*b);
+}
+template<typename T> Point<T> operator*(T b,Point<T> a) {
+    return Point<T>(a.x*b,a.y*b);
+}
+template<typename T> Point<T> operator/(Point<T> a,T b) {
+    return Point<T>(a.x/b,a.y/b);
+}
+template<typename T> void operator+=(Point<T> a,Point<T> b) {
+    a.x+=b.x;
+    a.y+=b.y;
+}
+template<typename T> void operator-=(Point<T> a,Point<T> b) {
+    a.x-=b.x;
+    a.y-=b.y;
+}
+template<typename T> void operator*=(Point<T> a,T b) {
+    a.x*=b;
+    a.y*=b;
+}
+template<typename T> void operator/=(Point<T> a,T b) {
+    a.x*=b;
+    a.y*=b;
+}
+
 
 template<typename A,typename B> struct Wrap2 {
     A x;
     B y;
 };
+
+template<typename T> void drawParallelogramOnSurface(SDL_Surface* theSurface,Point<T> topleft,Point<T> direc1,Point<T> direc2,Uint32 color) {
+    
+    Point<T> p = topleft;
+    
+    while ((p-topleft).magnitude()<direc1.magnitude()) {
+        drawLineOnSurface(theSurface, p.x, p.y, (p+direc1).x, (p+direc1).y, color);
+        p=p+direc2.norm();
+    }
+}
 
 
 #endif /* RenderingUtilities_hpp */
