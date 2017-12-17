@@ -445,17 +445,14 @@ SDL_Surface* Graph::draw(double* x,double* y) {
         finalX2+=ox;finalY2*=-1;finalY2+=oy;
         finalX3+=ox;finalY3*=-1;finalY3+=oy;
         finalX4+=ox;finalY4*=-1;finalY4+=oy;
-        /*
-        drawCircleOnSurface(toReturn, finalX1, finalY1, 3, 0xff000099);
-        drawCircleOnSurface(toReturn, finalX1, finalY2, 3, 0xff000099);
-        drawCircleOnSurface(toReturn, finalX2, finalY1, 3, 0xff000099);
-        drawCircleOnSurface(toReturn, finalX2, finalY2, 3, 0xff000099);*/
         Point<double> topLeft = Point<double>(finalX1,finalY1);
         Point<double> direc1  = Point<double>(finalX3-finalX1,finalY3-finalY1);
         Point<double> direc2  = Point<double>(finalX4-finalX1,finalY4-finalY1);
-        drawParallelogramOnSurface(toReturn, topLeft, direc1, direc2, 0xff000000);
+        SDL_Surface* parasurf = createBlankSurfaceWithSize(sx+1, sy+1);
+        drawParallelogramOnSurface(parasurf, topLeft, direc1, direc2, 0x990000ff);
+        SDL_BlitSurface(parasurf,NULL,toReturn,NULL);
+        SDL_FreeSurface(parasurf);
     }
-    
     return toReturn;
 }
 //updates the Graph so it can smoothly animate things

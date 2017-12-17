@@ -54,6 +54,8 @@ class Interpolation {
         Function* relatedFunction = NULL;
         std::vector<Interpolation*> followups = {};//when interpolation is complete, automatically call these interpolations
     public:
+        std::string pxstringforedits = "0";
+        std::string pystringforedits = "0";
         bool update(); //returns true if completed interpolation
         void pause();
         void unpause();

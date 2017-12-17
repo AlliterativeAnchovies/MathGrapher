@@ -557,13 +557,15 @@ void doInStringCalcs(Uint8 keypressed) {
                 instring = "";
                 break;
             case SDLK_PERIOD:
-                if (instringswitch==16||instringswitch==17||instringswitch==18) {
+                if (instringswitch==16||instringswitch==17||instringswitch==18||
+                    instringswitch==11||instringswitch==12) {
                     instring+=".";
                     changeToInString();
                 }
                 break;
             case SDLK_MINUS:
-                if (instringswitch==16||instringswitch==17||instringswitch==18) {
+                if (instringswitch==16||instringswitch==17||instringswitch==18||
+                    instringswitch==11||instringswitch==12) {
                     instring+="-";
                     changeToInString();
                 }

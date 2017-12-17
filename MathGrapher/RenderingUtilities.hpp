@@ -169,10 +169,11 @@ template<typename A,typename B> struct Wrap2 {
 template<typename T> void drawParallelogramOnSurface(SDL_Surface* theSurface,Point<T> topleft,Point<T> direc1,Point<T> direc2,Uint32 color) {
     
     Point<T> p = topleft;
-    
-    while ((p-topleft).magnitude()<direc1.magnitude()) {
+    Point<T> norm = direc2.norm();
+    T mag = direc2.magnitude();
+    while ((p-topleft).magnitude()<mag) {
         drawLineOnSurface(theSurface, p.x, p.y, (p+direc1).x, (p+direc1).y, color);
-        p=p+direc2.norm();
+        p=p+norm;
     }
 }
 
