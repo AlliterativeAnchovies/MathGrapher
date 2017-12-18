@@ -15,6 +15,11 @@
 #include <vector>
 #include "RenderingUtilities.hpp"
 
+//Some functions that are needed to be declared here to interface well with main.cpp
+//they are defined in main
+void addGraph(double x,double y);
+void addSlider(double x,double y);
+
 enum INTERPOLATIONS {
     NULL_INTERPOLATION,
     SMOOTH_TRANSLATE,
@@ -312,6 +317,28 @@ class PointOfInterest {
         std::string getDisplayLocation();
         std::string getDisplayPoint();
         double getPX() {return px;}
+};
+
+class Slider {
+    private:
+        double px = 0;
+        double py = 0;
+        double size = 0;
+        double angle = 0;
+        std::string name = "-SLIDER-";
+        bool highlighted = false;
+        double storedsx = 0;
+        double storedsy = 0;
+        Function* incrementFunction = NULL;
+        int tickAmount = 4;
+    public:
+        //creates default slider at (x,y) with size s
+        Slider(double x,double y,double s,std::string n);
+        //draws slider and stores (px,py) in (x,y)
+        SDL_Surface* draw(double* x,double* y);
+        //tags for highlightion
+        void highlight() {highlighted = true;}
+        bool clickedIn(double x,double y);
 };
 
 Uint32 getColorOfInterpolation(Interpolation* i);

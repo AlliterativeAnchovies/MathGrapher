@@ -41,6 +41,15 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                 if (clicked&&pointInBounds(mouseX, mouseY, px, px+sx, py, py+sy)) {
                     toReturn = 0x01;
                 }
+                int sliderw,sliderh;
+                TTF_SizeUTF8((*fontgrab)(20), " Slider ", &sliderw, &sliderh);
+                drawTextWithBackground(" Slider ", 20, px+5+w+5, py+35, 0xff000000, 0xffffcf9e, 0xff000000);
+                if (clicked&&pointInBounds(mouseX, mouseY, px+5+w+5, px+5+w+5+sliderw, py+35, py+35+sliderh)) {
+                    //add slider!
+                    addSlider(px, py);
+                    clicked  = false;
+                    toReturn = 0x02;
+                }
             }
             break;
         case EDIT_GRAPH_POPUP:

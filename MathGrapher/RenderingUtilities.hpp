@@ -128,8 +128,11 @@ template<typename T> class Point {
         T magnitude() {return sqrt(x*x+y*y);}
         Point<T> norm() {return *this/magnitude();};
 };
+template<typename T> Point<T> normalTo(Point<T> a) {
+    return Point<T>(-a.y,a.x);
+}
 template<typename T> Point<T> operator-(Point<T> a,Point<T> b) {
-    return Point<T>(b.x-a.x,b.y-a.y);
+    return Point<T>(a.x-b.x,a.y-b.y);
 }
 template<typename T> Point<T> operator+(Point<T> a,Point<T> b) {
     return Point<T>(b.x+a.x,b.y+a.y);

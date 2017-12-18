@@ -14,9 +14,6 @@
 #include "Graph.hpp"
 #include "Functions.hpp"
 
-//Some functions that are needed to be declared here to interface well with main.cpp
-//they are defined in main
-void addGraph(double x,double y);
 
 
 enum POPUP_IDS {

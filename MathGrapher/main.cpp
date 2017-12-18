@@ -36,11 +36,16 @@ Font* fontgrab=NULL;
 //Graphs to draw
 std::vector<Graph*> graphs = {};
 
+//Sliders to draw
+std::vector<Slider*> sliders = {};
+
 //Popups to draw
 std::vector<Popup*> popups = {};
 
 //Total graphs ever added
 int TOTAL_GRAPHS = 0;
+//Total sliders
+int TOTAL_SLIDERS = 0;
 
 //Tick counter
 int ticks = 0;
@@ -49,12 +54,14 @@ int ticks = 0;
 void close();
 bool loadMedia();
 void drawGraph(Graph* g);
+void drawSlider(Slider* s);
 SDL_Event e;
 void doInStringCalcs(Uint8 keypressed);
 void changeToInString();
 
 //this is the real "main" loop
 std::vector<Graph*> selectedGraphs = {};
+std::vector<Slider*> selectedSliders = {};
 bool CAPS_LOCK = false;
 bool runningVideo = false;
 bool spacePressed = false;
@@ -139,29 +146,54 @@ bool controlFlow() {
     
     for (Graph* g : selectedGraphs) {g->highlight();}
     for (int i = 0;i<graphs.size();i++) {
-            if (leftMouseReleased&&!overPopup&&graphs[i]->clickedIn(mouseX,mouseY)) {
-                if (!shiftClicked) {
-                    selectedGraphs = {graphs[i]};
+        if (leftMouseReleased&&!overPopup&&graphs[i]->clickedIn(mouseX,mouseY)) {
+            if (!shiftClicked) {
+                selectedGraphs = {graphs[i]};
+            }
+            else {
+                bool isInSelectedGraphs = foldr([](bool a,bool b){return a||b;},map([&](Graph* g){return g==graphs[i];}, selectedGraphs),false);
+                if (!isInSelectedGraphs) {
+                    selectedGraphs.push_back(graphs[i]);
                 }
                 else {
-                    bool isInSelectedGraphs = foldr([](bool a,bool b){return a||b;},map([&](Graph* g){return g==graphs[i];}, selectedGraphs),false);
-                    if (!isInSelectedGraphs) {
-                        selectedGraphs.push_back(graphs[i]);
-                    }
-                    else {
-                        typeof(selectedGraphs) newselects = {};
-                        for (Graph* g : selectedGraphs) {
-                            if (g!=graphs[i]) {
-                                newselects.push_back(g);
-                            }
+                    typeof(selectedGraphs) newselects = {};
+                    for (Graph* g : selectedGraphs) {
+                        if (g!=graphs[i]) {
+                            newselects.push_back(g);
                         }
-                        selectedGraphs = newselects;
                     }
+                    selectedGraphs = newselects;
                 }
-                leftMouseReleased = false;
             }
-            drawGraph(graphs[i]);
+            leftMouseReleased = false;
         }
+        drawGraph(graphs[i]);
+    }
+    for (Slider* s : selectedSliders) {s->highlight();}
+    for (int i = 0;i<sliders.size();i++) {
+        if (leftMouseReleased&&!overPopup&&sliders[i]->clickedIn(mouseX,mouseY)) {
+            if (!shiftClicked) {
+                selectedSliders = {sliders[i]};
+            }
+            else {
+                bool isSelected = foldr([](bool a,bool b){return a||b;},map([&](Slider* s){return s==sliders[i];}, selectedSliders),false);
+                if (!isSelected) {
+                    selectedSliders.push_back(sliders[i]);
+                }
+                else {
+                    typeof(selectedSliders) newselects = {};
+                    for (Slider* s : selectedSliders) {
+                        if (s!=sliders[i]) {
+                            newselects.push_back(s);
+                        }
+                    }
+                    selectedSliders = newselects;
+                }
+            }
+            leftMouseReleased = false;
+        }
+        drawSlider(sliders[i]);
+    }
     
     //draw control bar
     double controlBarY = SCREEN_HEIGHT-100;
@@ -455,7 +487,22 @@ void drawGraph(Graph* g) {
     double xdraw,ydraw = 0;
     SDL_Surface* tempSurf = g->draw(&xdraw, &ydraw);
     if (xdraw<0||xdraw>=SCREEN_WIDTH||ydraw<0||ydraw>=SCREEN_HEIGHT) {
-        return; //don't draw if offscreen (otherwise it'll crash)
+        return; //don't draw if offscreen (otherwise it'll crash, I think)
+        //TODO: Draw partially on-screen things
+        //pretty easy, just got to mess with the rect its blitting from (don't
+        //grab the whole image).  But I couldn't be bothered yet...
+    }
+    SDL_Texture* tempTexture = SDL_CreateTextureFromSurface(gRenderer,tempSurf);
+    drawGraphic(xdraw, ydraw, tempSurf->w, tempSurf->h, tempTexture);
+    SDL_FreeSurface(tempSurf);
+    SDL_DestroyTexture(tempTexture);
+}
+
+void drawSlider(Slider* s) {
+    double xdraw,ydraw = 0;
+    SDL_Surface* tempSurf = s->draw(&xdraw, &ydraw);
+    if (xdraw<0||xdraw>=SCREEN_WIDTH||ydraw<0||ydraw>=SCREEN_HEIGHT) {
+        return; //don't draw if offscreen (otherwise it'll crash, I think)
         //TODO: Draw partially on-screen things
         //pretty easy, just got to mess with the rect its blitting from (don't
         //grab the whole image).  But I couldn't be bothered yet...
@@ -469,6 +516,11 @@ void drawGraph(Graph* g) {
 void addGraph(double x,double y) {
     graphs.push_back(new Graph(x,y,100,100,"Graph "+std::to_string(TOTAL_GRAPHS)));
     TOTAL_GRAPHS++;
+}
+
+void addSlider(double x,double y) {
+    sliders.push_back(new Slider(x,y,100,"Slider "+std::to_string(TOTAL_SLIDERS)));
+    TOTAL_SLIDERS++;
 }
 
 

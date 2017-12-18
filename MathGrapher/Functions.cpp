@@ -18,7 +18,6 @@ bool tangentRange(double in) {
     return (rounded>5&&rounded<85);
 }
 
-
 void initBuiltins() {
     builtins = {
         //standard functions
@@ -26,6 +25,10 @@ void initBuiltins() {
             new Function([](double x,double t,double sx,double sy){return sx*(x+t/60)/sy;},
             [](double x,double t,double sx,double sy){return true;},
             "x")},
+        (FuncWrap){"Parabola",
+            new Function([](double x,double t,double sx,double sy){return pow(sx*(x+t/60),2)/sy;},
+            [](double x,double t,double sx,double sy){return true;},
+            "x^2")},
         (FuncWrap){"Sine",
             new Function([](double x,double t,double sx,double sy){return sin(sx*(x+t/60))/sy;},
             [](double x,double t,double sx,double sy){return true;},
