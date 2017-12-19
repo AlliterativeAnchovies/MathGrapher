@@ -28,7 +28,9 @@ enum POPUP_IDS {
     CHOOSE_FUNCTION_INTERPOLATION,
     CREATE_FUNCTION_RUN_INTERPOLATION,
     CREATE_POINT_OF_INTEREST,
-    CREATE_HIGHLIGHT_INTERPOLATION
+    CREATE_HIGHLIGHT_INTERPOLATION,
+    EDIT_SLIDER_POPUP,
+    CHOOSE_POINT_CONCERNED_FOR_LINKING_POPUP
 };
 
 const bool X_AXIS = true;
@@ -47,6 +49,7 @@ class Popup {
         Interpolation* interpolationConcerned = NULL;
         Popup* popupConcerned = NULL;
         Function* functionConcerned = NULL;
+        Slider* sliderConcerned = NULL;
         bool isNewborn = true;
         bool successfulRaycast = false;
         bool locked = false;
@@ -62,6 +65,7 @@ class Popup {
         Popup* concernWith(Interpolation* i);
         Popup* concernWith(Popup* p);
         Popup* concernWith(Function* f);
+        Popup* concernWith(Slider* s) {sliderConcerned = s;return this;}
         bool inBounds(double mouseX,double mouseY);
         bool newborn() {return isNewborn;}
         void age() {isNewborn=false;}

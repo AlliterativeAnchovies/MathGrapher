@@ -181,4 +181,5 @@ template<typename T> void drawParallelogramOnSurface(SDL_Surface* theSurface,Poi
 }
 
 
+
 #endif /* RenderingUtilities_hpp */

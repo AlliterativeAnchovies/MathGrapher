@@ -420,8 +420,13 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                     if (clicked&&pointInBounds(mouseX, mouseY, px+5, px+5+w, cury, cury+h)) {
                         clicked = false;
                         toReturn = 0x02;
-                        if (boolConcerned==X_AXIS) {graphConcerned->addXFunction(builtins[i].y);}
-                        else                       {graphConcerned->addYFunction(builtins[i].y);}
+                        if (graphConcerned!=NULL) {
+                            if (boolConcerned==X_AXIS) {graphConcerned->addXFunction(builtins[i].y);}
+                            else                       {graphConcerned->addYFunction(builtins[i].y);}
+                        }
+                        else if (sliderConcerned!=NULL) {
+                            sliderConcerned->setFunction(builtins[i].y);
+                        }
                     }
                     cury+=h+5;
                     
@@ -944,6 +949,167 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                 }
             }
             break;
+        case EDIT_SLIDER_POPUP:
+            {
+                std::string cursorBeeper = (ticks%60<30)?"|":" ";
+                drawBorderedRect(px, py, sx, sy, 0xff9fc9f2, 0xff000000);
+                drawText(sliderConcerned->getName()+((instringswitch==21)?cursorBeeper:""), 24, px+5, py+5, 0xff000000);
+                int w,h,w2,h2;
+                TTF_SizeUTF8((*fontgrab)(24),(sliderConcerned->getName()+((instringswitch==21)?cursorBeeper:"")).c_str(), &w, &h);
+                drawTextWithBackground("Edit", 16, px+5+w, py+5, 0xff000000, 0xffffcf9e, 0xff000000);
+                TTF_SizeUTF8((*fontgrab)(16),"Edit", &w2, &h2);
+                if (clicked&&pointInBounds(mouseX, mouseY, px+5+w, px+5+w+w2, py+5, py+5+h2)) {
+                    //edit the name
+                    instring = sliderConcerned->getName();
+                    thingForInString = sliderConcerned;
+                    instringswitch = 21;
+                    clicked = false;
+                    toReturn = 0x01;
+                }
+                int w3,h3,w4,h4;
+                drawText("px: "+std::to_string((int)((sliderConcerned->getPosition()).x))+((instringswitch==22)?cursorBeeper:""), 20, px+5, py+5+h+5, 0xff000000);
+                TTF_SizeUTF8((*fontgrab)(20),("px: "+std::to_string((int)((sliderConcerned->getPosition()).x))+((instringswitch==22)?cursorBeeper:"")).c_str(), &w3, &h3);
+                drawTextWithBackground("Edit", 16, px+5+w3, py+5+h+5, 0xff000000, 0xffffcf9e, 0xff000000);
+                if (clicked&&pointInBounds(mouseX, mouseY, px+5+w3, px+5+w3+w2, py+5+h+5, py+5+h+5+h2)) {
+                    //edit the px
+                    instring = std::to_string((int)((sliderConcerned->getPosition()).x));
+                    thingForInString = sliderConcerned;
+                    instringswitch = 22;
+                    clicked = false;
+                    toReturn = 0x01;
+                }
+            
+                drawText("py: "+std::to_string((int)((sliderConcerned->getPosition()).y))+((instringswitch==23)?cursorBeeper:""), 20, px+5+5+w2+w3, py+5+h+5, 0xff000000);
+                TTF_SizeUTF8((*fontgrab)(20),("py: "+std::to_string((int)((sliderConcerned->getPosition()).y))+((instringswitch==23)?cursorBeeper:"")).c_str(), &w4, &h4);
+                drawTextWithBackground("Edit", 16, px+5+w2+w3+w4+5, py+5+h+5, 0xff000000, 0xffffcf9e, 0xff000000);
+                if (clicked&&pointInBounds(mouseX, mouseY, px+5+w3+w2+w4+5, px+5+w3+w2+w2+w3+w4, py+5+h+5, py+5+h+5+h2)) {
+                    //edit the py
+                    instring = std::to_string((int)((sliderConcerned->getPosition()).y));
+                    thingForInString = sliderConcerned;
+                    instringswitch = 23;
+                    clicked = false;
+                    toReturn = 0x01;
+                }
+            
+                int w5,h5;
+                drawText("size: "+std::to_string((int)((sliderConcerned->getSize())))+((instringswitch==24)?cursorBeeper:""), 20, px+5, py+5+h+5+h3+5, 0xff000000);
+                TTF_SizeUTF8((*fontgrab)(20),("size: "+std::to_string((int)((sliderConcerned->getSize())))+((instringswitch==24)?cursorBeeper:"")).c_str(), &w5, &h5);
+                drawTextWithBackground("Edit", 16, px+5+w5, py+5+h+5+h3+5, 0xff000000, 0xffffcf9e, 0xff000000);
+                if (clicked&&pointInBounds(mouseX, mouseY, px+5+w5, px+5+w5+w2, py+5+h+5+h3+5, py+5+h+5+h2+h3+5)) {
+                    //edit the size
+                    instring = std::to_string((int)((sliderConcerned->getSize())));
+                    thingForInString = sliderConcerned;
+                    instringswitch = 24;
+                    clicked = false;
+                    toReturn = 0x01;
+                }
+                
+                double cury = py+5+h+5+h3+5+h5;
+                int w6,h6;
+                drawText("θ: "+std::to_string((int)((sliderConcerned->getAngle())* 180/M_PI))+((instringswitch==25)?cursorBeeper:""), 20, px+5, cury, 0xff000000);
+                TTF_SizeUTF8((*fontgrab)(20),("θ: "+std::to_string((int)((sliderConcerned->getAngle())* 180/M_PI))+((instringswitch==25)?cursorBeeper:"")).c_str(), &w6, &h6);
+                drawTextWithBackground("Edit", 16, px+5+w6, cury, 0xff000000, 0xffffcf9e, 0xff000000);
+                if (clicked&&pointInBounds(mouseX, mouseY, px+5+w6, px+5+w6+w2, cury, cury+h2)) {
+                    //edit the θ x
+                    instring = std::to_string((int)((sliderConcerned->getAngle()) * 180/M_PI));
+                    thingForInString = sliderConcerned;
+                    instringswitch = 25;
+                    clicked = false;
+                    toReturn = 0x01;
+                }
+                
+                cury += h6;
+                int w7,h7;
+                drawText("Starting Y: "+(sliderConcerned->getStartingYString())+((instringswitch==26)?cursorBeeper:""), 20, px+5, cury, 0xff000000);
+                TTF_SizeUTF8((*fontgrab)(20),("Starting Y: "+(sliderConcerned->getStartingYString())+((instringswitch==26)?cursorBeeper:"")).c_str(), &w7, &h7);
+                drawTextWithBackground("Edit", 16, px+5+w7, cury, 0xff000000, 0xffffcf9e, 0xff000000);
+                if (clicked&&pointInBounds(mouseX, mouseY, px+5+w7, px+5+w7+w2, cury, cury+h2)) {
+                    //edit the starting y
+                    instring = sliderConcerned->getStartingYString();
+                    thingForInString = sliderConcerned;
+                    instringswitch = 26;
+                    clicked = false;
+                    toReturn = 0x01;
+                }
+                
+                cury += h7;
+                int w8,h8;
+                drawText("ticks: "+std::to_string(sliderConcerned->getTicks())+((instringswitch==27)?cursorBeeper:""), 20, px+5, cury, 0xff000000);
+                TTF_SizeUTF8((*fontgrab)(20),("ticks: "+std::to_string(sliderConcerned->getTicks())+((instringswitch==27)?cursorBeeper:"")).c_str(), &w8, &h8);
+                drawTextWithBackground("Edit", 16, px+5+w8, cury, 0xff000000, 0xffffcf9e, 0xff000000);
+                if (clicked&&pointInBounds(mouseX, mouseY, px+5+w8, px+5+w8+w2, cury, cury+h2)) {
+                    //edit the tick amount
+                    instring = sliderConcerned->getTicks();
+                    thingForInString = sliderConcerned;
+                    instringswitch = 27;
+                    clicked = false;
+                    toReturn = 0x01;
+                }
+                
+                cury += h8;
+                int w9,h9;
+                drawTextWithBackground("Tick Function: "+sliderConcerned->getFunction()->getName(), 20, px+5, cury, 0xff000000, 0xffffcf9e, 0xff000000);
+                TTF_SizeUTF8((*fontgrab)(20), ("Tick Function: "+sliderConcerned->getFunction()->getName()).c_str(), &w9, &h9);
+                if (clicked&&pointInBounds(mouseX, mouseY, px+5, px+5+w9, cury, cury+h9)) {
+                    createPopup(CHOOSE_FUNCTION_POPUP, mouseX, mouseY)
+                        ->concernWith(sliderConcerned);
+                    clicked = false;
+                    toReturn = 0x01;
+                }
+                
+                cury += h9;
+                int w10,h10;
+                std::string pointConcernedString = "Point Concerned: None";
+                if (sliderConcerned->getPointConcerned()!=NULL) {
+                    pointConcernedString = "Point Concerned: "+sliderConcerned->getPointConcerned()->getDisplayLocation();
+                }
+                drawTextWithBackground(pointConcernedString, 16, px+5, cury, 0xff000000, 0xffffcf9e, 0xff000000);
+                TTF_SizeUTF8((*fontgrab)(16), (pointConcernedString).c_str(), &w10, &h10);
+                if (clicked&&pointInBounds(mouseX, mouseY, px+5, px+5+w10, cury, cury+h10)) {
+                    createPopup(CHOOSE_POINT_CONCERNED_FOR_LINKING_POPUP, mouseX, mouseY)
+                        ->concernWith(sliderConcerned);
+                    clicked = false;
+                    toReturn = 0x01;
+                }
+                
+                
+                drawBorderedRect(px+sx-20, py, 20, 20, 0xffff0000, 0xff000000);
+                drawText("x", 20, px+sx-20+5, py-3, 0xff000000);
+                if (clicked&&pointInBounds(mouseX, mouseY, px+sx-20, px+sx, py, py+20)) {
+                    toReturn = 0x02;
+                    clicked = false;
+                    thingForInString = NULL;
+                    instringswitch = -1;
+                }
+                
+                if (clicked&&pointInBounds(mouseX, mouseY, px, px+sx, py, py+sy)) {
+                    toReturn = 0x01;
+                }
+                
+            }
+            break;
+        case CHOOSE_POINT_CONCERNED_FOR_LINKING_POPUP:
+            {
+                drawBorderedRect(px, py, sx, sy, 0xffaaf2aa, 0xff000000);
+                drawText("Choose Point Of Interest", 22, px, py, 0xff000000);
+                double cury = py+30;
+                for (int i = 0;i<pointsOfInterest.size();i++) {
+                    int w,h;
+                    TTF_SizeUTF8((*fontgrab)(16),pointsOfInterest[i]->getDisplayLocation().c_str(),&w,&h);
+                    drawTextWithBackground(pointsOfInterest[i]->getDisplayLocation(), 16, px+5, cury, 0xff000000, 0xffffcf9e, 0xff000000);
+                    if (clicked&&pointInBounds(mouseX, mouseY, px+5, px+5+w, cury, cury+h)) {
+                        clicked = false;
+                        toReturn = 0x02;
+                        sliderConcerned->setPointConcerned(pointsOfInterest[i]);
+                    }
+                    cury+=h+5;
+                    
+                }
+                if (clicked&&pointInBounds(mouseX, mouseY, px, px+sx, py, py+sy)) {
+                    toReturn = 0x01;
+                }
+            }
+            break;
     }
     return toReturn;
 }
@@ -1003,11 +1169,13 @@ bool isQuickCloser(Uint8 popup_id) {
            popup_id==EDIT_FUNCTION_POPUP||
            popup_id==CHOOSE_FUNCTION_INTERPOLATION||
            popup_id==CREATE_POINT_OF_INTEREST||
-           popup_id==CREATE_HIGHLIGHT_INTERPOLATION;
+           popup_id==CREATE_HIGHLIGHT_INTERPOLATION||
+           popup_id==CHOOSE_POINT_CONCERNED_FOR_LINKING_POPUP;
 }
 
 bool isMajor(Uint8 popup_id) {
-    return popup_id==EDIT_GRAPH_POPUP;
+    return  popup_id==EDIT_GRAPH_POPUP||
+            popup_id==EDIT_SLIDER_POPUP;
 }
 
 Popup* createPopup(Uint8 popup_id,double x,double y) {
@@ -1027,7 +1195,7 @@ Popup* createPopup(Uint8 popup_id,double x,double y) {
             break;
         case CHOOSE_FUNCTION_POPUP:
             sx = 150;
-            sy = 200;
+            sy = 250;
             break;
         case CHOOSE_INTERPOLATION_POPUP:
             sx = 150;
@@ -1060,6 +1228,14 @@ Popup* createPopup(Uint8 popup_id,double x,double y) {
         case CREATE_HIGHLIGHT_INTERPOLATION:
             sx = 200;
             sy = 170;
+            break;
+        case EDIT_SLIDER_POPUP:
+            sx = SCREEN_WIDTH-20-150;
+            sy = SCREEN_HEIGHT-20;
+            break;
+        case CHOOSE_POINT_CONCERNED_FOR_LINKING_POPUP:
+            sx = 150;
+            sy = 200;
             break;
     }
     

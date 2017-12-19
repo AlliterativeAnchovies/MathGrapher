@@ -34,10 +34,13 @@ std::string dumstupidcurrentdirectorybs="";
 Font* fontgrab=NULL;
 
 //Graphs to draw
-std::vector<Graph*> graphs = {};
+//std::vector<Graph*> graphs = {};
 
 //Sliders to draw
-std::vector<Slider*> sliders = {};
+//std::vector<Slider*> sliders = {};
+
+//Things to draw
+std::vector<DisplayObject*> objects = {};
 
 //Popups to draw
 std::vector<Popup*> popups = {};
@@ -60,8 +63,9 @@ void doInStringCalcs(Uint8 keypressed);
 void changeToInString();
 
 //this is the real "main" loop
-std::vector<Graph*> selectedGraphs = {};
-std::vector<Slider*> selectedSliders = {};
+//std::vector<Graph*> selectedGraphs = {};
+//std::vector<Slider*> selectedSliders = {};
+std::vector<DisplayObject*> selectedObjects = {};
 bool CAPS_LOCK = false;
 bool runningVideo = false;
 bool spacePressed = false;
@@ -97,7 +101,8 @@ bool controlFlow() {
                 case SDLK_SPACE:
                     if (runningVideo) {
                         runningVideo = false;
-                        for (Graph* g : graphs) {g->reset();}
+                        //for (Graph* g : graphs) {g->reset();}
+                        for (DisplayObject* d : objects) {d->reset();}
                     }
                     instring+=" ";
                     spacePressed = true;
@@ -144,7 +149,41 @@ bool controlFlow() {
     }
     
     
-    for (Graph* g : selectedGraphs) {g->highlight();}
+    for (DisplayObject* d : selectedObjects) {d->highlight();}
+    for (int i = 0;i<objects.size();i++) {
+        if (leftMouseReleased&&!overPopup&&objects[i]->clickedIn(mouseX,mouseY)) {
+            if (!shiftClicked) {
+                selectedObjects = {objects[i]};
+            }
+            else {
+                bool isInSelectedObjects = foldr([](bool a,bool b){return a||b;},map([&](DisplayObject* d){return d==objects[i];}, selectedObjects),false);
+                if (!isInSelectedObjects) {
+                    selectedObjects.push_back(objects[i]);
+                }
+                else {
+                    typeof(selectedObjects) newselects = {};
+                    for (DisplayObject* d : selectedObjects) {
+                        if (d!=objects[i]) {
+                            newselects.push_back(d);
+                        }
+                    }
+                    selectedObjects = newselects;
+                }
+            }
+            leftMouseReleased = false;
+        }
+        std::string specificObject = objects[i]->getID();
+        if (specificObject=="Graph") {
+            drawGraph((Graph*)objects[i]);
+        }
+        else if (specificObject=="Slider") {
+            drawSlider((Slider*)objects[i]);
+        }
+        else {
+            throw std::runtime_error("Not a valid classname!");
+        }
+    }
+    /*for (Graph* g : selectedGraphs) {g->highlight();}
     for (int i = 0;i<graphs.size();i++) {
         if (leftMouseReleased&&!overPopup&&graphs[i]->clickedIn(mouseX,mouseY)) {
             if (!shiftClicked) {
@@ -193,7 +232,7 @@ bool controlFlow() {
             leftMouseReleased = false;
         }
         drawSlider(sliders[i]);
-    }
+    }*/
     
     //draw control bar
     double controlBarY = SCREEN_HEIGHT-100;
@@ -202,6 +241,60 @@ bool controlFlow() {
         drawText("PRESS SPACE TO RETURN", 36, 10, controlBarY+10, 0xffff0000);
         drawText("    TO EDIT MODE     ", 36, 10, controlBarY+50, 0xffff0000);
     }
+    else {
+        double totoff = 10;
+        typeof(selectedObjects) newselectedobjects = {};
+        for (int i = 0;i<selectedObjects.size();i++) {
+            int w,h,w2,h2,w3,h3,w4,h4;
+            //draw name of graph
+            std::string name = selectedObjects[i]->getName();
+            drawText(name, 16, totoff, controlBarY+5, 0xff000000);
+            TTF_SizeUTF8((*fontgrab)(16), name.c_str(), &w, &h);
+            double newtotoff = totoff+5+w;
+            //draw run button
+            TTF_SizeUTF8((*fontgrab)(16), "Run", &w2, &h2);
+            drawTextWithBackground("Run", 16, totoff, controlBarY+5+h, 0xff000000,0xff9fc9f2,0xff000000);
+            if (leftMouseReleased&&!overPopup&&pointInBounds(mouseX, mouseY, totoff, totoff+w2, controlBarY+5+h, controlBarY+5+h+h2)) {
+                selectedObjects[i]->run();
+                runningVideo = true;
+                selectedObjects = {};
+                newselectedobjects = {};
+                leftMouseReleased = false;
+                break;
+            }
+            //draw edit button
+            TTF_SizeUTF8((*fontgrab)(16), "Edit", &w3, &h3);
+            drawTextWithBackground("Edit", 16, totoff, controlBarY+5+h+h2, 0xff000000,0xff9fc9f2,0xff000000);
+            if (leftMouseReleased&&!overPopup&&pointInBounds(mouseX, mouseY, totoff, totoff+w3, controlBarY+5+h+h2, controlBarY+5+h+h2+h3)) {
+                if (selectedObjects[i]->getID()=="Graph") {
+                    Popup* blargh = createPopup(EDIT_GRAPH_POPUP, 10, 10);
+                    blargh->concernWith((Graph*)selectedObjects[i]);
+                    leftMouseReleased = false;
+                }
+                else if (selectedObjects[i]->getID()=="Slider") {
+                    Popup* blargh = createPopup(EDIT_SLIDER_POPUP, 10, 10);
+                    blargh->concernWith((Slider*)selectedObjects[i]);
+                    leftMouseReleased = false;
+                }
+            }
+            //draw delete button
+            TTF_SizeUTF8((*fontgrab)(16), "Delete", &w4, &h4);
+            drawTextWithBackground("Delete", 16, totoff, controlBarY+5+h+h2+h3, 0xff000000,0xff9fc9f2,0xff000000);
+            if (leftMouseReleased&&!overPopup&&pointInBounds(mouseX, mouseY, totoff, totoff+w4, controlBarY+5+h+h2+h3, controlBarY+5+h+h2+h3+h4)) {
+                typeof(objects) newobjects = {};
+                for (int j = 0;j<objects.size();j++) {
+                    if (objects[j]!=selectedObjects[i]) {newobjects.push_back(objects[j]);}
+                }
+                delete selectedObjects[i];
+                selectedObjects[i] = NULL;
+                objects = newobjects;
+                leftMouseReleased = false;
+            }
+            else {newselectedobjects.push_back(selectedObjects[i]);}
+            totoff=newtotoff;
+        }
+        selectedObjects=newselectedobjects;
+    /*
     else {
         double totoff = 10;
         typeof(selectedGraphs) newselectedgraphs = {};
@@ -248,17 +341,66 @@ bool controlFlow() {
             totoff=newtotoff;
         }
         selectedGraphs=newselectedgraphs;
+        
+        //draw all selected sliders
+        typeof(selectedSliders) newselectedsliders = {};
+        for (int i = 0;i<selectedSliders.size();i++) {
+            int w,h,w2,h2,w3,h3,w4,h4;
+            //draw name of graph
+            std::string name = selectedSliders[i]->getName();
+            drawText(name, 16, totoff, controlBarY+5, 0xff000000);
+            TTF_SizeUTF8((*fontgrab)(16), name.c_str(), &w, &h);
+            double newtotoff = totoff+5+w;
+            //draw run button
+            TTF_SizeUTF8((*fontgrab)(16), "Run", &w2, &h2);
+            drawTextWithBackground("Run", 16, totoff, controlBarY+5+h, 0xff000000,0xff9fc9f2,0xff000000);
+            if (leftMouseReleased&&!overPopup&&pointInBounds(mouseX, mouseY, totoff, totoff+w2, controlBarY+5+h, controlBarY+5+h+h2)) {
+                selectedSliders[i]->run();
+                runningVideo = true;
+                selectedSliders = {};
+                newselectedgraphs = {};
+                leftMouseReleased = false;
+                break;
+            }
+            //draw edit button
+            TTF_SizeUTF8((*fontgrab)(16), "Edit", &w3, &h3);
+            drawTextWithBackground("Edit", 16, totoff, controlBarY+5+h+h2, 0xff000000,0xff9fc9f2,0xff000000);
+            if (leftMouseReleased&&!overPopup&&pointInBounds(mouseX, mouseY, totoff, totoff+w3, controlBarY+5+h+h2, controlBarY+5+h+h2+h3)) {
+                Popup* blargh = createPopup(EDIT_SLIDER_POPUP, 10, 10);
+                blargh->concernWith(selectedSliders[i]);
+                leftMouseReleased = false;
+            }
+            //draw delete button
+            TTF_SizeUTF8((*fontgrab)(16), "Delete", &w4, &h4);
+            drawTextWithBackground("Delete", 16, totoff, controlBarY+5+h+h2+h3, 0xff000000,0xff9fc9f2,0xff000000);
+            if (leftMouseReleased&&!overPopup&&pointInBounds(mouseX, mouseY, totoff, totoff+w4, controlBarY+5+h+h2+h3, controlBarY+5+h+h2+h3+h4)) {
+                typeof(sliders) newsliders = {};
+                for (int j = 0;j<sliders.size();j++) {
+                    if (sliders[j]!=selectedSliders[i]) {newsliders.push_back(sliders[j]);}
+                }
+                delete selectedSliders[i];
+                selectedSliders[i] = NULL;
+                sliders = newsliders;
+                leftMouseReleased = false;
+            }
+            else {newselectedsliders.push_back(selectedSliders[i]);}
+            totoff=newtotoff;
+        }
+        selectedSliders=newselectedsliders;
+        
+        */
+        
         //draw run all button
         int rax,ray;
         TTF_SizeUTF8((*fontgrab)(16), "Run All", &rax, &ray);
         drawTextWithBackground("Run All", 16, SCREEN_WIDTH-200, controlBarY+5, 0xff000000,0xff9fc9f2,0xff000000);
         if (leftMouseReleased&&!overPopup&&pointInBounds(mouseX, mouseY, SCREEN_WIDTH-200, SCREEN_WIDTH-200+rax,controlBarY+5,controlBarY+5+ray)) {
-            for (Graph* g : graphs) {
-                g->run();
+            for (DisplayObject* d : objects) {
+                d->run();
             }
             runningVideo = true;
-            selectedGraphs = {};
-            newselectedgraphs = {};
+            selectedObjects = {};
+            newselectedobjects = {};
             leftMouseReleased = false;
         }
         //draw run selected button
@@ -266,15 +408,17 @@ bool controlFlow() {
         TTF_SizeUTF8((*fontgrab)(16), "Run Selected", &rsx, &rsy);
         drawTextWithBackground("Run Selected", 16, SCREEN_WIDTH-200-5-rsx, controlBarY+5, 0xff000000,0xff9fc9f2,0xff000000);
         if (leftMouseReleased&&!overPopup&&pointInBounds(mouseX, mouseY, SCREEN_WIDTH-200-5-rsx, SCREEN_WIDTH-200-5-rsx+rsx,controlBarY+5,controlBarY+5+rsy)) {
-            for (Graph* g : selectedGraphs) {
-                g->run();
+            for (DisplayObject* d : selectedObjects) {
+                d->run();
             }
             runningVideo = true;
-            selectedGraphs = {};
-            newselectedgraphs = {};
+            selectedObjects = {};
+            newselectedobjects = {};
             leftMouseReleased = false;
         }
     }
+    
+    
     //draw points of interest bar
     double interestBarX = SCREEN_WIDTH-150;
     drawBorderedRect(interestBarX, 0, 150, SCREEN_HEIGHT, 0xff597bf5, 0xff000000);
@@ -328,15 +472,17 @@ bool controlFlow() {
     if (leftMouseReleased&&!overPopup&&!runningVideo) {
         if (mouseY<SCREEN_HEIGHT-100) {
             createPopup(ADD_OBJECT_POPUP, mouseX, mouseY);
-            selectedGraphs = {};
+            selectedObjects = {};
         }
     }
     
     //update graphs
-    for (Graph* g : graphs) {
-        g->cleanFunctions();
-        g->cleanInterpolations();
-        if (g->isRunning()) {g->update();}
+    for (DisplayObject* d : objects) {
+        if (d->getID()=="Graph") {
+            ((Graph*)d)->cleanFunctions();
+            ((Graph*)d)->cleanInterpolations();
+        }
+        if (d->isRunning()) {d->update();}
     }
     
     
@@ -514,12 +660,12 @@ void drawSlider(Slider* s) {
 }
 
 void addGraph(double x,double y) {
-    graphs.push_back(new Graph(x,y,100,100,"Graph "+std::to_string(TOTAL_GRAPHS)));
+    objects.push_back(new Graph(x,y,100,100,"Graph "+std::to_string(TOTAL_GRAPHS)));
     TOTAL_GRAPHS++;
 }
 
 void addSlider(double x,double y) {
-    sliders.push_back(new Slider(x,y,100,"Slider "+std::to_string(TOTAL_SLIDERS)));
+    objects.push_back(new Slider(x,y,100,"Slider "+std::to_string(TOTAL_SLIDERS)));
     TOTAL_SLIDERS++;
 }
 
@@ -595,6 +741,27 @@ void changeToInString() {
             case 20:
                 ((Interpolation*)thingForInString)->changeSY(numberFromString(instring));
                 break;
+            case 21:
+                ((Slider*)thingForInString)->changeName(instring);
+                break;
+            case 22:
+                ((Slider*)thingForInString)->changePX(numberFromString(instring));
+                break;
+            case 23:
+                ((Slider*)thingForInString)->changePY(numberFromString(instring));
+                break;
+            case 24:
+                ((Slider*)thingForInString)->changeSize(numberFromString(instring));
+                break;
+            case 25:
+                ((Slider*)thingForInString)->changeAngle(numberFromString(instring)*M_PI/180);
+                break;
+            case 26:
+                ((Slider*)thingForInString)->changeStartingYString(instring);
+                break;
+            case 27:
+                ((Slider*)thingForInString)->setTicks(numberFromString(instring));
+                break;
         }
     }
 }
@@ -610,14 +777,16 @@ void doInStringCalcs(Uint8 keypressed) {
                 break;
             case SDLK_PERIOD:
                 if (instringswitch==16||instringswitch==17||instringswitch==18||
-                    instringswitch==11||instringswitch==12) {
+                    instringswitch==11||instringswitch==12||instringswitch==26||
+                    instringswitch==19||instringswitch==20) {
                     instring+=".";
                     changeToInString();
                 }
                 break;
             case SDLK_MINUS:
                 if (instringswitch==16||instringswitch==17||instringswitch==18||
-                    instringswitch==11||instringswitch==12) {
+                    instringswitch==11||instringswitch==12||instringswitch==26||
+                    instringswitch==19||instringswitch==20) {
                     instring+="-";
                     changeToInString();
                 }

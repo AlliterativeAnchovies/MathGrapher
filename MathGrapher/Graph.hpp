@@ -114,6 +114,23 @@ class Interpolation {
         bool isActive() {return timeAt<timeInterval&&!paused;}
 };
 
+class DisplayObject {
+    public:
+        //The comments are two options that accomplish the same thing - one gives a compiler error if
+        //a function is not implemented, and one (the commented one) turns it into a runtime error.
+        //Compiler error is safer, runtime_error better if its not working, you don't know why, and you
+        //really really need a working version very soon.
+        virtual void highlight() = 0;//{throw std::runtime_error("This object is missing a highlight function!");};
+        virtual bool clickedIn(double mouseX,double mouseY) = 0;
+            //{throw std::runtime_error("This object is missing a clickedIn function!");};
+        virtual std::string getID() = 0;//{throw std::runtime_error("Should not use generic display objects!");};
+        virtual std::string getName() = 0;//{throw std::runtime_error("This object is missing a getName function!");};
+        virtual void run() =0;//{throw std::runtime_error("This object is missing a run function!");};
+        virtual void reset()=0;// {throw std::runtime_error("This object is missing a reset function!");};
+        virtual bool isRunning()=0;// {throw std::runtime_error("This object is missing an isRunning function!");};
+        virtual void update()=0;// {throw std::runtime_error("This object is missing an update function!");};
+};
+
 struct GraphImage {
     //stores starting information for graphs
     //so they can reset after running.
@@ -129,7 +146,7 @@ struct GraphImage {
     double gridAngleY = 0;
 };
 
-class Graph {
+class Graph: public DisplayObject {
     private:
         GraphImage image;
         double px = 0;
@@ -241,6 +258,8 @@ class Graph {
         bool isRunning();
         //gets rid of canceled interpolations
         void cleanInterpolations();
+        //get name of class
+        std::string getID() {return "Graph";}
 };
 
 typedef std::function<double(double,double,double,double)> internalFunc;
@@ -317,9 +336,19 @@ class PointOfInterest {
         std::string getDisplayLocation();
         std::string getDisplayPoint();
         double getPX() {return px;}
+        double getPY() {return (functionOn->isParametric())?functionOn->parametricEval(px).y:(*functionOn)(px);}
 };
 
-class Slider {
+struct SliderImage {
+    double px;
+    double py;
+    double size;
+    double angle;
+    Function* incrementFunction;
+    int tickAmount;
+};
+
+class Slider: public DisplayObject {
     private:
         double px = 0;
         double py = 0;
@@ -331,6 +360,11 @@ class Slider {
         double storedsy = 0;
         Function* incrementFunction = NULL;
         int tickAmount = 4;
+        bool running = false;
+        SliderImage image;
+        double pointery = 0;
+        PointOfInterest* pointConcerned = NULL;
+        std::string startingYString = "0";
     public:
         //creates default slider at (x,y) with size s
         Slider(double x,double y,double s,std::string n);
@@ -339,6 +373,31 @@ class Slider {
         //tags for highlightion
         void highlight() {highlighted = true;}
         bool clickedIn(double x,double y);
+        std::string getName() {return name;}
+        void run();
+        Point<double> getPosition() {return Point<double>(px,py);}
+        double getSize() {return size;}
+        void changeName(std::string n) {name = n;}
+        void changePX(double x) {px = x;}
+        void changePY(double y) {py = y;}
+        void changeSize(double s) {size = s;}
+        double getAngle() {return angle;}
+        void changeAngle(double x) {angle = x;}
+        double getStartingY() {return pointery;}
+        void changeStartingY(double s) {pointery = s;}
+        void changeStartingYString(std::string s) {startingYString = s;pointery = numberFromString(s);}
+        std::string getStartingYString() {return startingYString;}
+        int getTicks() {return tickAmount;}
+        void setTicks(int t) {tickAmount = t;}
+        Function* getFunction() {return incrementFunction;}
+        void setFunction(Function* f) {incrementFunction = f;}
+        PointOfInterest* getPointConcerned() {return pointConcerned;}
+        void setPointConcerned(PointOfInterest* p) {pointConcerned=p;}
+        //get name of class
+        std::string getID() {return "Slider";}
+        void update() {};
+        void reset() {};
+        bool isRunning() {return running;};
 };
 
 Uint32 getColorOfInterpolation(Interpolation* i);

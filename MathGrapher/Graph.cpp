@@ -884,6 +884,16 @@ Slider::Slider(double x,double y,double s,std::string n) {
             "(1-x)^2");//DEBUGGING TEST VALUE, IGNORE!
 }
 
+void Slider::run() {
+    running = true;
+    image.px = px;
+    image.py = py;
+    image.size = size;
+    image.angle = angle;
+    image.incrementFunction = incrementFunction;
+    image.tickAmount = tickAmount;
+}
+
 const int SLIDER_WIDTH = 30;
 SDL_Surface* Slider::draw(double* x,double* y) {
     double sliderstartx = SLIDER_WIDTH/2;
@@ -936,20 +946,30 @@ SDL_Surface* Slider::draw(double* x,double* y) {
         drawLineOnSurface(toReturn, off1.x, off1.y, off2.x, off2.y, 0xff000000);
     }
     
+    //now draw pointer
+    double rawpointery = pointery;
+    if (pointConcerned!=NULL) {
+        rawpointery+=pointConcerned->getPY();
+    }
+    //double finalpointerx =  storedsx*rawpointerx*cos/2+storedsy*rawpointery*sin/2;
+    //double finalpointery =  storedsx*rawpointerx*sin/2+storedsy*rawpointery*cos/2;
+    Point<double> pointerpoint = upVec*rawpointery+mi;
+    drawCircleOnSurface(toReturn, pointerpoint.x, pointerpoint.y, 3, 0xff000099);
+    
     
     if (highlighted) {
         SDL_Surface* highlight = createBlankSurfaceWithSize(toReturn->w,toReturn->h);
         SDL_FillRect(highlight, NULL, 0x55ff7700);
         SDL_BlitSurface(highlight,NULL,toReturn,NULL);
     }
-    *x = px-toReturn->w/2;
-    *y = py-toReturn->h/2;
+    *x = px;//-toReturn->w/2;
+    *y = py;//-toReturn->h/2;
     highlighted = false;
     return toReturn;
 }
 
 bool Slider::clickedIn(double x,double y) {
-    return pointInBounds(x, y, px-storedsx/2, px+storedsx/2, py-storedsy/2, py+storedsy/2);
+    return pointInBounds(x, y, px, px+storedsx, py, py+storedsy);
 }
 
 
