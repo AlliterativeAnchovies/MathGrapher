@@ -972,6 +972,15 @@ bool Slider::clickedIn(double x,double y) {
     return pointInBounds(x, y, px, px+storedsx, py, py+storedsy);
 }
 
+void RawImage::run() {
+    //empty for now
+}
+void RawImage::update() {
+    //emty for now
+}
+void RawImage::reset() {
+    //empty for now
+}
 
 
 

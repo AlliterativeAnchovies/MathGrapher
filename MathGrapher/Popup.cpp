@@ -50,6 +50,17 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                     clicked  = false;
                     toReturn = 0x02;
                 }
+                double cury = py+35+25;
+                int imagew,imageh;
+                TTF_SizeUTF8((*fontgrab)(20), " Image ", &imagew, &imageh);
+                drawTextWithBackground(" Image ", 20, px+5, cury, 0xff000000, 0xffffcf9e, 0xff000000);
+                if (clicked&&pointInBounds(mouseX, mouseY, px+5, px+5+imagew, cury, cury+imageh)) {
+                    //add slider!
+                    addImage(px, py);
+                    clicked  = false;
+                    toReturn = 0x02;
+                }
+                
             }
             break;
         case EDIT_GRAPH_POPUP:

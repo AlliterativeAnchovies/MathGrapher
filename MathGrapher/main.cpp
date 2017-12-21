@@ -49,6 +49,8 @@ std::vector<Popup*> popups = {};
 int TOTAL_GRAPHS = 0;
 //Total sliders
 int TOTAL_SLIDERS = 0;
+//Total images
+int TOTAL_IMAGES = 0;
 
 //Tick counter
 int ticks = 0;
@@ -56,8 +58,9 @@ int ticks = 0;
 //"header" function definitions
 void close();
 bool loadMedia();
-void drawGraph(Graph* g);
-void drawSlider(Slider* s);
+//void drawGraph(Graph* g);
+//void drawSlider(Slider* s);
+void drawDisplayObject(DisplayObject* d);
 SDL_Event e;
 void doInStringCalcs(Uint8 keypressed);
 void changeToInString();
@@ -173,7 +176,8 @@ bool controlFlow() {
             leftMouseReleased = false;
         }
         std::string specificObject = objects[i]->getID();
-        if (specificObject=="Graph") {
+        drawDisplayObject(objects[i]);
+        /*if (specificObject=="Graph") {
             drawGraph((Graph*)objects[i]);
         }
         else if (specificObject=="Slider") {
@@ -181,58 +185,8 @@ bool controlFlow() {
         }
         else {
             throw std::runtime_error("Not a valid classname!");
-        }
+        }*/
     }
-    /*for (Graph* g : selectedGraphs) {g->highlight();}
-    for (int i = 0;i<graphs.size();i++) {
-        if (leftMouseReleased&&!overPopup&&graphs[i]->clickedIn(mouseX,mouseY)) {
-            if (!shiftClicked) {
-                selectedGraphs = {graphs[i]};
-            }
-            else {
-                bool isInSelectedGraphs = foldr([](bool a,bool b){return a||b;},map([&](Graph* g){return g==graphs[i];}, selectedGraphs),false);
-                if (!isInSelectedGraphs) {
-                    selectedGraphs.push_back(graphs[i]);
-                }
-                else {
-                    typeof(selectedGraphs) newselects = {};
-                    for (Graph* g : selectedGraphs) {
-                        if (g!=graphs[i]) {
-                            newselects.push_back(g);
-                        }
-                    }
-                    selectedGraphs = newselects;
-                }
-            }
-            leftMouseReleased = false;
-        }
-        drawGraph(graphs[i]);
-    }
-    for (Slider* s : selectedSliders) {s->highlight();}
-    for (int i = 0;i<sliders.size();i++) {
-        if (leftMouseReleased&&!overPopup&&sliders[i]->clickedIn(mouseX,mouseY)) {
-            if (!shiftClicked) {
-                selectedSliders = {sliders[i]};
-            }
-            else {
-                bool isSelected = foldr([](bool a,bool b){return a||b;},map([&](Slider* s){return s==sliders[i];}, selectedSliders),false);
-                if (!isSelected) {
-                    selectedSliders.push_back(sliders[i]);
-                }
-                else {
-                    typeof(selectedSliders) newselects = {};
-                    for (Slider* s : selectedSliders) {
-                        if (s!=sliders[i]) {
-                            newselects.push_back(s);
-                        }
-                    }
-                    selectedSliders = newselects;
-                }
-            }
-            leftMouseReleased = false;
-        }
-        drawSlider(sliders[i]);
-    }*/
     
     //draw control bar
     double controlBarY = SCREEN_HEIGHT-100;
@@ -525,8 +479,7 @@ int main(int argc, const char * argv[]) {
             //Update the surface
             SDL_UpdateWindowSurface( gWindow );
 
-            //Wait two seconds
-            SDL_Delay( 2000 );
+
         }
     }
     
@@ -551,6 +504,7 @@ int main(int argc, const char * argv[]) {
         }
         dumstupidcurrentdirectorybs = pathToUse;
     #endif
+    loadMedia();
     
     fontgrab = new Font(24);
     initBuiltins();
@@ -614,22 +568,45 @@ bool loadMedia() {
     //Loading success flag
     bool success = true;
 
-    std::vector<std::string> graphicsPaths = {};
-
-    gSurfaces = std::vector<SDL_Surface*>(NUM_GRAPHICS);
-    gTextures = std::vector<SDL_Texture*>(NUM_GRAPHICS);
-    for (int i = 0;i<NUM_GRAPHICS;i++) {
-        gSurfaces[i] = SDL_LoadBMP(graphicsPaths[i].c_str());
-        if (gSurfaces[i]==NULL) {
-            throw std::runtime_error("Error!  Could not load "+graphicsPaths[i]);
+    //Read the images
+    NUM_GRAPHICS = 0;
+    DIR *dir;
+    struct dirent *ent;
+    //std::vector<std::string> imageFiles = {};
+    if ((dir = opendir ((dumstupidcurrentdirectorybs + "/resources/Images").c_str())) != NULL) {
+        /* print all the files and directories within directory */
+        while ((ent = readdir (dir)) != NULL) {
+            if (ent->d_name[0]!='.') {
+                std::string path = ent->d_name;
+                gSurfaces.push_back(SDL_LoadBMP((dumstupidcurrentdirectorybs+"/resources/Images/"+path).c_str()));
+                gTextures.push_back(SDL_CreateTextureFromSurface(gRenderer, gSurfaces[NUM_GRAPHICS]));
+                NUM_GRAPHICS++;
+            }
         }
-        gTextures[i] = SDL_CreateTextureFromSurface(gRenderer, gSurfaces[i]);
+        closedir (dir);
     }
+    else {throw std::runtime_error("Error - could not load images");}
+    
+    
 
     return success;
 }
 
-void drawGraph(Graph* g) {
+void drawDisplayObject(DisplayObject* d) {
+    double xdraw,ydraw = 0;
+    SDL_Surface* tempSurf = d->draw(&xdraw,&ydraw);
+    SDL_Texture* tempTexture = SDL_CreateTextureFromSurface(gRenderer, tempSurf);
+    drawGraphic(xdraw, ydraw, tempSurf->w, tempSurf->h, tempTexture);
+    if (d->getID()!="Image") {
+        //images store their surfaces whereas the others create the surfaces on-the-spot (because
+        //their surface can depend on external thingamajigs and can change every frame).  So if
+        //we let images delete their surface, we'd make the code go kappoey on frame 2.
+        SDL_FreeSurface(tempSurf);
+    }
+    SDL_DestroyTexture(tempTexture);
+}
+
+/*void drawGraph(Graph* g) {
     double xdraw,ydraw = 0;
     SDL_Surface* tempSurf = g->draw(&xdraw, &ydraw);
     if (xdraw<0||xdraw>=SCREEN_WIDTH||ydraw<0||ydraw>=SCREEN_HEIGHT) {
@@ -657,7 +634,8 @@ void drawSlider(Slider* s) {
     drawGraphic(xdraw, ydraw, tempSurf->w, tempSurf->h, tempTexture);
     SDL_FreeSurface(tempSurf);
     SDL_DestroyTexture(tempTexture);
-}
+}*/
+
 
 void addGraph(double x,double y) {
     objects.push_back(new Graph(x,y,100,100,"Graph "+std::to_string(TOTAL_GRAPHS)));
@@ -667,6 +645,10 @@ void addGraph(double x,double y) {
 void addSlider(double x,double y) {
     objects.push_back(new Slider(x,y,100,"Slider "+std::to_string(TOTAL_SLIDERS)));
     TOTAL_SLIDERS++;
+}
+void addImage(double x,double y) {
+    objects.push_back(new RawImage(x,y,gSurfaces[0]->w,gSurfaces[0]->h,gSurfaces[0],"Image "+std::to_string(TOTAL_IMAGES)));
+    TOTAL_IMAGES++;
 }
 
 

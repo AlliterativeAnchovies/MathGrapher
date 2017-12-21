@@ -19,6 +19,7 @@
 //they are defined in main
 void addGraph(double x,double y);
 void addSlider(double x,double y);
+void addImage(double x,double y);
 
 enum INTERPOLATIONS {
     NULL_INTERPOLATION,
@@ -118,8 +119,10 @@ class DisplayObject {
     public:
         //The comments are two options that accomplish the same thing - one gives a compiler error if
         //a function is not implemented, and one (the commented one) turns it into a runtime error.
-        //Compiler error is safer, runtime_error better if its not working, you don't know why, and you
-        //really really need a working version very soon.
+        //Compiler error is safer, runtime_error better if you're implementing a new type of DisplayObject
+        //step-by-step and haven't implemented all the functions yet.
+        //IF YOU GET A "MISSING VTABLE" ERROR, it'll be caused by you not having defined all of these functions
+        //in the child object (although the error only seems to happen if you give your class a nondefault constructor...
         virtual void highlight() = 0;//{throw std::runtime_error("This object is missing a highlight function!");};
         virtual bool clickedIn(double mouseX,double mouseY) = 0;
             //{throw std::runtime_error("This object is missing a clickedIn function!");};
@@ -129,6 +132,63 @@ class DisplayObject {
         virtual void reset()=0;// {throw std::runtime_error("This object is missing a reset function!");};
         virtual bool isRunning()=0;// {throw std::runtime_error("This object is missing an isRunning function!");};
         virtual void update()=0;// {throw std::runtime_error("This object is missing an update function!");};
+        virtual ~DisplayObject() {};//in a class C, the method ~C is the destructor of C.  Usually implicitly
+                                    //defined, but if the class is virtual we also need to give it a virtual
+                                    //destructor.  The function body is empty which means we just use the standard
+                                    //deletion method. (if it were full of an ordered set of instructions A, the
+                                    //object would be deleted by instructions A union S where S is the standard
+                                    //deletion method).
+        virtual SDL_Surface* draw(double* x,double* y)=0;//{throw std::runtime_error("This object is missing a draw function!");}
+};
+
+class RawImage: public DisplayObject {
+    //If this class turns out to be an efficiency drain, there are numerous fixes:
+    //Firstly, save 2 surfaces, one highlighted and one not, so that we don't have
+    //to re-calculate the highlitations each frame.
+    //Secondly, save the textures of the surfaces as well.  I didn't do this because draw()
+    //returns a surface, so to do a texture I'd have to go through and change all of them
+    //to return textures.  There's nothing wrong with this, I just am lazy.  Although I
+    //probably could have done that in the time it took to write this comment.  Comments
+    //are more fun though.
+    bool running = false;
+    bool highlighted = false;
+    double px = 0;
+    double py = 0;
+    double sx = 0;
+    double sy = 0;
+    SDL_Surface* surfaceConcerned = NULL;
+    std::string name = "-IMAGE-";
+    public:
+        double getPX() {return px;}
+        double getPY() {return py;}
+        double getSX() {return sx;}
+        double getSY() {return sy;}
+        SDL_Surface* getSurface() {return surfaceConcerned;}
+        bool isRunning() {return running;}
+        bool isHighlighted() {return highlighted;}
+        void highlight() {highlighted=true;}
+        bool clickedIn(double mouseX,double mouseY) {return   mouseX>=px&&mouseX<=px+sx
+                                                            &&mouseY>=py&&mouseY<=py+sy;}
+        std::string getID() {return "Image";}
+        std::string getName() {return name;}
+        void run();
+        void reset();
+        void update();
+        RawImage(double x,double y,double xs,double ys,SDL_Surface* s,std::string n) {
+            px = x;py = y;sx = xs;sy = ys;surfaceConcerned = s;name = n;
+        }
+        SDL_Surface* draw(double* x,double* y) {
+            *x = px;
+            *y = py;
+            if (highlighted) {
+                auto texturethingy = createBlankSurfaceWithSize(sx, sy);
+                SDL_FillRect(texturethingy, NULL, 0x2200ff00);
+                auto copy = SDL_ConvertSurface(surfaceConcerned, gScreenSurface->format, NULL);
+                SDL_BlitSurface(texturethingy,NULL,copy,NULL);
+                return copy;
+            }
+            else {return surfaceConcerned;}
+        }
 };
 
 struct GraphImage {
