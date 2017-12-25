@@ -381,6 +381,7 @@ bool controlFlow() {
         drawText("None", 16, interestBarX+5, 30, 0xff000000);
     }
     for (int i = 0;i<pointsOfInterest.size();i++) {
+        if (pointsOfInterest[i]->shouldDelete()) {continue;}
         drawText(pointsOfInterest[i]->getDisplayLocation(), 16, interestBarX+5, 30+i*40, 0xff000000);
         drawText("  "+pointsOfInterest[i]->getDisplayPoint(), 12, interestBarX+5, 30+i*40+20, 0xff000000);
     }
@@ -438,6 +439,18 @@ bool controlFlow() {
         }
         if (d->isRunning()) {d->update();}
     }
+    
+    //delete points of interest
+    std::vector<PointOfInterest*> newpoi = {};
+    for (int i = 0;i<pointsOfInterest.size();i++) {
+        if (pointsOfInterest[i]->shouldDelete()) {
+            delete pointsOfInterest[i];
+        }
+        else {
+            newpoi.push_back(pointsOfInterest[i]);
+        }
+    }
+    pointsOfInterest=newpoi;
     
     
     
@@ -656,7 +669,8 @@ void changeToInString() {
     if (thingForInString!=NULL) {
         switch (instringswitch) {
             case 0:
-                ((Graph*)thingForInString)->changeName(instring);
+                //((Graph*)thingForInString)->changeName(instring);
+                ((ValueEditor<std::string>*)thingForInString)->changeValue(instring);
                 break;
             case 1:
                 ((Graph*)thingForInString)->changePosition(numberFromString(instring),(((Graph*)thingForInString)->getPosition()).y);
@@ -753,9 +767,7 @@ void doInStringCalcs(Uint8 keypressed) {
         switch (keypressed) {
             case SDLK_RETURN:
                 changeToInString();
-                instringswitch = -1;
-                thingForInString = NULL;
-                instring = "";
+                deleteInStrings();
                 break;
             case SDLK_PERIOD:
                 if (instringswitch==16||instringswitch==17||instringswitch==18||

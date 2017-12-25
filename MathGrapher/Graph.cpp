@@ -46,6 +46,10 @@ Graph::Graph(double x,double y,double sizex,double sizey,double grid_spacing_x,d
     oy = sy/2;
     name = n;
 }
+Graph::~Graph() {
+    for (auto func : functions) {delete func;}
+    for (auto func : yfunctions) {delete func;}
+}
 //moves incrementally
 void Graph::move(double x,double y) {
     px += x;
@@ -798,6 +802,9 @@ Function::Function(internalFunc f,internalFunc f2,internalRange r,std::string n)
     name = n;
     range = r;
     parametric = true;
+}
+Function::~Function() {
+    for (auto point : importantPoints) {point->prepareForDelete();}
 }
 
 double Function::eval(double x) {

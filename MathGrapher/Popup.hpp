@@ -77,11 +77,14 @@ class Popup {
         void setUpInterpolation();
         void lock();
         void unlock();
+        ~Popup();
 };
 
 Popup* createPopup(Uint8 popup_id,double x,double y);
 bool isQuickCloser(Uint8 popup_id);
 bool isMajor(Uint8 popup_id);
+void deleteInStrings();
+
 
 
 #endif /* Popup_hpp */

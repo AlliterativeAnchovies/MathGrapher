@@ -191,6 +191,7 @@ class RawImage: public DisplayObject {
         }
 };
 
+
 struct GraphImage {
     //stores starting information for graphs
     //so they can reset after running.
@@ -320,6 +321,10 @@ class Graph: public DisplayObject {
         void cleanInterpolations();
         //get name of class
         std::string getID() {return "Graph";}
+        //custom deleter to clean up constituents
+        ~Graph();
+        //pointer to name
+        std::string* ptmName() {return &name;}
 };
 
 typedef std::function<double(double,double,double,double)> internalFunc;
@@ -381,6 +386,8 @@ class Function {
         void addPoint(PointOfInterest* p) {importantPoints.push_back(p);};
         typeof(importantPoints) getImportantPoints() {return importantPoints;}
         bool isParametric() {return parametric;}
+        //custom deleter to clean up points of interest
+        ~Function();
 };
 
 class PointOfInterest {
@@ -389,6 +396,7 @@ class PointOfInterest {
         Function* functionOn = NULL;
         double px = 0;
         bool visible = true;
+        bool taggedForDeletion = false;
     public:
         std::string getDisplay();
         PointOfInterest(Graph* g,Function* f,double d,bool v);
@@ -397,6 +405,8 @@ class PointOfInterest {
         std::string getDisplayPoint();
         double getPX() {return px;}
         double getPY() {return (functionOn->isParametric())?functionOn->parametricEval(px).y:(*functionOn)(px);}
+        bool shouldDelete() {return taggedForDeletion;}
+        void prepareForDelete() {taggedForDeletion=true;}
 };
 
 struct SliderImage {

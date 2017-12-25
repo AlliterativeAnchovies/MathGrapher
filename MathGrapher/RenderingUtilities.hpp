@@ -181,6 +181,37 @@ template<typename T> void drawParallelogramOnSurface(SDL_Surface* theSurface,Poi
     }
 }
 
+template<typename T> std::string tostring(T a) {
+    return std::to_string(a);
+}
+template<> std::string tostring(std::string a); //since this is not technically a template (its specialized)
+                                                //it must be defined in .cpp
+
+class ValueEditorPrime {//polymorphic wrapper for all templates of ValueEditor
+    public:
+        virtual ~ValueEditorPrime() {};
+        virtual std::string changeValue(std::string v)=0;
+};
+
+template<typename valueType> class ValueEditor: public ValueEditorPrime {
+    private:
+        std::string value = "";
+        valueType* setter;
+    public:
+        ValueEditor(valueType* inval) {
+            setter=inval;
+            value=tostring(*setter);
+        }
+        ~ValueEditor() {
+            *setter=value;
+        }
+        //send in the proposed changed value of "value", and change value to it.
+        //then do trimming (005 = 5, for example)
+        std::string changeValue(std::string v) {
+            value=v;
+            return v;
+        }
+};
 
 
 #endif /* RenderingUtilities_hpp */

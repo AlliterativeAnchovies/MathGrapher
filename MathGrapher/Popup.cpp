@@ -75,7 +75,7 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                 if (clicked&&pointInBounds(mouseX, mouseY, px+5+w, px+5+w+w2, py+5, py+5+h2)) {
                     //edit the name
                     instring = graphConcerned->getName();
-                    thingForInString = graphConcerned;
+                    thingForInString = new ValueEditor<std::string>(graphConcerned->ptmName());//graphConcerned;
                     instringswitch = 0;
                     clicked = false;
                     toReturn = 0x01;
@@ -1299,6 +1299,23 @@ void Popup::lock() {
 
 void Popup::unlock() {
     locked = false;
+}
+
+void deleteInStrings() {
+    switch (instringswitch) {
+        case 0:
+            delete (ValueEditor<std::string>*)thingForInString;
+            break;
+        default:
+            throw std::runtime_error("Error!  Don't know type of thingForInString!");
+    }
+    thingForInString=NULL;
+    instring="";
+    instringswitch=-1;
+}
+
+Popup::~Popup() {
+    deleteInStrings();
 }
 
 
