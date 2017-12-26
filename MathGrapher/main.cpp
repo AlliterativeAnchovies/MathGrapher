@@ -499,14 +499,14 @@ int main(int argc, const char * argv[]) {
     #if defined DEBUG || defined _DEBUG
         std::cout << "Warning: Using a development build!\n";
         //dumstupidcurrentdirectorybs = getcwd(NULL, 0);
-        dumstupidcurrentdirectorybs = "/Users/baileyandrew/Desktop/MathGrapher";
+        dumstupidcurrentdirectorybs = "/Users/baileyandrew/Documents/GitHub/MathGrapher";
 	#elif defined _WINDOWS
 		std::cout << "Visual Studio Compiling For Release";
 		//I have no idea how this works so I'll leave the windows nondebug building
 		//paths to you.
 		dumstupidcurrentdirectorybs = "/Users/baileyandrew/Desktop/MathGrapher";
     #else
-		std::cout << "XCode colpiling for release";
+		std::cout << "XCode compiling for release";
         //grab location
         char path[1024];
         uint32_t size = sizeof(path);

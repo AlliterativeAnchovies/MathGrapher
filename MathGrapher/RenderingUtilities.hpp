@@ -10,11 +10,15 @@
 #define RenderingUtilities_hpp
 
 #include <stdio.h>
-//#include "SDL2/SDL.h"
-#include "SDL.h"
-#undef main
-//#include "SDL2_ttf/SDL_ttf.h"
-#include "SDL_ttf.h"
+#ifdef _WINDOWS//windows includes
+    #include "SDL.h"
+    #include "SDL_ttf.h"
+    #undef main //because of stupidity, windows SDL has a main function,
+                //which obviously conflicts with our main function.
+#else//mac includes
+    #include "SDL2/SDL.h"
+    #include "SDL2_ttf/SDL_ttf.h"
+#endif
 #include <iostream>
 #include <vector>
 #include <dirent.h>
