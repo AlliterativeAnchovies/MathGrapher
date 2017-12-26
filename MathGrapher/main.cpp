@@ -164,7 +164,7 @@ bool controlFlow() {
                     selectedObjects.push_back(objects[i]);
                 }
                 else {
-                    typeof(selectedObjects) newselects = {};
+                    decltype(selectedObjects) newselects = {};
                     for (DisplayObject* d : selectedObjects) {
                         if (d!=objects[i]) {
                             newselects.push_back(d);
@@ -197,7 +197,7 @@ bool controlFlow() {
     }
     else {
         double totoff = 10;
-        typeof(selectedObjects) newselectedobjects = {};
+        decltype(selectedObjects) newselectedobjects = {};
         for (int i = 0;i<selectedObjects.size();i++) {
             int w,h,w2,h2,w3,h3,w4,h4;
             //draw name of graph
@@ -235,7 +235,7 @@ bool controlFlow() {
             TTF_SizeUTF8((*fontgrab)(16), "Delete", &w4, &h4);
             drawTextWithBackground("Delete", 16, totoff, controlBarY+5+h+h2+h3, 0xff000000,0xff9fc9f2,0xff000000);
             if (leftMouseReleased&&!overPopup&&pointInBounds(mouseX, mouseY, totoff, totoff+w4, controlBarY+5+h+h2+h3, controlBarY+5+h+h2+h3+h4)) {
-                typeof(objects) newobjects = {};
+                decltype(objects) newobjects = {};
                 for (int j = 0;j<objects.size();j++) {
                     if (objects[j]!=selectedObjects[i]) {newobjects.push_back(objects[j]);}
                 }
@@ -495,12 +495,18 @@ int main(int argc, const char * argv[]) {
 
         }
     }
-    
-    #ifdef DEBUG
+    //DEBUG is XCode's automatic debug macro, _DEBUG is Visual Studio's
+    #if defined DEBUG || defined _DEBUG
         std::cout << "Warning: Using a development build!\n";
         //dumstupidcurrentdirectorybs = getcwd(NULL, 0);
         dumstupidcurrentdirectorybs = "/Users/baileyandrew/Desktop/MathGrapher";
+	#elif defined _WINDOWS
+		std::cout << "Visual Studio Compiling For Release";
+		//I have no idea how this works so I'll leave the windows nondebug building
+		//paths to you.
+		dumstupidcurrentdirectorybs = "/Users/baileyandrew/Desktop/MathGrapher";
     #else
+		std::cout << "XCode colpiling for release";
         //grab location
         char path[1024];
         uint32_t size = sizeof(path);
@@ -788,7 +794,7 @@ void doInStringCalcs(Uint8 keypressed) {
             default:
                 std::string thing = SDL_GetKeyName(keypressed);
                 if (thing.size()==1) {
-                    if (instringswitch==0||isnumber(thing[0])) {
+                    if (instringswitch==0||isdigit(thing[0])) {
                         instring+=(CAPS_LOCK?toupper:tolower)(thing[0]);
                         changeToInString();
                     }

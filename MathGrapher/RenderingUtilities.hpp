@@ -10,11 +10,16 @@
 #define RenderingUtilities_hpp
 
 #include <stdio.h>
-#include "SDL2/SDL.h"
-#include "SDL2_ttf/SDL_ttf.h"
+//#include "SDL2/SDL.h"
+#include "SDL.h"
+#undef main
+//#include "SDL2_ttf/SDL_ttf.h"
+#include "SDL_ttf.h"
 #include <iostream>
 #include <vector>
 #include <dirent.h>
+#include <string>
+#include <algorithm>
 
 //My color palet:
 //0xff9fc9f2 - nice blue

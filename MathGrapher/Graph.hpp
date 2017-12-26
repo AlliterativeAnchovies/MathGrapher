@@ -10,9 +10,10 @@
 #define Graph_hpp
 
 #include <stdio.h>
-#include "SDL2/SDL.h"
+//#include "SDL2/SDL.h"
 #include <iostream>
 #include <vector>
+#include <functional>
 #include "RenderingUtilities.hpp"
 
 //Some functions that are needed to be declared here to interface well with main.cpp
@@ -384,7 +385,7 @@ class Function {
         void run(double x) {time+=x;}
         void saveImage();
         void addPoint(PointOfInterest* p) {importantPoints.push_back(p);};
-        typeof(importantPoints) getImportantPoints() {return importantPoints;}
+        decltype(importantPoints) getImportantPoints() {return importantPoints;}
         bool isParametric() {return parametric;}
         //custom deleter to clean up points of interest
         ~Function();
