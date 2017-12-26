@@ -208,7 +208,7 @@ mathgrapher\Popup.cpp(1254): warning C4018: '<': signed/unsigned mismatch
 c:\users\ebail\documents\github\mathgrapher\mathgrapher\Graph.hpp(185): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\main.cpp(149): warning C4018: '<': signed/unsigned mismatch
 mathgrapher\main.cpp(156): warning C4018: '<': signed/unsigned mismatch
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(105): warning C4018: '<': signed/unsigned mismatch
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(109): warning C4018: '<': signed/unsigned mismatch
   mathgrapher\main.cpp(162): note: see reference to function template instantiation 'auto map<controlFlow::<lambda_cbb17affdd3f5ca7a1182e5fc8799d51>,DisplayObject*>(A,std::vector<DisplayObject *,std::allocator<_Ty>>)' being compiled
           with
           [
@@ -244,7 +244,7 @@ mathgrapher\main.cpp(618): warning C4244: 'argument': conversion from 'double' t
 mathgrapher\main.cpp(723): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\main.cpp(726): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\main.cpp(765): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(91): warning C4018: '<': signed/unsigned mismatch
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(95): warning C4018: '<': signed/unsigned mismatch
   mathgrapher\main.cpp(162): note: see reference to function template instantiation 'C foldr<controlFlow::<lambda_f59016671ceb1e1373e6e3d78f662438>,bool,bool>(A,std::vector<bool,std::allocator<_Ty>>,C)' being compiled
           with
           [

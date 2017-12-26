@@ -496,7 +496,11 @@ int main(int argc, const char * argv[]) {
         }
     }
     //DEBUG is XCode's automatic debug macro, _DEBUG is Visual Studio's
-    #if defined DEBUG || defined _DEBUG
+    #if defined DEBUG
+		std::cout << "Warning: Using a development build!\n";
+		//dumstupidcurrentdirectorybs = getcwd(NULL, 0);
+		dumstupidcurrentdirectorybs = "/Users/baileyandrew/Documents/GitHub/MathGrapher";
+	#elif defined _DEBUG
         std::cout << "Warning: Using a development build!\n";
         //dumstupidcurrentdirectorybs = getcwd(NULL, 0);
         dumstupidcurrentdirectorybs = "/Users/baileyandrew/Documents/GitHub/MathGrapher";
@@ -504,7 +508,7 @@ int main(int argc, const char * argv[]) {
 		std::cout << "Visual Studio Compiling For Release";
 		//I have no idea how this works so I'll leave the windows nondebug building
 		//paths to you.
-		dumstupidcurrentdirectorybs = "/Users/baileyandrew/Desktop/MathGrapher";
+		dumstupidcurrentdirectorybs = "Calculate the pathname for windows release mode.";
     #else
 		std::cout << "XCode compiling for release";
         //grab location
