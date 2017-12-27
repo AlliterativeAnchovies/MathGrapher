@@ -75,6 +75,7 @@ bool spacePressed = false;
 bool backspacePressed = false;
 bool controlFlow() {
     ticks++;
+	SDL_RenderClear(gRenderer);
     //Fill screen to background
     drawRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 0xffffe8e2);
     int mouseX, mouseY;
@@ -129,12 +130,14 @@ bool controlFlow() {
             if (e.button.button == SDL_BUTTON_LEFT) {
                 leftMouseClicked = true;
                 leftMouseHadBeenClicked = true;
+				std::cout << "Left click registered @("<<mouseX<<","<<mouseY<<")\n";
             }
         }
         else if (e.type == SDL_MOUSEBUTTONUP) {
             if (e.button.button == SDL_BUTTON_LEFT) {
                 leftMouseReleased = true;
                 leftMouseHadBeenReleased = true;
+				std::cout << "Left click release registered @(" << mouseX << "," << mouseY << ")\n";
             }
         }
     }
@@ -480,17 +483,37 @@ int main(int argc, const char * argv[]) {
         gWindow = SDL_CreateWindow( "MathGrapher", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
         if( gWindow == NULL ) {
             printf( "Window could not be created! SDL_Error: %s\n", SDL_GetError() );
+			throw std::runtime_error("Null window");
         }
         else {
             //Get window surface & renderer
-            gScreenSurface = SDL_GetWindowSurface( gWindow );
+            //gScreenSurface = SDL_GetWindowSurface( gWindow );
             gRenderer = SDL_GetRenderer(gWindow);
+			if (gScreenSurface == NULL) {
+				//throw std::runtime_error("Null surface");
+			}
+			if (gRenderer == NULL) {
+				//std::cout << SDL_GetError() << "\n";
+				//Windows is literally stupid, many things that work nicely on
+				//a mac do not work on a windows.  For who knows what reason,
+				//I have to manually create the renderer for Windows, which
+				//would be fine except for the fact that the SDL_GetRenderer
+				//code works fine on a mac.  So screw Windows.  It took me
+				//3 days to port this to windows, and most of the problems
+				//were because of stupid issues >:(  For example, want to
+				//hook up a dependency to C++ in mac?  Drag-and-drop to one
+				//place.  Want to hook it up in windows?  Gotta make sure you
+				//hook up the lib, binaries, .dll - some of those gotta be
+				//hooked up twice, too.
+				gRenderer = SDL_CreateRenderer(gWindow, -1, 0);
+				//throw std::runtime_error("Null renderer");
+			}
 
             //Fill the surface white
-            SDL_FillRect( gScreenSurface, NULL, SDL_MapRGB( gScreenSurface->format, 0xFF, 0xFF, 0xFF ) );
+            //SDL_FillRect( gScreenSurface, NULL, SDL_MapRGB( gScreenSurface->format, 0xFF, 0xFF, 0xFF ) );
             
             //Update the surface
-            SDL_UpdateWindowSurface( gWindow );
+            //SDL_UpdateWindowSurface( gWindow );
 
 
         }
@@ -501,7 +524,7 @@ int main(int argc, const char * argv[]) {
 		dumstupidcurrentdirectorybs = getenv("PWD");
 	#elif defined _DEBUG
         std::cout << "Warning: Using a development build!\n";
-        dumstupidcurrentdirectorybs = getenv("PWD");
+		dumstupidcurrentdirectorybs = ".";//"Users/ebail/Documents/GitHub/MathGrapher";
 	#elif defined _WINDOWS
 		std::cout << "Visual Studio Compiling For Release";
 		//I have no idea how this works so I'll leave the windows nondebug building
@@ -569,7 +592,7 @@ int main(int argc, const char * argv[]) {
     rotateXAxis->addFollowup(rotateYAxis);
     graphs.push_back(testGraph2);
     */
-    
+	std::cout << "Starting Program Now!";
     while(controlFlow()) {SDL_Delay(1000/60.0);/*60 fps*/};
     
     //Destroy window
