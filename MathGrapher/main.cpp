@@ -498,12 +498,10 @@ int main(int argc, const char * argv[]) {
     //DEBUG is XCode's automatic debug macro, _DEBUG is Visual Studio's
     #if defined DEBUG
 		std::cout << "Warning: Using a development build!\n";
-		//dumstupidcurrentdirectorybs = getcwd(NULL, 0);
-		dumstupidcurrentdirectorybs = "/Users/baileyandrew/Documents/GitHub/MathGrapher";
+		dumstupidcurrentdirectorybs = getenv("PWD");
 	#elif defined _DEBUG
         std::cout << "Warning: Using a development build!\n";
-        //dumstupidcurrentdirectorybs = getcwd(NULL, 0);
-        dumstupidcurrentdirectorybs = "/Users/baileyandrew/Documents/GitHub/MathGrapher";
+        dumstupidcurrentdirectorybs = getenv("PWD");
 	#elif defined _WINDOWS
 		std::cout << "Visual Studio Compiling For Release";
 		//I have no idea how this works so I'll leave the windows nondebug building
@@ -608,7 +606,7 @@ bool loadMedia() {
         }
         closedir (dir);
     }
-    else {throw std::runtime_error("Error - could not load images");}
+    else {throw std::runtime_error("Error - could not load images - tried filepath "+dumstupidcurrentdirectorybs +"/resources/Images");}
     
     
 
