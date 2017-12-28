@@ -57,7 +57,7 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                 if (clicked&&pointInBounds(mouseX, mouseY, px+5, px+5+imagew, cury, cury+imageh)) {
                     //add slider!
                     //addImage(px, py);
-                    createPopup(CHOOSE_WHICH_IMAGE_POPUP, mouseX, mouseY);
+                    createPopup(CHOOSE_WHICH_IMAGE_POPUP, px, py);
                     clicked  = false;
                     toReturn = 0x02;
                 }
@@ -831,7 +831,7 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                     toReturn = 0x01;
                 }
                 
-                //The cancel button
+                //The close button
                 drawBorderedRect(px+sx-20, py, 20, 20, 0xffff0000, 0xff000000);
                 drawText("x", 20, px+sx-20+5, py-3, 0xff000000);
                 if (clicked&&pointInBounds(mouseX, mouseY, px+sx-20, px+sx, py, py+20)) {
@@ -843,6 +843,10 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                 
                 if (clicked&&pointInBounds(mouseX, mouseY, px, px+sx, py, py+sy)) {
                     toReturn = 0x01;
+                }
+                
+                if (clickedEdit) {
+                    toReturn=0x01;
                 }
                 
             }
@@ -889,6 +893,61 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                 if (clicked&&pointInBounds(mouseX, mouseY, px, px+sx, py, py+sy)) {
                     toReturn = 0x01;
                 }
+            }
+            break;
+        case EDIT_IMAGE_POPUP:
+            {
+                drawBorderedRect(px, py, sx, sy, 0xff9fc9f2, 0xff000000);
+                bool clickedEdit = false;
+                int curx = px+5;
+                int cury = py+5;
+                int offx,offy;
+                //Edit field for name
+                clickedEdit = handleEditableInfo(curx,cury,24,28,mouseX,mouseY,
+                    "",tostring(imageConcerned->getName()),imageConcerned->ptmName()
+                    ,clicked,&offx,&offy) || clickedEdit;
+                cury+=offy;
+                //Edit field for position (x)
+                clickedEdit = handleEditableInfo(curx,cury,20,29,mouseX,mouseY,
+                    "PX: ",tostring(imageConcerned->getPX()),imageConcerned->ptmPX()
+                    ,clicked,&offx,&offy) || clickedEdit;
+                //Edit field for position (y)
+                clickedEdit = handleEditableInfo(curx+offx,cury,20,30,mouseX,mouseY,
+                    "PY: ",tostring(imageConcerned->getPY()),imageConcerned->ptmPY()
+                    ,clicked,&offx,&offy) || clickedEdit;
+                cury+=offy;
+                //Edit field for size (x)
+                clickedEdit = handleEditableInfo(curx,cury,20,31,mouseX,mouseY,
+                    "SX: ",tostring(imageConcerned->getSX()),imageConcerned->ptmSX()
+                    ,clicked,&offx,&offy) || clickedEdit;
+                //Edit field for size (y)
+                clickedEdit = handleEditableInfo(curx+offx,cury,20,32,mouseX,mouseY,
+                    "SY: ",tostring(imageConcerned->getSY()),imageConcerned->ptmSY()
+                    ,clicked,&offx,&offy) || clickedEdit;
+                cury+=offy;
+                
+                //The close button
+                drawBorderedRect(px+sx-20, py, 20, 20, 0xffff0000, 0xff000000);
+                drawText("x", 20, px+sx-20+5, py-3, 0xff000000);
+                if (clicked&&pointInBounds(mouseX, mouseY, px+sx-20, px+sx, py, py+20)) {
+                    toReturn = 0x02;
+                    clicked = false;
+                    thingForInString = NULL;
+                    instringswitch = -1;
+                }
+                
+                if (clicked&&pointInBounds(mouseX, mouseY, px, px+sx, py, py+sy)) {
+                    toReturn = 0x01;
+                }
+                
+                if (clickedEdit) {//Believe it or not, this is not redundant
+                    //there are cases when the edit could have been drawn off the side of the popup
+                    //due to it not being able to fit.  While ideally this wouldn't happen, it could
+                    //happen during intermediate builds.  If this isn't here, then trying to click it
+                    //will not send the right toReturn code back (it'd send 0x00)
+                    toReturn = 0x01;
+                }
+                
             }
             break;
     }
@@ -957,7 +1016,8 @@ bool isQuickCloser(Uint8 popup_id) {
 
 bool isMajor(Uint8 popup_id) {
     return  popup_id==EDIT_GRAPH_POPUP||
-            popup_id==EDIT_SLIDER_POPUP;
+            popup_id==EDIT_SLIDER_POPUP||
+            popup_id==EDIT_IMAGE_POPUP;
 }
 
 Popup* createPopup(Uint8 popup_id,double x,double y) {
@@ -1023,6 +1083,10 @@ Popup* createPopup(Uint8 popup_id,double x,double y) {
             sx = 150;
             sy = 200;
             break;
+        case EDIT_IMAGE_POPUP:
+            sx = SCREEN_WIDTH-20-150;
+            sy = SCREEN_HEIGHT-20;
+            break;
     }
     
     Popup* blargh = new Popup(popup_id,x,y,sx,sy);
@@ -1076,13 +1140,29 @@ void Popup::unlock() {
     locked = false;
 }
 
-void deleteInStrings() {
-    switch (instringswitch) {
+bool isStringTypeOfValueEditor(int instrswch) {
+    switch (instrswch) {
         case 0:
         case 18:
         case 21:
-            delete (ValueEditor<std::string>*)thingForInString;
-            break;
+        case 28:
+            return true;
+    }
+    return false;
+}
+
+bool isIntTypeOfValueEditor(int instrswch) {
+    switch (instrswch) {
+        case 13:
+        case 14:
+        case 27:
+            return true;
+    }
+    return false;
+}
+
+bool isDoubleTypeOfValueEditor(int instrswch) {
+    switch (instrswch) {
         case 1:
         case 2:
         case 3:
@@ -1105,15 +1185,27 @@ void deleteInStrings() {
         case 24:
         case 25:
         case 26:
-            delete (ValueEditor<double>*)thingForInString;
-            break;
-        case 13:
-        case 14:
-        case 27:
-            delete (ValueEditor<int>*)thingForInString;
-            break;
-        default:
-            throw std::runtime_error("Error!  Don't know type of thingForInString!");
+        case 29:
+        case 30:
+        case 31:
+        case 32:
+            return true;
+    }
+    return false;
+}
+
+void deleteInStrings() {
+    if (isStringTypeOfValueEditor(instringswitch)) {
+        delete (ValueEditor<std::string>*)thingForInString;
+    }
+    else if (isDoubleTypeOfValueEditor(instringswitch)) {
+        delete (ValueEditor<double>*)thingForInString;
+    }
+    else if (isIntTypeOfValueEditor(instringswitch)) {
+        delete (ValueEditor<int>*)thingForInString;
+    }
+    else {
+        throw std::runtime_error("Error!  Don't know type of thingForInString!");
     }
     thingForInString=NULL;
     instring="";

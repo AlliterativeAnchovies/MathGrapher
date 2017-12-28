@@ -188,6 +188,14 @@ class RawImage: public DisplayObject {
         void run();
         void reset();
         void update();
+        std::string* ptmName() {return &name;}
+        double* ptmPX() {return &px;}
+        double* ptmPY() {return &py;}
+        double* ptmSX() {return &sx;}
+        double* ptmSY() {return &sy;}
+        bool needsResize() {
+            return (int)sx!=surfaceConcerned->w || (int)sy!=surfaceConcerned->h;
+        }
         RawImage(double x,double y,double xs,double ys,SDL_Surface* s,std::string n) {
             px = x;py = y;sx = xs;sy = ys;name = n;
             //scale image down to a reasonable starting height
@@ -203,6 +211,13 @@ class RawImage: public DisplayObject {
             origSurf = s;
         }
         SDL_Surface* draw(double* x,double* y) {
+            //check if should resize
+            if (needsResize()) {
+                SDL_Surface* temp = createBlankSurfaceWithSize(sx, sy);
+                SDL_BlitScaled(surfaceConcerned,NULL,temp,NULL);
+                SDL_FreeSurface(surfaceConcerned);
+                surfaceConcerned = temp;
+            }
             *x = px;
             *y = py;
             if (highlighted) {

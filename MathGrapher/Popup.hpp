@@ -33,7 +33,8 @@ enum POPUP_IDS {
     CREATE_HIGHLIGHT_INTERPOLATION,
     EDIT_SLIDER_POPUP,
     CHOOSE_POINT_CONCERNED_FOR_LINKING_POPUP,
-    CHOOSE_WHICH_IMAGE_POPUP
+    CHOOSE_WHICH_IMAGE_POPUP,
+    EDIT_IMAGE_POPUP
 };
 
 const bool X_AXIS = true;
@@ -53,6 +54,7 @@ class Popup {
         Popup* popupConcerned = NULL;
         Function* functionConcerned = NULL;
         Slider* sliderConcerned = NULL;
+        RawImage* imageConcerned = NULL;
         bool isNewborn = true;
         bool successfulRaycast = false;
         bool locked = false;
@@ -69,6 +71,7 @@ class Popup {
         Popup* concernWith(Popup* p);
         Popup* concernWith(Function* f);
         Popup* concernWith(Slider* s) {sliderConcerned = s;return this;}
+        Popup* concernWith(RawImage* r) {imageConcerned = r;return this;}
         bool inBounds(double mouseX,double mouseY);
         bool newborn() {return isNewborn;}
         void age() {isNewborn=false;}
@@ -87,6 +90,9 @@ Popup* createPopup(Uint8 popup_id,double x,double y);
 bool isQuickCloser(Uint8 popup_id);
 bool isMajor(Uint8 popup_id);
 void deleteInStrings();
+bool isDoubleTypeOfValueEditor(int instrswch);
+bool isIntTypeOfValueEditor(int instrswch);
+bool isStringTypeOfValueEditor(int instrswch);
 
 
 //This could be a confusing function, so here's how it works:

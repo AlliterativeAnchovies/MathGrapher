@@ -236,6 +236,11 @@ bool controlFlow() {
                     blargh->concernWith((Slider*)selectedObjects[i]);
                     leftMouseReleased = false;
                 }
+                else if (selectedObjects[i]->getID()=="Image") {
+                    Popup* blargh = createPopup(EDIT_IMAGE_POPUP, 10, 10);
+                    blargh->concernWith((RawImage*)selectedObjects[i]);
+                    leftMouseReleased = false;
+                }
             }
             //draw delete button
             TTF_SizeUTF8((*fontgrab)(16), "Delete", &w4, &h4);
@@ -699,114 +704,17 @@ void addImage(double x,double y,int which) {
 
 void changeToInString() {
     if (thingForInString!=NULL) {
-        switch (instringswitch) {
-            case 0:
-                //((Graph*)thingForInString)->changeName(instring);
-                ((ValueEditor<std::string>*)thingForInString)->changeValue(instring);
-                break;
-            case 1:
-            case 2:
-            case 3:
-            case 4:
-            case 5:
-            case 6:
-            case 7:
-            case 8:
-            case 9:
-            case 10:
-                ((ValueEditor<double>*)thingForInString)->changeValue(instring);
-                break;
-            default:
-                ((ValueEditor<std::string>*)thingForInString)->changeValue(instring);
-                break;
-            /*
-            case 1:
-                ((Graph*)thingForInString)->changePosition(numberFromString(instring),(((Graph*)thingForInString)->getPosition()).y);
-                break;
-            case 2:
-                ((Graph*)thingForInString)->changePosition((((Graph*)thingForInString)->getPosition()).x,numberFromString(instring));
-                break;
-            case 3:
-                ((Graph*)thingForInString)->resizeGrid(numberFromString(instring),(((Graph*)thingForInString)->getSize()).y);
-                break;
-            case 4:
-                ((Graph*)thingForInString)->resizeGrid((((Graph*)thingForInString)->getSize()).x,numberFromString(instring));
-                break;
-            case 5:
-                ((Graph*)thingForInString)->changeGridScale(numberFromString(instring),
-                    (((Graph*)thingForInString)->getGridScale()).y);
-                break;
-            case 6:
-                ((Graph*)thingForInString)->changeGridScale((((Graph*)thingForInString)->getGridScale()).x, numberFromString(instring));
-                break;
-            //7 and 8 swapped order on purpose, programmatically the x angle is the one made with the
-            //y axis (for good reasons, but it's still counterintuitive), so for the end user we swap them
-            case 7:
-                ((Graph*)thingForInString)->changeGridAngle((((Graph*)thingForInString)->getGridAngle()).x, numberFromString(instring)*M_PI/180);
-                break;
-            case 8:
-                ((Graph*)thingForInString)->changeGridAngle(numberFromString(instring)*M_PI/180,
-                    (((Graph*)thingForInString)->getGridAngle()).y);
-                break;
-            case 9:
-                ((Graph*)thingForInString)->changeOrigin(numberFromString(instring),
-                    (((Graph*)thingForInString)->getOrigin()).y);
-                break;
-            case 10:
-                ((Graph*)thingForInString)->changeOrigin((((Graph*)thingForInString)->getOrigin()).x, numberFromString(instring));
-                break;
-            case 11:
-                ((Interpolation*)thingForInString)->changePX(numberFromString(instring));
-                break;
-            case 12:
-                ((Interpolation*)thingForInString)->changePY(numberFromString(instring));
-                break;
-            case 13:
-                ((Interpolation*)thingForInString)->changeStart(numberFromString(instring));
-                break;
-            case 14:
-                ((Interpolation*)thingForInString)->changeDuration(numberFromString(instring));
-                break;
-            case 15:
-                ((Function*)thingForInString)->setTime(numberFromString(instring));
-                break;
-            case 16:
-                ((Function*)thingForInString)->setStretchX(instring);
-                break;
-            case 17:
-                ((Function*)thingForInString)->setStretchY(instring);
-                break;
-            case 18:
-                ((Popup*)thingForInString)->concernWith(instring);
-                break;
-            case 19:
-                ((Interpolation*)thingForInString)->changeSX(numberFromString(instring));
-                break;
-            case 20:
-                ((Interpolation*)thingForInString)->changeSY(numberFromString(instring));
-                break;
-            case 21:
-                ((Slider*)thingForInString)->changeName(instring);
-                break;
-            case 22:
-                ((Slider*)thingForInString)->changePX(numberFromString(instring));
-                break;
-            case 23:
-                ((Slider*)thingForInString)->changePY(numberFromString(instring));
-                break;
-            case 24:
-                ((Slider*)thingForInString)->changeSize(numberFromString(instring));
-                break;
-            case 25:
-                ((Slider*)thingForInString)->changeAngle(numberFromString(instring)*M_PI/180);
-                break;
-            case 26:
-                ((Slider*)thingForInString)->changeStartingYString(instring);
-                break;
-            case 27:
-                ((Slider*)thingForInString)->setTicks(numberFromString(instring));
-                break;
-            */
+        if (isStringTypeOfValueEditor(instringswitch)) {
+            ((ValueEditor<std::string>*)thingForInString)->changeValue(instring);
+        }
+        else if (isDoubleTypeOfValueEditor(instringswitch)) {
+            ((ValueEditor<double>*)thingForInString)->changeValue(instring);
+        }
+        else if (isIntTypeOfValueEditor(instringswitch)) {
+            ((ValueEditor<int>*)thingForInString)->changeValue(instring);
+        }
+        else {
+            throw std::runtime_error("Error!  Don't know type of thingForInString!");
         }
     }
 }
