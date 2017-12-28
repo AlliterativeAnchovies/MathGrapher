@@ -56,7 +56,8 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                 drawTextWithBackground(" Image ", 20, px+5, cury, 0xff000000, 0xffffcf9e, 0xff000000);
                 if (clicked&&pointInBounds(mouseX, mouseY, px+5, px+5+imagew, cury, cury+imageh)) {
                     //add slider!
-                    addImage(px, py);
+                    //addImage(px, py);
+                    createPopup(CHOOSE_WHICH_IMAGE_POPUP, mouseX, mouseY);
                     clicked  = false;
                     toReturn = 0x02;
                 }
@@ -868,6 +869,28 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                 }
             }
             break;
+        case CHOOSE_WHICH_IMAGE_POPUP:
+            {
+                drawBorderedRect(px, py, sx, sy, 0xffaaf2aa, 0xff000000);
+                drawText("Choose Image", 22, px, py, 0xff000000);
+                double cury = py+30;
+                for (int i = 0;i<gSurfaces.size();i++) {
+                    int w,h;
+                    TTF_SizeUTF8((*fontgrab)(16),gStrings[i].c_str(),&w,&h);
+                    drawTextWithBackground(gStrings[i], 16, px+5, cury, 0xff000000, 0xffffcf9e, 0xff000000);
+                    if (clicked&&pointInBounds(mouseX, mouseY, px+5, px+5+w, cury, cury+h)) {
+                        clicked = false;
+                        toReturn = 0x02;
+                        addImage(px, py,i);
+                    }
+                    cury+=h+5;
+                    
+                }
+                if (clicked&&pointInBounds(mouseX, mouseY, px, px+sx, py, py+sy)) {
+                    toReturn = 0x01;
+                }
+            }
+            break;
     }
     return toReturn;
 }
@@ -928,7 +951,8 @@ bool isQuickCloser(Uint8 popup_id) {
            popup_id==CHOOSE_FUNCTION_INTERPOLATION||
            popup_id==CREATE_POINT_OF_INTEREST||
            popup_id==CREATE_HIGHLIGHT_INTERPOLATION||
-           popup_id==CHOOSE_POINT_CONCERNED_FOR_LINKING_POPUP;
+           popup_id==CHOOSE_POINT_CONCERNED_FOR_LINKING_POPUP||
+           popup_id==CHOOSE_WHICH_IMAGE_POPUP;
 }
 
 bool isMajor(Uint8 popup_id) {
@@ -992,6 +1016,10 @@ Popup* createPopup(Uint8 popup_id,double x,double y) {
             sy = SCREEN_HEIGHT-20;
             break;
         case CHOOSE_POINT_CONCERNED_FOR_LINKING_POPUP:
+            sx = 150;
+            sy = 200;
+            break;
+        case CHOOSE_WHICH_IMAGE_POPUP:
             sx = 150;
             sy = 200;
             break;

@@ -20,7 +20,7 @@
 //they are defined in main
 void addGraph(double x,double y);
 void addSlider(double x,double y);
-void addImage(double x,double y);
+void addImage(double x,double y,int which);
 
 enum INTERPOLATIONS {
     NULL_INTERPOLATION,
@@ -170,6 +170,7 @@ class RawImage: public DisplayObject {
     double sx = 0;
     double sy = 0;
     SDL_Surface* surfaceConcerned = NULL;
+    SDL_Surface* origSurf = NULL;//store original surface for scaling and such
     std::string name = "-IMAGE-";
     public:
         double getPX() {return px;}
@@ -199,6 +200,7 @@ class RawImage: public DisplayObject {
             //copy input surface
             surfaceConcerned = createBlankSurfaceWithSize(sx, sy);
             SDL_BlitScaled(s,NULL,surfaceConcerned,NULL);
+            origSurf = s;
         }
         SDL_Surface* draw(double* x,double* y) {
             *x = px;

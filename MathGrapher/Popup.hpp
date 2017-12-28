@@ -14,7 +14,9 @@
 #include "Graph.hpp"
 #include "Functions.hpp"
 
-
+extern std::vector<SDL_Surface*> gSurfaces;
+extern std::vector<SDL_Texture*> gTextures;
+extern std::vector<std::string>  gStrings;
 
 enum POPUP_IDS {
     NULL_POPUP,
@@ -30,7 +32,8 @@ enum POPUP_IDS {
     CREATE_POINT_OF_INTEREST,
     CREATE_HIGHLIGHT_INTERPOLATION,
     EDIT_SLIDER_POPUP,
-    CHOOSE_POINT_CONCERNED_FOR_LINKING_POPUP
+    CHOOSE_POINT_CONCERNED_FOR_LINKING_POPUP,
+    CHOOSE_WHICH_IMAGE_POPUP
 };
 
 const bool X_AXIS = true;
@@ -85,6 +88,29 @@ bool isQuickCloser(Uint8 popup_id);
 bool isMajor(Uint8 popup_id);
 void deleteInStrings();
 
+
+//This could be a confusing function, so here's how it works:
+//Basically, it's just supposed to draw some attribute of an object,
+//along with an edit button, and it should handle the clicking of
+//the edit button by passing data to a ValueEditor (how those work is a
+//whole 'nother beast...).  For example, if you want to edit the x-position
+//of a graph, you would have (pseudo-codedly):
+//  preface = "PX: "
+//  display = tostring(graph.px) [let's say it's "5"]
+//  pointerThing = &(graph.px)
+//Giving an output of PX: 5 |EDIT| with a font size of fsize at (px,py)
+//And if clicked is true and (mouseX,mouseY) in right place, value editor holds &(graph.px)
+//You would pass pointers offx,offy to fill with data about how much space this display took,
+//so you can format things on the outside correctly.
+//relevantinstringswitch is just a way of giving an "id" to the transaction.  Its actually pretty
+//important for 2 reasons: because ValueEditor is a template class, it doesn't know which deleter
+//to use (because it doesn't know whether it's a ValueEditor<std::string>, ValueEditor<double>, etc...)
+//So the id is used to handle deletions, later down the chain.  Also it's important to know whether
+//to add the cursorBeeper to signal to the user that they are currently editing the field.
+//This is a template function, but you don't have to template-call it ("handleEditableInfo<int>(...)"), just
+//call it normally ("handleEditableInfo(...)") because the compiler is smart enough to know that this
+//function is wholly defined by what you pass in for pointerThing and so it uses that to do the right
+//template.
 template<typename T> bool handleEditableInfo(double px,double py,int fsize,int relevantinstringswitch,double mouseX,double mouseY,std::string preface,std::string display,T* pointerThing,bool clicked,int* offx,int* offy) {
     std::string cursorBeeper = (ticks%60<30)?"|":" ";
     if (instringswitch==relevantinstringswitch) {
@@ -98,9 +124,9 @@ template<typename T> bool handleEditableInfo(double px,double py,int fsize,int r
     *offx = w+w2;
     *offy = (h>h2)?h:h2;
     if (clicked&&pointInBounds(mouseX, mouseY, px+w, px+w+w2, py, py+h2)) {
-        //edit the name
+        //edit clicked
         instring = tostring(*pointerThing);
-        thingForInString = new ValueEditor<T>(pointerThing);//graphConcerned;
+        thingForInString = new ValueEditor<T>(pointerThing);
         instringswitch = relevantinstringswitch;
         clicked = false;
         return true;

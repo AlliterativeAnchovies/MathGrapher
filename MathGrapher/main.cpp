@@ -21,6 +21,9 @@ const int SCREEN_HEIGHT = 480;
 int NUM_GRAPHICS = 0;
 std::vector<SDL_Surface*> gSurfaces = {};
 std::vector<SDL_Texture*> gTextures = {};
+std::vector<std::string>  gStrings  = {};   //I feel like this has an "inappropriate" name
+                                            //but I don't feel like taking the risky click
+                                            //to verify.
 
 //Graphics drawing variables
 SDL_Window* gWindow = NULL;
@@ -624,6 +627,7 @@ bool loadMedia() {
         while ((ent = readdir (dir)) != NULL) {
             if (ent->d_name[0]!='.') {
                 std::string path = ent->d_name;
+                gStrings.push_back(path);
                 gSurfaces.push_back(SDL_LoadBMP((dumstupidcurrentdirectorybs+"/resources/Images/"+path).c_str()));
                 gTextures.push_back(SDL_CreateTextureFromSurface(gRenderer, gSurfaces[NUM_GRAPHICS]));
                 NUM_GRAPHICS++;
@@ -687,8 +691,8 @@ void addSlider(double x,double y) {
     objects.push_back(new Slider(x,y,100,"Slider "+std::to_string(TOTAL_SLIDERS)));
     TOTAL_SLIDERS++;
 }
-void addImage(double x,double y) {
-    objects.push_back(new RawImage(x,y,gSurfaces[0]->w,gSurfaces[0]->h,gSurfaces[0],"Image "+std::to_string(TOTAL_IMAGES)));
+void addImage(double x,double y,int which) {
+    objects.push_back(new RawImage(x,y,gSurfaces[which]->w,gSurfaces[which]->h,gSurfaces[which],"Image "+std::to_string(TOTAL_IMAGES)));
     TOTAL_IMAGES++;
 }
 
