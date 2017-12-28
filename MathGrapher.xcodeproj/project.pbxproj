@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		863C5C131FF56D0500F6FA18 /* resources in CopyFiles */ = {isa = PBXBuildFile; fileRef = 863C5C121FF56D0400F6FA18 /* resources */; };
+		863C5C151FF5834A00F6FA18 /* resources in CopyFiles */ = {isa = PBXBuildFile; fileRef = 863C5C141FF5834A00F6FA18 /* resources */; };
 		86928C631FE125BF00CBB286 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86928C621FE125BF00CBB286 /* main.cpp */; };
 		86928C6C1FE1260500CBB286 /* SDL2_ttf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86928C6A1FE1260500CBB286 /* SDL2_ttf.framework */; };
 		86928C6D1FE1260500CBB286 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86928C6B1FE1260500CBB286 /* SDL2.framework */; };
@@ -24,14 +24,14 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
-				863C5C131FF56D0500F6FA18 /* resources in CopyFiles */,
+				863C5C151FF5834A00F6FA18 /* resources in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		863C5C121FF56D0400F6FA18 /* resources */ = {isa = PBXFileReference; lastKnownFileType = folder; name = resources; path = MathGrapher/resources; sourceTree = "<group>"; };
+		863C5C141FF5834A00F6FA18 /* resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = resources; sourceTree = "<group>"; };
 		86928C5F1FE125BF00CBB286 /* MathGrapher */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MathGrapher; sourceTree = BUILT_PRODUCTS_DIR; };
 		86928C621FE125BF00CBB286 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		86928C6A1FE1260500CBB286 /* SDL2_ttf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_ttf.framework; path = ../../../../Library/Frameworks/SDL2_ttf.framework; sourceTree = "<group>"; };
@@ -62,7 +62,7 @@
 		86928C561FE125BF00CBB286 = {
 			isa = PBXGroup;
 			children = (
-				863C5C121FF56D0400F6FA18 /* resources */,
+				863C5C141FF5834A00F6FA18 /* resources */,
 				86928C611FE125BF00CBB286 /* MathGrapher */,
 				86928C601FE125BF00CBB286 /* Products */,
 				86928C691FE1260500CBB286 /* Frameworks */,
