@@ -196,6 +196,12 @@ template<typename T> std::string tostring(T a) {
 template<> std::string tostring(std::string a); //since this is not technically a template (its specialized)
                                                 //it must be defined in .cpp
 
+template<typename T> T fromstring(std::string a) {
+    return (T)numberFromString(a);
+}
+
+template<> std::string fromstring(std::string a);
+
 class ValueEditorPrime {//polymorphic wrapper for all templates of ValueEditor
     public:
         virtual ~ValueEditorPrime() {};
@@ -212,7 +218,7 @@ template<typename valueType> class ValueEditor: public ValueEditorPrime {
             value=tostring(*setter);
         }
         ~ValueEditor() {
-            *setter=value;
+            *setter=fromstring<valueType>(value);
         }
         //send in the proposed changed value of "value", and change value to it.
         //then do trimming (005 = 5, for example)

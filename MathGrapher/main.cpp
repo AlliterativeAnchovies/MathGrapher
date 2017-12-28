@@ -130,14 +130,14 @@ bool controlFlow() {
             if (e.button.button == SDL_BUTTON_LEFT) {
                 leftMouseClicked = true;
                 leftMouseHadBeenClicked = true;
-				std::cout << "Left click registered @("<<mouseX<<","<<mouseY<<")\n";
+				//std::cout << "Left click registered @("<<mouseX<<","<<mouseY<<")\n";
             }
         }
         else if (e.type == SDL_MOUSEBUTTONUP) {
             if (e.button.button == SDL_BUTTON_LEFT) {
                 leftMouseReleased = true;
                 leftMouseHadBeenReleased = true;
-				std::cout << "Left click release registered @(" << mouseX << "," << mouseY << ")\n";
+				//std::cout << "Left click release registered @(" << mouseX << "," << mouseY << ")\n";
             }
         }
     }
@@ -504,7 +504,9 @@ int main(int argc, const char * argv[]) {
 				//hook up a dependency to C++ in mac?  Drag-and-drop to one
 				//place.  Want to hook it up in windows?  Gotta make sure you
 				//hook up the lib, binaries, .dll - some of those gotta be
-				//hooked up twice, too.
+				//hooked up twice, too. </rant>
+                //(to be fair, half of my problems were visual studio problems,
+                //not necessarily windows problems.  xcode is much better.)
 				gRenderer = SDL_CreateRenderer(gWindow, -1, 0);
 				//throw std::runtime_error("Null renderer");
 			}
@@ -592,7 +594,7 @@ int main(int argc, const char * argv[]) {
     rotateXAxis->addFollowup(rotateYAxis);
     graphs.push_back(testGraph2);
     */
-	std::cout << "Starting Program Now!";
+	std::cout << "Starting Program Now!\n";
     while(controlFlow()) {SDL_Delay(1000/60.0);/*60 fps*/};
     
     //Destroy window
@@ -704,6 +706,22 @@ void changeToInString() {
                 ((ValueEditor<std::string>*)thingForInString)->changeValue(instring);
                 break;
             case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+            case 6:
+            case 7:
+            case 8:
+            case 9:
+            case 10:
+                ((ValueEditor<double>*)thingForInString)->changeValue(instring);
+                break;
+            default:
+                ((ValueEditor<std::string>*)thingForInString)->changeValue(instring);
+                break;
+            /*
+            case 1:
                 ((Graph*)thingForInString)->changePosition(numberFromString(instring),(((Graph*)thingForInString)->getPosition()).y);
                 break;
             case 2:
@@ -789,6 +807,7 @@ void changeToInString() {
             case 27:
                 ((Slider*)thingForInString)->setTicks(numberFromString(instring));
                 break;
+            */
         }
     }
 }
@@ -801,20 +820,20 @@ void doInStringCalcs(Uint8 keypressed) {
                 deleteInStrings();
                 break;
             case SDLK_PERIOD:
-                if (instringswitch==16||instringswitch==17||instringswitch==18||
-                    instringswitch==11||instringswitch==12||instringswitch==26||
-                    instringswitch==19||instringswitch==20) {
+                //if (instringswitch==16||instringswitch==17||instringswitch==18||
+                //    instringswitch==11||instringswitch==12||instringswitch==26||
+                //    instringswitch==19||instringswitch==20) {
                     instring+=".";
                     changeToInString();
-                }
+                //}
                 break;
             case SDLK_MINUS:
-                if (instringswitch==16||instringswitch==17||instringswitch==18||
-                    instringswitch==11||instringswitch==12||instringswitch==26||
-                    instringswitch==19||instringswitch==20) {
+                //if (instringswitch==16||instringswitch==17||instringswitch==18||
+                //    instringswitch==11||instringswitch==12||instringswitch==26||
+                //    instringswitch==19||instringswitch==20) {
                     instring+="-";
                     changeToInString();
-                }
+                //}
                 break;
             default:
                 std::string thing = SDL_GetKeyName(keypressed);

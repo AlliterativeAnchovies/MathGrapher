@@ -322,3 +322,6 @@ void drawCircleOnSurface(SDL_Surface* theSurface,int centx,int centy,float radiu
 template<> std::string tostring(std::string a) {
     return a;
 }
+template<> std::string fromstring(std::string a) {
+    return a;
+}

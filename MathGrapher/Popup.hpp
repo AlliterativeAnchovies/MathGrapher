@@ -85,6 +85,29 @@ bool isQuickCloser(Uint8 popup_id);
 bool isMajor(Uint8 popup_id);
 void deleteInStrings();
 
+template<typename T> bool handleEditableInfo(double px,double py,int fsize,int relevantinstringswitch,double mouseX,double mouseY,std::string preface,std::string display,T* pointerThing,bool clicked,int* offx,int* offy) {
+    std::string cursorBeeper = (ticks%60<30)?"|":" ";
+    if (instringswitch==relevantinstringswitch) {
+        display = instring + cursorBeeper;
+    }
+    drawText(preface+display, fsize, px, py, 0xff000000);
+    int w,h,w2,h2;
+    TTF_SizeUTF8((*fontgrab)(fsize),(preface+display).c_str(), &w, &h);
+    drawTextWithBackground("Edit", 16, px+w, py, 0xff000000, 0xffffcf9e, 0xff000000);
+    TTF_SizeUTF8((*fontgrab)(16),"Edit", &w2, &h2);
+    *offx = w+w2;
+    *offy = (h>h2)?h:h2;
+    if (clicked&&pointInBounds(mouseX, mouseY, px+w, px+w+w2, py, py+h2)) {
+        //edit the name
+        instring = tostring(*pointerThing);
+        thingForInString = new ValueEditor<T>(pointerThing);//graphConcerned;
+        instringswitch = relevantinstringswitch;
+        clicked = false;
+        return true;
+    }
+    return false;
+}
+
 
 
 #endif /* Popup_hpp */

@@ -114,6 +114,17 @@ class Interpolation {
         void changeSY(double a) {sy=a;}
         //return true if still working
         bool isActive() {return timeAt<timeInterval&&!paused;}
+        //get values for editing
+        double getPX() {return px;}
+        double* ptmPX() {return &px;}
+        double getPY() {return py;}
+        double* ptmPY() {return &py;}
+        double getSX() {return sx;}
+        double* ptmSX() {return &sx;}
+        double getSY() {return sy;}
+        double* ptmSY() {return &sy;}
+        int* ptmStart() {return &timeStartCounter;}
+        int* ptmDuration() {return &timeInterval;}
 };
 
 class DisplayObject {
@@ -324,8 +335,18 @@ class Graph: public DisplayObject {
         std::string getID() {return "Graph";}
         //custom deleter to clean up constituents
         ~Graph();
-        //pointer to name
+        //pointers (used by value editors)
         std::string* ptmName() {return &name;}
+        double* ptmPX() {return &px;}
+        double* ptmPY() {return &py;}
+        double* ptmSX() {return &sx;}
+        double* ptmSY() {return &sy;}
+        double* ptmOX() {return &ox;}
+        double* ptmOY() {return &oy;}
+        double* ptmGridSpacingX() {return &gridSpacingX;}
+        double* ptmGridSpacingY() {return &gridSpacingY;}
+        double* ptmGridAngleX() {return &gridAngleX;}
+        double* ptmGridAngleY() {return &gridAngleY;}
 };
 
 typedef std::function<double(double,double,double,double)> internalFunc;
@@ -389,6 +410,9 @@ class Function {
         bool isParametric() {return parametric;}
         //custom deleter to clean up points of interest
         ~Function();
+        double* ptmTime() {return &time;}
+        double* ptmStretchX() {return &stretchx;}
+        double* ptmStretchY() {return &stretchy;}
 };
 
 class PointOfInterest {
@@ -469,6 +493,13 @@ class Slider: public DisplayObject {
         void update() {};
         void reset() {};
         bool isRunning() {return running;};
+        std::string* ptmName() {return &name;}
+        double* ptmPX() {return &px;}
+        double* ptmPY() {return &py;}
+        double* ptmSize() {return &size;}
+        double* ptmAngle() {return &angle;}
+        int* ptmTicks() {return &tickAmount;}
+        double* ptmStartingY() {return &pointery;}
 };
 
 Uint32 getColorOfInterpolation(Interpolation* i);

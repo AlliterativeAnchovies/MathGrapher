@@ -65,9 +65,16 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
             break;
         case EDIT_GRAPH_POPUP:
             {
-                std::string cursorBeeper = (ticks%60<30)?"|":" ";
+                //std::string cursorBeeper = (ticks%60<30)?"|":" ";
                 drawBorderedRect(px, py, sx, sy, 0xff9fc9f2, 0xff000000);
-                drawText(graphConcerned->getName()+((instringswitch==0)?cursorBeeper:""), 24, px+5, py+5, 0xff000000);
+                
+                int offx,offy;
+                int curx = px+5;
+                int cury = py+5;
+                bool clickedEdit = handleEditableInfo(curx,cury,24,0,mouseX,mouseY,"",
+                    graphConcerned->getName(),graphConcerned->ptmName(),clicked,&offx,&offy);
+                cury+=offy;
+                /*drawText(graphConcerned->getName()+((instringswitch==0)?cursorBeeper:""), 24, px+5, py+5, 0xff000000);
                 int w,h,w2,h2;
                 TTF_SizeUTF8((*fontgrab)(24),(graphConcerned->getName()+((instringswitch==0)?cursorBeeper:"")).c_str(), &w, &h);
                 drawTextWithBackground("Edit", 16, px+5+w, py+5, 0xff000000, 0xffffcf9e, 0xff000000);
@@ -79,8 +86,11 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                     instringswitch = 0;
                     clicked = false;
                     toReturn = 0x01;
-                }
-                int w3,h3,w4,h4;
+                }*/
+                clickedEdit = handleEditableInfo(curx,cury,20,1,mouseX,mouseY,
+                    "PX: ",tostring(graphConcerned->getPosition().x),graphConcerned->ptmPX(),clicked,&offx,&offy)
+                    || clickedEdit;
+                /*int w3,h3,w4,h4;
                 drawText("px: "+std::to_string((int)((graphConcerned->getPosition()).x))+((instringswitch==1)?cursorBeeper:""), 20, px+5, py+5+h+5, 0xff000000);
                 TTF_SizeUTF8((*fontgrab)(20),("px: "+std::to_string((int)((graphConcerned->getPosition()).x))+((instringswitch==1)?cursorBeeper:"")).c_str(), &w3, &h3);
                 drawTextWithBackground("Edit", 16, px+5+w3, py+5+h+5, 0xff000000, 0xffffcf9e, 0xff000000);
@@ -91,9 +101,9 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                     instringswitch = 1;
                     clicked = false;
                     toReturn = 0x01;
-                }
+                }*/
                 
-                drawText("py: "+std::to_string((int)((graphConcerned->getPosition()).y))+((instringswitch==2)?cursorBeeper:""), 20, px+5+5+w2+w3, py+5+h+5, 0xff000000);
+                /*drawText("py: "+std::to_string((int)((graphConcerned->getPosition()).y))+((instringswitch==2)?cursorBeeper:""), 20, px+5+5+w2+w3, py+5+h+5, 0xff000000);
                 TTF_SizeUTF8((*fontgrab)(20),("py: "+std::to_string((int)((graphConcerned->getPosition()).y))+((instringswitch==2)?cursorBeeper:"")).c_str(), &w4, &h4);
                 drawTextWithBackground("Edit", 16, px+5+w2+w3+w4+5, py+5+h+5, 0xff000000, 0xffffcf9e, 0xff000000);
                 if (clicked&&pointInBounds(mouseX, mouseY, px+5+w3+w2+w4+5, px+5+w3+w2+w2+w3+w4, py+5+h+5, py+5+h+5+h2)) {
@@ -103,9 +113,13 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                     instringswitch = 2;
                     clicked = false;
                     toReturn = 0x01;
-                }
+                }*/
+                clickedEdit = handleEditableInfo(curx+offx,cury,20,2,mouseX,mouseY,
+                    "PY: ",tostring(graphConcerned->getPosition().y),graphConcerned->ptmPY(),clicked,&offx,&offy)
+                    || clickedEdit;
+                cury+=offy;
                 
-                int w5,h5,w6,h6;
+                /*int w5,h5,w6,h6;
                 drawText("sx: "+std::to_string((int)((graphConcerned->getSize()).x))+((instringswitch==3)?cursorBeeper:""), 20, px+5, py+5+h+5+h3+5, 0xff000000);
                 TTF_SizeUTF8((*fontgrab)(20),("sx: "+std::to_string((int)((graphConcerned->getSize()).x))+((instringswitch==3)?cursorBeeper:"")).c_str(), &w5, &h5);
                 drawTextWithBackground("Edit", 16, px+5+w5, py+5+h+5+h3+5, 0xff000000, 0xffffcf9e, 0xff000000);
@@ -128,9 +142,16 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                     instringswitch = 4;
                     clicked = false;
                     toReturn = 0x01;
-                }
+                }*/
+                clickedEdit = handleEditableInfo(curx,cury,20,3,mouseX,mouseY,
+                    "SX: ",tostring(graphConcerned->getSize().x),graphConcerned->ptmSX(),clicked,&offx,&offy)
+                    || clickedEdit;
+                clickedEdit = handleEditableInfo(curx+offx,cury,20,4,mouseX,mouseY,
+                    "SY: ",tostring(graphConcerned->getSize().y),graphConcerned->ptmSY(),clicked,&offx,&offy)
+                    || clickedEdit;
+                cury+=offy;
                 
-                int w7,h7,w8,h8;
+                /*int w7,h7,w8,h8;
                 drawText("scale x: "+std::to_string((int)((graphConcerned->getGridScale()).x))+((instringswitch==5)?cursorBeeper:""), 20, px+5, py+5+h+5+h3+5+5+h5, 0xff000000);
                 TTF_SizeUTF8((*fontgrab)(20),("scale x: "+std::to_string((int)((graphConcerned->getGridScale()).x))+((instringswitch==5)?cursorBeeper:"")).c_str(), &w7, &h7);
                 drawTextWithBackground("Edit", 16, px+5+w7, py+5+h+5+h3+5+5+h5, 0xff000000, 0xffffcf9e, 0xff000000);
@@ -153,9 +174,16 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                     instringswitch = 6;
                     clicked = false;
                     toReturn = 0x01;
-                }
+                }*/
+                clickedEdit = handleEditableInfo(curx,cury,20,5,mouseX,mouseY,
+                    "scale X: ",tostring(graphConcerned->getGridScale().x),graphConcerned->ptmGridSpacingX()
+                    ,clicked,&offx,&offy) || clickedEdit;
+                clickedEdit = handleEditableInfo(curx+offx,cury,20,6,mouseX,mouseY,
+                    "scale Y: ",tostring(graphConcerned->getGridScale().y),graphConcerned->ptmGridSpacingY()
+                    ,clicked,&offx,&offy) || clickedEdit;
+                cury+=offy;
                 
-                int w9,h9,w10,h10;
+                /*int w9,h9,w10,h10;
                 drawText("x axis θ: "+std::to_string((int)((graphConcerned->getGridAngle()).y* 180/M_PI))+((instringswitch==7)?cursorBeeper:""), 20, px+5, py+5+h+5+h3+5+5+h5+5+h7, 0xff000000);
                 TTF_SizeUTF8((*fontgrab)(20),("x axis θ: "+std::to_string((int)((graphConcerned->getGridAngle()).y* 180/M_PI))+((instringswitch==7)?cursorBeeper:"")).c_str(), &w9, &h9);
                 drawTextWithBackground("Edit", 16, px+5+w9, py+5+h+5+h3+5+5+h5+5+h7, 0xff000000, 0xffffcf9e, 0xff000000);
@@ -178,8 +206,17 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                     instringswitch = 8;
                     clicked = false;
                     toReturn = 0x01;
-                }
+                }*/
                 
+                clickedEdit = handleEditableInfo(curx,cury,20,7,mouseX,mouseY,
+                    "x axis θ: ",tostring(graphConcerned->getGridAngle().x),graphConcerned->ptmGridAngleX()
+                    ,clicked,&offx,&offy) || clickedEdit;
+                clickedEdit = handleEditableInfo(curx+offx,cury,20,8,mouseX,mouseY,
+                    "y axis θ: ",tostring(graphConcerned->getGridAngle().y),graphConcerned->ptmGridAngleY()
+                    ,clicked,&offx,&offy) || clickedEdit;
+                cury+=offy;
+                
+                /*
                 int w11,h11,w12,h12;
                 drawText("x origin: "+std::to_string((int)((graphConcerned->getOrigin()).x))+((instringswitch==9)?cursorBeeper:""), 20, px+5, py+5+h+5+h3+5+5+h5+5+h7+5+h9, 0xff000000);
                 TTF_SizeUTF8((*fontgrab)(20),("x origin: "+std::to_string((int)((graphConcerned->getOrigin()).x))+((instringswitch==9)?cursorBeeper:"")).c_str(), &w11, &h11);
@@ -203,9 +240,17 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                     instringswitch = 10;
                     clicked = false;
                     toReturn = 0x01;
-                }
+                }*/
                 
-                int showgridy = py+5+h+5+h3+5+5+h5+h2+5+h7+5+h9+10;
+                clickedEdit = handleEditableInfo(curx,cury,20,9,mouseX,mouseY,
+                    "x origin: ",tostring(graphConcerned->getOrigin().x),graphConcerned->ptmOX()
+                    ,clicked,&offx,&offy) || clickedEdit;
+                clickedEdit = handleEditableInfo(curx+offx,cury,20,10,mouseX,mouseY,
+                    "y origin: ",tostring(graphConcerned->getOrigin().y),graphConcerned->ptmOY()
+                    ,clicked,&offx,&offy) || clickedEdit;
+                cury+=offy;
+                
+                int showgridy = cury;//py+5+h+5+h3+5+5+h5+h2+5+h7+5+h9+10;
                 int gx,gy;
                 drawTextWithBackground((graphConcerned->showingGrid())?"Showing Grid":"Not Showing Grid", 20, px+10, showgridy, 0xff000000, (graphConcerned->showingGrid())?0xffffcf9e:0xffbd854d, 0xff000000);
                 TTF_SizeUTF8((*fontgrab)(20), (graphConcerned->showingGrid())?"Showing Grid":"Not Showing Grid", &gx, &gy);
@@ -414,6 +459,10 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                     instringswitch = -1;
                 }
                 
+                if (clickedEdit) {
+                    toReturn = 0x01;
+                }
+                
                 if (clicked&&pointInBounds(mouseX, mouseY, px, px+sx, py, py+sy)) {
                     toReturn = 0x01;
                 }
@@ -519,14 +568,18 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                 drawBorderedRect(px, py, sx, sy, 0xffaaf2aa, 0xff000000);
                 drawText(stringConcerned, 24, px+5, py+5, 0xff000000);
                 std::string beep = (ticks%60<30)?"|":" ";
-                int inputsx = px+10;
-                int inputsy = py+35;
-                int delxx,  delxy,  delyx,  delyy,  starttx,  startty,  durx,  dury;
-                int delxx_o,delxy_o,delyx_o,delyy_o,starttx_o,startty_o,durx_o,dury_o;
-                int editx,edity;
-                TTF_SizeUTF8((*fontgrab)(12),"Edit",&editx,&edity);
+                //int inputsx = px+10;
+                //int inputsy = py+35;
+                //int delxx,  delxy,  delyx,  delyy,  starttx,  startty,  durx,  dury;
+                //int delxx_o,delxy_o,delyx_o,delyy_o,starttx_o,startty_o,durx_o,dury_o;
+                //int editx,edity;
+                //TTF_SizeUTF8((*fontgrab)(12),"Edit",&editx,&edity);
+                int curx = px+10;
+                int cury = py+35;
+                int offx,offy;
+                bool clickedEdit = false;
                 if (popupID==CREATE_FUNCTION_RUN_INTERPOLATION) {
-                    TTF_SizeUTF8((*fontgrab)(20),"TX:",&delxx,&delxy);
+                    /*TTF_SizeUTF8((*fontgrab)(20),"TX:",&delxx,&delxy);
                     TTF_SizeUTF8((*fontgrab)(20),"Start Time:",&starttx,&startty);
                     TTF_SizeUTF8((*fontgrab)(20),"Duration:",&durx,&dury);
                     drawText("∆T:", 20, inputsx, inputsy, 0xff000000);
@@ -541,7 +594,13 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                         instring = interpolationConcerned->getPXDisplay();
                         thingForInString = interpolationConcerned;
                         instringswitch = 11;
-                    }
+                    }*/
+                    clickedEdit = handleEditableInfo(curx,cury,20,11,mouseX,mouseY,
+                        "∆X: ",tostring(interpolationConcerned->getPX()),interpolationConcerned->ptmPX()
+                        ,clicked,&offx,&offy) || clickedEdit;
+                    cury+=offy;
+                    
+                    /*
                     inputsy+=25;
                     drawText("Start Time:", 20, inputsx, inputsy, 0xff000000);
                     drawText(interpolationConcerned->getStartDisplay()+((instringswitch==13)?(beep):""), 20, inputsx+5+starttx, inputsy, 0xff000000);
@@ -552,8 +611,14 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                         instring = interpolationConcerned->getPYDisplay();
                         thingForInString = interpolationConcerned;
                         instringswitch = 13;
-                    }
+                    }*/
                     
+                    clickedEdit = handleEditableInfo(curx,cury,20,13,mouseX,mouseY,
+                        "Start: ",tostring(interpolationConcerned->getStart()),interpolationConcerned->ptmStart()
+                        ,clicked,&offx,&offy) || clickedEdit;
+                    cury+=offy;
+                    
+                    /*
                     inputsy+=25;
                     drawText("Duration:", 20, inputsx, inputsy, 0xff000000);
                     drawText(interpolationConcerned->getDurationDisplay()+((instringswitch==14)?(beep):""), 20, inputsx+5+durx, inputsy, 0xff000000);
@@ -564,11 +629,16 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                         instring = interpolationConcerned->getPYDisplay();
                         thingForInString = interpolationConcerned;
                         instringswitch = 14;
-                    }
+                    }*/
+                    
+                    clickedEdit = handleEditableInfo(curx,cury,20,14,mouseX,mouseY,
+                        "Duration: ",tostring(interpolationConcerned->getDuration()),interpolationConcerned->ptmDuration()
+                        ,clicked,&offx,&offy) || clickedEdit;
+                    cury+=offy;
                     
                 }
                 else {
-                    TTF_SizeUTF8((*fontgrab)(20),"∆X:",&delxx,&delxy);
+                    /*TTF_SizeUTF8((*fontgrab)(20),"∆X:",&delxx,&delxy);
                     TTF_SizeUTF8((*fontgrab)(20),"∆Y:",&delyx,&delyy);
                     TTF_SizeUTF8((*fontgrab)(20),"Start Time:",&starttx,&startty);
                     TTF_SizeUTF8((*fontgrab)(20),"Duration:",&durx,&dury);
@@ -586,9 +656,14 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                         instring = interpolationConcerned->getPXDisplay();
                         thingForInString = interpolationConcerned;
                         instringswitch = 11;
-                    }
+                    }*/
                     
-                    drawText("∆Y:", 20, inputsx+5+delxx+5+delxx_o+5+editx+5, inputsy, 0xff000000);
+                    clickedEdit = handleEditableInfo(curx,cury,20,11,mouseX,mouseY,
+                        "∆X: ",tostring(interpolationConcerned->getPX()),interpolationConcerned->ptmPX()
+                        ,clicked,&offx,&offy) || clickedEdit;
+                    curx+=offx;
+                    
+                    /*drawText("∆Y:", 20, inputsx+5+delxx+5+delxx_o+5+editx+5, inputsy, 0xff000000);
                     drawText(interpolationConcerned->getPYDisplay()+((instringswitch==12)?(beep):""), 20, inputsx+5+delxx+5+delxx_o+5+editx+5+delyx+5, inputsy, 0xff000000);
                     drawTextWithBackground("Edit", 12, inputsx+5+delxx+5+delxx_o+5+editx+5+delyx+5+delyx_o+5, inputsy, 0xff000000, 0xffffcf9e, 0xff000000);
                     if (clicked&&pointInBounds(mouseX, mouseY, inputsx+5+delxx+5+delxx_o+5+editx+5+delyx+5+delyx_o+5, inputsx+5+delxx+5+delxx_o+5+editx+5+delyx+5+delyx_o+5+editx, inputsy, inputsy+edity)) {
@@ -597,8 +672,14 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                         instring = interpolationConcerned->getPYDisplay();
                         thingForInString = interpolationConcerned;
                         instringswitch = 12;
-                    }
+                    }*/
+                    clickedEdit = handleEditableInfo(curx,cury,20,12,mouseX,mouseY,
+                        "∆Y: ",tostring(interpolationConcerned->getPY()),interpolationConcerned->ptmPY()
+                        ,clicked,&offx,&offy) || clickedEdit;
+                    cury+=offy;
+                    curx = px+10;
                     
+                    /*
                     inputsy+=25;
                     drawText("Start Time:", 20, inputsx, inputsy, 0xff000000);
                     drawText(interpolationConcerned->getStartDisplay()+((instringswitch==13)?(beep):""), 20, inputsx+5+starttx, inputsy, 0xff000000);
@@ -609,9 +690,13 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                         instring = interpolationConcerned->getPYDisplay();
                         thingForInString = interpolationConcerned;
                         instringswitch = 13;
-                    }
+                    }*/
+                    clickedEdit = handleEditableInfo(curx,cury,20,13,mouseX,mouseY,
+                        "Start: ",tostring(interpolationConcerned->getStart()),interpolationConcerned->ptmStart()
+                        ,clicked,&offx,&offy) || clickedEdit;
+                    cury+=offy;
                     
-                    inputsy+=25;
+                    /*inputsy+=25;
                     drawText("Duration:", 20, inputsx, inputsy, 0xff000000);
                     drawText(interpolationConcerned->getDurationDisplay()+((instringswitch==14)?(beep):""), 20, inputsx+5+durx, inputsy, 0xff000000);
                     drawTextWithBackground("Edit", 12, inputsx+5+durx+5+durx_o+5, inputsy, 0xff000000, 0xffffcf9e, 0xff000000);
@@ -621,16 +706,20 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                         instring = interpolationConcerned->getPYDisplay();
                         thingForInString = interpolationConcerned;
                         instringswitch = 14;
-                    }
+                    }*/
+                    clickedEdit = handleEditableInfo(curx,cury,20,14,mouseX,mouseY,
+                        "Duration: ",tostring(interpolationConcerned->getDuration()),interpolationConcerned->ptmDuration()
+                        ,clicked,&offx,&offy) || clickedEdit;
+                    cury+=offy;
                     
                     
                     if (popupID==CREATE_RESIZE_INTERPOLATION) {
-                        inputsy+=25;
+                        //inputsy+=25;
                         bool smart = interpolationConcerned->getType()==SMOOTH_GRID_RESIZE_SMART_CENTER;
                         int smartx,smarty;
                         TTF_SizeUTF8((*fontgrab)(20),(smart)?"Scales Origin":"Maintains Origin",&smartx,&smarty);
-                        drawTextWithBackground((smart)?"Scales Origin":"Maintains Origin", 20, inputsx, inputsy, 0xff000000, 0xffffcf9e, 0xff000000);
-                        if (clicked&&pointInBounds(mouseX, mouseY, inputsx, inputsx+smartx, inputsy, inputsy+smarty)) {
+                        drawTextWithBackground((smart)?"Scales Origin":"Maintains Origin", 20, curx, cury, 0xff000000, 0xffffcf9e, 0xff000000);
+                        if (clicked&&pointInBounds(mouseX, mouseY, curx, curx+smartx, cury, cury+smarty)) {
                             clicked = false;
                             toReturn = 0x01;
                             interpolationConcerned->toggleSmartMove();
@@ -658,13 +747,17 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                     instringswitch = -1;
                 }
                 
+                if (clickedEdit) {
+                    toReturn = 0x01;
+                }
+                
             }
             break;
         case EDIT_FUNCTION_POPUP:
             {
                 drawBorderedRect(px, py, sx, sy, 0xffaaf2aa, 0xff000000);
                 drawText(functionConcerned->getName(), 24, px+5, py+5, 0xff000000);
-                std::string beep = (ticks%60<30)?"|":" ";
+                /*std::string beep = (ticks%60<30)?"|":" ";
                 int inputsx = px+10;
                 int inputsy = py+35;
                 int stx,  sty,  sxx,  sxy,  syx,  syy  ;
@@ -691,20 +784,39 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                     instring = std::to_string((int)functionConcerned->getTime());
                     thingForInString = functionConcerned;
                     instringswitch = 15;
-                }
+                }*/
+                int curx = px+10;
+                int cury = py+35;
+                int offx,offy;
+                bool clickedEdit = false;
+                clickedEdit = handleEditableInfo(curx,cury,20,15,mouseX,mouseY,
+                    "Start Time: ",tostring(functionConcerned->getTime()),functionConcerned->ptmTime()
+                    ,clicked,&offx,&offy) || clickedEdit;
+                curx+=offx;
                 
                 //draw visibility
                 int visx,visy;
-                drawTextWithBackground((functionConcerned->isVisible())?"Is Visible":"Is Hidden", 16, inputsx+stx+5+stx_o+editx+5, inputsy, 0xff000000, (functionConcerned->isVisible())?0xffffcf9e:0xffbd854d, 0xff000000);
+                drawTextWithBackground((functionConcerned->isVisible())?"Is Visible":"Is Hidden", 16, curx+5, cury, 0xff000000, (functionConcerned->isVisible())?0xffffcf9e:0xffbd854d, 0xff000000);
                 TTF_SizeUTF8((*fontgrab)(16),((functionConcerned->isVisible())?"Is Visible":"Is Hidden"),&visx,&visy);
-                if (clicked&&pointInBounds(mouseX, mouseY, inputsx+stx+5+stx_o+editx+5, inputsx+stx+5+stx_o+editx+5+visx, inputsy, inputsy+visy)) {
+                if (clicked&&pointInBounds(mouseX, mouseY, curx+5, curx+5+visx, cury, cury+visy)) {
                     functionConcerned->toggleVisibility();
                     clicked = false;
                     toReturn = 0x01;
                 }
                 
                 //draw stretches
-                inputsy+=sty+5;
+                cury+=offy;
+                curx = px+10;
+                clickedEdit = handleEditableInfo(curx,cury,20,16,mouseX,mouseY,
+                    "X Stretch: ",tostring(functionConcerned->getStretchX()),functionConcerned->ptmStretchX()
+                    ,clicked,&offx,&offy) || clickedEdit;
+                curx+=offx;
+                clickedEdit = handleEditableInfo(curx,cury,20,17,mouseX,mouseY,
+                    "Y Stretch: ",tostring(functionConcerned->getStretchY()),functionConcerned->ptmStretchY()
+                    ,clicked,&offx,&offy) || clickedEdit;
+                cury+=offy;
+                curx = px+10;
+                /*
                 drawText("X Stretch: ", 16, inputsx, inputsy, 0xff000000);
                 drawText((functionConcerned->getStretchXString())+
                     ((instringswitch==16)?beep:""), 16, inputsx+sxx+5, inputsy, 0xff000000);
@@ -726,14 +838,14 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                     instring = functionConcerned->getStretchYString();
                     thingForInString = functionConcerned;
                     instringswitch = 17;
-                }
+                }*/
                 
-                inputsy+=syy+5;
+                //inputsy+=syy+5;
                 //draw add interpolations
                 int intpx,intpy;
-                drawTextWithBackground("Add Interpolation", 16, inputsx, inputsy, 0xff000000, 0xffffcf9e, 0xff000000);
+                drawTextWithBackground("Add Interpolation", 16, curx, cury, 0xff000000, 0xffffcf9e, 0xff000000);
                 TTF_SizeUTF8((*fontgrab)(16),"Add Interpolation",&intpx,&intpy);
-                if (clicked&&pointInBounds(mouseX, mouseY, inputsx, inputsx+intpx, inputsy, inputsy+intpy)) {
+                if (clicked&&pointInBounds(mouseX, mouseY, curx, curx+intpx, cury, cury+intpy)) {
                     clicked = false;
                     toReturn = 0x01;
                     createPopup(CHOOSE_FUNCTION_INTERPOLATION, mouseX, mouseY)
@@ -743,14 +855,18 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                 
                 //draw add points of interest
                 int poix,poiy;
-                drawTextWithBackground("Add Point of Interest", 16, inputsx+intpx+5, inputsy, 0xff000000, 0xffffcf9e, 0xff000000);
+                drawTextWithBackground("Add Point of Interest", 16, curx+intpx+5, cury, 0xff000000, 0xffffcf9e, 0xff000000);
                 TTF_SizeUTF8((*fontgrab)(16),"Add Point of Interest",&poix,&poiy);
-                if (clicked&&pointInBounds(mouseX, mouseY, inputsx+intpx+5, inputsx+intpx+5+poix, inputsy, inputsy+poiy)) {
+                if (clicked&&pointInBounds(mouseX, mouseY, curx+intpx+5, curx+intpx+5+poix, cury, cury+poiy)) {
                     clicked = false;
                     toReturn = 0x01;
                     createPopup(CREATE_POINT_OF_INTEREST, mouseX, mouseY)
                         ->concernWith(graphConcerned)
                         ->concernWith(functionConcerned);
+                }
+                
+                if (clickedEdit) {
+                    toReturn = 0x01;
                 }
                 
                 
@@ -788,15 +904,17 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
             break;
         case CREATE_POINT_OF_INTEREST:
             {
-                std::string beep = (ticks%60<30)?"|":" ";
+                //std::string beep = (ticks%60<30)?"|":" ";
                 drawBorderedRect(px, py, sx, sy, 0xffaaf2aa, 0xff000000);
                 drawText("Point of Interest", 24, px, py, 0xff000000);
-                int pxx,pxy,visiblex,visibley;
+                //int pxx,pxy,visiblex,visibley;
                 std::string header = " px: ";
                 if (functionConcerned->isParametric()) {header = " t: ";}
-                TTF_SizeUTF8((*fontgrab)(16),(header+((stringConcerned=="")?"0":stringConcerned)+((instringswitch==18)?beep:"")).c_str(),&pxx,&pxy);
-                TTF_SizeUTF8((*fontgrab)(16),boolConcerned?"Is Visible":"Is Hidden",&visiblex,&visibley);
-                drawText(header+((stringConcerned=="")?"0":stringConcerned)+((instringswitch==18)?beep:""), 16, px, py+30, 0xff000000);
+                if (stringConcerned==""&&instringswitch!=18) {
+                    header+="0";
+                }
+                //TTF_SizeUTF8((*fontgrab)(16),(header+((stringConcerned=="")?"0":stringConcerned)+((instringswitch==18)?beep:"")).c_str(),&pxx,&pxy);
+                /*drawText(header+((stringConcerned=="")?"0":stringConcerned)+((instringswitch==18)?beep:""), 16, px, py+30, 0xff000000);
                 int editx,edity;
                 TTF_SizeUTF8((*fontgrab)(12),"Edit",&editx,&edity);
                 drawTextWithBackground("Edit", 12, px+pxx+5, py+30, 0xff000000, 0xffffcf9e, 0xff000000);
@@ -806,7 +924,15 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                     instringswitch = 18;
                     instring = stringConcerned;
                     thingForInString = this;
-                }
+                }*/
+                bool clickedEdit = false;
+                int curx = px+5;
+                int cury = py+30;
+                int offx,offy;
+                clickedEdit = handleEditableInfo(curx,cury,20,18,mouseX,mouseY,
+                    header,stringConcerned,&stringConcerned
+                    ,clicked,&offx,&offy) || clickedEdit;
+                
                 std::string outputOfFunc = "py: "+((instringswitch==18)?"?":
                     std::to_string((*functionConcerned)(numberFromString(stringConcerned))));
                 if (functionConcerned->isParametric()) {
@@ -814,9 +940,13 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                     outputOfFunc = "px: "+((instringswitch==18)?"?":std::to_string(bothvals.x))+
                                 "   py: "+((instringswitch==18)?"?":std::to_string(bothvals.y));
                 }
-                drawText(outputOfFunc, 16, px+pxx+5+editx+5, py+30, 0xff000000);
+                drawText(outputOfFunc, 16, curx+offx, py+30, 0xff000000);
+                cury+=offy;
+                
+                int visiblex,visibley;
+                TTF_SizeUTF8((*fontgrab)(16),boolConcerned?"Is Visible":"Is Hidden",&visiblex,&visibley);
                 drawTextWithBackground(!boolConcerned?"Is Visible":"Is Hidden", 16, px+5, py+50, 0xff000000, !boolConcerned?0xffffcf9e:0xffbd854d, 0xff000000);
-                if (clicked&&pointInBounds(mouseX, mouseY, px+5, px+5+visiblex, py+50, py+50+visibley)) {
+                if (clicked&&pointInBounds(mouseX, mouseY, curx, curx+visiblex, cury, cury+visibley)) {
                     clicked = false;
                     toReturn = 0x01;
                     boolConcerned=!boolConcerned;
@@ -837,6 +967,10 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                     instringswitch = -1;
                 }
                 
+                if (clickedEdit) {
+                    toReturn = 0x01;
+                }
+                
                 
             }
             break;
@@ -844,7 +978,7 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
             {
                 drawBorderedRect(px, py, sx, sy, 0xffaaf2aa, 0xff000000);
                 drawText(stringConcerned, 24, px+5, py+5, 0xff000000);
-                std::string beep = (ticks%60<30)?"|":" ";
+                /*std::string beep = (ticks%60<30)?"|":" ";
                 int inputsx = px+10;
                 int inputsy = py+35;
                 int p1xx,  p1yx,  p2xx,  p2yx  ;
@@ -876,9 +1010,17 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                         instring = interpolationConcerned->getPXDisplay();
                         thingForInString = interpolationConcerned;
                         instringswitch = 11;
-                }
+                }*/
+                bool clickedEdit = false;
+                int curx = px+5;
+                int cury = py+30;
+                int offx,offy;
+                clickedEdit = handleEditableInfo(curx,cury,20,11,mouseX,mouseY,
+                    "Top Left X: ",tostring(interpolationConcerned->getPX()),interpolationConcerned->ptmPX()
+                    ,clicked,&offx,&offy) || clickedEdit;
+                cury+=offy;
                 
-                inputsy+=20;
+                /*inputsy+=20;
                 drawText("Top Left Y: ", 16, inputsx, inputsy, 0xff000000);
                 drawText((interpolationConcerned->getPYDisplay()+((instringswitch==12)?(beep):"")), 16, inputsx+p1yx+5, inputsy, 0xff000000);
                 drawTextWithBackground("Edit", 12, inputsx+p1yx+p1yx_o+10, inputsy, 0xff000000, 0xffffcf9e, 0xff000000);
@@ -888,9 +1030,13 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                         instring = interpolationConcerned->getPYDisplay();
                         thingForInString = interpolationConcerned;
                         instringswitch = 12;
-                }
+                }*/
+                clickedEdit = handleEditableInfo(curx,cury,20,12,mouseX,mouseY,
+                    "Top Left Y: ",tostring(interpolationConcerned->getPY()),interpolationConcerned->ptmPY()
+                    ,clicked,&offx,&offy) || clickedEdit;
+                cury+=offy;
                 
-                
+                /*
                 inputsy+=20;
                 drawText("Bottom Right X", 16, inputsx, inputsy, 0xff000000);
                 drawText((interpolationConcerned->getSXDisplay()+((instringswitch==19)?(beep):"")), 16, inputsx+p2xx+5, inputsy, 0xff000000);
@@ -901,9 +1047,13 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                         instring = interpolationConcerned->getSXDisplay();
                         thingForInString = interpolationConcerned;
                         instringswitch = 19;
-                }
+                }*/
+                clickedEdit = handleEditableInfo(curx,cury,20,19,mouseX,mouseY,
+                    "Bottom Right X: ",tostring(interpolationConcerned->getSX()),interpolationConcerned->ptmSX()
+                    ,clicked,&offx,&offy) || clickedEdit;
+                cury+=offy;
                 
-                inputsy+=20;
+                /*inputsy+=20;
                 drawText("Bottom Right Y: ", 16, inputsx, inputsy, 0xff000000);
                 drawText((interpolationConcerned->getSYDisplay()+((instringswitch==20)?(beep):"")), 16, inputsx+p2yx+5, inputsy, 0xff000000);
                 drawTextWithBackground("Edit", 12, inputsx+p2yx+p2yx_o+10, inputsy, 0xff000000, 0xffffcf9e, 0xff000000);
@@ -913,8 +1063,13 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                         instring = interpolationConcerned->getSYDisplay();
                         thingForInString = interpolationConcerned;
                         instringswitch = 20;
-                }
+                }*/
+                clickedEdit = handleEditableInfo(curx,cury,20,20,mouseX,mouseY,
+                    "Bottom Right Y: ",tostring(interpolationConcerned->getSY()),interpolationConcerned->ptmSY()
+                    ,clicked,&offx,&offy) || clickedEdit;
+                cury+=offy;
                 
+                /*
                 inputsy+=20;
                 drawText("Start Time: ", 16, inputsx, inputsy, 0xff000000);
                 drawText((interpolationConcerned->getStartDisplay()+((instringswitch==13)?(beep):"")), 16, inputsx+stimex+5, inputsy, 0xff000000);
@@ -925,9 +1080,13 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                         instring = interpolationConcerned->getStartDisplay();
                         thingForInString = interpolationConcerned;
                         instringswitch = 13;
-                }
+                }*/
+                clickedEdit = handleEditableInfo(curx,cury,20,13,mouseX,mouseY,
+                    "Start Time: ",tostring(interpolationConcerned->getStart()),interpolationConcerned->ptmStart()
+                    ,clicked,&offx,&offy) || clickedEdit;
+                cury+=offy;
                 
-                inputsy+=20;
+                /*inputsy+=20;
                 drawText("Duration: ", 16, inputsx, inputsy, 0xff000000);
                 drawText((interpolationConcerned->getDurationDisplay()+((instringswitch==14)?(beep):"")), 16, inputsx+durationx+5, inputsy, 0xff000000);
                 drawTextWithBackground("Edit", 12, inputsx+durationx+durationx_o+10, inputsy, 0xff000000, 0xffffcf9e, 0xff000000);
@@ -937,7 +1096,11 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                         instring = interpolationConcerned->getDurationDisplay();
                         thingForInString = interpolationConcerned;
                         instringswitch = 14;
-                }
+                }*/
+                clickedEdit = handleEditableInfo(curx,cury,20,14,mouseX,mouseY,
+                    "Duration: ",tostring(interpolationConcerned->getDuration()),interpolationConcerned->ptmDuration()
+                    ,clicked,&offx,&offy) || clickedEdit;
+                cury+=offy;
                 
                 int addx,addy;
                 TTF_SizeUTF8((*fontgrab)(16)," Add ",&addx,&addy);
@@ -958,13 +1121,18 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                     thingForInString = NULL;
                     instringswitch = -1;
                 }
+                
+                if (clickedEdit) {
+                    toReturn = 0x01;
+                }
+                
             }
             break;
         case EDIT_SLIDER_POPUP:
             {
-                std::string cursorBeeper = (ticks%60<30)?"|":" ";
+                //std::string cursorBeeper = (ticks%60<30)?"|":" ";
                 drawBorderedRect(px, py, sx, sy, 0xff9fc9f2, 0xff000000);
-                drawText(sliderConcerned->getName()+((instringswitch==21)?cursorBeeper:""), 24, px+5, py+5, 0xff000000);
+                /*drawText(sliderConcerned->getName()+((instringswitch==21)?cursorBeeper:""), 24, px+5, py+5, 0xff000000);
                 int w,h,w2,h2;
                 TTF_SizeUTF8((*fontgrab)(24),(sliderConcerned->getName()+((instringswitch==21)?cursorBeeper:"")).c_str(), &w, &h);
                 drawTextWithBackground("Edit", 16, px+5+w, py+5, 0xff000000, 0xffffcf9e, 0xff000000);
@@ -976,7 +1144,16 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                     instringswitch = 21;
                     clicked = false;
                     toReturn = 0x01;
-                }
+                }*/
+                bool clickedEdit = false;
+                int curx = px+5;
+                int cury = py+5;
+                int offx,offy;
+                clickedEdit = handleEditableInfo(curx,cury,20,21,mouseX,mouseY,
+                    "",tostring(sliderConcerned->getName()),sliderConcerned->ptmName()
+                    ,clicked,&offx,&offy) || clickedEdit;
+                cury+=offy;
+                /*
                 int w3,h3,w4,h4;
                 drawText("px: "+std::to_string((int)((sliderConcerned->getPosition()).x))+((instringswitch==22)?cursorBeeper:""), 20, px+5, py+5+h+5, 0xff000000);
                 TTF_SizeUTF8((*fontgrab)(20),("px: "+std::to_string((int)((sliderConcerned->getPosition()).x))+((instringswitch==22)?cursorBeeper:"")).c_str(), &w3, &h3);
@@ -988,9 +1165,12 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                     instringswitch = 22;
                     clicked = false;
                     toReturn = 0x01;
-                }
+                }*/
+                clickedEdit = handleEditableInfo(curx,cury,20,22,mouseX,mouseY,
+                    "PX: ",tostring(sliderConcerned->getPosition().x),sliderConcerned->ptmPX()
+                    ,clicked,&offx,&offy) || clickedEdit;
             
-                drawText("py: "+std::to_string((int)((sliderConcerned->getPosition()).y))+((instringswitch==23)?cursorBeeper:""), 20, px+5+5+w2+w3, py+5+h+5, 0xff000000);
+                /*drawText("py: "+std::to_string((int)((sliderConcerned->getPosition()).y))+((instringswitch==23)?cursorBeeper:""), 20, px+5+5+w2+w3, py+5+h+5, 0xff000000);
                 TTF_SizeUTF8((*fontgrab)(20),("py: "+std::to_string((int)((sliderConcerned->getPosition()).y))+((instringswitch==23)?cursorBeeper:"")).c_str(), &w4, &h4);
                 drawTextWithBackground("Edit", 16, px+5+w2+w3+w4+5, py+5+h+5, 0xff000000, 0xffffcf9e, 0xff000000);
                 if (clicked&&pointInBounds(mouseX, mouseY, px+5+w3+w2+w4+5, px+5+w3+w2+w2+w3+w4, py+5+h+5, py+5+h+5+h2)) {
@@ -1000,9 +1180,14 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                     instringswitch = 23;
                     clicked = false;
                     toReturn = 0x01;
-                }
+                }*/
+                
+                clickedEdit = handleEditableInfo(curx+offx,cury,20,23,mouseX,mouseY,
+                    "PY: ",tostring(sliderConcerned->getPosition().y),sliderConcerned->ptmPY()
+                    ,clicked,&offx,&offy) || clickedEdit;
+                cury+=offy;
             
-                int w5,h5;
+                /*int w5,h5;
                 drawText("size: "+std::to_string((int)((sliderConcerned->getSize())))+((instringswitch==24)?cursorBeeper:""), 20, px+5, py+5+h+5+h3+5, 0xff000000);
                 TTF_SizeUTF8((*fontgrab)(20),("size: "+std::to_string((int)((sliderConcerned->getSize())))+((instringswitch==24)?cursorBeeper:"")).c_str(), &w5, &h5);
                 drawTextWithBackground("Edit", 16, px+5+w5, py+5+h+5+h3+5, 0xff000000, 0xffffcf9e, 0xff000000);
@@ -1013,9 +1198,13 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                     instringswitch = 24;
                     clicked = false;
                     toReturn = 0x01;
-                }
+                }*/
+                clickedEdit = handleEditableInfo(curx,cury,20,24,mouseX,mouseY,
+                    "Size: ",tostring(sliderConcerned->getSize()),sliderConcerned->ptmSize()
+                    ,clicked,&offx,&offy) || clickedEdit;
+                cury+=offy;
                 
-                double cury = py+5+h+5+h3+5+h5;
+                /*double cury = py+5+h+5+h3+5+h5;
                 int w6,h6;
                 drawText("θ: "+std::to_string((int)((sliderConcerned->getAngle())* 180/M_PI))+((instringswitch==25)?cursorBeeper:""), 20, px+5, cury, 0xff000000);
                 TTF_SizeUTF8((*fontgrab)(20),("θ: "+std::to_string((int)((sliderConcerned->getAngle())* 180/M_PI))+((instringswitch==25)?cursorBeeper:"")).c_str(), &w6, &h6);
@@ -1027,9 +1216,13 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                     instringswitch = 25;
                     clicked = false;
                     toReturn = 0x01;
-                }
+                }*/
+                clickedEdit = handleEditableInfo(curx,cury,20,25,mouseX,mouseY,
+                    "θ: ",tostring(sliderConcerned->getAngle()),sliderConcerned->ptmAngle()
+                    ,clicked,&offx,&offy) || clickedEdit;
+                cury+=offy;
                 
-                cury += h6;
+                /*cury += h6;
                 int w7,h7;
                 drawText("Starting Y: "+(sliderConcerned->getStartingYString())+((instringswitch==26)?cursorBeeper:""), 20, px+5, cury, 0xff000000);
                 TTF_SizeUTF8((*fontgrab)(20),("Starting Y: "+(sliderConcerned->getStartingYString())+((instringswitch==26)?cursorBeeper:"")).c_str(), &w7, &h7);
@@ -1041,9 +1234,13 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                     instringswitch = 26;
                     clicked = false;
                     toReturn = 0x01;
-                }
+                }*/
+                clickedEdit = handleEditableInfo(curx,cury,20,26,mouseX,mouseY,
+                    "Starting Y: ",tostring(sliderConcerned->getStartingY()),sliderConcerned->ptmStartingY()
+                    ,clicked,&offx,&offy) || clickedEdit;
+                cury+=offy;
                 
-                cury += h7;
+                /*cury += h7;
                 int w8,h8;
                 drawText("ticks: "+std::to_string(sliderConcerned->getTicks())+((instringswitch==27)?cursorBeeper:""), 20, px+5, cury, 0xff000000);
                 TTF_SizeUTF8((*fontgrab)(20),("ticks: "+std::to_string(sliderConcerned->getTicks())+((instringswitch==27)?cursorBeeper:"")).c_str(), &w8, &h8);
@@ -1055,9 +1252,13 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                     instringswitch = 27;
                     clicked = false;
                     toReturn = 0x01;
-                }
+                }*/
+                clickedEdit = handleEditableInfo(curx,cury,20,27,mouseX,mouseY,
+                    "Ticks: ",tostring(sliderConcerned->getTicks()),sliderConcerned->ptmTicks()
+                    ,clicked,&offx,&offy) || clickedEdit;
+                cury+=offy;
                 
-                cury += h8;
+                //cury += h8;
                 int w9,h9;
                 drawTextWithBackground("Tick Function: "+sliderConcerned->getFunction()->getName(), 20, px+5, cury, 0xff000000, 0xffffcf9e, 0xff000000);
                 TTF_SizeUTF8((*fontgrab)(20), ("Tick Function: "+sliderConcerned->getFunction()->getName()).c_str(), &w9, &h9);
@@ -1213,15 +1414,15 @@ Popup* createPopup(Uint8 popup_id,double x,double y) {
             sy = 200;
             break;
         case CREATE_SIMPLE_INTERPOLATION:
-            sx = 200;
+            sx = 400;
             sy = 120;
             break;
         case CREATE_RESIZE_INTERPOLATION:
-            sx = 200;
+            sx = 400;
             sy = 150;
             break;
         case EDIT_FUNCTION_POPUP:
-            sx = 260;
+            sx = 460;
             sy = 120;
             break;
         case CHOOSE_FUNCTION_INTERPOLATION:
@@ -1229,15 +1430,15 @@ Popup* createPopup(Uint8 popup_id,double x,double y) {
             sy = 200;
             break;
         case CREATE_FUNCTION_RUN_INTERPOLATION:
-            sx = 200;
+            sx = 400;
             sy = 120;
             break;
         case CREATE_POINT_OF_INTEREST:
-            sx = 250;
+            sx = 450;
             sy = 80;
             break;
         case CREATE_HIGHLIGHT_INTERPOLATION:
-            sx = 200;
+            sx = 300;
             sy = 170;
             break;
         case EDIT_SLIDER_POPUP:
@@ -1304,7 +1505,38 @@ void Popup::unlock() {
 void deleteInStrings() {
     switch (instringswitch) {
         case 0:
+        case 18:
+        case 21:
             delete (ValueEditor<std::string>*)thingForInString;
+            break;
+        case 1:
+        case 2:
+        case 3:
+        case 4:
+        case 5:
+        case 6:
+        case 7:
+        case 8:
+        case 9:
+        case 10:
+        case 11:
+        case 12:
+        case 15:
+        case 16:
+        case 17:
+        case 19:
+        case 20:
+        case 22:
+        case 23:
+        case 24:
+        case 25:
+        case 26:
+            delete (ValueEditor<double>*)thingForInString;
+            break;
+        case 13:
+        case 14:
+        case 27:
+            delete (ValueEditor<int>*)thingForInString;
             break;
         default:
             throw std::runtime_error("Error!  Don't know type of thingForInString!");
@@ -1317,5 +1549,6 @@ void deleteInStrings() {
 Popup::~Popup() {
     deleteInStrings();
 }
+
 
 
