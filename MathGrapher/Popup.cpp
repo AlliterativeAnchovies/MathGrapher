@@ -1149,7 +1149,7 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                 int curx = px+5;
                 int cury = py+5;
                 int offx,offy;
-                clickedEdit = handleEditableInfo(curx,cury,20,21,mouseX,mouseY,
+                clickedEdit = handleEditableInfo(curx,cury,24,21,mouseX,mouseY,
                     "",tostring(sliderConcerned->getName()),sliderConcerned->ptmName()
                     ,clicked,&offx,&offy) || clickedEdit;
                 cury+=offy;
