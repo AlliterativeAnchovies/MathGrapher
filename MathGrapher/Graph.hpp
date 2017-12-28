@@ -151,6 +151,7 @@ class DisplayObject {
                                     //object would be deleted by instructions A union S where S is the standard
                                     //deletion method).
         virtual SDL_Surface* draw(double* x,double* y)=0;//{throw std::runtime_error("This object is missing a draw function!");}
+        virtual void reclaim(SDL_Surface* reclaimed)=0;//{throw std::runtime_error("This object is missing a reclaim function!");}
 };
 
 class RawImage: public DisplayObject {
@@ -187,19 +188,35 @@ class RawImage: public DisplayObject {
         void reset();
         void update();
         RawImage(double x,double y,double xs,double ys,SDL_Surface* s,std::string n) {
-            px = x;py = y;sx = xs;sy = ys;surfaceConcerned = s;name = n;
+            px = x;py = y;sx = xs;sy = ys;name = n;
+            //scale image down to a reasonable starting height
+            double scalar = (sx>200)?200/sx:1;
+            sx*=scalar;
+            sy*=scalar;
+            scalar = (sy>200)?200/sy:1;
+            sx*=scalar;
+            sy*=scalar;
+            //copy input surface
+            surfaceConcerned = createBlankSurfaceWithSize(sx, sy);
+            SDL_BlitScaled(s,NULL,surfaceConcerned,NULL);
         }
         SDL_Surface* draw(double* x,double* y) {
             *x = px;
             *y = py;
             if (highlighted) {
                 auto texturethingy = createBlankSurfaceWithSize(sx, sy);
-                SDL_FillRect(texturethingy, NULL, 0x2200ff00);
+                SDL_FillRect(texturethingy, NULL, 0x6600ff00);
                 auto copy = SDL_ConvertSurface(surfaceConcerned, gScreenSurface->format, NULL);
                 SDL_BlitSurface(texturethingy,NULL,copy,NULL);
+                highlighted=false;
+                SDL_FreeSurface(texturethingy);
                 return copy;
             }
             else {return surfaceConcerned;}
+        }
+        void reclaim(SDL_Surface* reclaimed) {
+            //check is surface returned by draw() should be deleted or not
+            if (reclaimed!=surfaceConcerned) {SDL_FreeSurface(reclaimed);}
         }
 };
 
@@ -347,6 +364,10 @@ class Graph: public DisplayObject {
         double* ptmGridSpacingY() {return &gridSpacingY;}
         double* ptmGridAngleX() {return &gridAngleX;}
         double* ptmGridAngleY() {return &gridAngleY;}
+        void reclaim(SDL_Surface* reclaimed) {
+            //check is surface returned by draw() should be deleted or not
+            SDL_FreeSurface(reclaimed);
+        }
 };
 
 typedef std::function<double(double,double,double,double)> internalFunc;
@@ -500,6 +521,10 @@ class Slider: public DisplayObject {
         double* ptmAngle() {return &angle;}
         int* ptmTicks() {return &tickAmount;}
         double* ptmStartingY() {return &pointery;}
+        void reclaim(SDL_Surface* reclaimed) {
+            //check is surface returned by draw() should be deleted or not
+            SDL_FreeSurface(reclaimed);
+        }
 };
 
 Uint32 getColorOfInterpolation(Interpolation* i);

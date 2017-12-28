@@ -18,6 +18,7 @@
 #else//mac includes
     #include "SDL2/SDL.h"
     #include "SDL2_ttf/SDL_ttf.h"
+    #include <mach-o/dyld.h> //(for _NSGetExecutablePath)
 #endif
 #include <iostream>
 #include <vector>
@@ -83,6 +84,7 @@ void drawBorderedRect(int px,int py,int wid,int hei,Uint32 fillColor,Uint32 bord
 double numberFromString(std::string theString);
 int hexCharToInt(char in);
 void drawCircleOnSurface(SDL_Surface* theSurface,int centx,int centy,float radius,Uint32 color);
+std::vector<std::string> split(const std::string &text, char sep);
 
 template<typename T> void fastSineCosine(T* sine,T* cosine,T angle) {
     //It's faster if I need a sine and cosine of 1 angle to use this

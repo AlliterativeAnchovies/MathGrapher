@@ -487,10 +487,10 @@ int main(int argc, const char * argv[]) {
         }
         else {
             //Get window surface & renderer
-            //gScreenSurface = SDL_GetWindowSurface( gWindow );
+            gScreenSurface = SDL_GetWindowSurface( gWindow );
             gRenderer = SDL_GetRenderer(gWindow);
 			if (gScreenSurface == NULL) {
-				//throw std::runtime_error("Null surface");
+				throw std::runtime_error("Null surface");
 			}
 			if (gRenderer == NULL) {
 				//std::cout << SDL_GetError() << "\n";
@@ -512,10 +512,10 @@ int main(int argc, const char * argv[]) {
 			}
 
             //Fill the surface white
-            //SDL_FillRect( gScreenSurface, NULL, SDL_MapRGB( gScreenSurface->format, 0xFF, 0xFF, 0xFF ) );
+            SDL_FillRect( gScreenSurface, NULL, SDL_MapRGB( gScreenSurface->format, 0xFF, 0xFF, 0xFF ) );
             
             //Update the surface
-            //SDL_UpdateWindowSurface( gWindow );
+            SDL_UpdateWindowSurface( gWindow );
 
 
         }
@@ -526,11 +526,11 @@ int main(int argc, const char * argv[]) {
 		dumstupidcurrentdirectorybs = getenv("PWD");
 	#elif defined _DEBUG
         std::cout << "Warning: Using a development build!\n";
-		dumstupidcurrentdirectorybs = ".";//"Users/ebail/Documents/GitHub/MathGrapher";
+		dumstupidcurrentdirectorybs = ".";
 	#elif defined _WINDOWS
 		std::cout << "Visual Studio Compiling For Release";
-		//I have no idea how this works so I'll leave the windows nondebug building
-		//paths to you.
+		//I have no idea how this works for windows and it doesn't really matter,
+        //just using the debug stuffs should be fine.
 		dumstupidcurrentdirectorybs = "Calculate the pathname for windows release mode.";
     #else
 		std::cout << "XCode compiling for release";
@@ -643,12 +643,7 @@ void drawDisplayObject(DisplayObject* d) {
     SDL_Surface* tempSurf = d->draw(&xdraw,&ydraw);
     SDL_Texture* tempTexture = SDL_CreateTextureFromSurface(gRenderer, tempSurf);
     drawGraphic(xdraw, ydraw, tempSurf->w, tempSurf->h, tempTexture);
-    if (d->getID()!="Image") {
-        //images store their surfaces whereas the others create the surfaces on-the-spot (because
-        //their surface can depend on external thingamajigs and can change every frame).  So if
-        //we let images delete their surface, we'd make the code go kappoey on frame 2.
-        SDL_FreeSurface(tempSurf);
-    }
+    d->reclaim(tempSurf);
     SDL_DestroyTexture(tempTexture);
 }
 

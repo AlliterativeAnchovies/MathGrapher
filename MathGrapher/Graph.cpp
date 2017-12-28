@@ -966,7 +966,7 @@ SDL_Surface* Slider::draw(double* x,double* y) {
     
     if (highlighted) {
         SDL_Surface* highlight = createBlankSurfaceWithSize(toReturn->w,toReturn->h);
-        SDL_FillRect(highlight, NULL, 0x55ff7700);
+        SDL_FillRect(highlight, NULL, 0x6600ff00);
         SDL_BlitSurface(highlight,NULL,toReturn,NULL);
     }
     *x = px;//-toReturn->w/2;
