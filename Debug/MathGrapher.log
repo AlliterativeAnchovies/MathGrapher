@@ -1,49 +1,247 @@
 ﻿  main.cpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\Graph.hpp(185): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\main.cpp(152): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\main.cpp(159): warning C4018: '<': signed/unsigned mismatch
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(109): warning C4018: '<': signed/unsigned mismatch
-  mathgrapher\main.cpp(165): note: see reference to function template instantiation 'auto map<controlFlow::<lambda_cbb17affdd3f5ca7a1182e5fc8799d51>,DisplayObject*>(A,std::vector<DisplayObject *,std::allocator<_Ty>>)' being compiled
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\Graph.hpp(201): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\Graph.hpp(209): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\main.cpp(155): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\main.cpp(162): warning C4018: '<': signed/unsigned mismatch
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(111): warning C4018: '<': signed/unsigned mismatch
+  mathgrapher\main.cpp(168): note: see reference to function template instantiation 'auto map<controlFlow::<lambda_cbb17affdd3f5ca7a1182e5fc8799d51>,DisplayObject*>(A,std::vector<DisplayObject *,std::allocator<_Ty>>)' being compiled
           with
           [
               A=controlFlow::<lambda_cbb17affdd3f5ca7a1182e5fc8799d51>,
               _Ty=DisplayObject *
           ]
-mathgrapher\main.cpp(196): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\main.cpp(198): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\main.cpp(199): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\main.cpp(204): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\main.cpp(208): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\main.cpp(213): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\main.cpp(214): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\main.cpp(224): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\main.cpp(225): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\main.cpp(239): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\main.cpp(240): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\main.cpp(242): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\main.cpp(353): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\main.cpp(354): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\main.cpp(366): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\main.cpp(367): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\main.cpp(381): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\main.cpp(382): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\main.cpp(201): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\main.cpp(202): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\main.cpp(207): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\main.cpp(211): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\main.cpp(216): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\main.cpp(217): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\main.cpp(227): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\main.cpp(228): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\main.cpp(242): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\main.cpp(243): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\main.cpp(245): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\main.cpp(356): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\main.cpp(357): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\main.cpp(369): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\main.cpp(370): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\main.cpp(384): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\main.cpp(386): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\main.cpp(388): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\main.cpp(389): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\main.cpp(400): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\main.cpp(448): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\main.cpp(596): warning C4244: 'argument': conversion from 'double' to 'Uint32', possible loss of data
-mathgrapher\main.cpp(643): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\main.cpp(748): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\main.cpp(751): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\main.cpp(790): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(95): warning C4018: '<': signed/unsigned mismatch
-  mathgrapher\main.cpp(165): note: see reference to function template instantiation 'C foldr<controlFlow::<lambda_f59016671ceb1e1373e6e3d78f662438>,bool,bool>(A,std::vector<bool,std::allocator<_Ty>>,C)' being compiled
+mathgrapher\main.cpp(385): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\main.cpp(387): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\main.cpp(389): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\main.cpp(391): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\main.cpp(392): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\main.cpp(403): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\main.cpp(451): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\main.cpp(601): warning C4244: 'argument': conversion from 'double' to 'Uint32', possible loss of data
+mathgrapher\main.cpp(649): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(97): warning C4018: '<': signed/unsigned mismatch
+  mathgrapher\main.cpp(168): note: see reference to function template instantiation 'C foldr<controlFlow::<lambda_f59016671ceb1e1373e6e3d78f662438>,bool,bool>(A,std::vector<bool,std::allocator<_Ty>>,C)' being compiled
           with
           [
               C=bool,
               A=controlFlow::<lambda_f59016671ceb1e1373e6e3d78f662438>,
               _Ty=bool
           ]
+  RenderingUtilities.cpp
+mathgrapher\RenderingUtilities.cpp(46): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\RenderingUtilities.cpp(45): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\RenderingUtilities.cpp(48): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\RenderingUtilities.cpp(47): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\RenderingUtilities.cpp(51): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\RenderingUtilities.cpp(56): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\RenderingUtilities.cpp(70): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\RenderingUtilities.cpp(72): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\RenderingUtilities.cpp(81): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\RenderingUtilities.cpp(83): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\RenderingUtilities.cpp(105): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\RenderingUtilities.cpp(213): warning C4018: '>': signed/unsigned mismatch
+mathgrapher\RenderingUtilities.cpp(230): warning C4018: '<': signed/unsigned mismatch
+  Popup.cpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\Graph.hpp(201): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\Graph.hpp(209): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(30): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(31): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(32): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(35): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(41): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(46): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(47): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(56): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(57): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(70): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(73): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(74): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(131): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(133): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(139): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(141): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(149): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(153): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(156): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\Popup.cpp(157): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(161): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(164): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(172): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(175): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(182): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(185): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(192): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(196): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(199): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\Popup.cpp(200): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(204): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(207): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(215): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(218): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(225): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(227): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(235): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(236): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(237): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(244): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(249): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(251): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(256): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\Popup.cpp(280): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(329): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(330): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(331): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(342): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(349): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(350): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(352): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\Popup.cpp(355): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(356): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(370): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(377): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(378): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(388): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(389): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(396): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(397): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(404): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(405): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(413): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(414): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(421): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(422): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(430): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(431): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(444): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(445): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(447): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(448): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(484): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(504): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(514): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(515): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(540): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(541): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(542): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(543): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(556): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(563): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(574): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(580): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(592): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(609): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(610): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(615): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(616): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(625): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(626): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(640): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(641): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(649): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(650): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(667): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(672): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(673): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(681): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(682): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(703): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(704): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(706): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(707): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(743): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(744): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(769): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(771): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(772): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(810): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(812): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(825): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(827): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(835): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(836): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(837): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(844): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(852): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(853): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(855): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\Popup.cpp(858): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(859): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(867): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(874): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(875): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(877): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\Popup.cpp(880): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(881): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(889): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(911): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popup.cpp(1029): warning C4018: '<': signed/unsigned mismatch
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\Popup.hpp(119): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  mathgrapher\Popup.cpp(76): note: see reference to function template instantiation 'bool handleEditableInfo<std::string>(double,double,int,int,double,double,std::string,std::string,T *,bool,int *,int *)' being compiled
+          with
+          [
+              T=std::string
+          ]
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\Popup.hpp(122): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\Popup.hpp(126): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  Graph.cpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\Graph.hpp(201): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\Graph.hpp(209): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Graph.cpp(169): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Graph.cpp(247): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\Graph.cpp(277): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\Graph.cpp(287): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Graph.cpp(293): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\Graph.cpp(317): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\Graph.cpp(325): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Graph.cpp(340): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\Graph.cpp(370): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\Graph.cpp(380): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Graph.cpp(386): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\Graph.cpp(410): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\Graph.cpp(418): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Graph.cpp(428): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\Graph.cpp(432): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Graph.cpp(433): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Graph.cpp(434): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Graph.cpp(435): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Graph.cpp(436): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Graph.cpp(437): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Graph.cpp(438): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Graph.cpp(439): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Graph.cpp(455): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Graph.cpp(464): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\Graph.cpp(467): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\Graph.cpp(487): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Graph.cpp(492): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Graph.cpp(573): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\Graph.cpp(576): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\Graph.cpp(593): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\Graph.cpp(596): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\Graph.cpp(599): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\Graph.cpp(918): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Graph.cpp(964): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Graph.cpp(979): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  Generating Code...
+  Compiling...
+  Functions.cpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\Graph.hpp(201): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\Graph.hpp(209): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  Generating Code...
   MathGrapher.vcxproj -> C:\Users\ebail\Documents\GitHub\MathGrapher\Debug\MathGrapher.exe
