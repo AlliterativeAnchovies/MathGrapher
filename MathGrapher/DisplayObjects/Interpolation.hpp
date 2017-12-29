@@ -26,7 +26,7 @@ class Interpolation {
         bool paused = false;//ignores interpolation until told otherwise
         bool canceled = false;//deletes interpolation
         bool waiting = false;//ignores interpolation for 1 tick
-        Graph* relatedGraph = NULL;
+        DisplayObject* relatedDisplay = NULL;
         Function* relatedFunction = NULL;
         std::vector<Interpolation*> followups = {};//when interpolation is complete, automatically call these interpolations
     public:
@@ -37,10 +37,10 @@ class Interpolation {
         void unpause();
         void cancel();
         void wait();
-        Interpolation(Uint8 t,double x,double y,int time_interval,Graph* rg);
+        Interpolation(Uint8 t,double x,double y,int time_interval,DisplayObject* rg);
         void addFollowup(Interpolation* i);
         std::vector<Interpolation*> getFollowups();
-        Interpolation* cloneTo(Graph* concernedWith,bool addImmediately = true);
+        Interpolation* cloneTo(DisplayObject* concernedWith,bool addImmediately = true);
         Interpolation* cloneTo(Interpolation* concernedWith,bool addImmediately = true);
         std::string getDisplay();
         //get px string

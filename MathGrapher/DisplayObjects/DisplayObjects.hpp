@@ -70,6 +70,8 @@ class DisplayObject {
                                     //deletion method).
         virtual SDL_Surface* draw(double* x,double* y)=0;
         virtual void reclaim(SDL_Surface* reclaimed)=0;
+        virtual void move(double x,double y)=0;
+		virtual void addInterpolation(Interpolation* i)=0;
 };
 
 

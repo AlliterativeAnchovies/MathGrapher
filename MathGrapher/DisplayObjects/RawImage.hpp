@@ -58,6 +58,8 @@ class RawImage: public DisplayObject {
         void reclaim(SDL_Surface* reclaimed);
         void changeTo(int which);
         void fix();
+        void move(double x,double y) {px+=x;py+=y;};
+        void addInterpolation(Interpolation* i) {throw std::runtime_error("Error! Don't support interpolations for images!");};
 };
 
 #endif /* RawImage_hpp */

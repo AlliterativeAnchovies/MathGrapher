@@ -19,22 +19,22 @@ bool Interpolation::update() {
         case NULL_INTERPOLATION:
             return true;
         case SMOOTH_TRANSLATE:
-            relatedGraph->move(px/timeInterval, py/timeInterval);
+            relatedDisplay->move(px/timeInterval, py/timeInterval);
             break;
         case SMOOTH_ORIGIN_TRANSLATE:
-            relatedGraph->moveOrigin(px/timeInterval, py/timeInterval);
+            ((Graph*)relatedDisplay)->moveOrigin(px/timeInterval, py/timeInterval);
             break;
         case SMOOTH_GRID_ROTATE:
-            relatedGraph->moveGridAngle(px/timeInterval, py/timeInterval);
+            ((Graph*)relatedDisplay)->moveGridAngle(px/timeInterval, py/timeInterval);
             break;
         case SMOOTH_GRID_SCALE:
-            relatedGraph->moveGridScale(px/timeInterval, py/timeInterval);
+            ((Graph*)relatedDisplay)->moveGridScale(px/timeInterval, py/timeInterval);
             break;
         case SMOOTH_GRID_RESIZE_STATIC_CENTER:
-            relatedGraph->moveGridSize(px/timeInterval, py/timeInterval,false);
+            ((Graph*)relatedDisplay)->moveGridSize(px/timeInterval, py/timeInterval,false);
             break;
         case SMOOTH_GRID_RESIZE_SMART_CENTER:
-            relatedGraph->moveGridSize(px/timeInterval, py/timeInterval,true);
+            ((Graph*)relatedDisplay)->moveGridSize(px/timeInterval, py/timeInterval,true);
             break;
         case SMOOTH_FUNCTION_STRETCH:
             relatedFunction->stretch(px/timeInterval,py/timeInterval);
@@ -157,11 +157,11 @@ void Interpolation::reset() {
     timeAt = 0;
 }
 
-Interpolation::Interpolation(Uint8 t,double x,double y,int time_interval,Graph* rg) {
+Interpolation::Interpolation(Uint8 t,double x,double y,int time_interval,DisplayObject* rg) {
     px = x;
     py = y;
     timeInterval = time_interval;
-    relatedGraph = rg;
+    relatedDisplay = rg;
     type = t;
 }
 
@@ -176,14 +176,14 @@ void Interpolation::wait() {
     waiting = true;
 }
 
-Interpolation* Interpolation::cloneTo(Graph* concernedWith,bool addImmediately) {
+Interpolation* Interpolation::cloneTo(DisplayObject* concernedWith,bool addImmediately) {
     Interpolation* toReturn = new Interpolation(type,px,py,timeInterval,concernedWith);
     if (addImmediately) {concernedWith->addInterpolation(toReturn);};
     return toReturn;
 }
 
 Interpolation* Interpolation::cloneTo(Interpolation* concernedWith,bool addImmediately) {
-    Interpolation* toReturn = new Interpolation(type,px,py,timeInterval,concernedWith->relatedGraph);
+    Interpolation* toReturn = new Interpolation(type,px,py,timeInterval,concernedWith->relatedDisplay);
     if (addImmediately) {concernedWith->addFollowup(toReturn);};
     return toReturn;
 }

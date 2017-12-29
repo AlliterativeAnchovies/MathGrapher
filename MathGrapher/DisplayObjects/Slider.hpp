@@ -82,6 +82,8 @@ class Slider: public DisplayObject {
             //check is surface returned by draw() should be deleted or not
             SDL_FreeSurface(reclaimed);
         }
+        void move(double x,double y) {px+=x;py+=y;};
+		void addInterpolation(Interpolation* i) {throw std::runtime_error("Error! Don't support interpolations for sliders!");};
 };
 
 #endif /* Slider_hpp */
