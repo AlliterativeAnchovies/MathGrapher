@@ -885,7 +885,12 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                     if (clicked&&pointInBounds(mouseX, mouseY, px+5, px+5+w, cury, cury+h)) {
                         clicked = false;
                         toReturn = 0x02;
-                        addImage(px, py,i);
+                        if (popupConcerned==NULL) {//creating a new image
+                            addImage(px, py,i);
+                        }
+                        else {//editing an existing image
+                            popupConcerned->imageConcerned->changeTo(i);
+                        }
                     }
                     cury+=h+5;
                     
@@ -925,6 +930,17 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                     "SY: ",tostring(imageConcerned->getSY()),imageConcerned->ptmSY()
                     ,clicked,&offx,&offy) || clickedEdit;
                 cury+=offy;
+                
+                int whichimgw,whichimgh;
+                TTF_SizeUTF8((*fontgrab)(16),imageConcerned->getOrigName().c_str(),&whichimgw,&whichimgh);
+                drawTextWithBackground(imageConcerned->getOrigName(), 16, px+5, cury, 0xff000000, 0xffffcf9e, 0xff000000);
+                if (clicked&&pointInBounds(mouseX, mouseY, px+5, px+5+whichimgw, cury, cury+whichimgh)) {
+                    clicked = false;
+                    toReturn = 0x01;
+                    createPopup(CHOOSE_WHICH_IMAGE_POPUP, mouseX, mouseY)
+                        ->concernWith(this);
+                }
+                
                 
                 //The close button
                 drawBorderedRect(px+sx-20, py, 20, 20, 0xffff0000, 0xff000000);

@@ -21,6 +21,9 @@
 void addGraph(double x,double y);
 void addSlider(double x,double y);
 void addImage(double x,double y,int which);
+extern std::vector<SDL_Surface*> gSurfaces;
+extern std::vector<SDL_Texture*> gTextures;
+extern std::vector<std::string>  gStrings;
 
 enum INTERPOLATIONS {
     NULL_INTERPOLATION,
@@ -171,6 +174,7 @@ class RawImage: public DisplayObject {
     double sy = 0;
     SDL_Surface* surfaceConcerned = NULL;
     SDL_Surface* origSurf = NULL;//store original surface for scaling and such
+    std::string origSurfName = "";
     std::string name = "-IMAGE-";
     public:
         double getPX() {return px;}
@@ -193,11 +197,12 @@ class RawImage: public DisplayObject {
         double* ptmPY() {return &py;}
         double* ptmSX() {return &sx;}
         double* ptmSY() {return &sy;}
+        std::string getOrigName() {return origSurfName;}
         bool needsResize() {
             return (int)sx!=surfaceConcerned->w || (int)sy!=surfaceConcerned->h;
         }
-        RawImage(double x,double y,double xs,double ys,SDL_Surface* s,std::string n) {
-            px = x;py = y;sx = xs;sy = ys;name = n;
+        RawImage(double x,double y,int surfIndex,std::string n) {
+            px = x;py = y;sx = gSurfaces[surfIndex]->w;sy = gSurfaces[surfIndex]->h;name = n;
             //scale image down to a reasonable starting height
             double scalar = (sx>200)?200/sx:1;
             sx*=scalar;
@@ -207,8 +212,9 @@ class RawImage: public DisplayObject {
             sy*=scalar;
             //copy input surface
             surfaceConcerned = createBlankSurfaceWithSize(sx, sy);
-            SDL_BlitScaled(s,NULL,surfaceConcerned,NULL);
-            origSurf = s;
+            SDL_BlitScaled(gSurfaces[surfIndex],NULL,surfaceConcerned,NULL);
+            origSurf = gSurfaces[surfIndex];
+            origSurfName = gStrings[surfIndex];
         }
         SDL_Surface* draw(double* x,double* y) {
             //check if should resize
@@ -234,6 +240,16 @@ class RawImage: public DisplayObject {
         void reclaim(SDL_Surface* reclaimed) {
             //check is surface returned by draw() should be deleted or not
             if (reclaimed!=surfaceConcerned) {SDL_FreeSurface(reclaimed);}
+        }
+        void changeTo(int which) {
+            //change this image to a different one
+            //we keep the size the same though, so
+            //it'll probably be squishified
+            SDL_FreeSurface(surfaceConcerned);
+            surfaceConcerned = createBlankSurfaceWithSize(sx, sy);
+            SDL_BlitScaled(gSurfaces[which],NULL,surfaceConcerned,NULL);
+            origSurf = gSurfaces[which];
+            origSurfName = gStrings[which];
         }
 };
 

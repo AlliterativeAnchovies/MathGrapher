@@ -14,10 +14,6 @@
 #include "Graph.hpp"
 #include "Functions.hpp"
 
-extern std::vector<SDL_Surface*> gSurfaces;
-extern std::vector<SDL_Texture*> gTextures;
-extern std::vector<std::string>  gStrings;
-
 enum POPUP_IDS {
     NULL_POPUP,
     ADD_OBJECT_POPUP,

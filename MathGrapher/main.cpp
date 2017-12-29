@@ -697,7 +697,7 @@ void addSlider(double x,double y) {
     TOTAL_SLIDERS++;
 }
 void addImage(double x,double y,int which) {
-    objects.push_back(new RawImage(x,y,gSurfaces[which]->w,gSurfaces[which]->h,gSurfaces[which],"Image "+std::to_string(TOTAL_IMAGES)));
+    objects.push_back(new RawImage(x,y,which,"Image "+std::to_string(TOTAL_IMAGES)));
     TOTAL_IMAGES++;
 }
 
