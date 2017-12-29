@@ -24,6 +24,7 @@ void addImage(double x,double y,int which);
 extern std::vector<SDL_Surface*> gSurfaces;
 extern std::vector<SDL_Texture*> gTextures;
 extern std::vector<std::string>  gStrings;
+const int SLIDER_DEFAULT_SCALE_BUILTIN_INDEX = 7;
 
 enum INTERPOLATIONS {
     NULL_INTERPOLATION,
@@ -43,6 +44,9 @@ class Graph;
 class Interpolation;
 class Function;
 class PointOfInterest;
+typedef Wrap2<std::string,Function*> FuncWrap;
+typedef std::vector<FuncWrap> FunctionList;
+extern FunctionList builtins;//defined in Functions.cpp
 
 extern std::vector<PointOfInterest*> pointsOfInterest;
 

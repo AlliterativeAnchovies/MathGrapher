@@ -13,9 +13,6 @@
 
 #include <stdio.h>
 
-typedef Wrap2<std::string,Function*> FuncWrap;
-typedef std::vector<FuncWrap> FunctionList;
-extern FunctionList builtins;
 void initBuiltins();
 
 #endif /* Functions_hpp */

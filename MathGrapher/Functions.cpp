@@ -49,6 +49,10 @@ void initBuiltins() {
             new Function([](double x,double t,double sx,double sy){return 1/(sy*(sx*(x+t/60))*(sx*(x+t/60)));},
             [](double x,double t,double sx,double sy){return (x+t/60) != 0;},
             "1/x^2")},
+        {"Slider Scale",
+            new Function([](double x,double t,double sx,double sy){return pow(sx*(abs(x+t/60)),0.5)/sy;},
+            [](double x,double t,double sx,double sy){return true;},
+            "(1-x)^2")},
         //parametric functions
         {"Circle",
             new Function(

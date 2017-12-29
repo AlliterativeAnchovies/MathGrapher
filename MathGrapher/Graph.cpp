@@ -882,9 +882,7 @@ Slider::Slider(double x,double y,double s,std::string n) {
     size = s;
     name = n;
     tickAmount = 4;
-    incrementFunction = new Function([](double x,double t,double sx,double sy){return pow(sx*(abs(x+t/60)),0.5)/sy;},
-            [](double x,double t,double sx,double sy){return true;},
-            "(1-x)^2");//DEBUGGING TEST VALUE, IGNORE!
+    incrementFunction = new Function(builtins[SLIDER_DEFAULT_SCALE_BUILTIN_INDEX].y);
 }
 
 void Slider::run() {
