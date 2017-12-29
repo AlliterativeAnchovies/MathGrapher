@@ -132,29 +132,25 @@ class Interpolation {
 
 class DisplayObject {
     public:
-        //The comments are two options that accomplish the same thing - one gives a compiler error if
-        //a function is not implemented, and one (the commented one) turns it into a runtime error.
-        //Compiler error is safer, runtime_error better if you're implementing a new type of DisplayObject
-        //step-by-step and haven't implemented all the functions yet.
         //IF YOU GET A "MISSING VTABLE" ERROR, it'll be caused by you not having defined all of these functions
-        //in the child object (although the error only seems to happen if you give your class a nondefault constructor...
-        virtual void highlight() = 0;//{throw std::runtime_error("This object is missing a highlight function!");};
+        //in the child object (although the error only seems to happen if you give your class a nondefault constructor
+        //because otherwise the compiler can treat it as a virtual object too.)
+        virtual void highlight() = 0;
         virtual bool clickedIn(double mouseX,double mouseY) = 0;
-            //{throw std::runtime_error("This object is missing a clickedIn function!");};
-        virtual std::string getID() = 0;//{throw std::runtime_error("Should not use generic display objects!");};
-        virtual std::string getName() = 0;//{throw std::runtime_error("This object is missing a getName function!");};
-        virtual void run() =0;//{throw std::runtime_error("This object is missing a run function!");};
-        virtual void reset()=0;// {throw std::runtime_error("This object is missing a reset function!");};
-        virtual bool isRunning()=0;// {throw std::runtime_error("This object is missing an isRunning function!");};
-        virtual void update()=0;// {throw std::runtime_error("This object is missing an update function!");};
+        virtual std::string getID() = 0;
+        virtual std::string getName() = 0;
+        virtual void run() =0;
+        virtual void reset()=0;
+        virtual bool isRunning()=0;
+        virtual void update()=0;
         virtual ~DisplayObject() {};//in a class C, the method ~C is the destructor of C.  Usually implicitly
                                     //defined, but if the class is virtual we also need to give it a virtual
                                     //destructor.  The function body is empty which means we just use the standard
                                     //deletion method. (if it were full of an ordered set of instructions A, the
                                     //object would be deleted by instructions A union S where S is the standard
                                     //deletion method).
-        virtual SDL_Surface* draw(double* x,double* y)=0;//{throw std::runtime_error("This object is missing a draw function!");}
-        virtual void reclaim(SDL_Surface* reclaimed)=0;//{throw std::runtime_error("This object is missing a reclaim function!");}
+        virtual SDL_Surface* draw(double* x,double* y)=0;
+        virtual void reclaim(SDL_Surface* reclaimed)=0;
 };
 
 class RawImage: public DisplayObject {

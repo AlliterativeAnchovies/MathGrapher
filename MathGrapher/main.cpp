@@ -6,11 +6,6 @@
 //  Copyright © 2017 Alliterative Anchovies. All rights reserved.
 //
 
-//#include <iostream>
-//#include "SDL2/SDL.h"
-//#include "SDL2_ttf/SDL_ttf.h"
-//#include <vector>
-//#include "Graph.hpp"
 #include "Popup.hpp"
 
 //Screen dimension constants
@@ -36,12 +31,6 @@ std::string dumstupidcurrentdirectorybs="";
 //Font stuffs
 Font* fontgrab=NULL;
 
-//Graphs to draw
-//std::vector<Graph*> graphs = {};
-
-//Sliders to draw
-//std::vector<Slider*> sliders = {};
-
 //Things to draw
 std::vector<DisplayObject*> objects = {};
 
@@ -61,16 +50,12 @@ int ticks = 0;
 //"header" function definitions
 void close();
 bool loadMedia();
-//void drawGraph(Graph* g);
-//void drawSlider(Slider* s);
 void drawDisplayObject(DisplayObject* d);
 SDL_Event e;
 void doInStringCalcs(Uint8 keypressed);
 void changeToInString();
 
 //this is the real "main" loop
-//std::vector<Graph*> selectedGraphs = {};
-//std::vector<Slider*> selectedSliders = {};
 std::vector<DisplayObject*> selectedObjects = {};
 bool CAPS_LOCK = false;
 bool runningVideo = false;
@@ -133,14 +118,12 @@ bool controlFlow() {
             if (e.button.button == SDL_BUTTON_LEFT) {
                 leftMouseClicked = true;
                 leftMouseHadBeenClicked = true;
-				//std::cout << "Left click registered @("<<mouseX<<","<<mouseY<<")\n";
             }
         }
         else if (e.type == SDL_MOUSEBUTTONUP) {
             if (e.button.button == SDL_BUTTON_LEFT) {
                 leftMouseReleased = true;
                 leftMouseHadBeenReleased = true;
-				//std::cout << "Left click release registered @(" << mouseX << "," << mouseY << ")\n";
             }
         }
     }
@@ -183,15 +166,6 @@ bool controlFlow() {
         }
         std::string specificObject = objects[i]->getID();
         drawDisplayObject(objects[i]);
-        /*if (specificObject=="Graph") {
-            drawGraph((Graph*)objects[i]);
-        }
-        else if (specificObject=="Slider") {
-            drawSlider((Slider*)objects[i]);
-        }
-        else {
-            throw std::runtime_error("Not a valid classname!");
-        }*/
     }
     
     //draw control bar
@@ -259,101 +233,6 @@ bool controlFlow() {
             totoff=newtotoff;
         }
         selectedObjects=newselectedobjects;
-    /*
-    else {
-        double totoff = 10;
-        typeof(selectedGraphs) newselectedgraphs = {};
-        for (int i = 0;i<selectedGraphs.size();i++) {
-            int w,h,w2,h2,w3,h3,w4,h4;
-            //draw name of graph
-            std::string name = selectedGraphs[i]->getName();
-            drawText(name, 16, totoff, controlBarY+5, 0xff000000);
-            TTF_SizeUTF8((*fontgrab)(16), name.c_str(), &w, &h);
-            double newtotoff = totoff+5+w;
-            //draw run button
-            TTF_SizeUTF8((*fontgrab)(16), "Run", &w2, &h2);
-            drawTextWithBackground("Run", 16, totoff, controlBarY+5+h, 0xff000000,0xff9fc9f2,0xff000000);
-            if (leftMouseReleased&&!overPopup&&pointInBounds(mouseX, mouseY, totoff, totoff+w2, controlBarY+5+h, controlBarY+5+h+h2)) {
-                selectedGraphs[i]->run();
-                runningVideo = true;
-                selectedGraphs = {};
-                newselectedgraphs = {};
-                leftMouseReleased = false;
-                break;
-            }
-            //draw edit button
-            TTF_SizeUTF8((*fontgrab)(16), "Edit", &w3, &h3);
-            drawTextWithBackground("Edit", 16, totoff, controlBarY+5+h+h2, 0xff000000,0xff9fc9f2,0xff000000);
-            if (leftMouseReleased&&!overPopup&&pointInBounds(mouseX, mouseY, totoff, totoff+w3, controlBarY+5+h+h2, controlBarY+5+h+h2+h3)) {
-                Popup* blargh = createPopup(EDIT_GRAPH_POPUP, 10, 10);
-                blargh->concernWith(selectedGraphs[i]);
-                leftMouseReleased = false;
-            }
-            //draw delete button
-            TTF_SizeUTF8((*fontgrab)(16), "Delete", &w4, &h4);
-            drawTextWithBackground("Delete", 16, totoff, controlBarY+5+h+h2+h3, 0xff000000,0xff9fc9f2,0xff000000);
-            if (leftMouseReleased&&!overPopup&&pointInBounds(mouseX, mouseY, totoff, totoff+w4, controlBarY+5+h+h2+h3, controlBarY+5+h+h2+h3+h4)) {
-                typeof(graphs) newgraphs = {};
-                for (int j = 0;j<graphs.size();j++) {
-                    if (graphs[j]!=selectedGraphs[i]) {newgraphs.push_back(graphs[j]);}
-                }
-                delete selectedGraphs[i];
-                selectedGraphs[i] = NULL;
-                graphs = newgraphs;
-                leftMouseReleased = false;
-            }
-            else {newselectedgraphs.push_back(selectedGraphs[i]);}
-            totoff=newtotoff;
-        }
-        selectedGraphs=newselectedgraphs;
-        
-        //draw all selected sliders
-        typeof(selectedSliders) newselectedsliders = {};
-        for (int i = 0;i<selectedSliders.size();i++) {
-            int w,h,w2,h2,w3,h3,w4,h4;
-            //draw name of graph
-            std::string name = selectedSliders[i]->getName();
-            drawText(name, 16, totoff, controlBarY+5, 0xff000000);
-            TTF_SizeUTF8((*fontgrab)(16), name.c_str(), &w, &h);
-            double newtotoff = totoff+5+w;
-            //draw run button
-            TTF_SizeUTF8((*fontgrab)(16), "Run", &w2, &h2);
-            drawTextWithBackground("Run", 16, totoff, controlBarY+5+h, 0xff000000,0xff9fc9f2,0xff000000);
-            if (leftMouseReleased&&!overPopup&&pointInBounds(mouseX, mouseY, totoff, totoff+w2, controlBarY+5+h, controlBarY+5+h+h2)) {
-                selectedSliders[i]->run();
-                runningVideo = true;
-                selectedSliders = {};
-                newselectedgraphs = {};
-                leftMouseReleased = false;
-                break;
-            }
-            //draw edit button
-            TTF_SizeUTF8((*fontgrab)(16), "Edit", &w3, &h3);
-            drawTextWithBackground("Edit", 16, totoff, controlBarY+5+h+h2, 0xff000000,0xff9fc9f2,0xff000000);
-            if (leftMouseReleased&&!overPopup&&pointInBounds(mouseX, mouseY, totoff, totoff+w3, controlBarY+5+h+h2, controlBarY+5+h+h2+h3)) {
-                Popup* blargh = createPopup(EDIT_SLIDER_POPUP, 10, 10);
-                blargh->concernWith(selectedSliders[i]);
-                leftMouseReleased = false;
-            }
-            //draw delete button
-            TTF_SizeUTF8((*fontgrab)(16), "Delete", &w4, &h4);
-            drawTextWithBackground("Delete", 16, totoff, controlBarY+5+h+h2+h3, 0xff000000,0xff9fc9f2,0xff000000);
-            if (leftMouseReleased&&!overPopup&&pointInBounds(mouseX, mouseY, totoff, totoff+w4, controlBarY+5+h+h2+h3, controlBarY+5+h+h2+h3+h4)) {
-                typeof(sliders) newsliders = {};
-                for (int j = 0;j<sliders.size();j++) {
-                    if (sliders[j]!=selectedSliders[i]) {newsliders.push_back(sliders[j]);}
-                }
-                delete selectedSliders[i];
-                selectedSliders[i] = NULL;
-                sliders = newsliders;
-                leftMouseReleased = false;
-            }
-            else {newselectedsliders.push_back(selectedSliders[i]);}
-            totoff=newtotoff;
-        }
-        selectedSliders=newselectedsliders;
-        
-        */
         
         //draw run all button
         int rax,ray;
@@ -502,6 +381,7 @@ int main(int argc, const char * argv[]) {
 			}
 			if (gRenderer == NULL) {
 				//std::cout << SDL_GetError() << "\n";
+                //^^^Above gives no output >:(  B/c:
 				//Windows is literally stupid, many things that work nicely on
 				//a mac do not work on a windows.  For who knows what reason,
 				//I have to manually create the renderer for Windows, which
@@ -516,7 +396,6 @@ int main(int argc, const char * argv[]) {
                 //(to be fair, half of my problems were visual studio problems,
                 //not necessarily windows problems.  xcode is much better.)
 				gRenderer = SDL_CreateRenderer(gWindow, -1, 0);
-				//throw std::runtime_error("Null renderer");
 			}
 
             //Fill the surface white
@@ -531,9 +410,18 @@ int main(int argc, const char * argv[]) {
     //DEBUG is XCode's automatic debug macro, _DEBUG is Visual Studio's
     #if defined DEBUG
 		std::cout << "Warning: Using a development build!\n";
+        //for some reason I can't figure out how to get xcode to accept a
+        //relative path to resources for a debug build :( (works fine for
+        //non-debug builds, though.  It just refuses to copy the resources
+        //folder to the right directory while doing debugs.)  To fix this,
+        //I manually found xcode's debug directory and dragged "resources"
+        //into it.  So if I add stuff to resources, I'll have to re-copy it
+        //there :(.  Which is stupid.  Stupid xcode.
 		dumstupidcurrentdirectorybs = getenv("PWD");
 	#elif defined _DEBUG
         std::cout << "Warning: Using a development build!\n";
+        //The one instance where visual studio is better than xcode.  There
+        //were no hijinks in making this work.  Yay.
 		dumstupidcurrentdirectorybs = ".";
 	#elif defined _WINDOWS
 		std::cout << "Visual Studio Compiling For Release";
@@ -541,7 +429,7 @@ int main(int argc, const char * argv[]) {
         //just using the debug stuffs should be fine.
 		dumstupidcurrentdirectorybs = "Calculate the pathname for windows release mode.";
     #else
-		std::cout << "XCode compiling for release";
+		std::cout << "XCode Compiling For Release";
         //grab location
         char path[1024];
         uint32_t size = sizeof(path);
@@ -563,45 +451,6 @@ int main(int argc, const char * argv[]) {
     fontgrab = new Font(24);
     initBuiltins();
     
-    /*
-    //create a graph for testing
-    Graph* testGraph = new Graph(20,20,101,101);
-    testGraph->moveOrigin(30,30);
-    Interpolation* first = testGraph->smoothMove(100, 100, 120);
-    Interpolation* second = testGraph->smoothMoveOrigin(-80,-80, 120,false);
-    Interpolation* third = testGraph->smoothMoveGridAngle(M_PI/4, 0, 120,false);
-    Interpolation* fourth = testGraph->smoothMoveOrigin(40, 40, 120,false);
-    Interpolation* fifth = testGraph->smoothMoveGridScale(10, 10, 120,false);
-    Interpolation* sixth = testGraph->smoothMoveGridSize(100, 100, 120,true,false);
-    Interpolation* seventh = new Interpolation(DELAY,0,0,60,testGraph);
-    Interpolation* eigth = testGraph->smoothMoveGridAngle(0, -M_PI/4, 240,false);
-    Interpolation* ninth = new Interpolation(DELAY,0,0,60,testGraph);
-    Interpolation* tenth = testGraph->smoothMoveGridAngle(2*M_PI, 0, 240,false);
-    first->addFollowup(second);
-    second->addFollowup(third);
-    third->addFollowup(fourth);
-    fourth->addFollowup(fifth);
-    fifth->addFollowup(sixth);
-    sixth->addFollowup(seventh);
-    seventh->addFollowup(eigth);
-    eigth->addFollowup(ninth);
-    ninth->addFollowup(tenth);
-    graphs.push_back(testGraph);
-    
-    Graph* testGraph2 = new Graph(330,200,201,201);
-    std::function<double(double,double)> temp = [](double x,double t){return cos(x);};
-    testGraph2->addFunction(new Function(temp));
-    Interpolation* delay = new Interpolation(DELAY,0,0,60,testGraph);
-    testGraph2->addInterpolation(delay);
-    Interpolation* scaleGraph = testGraph2->smoothMoveGridScale(20, 20, 240,false);
-    delay->addFollowup(scaleGraph);
-    Interpolation* delay2 = delay->cloneTo(scaleGraph);
-    Interpolation* rotateXAxis = testGraph2->smoothMoveGridAngle(M_PI, 0, 480,false);
-    Interpolation* rotateYAxis = testGraph2->smoothMoveGridAngle(0, M_PI, 480,false);
-    delay2->addFollowup(rotateXAxis);
-    rotateXAxis->addFollowup(rotateYAxis);
-    graphs.push_back(testGraph2);
-    */
 	std::cout << "Starting Program Now!\n";
     while(controlFlow()) {SDL_Delay(1000/60.0);/*60 fps*/};
     
@@ -626,9 +475,8 @@ bool loadMedia() {
     NUM_GRAPHICS = 0;
     DIR *dir;
     struct dirent *ent;
-    //std::vector<std::string> imageFiles = {};
     if ((dir = opendir ((dumstupidcurrentdirectorybs + "/resources/Images").c_str())) != NULL) {
-        /* print all the files and directories within directory */
+        // print all the files and directories within directory
         while ((ent = readdir (dir)) != NULL) {
             if (ent->d_name[0]!='.') {
                 std::string path = ent->d_name;
@@ -655,36 +503,6 @@ void drawDisplayObject(DisplayObject* d) {
     d->reclaim(tempSurf);
     SDL_DestroyTexture(tempTexture);
 }
-
-/*void drawGraph(Graph* g) {
-    double xdraw,ydraw = 0;
-    SDL_Surface* tempSurf = g->draw(&xdraw, &ydraw);
-    if (xdraw<0||xdraw>=SCREEN_WIDTH||ydraw<0||ydraw>=SCREEN_HEIGHT) {
-        return; //don't draw if offscreen (otherwise it'll crash, I think)
-        //TODO: Draw partially on-screen things
-        //pretty easy, just got to mess with the rect its blitting from (don't
-        //grab the whole image).  But I couldn't be bothered yet...
-    }
-    SDL_Texture* tempTexture = SDL_CreateTextureFromSurface(gRenderer,tempSurf);
-    drawGraphic(xdraw, ydraw, tempSurf->w, tempSurf->h, tempTexture);
-    SDL_FreeSurface(tempSurf);
-    SDL_DestroyTexture(tempTexture);
-}
-
-void drawSlider(Slider* s) {
-    double xdraw,ydraw = 0;
-    SDL_Surface* tempSurf = s->draw(&xdraw, &ydraw);
-    if (xdraw<0||xdraw>=SCREEN_WIDTH||ydraw<0||ydraw>=SCREEN_HEIGHT) {
-        return; //don't draw if offscreen (otherwise it'll crash, I think)
-        //TODO: Draw partially on-screen things
-        //pretty easy, just got to mess with the rect its blitting from (don't
-        //grab the whole image).  But I couldn't be bothered yet...
-    }
-    SDL_Texture* tempTexture = SDL_CreateTextureFromSurface(gRenderer,tempSurf);
-    drawGraphic(xdraw, ydraw, tempSurf->w, tempSurf->h, tempTexture);
-    SDL_FreeSurface(tempSurf);
-    SDL_DestroyTexture(tempTexture);
-}*/
 
 
 void addGraph(double x,double y) {

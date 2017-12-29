@@ -226,7 +226,6 @@ double numberFromString(std::string theString) {
     bool isAfterDecimalPoint = false;
     int decimalPointDivider = 1;
     bool isNegative = false;
-    //std::cout<<"In: "<<input<<"\n";
     for (int hexCounter=0;hexCounter<theString.size();hexCounter++) {
         if (theString[hexCounter]=='.') {//decimal point
             isAfterDecimalPoint = true;
@@ -236,13 +235,11 @@ double numberFromString(std::string theString) {
         }
         else {
             int numToAdd = hexCharToInt(theString[hexCounter]);
-            //std::cout<<numToAdd<<"\n";
             if (isAfterDecimalPoint) {
                 finalNumber+=numToAdd*pow(10, (int)(theString.size())-hexCounter-1);
                 decimalPointDivider*=10;
             }
             else {
-                //std::cout<<"S:"<<input.size()<<" H:"<<hexCounter<<" C:"<<(int)(input.size())-hexCounter-2<<" P:"<<pow(10, input.size()-hexCounter-2)<<"\n";
                 finalNumber+=numToAdd*pow(10, (int)(theString.size())-hexCounter-2);
             }
         }

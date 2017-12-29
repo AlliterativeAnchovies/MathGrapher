@@ -56,7 +56,6 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                 drawTextWithBackground(" Image ", 20, px+5, cury, 0xff000000, 0xffffcf9e, 0xff000000);
                 if (clicked&&pointInBounds(mouseX, mouseY, px+5, px+5+imagew, cury, cury+imageh)) {
                     //add slider!
-                    //addImage(px, py);
                     createPopup(CHOOSE_WHICH_IMAGE_POPUP, px, py);
                     clicked  = false;
                     toReturn = 0x02;
@@ -66,7 +65,6 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
             break;
         case EDIT_GRAPH_POPUP:
             {
-                //std::string cursorBeeper = (ticks%60<30)?"|":" ";
                 drawBorderedRect(px, py, sx, sy, 0xff9fc9f2, 0xff000000);
                 
                 int offx,offy;
@@ -636,10 +634,8 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
             break;
         case CREATE_POINT_OF_INTEREST:
             {
-                //std::string beep = (ticks%60<30)?"|":" ";
                 drawBorderedRect(px, py, sx, sy, 0xffaaf2aa, 0xff000000);
                 drawText("Point of Interest", 24, px, py, 0xff000000);
-                //int pxx,pxy,visiblex,visibley;
                 std::string header = " px: ";
                 if (functionConcerned->isParametric()) {header = " t: ";}
                 if (stringConcerned==""&&instringswitch!=18) {

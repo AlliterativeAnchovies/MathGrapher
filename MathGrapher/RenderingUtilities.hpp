@@ -223,7 +223,7 @@ template<typename valueType> class ValueEditor: public ValueEditorPrime {
             *setter=fromstring<valueType>(value);
         }
         //send in the proposed changed value of "value", and change value to it.
-        //then do trimming (005 = 5, for example)
+        //mabye do trimming if you want (005 = 5, for example)
         std::string changeValue(std::string v) {
             value=v;
             return v;

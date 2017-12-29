@@ -174,8 +174,6 @@ SDL_Surface* Graph::draw(double* x,double* y) {
     //first lets do the "x" grid
     double sinex,cosinex = 0;
     fastSineCosine(&sinex, &cosinex, gridAngleY);
-    //double deltay = sinex*gridSpacingX;
-    //double deltax = cosinex*gridSpacingX;
     double deltax = cosinex*gridSpacingX+sinex*gridSpacingY;
     double deltay = -sinex*gridSpacingX+cosinex*gridSpacingY;
     double startingx = centerx;
@@ -202,8 +200,6 @@ SDL_Surface* Graph::draw(double* x,double* y) {
     //now lets do the "y" grid
     double siney,cosiney = 0;
     fastSineCosine(&siney, &cosiney, gridAngleX);
-    //deltay = siney*gridSpacingY;
-    //deltax = cosiney*gridSpacingY;
     deltax = cosiney*gridSpacingX+siney*gridSpacingY;
     deltay = -siney*gridSpacingX+cosiney*gridSpacingY;
     startingx = centerx;
@@ -928,7 +924,6 @@ SDL_Surface* Slider::draw(double* x,double* y) {
     Point<double> st = Point<double>(startx,starty);//STart
     Point<double> en = Point<double>(endx,endy);//ENd
     Point<double> mi = en+(st-en)/2.0; //MIddle, the origin
-    //drawCircleOnSurface(toReturn, mi.x, mi.y, 3, 0xff000099);//uncomment if needed for debugging
     //find normal vector
     Point<double> normal = 3.0*normalTo(st-en).norm();
     //draw tick at origin
@@ -958,8 +953,6 @@ SDL_Surface* Slider::draw(double* x,double* y) {
     if (pointConcerned!=NULL) {
         rawpointery+=pointConcerned->getPY();
     }
-    //double finalpointerx =  storedsx*rawpointerx*cos/2+storedsy*rawpointery*sin/2;
-    //double finalpointery =  storedsx*rawpointerx*sin/2+storedsy*rawpointery*cos/2;
     Point<double> pointerpoint = upVec*rawpointery+mi;
     drawCircleOnSurface(toReturn, pointerpoint.x, pointerpoint.y, 3, 0xff000099);
     
@@ -969,8 +962,8 @@ SDL_Surface* Slider::draw(double* x,double* y) {
         SDL_FillRect(highlight, NULL, 0x6600ff00);
         SDL_BlitSurface(highlight,NULL,toReturn,NULL);
     }
-    *x = px;//-toReturn->w/2;
-    *y = py;//-toReturn->h/2;
+    *x = px;
+    *y = py;
     highlighted = false;
     return toReturn;
 }
@@ -981,6 +974,19 @@ bool Slider::clickedIn(double x,double y) {
 
 void RawImage::run() {
     //empty for now
+    //would need to
+    //do stuffs if
+    //add interpols
+    //to RawImages.
+    //Same for two
+    //functions down
+    //below this...
+    //IDK why I've
+    //decided to have
+    //the columns of
+    //this comment
+    //be so thin...
+    //I regret that.
 }
 void RawImage::update() {
     //emty for now
