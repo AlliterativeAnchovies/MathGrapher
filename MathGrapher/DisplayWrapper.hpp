@@ -10,9 +10,13 @@
 #define DisplayWrapper_hpp
 
 //This file merely serves to wrap up all the DisplayObjects classes
-//So other files only have to import 1 file (this)
+//So other files only have to import 1 file (this one)
 
 #include "DisplayObjects/DisplayObjects.hpp"
 #include "DisplayObjects/Graph.hpp"
+#include "DisplayObjects/Slider.hpp"
+#include "DisplayObjects/RawImage.hpp"
+#include "DisplayObjects/Interpolation.hpp"
+#include "DisplayObjects/Function.hpp"
 
 #endif /* DisplayWrapper_hpp */

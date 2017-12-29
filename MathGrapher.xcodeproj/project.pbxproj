@@ -10,6 +10,10 @@
 		863C5C151FF5834A00F6FA18 /* resources in CopyFiles */ = {isa = PBXBuildFile; fileRef = 863C5C141FF5834A00F6FA18 /* resources */; };
 		863C5C181FF6EA0200F6FA18 /* DisplayObjects.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 863C5C161FF6EA0200F6FA18 /* DisplayObjects.cpp */; };
 		863C5C1B1FF6EB2700F6FA18 /* DisplayWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 863C5C191FF6EB2700F6FA18 /* DisplayWrapper.cpp */; };
+		863C5C1F1FF6EC7B00F6FA18 /* Slider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 863C5C1D1FF6EC7B00F6FA18 /* Slider.cpp */; };
+		863C5C221FF6EC8D00F6FA18 /* RawImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 863C5C201FF6EC8D00F6FA18 /* RawImage.cpp */; };
+		863C5C251FF6ECAE00F6FA18 /* Interpolation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 863C5C231FF6ECAE00F6FA18 /* Interpolation.cpp */; };
+		863C5C281FF6ED2600F6FA18 /* Function.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 863C5C261FF6ED2600F6FA18 /* Function.cpp */; };
 		86928C631FE125BF00CBB286 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86928C621FE125BF00CBB286 /* main.cpp */; };
 		86928C6C1FE1260500CBB286 /* SDL2_ttf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86928C6A1FE1260500CBB286 /* SDL2_ttf.framework */; };
 		86928C6D1FE1260500CBB286 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86928C6B1FE1260500CBB286 /* SDL2.framework */; };
@@ -38,6 +42,14 @@
 		863C5C171FF6EA0200F6FA18 /* DisplayObjects.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DisplayObjects.hpp; sourceTree = "<group>"; };
 		863C5C191FF6EB2700F6FA18 /* DisplayWrapper.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DisplayWrapper.cpp; sourceTree = "<group>"; };
 		863C5C1A1FF6EB2700F6FA18 /* DisplayWrapper.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DisplayWrapper.hpp; sourceTree = "<group>"; };
+		863C5C1D1FF6EC7B00F6FA18 /* Slider.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Slider.cpp; sourceTree = "<group>"; };
+		863C5C1E1FF6EC7B00F6FA18 /* Slider.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Slider.hpp; sourceTree = "<group>"; };
+		863C5C201FF6EC8D00F6FA18 /* RawImage.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RawImage.cpp; sourceTree = "<group>"; };
+		863C5C211FF6EC8D00F6FA18 /* RawImage.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = RawImage.hpp; sourceTree = "<group>"; };
+		863C5C231FF6ECAE00F6FA18 /* Interpolation.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Interpolation.cpp; sourceTree = "<group>"; };
+		863C5C241FF6ECAE00F6FA18 /* Interpolation.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Interpolation.hpp; sourceTree = "<group>"; };
+		863C5C261FF6ED2600F6FA18 /* Function.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Function.cpp; sourceTree = "<group>"; };
+		863C5C271FF6ED2600F6FA18 /* Function.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Function.hpp; sourceTree = "<group>"; };
 		86928C5F1FE125BF00CBB286 /* MathGrapher */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MathGrapher; sourceTree = BUILT_PRODUCTS_DIR; };
 		86928C621FE125BF00CBB286 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		86928C6A1FE1260500CBB286 /* SDL2_ttf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_ttf.framework; path = ../../../../Library/Frameworks/SDL2_ttf.framework; sourceTree = "<group>"; };
@@ -68,10 +80,18 @@
 		863C5C1C1FF6EBB300F6FA18 /* DisplayObjects */ = {
 			isa = PBXGroup;
 			children = (
-				86928C6E1FE12B0600CBB286 /* Graph.cpp */,
-				86928C6F1FE12B0600CBB286 /* Graph.hpp */,
 				863C5C161FF6EA0200F6FA18 /* DisplayObjects.cpp */,
 				863C5C171FF6EA0200F6FA18 /* DisplayObjects.hpp */,
+				86928C6E1FE12B0600CBB286 /* Graph.cpp */,
+				86928C6F1FE12B0600CBB286 /* Graph.hpp */,
+				863C5C1D1FF6EC7B00F6FA18 /* Slider.cpp */,
+				863C5C1E1FF6EC7B00F6FA18 /* Slider.hpp */,
+				863C5C201FF6EC8D00F6FA18 /* RawImage.cpp */,
+				863C5C211FF6EC8D00F6FA18 /* RawImage.hpp */,
+				863C5C231FF6ECAE00F6FA18 /* Interpolation.cpp */,
+				863C5C241FF6ECAE00F6FA18 /* Interpolation.hpp */,
+				863C5C261FF6ED2600F6FA18 /* Function.cpp */,
+				863C5C271FF6ED2600F6FA18 /* Function.hpp */,
 			);
 			path = DisplayObjects;
 			sourceTree = "<group>";
@@ -177,12 +197,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				863C5C221FF6EC8D00F6FA18 /* RawImage.cpp in Sources */,
 				86928C731FE1319B00CBB286 /* RenderingUtilities.cpp in Sources */,
 				863C5C181FF6EA0200F6FA18 /* DisplayObjects.cpp in Sources */,
 				86928C791FE3225400CBB286 /* Functions.cpp in Sources */,
 				86928C701FE12B0600CBB286 /* Graph.cpp in Sources */,
 				863C5C1B1FF6EB2700F6FA18 /* DisplayWrapper.cpp in Sources */,
+				863C5C251FF6ECAE00F6FA18 /* Interpolation.cpp in Sources */,
 				86928C761FE2C73300CBB286 /* Popup.cpp in Sources */,
+				863C5C1F1FF6EC7B00F6FA18 /* Slider.cpp in Sources */,
+				863C5C281FF6ED2600F6FA18 /* Function.cpp in Sources */,
 				86928C631FE125BF00CBB286 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
