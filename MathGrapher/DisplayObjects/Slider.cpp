@@ -27,6 +27,32 @@ void Slider::run() {
     image.tickAmount = tickAmount;
 }
 
+void Slider::reset() {
+	running = false;
+	px = image.px;
+	py = image.py;
+	size = image.size;
+	angle = image.angle;
+	incrementFunction = image.incrementFunction;
+	tickAmount = image.tickAmount;
+	for (int i = 0;i<interpolations.size();i++) {
+        interpolations[i]->reset();
+    }
+}
+
+void Slider::update() {
+	for (int i = 0;i<interpolations.size();i++) {
+        if (interpolations[i]->update()) {
+            std::vector<Interpolation*> followups = interpolations[i]->getFollowups();
+            for (int j = 0;j<followups.size();j++) {
+                followups[j]->wait();
+                interpolations.push_back(followups[j]);
+            }
+            interpolations[i]->pause();
+        }
+    }
+}
+
 const int SLIDER_WIDTH = 30;
 SDL_Surface* Slider::draw(double* x,double* y) {
     double sliderstartx = SLIDER_WIDTH/2;
@@ -100,4 +126,8 @@ SDL_Surface* Slider::draw(double* x,double* y) {
 
 bool Slider::clickedIn(double x,double y) {
     return pointInBounds(x, y, px, px+storedsx, py, py+storedsy);
+}
+
+void Slider::addInterpolation(Interpolation* i) {
+	interpolations.push_back(i);
 }

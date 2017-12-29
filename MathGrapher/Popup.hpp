@@ -80,6 +80,7 @@ class Popup {
         void lock();
         void unlock();
         ~Popup();
+        bool drawInterpolationSidebar(int interpolationx,int interpolationy,bool clicked,double mouseX,double mouseY);
 };
 
 Popup* createPopup(Uint8 popup_id,double x,double y);
@@ -123,7 +124,7 @@ template<typename T> bool handleEditableInfo(double px,double py,int fsize,int r
     TTF_SizeUTF8((*fontgrab)(fsize),(preface+display).c_str(), &w, &h);
     drawTextWithBackground("Edit", 16, px+w, py, 0xff000000, 0xffffcf9e, 0xff000000);
     TTF_SizeUTF8((*fontgrab)(16),"Edit", &w2, &h2);
-    *offx = w+w2;
+    *offx = w+w2+5;
     *offy = (h>h2)?h:h2;
     if (clicked&&pointInBounds(mouseX, mouseY, px+w, px+w+w2, py, py+h2)) {
         //edit clicked

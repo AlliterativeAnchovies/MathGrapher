@@ -38,6 +38,8 @@ class Slider: public DisplayObject {
         double pointery = 0;
         PointOfInterest* pointConcerned = NULL;
         std::string startingYString = "0";
+        //stores current interpolation data
+        std::vector<Interpolation*> interpolations = {};
     public:
         //creates default slider at (x,y) with size s
         Slider(double x,double y,double s,std::string n);
@@ -68,8 +70,8 @@ class Slider: public DisplayObject {
         void setPointConcerned(PointOfInterest* p) {pointConcerned=p;}
         //get name of class
         std::string getID() {return "Slider";}
-        void update() {};
-        void reset() {};
+        void update();
+        void reset();
         bool isRunning() {return running;};
         std::string* ptmName() {return &name;}
         double* ptmPX() {return &px;}
@@ -83,7 +85,7 @@ class Slider: public DisplayObject {
             SDL_FreeSurface(reclaimed);
         }
         void move(double x,double y) {px+=x;py+=y;};
-		void addInterpolation(Interpolation* i) {throw std::runtime_error("Error! Don't support interpolations for sliders!");};
+		void addInterpolation(Interpolation* i);
 };
 
 #endif /* Slider_hpp */
