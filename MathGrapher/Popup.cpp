@@ -931,15 +931,29 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                     ,clicked,&offx,&offy) || clickedEdit;
                 cury+=offy;
                 
+                //change the image
                 int whichimgw,whichimgh;
                 TTF_SizeUTF8((*fontgrab)(16),imageConcerned->getOrigName().c_str(),&whichimgw,&whichimgh);
-                drawTextWithBackground(imageConcerned->getOrigName(), 16, px+5, cury, 0xff000000, 0xffffcf9e, 0xff000000);
-                if (clicked&&pointInBounds(mouseX, mouseY, px+5, px+5+whichimgw, cury, cury+whichimgh)) {
+                drawTextWithBackground(imageConcerned->getOrigName(), 16, curx, cury, 0xff000000, 0xffffcf9e, 0xff000000);
+                if (clicked&&pointInBounds(mouseX, mouseY, curx, curx+whichimgw, cury, cury+whichimgh)) {
                     clicked = false;
                     toReturn = 0x01;
                     createPopup(CHOOSE_WHICH_IMAGE_POPUP, mouseX, mouseY)
                         ->concernWith(this);
                 }
+                curx+=whichimgw+5;
+                
+                //rescale ("fix") to normal resolution so that its not weird
+                //only useful if you've changed the image
+                int fiximgw,fiximgh;
+                TTF_SizeUTF8((*fontgrab)(16),"Fix", &fiximgw, &fiximgh);
+                drawTextWithBackground("Fix", 16, curx, cury, 0xff000000, 0xffffcf9e, 0xff000000);
+                if (clicked&&pointInBounds(mouseX, mouseY, curx, curx+fiximgw, cury, cury+fiximgh)) {
+                    clicked = false;
+                    toReturn = 0x01;
+                    imageConcerned->fix();
+                }
+                curx = px+5;
                 
                 
                 //The close button

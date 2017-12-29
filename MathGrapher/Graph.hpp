@@ -251,6 +251,29 @@ class RawImage: public DisplayObject {
             origSurf = gSurfaces[which];
             origSurfName = gStrings[which];
         }
+        void fix() {
+            //"fixing" the image is defined as making it
+            //have the same resolution as its base image,
+            //while preserving its area.
+            
+            //first we find its current area and original area
+            double curarea = sx*sy;
+            double origarea = origSurf->w*origSurf->h;
+            //then find the factor we multiply by to scale origarea to curarea
+            double scalefactor = curarea/origarea;
+            //but we need to square root this to find the scaling factor
+            //for each side (rather than the whole area)
+            scalefactor = sqrt(scalefactor);
+            //find new sizes:
+            sx = origSurf->w*scalefactor;
+            sy = origSurf->h*scalefactor;
+            //free the old surface
+            SDL_FreeSurface(surfaceConcerned);
+            //and replace it with the new one!
+            surfaceConcerned = createBlankSurfaceWithSize(sx, sy);
+            SDL_BlitScaled(origSurf,NULL,surfaceConcerned,NULL);
+            //and ta-didly-da, we're done!
+        }
 };
 
 
