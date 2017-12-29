@@ -8,7 +8,7 @@
 
 #ifndef Functions_hpp
 #define Functions_hpp
-#include "Graph.hpp"
+#include "DisplayWrapper.hpp"
 #include <vector>
 
 #include <stdio.h>
