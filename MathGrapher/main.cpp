@@ -727,8 +727,10 @@ void doInStringCalcs(Uint8 keypressed) {
                 deleteInStrings();
                 break;
             case SDLK_PERIOD:
+                if (!isIntTypeOfValueEditor(instringswitch)) {
                     instring+=".";
                     changeToInString();
+                }
                 break;
             case SDLK_MINUS:
                     instring+="-";
@@ -736,7 +738,9 @@ void doInStringCalcs(Uint8 keypressed) {
                 break;
             default:
                 std::string thing = SDL_GetKeyName(keypressed);
-                if (thing.size()==1) {
+                if (thing.size()==1) {  //reason for this is to exclude keys called "DELETE"
+                                        //and such, only keys like "A" or "?" should be
+                                        //considered.
                     if (isStringTypeOfValueEditor(instringswitch)||isdigit(thing[0])) {
                         instring+=(CAPS_LOCK?toupper:tolower)(thing[0]);
                         changeToInString();
