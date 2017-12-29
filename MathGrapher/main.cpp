@@ -727,25 +727,17 @@ void doInStringCalcs(Uint8 keypressed) {
                 deleteInStrings();
                 break;
             case SDLK_PERIOD:
-                //if (instringswitch==16||instringswitch==17||instringswitch==18||
-                //    instringswitch==11||instringswitch==12||instringswitch==26||
-                //    instringswitch==19||instringswitch==20) {
                     instring+=".";
                     changeToInString();
-                //}
                 break;
             case SDLK_MINUS:
-                //if (instringswitch==16||instringswitch==17||instringswitch==18||
-                //    instringswitch==11||instringswitch==12||instringswitch==26||
-                //    instringswitch==19||instringswitch==20) {
                     instring+="-";
                     changeToInString();
-                //}
                 break;
             default:
                 std::string thing = SDL_GetKeyName(keypressed);
                 if (thing.size()==1) {
-                    if (instringswitch==0||isdigit(thing[0])) {
+                    if (isStringTypeOfValueEditor(instringswitch)||isdigit(thing[0])) {
                         instring+=(CAPS_LOCK?toupper:tolower)(thing[0]);
                         changeToInString();
                     }
