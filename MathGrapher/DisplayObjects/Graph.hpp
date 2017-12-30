@@ -166,6 +166,4 @@ class Graph: public DisplayObject {
 
 
 
-
-
 #endif /* Graph_hpp */

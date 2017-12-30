@@ -10,6 +10,14 @@
 #define RawImage_hpp
 
 #include "DisplayObjects.hpp"
+#include "Interpolation.hpp"
+
+struct RawImageImage {
+	double px;
+	double py;
+	double sx;
+	double sy;
+};
 
 class RawImage: public DisplayObject {
     //If this class turns out to be an efficiency drain, there are numerous fixes:
@@ -31,6 +39,7 @@ class RawImage: public DisplayObject {
     std::string origSurfName = "";
     std::string name = "-IMAGE-";
     std::vector<Interpolation*> interpolations = {};
+    RawImageImage image;
     public:
         double getPX() {return px;}
         double getPY() {return py;}

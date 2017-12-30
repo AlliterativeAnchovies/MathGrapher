@@ -9,26 +9,33 @@
 #include "RawImage.hpp"
 
 void RawImage::run() {
-    //empty for now
-    //would need to
-    //do stuffs if
-    //add interpols
-    //to RawImages.
-    //Same for two
-    //functions down
-    //below this...
-    //IDK why I've
-    //decided to have
-    //the columns of
-    //this comment
-    //be so thin...
-    //I regret that.
+	running = true;
+	image.px = px;
+	image.py = py;
+	image.sx = sx;
+	image.sy = sy;
 }
 void RawImage::update() {
-    //emty for now
+	for (int i = 0;i<interpolations.size();i++) {
+        if (interpolations[i]->update()) {
+            std::vector<Interpolation*> followups = interpolations[i]->getFollowups();
+            for (int j = 0;j<followups.size();j++) {
+                followups[j]->wait();
+                interpolations.push_back(followups[j]);
+            }
+            interpolations[i]->pause();
+        }
+    }
 }
 void RawImage::reset() {
-    //empty for now
+	running = false;
+	px = image.px;
+	py = image.py;
+	sx = image.sx;
+	sy = image.sy;
+    for (int i = 0;i<interpolations.size();i++) {
+        interpolations[i]->reset();
+    }
 }
 
 void RawImage::fix() {

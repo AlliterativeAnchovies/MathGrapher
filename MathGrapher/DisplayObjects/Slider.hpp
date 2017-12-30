@@ -89,4 +89,5 @@ class Slider: public DisplayObject {
 		decltype(interpolations) getInterpolations() {return interpolations;}
 };
 
+
 #endif /* Slider_hpp */

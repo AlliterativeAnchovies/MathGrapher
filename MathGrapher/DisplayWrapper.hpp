@@ -11,6 +11,11 @@
 
 //This file merely serves to wrap up all the DisplayObjects classes
 //So other files only have to import 1 file (this one)
+//It also contains the getValidInterpolations code, just because it's
+//pretty useful to have those all in one place.
+//Think of the architecture like this:
+// DisplayObjects.hpp -> [All the display stuffs] -> DisplayWrapper.hpp
+//   declares stuff   ->      defines stuff  ->   groups everything together
 
 #include "DisplayObjects/DisplayObjects.hpp"
 #include "DisplayObjects/Graph.hpp"
@@ -18,5 +23,14 @@
 #include "DisplayObjects/RawImage.hpp"
 #include "DisplayObjects/Interpolation.hpp"
 #include "DisplayObjects/Function.hpp"
+
+//Returns a vector containing all valid interpolations
+template<typename T> std::vector<std::string> getValidInterpolations() {
+	throw std::runtime_error("Error!  Have not defined interpolations for this object!");
+}
+template<> std::vector<std::string> getValidInterpolations<DisplayObject>();
+template<> std::vector<std::string> getValidInterpolations<RawImage>();
+template<> std::vector<std::string> getValidInterpolations<Slider>();
+template<> std::vector<std::string> getValidInterpolations<Graph>();
 
 #endif /* DisplayWrapper_hpp */
