@@ -230,7 +230,7 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                 
                 
                 //now we'll do the Interpolations stuff
-                bool clickedInterpol = drawInterpolationSidebar(px+5*sx/8,py,clicked,mouseX,mouseY);
+                bool clickedInterpol = drawInterpolationSidebar(px+5*sx/8,py,clicked,mouseX,mouseY,graphConcerned);
                 if (clickedInterpol) {
                 	clicked = false;
                 	toReturn = 0x01;
@@ -298,7 +298,7 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                 drawTextWithBackground("Move", 16, px+5, cury, 0xff000000, 0xffffcf9e, 0xff000000);
                 if (clicked&&pointInBounds(mouseX, mouseY, px+5, px+5+movesx, cury, cury+movesy)) {
                     createPopup(CREATE_SIMPLE_INTERPOLATION, mouseX, mouseY)
-                        ->concernWith(graphConcerned)
+                        ->concernWithAllDisplayedObjects(this)
                         ->concernWith(std::string("Move"))
                         ->setUpInterpolation();
                 }
@@ -306,7 +306,7 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                 drawTextWithBackground("Resize", 16, px+5+movesx+5, cury, 0xff000000, 0xffffcf9e, 0xff000000);
                 if (clicked&&pointInBounds(mouseX, mouseY, px+5+movesx+5, px+5+movesx+5+resizesx, cury, cury+resizesy)) {
                     createPopup(CREATE_RESIZE_INTERPOLATION, mouseX, mouseY)
-                        ->concernWith(graphConcerned)
+                        ->concernWithAllDisplayedObjects(this)
                         ->concernWith(std::string("Resize"))
                         ->setUpInterpolation();
                 }
@@ -314,7 +314,7 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                 drawTextWithBackground("Rescale", 16, px+5+movesx+5+resizesx+5, cury, 0xff000000, 0xffffcf9e, 0xff000000);
                 if (clicked&&pointInBounds(mouseX, mouseY, px+5+movesx+5+resizesx+5, px+5+movesx+5+resizesx+5+scalesx, cury, cury+scalesy)) {
                     createPopup(CREATE_SIMPLE_INTERPOLATION, mouseX, mouseY)
-                        ->concernWith(graphConcerned)
+                        ->concernWithAllDisplayedObjects(this)
                         ->concernWith(std::string("Rescale"))
                         ->setUpInterpolation();
                 }
@@ -323,7 +323,7 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                 drawTextWithBackground("Rotate", 16, px+5, cury, 0xff000000, 0xffffcf9e, 0xff000000);
                 if (clicked&&pointInBounds(mouseX, mouseY, px+5, px+5+rotatesx, cury, cury+rotatesy)) {
                     createPopup(CREATE_SIMPLE_INTERPOLATION, mouseX, mouseY)
-                        ->concernWith(graphConcerned)
+                        ->concernWithAllDisplayedObjects(this)
                         ->concernWith(std::string("Rotate"))
                         ->setUpInterpolation();
                 }
@@ -331,7 +331,7 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                 drawTextWithBackground("Re-Origin", 16, px+5+rotatesx+5, cury, 0xff000000, 0xffffcf9e, 0xff000000);
                 if (clicked&&pointInBounds(mouseX, mouseY, px+5+rotatesx+5, px+5+rotatesx+5+originsx, cury, cury+originsy)) {
                     createPopup(CREATE_SIMPLE_INTERPOLATION, mouseX, mouseY)
-                        ->concernWith(graphConcerned)
+                        ->concernWithAllDisplayedObjects(this)
                         ->concernWith(std::string("Re-Origin"))
                         ->setUpInterpolation();
                 }
@@ -340,7 +340,7 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                 drawTextWithBackground("Highlight", 16, px+5, cury, 0xff000000, 0xffffcf9e, 0xff000000);
                 if (clicked&&pointInBounds(mouseX, mouseY, px+5, px+5+highlightx, cury, cury+highlighty)) {
                     createPopup(CREATE_HIGHLIGHT_INTERPOLATION, mouseX, mouseY)
-                        ->concernWith(graphConcerned)
+                        ->concernWithAllDisplayedObjects(this)
                         ->concernWith(std::string("Highlight"))
                         ->setUpInterpolation();
                 }
@@ -426,9 +426,17 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                     clicked = false;
                     toReturn = 0x02;
                     if (popupConcerned==NULL) {
-                        graphConcerned->addInterpolation(interpolationConcerned);
+                    	if (graphConcerned!=NULL) {
+                        	graphConcerned->addInterpolation(interpolationConcerned);
+                        }
+                        else if (sliderConcerned!=NULL) {
+                        	sliderConcerned->addInterpolation(interpolationConcerned);
+						}
+						else if (imageConcerned!=NULL) {
+							imageConcerned->addInterpolation(interpolationConcerned);
+						}
                         interpolationConcerned->relateFunction(functionConcerned);
-                        //if not NULL, then the interpolation already exists,
+                        //if popup not NULL, then the interpolation already exists,
                         //shouldn't add it twice!
                     }
                     else {
@@ -738,6 +746,13 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                     clicked = false;
                     toReturn = 0x01;
                 }
+				
+                //now we'll do the Interpolations stuff
+                bool clickedInterpol = drawInterpolationSidebar(px+5*sx/8,py,clicked,mouseX,mouseY,sliderConcerned);
+                if (clickedInterpol) {
+                	clicked = false;
+                	toReturn = 0x01;
+				}
                 
                 //The close button
                 drawBorderedRect(px+sx-20, py, 20, 20, 0xffff0000, 0xff000000);
@@ -1041,33 +1056,54 @@ Popup* createPopup(Uint8 popup_id,double x,double y) {
 
 void Popup::setUpInterpolation() {
     //called when concerning with a string
+    Uint8 interpolID = 0x00;
     if (stringConcerned=="Move") {
-        interpolationConcerned = new Interpolation(SMOOTH_TRANSLATE,0,0,60,graphConcerned);
+        //interpolationConcerned = new Interpolation(SMOOTH_TRANSLATE,0,0,60,graphConcerned);
+        interpolID = SMOOTH_TRANSLATE;
     }
     else if (stringConcerned=="Resize") {
-        interpolationConcerned = new Interpolation(SMOOTH_GRID_RESIZE_SMART_CENTER,0,0,60,graphConcerned);
+        //interpolationConcerned = new Interpolation(SMOOTH_GRID_RESIZE_SMART_CENTER,0,0,60,graphConcerned);
+        interpolID = SMOOTH_GRID_RESIZE_SMART_CENTER;
     }
     else if (stringConcerned=="Rescale") {
-        interpolationConcerned = new Interpolation(SMOOTH_GRID_SCALE,0,0,60,graphConcerned);
+        //interpolationConcerned = new Interpolation(SMOOTH_GRID_SCALE,0,0,60,graphConcerned);
+        interpolID = SMOOTH_GRID_SCALE;
     }
     else if (stringConcerned=="Rotate") {
-        interpolationConcerned = new Interpolation(SMOOTH_GRID_ROTATE,0,0,60,graphConcerned);
+        //interpolationConcerned = new Interpolation(SMOOTH_GRID_ROTATE,0,0,60,graphConcerned);
+        interpolID = SMOOTH_GRID_ROTATE;
     }
     else if (stringConcerned=="Re-Origin") {
-        interpolationConcerned = new Interpolation(SMOOTH_ORIGIN_TRANSLATE,0,0,60,graphConcerned);
+        //interpolationConcerned = new Interpolation(SMOOTH_ORIGIN_TRANSLATE,0,0,60,graphConcerned);
+        interpolID = SMOOTH_ORIGIN_TRANSLATE;
     }
     else if (stringConcerned=="Stretch") {
-        interpolationConcerned = new Interpolation(SMOOTH_FUNCTION_STRETCH,0,0,60,graphConcerned);
+        //interpolationConcerned = new Interpolation(SMOOTH_FUNCTION_STRETCH,0,0,60,graphConcerned);
+        interpolID = SMOOTH_FUNCTION_STRETCH;
     }
     else if (stringConcerned=="Run") {
-        interpolationConcerned = new Interpolation(SMOOTH_FUNCTION_RUN,0,0,60,graphConcerned);
+        //interpolationConcerned = new Interpolation(SMOOTH_FUNCTION_RUN,0,0,60,graphConcerned);
+        interpolID = SMOOTH_FUNCTION_RUN;
     }
     else if (stringConcerned=="Highlight") {
-        interpolationConcerned = new Interpolation(HIGHLIGHT_GRAPH,0,0,60,graphConcerned);
+        //interpolationConcerned = new Interpolation(HIGHLIGHT_GRAPH,0,0,60,graphConcerned);
+        interpolID = HIGHLIGHT_GRAPH;
     }
     else {
         throw std::runtime_error("Invalid Interpolation To Set Up");
     }
+    if (graphConcerned!=NULL) {
+    	interpolationConcerned = new Interpolation(interpolID,0,0,60,graphConcerned);
+    }
+    else if (sliderConcerned!=NULL) {
+		interpolationConcerned = new Interpolation(interpolID,0,0,60,sliderConcerned);
+	}
+	else if (imageConcerned!=NULL) {
+		interpolationConcerned = new Interpolation(interpolID,0,0,60,imageConcerned);
+	}
+	else {
+		throw std::runtime_error("Not set up adding interpolations to this type of display object!");
+	}
 }
 
 void Popup::lock() {
@@ -1154,101 +1190,6 @@ Popup::~Popup() {
     deleteInStrings();
 }
 
-bool Popup::drawInterpolationSidebar(int interpolationx,int interpolationy,bool clicked,double mouseX,double mouseY) {
-	bool toReturn = false;
-	drawBorderedRect(interpolationx, interpolationy, 3*sx/8+1, sy, 0xff597bf5, 0xff000000);
-	drawText("Interpolations", 24, interpolationx+5, interpolationy, 0xff000000);
-	auto interpolations = graphConcerned->getInterpolations();
-	interpolationy+=30;
-	drawTextWithBackground("Add Interpolation", 20, interpolationx+5, interpolationy, 0xff000000, 0xffffcf9e, 0xff000000);
-	int intrplx,intrply;
-	TTF_SizeUTF8((*fontgrab)(20),"Add Interpolation",&intrplx,&intrply);
-	if (clicked&&pointInBounds(mouseX, mouseY, interpolationx+5, interpolationx+5+intrplx, interpolationy, interpolationy+intrply)) {
-		createPopup(CHOOSE_INTERPOLATION_POPUP, mouseX-150, mouseY)
-			->concernWith(graphConcerned);
-		toReturn = true;
-	}
-	interpolationy+=35;
-	SDL_RenderDrawLine(gRenderer, interpolationx, interpolationy-1, px+sx-1, interpolationy-1);
-	for (int i = 0;i<sy/60;i++) {
-		drawText(std::to_string(i*60), 16, px+sx-24, interpolationy+i*60, 0xff000000);
-	}
-	std::vector<int> slots = {};
-	int interpolhovering = -1;
-	int interpolhoveringoffset = 0;
-	for (int i = 0;i<interpolations.size();i++) {
-		int intstart = interpolationy+interpolations[i]->getStart();
-		int intend = interpolations[i]->getDuration();
-		int offset = 0;
-		std::vector<int> illegalslots = {};
-		for (int j = 0;j<i;j++) {
-			int theirintstart = interpolationy+interpolations[j]->getStart();
-			int theirintend = interpolations[j]->getDuration();
-			if (  pointInBounds(theirintstart, 10, intstart, intstart+intend, 0, 20)
-				||pointInBounds(theirintstart+theirintend, 10, intstart, intstart+intend, 0, 20)
-				||pointInBounds(intstart, 10, theirintstart, theirintstart+theirintend, 0, 20)
-				||pointInBounds(intstart+intend, 10, theirintstart, theirintstart+theirintend, 0, 20)) {
-				illegalslots.push_back(slots[j]);
-			}
-		}
-		if (!illegalslots.empty()) {
-			std::sort(illegalslots.begin(), illegalslots.end(), [](int a,int b){return b>a;});
-			illegalslots.erase( unique( illegalslots.begin(), illegalslots.end() ), illegalslots.end() );
-			for (int a : illegalslots) {
-				if (a==offset) {offset=a+1;}
-				else {break;}
-			}
-		}
-		slots.push_back(offset);
-		if (pointInBounds(mouseX, mouseY, interpolationx+10+15*offset, interpolationx+10+15*offset+10, intstart, intstart+intend) && successfulRaycast) {
-			//hovering over!  draw full info
-			interpolhovering = i;
-			interpolhoveringoffset = offset;
-		}
-		else {
-			drawBorderedRect(       interpolationx+10+15*offset, intstart,
-									10,intend,
-									getColorOfInterpolation(interpolations[i]),0xff000000);
-		}
-		
-	}
-
-	if (interpolhovering>=0&&!locked) {
-		//draw hovered over interpolation
-		Interpolation* relevantInterpol = interpolations[interpolhovering];
-		int intystart = interpolationy+relevantInterpol->getStart();
-		int intyend = relevantInterpol->getDuration();
-		if (intyend<70) {intyend=70;}
-		int intxstart = interpolationx+10+15*interpolhoveringoffset-170;
-		drawBorderedRect(       intxstart, intystart,
-								180,intyend,
-								getColorOfInterpolation(relevantInterpol),0xff000000);
-		//draw data
-		drawText(relevantInterpol->getDisplay(), 12, intxstart+5, intystart+5, 0xff000000);
-		drawText("Start Time: "+relevantInterpol->getStartDisplay(), 12, intxstart+5, intystart+20, 0xff000000);
-		drawText("Duration: "+relevantInterpol->getDurationDisplay(), 12, intxstart+5, intystart+35, 0xff000000);
-		drawText("Space to Edit, Backspace to Delete", 12, intxstart+5, intystart+50, 0xff000000);
-		if (spacePressed) {
-			Uint8 newID = CREATE_SIMPLE_INTERPOLATION;
-			if (relevantInterpol->getType()==SMOOTH_GRID_RESIZE_SMART_CENTER||
-				relevantInterpol->getType()==SMOOTH_GRID_RESIZE_STATIC_CENTER) {
-				newID = CREATE_RESIZE_INTERPOLATION;
-			}
-			else if (relevantInterpol->getType()==HIGHLIGHT_GRAPH) {
-				newID = CREATE_HIGHLIGHT_INTERPOLATION;
-			}
-			createPopup(newID, mouseX-150, mouseY)
-				->concernWith(graphConcerned)
-				->concernWith(relevantInterpol)
-				->concernWith(this)
-				->concernWith(stringifyID(relevantInterpol->getType()));
-		}
-		else if (backspacePressed) {
-			relevantInterpol->cancel();
-		}
-	}
-	return toReturn;
-}
 
 
 

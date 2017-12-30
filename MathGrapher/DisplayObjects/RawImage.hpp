@@ -30,6 +30,7 @@ class RawImage: public DisplayObject {
     SDL_Surface* origSurf = NULL;//store original surface for scaling and such
     std::string origSurfName = "";
     std::string name = "-IMAGE-";
+    std::vector<Interpolation*> interpolations = {};
     public:
         double getPX() {return px;}
         double getPY() {return py;}
@@ -59,7 +60,8 @@ class RawImage: public DisplayObject {
         void changeTo(int which);
         void fix();
         void move(double x,double y) {px+=x;py+=y;};
-        void addInterpolation(Interpolation* i) {throw std::runtime_error("Error! Don't support interpolations for images!");};
+        void addInterpolation(Interpolation* i) {interpolations.push_back(i);};
+        decltype(interpolations) getInterpolations() {return interpolations;}
 };
 
 #endif /* RawImage_hpp */

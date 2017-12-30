@@ -86,6 +86,7 @@ class Slider: public DisplayObject {
         }
         void move(double x,double y) {px+=x;py+=y;};
 		void addInterpolation(Interpolation* i);
+		decltype(interpolations) getInterpolations() {return interpolations;}
 };
 
 #endif /* Slider_hpp */
