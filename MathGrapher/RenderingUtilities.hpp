@@ -25,6 +25,7 @@
 #include <dirent.h>
 #include <string>
 #include <algorithm>
+#include <fstream>//read & write files
 
 //My color palet:
 //0xff9fc9f2 - nice blue
@@ -87,6 +88,11 @@ void drawCircleOnSurface(SDL_Surface* theSurface,int centx,int centy,float radiu
 std::vector<std::string> split(const std::string &text, char sep);
 SDL_Surface* getTextSurface(std::string text,int text_size,int x,int y, Uint32 color);
 Uint32 hexFromString(std::string theString);
+bool stringIsWhitespace(std::string s);
+std::string trim(const std::string &s);
+std::vector<std::string> splitAtColon(std::string input);
+std::vector<std::string> splitAt(std::string input,char splitter);
+bool stringContains(std::string theString,char toContain);
 
 template<typename T> void fastSineCosine(T* sine,T* cosine,T angle) {
     //It's faster if I need a sine and cosine of 1 angle to use this
@@ -234,6 +240,62 @@ template<typename valueType> class ValueEditor: public ValueEditorPrime {
             value=v;
             return v;
         }
+};
+
+
+
+//File Reading Functions and Classes
+const float PARSED_FILE_VERSION_NUMBER = 2.0;
+class ParsedFile {
+    private:
+        float version = -1;                                 //Versions are used as safety measures
+                                                            //in case the method of parsing changes
+                                                            //For now, throw error if not equivalent
+                                                            //to PARSED_FILE_VERSION_NUMBER
+        std::string tag = "";                               //Every file has a tag, which is how
+                                                            //other files can reference this
+                                                            //If "" then throw an error
+    protected:
+        std::vector<ParsedFile*> components;                //List of all the pieces of data in this
+                                                            //file
+        ParsedFile();                                       //Dummy constructor to get around the dumb
+                                                            //rule that I have to initialize the parent
+                                                            //clase in a constructor for the child class
+        ParsedFile(std::vector<std::string> relevantInput); //Actually where all the logic goes in to
+                                                            //Creating a new parsed file
+        std::string key = "";                               //How it is referenced programatically
+        std::string value = "";
+        std::vector<ParsedFile*> internalComponentFromString(std::vector<std::string> componentID);
+                                                            //Where the actual request for information
+                                                            //goes after it is preprocessed by
+                                                            //componentFromString
+    public:
+        static ParsedFile* parseFile(std::fstream* fileToParse);
+                                                            //Splits fileToParse into array of strings
+                                                            //to feed into main constructor
+        std::string valueOf(std::string componentID,int which=0);
+                                                            //returns value of component returned
+                                                            //by componentFromString
+                                                            //which is the index, since actually
+                                                            //acting on an array
+        std::vector<std::string> valuesOf(std::string componentID);
+                                                            //returns array of every component
+                                                            //found by componentFromString, but all
+                                                            //turned into std::string (their 'value')
+        bool componentExists(std::string componentID);      //returns true if component with
+                                                            //componentID actually exists
+        std::vector<ParsedFile*> componentFromString(std::string componentID);
+                                                            //Gets components with key that matches
+                                                            //componentID - note that componentID
+                                                            //can use "." to indicate nesting
+                                                            //for example initialInformation.name.first
+                                                            //would grab the component initialInformation,
+                                                            //then grab it's component name,
+                                                            //then grab it's component first,
+                                                            //returning the value of first.
+        std::string getTag();                               //Gets the tag of this file
+        std::string getValue();                             //Returns the value held in this component
+        std::string getKey();                               //Returns the key of this component
 };
 
 

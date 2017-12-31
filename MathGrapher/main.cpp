@@ -56,6 +56,7 @@ void drawDisplayObject(DisplayObject* d);
 SDL_Event e;
 void doInStringCalcs(Uint8 keypressed);
 void changeToInString();
+void save();
 
 //this is the real "main" loop
 std::vector<DisplayObject*> selectedObjects = {};
@@ -266,6 +267,20 @@ bool controlFlow() {
             selectedObjects = {};
             newselectedobjects = {};
             leftMouseReleased = false;
+        }
+        //draw save button
+        int savex,savey;
+        TTF_SizeUTF8((*fontgrab)(16), "Save", &savex, &savey);
+        drawTextWithBackground("Save", 16, SCREEN_WIDTH-200, controlBarY+5+rsy+5, 0xff000000,0xff9fc9f2,0xff000000);
+        if (leftMouseReleased&&!overPopup&&pointInBounds(mouseX, mouseY, SCREEN_WIDTH-200, SCREEN_WIDTH-200+savex,controlBarY+5+rsy+5,controlBarY+5+savey+rsy+5)) {
+            save();
+        }
+        //draw load button
+        int loadx,loady;
+        TTF_SizeUTF8((*fontgrab)(16), "Load", &loadx, &loady);
+        drawTextWithBackground("Load", 16, SCREEN_WIDTH-200-5-savex, controlBarY+5+rsy+5, 0xff000000,0xff9fc9f2,0xff000000);
+        if (leftMouseReleased&&!overPopup&&pointInBounds(mouseX, mouseY, SCREEN_WIDTH-200-5-savex, SCREEN_WIDTH-200-5-savex+loadx,controlBarY+5+rsy+5,controlBarY+5+savey+rsy+5)) {
+            throw std::runtime_error("Error: No loading yet!  Sorry.");
         }
     }
     
@@ -592,4 +607,8 @@ void doInStringCalcs(Uint8 keypressed) {
                 break;
         }
     }
+}
+
+void save() {
+
 }
