@@ -12,7 +12,7 @@ template<> std::vector<std::string> getValidInterpolations<DisplayObject>() {
 	throw std::runtime_error("Error!  Trying to get genericly valid interpolations - be specific!");
 }
 template<> std::vector<std::string> getValidInterpolations<RawImage>() {
-	return {"Move"};
+	return {"Move","Rescale","Fix"};
 }
 template<> std::vector<std::string> getValidInterpolations<Slider>() {
 	return {"Move"};

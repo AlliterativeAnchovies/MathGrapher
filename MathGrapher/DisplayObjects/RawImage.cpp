@@ -115,3 +115,13 @@ RawImage::RawImage(double x,double y,int surfIndex,std::string n) {
     origSurf = gSurfaces[surfIndex];
     origSurfName = gStrings[surfIndex];
 }
+
+void RawImage::resize(double x, double y) {
+	sx = x;
+	sy = y;
+}
+
+void RawImage::resizeSmooth(double x,double y) {
+	sx+=x;
+	sy+=y;
+}

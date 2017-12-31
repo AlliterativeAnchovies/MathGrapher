@@ -11,6 +11,8 @@
 
 #include "DisplayObjects.hpp"
 #include "Graph.hpp"
+#include "RawImage.hpp"
+#include "Slider.hpp"
 
 class Interpolation {
     private:

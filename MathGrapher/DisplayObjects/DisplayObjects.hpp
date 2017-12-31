@@ -37,7 +37,8 @@ enum INTERPOLATIONS {
     SMOOTH_FUNCTION_RUN,
     SMOOTH_FUNCTION_STRETCH,
     HIGHLIGHT_GRAPH,
-    DELAY,
+    FIX_THINGAMAJIG,
+    DELAY
 };
 class Graph;
 class Interpolation;

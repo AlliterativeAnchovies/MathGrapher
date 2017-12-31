@@ -32,7 +32,7 @@ class RawImage: public DisplayObject {
     bool highlighted = false;
     double px = 0;
     double py = 0;
-    double sx = 0;
+    double sx = 0;//size
     double sy = 0;
     SDL_Surface* surfaceConcerned = NULL;
     SDL_Surface* origSurf = NULL;//store original surface for scaling and such
@@ -71,6 +71,8 @@ class RawImage: public DisplayObject {
         void move(double x,double y) {px+=x;py+=y;};
         void addInterpolation(Interpolation* i) {interpolations.push_back(i);};
         decltype(interpolations) getInterpolations() {return interpolations;}
+        void resize(double x,double y);
+        void resizeSmooth(double x,double y);
 };
 
 #endif /* RawImage_hpp */

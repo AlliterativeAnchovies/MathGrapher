@@ -1119,6 +1119,9 @@ void Popup::setUpInterpolation() {
     else if (stringConcerned=="Highlight") {
         interpolID = HIGHLIGHT_GRAPH;
     }
+    else if (stringConcerned=="Fix") {
+    	interpolID = FIX_THINGAMAJIG;
+	}
     else {
         throw std::runtime_error("Invalid Interpolation To Set Up");
     }
