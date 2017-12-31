@@ -986,6 +986,16 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                     "PY: ",tostring(textConcerned->getPY()),textConcerned->ptmPY()
                     ,clicked,&offx,&offy) || clickedEdit;
                 cury+=offy;
+                //Edit field for actual text
+                clickedEdit = handleEditableInfo(curx,cury,20,36,mouseX,mouseY,
+                    "Display Text: ",tostring(textConcerned->getActualText()),textConcerned->ptmActualText()
+                    ,clicked,&offx,&offy) || clickedEdit;
+                cury+=offy;
+                //Edit field for font size
+                clickedEdit = handleEditableInfo(curx,cury,20,37,mouseX,mouseY,
+                    "Font Size: ",tostring(textConcerned->getFontSize()),textConcerned->ptmFontSize()
+                    ,clicked,&offx,&offy) || clickedEdit;
+                cury+=offy;
 				
 				//now we'll do the Interpolations stuff
                 bool clickedInterpol = drawInterpolationSidebar(px+5*sx/8,py,clicked,mouseX,mouseY,textConcerned);
@@ -1242,6 +1252,7 @@ bool isStringTypeOfValueEditor(int instrswch) {
         case 21:
         case 28:
         case 33:
+        case 36:
             return true;
     }
     return false;
@@ -1252,6 +1263,7 @@ bool isIntTypeOfValueEditor(int instrswch) {
         case 13:
         case 14:
         case 27:
+        case 37:
             return true;
     }
     return false;
