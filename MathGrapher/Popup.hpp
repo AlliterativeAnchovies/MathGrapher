@@ -30,6 +30,7 @@ enum POPUP_IDS {
     EDIT_SLIDER_POPUP,
     CHOOSE_POINT_CONCERNED_FOR_LINKING_POPUP,
     CHOOSE_WHICH_IMAGE_POPUP,
+    EDIT_TEXT_POPUP,
     EDIT_IMAGE_POPUP
 };
 
@@ -51,6 +52,7 @@ class Popup {
         Function* functionConcerned = NULL;
         Slider* sliderConcerned = NULL;
         RawImage* imageConcerned = NULL;
+        RawText* textConcerned = NULL;
         bool isNewborn = true;
         bool successfulRaycast = false;
         bool locked = false;
@@ -68,10 +70,12 @@ class Popup {
         Popup* concernWith(Function* f);
         Popup* concernWith(Slider* s) {sliderConcerned = s;return this;}
         Popup* concernWith(RawImage* r) {imageConcerned = r;return this;}
+        Popup* concernWith(RawText* t) {textConcerned = t;return this;}
         Popup* concernWithAllDisplayedObjects(Popup* p) {
         	graphConcerned=p->graphConcerned;
         	sliderConcerned=p->sliderConcerned;
         	imageConcerned=p->imageConcerned;
+        	textConcerned=p->textConcerned;
         	return this;
 		}
         bool inBounds(double mouseX,double mouseY);

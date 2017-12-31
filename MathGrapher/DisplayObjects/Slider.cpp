@@ -117,6 +117,7 @@ SDL_Surface* Slider::draw(double* x,double* y) {
         SDL_Surface* highlight = createBlankSurfaceWithSize(toReturn->w,toReturn->h);
         SDL_FillRect(highlight, NULL, 0x6600ff00);
         SDL_BlitSurface(highlight,NULL,toReturn,NULL);
+        SDL_FreeSurface(highlight);
     }
     *x = px;
     *y = py;

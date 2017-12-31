@@ -23,6 +23,7 @@
 #include "DisplayObjects/RawImage.hpp"
 #include "DisplayObjects/Interpolation.hpp"
 #include "DisplayObjects/Function.hpp"
+#include "DisplayObjects/RawText.hpp"
 
 //Returns a vector containing all valid interpolations
 template<typename T> std::vector<std::string> getValidInterpolations() {
@@ -32,5 +33,6 @@ template<> std::vector<std::string> getValidInterpolations<DisplayObject>();
 template<> std::vector<std::string> getValidInterpolations<RawImage>();
 template<> std::vector<std::string> getValidInterpolations<Slider>();
 template<> std::vector<std::string> getValidInterpolations<Graph>();
+template<> std::vector<std::string> getValidInterpolations<RawText>();
 
 #endif /* DisplayWrapper_hpp */

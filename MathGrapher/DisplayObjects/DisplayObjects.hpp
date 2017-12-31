@@ -21,6 +21,7 @@
 void addGraph(double x,double y);
 void addSlider(double x,double y);
 void addImage(double x,double y,int which);
+void addText(double x,double y);
 extern std::vector<SDL_Surface*> gSurfaces;
 extern std::vector<SDL_Texture*> gTextures;
 extern std::vector<std::string>  gStrings;
@@ -46,6 +47,7 @@ class Function;
 class PointOfInterest;
 class Slider;
 class RawImage;
+class RawText;
 typedef Wrap2<std::string,Function*> FuncWrap;
 typedef std::vector<FuncWrap> FunctionList;
 extern FunctionList builtins;//defined in Functions.cpp

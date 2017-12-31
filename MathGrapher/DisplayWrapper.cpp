@@ -20,3 +20,7 @@ template<> std::vector<std::string> getValidInterpolations<Slider>() {
 template<> std::vector<std::string> getValidInterpolations<Graph>() {
 	return {"Move","Resize","Rescale","Rotate","Re-Origin","Stretch","Run","Highlight"};
 }
+
+template<> std::vector<std::string> getValidInterpolations<RawText>() {
+	return {"Move"};
+}

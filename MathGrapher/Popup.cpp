@@ -26,7 +26,7 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
             return 0x02;
         case ADD_OBJECT_POPUP:
             {
-                //main backgroundd
+                //main background
                 drawBorderedRect(px, py, sx, sy, 0xff9fc9f2, 0xff000000);
                 drawText("Add Object", 24, px+5, py+5, 0xff000000);
                 drawTextWithBackground(" Graph ", 20, px+5, py+35, 0xff000000, 0xffffcf9e, 0xff000000);
@@ -55,8 +55,18 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                 TTF_SizeUTF8((*fontgrab)(20), " Image ", &imagew, &imageh);
                 drawTextWithBackground(" Image ", 20, px+5, cury, 0xff000000, 0xffffcf9e, 0xff000000);
                 if (clicked&&pointInBounds(mouseX, mouseY, px+5, px+5+imagew, cury, cury+imageh)) {
-                    //add slider!
+                    //add image!
                     createPopup(CHOOSE_WHICH_IMAGE_POPUP, px, py);
+                    clicked  = false;
+                    toReturn = 0x02;
+                }
+				
+                int textw,texth;
+                TTF_SizeUTF8((*fontgrab)(20), " Text ", &textw, &texth);
+                drawTextWithBackground(" Text ", 20, px+5+imagew+5, cury, 0xff000000, 0xffffcf9e, 0xff000000);
+                if (clicked&&pointInBounds(mouseX, mouseY, px+5+imagew+5, px+5+textw+imagew+5, cury, cury+texth)) {
+                    //add text!
+                    addText(px, py);
                     clicked  = false;
                     toReturn = 0x02;
                 }
@@ -296,6 +306,9 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
 				else if (imageConcerned!=NULL) {
                 	validInterpols = getValidInterpolations<RawImage>();
 				}
+				else if (textConcerned!=NULL) {
+					validInterpols = getValidInterpolations<RawText>();
+				}
 				else {
 					validInterpols = getValidInterpolations<DisplayObject>();
 				}
@@ -465,6 +478,12 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
 						}
 						else if (imageConcerned!=NULL) {
 							imageConcerned->addInterpolation(interpolationConcerned);
+						}
+						else if (textConcerned!=NULL) {
+							textConcerned->addInterpolation(interpolationConcerned);
+						}
+						else {
+							throw std::runtime_error("Need to hook up interpolation to display object");
 						}
                         interpolationConcerned->relateFunction(functionConcerned);
                         //if popup not NULL, then the interpolation already exists,
@@ -856,7 +875,9 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
             break;
         case EDIT_IMAGE_POPUP:
             {
+            	//draw background
                 drawBorderedRect(px, py, sx, sy, 0xff9fc9f2, 0xff000000);
+                //initialize variables
                 bool clickedEdit = false;
                 int curx = px+5;
                 int cury = py+5;
@@ -941,6 +962,63 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                 
             }
             break;
+		case EDIT_TEXT_POPUP:
+			{
+				//draw background
+                drawBorderedRect(px, py, sx, sy, 0xff9fc9f2, 0xff000000);
+                //initialize variables
+                bool clickedEdit = false;
+                int curx = px+5;
+                int cury = py+5;
+                int offx,offy;
+				
+                //Edit field for name
+                clickedEdit = handleEditableInfo(curx,cury,24,33,mouseX,mouseY,
+                    "",tostring(textConcerned->getName()),textConcerned->ptmName()
+                    ,clicked,&offx,&offy) || clickedEdit;
+                cury+=offy;
+                //Edit field for position (x)
+                clickedEdit = handleEditableInfo(curx,cury,20,34,mouseX,mouseY,
+                    "PX: ",tostring(textConcerned->getPX()),textConcerned->ptmPX()
+                    ,clicked,&offx,&offy) || clickedEdit;
+                //Edit field for position (y)
+                clickedEdit = handleEditableInfo(curx+offx,cury,20,35,mouseX,mouseY,
+                    "PY: ",tostring(textConcerned->getPY()),textConcerned->ptmPY()
+                    ,clicked,&offx,&offy) || clickedEdit;
+                cury+=offy;
+				
+				//now we'll do the Interpolations stuff
+                bool clickedInterpol = drawInterpolationSidebar(px+5*sx/8,py,clicked,mouseX,mouseY,textConcerned);
+                if (clickedInterpol) {
+                	clicked = false;
+                	toReturn = 0x01;
+				}
+				
+				
+                //The close button
+                drawBorderedRect(px+sx-20, py, 20, 20, 0xffff0000, 0xff000000);
+                drawText("x", 20, px+sx-20+5, py-3, 0xff000000);
+                if (clicked&&pointInBounds(mouseX, mouseY, px+sx-20, px+sx, py, py+20)) {
+                    toReturn = 0x02;
+                    clicked = false;
+                    thingForInString = NULL;
+                    instringswitch = -1;
+                }
+				
+                if (clicked&&pointInBounds(mouseX, mouseY, px, px+sx, py, py+sy)) {
+                    toReturn = 0x01;
+                }
+				
+                if (clickedEdit) {//Believe it or not, this is not redundant
+                    //there are cases when the edit could have been drawn off the side of the popup
+                    //due to it not being able to fit.  While ideally this wouldn't happen, it could
+                    //happen during intermediate builds.  If this isn't here, then trying to click it
+                    //will not send the right toReturn code back (it'd send 0x00)
+                    toReturn = 0x01;
+                }
+			
+			}
+			break;
     }
     return toReturn;
 }
@@ -1008,7 +1086,8 @@ bool isQuickCloser(Uint8 popup_id) {
 bool isMajor(Uint8 popup_id) {
     return  popup_id==EDIT_GRAPH_POPUP||
             popup_id==EDIT_SLIDER_POPUP||
-            popup_id==EDIT_IMAGE_POPUP;
+            popup_id==EDIT_IMAGE_POPUP||
+            popup_id==EDIT_TEXT_POPUP;
 }
 
 Popup* createPopup(Uint8 popup_id,double x,double y) {
@@ -1078,6 +1157,12 @@ Popup* createPopup(Uint8 popup_id,double x,double y) {
             sx = SCREEN_WIDTH-20-150;
             sy = SCREEN_HEIGHT-20;
             break;
+		case EDIT_TEXT_POPUP:
+			sx = SCREEN_WIDTH-20-150;
+            sy = SCREEN_HEIGHT-20;
+			break;
+		default:
+			throw std::runtime_error("ERROR - Not defined popup sizes for this popup yet!");
     }
     
     Popup* blargh = new Popup(popup_id,x,y,sx,sy);
@@ -1134,6 +1219,9 @@ void Popup::setUpInterpolation() {
 	else if (imageConcerned!=NULL) {
 		interpolationConcerned = new Interpolation(interpolID,0,0,60,imageConcerned);
 	}
+	else if (textConcerned!=NULL) {
+		interpolationConcerned = new Interpolation(interpolID,0,0,60,textConcerned);
+	}
 	else {
 		throw std::runtime_error("Not set up adding interpolations to this type of display object!");
 	}
@@ -1153,6 +1241,7 @@ bool isStringTypeOfValueEditor(int instrswch) {
         case 18:
         case 21:
         case 28:
+        case 33:
             return true;
     }
     return false;
@@ -1196,6 +1285,8 @@ bool isDoubleTypeOfValueEditor(int instrswch) {
         case 30:
         case 31:
         case 32:
+        case 34:
+        case 35:
             return true;
     }
     return false;

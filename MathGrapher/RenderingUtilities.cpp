@@ -159,6 +159,16 @@ void drawText(std::string text,int text_size,int x,int y, Uint32 color) {
     surfaceMessage=NULL;
 }
 
+SDL_Surface* getTextSurface(std::string text,int text_size,int x,int y, Uint32 color) {
+    SDL_Color textColor = {getR(color),getG(color),getB(color)};
+    SDL_Surface* surfaceMessage = TTF_RenderUTF8_Solid((*fontgrab)(text_size),text.c_str(),textColor);
+    if(surfaceMessage == NULL) {
+        printf("Unable to render text surface: %s\n",TTF_GetError());
+        throw std::runtime_error("Error unable to render text surface!");
+    }
+    return surfaceMessage;
+}
+
 void drawTextWithBackground(std::string text,int text_size,int x,int y, Uint32 txtColor, Uint32 bgColor, Uint32 edgeColor) {
     if (text=="") {
         return;//Why draw if not drawing anything?

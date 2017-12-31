@@ -85,6 +85,7 @@ double numberFromString(std::string theString);
 int hexCharToInt(char in);
 void drawCircleOnSurface(SDL_Surface* theSurface,int centx,int centy,float radius,Uint32 color);
 std::vector<std::string> split(const std::string &text, char sep);
+SDL_Surface* getTextSurface(std::string text,int text_size,int x,int y, Uint32 color);
 
 template<typename T> void fastSineCosine(T* sine,T* cosine,T angle) {
     //It's faster if I need a sine and cosine of 1 angle to use this

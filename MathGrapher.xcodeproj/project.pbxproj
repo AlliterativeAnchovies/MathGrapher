@@ -14,6 +14,7 @@
 		863C5C221FF6EC8D00F6FA18 /* RawImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 863C5C201FF6EC8D00F6FA18 /* RawImage.cpp */; };
 		863C5C251FF6ECAE00F6FA18 /* Interpolation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 863C5C231FF6ECAE00F6FA18 /* Interpolation.cpp */; };
 		863C5C281FF6ED2600F6FA18 /* Function.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 863C5C261FF6ED2600F6FA18 /* Function.cpp */; };
+		863C5C2E1FF866F100F6FA18 /* RawText.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 863C5C2C1FF866F100F6FA18 /* RawText.cpp */; };
 		86928C631FE125BF00CBB286 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86928C621FE125BF00CBB286 /* main.cpp */; };
 		86928C6C1FE1260500CBB286 /* SDL2_ttf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86928C6A1FE1260500CBB286 /* SDL2_ttf.framework */; };
 		86928C6D1FE1260500CBB286 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86928C6B1FE1260500CBB286 /* SDL2.framework */; };
@@ -50,6 +51,8 @@
 		863C5C241FF6ECAE00F6FA18 /* Interpolation.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Interpolation.hpp; sourceTree = "<group>"; };
 		863C5C261FF6ED2600F6FA18 /* Function.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Function.cpp; sourceTree = "<group>"; };
 		863C5C271FF6ED2600F6FA18 /* Function.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Function.hpp; sourceTree = "<group>"; };
+		863C5C2C1FF866F100F6FA18 /* RawText.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RawText.cpp; sourceTree = "<group>"; };
+		863C5C2D1FF866F100F6FA18 /* RawText.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = RawText.hpp; sourceTree = "<group>"; };
 		86928C5F1FE125BF00CBB286 /* MathGrapher */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MathGrapher; sourceTree = BUILT_PRODUCTS_DIR; };
 		86928C621FE125BF00CBB286 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		86928C6A1FE1260500CBB286 /* SDL2_ttf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_ttf.framework; path = ../../../../Library/Frameworks/SDL2_ttf.framework; sourceTree = "<group>"; };
@@ -82,6 +85,8 @@
 			children = (
 				863C5C161FF6EA0200F6FA18 /* DisplayObjects.cpp */,
 				863C5C171FF6EA0200F6FA18 /* DisplayObjects.hpp */,
+				863C5C2C1FF866F100F6FA18 /* RawText.cpp */,
+				863C5C2D1FF866F100F6FA18 /* RawText.hpp */,
 				86928C6E1FE12B0600CBB286 /* Graph.cpp */,
 				86928C6F1FE12B0600CBB286 /* Graph.hpp */,
 				863C5C1D1FF6EC7B00F6FA18 /* Slider.cpp */,
@@ -208,6 +213,7 @@
 				863C5C1F1FF6EC7B00F6FA18 /* Slider.cpp in Sources */,
 				863C5C281FF6ED2600F6FA18 /* Function.cpp in Sources */,
 				86928C631FE125BF00CBB286 /* main.cpp in Sources */,
+				863C5C2E1FF866F100F6FA18 /* RawText.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

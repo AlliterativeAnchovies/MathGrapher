@@ -43,6 +43,8 @@ int TOTAL_GRAPHS = 0;
 int TOTAL_SLIDERS = 0;
 //Total images
 int TOTAL_IMAGES = 0;
+//Total texts
+int TOTAL_TEXTS = 0;
 
 //Tick counter
 int ticks = 0;
@@ -215,6 +217,11 @@ bool controlFlow() {
                     blargh->concernWith((RawImage*)selectedObjects[i]);
                     leftMouseReleased = false;
                 }
+                else if (selectedObjects[i]->getID()=="Text") {
+					Popup* blargh = createPopup(EDIT_TEXT_POPUP, 10, 10);
+                    blargh->concernWith((RawText*)selectedObjects[i]);
+                    leftMouseReleased = false;
+				}
             }
             //draw delete button
             TTF_SizeUTF8((*fontgrab)(16), "Delete", &w4, &h4);
@@ -517,6 +524,10 @@ void addSlider(double x,double y) {
 void addImage(double x,double y,int which) {
     objects.push_back(new RawImage(x,y,which,"Image "+std::to_string(TOTAL_IMAGES)));
     TOTAL_IMAGES++;
+}
+void addText(double x,double y) {
+    objects.push_back(new RawText(x,y,16,"Text "+std::to_string(TOTAL_TEXTS)));
+    TOTAL_TEXTS++;
 }
 
 
