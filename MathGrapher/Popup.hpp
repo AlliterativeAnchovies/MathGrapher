@@ -100,6 +100,7 @@ void deleteInStrings();
 bool isDoubleTypeOfValueEditor(int instrswch);
 bool isIntTypeOfValueEditor(int instrswch);
 bool isStringTypeOfValueEditor(int instrswch);
+bool isHexadecimalTypeOfValueEditor(int instrswch);
 
 
 //This could be a confusing function, so here's how it works:

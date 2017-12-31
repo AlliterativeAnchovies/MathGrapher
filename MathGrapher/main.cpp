@@ -542,6 +542,9 @@ void changeToInString() {
         else if (isIntTypeOfValueEditor(instringswitch)) {
             ((ValueEditor<int>*)thingForInString)->changeValue(instring);
         }
+        else if (isHexadecimalTypeOfValueEditor(instringswitch)) {
+        	((ValueEditor<Uint32>*)thingForInString)->changeValue(instring);
+		}
         else {
             throw std::runtime_error("Error!  Don't know type of thingForInString!");
         }
@@ -556,7 +559,7 @@ void doInStringCalcs(Uint8 keypressed) {
                 deleteInStrings();
                 break;
             case SDLK_PERIOD:
-                if (!isIntTypeOfValueEditor(instringswitch)) {
+                if (!isIntTypeOfValueEditor(instringswitch)&&!isHexadecimalTypeOfValueEditor(instringswitch)) {
                     instring+=".";
                     changeToInString();
                 }
@@ -570,10 +573,21 @@ void doInStringCalcs(Uint8 keypressed) {
                 if (thing.size()==1) {  //reason for this is to exclude keys called "DELETE"
                                         //and such, only keys like "A" or "?" should be
                                         //considered.
-                    if (isStringTypeOfValueEditor(instringswitch)||isdigit(thing[0])) {
+                    if (isStringTypeOfValueEditor(instringswitch)) {
                         instring+=(CAPS_LOCK?toupper:tolower)(thing[0]);
                         changeToInString();
                     }
+                    else if ((isDoubleTypeOfValueEditor(instringswitch)||isIntTypeOfValueEditor(instringswitch))&&isdigit(thing[0])) {
+						instring+=(CAPS_LOCK?toupper:tolower)(thing[0]);
+                        changeToInString();
+					}
+                    else if (isHexadecimalTypeOfValueEditor(instringswitch)) {
+                    	if (isdigit(thing[0])||	thing[0]=='A'||thing[0]=='B'||thing[0]=='C'||
+                    							thing[0]=='D'||thing[0]=='E'||thing[0]=='F') {
+							instring+=(CAPS_LOCK?toupper:tolower)(thing[0]);
+                        	changeToInString();
+						}
+					}
                 }
                 break;
         }

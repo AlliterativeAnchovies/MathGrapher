@@ -231,6 +231,41 @@ TTF_Font* Font::operator() (int which) {
     return fonts[which];
 }
 
+Uint32 hexFromString(std::string theString) {
+    double finalNumber = 0;
+    bool isAfterDecimalPoint = false;
+    int decimalPointDivider = 1;
+    bool isNegative = false;
+    for (int hexCounter=0;hexCounter<theString.size();hexCounter++) {
+        if (theString[hexCounter]=='.') {//decimal point
+            isAfterDecimalPoint = true;
+        }
+        else if (theString[hexCounter]=='-') {
+            isNegative = true;
+        }
+        else {
+            int numToAdd = hexCharToInt(theString[hexCounter]);
+            if (isAfterDecimalPoint) {
+                finalNumber+=numToAdd*pow(16, (int)(theString.size())-hexCounter-1);
+                decimalPointDivider*=16;
+            }
+            else {
+                finalNumber+=numToAdd*pow(16, (int)(theString.size())-hexCounter-2);
+            }
+        }
+    }
+    if (isAfterDecimalPoint) {
+        finalNumber/=decimalPointDivider;
+    }
+    else {
+        finalNumber*=16;
+    }
+    if (isNegative) {
+        finalNumber*=-1;
+    }
+    return finalNumber;
+}
+
 double numberFromString(std::string theString) {
     double finalNumber = 0;
     bool isAfterDecimalPoint = false;
@@ -331,6 +366,33 @@ template<> std::string tostring(std::string a) {
 }
 template<> std::string fromstring(std::string a) {
     return a;
+}
+template<> std::string tostring(Uint32 a) {
+	//we're taking in a 32-bit number, and want to display it as
+	//a hexadecimal thing (such as ff0088aa)
+	//we do this using divs and mods
+	std::string toReturn = "";
+	long modthingy = a; //has to be long because Uint32 and int are both
+						//32-bit so we need more space than int provides
+						//because Uint32 has no negative values so those
+						//values can be 2x (exponential-wise) as large!
+	for (int i = 7;i>=0;i--) {
+		long dividingFactor = pow(16,i);
+		long numtoput = modthingy/dividingFactor;
+		modthingy = modthingy%dividingFactor;
+		if (numtoput<10) {toReturn+=tostring(numtoput);}
+		else if (numtoput==10) {toReturn+="A";}
+		else if (numtoput==11) {toReturn+="B";}
+		else if (numtoput==12) {toReturn+="C";}
+		else if (numtoput==13) {toReturn+="D";}
+		else if (numtoput==14) {toReturn+="E";}
+		else if (numtoput==15) {toReturn+="F";}
+	}
+	return toReturn;
+}
+
+template<> Uint32 fromstring(std::string a) {
+	return hexFromString(a);
 }
 
 std::vector<std::string> split(const std::string &text, char sep) {

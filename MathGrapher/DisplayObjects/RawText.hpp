@@ -60,7 +60,7 @@ class RawText: public DisplayObject {
 		double* ptmPY() {return &py;}
 		int* ptmFontSize() {return &fontSize;}
 		std::string* ptmActualText() {return &actualText;}
-		
+		Uint32* ptmColor() {return &theColor;}
 	
 };
 

@@ -996,6 +996,11 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                     "Font Size: ",tostring(textConcerned->getFontSize()),textConcerned->ptmFontSize()
                     ,clicked,&offx,&offy) || clickedEdit;
                 cury+=offy;
+                //Edit field for color
+                clickedEdit = handleEditableInfo(curx,cury,20,38,mouseX,mouseY,
+                    "Color: 0x",tostring(textConcerned->getColor()),textConcerned->ptmColor()
+                    ,clicked,&offx,&offy) || clickedEdit;
+                cury+=offy;
 				
 				//now we'll do the Interpolations stuff
                 bool clickedInterpol = drawInterpolationSidebar(px+5*sx/8,py,clicked,mouseX,mouseY,textConcerned);
@@ -1304,6 +1309,14 @@ bool isDoubleTypeOfValueEditor(int instrswch) {
     return false;
 }
 
+bool isHexadecimalTypeOfValueEditor(int instrswch) {
+	switch (instrswch) {
+		case 38:
+			return true;
+	}
+	return false;
+}
+
 void deleteInStrings() {
     if (isStringTypeOfValueEditor(instringswitch)) {
         delete (ValueEditor<std::string>*)thingForInString;
@@ -1314,6 +1327,9 @@ void deleteInStrings() {
     else if (isIntTypeOfValueEditor(instringswitch)) {
         delete (ValueEditor<int>*)thingForInString;
     }
+    else if (isHexadecimalTypeOfValueEditor(instringswitch)) {
+    	delete (ValueEditor<Uint32>*)thingForInString;
+	}
     else {
         throw std::runtime_error("Error!  Don't know type of thingForInString!");
     }
