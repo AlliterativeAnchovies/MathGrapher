@@ -1,0 +1,59 @@
+version: 2.0
+tag: testsave
+object: {
+	Name: "Graph 0"
+	ID: "Graph"
+	Data: {
+		PX: 77.000000
+		PY: 59.000000
+		Size_X: 100.000000
+		Size_Y: 100.000000
+		Origin_X: 50.000000
+		Origin_Y: 50.000000
+		Scale_X: 10.000000
+		Scale_Y: 10.000000
+		Angle_X: 0.000000
+		Angle_Y: 1.570796
+		Functions: {
+			x|sin(x): {
+				Tag: FUNC_0
+				Stretch_X: 1
+				Stretch_Y: 1
+				Start_Time: 0
+				Visible: Yes
+				Points_Of_Interest: {
+					POI_0: {
+						PX: 0
+						Visible: Yes
+					}
+				}
+			}
+			y|sin(x): {
+				Stretch_X: 1
+				Stretch_Y: 1
+				Start_Time: 0
+				Visible: Yes
+				Points_Of_Interest: {
+				}
+			}
+		}
+	}
+	Interpolations: {
+	}
+}
+object: {
+	Name: "Slider 0"
+	ID: "Slider"
+	Data: {
+		PX: 307
+		PY: 140
+		Size: 100
+		Angle: 0
+		Starting_Y: 0
+		Tick_Amount: 4
+		Point_Of_Interest: POI_0
+		Tick_Function: (1-x)^2
+	}
+	Interpolations: {
+	}
+}
