@@ -678,6 +678,9 @@ void save() {
 			}
 			for (auto func : obj->getYFunctions()) {
 				fs << "\t\t\ty|" << func->getName() << ": {\n";
+				fs << "\t\t\t\tTag: FUNC_" << NUMBER_OF_FUNCTIONS << "\n";
+				func->tagForSaving = NUMBER_OF_FUNCTIONS;
+				NUMBER_OF_FUNCTIONS++;
 				fs << "\t\t\t\tStretch_X: " << func->getStretchX() << "\n";
 				fs << "\t\t\t\tStretch_Y: " << func->getStretchY() << "\n";
 				fs << "\t\t\t\tStart_Time: " << func->getTime() << "\n";
@@ -705,6 +708,7 @@ void save() {
 			fs << "\t\tStarting_Y: " << obj->getStartingY() << "\n";
 			fs << "\t\tTick_Amount: " << obj->getTicks() << "\n";
 			fs << "\t\tPoint_Of_Interest: " << ((obj->getPointConcerned()==NULL)?"NONE":"POI_"+std::to_string(obj->getPointConcerned()->tagForSaving)) << "\n";
+			fs << "\t\tTick_Function: " << obj->getTickFunction()->getName() << "\n";
 		}
 		else if (object->getID()=="Image") {
 			RawImage* obj = (RawImage*)object;
@@ -759,11 +763,14 @@ void load(std::string toLoad) {
 	std::fstream loadedFile(toLoad);
 	ParsedFile* pf = ParsedFile::parseFile(&loadedFile);
 	std::vector<ParsedFile*> comps =  pf->componentFromString("*");
+	std::vector<Wrap2<std::string, PointOfInterest*>> pointsToHookUp = {};
+	std::vector<Wrap2<std::string, Slider*>> slidersToHookIn = {};
 	for (auto object : comps) {
 		if (object->getKey()!="object"){continue;}
-		
+		std::vector<Wrap2<std::string, Function*>> functionsToHookUp = {};
 		std::string theID = object->valueOf("ID");
 		std::string theName = object->valueOf("Name");
+		DisplayObject* theObject;
 		if (theID=="Graph") {
 			double px = numberFromString(object->valueOf("Data.PX"));
 			double py = numberFromString(object->valueOf("Data.PY"));
@@ -782,7 +789,7 @@ void load(std::string toLoad) {
 			loadedObject->changeGridScale(scalex, scaley);
 			loadedObject->resizeGrid(sx, sy,false);
 			loadedObject->changeOrigin(ox, oy);
-			objects.push_back(loadedObject);
+			theObject = loadedObject;
 			std::vector<ParsedFile*> funcs = object->componentFromString("Data.Functions.*");
 			for (auto func : funcs) {
 				//go through all the functions!
@@ -806,24 +813,108 @@ void load(std::string toLoad) {
 					PointOfInterest* toAdd = new PointOfInterest(loadedObject,relevantFunction,posx,visbl);
 					pointsOfInterest.push_back(toAdd);
 					relevantFunction->addPoint(toAdd);
+					pointsToHookUp.push_back({poi->getKey(),toAdd});
 				}
 				//add function to graph
 				if (xFunc) {loadedObject->addXFunction_nocopy(relevantFunction);}
 				else {loadedObject->addYFunction_nocopy(relevantFunction);}
+				functionsToHookUp.push_back({func->valueOf("Tag"),relevantFunction});
 			}
 		}
 		else if (theID=="Slider") {
-		
+			double px = numberFromString(object->valueOf("Data.PX"));
+			double py = numberFromString(object->valueOf("Data.PY"));
+			double size = numberFromString(object->valueOf("Data.Size"));
+			double angle = numberFromString(object->valueOf("Data.Angle"));
+			double starty = numberFromString(object->valueOf("Data.Starting_Y"));
+			int ticknum = numberFromString(object->valueOf("Data.Tick_Amount"));
+			Function* tickFunction = new Function(functionFromName(object->valueOf("Data.Tick_Function")));
+			std::string pointTag = object->valueOf("Data.Point_Of_Interest");
+			Slider* loadedObject = new Slider();
+			loadedObject->changePX(px);
+			loadedObject->changePY(py);
+			loadedObject->changeSize(size);
+			loadedObject->changeAngle(angle);
+			loadedObject->changeStartingY(starty);
+			loadedObject->setTicks(ticknum);
+			loadedObject->setFunction(tickFunction);
+			slidersToHookIn.push_back({pointTag,loadedObject});	//will add POI later, once all POI
+																//have been created (because you
+																//could possibly be loading one that
+																//hasn't been created yet if you do
+																//it here)
+			loadedObject->changeName(theName);
+			theObject = loadedObject;
 		}
 		else if (theID=="Image") {
-		
+			double px = numberFromString(object->valueOf("Data.PX"));
+			double py = numberFromString(object->valueOf("Data.PY"));
+			double sx = numberFromString(object->valueOf("Data.Size_X"));
+			double sy = numberFromString(object->valueOf("Data.Size_Y"));
+			std::string fileName = object->valueOf("Data.File_Name");
+			//because images need to know the index of the data file, not the file's name,
+			//we have to find it now!
+			int index = -1;
+			for (std::string stdstring : gStrings) {
+				index++;
+				if (stdstring==fileName) {break;}
+			}
+			RawImage* loadedObject = new RawImage(px,py,index,theName);
+			loadedObject->resize(sx,sy);
+			theObject = loadedObject;
 		}
 		else if (theID=="Text") {
-			
+			double px = numberFromString(object->valueOf("Data.PX"));
+			double py = numberFromString(object->valueOf("Data.PY"));
+			double fsize = numberFromString(object->valueOf("Data.Font_Size"));
+			std::string theText = object->valueOf("Data.Text");
+			Uint32 color = hexFromString(object->valueOf("Data.Color"));
+			RawText* loadedObject = new RawText(px,py,fsize,theName);
+			*(loadedObject->ptmActualText()) = theText;
+			*(loadedObject->ptmColor()) = color;
+			theObject = loadedObject;
 		}
 		else {
 			throw std::runtime_error("Does not know how to load the object!");
 		}
+		//now add the interpolations to this object!
+		std::vector<ParsedFile*> intpls = object->componentFromString("Interpolations.*");
+		for (auto intpl : intpls) {
+			Uint32 type = numberFromString(intpl->valueOf("Type"));
+			double px = numberFromString(intpl->valueOf("PX"));
+			double py = numberFromString(intpl->valueOf("PY"));
+			double sx = numberFromString(intpl->valueOf("SX"));
+			double sy = numberFromString(intpl->valueOf("SY"));
+			double start = numberFromString(intpl->valueOf("Start"));
+			double duration = numberFromString(intpl->valueOf("Duration"));
+			std::string funcname = intpl->valueOf("Function");
+			Interpolation* theIntpl = new Interpolation(type,px,py,duration,theObject);
+			theIntpl->changeStart(start);
+			theIntpl->changeSX(sx);
+			theIntpl->changeSY(sy);
+			if (funcname!="None") {
+				Function* voldemort = NULL;
+				for (auto possibleFunc : functionsToHookUp) {
+					if (possibleFunc.x==funcname) {
+						voldemort = possibleFunc.y;
+					}
+				}
+				if (voldemort==NULL) {throw std::runtime_error("ERROR! No such function for loading.");}
+				theIntpl->relateFunction(voldemort);
+			}
+			theObject->addInterpolation(theIntpl);
+		}
+		objects.push_back(theObject);
 		
 	}
+	//go through and hook up all points of interest
+	for (auto slid : slidersToHookIn) {
+		if (slid.x=="None") {continue;};
+		for (auto poi : pointsToHookUp) {
+			if (slid.x==poi.x) {
+				slid.y->setPointConcerned(poi.y);
+			}
+		}
+	}
+	
 }
