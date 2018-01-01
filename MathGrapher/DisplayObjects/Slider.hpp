@@ -35,7 +35,7 @@ class Slider: public DisplayObject {
         int tickAmount = 4;
         bool running = false;
         SliderImage image;
-        double pointery = 0;
+        double pointery = 0;//starting height of pointer
         PointOfInterest* pointConcerned = NULL;
         std::string startingYString = "0";
         //stores current interpolation data

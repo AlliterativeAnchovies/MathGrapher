@@ -16,9 +16,8 @@ const int SCREEN_HEIGHT = 480;
 int NUM_GRAPHICS = 0;
 std::vector<SDL_Surface*> gSurfaces = {};
 std::vector<SDL_Texture*> gTextures = {};
-std::vector<std::string>  gStrings  = {};   //I feel like this has an "inappropriate" name
-                                            //but I don't feel like taking the risky click
-                                            //to verify.
+std::vector<std::string>  gStrings  = {};
+std::vector<std::string> loadableFiles = {};
 
 //Graphics drawing variables
 SDL_Window* gWindow = NULL;
@@ -280,7 +279,8 @@ bool controlFlow() {
         TTF_SizeUTF8((*fontgrab)(16), "Load", &loadx, &loady);
         drawTextWithBackground("Load", 16, SCREEN_WIDTH-200-5-savex, controlBarY+5+rsy+5, 0xff000000,0xff9fc9f2,0xff000000);
         if (leftMouseReleased&&!overPopup&&pointInBounds(mouseX, mouseY, SCREEN_WIDTH-200-5-savex, SCREEN_WIDTH-200-5-savex+loadx,controlBarY+5+rsy+5,controlBarY+5+savey+rsy+5)) {
-            throw std::runtime_error("Error: No loading yet!  Sorry.");
+            //throw std::runtime_error("Error: No loading yet!  Sorry.");
+            createPopup(LOAD_FILE_POPUP, mouseX, mouseY-200);
         }
     }
     
@@ -511,6 +511,18 @@ bool loadMedia() {
         closedir (dir);
     }
     else {throw std::runtime_error("Error - could not load images - tried filepath "+dumstupidcurrentdirectorybs +"/resources/Images");}
+	
+    if ((dir = opendir ((dumstupidcurrentdirectorybs + "/resources/Saves").c_str())) != NULL) {
+        // print all the files and directories within directory
+        while ((ent = readdir (dir)) != NULL) {
+            if (ent->d_name[0]!='.') {
+                std::string path = ent->d_name;
+                loadableFiles.push_back(dumstupidcurrentdirectorybs+"/resources/Saves/"+path);
+            }
+        }
+        closedir (dir);
+    }
+    else {throw std::runtime_error("Error - could not load images - tried filepath "+dumstupidcurrentdirectorybs +"/resources/Images");}
     
     
 
@@ -610,5 +622,208 @@ void doInStringCalcs(Uint8 keypressed) {
 }
 
 void save() {
+	//Note to self: because of stupid XCODE, my saves are saved to a duplicate resources
+	//created at runtime, and so do not necessarily persist across builds.
+	//(It will sometimes though, but for example cleaning the build will remove it!)
+	std::string filename = "testsave";
+	std::cout << "Saving file as " << filename << ".txt\n";
+	std::fstream fs;
+	//std::fstream::out allows outputting to file, std::fstream::trunc clears file before opening it
+  	fs.open (dumstupidcurrentdirectorybs+"/resources/Saves/"+filename+".txt", std::fstream::out  | std::ofstream::trunc);
+  	//fs << " more lorem ipsum";
+  	int NUMBER_OF_INTERESTING_POINTS = 0;
+  	int NUMBER_OF_FUNCTIONS = 0;
+  	fs << "version: 2.0\n";
+  	fs << "tag: " << filename << "\n";
+  	for (auto object : objects) {
+		fs << "object: {\n";
+		
+		fs << "\tName: \"" << object->getName() << "\"\n";
+		fs << "\tID: \"" << object->getID() << "\"\n";
+		fs << "\tData: {\n";
+		if (object->getID()=="Graph") {
+			Graph* obj = (Graph*)object;
+			fs << "\t\tPX: " << tostring(obj->getPosition().x) << "\n";
+			fs << "\t\tPY: " << tostring(obj->getPosition().y) << "\n";
+			fs << "\t\tSize_X: " << tostring(obj->getSize().x) << "\n";
+			fs << "\t\tSize_Y: " << tostring(obj->getSize().y) << "\n";
+			fs << "\t\tOrigin_X: " << tostring(obj->getOrigin().x) << "\n";
+			fs << "\t\tOrigin_Y: " << tostring(obj->getOrigin().y) << "\n";
+			fs << "\t\tScale_X: " << tostring(obj->getGridScale().x) << "\n";
+			fs << "\t\tScale_Y: " << tostring(obj->getGridScale().y) << "\n";
+			fs << "\t\tAngle_X: " << tostring(obj->getGridAngle().y) << "\n";
+			fs << "\t\tAngle_Y: " << tostring(obj->getGridAngle().x) << "\n";
+			//functions
+			fs << "\t\tFunctions: {\n";
+			for (auto func : obj->getXFunctions()) {
+				fs << "\t\t\tx|" << func->getName() << ": {\n";
+				fs << "\t\t\t\tTag: FUNC_" << NUMBER_OF_FUNCTIONS << "\n";
+				func->tagForSaving = NUMBER_OF_FUNCTIONS;
+				NUMBER_OF_FUNCTIONS++;
+				fs << "\t\t\t\tStretch_X: " << func->getStretchX() << "\n";
+				fs << "\t\t\t\tStretch_Y: " << func->getStretchY() << "\n";
+				fs << "\t\t\t\tStart_Time: " << func->getTime() << "\n";
+				fs << "\t\t\t\tVisible: " << ((func->isVisible())?"Yes":"No") << "\n";
+				fs << "\t\t\t\tPoints_Of_Interest: {\n";
+				for (auto poi : func->getImportantPoints()) {
+					fs << "\t\t\t\t\tPOI_" << NUMBER_OF_INTERESTING_POINTS << ": {\n";
+					poi->tagForSaving = NUMBER_OF_INTERESTING_POINTS;
+					NUMBER_OF_INTERESTING_POINTS++;
+					fs << "\t\t\t\t\t\tPX: " << poi->getPX() << "\n";
+					fs << "\t\t\t\t\t\tVisible: " << ((poi->isVisible())?"Yes":"No") << "\n";
+					fs << "\t\t\t\t\t}\n";
+				}
+				fs << "\t\t\t\t}\n";
+				fs << "\t\t\t}\n";
+			}
+			for (auto func : obj->getYFunctions()) {
+				fs << "\t\t\ty|" << func->getName() << ": {\n";
+				fs << "\t\t\t\tStretch_X: " << func->getStretchX() << "\n";
+				fs << "\t\t\t\tStretch_Y: " << func->getStretchY() << "\n";
+				fs << "\t\t\t\tStart_Time: " << func->getTime() << "\n";
+				fs << "\t\t\t\tVisible: " << ((func->isVisible())?"Yes":"No") << "\n";
+				fs << "\t\t\t\tPoints_Of_Interest: {\n";
+				for (auto poi : func->getImportantPoints()) {
+					fs << "\t\t\t\t\tPOI_" << NUMBER_OF_INTERESTING_POINTS << ": {\n";
+					poi->tagForSaving = NUMBER_OF_INTERESTING_POINTS;
+					NUMBER_OF_INTERESTING_POINTS++;
+					fs << "\t\t\t\t\t\tPX: " << poi->getPX() << "\n";
+					fs << "\t\t\t\t\t\tVisible: " << ((poi->isVisible())?"Yes":"No") << "\n";
+					fs << "\t\t\t\t\t}\n";
+				}
+				fs << "\t\t\t\t}\n";
+				fs << "\t\t\t}\n";
+			}
+			fs << "\t\t}\n";
+		}
+		else if (object->getID()=="Slider") {
+			Slider* obj = (Slider*)object;
+			fs << "\t\tPX: " << obj->getPosition().x << "\n";
+			fs << "\t\tPY: " << obj->getPosition().y << "\n";
+			fs << "\t\tSize: " << obj->getSize() << "\n";
+			fs << "\t\tAngle: " << obj->getAngle() << "\n";
+			fs << "\t\tStarting_Y: " << obj->getStartingY() << "\n";
+			fs << "\t\tTick_Amount: " << obj->getTicks() << "\n";
+			fs << "\t\tPoint_Of_Interest: " << ((obj->getPointConcerned()==NULL)?"NONE":"POI_"+std::to_string(obj->getPointConcerned()->tagForSaving)) << "\n";
+		}
+		else if (object->getID()=="Image") {
+			RawImage* obj = (RawImage*)object;
+			fs << "\t\tPX: " << obj->getPX() << "\n";
+			fs << "\t\tPY: " << obj->getPY() << "\n";
+			fs << "\t\tSize_X: " << obj->getSX() << "\n";
+			fs << "\t\tSize_Y: " << obj->getSY() << "\n";
+			fs << "\t\tFile_Name: \"" << obj->getOrigName() << "\"\n";
+		}
+		else if (object->getID()=="Text") {
+			RawText* obj = (RawText*)object;
+			fs << "\t\tPX: " << obj->getPX() << "\n";
+			fs << "\t\tPY: " << obj->getPY() << "\n";
+			fs << "\t\tFont_Size: " << obj->getFontSize() << "\n";
+			fs << "\t\tText: \"" << obj->getActualText() << "\"\n";
+			fs << "\t\tColor: " << tostring(obj->getColor()) << "\n";
+		}
+		else {
+			throw std::runtime_error("Have not taught object how to save!");
+		}
+		fs << "\t}\n";
+		fs << "\tInterpolations: {\n";
+		for (auto intpl : object->getInterpolations()) {
+			fs << "\t\tInterpolation: {\n";
+			fs << "\t\t\tType: " << tostring(intpl->getType()) << "\n";
+			fs << "\t\t\tPX: " << intpl->getPX() << "\n";
+			fs << "\t\t\tPY: " << intpl->getPY() << "\n";
+			fs << "\t\t\tSX: " << intpl->getSX() << "\n";
+			fs << "\t\t\tSY: " << intpl->getSY() << "\n";
+			fs << "\t\t\tStart: " << intpl->getStart() << "\n";
+			fs << "\t\t\tDuration: " << intpl->getDuration() << "\n";
+			fs << "\t\t\tFunction: " << ((intpl->getFunction()==NULL)?"None":"FUNC_"+(std::to_string(intpl->getFunction()->tagForSaving))) << "\n";
+			fs << "\t\t}\n";
+		}
+		fs << "\t}\n";
+		fs << "}\n";
+	}
+  	fs.close();
+}
 
+void load(std::string toLoad) {
+	//clear out any previous objects
+	for (auto obj : objects) {
+		delete obj;
+	}
+	for (auto p : pointsOfInterest) {
+		delete p;
+	}
+	objects = {};
+	pointsOfInterest = {};
+	
+	std::fstream loadedFile(toLoad);
+	ParsedFile* pf = ParsedFile::parseFile(&loadedFile);
+	std::vector<ParsedFile*> comps =  pf->componentFromString("*");
+	for (auto object : comps) {
+		if (object->getKey()!="object"){continue;}
+		
+		std::string theID = object->valueOf("ID");
+		std::string theName = object->valueOf("Name");
+		if (theID=="Graph") {
+			double px = numberFromString(object->valueOf("Data.PX"));
+			double py = numberFromString(object->valueOf("Data.PY"));
+			double sx = numberFromString(object->valueOf("Data.Size_X"));
+			double sy = numberFromString(object->valueOf("Data.Size_Y"));
+			double ox = numberFromString(object->valueOf("Data.Origin_X"));
+			double oy = numberFromString(object->valueOf("Data.Origin_Y"));
+			double scalex = numberFromString(object->valueOf("Data.Scale_X"));
+			double scaley = numberFromString(object->valueOf("Data.Scale_Y"));
+			double anglex = numberFromString(object->valueOf("Data.Angle_X"));
+			double angley = numberFromString(object->valueOf("Data.Angle_Y"));
+			Graph* loadedObject = new Graph();
+			loadedObject->changePosition(px, py);
+			loadedObject->changeName(theName);
+			loadedObject->changeGridAngle(angley, anglex);//flipped on purpose
+			loadedObject->changeGridScale(scalex, scaley);
+			loadedObject->resizeGrid(sx, sy,false);
+			loadedObject->changeOrigin(ox, oy);
+			objects.push_back(loadedObject);
+			std::vector<ParsedFile*> funcs = object->componentFromString("Data.Functions.*");
+			for (auto func : funcs) {
+				//go through all the functions!
+				bool xFunc = func->getKey()[0]=='x';//otherwise, its a y func
+				std::string funcName = func->getKey();
+				funcName.erase(funcName.begin(), funcName.begin()+2);//get rid of "x|" or "y|"
+				Function* relevantFunction = new Function(functionFromName(funcName));
+				double stretchx = numberFromString(func->valueOf("Stretch_X"));
+				double stretchy = numberFromString(func->valueOf("Stretch_Y"));
+				relevantFunction->setStretchX(stretchx);
+				relevantFunction->setStretchY(stretchy);
+				double stime = numberFromString(func->valueOf("Start_Time"));
+				relevantFunction->setTime(stime);
+				bool visibility = func->valueOf("Visible")=="Yes";
+				if (!visibility) {relevantFunction->toggleVisibility();};
+				//go through all the points of interest
+				std::vector<ParsedFile*> POIs = func->componentFromString("Points_Of_Interest.*");
+				for (auto poi : POIs) {
+					double posx = numberFromString(poi->valueOf("PX"));
+					bool visbl = poi->valueOf("Visible")=="Yes";
+					PointOfInterest* toAdd = new PointOfInterest(loadedObject,relevantFunction,posx,visbl);
+					pointsOfInterest.push_back(toAdd);
+					relevantFunction->addPoint(toAdd);
+				}
+				//add function to graph
+				if (xFunc) {loadedObject->addXFunction_nocopy(relevantFunction);}
+				else {loadedObject->addYFunction_nocopy(relevantFunction);}
+			}
+		}
+		else if (theID=="Slider") {
+		
+		}
+		else if (theID=="Image") {
+		
+		}
+		else if (theID=="Text") {
+			
+		}
+		else {
+			throw std::runtime_error("Does not know how to load the object!");
+		}
+		
+	}
 }

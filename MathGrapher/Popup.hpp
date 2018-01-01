@@ -14,6 +14,8 @@
 //#include "Graph.hpp"
 #include "Functions.hpp"
 
+void load(std::string toLoad);//defined in main
+
 enum POPUP_IDS {
     NULL_POPUP,
     ADD_OBJECT_POPUP,
@@ -31,7 +33,8 @@ enum POPUP_IDS {
     CHOOSE_POINT_CONCERNED_FOR_LINKING_POPUP,
     CHOOSE_WHICH_IMAGE_POPUP,
     EDIT_TEXT_POPUP,
-    EDIT_IMAGE_POPUP
+    EDIT_IMAGE_POPUP,
+    LOAD_FILE_POPUP
 };
 
 const bool X_AXIS = true;

@@ -18,7 +18,7 @@ template<> std::vector<std::string> getValidInterpolations<Slider>() {
 	return {"Move"};
 }
 template<> std::vector<std::string> getValidInterpolations<Graph>() {
-	return {"Move","Resize","Rescale","Rotate","Re-Origin","Stretch","Run","Highlight"};
+	return {"Move","Resize","Rescale","Rotate","Re-Origin","Stretch","Highlight"};
 }
 
 template<> std::vector<std::string> getValidInterpolations<RawText>() {

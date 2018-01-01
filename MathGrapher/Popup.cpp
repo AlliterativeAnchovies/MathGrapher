@@ -1034,6 +1034,30 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
 			
 			}
 			break;
+		case LOAD_FILE_POPUP:
+            {
+                drawBorderedRect(px, py, sx, sy, 0xffaaf2aa, 0xff000000);
+                drawText("Choose File", 22, px, py, 0xff000000);
+                double cury = py+30;
+                for (int i = 0;i<loadableFiles.size();i++) {
+                    int w,h;
+                    auto temp = splitAt(loadableFiles[i], '/');
+                    std::string textToShow = temp[temp.size()-1];
+                    TTF_SizeUTF8((*fontgrab)(16),textToShow.c_str(),&w,&h);
+                    drawTextWithBackground(textToShow, 16, px+5, cury, 0xff000000, 0xffffcf9e, 0xff000000);
+                    if (clicked&&pointInBounds(mouseX, mouseY, px+5, px+5+w, cury, cury+h)) {
+                        clicked = false;
+                        toReturn = 0x02;
+                        load(loadableFiles[i]);
+                    }
+                    cury+=h+5;
+					
+                }
+                if (clicked&&pointInBounds(mouseX, mouseY, px, px+sx, py, py+sy)) {
+                    toReturn = 0x01;
+                }
+            }
+            break;
     }
     return toReturn;
 }
@@ -1095,7 +1119,8 @@ bool isQuickCloser(Uint8 popup_id) {
            popup_id==CREATE_POINT_OF_INTEREST||
            popup_id==CREATE_HIGHLIGHT_INTERPOLATION||
            popup_id==CHOOSE_POINT_CONCERNED_FOR_LINKING_POPUP||
-           popup_id==CHOOSE_WHICH_IMAGE_POPUP;
+           popup_id==CHOOSE_WHICH_IMAGE_POPUP||
+           popup_id==LOAD_FILE_POPUP;
 }
 
 bool isMajor(Uint8 popup_id) {
@@ -1176,6 +1201,10 @@ Popup* createPopup(Uint8 popup_id,double x,double y) {
 			sx = SCREEN_WIDTH-20-150;
             sy = SCREEN_HEIGHT-20;
 			break;
+		case LOAD_FILE_POPUP:
+            sx = 150;
+            sy = 200;
+            break;
 		default:
 			throw std::runtime_error("ERROR - Not defined popup sizes for this popup yet!");
     }

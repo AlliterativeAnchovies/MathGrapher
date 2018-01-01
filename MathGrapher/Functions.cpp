@@ -64,3 +64,12 @@ void initBuiltins() {
             "x^2+y^2=1")},
     };
 }
+
+Function* functionFromName(std::string name) {
+	for (auto f : builtins) {
+		if (f.y->getName()==name) {
+			return f.y;
+		}
+	}
+	throw std::runtime_error("Error! No such function: "+name);
+}

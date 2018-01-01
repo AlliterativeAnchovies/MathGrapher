@@ -96,6 +96,7 @@ class Interpolation {
         double* ptmSY() {return &sy;}
         int* ptmStart() {return &timeStartCounter;}
         int* ptmDuration() {return &timeInterval;}
+        Function* getFunction() {return relatedFunction;}
 };
 
 

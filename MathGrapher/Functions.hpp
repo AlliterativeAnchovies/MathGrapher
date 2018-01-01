@@ -14,5 +14,6 @@
 #include <stdio.h>
 
 void initBuiltins();
+Function* functionFromName(std::string name);
 
 #endif /* Functions_hpp */

@@ -60,6 +60,7 @@ class Graph: public DisplayObject {
         Graph(double x,double y,double sizex,double sizey,std::string n="-NONAME-");
         Graph(double x,double y,double sizex,double sizey,double grid_spacing_x,double grid_spacing_y,
             std::string n="-NONAME-");
+		Graph() {};
         //moves incrementally
         void move(double x,double y);
         //moves smoothly
@@ -161,6 +162,8 @@ class Graph: public DisplayObject {
             //check is surface returned by draw() should be deleted or not
             SDL_FreeSurface(reclaimed);
         }
+        void addXFunction_nocopy(Function* f) {functions.push_back(f);}
+		void addYFunction_nocopy(Function* f) {yfunctions.push_back(f);}
 };
 
 

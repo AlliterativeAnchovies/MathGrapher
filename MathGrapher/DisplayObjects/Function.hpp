@@ -60,8 +60,8 @@ class Function {
         double getStretchY() {return stretchy;}
         std::string getStretchXString() {return stretchxstring;}
         std::string getStretchYString() {return stretchystring;}
-        void setStretchX(std::string s) {stretchxstring = s;stretchx=numberFromString(s);}
-        void setStretchY(std::string s) {stretchystring = s;stretchy=numberFromString(s);}
+        void setStretchX(std::string s) {stretchxstring = s;stretchx=numberFromString(s);}//deprecated
+        void setStretchY(std::string s) {stretchystring = s;stretchy=numberFromString(s);}//deprecated
         void setTime(double t) {time = t;}
         bool isVisible() {return visible;}
         void toggleVisibility() {visible=!visible;}
@@ -76,6 +76,9 @@ class Function {
         double* ptmTime() {return &time;}
         double* ptmStretchX() {return &stretchx;}
         double* ptmStretchY() {return &stretchy;}
+        int tagForSaving = -1;//used for linking things while saving stuffs
+		void setStretchX(double s) {stretchx=s;}
+        void setStretchY(double s) {stretchy=s;}
 };
 
 extern std::vector<PointOfInterest*> pointsOfInterest;
@@ -88,6 +91,7 @@ class PointOfInterest {
         bool visible = true;
         bool taggedForDeletion = false;
     public:
+    	int tagForSaving = -1;//used for linking things while saving stuffs
         PointOfInterest(Graph* g,Function* f,double d,bool v);
         bool isVisible() {return visible;}
         std::string getDisplayLocation();
