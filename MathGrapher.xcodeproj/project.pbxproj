@@ -17,6 +17,27 @@
 		863C5C2E1FF866F100F6FA18 /* RawText.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 863C5C2C1FF866F100F6FA18 /* RawText.cpp */; };
 		863C5C311FFB0BB500F6FA18 /* BulkUtilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 863C5C2F1FFB0BB500F6FA18 /* BulkUtilities.cpp */; };
 		863C5C341FFB113600F6FA18 /* PopupWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 863C5C321FFB113500F6FA18 /* PopupWrapper.cpp */; };
+		863C5C381FFB139900F6FA18 /* MajorPopup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 863C5C361FFB139900F6FA18 /* MajorPopup.cpp */; };
+		863C5C3B1FFB14A500F6FA18 /* AddObjectPopup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 863C5C391FFB14A500F6FA18 /* AddObjectPopup.cpp */; };
+		863C5C3F1FFB175100F6FA18 /* EditGraphPopup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 863C5C3D1FFB175100F6FA18 /* EditGraphPopup.cpp */; };
+		863C5C421FFB179500F6FA18 /* QuickCloserPopup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 863C5C401FFB179500F6FA18 /* QuickCloserPopup.cpp */; };
+		863C5C461FFB186C00F6FA18 /* ChooseFunctionPopup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 863C5C441FFB186C00F6FA18 /* ChooseFunctionPopup.cpp */; };
+		863C5C491FFB18BF00F6FA18 /* ChooseInterpolationPopup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 863C5C471FFB18BF00F6FA18 /* ChooseInterpolationPopup.cpp */; };
+		863C5C4C1FFB193900F6FA18 /* CreateSimpleInterpolation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 863C5C4A1FFB193800F6FA18 /* CreateSimpleInterpolation.cpp */; };
+		863C5C4F1FFB19AB00F6FA18 /* CreateResizeInterpolation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 863C5C4D1FFB19AB00F6FA18 /* CreateResizeInterpolation.cpp */; };
+		863C5C521FFB19F900F6FA18 /* EditFunctionPopup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 863C5C501FFB19F900F6FA18 /* EditFunctionPopup.cpp */; };
+		863C5C571FFB1A9300F6FA18 /* ChooseFunctionInterpolation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 863C5C551FFB1A9300F6FA18 /* ChooseFunctionInterpolation.cpp */; };
+		863C5C5A1FFB1AE400F6FA18 /* CreateFunctionRunInterpolation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 863C5C581FFB1AE400F6FA18 /* CreateFunctionRunInterpolation.cpp */; };
+		863C5C5D1FFB1B1500F6FA18 /* CreatePointOfInterest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 863C5C5B1FFB1B1500F6FA18 /* CreatePointOfInterest.cpp */; };
+		863C5C601FFB1B6A00F6FA18 /* CreateHighlightInterpolation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 863C5C5E1FFB1B6A00F6FA18 /* CreateHighlightInterpolation.cpp */; };
+		863C5C631FFB1B9D00F6FA18 /* EditSliderPopup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 863C5C611FFB1B9D00F6FA18 /* EditSliderPopup.cpp */; };
+		863C5C661FFB1BD600F6FA18 /* ChoosePointConcernedForLinkingPopup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 863C5C641FFB1BD600F6FA18 /* ChoosePointConcernedForLinkingPopup.cpp */; };
+		863C5C691FFB1C0200F6FA18 /* ChooseWhichImagePopup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 863C5C671FFB1C0200F6FA18 /* ChooseWhichImagePopup.cpp */; };
+		863C5C6C1FFB1C4B00F6FA18 /* EditImagePopup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 863C5C6A1FFB1C4B00F6FA18 /* EditImagePopup.cpp */; };
+		863C5C6F1FFB1C6800F6FA18 /* EditTextPopup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 863C5C6D1FFB1C6800F6FA18 /* EditTextPopup.cpp */; };
+		863C5C721FFB1C9E00F6FA18 /* LoadFilePopup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 863C5C701FFB1C9E00F6FA18 /* LoadFilePopup.cpp */; };
+		863C5C751FFB1CCC00F6FA18 /* SaveFilePopup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 863C5C731FFB1CCC00F6FA18 /* SaveFilePopup.cpp */; };
+		863C5C791FFB1D0C00F6FA18 /* MainDisplay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 863C5C771FFB1D0C00F6FA18 /* MainDisplay.cpp */; };
 		86928C631FE125BF00CBB286 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86928C621FE125BF00CBB286 /* main.cpp */; };
 		86928C6C1FE1260500CBB286 /* SDL2_ttf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86928C6A1FE1260500CBB286 /* SDL2_ttf.framework */; };
 		86928C6D1FE1260500CBB286 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86928C6B1FE1260500CBB286 /* SDL2.framework */; };
@@ -59,6 +80,48 @@
 		863C5C301FFB0BB500F6FA18 /* BulkUtilities.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BulkUtilities.hpp; sourceTree = "<group>"; };
 		863C5C321FFB113500F6FA18 /* PopupWrapper.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PopupWrapper.cpp; sourceTree = "<group>"; };
 		863C5C331FFB113600F6FA18 /* PopupWrapper.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PopupWrapper.hpp; sourceTree = "<group>"; };
+		863C5C361FFB139900F6FA18 /* MajorPopup.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MajorPopup.cpp; sourceTree = "<group>"; };
+		863C5C371FFB139900F6FA18 /* MajorPopup.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MajorPopup.hpp; sourceTree = "<group>"; };
+		863C5C391FFB14A500F6FA18 /* AddObjectPopup.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AddObjectPopup.cpp; sourceTree = "<group>"; };
+		863C5C3A1FFB14A500F6FA18 /* AddObjectPopup.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AddObjectPopup.hpp; sourceTree = "<group>"; };
+		863C5C3D1FFB175100F6FA18 /* EditGraphPopup.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = EditGraphPopup.cpp; sourceTree = "<group>"; };
+		863C5C3E1FFB175100F6FA18 /* EditGraphPopup.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = EditGraphPopup.hpp; sourceTree = "<group>"; };
+		863C5C401FFB179500F6FA18 /* QuickCloserPopup.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = QuickCloserPopup.cpp; sourceTree = "<group>"; };
+		863C5C411FFB179500F6FA18 /* QuickCloserPopup.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = QuickCloserPopup.hpp; sourceTree = "<group>"; };
+		863C5C441FFB186C00F6FA18 /* ChooseFunctionPopup.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ChooseFunctionPopup.cpp; sourceTree = "<group>"; };
+		863C5C451FFB186C00F6FA18 /* ChooseFunctionPopup.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ChooseFunctionPopup.hpp; sourceTree = "<group>"; };
+		863C5C471FFB18BF00F6FA18 /* ChooseInterpolationPopup.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ChooseInterpolationPopup.cpp; sourceTree = "<group>"; };
+		863C5C481FFB18BF00F6FA18 /* ChooseInterpolationPopup.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ChooseInterpolationPopup.hpp; sourceTree = "<group>"; };
+		863C5C4A1FFB193800F6FA18 /* CreateSimpleInterpolation.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CreateSimpleInterpolation.cpp; sourceTree = "<group>"; };
+		863C5C4B1FFB193900F6FA18 /* CreateSimpleInterpolation.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CreateSimpleInterpolation.hpp; sourceTree = "<group>"; };
+		863C5C4D1FFB19AB00F6FA18 /* CreateResizeInterpolation.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CreateResizeInterpolation.cpp; sourceTree = "<group>"; };
+		863C5C4E1FFB19AB00F6FA18 /* CreateResizeInterpolation.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CreateResizeInterpolation.hpp; sourceTree = "<group>"; };
+		863C5C501FFB19F900F6FA18 /* EditFunctionPopup.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = EditFunctionPopup.cpp; sourceTree = "<group>"; };
+		863C5C511FFB19F900F6FA18 /* EditFunctionPopup.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = EditFunctionPopup.hpp; sourceTree = "<group>"; };
+		863C5C551FFB1A9300F6FA18 /* ChooseFunctionInterpolation.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ChooseFunctionInterpolation.cpp; sourceTree = "<group>"; };
+		863C5C561FFB1A9300F6FA18 /* ChooseFunctionInterpolation.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ChooseFunctionInterpolation.hpp; sourceTree = "<group>"; };
+		863C5C581FFB1AE400F6FA18 /* CreateFunctionRunInterpolation.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CreateFunctionRunInterpolation.cpp; sourceTree = "<group>"; };
+		863C5C591FFB1AE400F6FA18 /* CreateFunctionRunInterpolation.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CreateFunctionRunInterpolation.hpp; sourceTree = "<group>"; };
+		863C5C5B1FFB1B1500F6FA18 /* CreatePointOfInterest.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CreatePointOfInterest.cpp; sourceTree = "<group>"; };
+		863C5C5C1FFB1B1500F6FA18 /* CreatePointOfInterest.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CreatePointOfInterest.hpp; sourceTree = "<group>"; };
+		863C5C5E1FFB1B6A00F6FA18 /* CreateHighlightInterpolation.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CreateHighlightInterpolation.cpp; sourceTree = "<group>"; };
+		863C5C5F1FFB1B6A00F6FA18 /* CreateHighlightInterpolation.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CreateHighlightInterpolation.hpp; sourceTree = "<group>"; };
+		863C5C611FFB1B9D00F6FA18 /* EditSliderPopup.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = EditSliderPopup.cpp; sourceTree = "<group>"; };
+		863C5C621FFB1B9D00F6FA18 /* EditSliderPopup.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = EditSliderPopup.hpp; sourceTree = "<group>"; };
+		863C5C641FFB1BD600F6FA18 /* ChoosePointConcernedForLinkingPopup.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ChoosePointConcernedForLinkingPopup.cpp; sourceTree = "<group>"; };
+		863C5C651FFB1BD600F6FA18 /* ChoosePointConcernedForLinkingPopup.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ChoosePointConcernedForLinkingPopup.hpp; sourceTree = "<group>"; };
+		863C5C671FFB1C0200F6FA18 /* ChooseWhichImagePopup.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ChooseWhichImagePopup.cpp; sourceTree = "<group>"; };
+		863C5C681FFB1C0200F6FA18 /* ChooseWhichImagePopup.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ChooseWhichImagePopup.hpp; sourceTree = "<group>"; };
+		863C5C6A1FFB1C4B00F6FA18 /* EditImagePopup.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = EditImagePopup.cpp; sourceTree = "<group>"; };
+		863C5C6B1FFB1C4B00F6FA18 /* EditImagePopup.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = EditImagePopup.hpp; sourceTree = "<group>"; };
+		863C5C6D1FFB1C6800F6FA18 /* EditTextPopup.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = EditTextPopup.cpp; sourceTree = "<group>"; };
+		863C5C6E1FFB1C6800F6FA18 /* EditTextPopup.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = EditTextPopup.hpp; sourceTree = "<group>"; };
+		863C5C701FFB1C9E00F6FA18 /* LoadFilePopup.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LoadFilePopup.cpp; sourceTree = "<group>"; };
+		863C5C711FFB1C9E00F6FA18 /* LoadFilePopup.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LoadFilePopup.hpp; sourceTree = "<group>"; };
+		863C5C731FFB1CCC00F6FA18 /* SaveFilePopup.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SaveFilePopup.cpp; sourceTree = "<group>"; };
+		863C5C741FFB1CCC00F6FA18 /* SaveFilePopup.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SaveFilePopup.hpp; sourceTree = "<group>"; };
+		863C5C771FFB1D0C00F6FA18 /* MainDisplay.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MainDisplay.cpp; sourceTree = "<group>"; };
+		863C5C781FFB1D0C00F6FA18 /* MainDisplay.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MainDisplay.hpp; sourceTree = "<group>"; };
 		86928C5F1FE125BF00CBB286 /* MathGrapher */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MathGrapher; sourceTree = BUILT_PRODUCTS_DIR; };
 		86928C621FE125BF00CBB286 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		86928C6A1FE1260500CBB286 /* SDL2_ttf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_ttf.framework; path = ../../../../Library/Frameworks/SDL2_ttf.framework; sourceTree = "<group>"; };
@@ -112,8 +175,90 @@
 			children = (
 				86928C741FE2C73300CBB286 /* Popup.cpp */,
 				86928C751FE2C73300CBB286 /* Popup.hpp */,
+				863C5C431FFB17EC00F6FA18 /* QuickCloserPopups */,
+				863C5C3C1FFB165800F6FA18 /* MajorPopups */,
 			);
 			path = Popups;
+			sourceTree = "<group>";
+		};
+		863C5C3C1FFB165800F6FA18 /* MajorPopups */ = {
+			isa = PBXGroup;
+			children = (
+				863C5C361FFB139900F6FA18 /* MajorPopup.cpp */,
+				863C5C371FFB139900F6FA18 /* MajorPopup.hpp */,
+				863C5C771FFB1D0C00F6FA18 /* MainDisplay.cpp */,
+				863C5C781FFB1D0C00F6FA18 /* MainDisplay.hpp */,
+				863C5C761FFB1CEB00F6FA18 /* Edit */,
+			);
+			path = MajorPopups;
+			sourceTree = "<group>";
+		};
+		863C5C431FFB17EC00F6FA18 /* QuickCloserPopups */ = {
+			isa = PBXGroup;
+			children = (
+				863C5C401FFB179500F6FA18 /* QuickCloserPopup.cpp */,
+				863C5C411FFB179500F6FA18 /* QuickCloserPopup.hpp */,
+				863C5C541FFB1A5900F6FA18 /* CreateOrEdit */,
+				863C5C531FFB1A2E00F6FA18 /* Select */,
+			);
+			path = QuickCloserPopups;
+			sourceTree = "<group>";
+		};
+		863C5C531FFB1A2E00F6FA18 /* Select */ = {
+			isa = PBXGroup;
+			children = (
+				863C5C391FFB14A500F6FA18 /* AddObjectPopup.cpp */,
+				863C5C3A1FFB14A500F6FA18 /* AddObjectPopup.hpp */,
+				863C5C441FFB186C00F6FA18 /* ChooseFunctionPopup.cpp */,
+				863C5C451FFB186C00F6FA18 /* ChooseFunctionPopup.hpp */,
+				863C5C471FFB18BF00F6FA18 /* ChooseInterpolationPopup.cpp */,
+				863C5C481FFB18BF00F6FA18 /* ChooseInterpolationPopup.hpp */,
+				863C5C551FFB1A9300F6FA18 /* ChooseFunctionInterpolation.cpp */,
+				863C5C561FFB1A9300F6FA18 /* ChooseFunctionInterpolation.hpp */,
+				863C5C641FFB1BD600F6FA18 /* ChoosePointConcernedForLinkingPopup.cpp */,
+				863C5C651FFB1BD600F6FA18 /* ChoosePointConcernedForLinkingPopup.hpp */,
+				863C5C671FFB1C0200F6FA18 /* ChooseWhichImagePopup.cpp */,
+				863C5C681FFB1C0200F6FA18 /* ChooseWhichImagePopup.hpp */,
+				863C5C701FFB1C9E00F6FA18 /* LoadFilePopup.cpp */,
+				863C5C711FFB1C9E00F6FA18 /* LoadFilePopup.hpp */,
+			);
+			path = Select;
+			sourceTree = "<group>";
+		};
+		863C5C541FFB1A5900F6FA18 /* CreateOrEdit */ = {
+			isa = PBXGroup;
+			children = (
+				863C5C4A1FFB193800F6FA18 /* CreateSimpleInterpolation.cpp */,
+				863C5C4B1FFB193900F6FA18 /* CreateSimpleInterpolation.hpp */,
+				863C5C4D1FFB19AB00F6FA18 /* CreateResizeInterpolation.cpp */,
+				863C5C4E1FFB19AB00F6FA18 /* CreateResizeInterpolation.hpp */,
+				863C5C501FFB19F900F6FA18 /* EditFunctionPopup.cpp */,
+				863C5C511FFB19F900F6FA18 /* EditFunctionPopup.hpp */,
+				863C5C581FFB1AE400F6FA18 /* CreateFunctionRunInterpolation.cpp */,
+				863C5C591FFB1AE400F6FA18 /* CreateFunctionRunInterpolation.hpp */,
+				863C5C5B1FFB1B1500F6FA18 /* CreatePointOfInterest.cpp */,
+				863C5C5C1FFB1B1500F6FA18 /* CreatePointOfInterest.hpp */,
+				863C5C5E1FFB1B6A00F6FA18 /* CreateHighlightInterpolation.cpp */,
+				863C5C5F1FFB1B6A00F6FA18 /* CreateHighlightInterpolation.hpp */,
+				863C5C731FFB1CCC00F6FA18 /* SaveFilePopup.cpp */,
+				863C5C741FFB1CCC00F6FA18 /* SaveFilePopup.hpp */,
+			);
+			path = CreateOrEdit;
+			sourceTree = "<group>";
+		};
+		863C5C761FFB1CEB00F6FA18 /* Edit */ = {
+			isa = PBXGroup;
+			children = (
+				863C5C3D1FFB175100F6FA18 /* EditGraphPopup.cpp */,
+				863C5C3E1FFB175100F6FA18 /* EditGraphPopup.hpp */,
+				863C5C611FFB1B9D00F6FA18 /* EditSliderPopup.cpp */,
+				863C5C621FFB1B9D00F6FA18 /* EditSliderPopup.hpp */,
+				863C5C6A1FFB1C4B00F6FA18 /* EditImagePopup.cpp */,
+				863C5C6B1FFB1C4B00F6FA18 /* EditImagePopup.hpp */,
+				863C5C6D1FFB1C6800F6FA18 /* EditTextPopup.cpp */,
+				863C5C6E1FFB1C6800F6FA18 /* EditTextPopup.hpp */,
+			);
+			path = Edit;
 			sourceTree = "<group>";
 		};
 		86928C561FE125BF00CBB286 = {
@@ -221,19 +366,40 @@
 			buildActionMask = 2147483647;
 			files = (
 				863C5C221FF6EC8D00F6FA18 /* RawImage.cpp in Sources */,
+				863C5C6F1FFB1C6800F6FA18 /* EditTextPopup.cpp in Sources */,
 				86928C731FE1319B00CBB286 /* RenderingUtilities.cpp in Sources */,
+				863C5C4F1FFB19AB00F6FA18 /* CreateResizeInterpolation.cpp in Sources */,
 				863C5C341FFB113600F6FA18 /* PopupWrapper.cpp in Sources */,
 				863C5C181FF6EA0200F6FA18 /* DisplayObjects.cpp in Sources */,
+				863C5C3F1FFB175100F6FA18 /* EditGraphPopup.cpp in Sources */,
+				863C5C381FFB139900F6FA18 /* MajorPopup.cpp in Sources */,
 				86928C791FE3225400CBB286 /* Functions.cpp in Sources */,
+				863C5C5A1FFB1AE400F6FA18 /* CreateFunctionRunInterpolation.cpp in Sources */,
 				86928C701FE12B0600CBB286 /* Graph.cpp in Sources */,
+				863C5C751FFB1CCC00F6FA18 /* SaveFilePopup.cpp in Sources */,
+				863C5C461FFB186C00F6FA18 /* ChooseFunctionPopup.cpp in Sources */,
+				863C5C691FFB1C0200F6FA18 /* ChooseWhichImagePopup.cpp in Sources */,
+				863C5C661FFB1BD600F6FA18 /* ChoosePointConcernedForLinkingPopup.cpp in Sources */,
+				863C5C601FFB1B6A00F6FA18 /* CreateHighlightInterpolation.cpp in Sources */,
+				863C5C3B1FFB14A500F6FA18 /* AddObjectPopup.cpp in Sources */,
 				863C5C1B1FF6EB2700F6FA18 /* DisplayWrapper.cpp in Sources */,
 				863C5C251FF6ECAE00F6FA18 /* Interpolation.cpp in Sources */,
+				863C5C6C1FFB1C4B00F6FA18 /* EditImagePopup.cpp in Sources */,
 				86928C761FE2C73300CBB286 /* Popup.cpp in Sources */,
 				863C5C311FFB0BB500F6FA18 /* BulkUtilities.cpp in Sources */,
+				863C5C631FFB1B9D00F6FA18 /* EditSliderPopup.cpp in Sources */,
 				863C5C1F1FF6EC7B00F6FA18 /* Slider.cpp in Sources */,
 				863C5C281FF6ED2600F6FA18 /* Function.cpp in Sources */,
+				863C5C791FFB1D0C00F6FA18 /* MainDisplay.cpp in Sources */,
 				86928C631FE125BF00CBB286 /* main.cpp in Sources */,
+				863C5C5D1FFB1B1500F6FA18 /* CreatePointOfInterest.cpp in Sources */,
+				863C5C721FFB1C9E00F6FA18 /* LoadFilePopup.cpp in Sources */,
+				863C5C521FFB19F900F6FA18 /* EditFunctionPopup.cpp in Sources */,
+				863C5C421FFB179500F6FA18 /* QuickCloserPopup.cpp in Sources */,
+				863C5C491FFB18BF00F6FA18 /* ChooseInterpolationPopup.cpp in Sources */,
+				863C5C4C1FFB193900F6FA18 /* CreateSimpleInterpolation.cpp in Sources */,
 				863C5C2E1FF866F100F6FA18 /* RawText.cpp in Sources */,
+				863C5C571FFB1A9300F6FA18 /* ChooseFunctionInterpolation.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

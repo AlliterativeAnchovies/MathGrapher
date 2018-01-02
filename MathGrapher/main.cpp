@@ -46,8 +46,6 @@ void save();
 bool controlFlow() {
     ticks++;
 	SDL_RenderClear(gRenderer);
-    //Fill screen to background
-    drawRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 0xffffe8e2);
     int mouseX, mouseY;
 	leftMouseClicked = false;
 	leftMouseHadBeenClicked = false;
@@ -127,7 +125,7 @@ bool controlFlow() {
             Uint8 handling = popups[i]->handle(mouseX, mouseY, leftMouseReleased);
             if (handling==0x00) {
                 //did not click in popup
-                if (!(isQuickCloser(popups[i]->getID()) && leftMouseHadBeenReleased && !popups[i]->newborn())) {
+                if (!(popups[i]->isQuickCloser() && leftMouseHadBeenReleased && !popups[i]->newborn())) {
                     //is either not a quick closer, or is a quick closer but mouse was
                     //not clicked elsewhere
                     newpopups.push_back(popups[i]);
@@ -143,7 +141,7 @@ bool controlFlow() {
                 leftMouseReleased = false;
             }
             else {
-                delete popups[i];
+                deletePopup(popups[i]);
                 popups[i] = NULL;
             }
         }
@@ -151,12 +149,6 @@ bool controlFlow() {
     popups = newpopups;
     map([](Popup* x){x->age();x->resetRays();return NULL;}, popups);
     
-    if (leftMouseReleased&&!runningVideo) {
-        if (mouseY<SCREEN_HEIGHT-100) {
-            createPopup(ADD_OBJECT_POPUP, mouseX, mouseY);
-            selectedObjects = {};
-        }
-    }
     
     
     

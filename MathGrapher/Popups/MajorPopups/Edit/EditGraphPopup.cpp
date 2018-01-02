@@ -1,0 +1,203 @@
+//
+//  EditGraphPopup.cpp
+//  MathGrapher
+//
+//  Created by Bailey Andrew on 01/01/2018.
+//  Copyright © 2018 Alliterative Anchovies. All rights reserved.
+//
+
+#include "EditGraphPopup.hpp"
+
+Uint8 EditGraphPopup::handle(double mouseX,double mouseY,bool clicked) {
+	Uint8 toReturn = 0x00;
+    clicked = clicked&&successfulRaycast&&!locked;
+	drawBorderedRect(px, py, sx, sy, 0xff9fc9f2, 0xff000000);
+	
+	int offx,offy;
+	int curx = px+5;
+	int cury = py+5;
+	bool clickedEdit = handleEditableInfo(curx,cury,24,0,mouseX,mouseY,"",
+		graphConcerned->getName(),graphConcerned->ptmName(),clicked,&offx,&offy);
+	cury+=offy;
+
+	//edit field for graph position (X)
+	clickedEdit = handleEditableInfo(curx,cury,20,1,mouseX,mouseY,
+		"PX: ",tostring(graphConcerned->getPosition().x),graphConcerned->ptmPX(),clicked,&offx,&offy)
+		|| clickedEdit;
+	//edit field for graph position (Y)
+	clickedEdit = handleEditableInfo(curx+offx,cury,20,2,mouseX,mouseY,
+		"PY: ",tostring(graphConcerned->getPosition().y),graphConcerned->ptmPY(),clicked,&offx,&offy)
+		|| clickedEdit;
+	cury+=offy;
+
+	//edit field for graph size (X)
+	clickedEdit = handleEditableInfo(curx,cury,20,3,mouseX,mouseY,
+		"SX: ",tostring(graphConcerned->getSize().x),graphConcerned->ptmSX(),clicked,&offx,&offy)
+		|| clickedEdit;
+	//edit field for graph size (Y)
+	clickedEdit = handleEditableInfo(curx+offx,cury,20,4,mouseX,mouseY,
+		"SY: ",tostring(graphConcerned->getSize().y),graphConcerned->ptmSY(),clicked,&offx,&offy)
+		|| clickedEdit;
+	cury+=offy;
+
+	//edit field for x-axis scale
+	clickedEdit = handleEditableInfo(curx,cury,20,5,mouseX,mouseY,
+		"scale X: ",tostring(graphConcerned->getGridScale().x),graphConcerned->ptmGridSpacingX()
+		,clicked,&offx,&offy) || clickedEdit;
+	//edit field for y-axis scale
+	clickedEdit = handleEditableInfo(curx+offx,cury,20,6,mouseX,mouseY,
+		"scale Y: ",tostring(graphConcerned->getGridScale().y),graphConcerned->ptmGridSpacingY()
+		,clicked,&offx,&offy) || clickedEdit;
+	cury+=offy;
+
+	//edit field for x-axis angle
+	clickedEdit = handleEditableInfo(curx,cury,20,7,mouseX,mouseY,
+		"x axis θ: ",tostring(graphConcerned->getGridAngle().x),graphConcerned->ptmGridAngleX()
+		,clicked,&offx,&offy) || clickedEdit;
+	//edit field for y-axis angle
+	clickedEdit = handleEditableInfo(curx+offx,cury,20,8,mouseX,mouseY,
+		"y axis θ: ",tostring(graphConcerned->getGridAngle().y),graphConcerned->ptmGridAngleY()
+		,clicked,&offx,&offy) || clickedEdit;
+	cury+=offy;
+
+	//edit field for origin (X)
+	clickedEdit = handleEditableInfo(curx,cury,20,9,mouseX,mouseY,
+		"x origin: ",tostring(graphConcerned->getOrigin().x),graphConcerned->ptmOX()
+		,clicked,&offx,&offy) || clickedEdit;
+	//edit field for origin (Y)
+	clickedEdit = handleEditableInfo(curx+offx,cury,20,10,mouseX,mouseY,
+		"y origin: ",tostring(graphConcerned->getOrigin().y),graphConcerned->ptmOY()
+		,clicked,&offx,&offy) || clickedEdit;
+	cury+=offy;
+
+	int showgridy = cury;
+	int gx,gy;
+	drawTextWithBackground((graphConcerned->showingGrid())?"Showing Grid":"Not Showing Grid", 20, px+10, showgridy, 0xff000000, (graphConcerned->showingGrid())?0xffffcf9e:0xffbd854d, 0xff000000);
+	TTF_SizeUTF8((*fontgrab)(20), (graphConcerned->showingGrid())?"Showing Grid":"Not Showing Grid", &gx, &gy);
+	if (clicked&&pointInBounds(mouseX, mouseY, px+10, px+10+gx, showgridy, showgridy+gy)) {
+		clicked = false;
+		toReturn = 0x01;
+		graphConcerned->toggleGrid();
+	}
+	int ax,ay;
+	drawTextWithBackground((graphConcerned->showingAxes())?"Showing Axes":"Not Showing Axes", 20, px+10+gx+10, showgridy, 0xff000000, (graphConcerned->showingAxes())?0xffffcf9e:0xffbd854d, 0xff000000);
+	TTF_SizeUTF8((*fontgrab)(20), (graphConcerned->showingAxes())?"Showing Grid":"Not Showing Grid", &ax, &ay);
+	if (clicked&&pointInBounds(mouseX, mouseY, px+10+gx+10, px+10+gx+10+ax, showgridy, showgridy+ay)) {
+		clicked = false;
+		toReturn = 0x01;
+		graphConcerned->toggleAxes();
+	}
+
+
+	int x_functionsy = showgridy+35;
+	drawText("X Functions:", 24, px+5, x_functionsy, 0xff000000);
+	auto xfunctionlist = graphConcerned->getXFunctions();
+	x_functionsy+=30;
+	if (xfunctionlist.empty()) {
+		drawText("None", 20, px+10, x_functionsy, 0xff000000);
+		x_functionsy+=25;
+	}
+	for (int i = 0;i<xfunctionlist.size();i++) {
+		drawText(xfunctionlist[i]->getName(), 20, px+10, x_functionsy, 0xff000000);
+		int tx,ty;
+		TTF_SizeUTF8((*fontgrab)(20),xfunctionlist[i]->getName().c_str(),&tx,&ty);
+		//draw edit button
+		drawTextWithBackground("Edit", 16, px+15+tx, x_functionsy, 0xff000000, 0xffffcf9e, 0xff000000);
+		int ex,ey;
+		TTF_SizeUTF8((*fontgrab)(16),"Edit",&ex,&ey);
+		if (clicked&&pointInBounds(mouseX, mouseY, px+15+tx, px+15+tx+ex, x_functionsy, x_functionsy+ey)) {
+			clicked = false;
+			toReturn = 0x01;
+			createPopup(EDIT_FUNCTION_POPUP, mouseX, mouseY-200)
+				->concernWith(graphConcerned)
+				->concernWith(xfunctionlist[i]);
+		}
+		//draw remove button
+		drawTextWithBackground("Remove", 16, px+15+tx+ex+10, x_functionsy, 0xff000000, 0xffffcf9e, 0xff000000);
+		int rx,ry;
+		TTF_SizeUTF8((*fontgrab)(16),"Remove",&rx,&ry);
+		if (clicked&&pointInBounds(mouseX, mouseY, px+15+tx+ex+10, px+15+tx+rx+ex+10, x_functionsy, x_functionsy+ry)) {
+			clicked = false;
+			toReturn = 0x01;
+			xfunctionlist[i]->tag();
+		}
+		x_functionsy+=25;
+	}
+	drawTextWithBackground("Add Function", 16, px+10, x_functionsy, 0xff000000, 0xffffcf9e, 0xff000000);
+	int funcsx,funcsy;
+	TTF_SizeUTF8((*fontgrab)(20),"Add Function",&funcsx,&funcsy);
+	if (clicked&&pointInBounds(mouseX, mouseY, px+10, px+10+funcsx, x_functionsy, x_functionsy+funcsy)) {
+		createPopup(CHOOSE_FUNCTION_POPUP, mouseX, mouseY-200)
+			->concernWith(graphConcerned)
+			->concernWith(X_AXIS);
+	}
+
+	int y_functionsy = x_functionsy+funcsy+5;
+	drawText("Y Functions:", 24, px+5, y_functionsy, 0xff000000);
+	auto yfunctionlist = graphConcerned->getYFunctions();
+	y_functionsy+=30;
+	if (yfunctionlist.empty()) {
+		drawText("None", 20, px+10, y_functionsy, 0xff000000);
+		y_functionsy+=25;
+	}
+	for (int i = 0;i<yfunctionlist.size();i++) {
+		drawText(yfunctionlist[i]->getName(), 20, px+10, y_functionsy, 0xff000000);
+		int tx,ty;
+		TTF_SizeUTF8((*fontgrab)(20),yfunctionlist[i]->getName().c_str(),&tx,&ty);
+		//draw edit button
+		drawTextWithBackground("Edit", 16, px+15+tx, y_functionsy, 0xff000000, 0xffffcf9e, 0xff000000);
+		int ex,ey;
+		TTF_SizeUTF8((*fontgrab)(16),"Edit",&ex,&ey);
+		if (clicked&&pointInBounds(mouseX, mouseY, px+15+tx, px+15+tx+ex, y_functionsy, y_functionsy+ey)) {
+			clicked = false;
+			toReturn = 0x01;
+			createPopup(EDIT_FUNCTION_POPUP, mouseX, mouseY-200)
+				->concernWith(graphConcerned)
+				->concernWith(yfunctionlist[i]);
+		}
+		//draw remove button
+		drawTextWithBackground("Remove", 16, px+15+tx+ex+10, y_functionsy, 0xff000000, 0xffffcf9e, 0xff000000);
+		int rx,ry;
+		TTF_SizeUTF8((*fontgrab)(16),"Remove",&rx,&ry);
+		if (clicked&&pointInBounds(mouseX, mouseY, px+15+tx+ex+10, px+15+tx+rx+ex+10, y_functionsy, y_functionsy+ry)) {
+			clicked = false;
+			toReturn = 0x01;
+			yfunctionlist[i]->tag();
+		}
+		y_functionsy+=25;
+	}
+	drawTextWithBackground("Add Function", 16, px+10, y_functionsy, 0xff000000, 0xffffcf9e, 0xff000000);
+	TTF_SizeUTF8((*fontgrab)(20),"Add Function",&funcsx,&funcsy);
+	if (clicked&&pointInBounds(mouseX, mouseY, px+10, px+10+funcsx, y_functionsy, y_functionsy+funcsy)) {
+		createPopup(CHOOSE_FUNCTION_POPUP, mouseX, mouseY-200)
+			->concernWith(graphConcerned)
+			->concernWith(Y_AXIS);
+	}
+
+
+	//now we'll do the Interpolations stuff
+	bool clickedInterpol = drawInterpolationSidebar(px+5*sx/8,py,clicked,mouseX,mouseY,graphConcerned);
+	if (clickedInterpol) {
+		clicked = false;
+		toReturn = 0x01;
+	}
+
+	drawBorderedRect(px+sx-20, py, 20, 20, 0xffff0000, 0xff000000);
+	drawText("x", 20, px+sx-20+5, py-3, 0xff000000);
+	if (clicked&&pointInBounds(mouseX, mouseY, px+sx-20, px+sx, py, py+20)) {
+		toReturn = 0x02;
+		clicked = false;
+		thingForInString = NULL;
+		instringswitch = -1;
+	}
+
+	if (clickedEdit) {
+		toReturn = 0x01;
+	}
+
+	if (clicked&&pointInBounds(mouseX, mouseY, px, px+sx, py, py+sy)) {
+		toReturn = 0x01;
+	}
+	
+	return toReturn;
+}
