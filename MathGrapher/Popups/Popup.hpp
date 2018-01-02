@@ -12,8 +12,6 @@
 #include <stdio.h>
 #include "Functions.hpp"
 
-void load(std::string toLoad);//defined in main
-void save(std::string toSave);//defined in main
 
 enum POPUP_IDS {
     NULL_POPUP,
@@ -35,7 +33,8 @@ enum POPUP_IDS {
     EDIT_IMAGE_POPUP,
     LOAD_FILE_POPUP,
     SAVE_FILE_POPUP,
-    MAIN
+    MAIN,
+    SAVE_VIDEO_POPUP
 };
 
 const bool X_AXIS = true;

@@ -73,13 +73,7 @@ bool controlFlow() {
                     if (runningVideo) {
                         runningVideo = false;
                         if (recordingVideo) {
-							//call console command to ffmpeg, make mp4
-							//requires ffmpeg to be installed
-							std::string ffmpegLocation = "/usr/local/bin/";
-							std::string direcIn = dumstupidcurrentdirectorybs+"/resources/Screenshots/";
-							std::string direcOut = dumstupidcurrentdirectorybs+"/resources/Output/";
-							std::string theCommand = ffmpegLocation+"ffmpeg -i '"+direcIn+"screenshot%05d.bmp' -r 60 -pix_fmt yuv420p "+direcOut+"out.mp4";
-							std::system(theCommand.c_str());
+							makeVideo("testVideo");
 						}
                         recordingVideo = false;
                         for (DisplayObject* d : objects) {d->reset();}
@@ -708,4 +702,14 @@ void load(std::string toLoad) {
 		}
 	}
 	
+}
+
+void makeVideo(std::string toSave) {
+	//call console command to ffmpeg, make mp4
+	//requires ffmpeg to be installed
+	std::string ffmpegLocation = "/usr/local/bin/";
+	std::string direcIn = dumstupidcurrentdirectorybs+"/resources/Screenshots/";
+	std::string direcOut = dumstupidcurrentdirectorybs+"/resources/Output/";
+	std::string theCommand = ffmpegLocation+"ffmpeg -i '"+direcIn+"screenshot%05d.bmp' -r 60 -pix_fmt yuv420p "+direcOut+toSave+".mp4";
+	std::system(theCommand.c_str());
 }

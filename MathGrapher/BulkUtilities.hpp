@@ -30,5 +30,8 @@ extern bool spacePressed;
 extern bool backspacePressed;
 extern bool recordingVideo;
 extern int FRAME_NUM;
+void load(std::string toLoad);//defined in main
+void save(std::string toSave);//defined in main
+void makeVideo(std::string toSave);//defined in main
 
 #endif /* BulkUtilities_hpp */

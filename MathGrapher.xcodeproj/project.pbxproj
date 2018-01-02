@@ -45,6 +45,8 @@
 		86928C731FE1319B00CBB286 /* RenderingUtilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86928C711FE1319B00CBB286 /* RenderingUtilities.cpp */; };
 		86928C761FE2C73300CBB286 /* Popup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86928C741FE2C73300CBB286 /* Popup.cpp */; };
 		86928C791FE3225400CBB286 /* Functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86928C771FE3225400CBB286 /* Functions.cpp */; };
+		86939E921FFC52000075EB39 /* SaverPopup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86939E901FFC52000075EB39 /* SaverPopup.cpp */; };
+		86939E951FFC52D30075EB39 /* SaveVideoPopup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86939E931FFC52D30075EB39 /* SaveVideoPopup.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -134,6 +136,10 @@
 		86928C751FE2C73300CBB286 /* Popup.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Popup.hpp; sourceTree = "<group>"; };
 		86928C771FE3225400CBB286 /* Functions.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Functions.cpp; sourceTree = "<group>"; };
 		86928C781FE3225400CBB286 /* Functions.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Functions.hpp; sourceTree = "<group>"; };
+		86939E901FFC52000075EB39 /* SaverPopup.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SaverPopup.cpp; sourceTree = "<group>"; };
+		86939E911FFC52000075EB39 /* SaverPopup.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SaverPopup.hpp; sourceTree = "<group>"; };
+		86939E931FFC52D30075EB39 /* SaveVideoPopup.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SaveVideoPopup.cpp; sourceTree = "<group>"; };
+		86939E941FFC52D30075EB39 /* SaveVideoPopup.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SaveVideoPopup.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,8 +194,9 @@
 				863C5C371FFB139900F6FA18 /* MajorPopup.hpp */,
 				863C5C771FFB1D0C00F6FA18 /* MainDisplay.cpp */,
 				863C5C781FFB1D0C00F6FA18 /* MainDisplay.hpp */,
-				863C5C731FFB1CCC00F6FA18 /* SaveFilePopup.cpp */,
-				863C5C741FFB1CCC00F6FA18 /* SaveFilePopup.hpp */,
+				86939E901FFC52000075EB39 /* SaverPopup.cpp */,
+				86939E911FFC52000075EB39 /* SaverPopup.hpp */,
+				86939E8F1FFC51E40075EB39 /* Savers */,
 				863C5C761FFB1CEB00F6FA18 /* Edit */,
 			);
 			path = MajorPopups;
@@ -308,6 +315,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		86939E8F1FFC51E40075EB39 /* Savers */ = {
+			isa = PBXGroup;
+			children = (
+				863C5C731FFB1CCC00F6FA18 /* SaveFilePopup.cpp */,
+				863C5C741FFB1CCC00F6FA18 /* SaveFilePopup.hpp */,
+				86939E931FFC52D30075EB39 /* SaveVideoPopup.cpp */,
+				86939E941FFC52D30075EB39 /* SaveVideoPopup.hpp */,
+			);
+			path = Savers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -365,6 +383,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86939E921FFC52000075EB39 /* SaverPopup.cpp in Sources */,
 				863C5C221FF6EC8D00F6FA18 /* RawImage.cpp in Sources */,
 				863C5C6F1FFB1C6800F6FA18 /* EditTextPopup.cpp in Sources */,
 				86928C731FE1319B00CBB286 /* RenderingUtilities.cpp in Sources */,
@@ -391,6 +410,7 @@
 				863C5C1F1FF6EC7B00F6FA18 /* Slider.cpp in Sources */,
 				863C5C281FF6ED2600F6FA18 /* Function.cpp in Sources */,
 				863C5C791FFB1D0C00F6FA18 /* MainDisplay.cpp in Sources */,
+				86939E951FFC52D30075EB39 /* SaveVideoPopup.cpp in Sources */,
 				86928C631FE125BF00CBB286 /* main.cpp in Sources */,
 				863C5C5D1FFB1B1500F6FA18 /* CreatePointOfInterest.cpp in Sources */,
 				863C5C721FFB1C9E00F6FA18 /* LoadFilePopup.cpp in Sources */,

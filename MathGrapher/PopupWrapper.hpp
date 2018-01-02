@@ -57,6 +57,8 @@
 #include "EditSliderPopup.hpp"
 #include "EditImagePopup.hpp"
 #include "EditTextPopup.hpp"
+#include "SaverPopup.hpp"
+#include "SaveVideoPopup.hpp"
 
 void deletePopup(Popup* p);
 
