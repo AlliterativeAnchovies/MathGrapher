@@ -9,7 +9,6 @@
 #ifndef Functions_hpp
 #define Functions_hpp
 #include "DisplayWrapper.hpp"
-#include <vector>
 
 #include <stdio.h>
 

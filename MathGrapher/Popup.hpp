@@ -10,8 +10,6 @@
 #define Popup_hpp
 
 #include <stdio.h>
-#include "RenderingUtilities.hpp"
-//#include "Graph.hpp"
 #include "Functions.hpp"
 
 void load(std::string toLoad);//defined in main
@@ -37,6 +35,7 @@ enum POPUP_IDS {
     EDIT_IMAGE_POPUP,
     LOAD_FILE_POPUP,
     SAVE_FILE_POPUP,
+    MAIN
 };
 
 const bool X_AXIS = true;

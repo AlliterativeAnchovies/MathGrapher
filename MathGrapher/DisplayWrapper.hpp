@@ -35,4 +35,13 @@ template<> std::vector<std::string> getValidInterpolations<Slider>();
 template<> std::vector<std::string> getValidInterpolations<Graph>();
 template<> std::vector<std::string> getValidInterpolations<RawText>();
 
+//Things to draw/interpolate
+extern std::vector<DisplayObject*> objects;
+
+//Object adders
+void addGraph(double x,double y);
+void addSlider(double x,double y);
+void addImage(double x,double y,int which);
+void addText(double x,double y);
+
 #endif /* DisplayWrapper_hpp */

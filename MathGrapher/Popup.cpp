@@ -1079,6 +1079,11 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
 				}
 			}
 			break;
+		case MAIN:
+			{
+			
+			}
+			break;
     }
     return toReturn;
 }
@@ -1230,6 +1235,10 @@ Popup* createPopup(Uint8 popup_id,double x,double y) {
 		case SAVE_FILE_POPUP:
 			sx = 600;
 			sy = 50;
+			break;
+		case MAIN:
+			sx = SCREEN_WIDTH;
+			sy = SCREEN_HEIGHT;
 			break;
 		default:
 			throw std::runtime_error("ERROR - Not defined popup sizes for this popup yet!");

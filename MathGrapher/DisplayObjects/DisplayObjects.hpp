@@ -13,20 +13,10 @@
 #include <iostream>
 #include <vector>
 #include <functional>
-#include "RenderingUtilities.hpp"
+//#include "RenderingUtilities.hpp"
+#include "BulkUtilities.hpp"
 
 
-//Some functions that are needed to be declared here to interface well with main.cpp
-//they are defined in main
-void addGraph(double x,double y);
-void addSlider(double x,double y);
-void addImage(double x,double y,int which);
-void addText(double x,double y);
-extern std::vector<SDL_Surface*> gSurfaces;
-extern std::vector<SDL_Texture*> gTextures;
-extern std::vector<std::string>  gStrings;
-extern std::vector<std::string> loadableFiles;
-const int SLIDER_DEFAULT_SCALE_BUILTIN_INDEX = 7;
 
 enum INTERPOLATIONS {
     NULL_INTERPOLATION,

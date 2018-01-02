@@ -14,10 +14,6 @@ const int SCREEN_HEIGHT = 480;
 
 //Graphics constaints
 int NUM_GRAPHICS = 0;
-std::vector<SDL_Surface*> gSurfaces = {};
-std::vector<SDL_Texture*> gTextures = {};
-std::vector<std::string>  gStrings  = {};
-std::vector<std::string> loadableFiles = {};
 
 //Graphics drawing variables
 SDL_Window* gWindow = NULL;
@@ -30,20 +26,10 @@ std::string dumstupidcurrentdirectorybs="";
 //Font stuffs
 Font* fontgrab=NULL;
 
-//Things to draw
-std::vector<DisplayObject*> objects = {};
 
 //Popups to draw
 std::vector<Popup*> popups = {};
 
-//Total graphs ever added
-int TOTAL_GRAPHS = 0;
-//Total sliders
-int TOTAL_SLIDERS = 0;
-//Total images
-int TOTAL_IMAGES = 0;
-//Total texts
-int TOTAL_TEXTS = 0;
 
 //Tick counter
 int ticks = 0;
@@ -69,11 +55,11 @@ bool controlFlow() {
     //Fill screen to background
     drawRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 0xffffe8e2);
     int mouseX, mouseY;
-    bool leftMouseClicked = false;
-    bool leftMouseHadBeenClicked = false;
-    bool leftMouseReleased = false;
-    bool leftMouseHadBeenReleased = false;
-    bool shiftClicked = false;
+	leftMouseClicked = false;
+	leftMouseHadBeenClicked = false;
+	leftMouseReleased = false;
+	leftMouseHadBeenReleased = false;
+	shiftClicked = false;
     bool overPopup = false;
     spacePressed = false;
     backspacePressed = false;
@@ -540,23 +526,6 @@ void drawDisplayObject(DisplayObject* d) {
 }
 
 
-void addGraph(double x,double y) {
-    objects.push_back(new Graph(x,y,100,100,"Graph "+std::to_string(TOTAL_GRAPHS)));
-    TOTAL_GRAPHS++;
-}
-
-void addSlider(double x,double y) {
-    objects.push_back(new Slider(x,y,100,"Slider "+std::to_string(TOTAL_SLIDERS)));
-    TOTAL_SLIDERS++;
-}
-void addImage(double x,double y,int which) {
-    objects.push_back(new RawImage(x,y,which,"Image "+std::to_string(TOTAL_IMAGES)));
-    TOTAL_IMAGES++;
-}
-void addText(double x,double y) {
-    objects.push_back(new RawText(x,y,16,"Text "+std::to_string(TOTAL_TEXTS)));
-    TOTAL_TEXTS++;
-}
 
 
 void changeToInString() {
