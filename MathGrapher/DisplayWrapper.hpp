@@ -44,4 +44,10 @@ void addSlider(double x,double y);
 void addImage(double x,double y,int which);
 void addText(double x,double y);
 
+//Things to display that are selected
+extern std::vector<DisplayObject*> selectedObjects;
+
+//Draw code
+void drawDisplayObject(DisplayObject* d);
+
 #endif /* DisplayWrapper_hpp */

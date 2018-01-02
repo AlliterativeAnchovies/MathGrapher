@@ -27,6 +27,7 @@ template<> std::vector<std::string> getValidInterpolations<RawText>() {
 
 //Things to draw
 std::vector<DisplayObject*> objects = {};
+std::vector<DisplayObject*> selectedObjects = {};
 
 //Internal counters of things
 int TOTAL_GRAPHS = 0;
@@ -51,4 +52,13 @@ void addImage(double x,double y,int which) {
 void addText(double x,double y) {
     objects.push_back(new RawText(x,y,16,"Text "+std::to_string(TOTAL_TEXTS)));
     TOTAL_TEXTS++;
+}
+
+void drawDisplayObject(DisplayObject* d) {
+    double xdraw,ydraw = 0;
+    SDL_Surface* tempSurf = d->draw(&xdraw,&ydraw);
+    SDL_Texture* tempTexture = SDL_CreateTextureFromSurface(gRenderer, tempSurf);
+    drawGraphic(xdraw, ydraw, tempSurf->w, tempSurf->h, tempTexture);
+    d->reclaim(tempSurf);
+    SDL_DestroyTexture(tempTexture);
 }

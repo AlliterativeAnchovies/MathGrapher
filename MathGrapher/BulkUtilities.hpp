@@ -24,5 +24,9 @@ extern bool leftMouseHadBeenClicked;
 extern bool leftMouseReleased;
 extern bool leftMouseHadBeenReleased;
 extern bool shiftClicked;
+extern bool CAPS_LOCK;
+extern bool runningVideo;
+extern bool spacePressed;
+extern bool backspacePressed;
 
 #endif /* BulkUtilities_hpp */

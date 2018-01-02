@@ -18,3 +18,7 @@ bool leftMouseHadBeenClicked = false;
 bool leftMouseReleased = false;
 bool leftMouseHadBeenReleased = false;
 bool shiftClicked = false;
+bool CAPS_LOCK = false;
+bool runningVideo = false;
+bool spacePressed = false;
+bool backspacePressed = false;

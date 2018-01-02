@@ -37,18 +37,12 @@ int ticks = 0;
 //"header" function definitions
 void close();
 bool loadMedia();
-void drawDisplayObject(DisplayObject* d);
 SDL_Event e;
 void doInStringCalcs(Uint8 keypressed);
 void changeToInString();
 void save();
 
 //this is the real "main" loop
-std::vector<DisplayObject*> selectedObjects = {};
-bool CAPS_LOCK = false;
-bool runningVideo = false;
-bool spacePressed = false;
-bool backspacePressed = false;
 bool controlFlow() {
     ticks++;
 	SDL_RenderClear(gRenderer);
@@ -60,7 +54,6 @@ bool controlFlow() {
 	leftMouseReleased = false;
 	leftMouseHadBeenReleased = false;
 	shiftClicked = false;
-    bool overPopup = false;
     spacePressed = false;
     backspacePressed = false;
     SDL_GetMouseState(&mouseX, &mouseY);
@@ -120,171 +113,6 @@ bool controlFlow() {
         shiftClicked = true;
     }
     
-    
-    //check if over popup
-    //if so, we can't click, because popup should have priority
-    for (int i = 0;i<popups.size();i++) {
-        if (popups[i]==NULL) {break;}
-        overPopup = overPopup || popups[i]->inBounds(mouseX, mouseY);
-    }
-    
-    
-    for (DisplayObject* d : selectedObjects) {d->highlight();}
-    for (int i = 0;i<objects.size();i++) {
-        if (leftMouseReleased&&!overPopup&&objects[i]->clickedIn(mouseX,mouseY)) {
-            if (!shiftClicked) {
-                selectedObjects = {objects[i]};
-            }
-            else {
-                bool isInSelectedObjects = foldr([](bool a,bool b){return a||b;},map([&](DisplayObject* d){return d==objects[i];}, selectedObjects),false);
-                if (!isInSelectedObjects) {
-                    selectedObjects.push_back(objects[i]);
-                }
-                else {
-                    decltype(selectedObjects) newselects = {};
-                    for (DisplayObject* d : selectedObjects) {
-                        if (d!=objects[i]) {
-                            newselects.push_back(d);
-                        }
-                    }
-                    selectedObjects = newselects;
-                }
-            }
-            leftMouseReleased = false;
-        }
-        std::string specificObject = objects[i]->getID();
-        drawDisplayObject(objects[i]);
-    }
-    
-    //draw control bar
-    double controlBarY = SCREEN_HEIGHT-100;
-    drawBorderedRect(0, controlBarY, SCREEN_WIDTH, 100, 0xffffcf9e, 0xff000000);
-    if (runningVideo) {
-        drawText("PRESS SPACE TO RETURN", 36, 10, controlBarY+10, 0xffff0000);
-        drawText("    TO EDIT MODE     ", 36, 10, controlBarY+50, 0xffff0000);
-    }
-    else {
-        double totoff = 10;
-        decltype(selectedObjects) newselectedobjects = {};
-        for (int i = 0;i<selectedObjects.size();i++) {
-            int w,h,w2,h2,w3,h3,w4,h4;
-            //draw name of graph
-            std::string name = selectedObjects[i]->getName();
-            drawText(name, 16, totoff, controlBarY+5, 0xff000000);
-            TTF_SizeUTF8((*fontgrab)(16), name.c_str(), &w, &h);
-            double newtotoff = totoff+5+w;
-            //draw run button
-            TTF_SizeUTF8((*fontgrab)(16), "Run", &w2, &h2);
-            drawTextWithBackground("Run", 16, totoff, controlBarY+5+h, 0xff000000,0xff9fc9f2,0xff000000);
-            if (leftMouseReleased&&!overPopup&&pointInBounds(mouseX, mouseY, totoff, totoff+w2, controlBarY+5+h, controlBarY+5+h+h2)) {
-                selectedObjects[i]->run();
-                runningVideo = true;
-                selectedObjects = {};
-                newselectedobjects = {};
-                leftMouseReleased = false;
-                break;
-            }
-            //draw edit button
-            TTF_SizeUTF8((*fontgrab)(16), "Edit", &w3, &h3);
-            drawTextWithBackground("Edit", 16, totoff, controlBarY+5+h+h2, 0xff000000,0xff9fc9f2,0xff000000);
-            if (leftMouseReleased&&!overPopup&&pointInBounds(mouseX, mouseY, totoff, totoff+w3, controlBarY+5+h+h2, controlBarY+5+h+h2+h3)) {
-                if (selectedObjects[i]->getID()=="Graph") {
-                    Popup* blargh = createPopup(EDIT_GRAPH_POPUP, 10, 10);
-                    blargh->concernWith((Graph*)selectedObjects[i]);
-                    leftMouseReleased = false;
-                }
-                else if (selectedObjects[i]->getID()=="Slider") {
-                    Popup* blargh = createPopup(EDIT_SLIDER_POPUP, 10, 10);
-                    blargh->concernWith((Slider*)selectedObjects[i]);
-                    leftMouseReleased = false;
-                }
-                else if (selectedObjects[i]->getID()=="Image") {
-                    Popup* blargh = createPopup(EDIT_IMAGE_POPUP, 10, 10);
-                    blargh->concernWith((RawImage*)selectedObjects[i]);
-                    leftMouseReleased = false;
-                }
-                else if (selectedObjects[i]->getID()=="Text") {
-					Popup* blargh = createPopup(EDIT_TEXT_POPUP, 10, 10);
-                    blargh->concernWith((RawText*)selectedObjects[i]);
-                    leftMouseReleased = false;
-				}
-            }
-            //draw delete button
-            TTF_SizeUTF8((*fontgrab)(16), "Delete", &w4, &h4);
-            drawTextWithBackground("Delete", 16, totoff, controlBarY+5+h+h2+h3, 0xff000000,0xff9fc9f2,0xff000000);
-            if (leftMouseReleased&&!overPopup&&pointInBounds(mouseX, mouseY, totoff, totoff+w4, controlBarY+5+h+h2+h3, controlBarY+5+h+h2+h3+h4)) {
-                decltype(objects) newobjects = {};
-                for (int j = 0;j<objects.size();j++) {
-                    if (objects[j]!=selectedObjects[i]) {newobjects.push_back(objects[j]);}
-                }
-                delete selectedObjects[i];
-                selectedObjects[i] = NULL;
-                objects = newobjects;
-                leftMouseReleased = false;
-            }
-            else {newselectedobjects.push_back(selectedObjects[i]);}
-            totoff=newtotoff;
-        }
-        selectedObjects=newselectedobjects;
-        
-        //draw run all button
-        int rax,ray;
-        TTF_SizeUTF8((*fontgrab)(16), "Run All", &rax, &ray);
-        drawTextWithBackground("Run All", 16, SCREEN_WIDTH-200, controlBarY+5, 0xff000000,0xff9fc9f2,0xff000000);
-        if (leftMouseReleased&&!overPopup&&pointInBounds(mouseX, mouseY, SCREEN_WIDTH-200, SCREEN_WIDTH-200+rax,controlBarY+5,controlBarY+5+ray)) {
-            for (DisplayObject* d : objects) {
-                d->run();
-            }
-            runningVideo = true;
-            selectedObjects = {};
-            newselectedobjects = {};
-            leftMouseReleased = false;
-        }
-        //draw run selected button
-        int rsx,rsy;
-        TTF_SizeUTF8((*fontgrab)(16), "Run Selected", &rsx, &rsy);
-        drawTextWithBackground("Run Selected", 16, SCREEN_WIDTH-200-5-rsx, controlBarY+5, 0xff000000,0xff9fc9f2,0xff000000);
-        if (leftMouseReleased&&!overPopup&&pointInBounds(mouseX, mouseY, SCREEN_WIDTH-200-5-rsx, SCREEN_WIDTH-200-5-rsx+rsx,controlBarY+5,controlBarY+5+rsy)) {
-            for (DisplayObject* d : selectedObjects) {
-                d->run();
-            }
-            runningVideo = true;
-            selectedObjects = {};
-            newselectedobjects = {};
-            leftMouseReleased = false;
-        }
-        //draw save button
-        int savex,savey;
-        TTF_SizeUTF8((*fontgrab)(16), "Save", &savex, &savey);
-        drawTextWithBackground("Save", 16, SCREEN_WIDTH-200, controlBarY+5+rsy+5, 0xff000000,0xff9fc9f2,0xff000000);
-        if (leftMouseReleased&&!overPopup&&pointInBounds(mouseX, mouseY, SCREEN_WIDTH-200, SCREEN_WIDTH-200+savex,controlBarY+5+rsy+5,controlBarY+5+savey+rsy+5)) {
-            //save();
-            createPopup(SAVE_FILE_POPUP, mouseX-500, mouseY-100)
-            	->concernWith(std::string("Generic_Save"));
-        }
-        //draw load button
-        int loadx,loady;
-        TTF_SizeUTF8((*fontgrab)(16), "Load", &loadx, &loady);
-        drawTextWithBackground("Load", 16, SCREEN_WIDTH-200-5-savex, controlBarY+5+rsy+5, 0xff000000,0xff9fc9f2,0xff000000);
-        if (leftMouseReleased&&!overPopup&&pointInBounds(mouseX, mouseY, SCREEN_WIDTH-200-5-savex, SCREEN_WIDTH-200-5-savex+loadx,controlBarY+5+rsy+5,controlBarY+5+savey+rsy+5)) {
-            createPopup(LOAD_FILE_POPUP, mouseX, mouseY-200);
-        }
-    }
-    
-    
-    //draw points of interest bar
-    double interestBarX = SCREEN_WIDTH-150;
-    drawBorderedRect(interestBarX, 0, 150, SCREEN_HEIGHT, 0xff597bf5, 0xff000000);
-    drawText("Points of Interest", 20, interestBarX+5, 5, 0xff000000);
-    if (pointsOfInterest.empty()) {
-        drawText("None", 16, interestBarX+5, 30, 0xff000000);
-    }
-    for (int i = 0;i<pointsOfInterest.size();i++) {
-        if (pointsOfInterest[i]->shouldDelete()) {continue;}
-        drawText(pointsOfInterest[i]->getDisplayLocation(), 16, interestBarX+5, 30+i*40, 0xff000000);
-        drawText("  "+pointsOfInterest[i]->getDisplayPoint(), 12, interestBarX+5, 30+i*40+20, 0xff000000);
-    }
-    
     //find out what popup the mouse is over
     for (int i = (int)popups.size()-1;i>=0;i--) {
         if (popups[i]->raycast(mouseX, mouseY)) {
@@ -323,33 +151,13 @@ bool controlFlow() {
     popups = newpopups;
     map([](Popup* x){x->age();x->resetRays();return NULL;}, popups);
     
-    if (leftMouseReleased&&!overPopup&&!runningVideo) {
+    if (leftMouseReleased&&!runningVideo) {
         if (mouseY<SCREEN_HEIGHT-100) {
             createPopup(ADD_OBJECT_POPUP, mouseX, mouseY);
             selectedObjects = {};
         }
     }
     
-    //update graphs
-    for (DisplayObject* d : objects) {
-        if (d->getID()=="Graph") {
-            ((Graph*)d)->cleanFunctions();
-            ((Graph*)d)->cleanInterpolations();
-        }
-        if (d->isRunning()) {d->update();}
-    }
-    
-    //delete points of interest
-    std::vector<PointOfInterest*> newpoi = {};
-    for (int i = 0;i<pointsOfInterest.size();i++) {
-        if (pointsOfInterest[i]->shouldDelete()) {
-            delete pointsOfInterest[i];
-        }
-        else {
-            newpoi.push_back(pointsOfInterest[i]);
-        }
-    }
-    pointsOfInterest=newpoi;
     
     
     
@@ -459,7 +267,8 @@ int main(int argc, const char * argv[]) {
     
     fontgrab = new Font(24);
     initBuiltins();
-    
+	
+    createPopup(MAIN, 0, 0);//create the main screen
 	std::cout << "Starting Program Now!\n";
     while(controlFlow()) {SDL_Delay(1000/60.0);/*60 fps*/};
     
@@ -516,14 +325,6 @@ bool loadMedia() {
     return success;
 }
 
-void drawDisplayObject(DisplayObject* d) {
-    double xdraw,ydraw = 0;
-    SDL_Surface* tempSurf = d->draw(&xdraw,&ydraw);
-    SDL_Texture* tempTexture = SDL_CreateTextureFromSurface(gRenderer, tempSurf);
-    drawGraphic(xdraw, ydraw, tempSurf->w, tempSurf->h, tempTexture);
-    d->reclaim(tempSurf);
-    SDL_DestroyTexture(tempTexture);
-}
 
 
 
