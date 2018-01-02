@@ -6,7 +6,7 @@
 //  Copyright © 2017 Alliterative Anchovies. All rights reserved.
 //
 
-#include "Popup.hpp"
+#include "PopupWrapper.hpp"
 
 //Screen dimension constants
 const int SCREEN_WIDTH = 640+150;

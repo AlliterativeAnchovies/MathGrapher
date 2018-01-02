@@ -16,6 +16,7 @@
 		863C5C281FF6ED2600F6FA18 /* Function.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 863C5C261FF6ED2600F6FA18 /* Function.cpp */; };
 		863C5C2E1FF866F100F6FA18 /* RawText.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 863C5C2C1FF866F100F6FA18 /* RawText.cpp */; };
 		863C5C311FFB0BB500F6FA18 /* BulkUtilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 863C5C2F1FFB0BB500F6FA18 /* BulkUtilities.cpp */; };
+		863C5C341FFB113600F6FA18 /* PopupWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 863C5C321FFB113500F6FA18 /* PopupWrapper.cpp */; };
 		86928C631FE125BF00CBB286 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86928C621FE125BF00CBB286 /* main.cpp */; };
 		86928C6C1FE1260500CBB286 /* SDL2_ttf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86928C6A1FE1260500CBB286 /* SDL2_ttf.framework */; };
 		86928C6D1FE1260500CBB286 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86928C6B1FE1260500CBB286 /* SDL2.framework */; };
@@ -56,6 +57,8 @@
 		863C5C2D1FF866F100F6FA18 /* RawText.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = RawText.hpp; sourceTree = "<group>"; };
 		863C5C2F1FFB0BB500F6FA18 /* BulkUtilities.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BulkUtilities.cpp; sourceTree = "<group>"; };
 		863C5C301FFB0BB500F6FA18 /* BulkUtilities.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BulkUtilities.hpp; sourceTree = "<group>"; };
+		863C5C321FFB113500F6FA18 /* PopupWrapper.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PopupWrapper.cpp; sourceTree = "<group>"; };
+		863C5C331FFB113600F6FA18 /* PopupWrapper.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PopupWrapper.hpp; sourceTree = "<group>"; };
 		86928C5F1FE125BF00CBB286 /* MathGrapher */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MathGrapher; sourceTree = BUILT_PRODUCTS_DIR; };
 		86928C621FE125BF00CBB286 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		86928C6A1FE1260500CBB286 /* SDL2_ttf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_ttf.framework; path = ../../../../Library/Frameworks/SDL2_ttf.framework; sourceTree = "<group>"; };
@@ -104,6 +107,15 @@
 			path = DisplayObjects;
 			sourceTree = "<group>";
 		};
+		863C5C351FFB113C00F6FA18 /* Popups */ = {
+			isa = PBXGroup;
+			children = (
+				86928C741FE2C73300CBB286 /* Popup.cpp */,
+				86928C751FE2C73300CBB286 /* Popup.hpp */,
+			);
+			path = Popups;
+			sourceTree = "<group>";
+		};
 		86928C561FE125BF00CBB286 = {
 			isa = PBXGroup;
 			children = (
@@ -134,8 +146,9 @@
 				863C5C1A1FF6EB2700F6FA18 /* DisplayWrapper.hpp */,
 				86928C771FE3225400CBB286 /* Functions.cpp */,
 				86928C781FE3225400CBB286 /* Functions.hpp */,
-				86928C741FE2C73300CBB286 /* Popup.cpp */,
-				86928C751FE2C73300CBB286 /* Popup.hpp */,
+				863C5C351FFB113C00F6FA18 /* Popups */,
+				863C5C321FFB113500F6FA18 /* PopupWrapper.cpp */,
+				863C5C331FFB113600F6FA18 /* PopupWrapper.hpp */,
 				86928C621FE125BF00CBB286 /* main.cpp */,
 			);
 			path = MathGrapher;
@@ -209,6 +222,7 @@
 			files = (
 				863C5C221FF6EC8D00F6FA18 /* RawImage.cpp in Sources */,
 				86928C731FE1319B00CBB286 /* RenderingUtilities.cpp in Sources */,
+				863C5C341FFB113600F6FA18 /* PopupWrapper.cpp in Sources */,
 				863C5C181FF6EA0200F6FA18 /* DisplayObjects.cpp in Sources */,
 				86928C791FE3225400CBB286 /* Functions.cpp in Sources */,
 				86928C701FE12B0600CBB286 /* Graph.cpp in Sources */,
