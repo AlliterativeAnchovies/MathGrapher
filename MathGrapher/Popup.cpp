@@ -1058,6 +1058,27 @@ Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
                 }
             }
             break;
+		case SAVE_FILE_POPUP:
+            {
+                drawBorderedRect(px, py, sx, sy, 0xffaaf2aa, 0xff000000);
+				//drawText(stringConcerned, 20, px+5, py+sy/2-10, 0xff000000);
+				int offx,offy;
+				bool clickedEdit = handleEditableInfo(px+5,py+sy/2-10,20,39,mouseX,mouseY,
+                    "Save To: ",stringConcerned,&stringConcerned,clicked,&offx,&offy);
+				if (clickedEdit) {toReturn = 0x01;clicked=false;}
+				TTF_SizeUTF8((*fontgrab)(16), "Save", &offx, &offy);
+				drawTextWithBackground("Save", 16, px+sx-offx, py, 0xff000000, 0xff9fc9f2, 0xff000000);
+				if (clicked&&pointInBounds(mouseX, mouseY, px+sx-offx, px+sx, py, py+offy)) {
+					save(stringConcerned);
+					toReturn = 0x02;
+				}
+				TTF_SizeUTF8((*fontgrab)(16), "Cancel", &offx, &offy);
+				drawTextWithBackground("Cancel", 16, px+sx-offx, py+sy-offy, 0xff000000, 0xff9fc9f2, 0xff000000);
+				if (clicked&&pointInBounds(mouseX, mouseY, px+sx-offx, px+sx, py+sy-offy, py+sy)) {
+					toReturn = 0x02;
+				}
+			}
+			break;
     }
     return toReturn;
 }
@@ -1127,7 +1148,8 @@ bool isMajor(Uint8 popup_id) {
     return  popup_id==EDIT_GRAPH_POPUP||
             popup_id==EDIT_SLIDER_POPUP||
             popup_id==EDIT_IMAGE_POPUP||
-            popup_id==EDIT_TEXT_POPUP;
+            popup_id==EDIT_TEXT_POPUP||
+            popup_id==SAVE_FILE_POPUP;
 }
 
 Popup* createPopup(Uint8 popup_id,double x,double y) {
@@ -1205,6 +1227,10 @@ Popup* createPopup(Uint8 popup_id,double x,double y) {
             sx = 150;
             sy = 200;
             break;
+		case SAVE_FILE_POPUP:
+			sx = 600;
+			sy = 50;
+			break;
 		default:
 			throw std::runtime_error("ERROR - Not defined popup sizes for this popup yet!");
     }
@@ -1287,6 +1313,7 @@ bool isStringTypeOfValueEditor(int instrswch) {
         case 28:
         case 33:
         case 36:
+        case 39:
             return true;
     }
     return false;

@@ -272,14 +272,15 @@ bool controlFlow() {
         TTF_SizeUTF8((*fontgrab)(16), "Save", &savex, &savey);
         drawTextWithBackground("Save", 16, SCREEN_WIDTH-200, controlBarY+5+rsy+5, 0xff000000,0xff9fc9f2,0xff000000);
         if (leftMouseReleased&&!overPopup&&pointInBounds(mouseX, mouseY, SCREEN_WIDTH-200, SCREEN_WIDTH-200+savex,controlBarY+5+rsy+5,controlBarY+5+savey+rsy+5)) {
-            save();
+            //save();
+            createPopup(SAVE_FILE_POPUP, mouseX-500, mouseY-100)
+            	->concernWith(std::string("Generic_Save"));
         }
         //draw load button
         int loadx,loady;
         TTF_SizeUTF8((*fontgrab)(16), "Load", &loadx, &loady);
         drawTextWithBackground("Load", 16, SCREEN_WIDTH-200-5-savex, controlBarY+5+rsy+5, 0xff000000,0xff9fc9f2,0xff000000);
         if (leftMouseReleased&&!overPopup&&pointInBounds(mouseX, mouseY, SCREEN_WIDTH-200-5-savex, SCREEN_WIDTH-200-5-savex+loadx,controlBarY+5+rsy+5,controlBarY+5+savey+rsy+5)) {
-            //throw std::runtime_error("Error: No loading yet!  Sorry.");
             createPopup(LOAD_FILE_POPUP, mouseX, mouseY-200);
         }
     }
@@ -621,11 +622,11 @@ void doInStringCalcs(Uint8 keypressed) {
     }
 }
 
-void save() {
+void save(std::string toSave) {
 	//Note to self: because of stupid XCODE, my saves are saved to a duplicate resources
 	//created at runtime, and so do not necessarily persist across builds.
 	//(It will sometimes though, but for example cleaning the build will remove it!)
-	std::string filename = "testsave";
+	std::string filename = toSave;
 	std::cout << "Saving file as " << filename << ".txt\n";
 	std::fstream fs;
 	//std::fstream::out allows outputting to file, std::fstream::trunc clears file before opening it
@@ -747,6 +748,17 @@ void save() {
 		fs << "}\n";
 	}
   	fs.close();
+	
+  	//add file to list to load from
+  	bool found = false;
+  	for (int i = 0;i<loadableFiles.size();i++) {
+		auto temp = splitAt(loadableFiles[i], '/');
+		std::string theNameOfFile = temp[temp.size()-1];
+		if (theNameOfFile==filename+".txt") {found=true;break;}//already on list
+	}
+	if (!found) {
+		loadableFiles.push_back(dumstupidcurrentdirectorybs+"/resources/Saves/"+filename+".txt");
+	}
 }
 
 void load(std::string toLoad) {
