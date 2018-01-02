@@ -9,9 +9,9 @@
 #ifndef SaveFilePopup_hpp
 #define SaveFilePopup_hpp
 
-#include "QuickCloserPopup.hpp"
+#include "MajorPopup.hpp"
 
-class SaveFilePopup: public QuickCloserPopup {
+class SaveFilePopup: public MajorPopup {
 	public:
 		Uint8 handle(double mouseX,double mouseY,bool clicked);
 		SaveFilePopup(double x,double y) {px=x;py=y;sx=600;sy=100;popupID=SAVE_FILE_POPUP;}

@@ -188,6 +188,8 @@
 				863C5C371FFB139900F6FA18 /* MajorPopup.hpp */,
 				863C5C771FFB1D0C00F6FA18 /* MainDisplay.cpp */,
 				863C5C781FFB1D0C00F6FA18 /* MainDisplay.hpp */,
+				863C5C731FFB1CCC00F6FA18 /* SaveFilePopup.cpp */,
+				863C5C741FFB1CCC00F6FA18 /* SaveFilePopup.hpp */,
 				863C5C761FFB1CEB00F6FA18 /* Edit */,
 			);
 			path = MajorPopups;
@@ -240,8 +242,6 @@
 				863C5C5C1FFB1B1500F6FA18 /* CreatePointOfInterest.hpp */,
 				863C5C5E1FFB1B6A00F6FA18 /* CreateHighlightInterpolation.cpp */,
 				863C5C5F1FFB1B6A00F6FA18 /* CreateHighlightInterpolation.hpp */,
-				863C5C731FFB1CCC00F6FA18 /* SaveFilePopup.cpp */,
-				863C5C741FFB1CCC00F6FA18 /* SaveFilePopup.hpp */,
 			);
 			path = CreateOrEdit;
 			sourceTree = "<group>";
