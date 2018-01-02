@@ -871,3 +871,25 @@ bool stringContains(std::string s,char c) {
     }
     return false;
 }
+
+void screenshot(std::string filename,SDL_Rect* bounds) {
+	SDL_Rect bounder;
+	if (bounds==NULL) {
+		bounder.x = 0;
+		bounder.y = 0;
+		bounder.w = SCREEN_WIDTH;
+		bounder.h = SCREEN_HEIGHT;
+	}
+	else {bounder=*bounds;}
+	SDL_Surface* sshot = createBlankSurfaceWithSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+	SDL_RenderReadPixels(gRenderer, NULL, SDL_PIXELFORMAT_ARGB8888, sshot->pixels, sshot->pitch);
+	auto fileToSaveAt = filename.c_str();
+	SDL_Surface* inbounds = createBlankSurfaceWithSize(bounder.w, bounder.h);
+	SDL_BlitSurface(sshot,&bounder,inbounds,NULL);
+	int success = SDL_SaveBMP(inbounds, fileToSaveAt);
+	if (success==-1) {
+		std::cout << SDL_GetError() << "\n";
+	}
+	SDL_FreeSurface(sshot);
+	SDL_FreeSurface(inbounds);
+}

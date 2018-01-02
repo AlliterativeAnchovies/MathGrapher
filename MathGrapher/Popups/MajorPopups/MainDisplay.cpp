@@ -43,7 +43,7 @@ Uint8 MainDisplay::handle(double mouseX,double mouseY,bool clicked) {
 	}
 
 	//draw control bar
-	double controlBarY = SCREEN_HEIGHT-100;
+	double controlBarY = RECORDABLE_HEIGHT;//SCREEN_HEIGHT-100;
 	drawBorderedRect(0, controlBarY, SCREEN_WIDTH, 100, 0xffffcf9e, 0xff000000);
 	if (runningVideo) {
 		drawText("PRESS SPACE TO RETURN", 36, 10, controlBarY+10, 0xffff0000);
@@ -155,11 +155,27 @@ Uint8 MainDisplay::handle(double mouseX,double mouseY,bool clicked) {
 		if (clicked&&pointInBounds(mouseX, mouseY, SCREEN_WIDTH-200-5-savex, SCREEN_WIDTH-200-5-savex+loadx,controlBarY+5+rsy+5,controlBarY+5+savey+rsy+5)) {
 			createPopup(LOAD_FILE_POPUP, mouseX, mouseY-200);
 		}
+		//draw record button
+		int recordx,recordy;
+		TTF_SizeUTF8((*fontgrab)(16), "Record", &recordx, &recordy);
+		drawTextWithBackground("Record", 16, SCREEN_WIDTH-200, controlBarY+5+rsy+5+loady+5, 0xff000000,0xff9fc9f2,0xff000000);
+		if (clicked&&pointInBounds(mouseX, mouseY, SCREEN_WIDTH-200, SCREEN_WIDTH-200+savex,controlBarY+5+rsy+5+loady+5,controlBarY+5+savey+rsy+5+loady+5)) {
+			std::cout << "Recording started...";
+			runningVideo = true;
+			recordingVideo = true;
+			FRAME_NUM = 0;
+			for (DisplayObject* d : objects) {
+				d->run();
+			}
+			selectedObjects = {};
+			newselectedobjects = {};
+			clicked = false;
+		}
 	}
 
 
 	//draw points of interest bar
-	double interestBarX = SCREEN_WIDTH-150;
+	double interestBarX = RECORDABLE_WIDTH;//SCREEN_WIDTH-150;
 	drawBorderedRect(interestBarX, 0, 150, SCREEN_HEIGHT, 0xff597bf5, 0xff000000);
 	drawText("Points of Interest", 20, interestBarX+5, 5, 0xff000000);
 	if (pointsOfInterest.empty()) {

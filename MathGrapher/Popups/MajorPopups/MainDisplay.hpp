@@ -11,6 +11,9 @@
 
 #include "MajorPopup.hpp"
 
+const int RECORDABLE_WIDTH=SCREEN_WIDTH-150;
+const int RECORDABLE_HEIGHT=SCREEN_HEIGHT-100;
+
 class MainDisplay: public MajorPopup {
 	public:
 		Uint8 handle(double mouseX,double mouseY,bool clicked);

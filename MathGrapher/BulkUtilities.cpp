@@ -22,3 +22,5 @@ bool CAPS_LOCK = false;
 bool runningVideo = false;
 bool spacePressed = false;
 bool backspacePressed = false;
+bool recordingVideo = false;
+int FRAME_NUM = 0;

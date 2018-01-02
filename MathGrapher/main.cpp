@@ -72,7 +72,16 @@ bool controlFlow() {
                 case SDLK_SPACE:
                     if (runningVideo) {
                         runningVideo = false;
-                        //for (Graph* g : graphs) {g->reset();}
+                        if (recordingVideo) {
+							//call console command to ffmpeg, make mp4
+							//requires ffmpeg to be installed
+							std::string ffmpegLocation = "/usr/local/bin/";
+							std::string direcIn = dumstupidcurrentdirectorybs+"/resources/Screenshots/";
+							std::string direcOut = dumstupidcurrentdirectorybs+"/resources/Output/";
+							std::string theCommand = ffmpegLocation+"ffmpeg -i '"+direcIn+"screenshot%05d.bmp' -r 60 -pix_fmt yuv420p "+direcOut+"out.mp4";
+							std::system(theCommand.c_str());
+						}
+                        recordingVideo = false;
                         for (DisplayObject* d : objects) {d->reset();}
                     }
                     instring+=" ";
@@ -151,7 +160,19 @@ bool controlFlow() {
     
     
     
-    
+    //record screen
+    if (recordingVideo&&FRAME_NUM<120) {
+    	SDL_Rect screenrecord;
+		screenrecord.x = 0;
+		screenrecord.y = 0;
+		screenrecord.w = RECORDABLE_WIDTH;
+		screenrecord.h = RECORDABLE_HEIGHT;
+		std::string FRAME_NUM_str = std::to_string(FRAME_NUM);
+		while (FRAME_NUM_str.size()<5) {FRAME_NUM_str = "0"+FRAME_NUM_str;}
+    	screenshot(dumstupidcurrentdirectorybs+"/resources/Screenshots/screenshot"+FRAME_NUM_str+".bmp",
+    		&screenrecord);
+    	FRAME_NUM++;
+	}
     
     //draw stuff on screen
     SDL_RenderPresent(gRenderer);
@@ -219,14 +240,10 @@ int main(int argc, const char * argv[]) {
     //DEBUG is XCode's automatic debug macro, _DEBUG is Visual Studio's
     #if defined DEBUG
 		std::cout << "Warning: Using a development build!\n";
-        //for some reason I can't figure out how to get xcode to accept a
-        //relative path to resources for a debug build :( (works fine for
-        //non-debug builds, though.  It just refuses to copy the resources
-        //folder to the right directory while doing debugs.)  To fix this,
         //I manually found xcode's debug directory and dragged "resources"
         //into it.  So if I add stuff to resources, I'll have to re-copy it
         //there :(.  Which is stupid.  Stupid xcode.
-		dumstupidcurrentdirectorybs = getenv("PWD");
+		dumstupidcurrentdirectorybs = ".";//getenv("PWD");
 	#elif defined _DEBUG
         std::cout << "Warning: Using a development build!\n";
         //The one instance where visual studio is better than xcode.  There

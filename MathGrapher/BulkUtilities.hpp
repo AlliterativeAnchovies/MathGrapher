@@ -28,5 +28,7 @@ extern bool CAPS_LOCK;
 extern bool runningVideo;
 extern bool spacePressed;
 extern bool backspacePressed;
+extern bool recordingVideo;
+extern int FRAME_NUM;
 
 #endif /* BulkUtilities_hpp */
