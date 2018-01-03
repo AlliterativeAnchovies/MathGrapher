@@ -26,6 +26,7 @@
 #include <string>
 #include <algorithm>
 #include <fstream>//read & write files
+#include <thread>
 
 //My color palet:
 //0xff9fc9f2 - nice blue

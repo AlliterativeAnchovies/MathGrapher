@@ -177,7 +177,9 @@ bool controlFlow() {
 			std::system(mkdirCommand.c_str());
 			if (FRAME_NUM>0) {
 				//make intermediate .mp4 from batch of .bmps
-				makeVideoFromBatch(batchnum, &concatList);
+				int batchnumtemp = batchnum;
+				std::thread batchthread([=](){makeVideoFromBatch(batchnumtemp, &concatList);});
+				batchthread.detach();
 				batchnum++;
 			}
 		}
