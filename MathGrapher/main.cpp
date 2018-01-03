@@ -30,6 +30,10 @@ Font* fontgrab=NULL;
 //Popups to draw
 std::vector<Popup*> popups = {};
 
+//For ffmpeg .mp4 concatenation
+std::string concatList = "";
+void makeVideoFromBatch(int batchnum,std::string* listForConcatenation);
+int batchnum = 0;
 
 //Tick counter
 int ticks = 0;
@@ -168,9 +172,14 @@ bool controlFlow() {
 		while (FRAME_NUM_str.size()<3) {FRAME_NUM_str = "0"+FRAME_NUM_str;}
 		while (FRAME_NUM_FOLDER_str.size()<3) {FRAME_NUM_FOLDER_str = "0"+FRAME_NUM_FOLDER_str;}
 		if (FRAME_NUM%VIDEO_BATCH_SIZE==0) {
-			//mkdir(dumstupidcurrentdirectorybs+"/resources/Screenshots/intermediate"+FRAME_NUM_FOLDER_str);
+			//make directory for new batch of .bmps
 			std::string mkdirCommand = "mkdir "+dumstupidcurrentdirectorybs+"/resources/Screenshots/intermediate"+FRAME_NUM_FOLDER_str;
 			std::system(mkdirCommand.c_str());
+			if (FRAME_NUM>0) {
+				//make intermediate .mp4 from batch of .bmps
+				makeVideoFromBatch(batchnum, &concatList);
+				batchnum++;
+			}
 		}
     	screenshot(dumstupidcurrentdirectorybs+
     			"/resources/Screenshots/intermediate"+FRAME_NUM_FOLDER_str+"/screenshot"+FRAME_NUM_str+".bmp",
@@ -715,6 +724,7 @@ void load(std::string toLoad) {
 }
 
 void makeVideoFromBatch(int batchnum,std::string* listForConcatenation) {
+	std::cout << "Making Video Batch...";
 	std::string ffmpegLocation = "/usr/local/bin/";
 	std::string direcIn = dumstupidcurrentdirectorybs+"/resources/Screenshots/";
 	std::string direcOut = dumstupidcurrentdirectorybs+"/resources/Output/Intermediates/";
@@ -731,6 +741,7 @@ void makeVideoFromBatch(int batchnum,std::string* listForConcatenation) {
 		std::string toRemove = direcInPrime+"screenshot"+numstr+".bmp";
 		std::remove(toRemove.c_str());
 	}
+	std::cout << "Batch Done!";
 }
 
 void makeVideo(std::string toSave) {
@@ -739,10 +750,9 @@ void makeVideo(std::string toSave) {
 	std::string ffmpegLocation = "/usr/local/bin/";
 	std::string direcIn = dumstupidcurrentdirectorybs+"/resources/Screenshots/";
 	std::string direcOut = dumstupidcurrentdirectorybs+"/resources/Output/Intermediates/";
-	std::string concatList = "";
-	for (int i = 0;i<=FRAME_NUM/VIDEO_BATCH_SIZE;i++) {
-		makeVideoFromBatch(i, &concatList);
-	}
+	makeVideoFromBatch(batchnum, &concatList);//make batch from remaining .bmps
+	std::cout << "Linking Video...";
+	//create concatenation file for ffmpeg
 	std::fstream concaterFile;
 	concaterFile.open((dumstupidcurrentdirectorybs+"/resources/Output/Intermediates/concatFile.txt").c_str(),
 			std::fstream::out  | std::ofstream::trunc);
@@ -752,4 +762,6 @@ void makeVideo(std::string toSave) {
 	std::string theCommand = ffmpegLocation+"ffmpeg -f concat -i "+dumstupidcurrentdirectorybs+"/resources/Output/Intermediates/concatFile.txt -c copy "+dumstupidcurrentdirectorybs+"/resources/Output/"+toSave+".mp4";
 	std::system(theCommand.c_str());
 	FRAME_NUM = 0;
+	concatList = "";
+	std::cout << "Video Linking Finished!";
 }

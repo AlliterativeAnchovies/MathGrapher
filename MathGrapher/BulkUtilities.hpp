@@ -33,6 +33,7 @@ extern int FRAME_NUM;
 void load(std::string toLoad);//defined in main
 void save(std::string toSave);//defined in main
 void makeVideo(std::string toSave);//defined in main
-const int VIDEO_BATCH_SIZE = 600;
+const int VIDEO_BATCH_SIZE = 600;	//don't make this larger than 999 - searches for screenshot###.bmp
+									//whereas screenshot1000 is of form screenshot####.bmp
 
 #endif /* BulkUtilities_hpp */
