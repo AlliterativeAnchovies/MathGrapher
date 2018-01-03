@@ -24,3 +24,4 @@ bool spacePressed = false;
 bool backspacePressed = false;
 bool recordingVideo = false;
 int FRAME_NUM = 0;
+clock_t begin_time;//timer start

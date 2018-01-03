@@ -35,5 +35,7 @@ void save(std::string toSave);//defined in main
 void makeVideo(std::string toSave);//defined in main
 const int VIDEO_BATCH_SIZE = 600;	//don't make this larger than 999 - searches for screenshot###.bmp
 									//whereas screenshot1000 is of form screenshot####.bmp
+const int FRAME_RATE = 60;
+extern clock_t begin_time;//timer start
 
 #endif /* BulkUtilities_hpp */

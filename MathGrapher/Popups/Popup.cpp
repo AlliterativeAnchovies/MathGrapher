@@ -224,16 +224,16 @@ void Popup::setUpInterpolation() {
         throw std::runtime_error("Invalid Interpolation To Set Up");
     }
     if (graphConcerned!=NULL) {
-    	interpolationConcerned = new Interpolation(interpolID,0,0,60,graphConcerned);
+    	interpolationConcerned = new Interpolation(interpolID,0,0,FRAME_RATE,graphConcerned);
     }
     else if (sliderConcerned!=NULL) {
-		interpolationConcerned = new Interpolation(interpolID,0,0,60,sliderConcerned);
+		interpolationConcerned = new Interpolation(interpolID,0,0,FRAME_RATE,sliderConcerned);
 	}
 	else if (imageConcerned!=NULL) {
-		interpolationConcerned = new Interpolation(interpolID,0,0,60,imageConcerned);
+		interpolationConcerned = new Interpolation(interpolID,0,0,FRAME_RATE,imageConcerned);
 	}
 	else if (textConcerned!=NULL) {
-		interpolationConcerned = new Interpolation(interpolID,0,0,60,textConcerned);
+		interpolationConcerned = new Interpolation(interpolID,0,0,FRAME_RATE,textConcerned);
 	}
 	else {
 		throw std::runtime_error("Not set up adding interpolations to this type of display object!");

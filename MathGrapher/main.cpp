@@ -294,7 +294,30 @@ int main(int argc, const char * argv[]) {
 	
     createPopup(MAIN, 0, 0);//create the main screen
 	std::cout << "Starting Program Now!\n";
-    while(controlFlow()) {SDL_Delay(1000/60.0);/*60 fps*/};
+	begin_time = clock();
+	int start_time, end_time;//measured in milliseconds
+	start_time = 1000 * float( clock() - begin_time) / CLOCKS_PER_SEC;
+    while(controlFlow()) {
+		end_time = 1000 * float( clock () - begin_time ) /  CLOCKS_PER_SEC;
+    	double delayMS = 1000.0/FRAME_RATE-(end_time-start_time);
+    	if (delayMS>0) {SDL_Delay(delayMS);}
+    	else {
+    		//otherwise, uh-oh!  Not achieving proper frame rate!
+    		std::cout << "Frame rate fail by "<<(-delayMS)<<"ms\n";
+    		//frame rate only fails on these occasions on my mac:
+    		//Very first call to controlFlow()
+    		//Occasionally when stopping a test run (clicking "Run Selected"
+    		//or "Run All" and then pressing space)
+    		//When performing the video linking after recording it all
+    		//(clicking "Record" and then pressing space)
+    		//Good news is that it only fails once at a time!  I've never seen
+    		//two frame rate fails in a row. (of course, this depends on the
+    		//quality of your computer...)
+    		//Luckily, this also means frame rate never fails during recording,
+    		//which is the only time it actually matters.
+		}
+		start_time = 1000 * float( clock() - begin_time) / CLOCKS_PER_SEC;
+	};
     
     //Destroy window
     SDL_DestroyWindow( gWindow );
@@ -733,7 +756,9 @@ void makeVideoFromBatch(int batchnum,std::string* listForConcatenation) {
 	std::string tstring = std::to_string(batchnum);
 	while (tstring.size()<3) {tstring="0"+tstring;};
 	std::string direcInPrime = direcIn+"intermediate"+tstring+"/";
-	std::string theCommand = ffmpegLocation+"ffmpeg -i '"+direcInPrime+"screenshot%03d.bmp' -r 60 -pix_fmt yuv420p "+direcOut+tstring+".mp4";
+	std::string frameRateStr = std::to_string(FRAME_RATE);
+	std::string theCommand = ffmpegLocation+"ffmpeg -i '"+direcInPrime+"screenshot%03d.bmp' -framerate "+frameRateStr+
+								" -r "+frameRateStr+" -pix_fmt yuv420p "+direcOut+tstring+".mp4";
 	std::system(theCommand.c_str());
 	*listForConcatenation+="file "+tstring+".mp4\n";
 	//delete the .bmps
