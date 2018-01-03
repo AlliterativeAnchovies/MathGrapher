@@ -172,7 +172,9 @@ SDL_Surface* Graph::draw(double* x,double* y) {
     double centery = oy;
     //first lets do the "x" grid
     double sinex,cosinex = 0;
-    fastSineCosine(&sinex, &cosinex, gridAngleY);
+    double effectiveGridAngleX = snapToPiMultiples(gridAngleX);
+    double effectiveGridAngleY = snapToPiMultiples(gridAngleY);
+    fastSineCosine(&sinex, &cosinex, effectiveGridAngleY);
     double deltax = cosinex*gridSpacingX+sinex*gridSpacingY;
     double deltay = -sinex*gridSpacingX+cosinex*gridSpacingY;
     double startingx = centerx;
@@ -181,7 +183,7 @@ SDL_Surface* Graph::draw(double* x,double* y) {
     int quitCount = 0;
     while (quitCount<maxAmountOfLines&&showGrid) {
         //draw line
-        drawLineThroughPointWithAngleInBounds(toReturn,startingx,startingy,gridAngleX,0,sx,0,sy,0xffaaaaaa,100);
+        drawLineThroughPointWithAngleInBounds(toReturn,startingx,startingy,effectiveGridAngleX,0,sx,0,sy,0xffaaaaaa,100);
         startingx+=deltax;
         startingy+=deltay;
         quitCount++;
@@ -191,14 +193,14 @@ SDL_Surface* Graph::draw(double* x,double* y) {
     quitCount = 0;
     while (quitCount<maxAmountOfLines&&showGrid) {
         //draw line
-        drawLineThroughPointWithAngleInBounds(toReturn,startingx,startingy,gridAngleX,0,sx,0,sy,0xffaaaaaa,100);
+        drawLineThroughPointWithAngleInBounds(toReturn,startingx,startingy,effectiveGridAngleX,0,sx,0,sy,0xffaaaaaa,100);
         startingx-=deltax;
         startingy-=deltay;
         quitCount++;
     }
     //now lets do the "y" grid
     double siney,cosiney = 0;
-    fastSineCosine(&siney, &cosiney, gridAngleX);
+    fastSineCosine(&siney, &cosiney, effectiveGridAngleX);
     deltax = cosiney*gridSpacingX+siney*gridSpacingY;
     deltay = -siney*gridSpacingX+cosiney*gridSpacingY;
     startingx = centerx;
@@ -207,7 +209,7 @@ SDL_Surface* Graph::draw(double* x,double* y) {
     quitCount = 0;
     while (quitCount<maxAmountOfLines&&showGrid) {
         //draw line
-        drawLineThroughPointWithAngleInBounds(toReturn,startingx,startingy,gridAngleY,0,sx,0,sy,0xffaaaaaa,100);
+        drawLineThroughPointWithAngleInBounds(toReturn,startingx,startingy,effectiveGridAngleY,0,sx,0,sy,0xffaaaaaa,100);
         startingx+=deltax;
         startingy+=deltay;
         quitCount++;
@@ -217,15 +219,15 @@ SDL_Surface* Graph::draw(double* x,double* y) {
     quitCount = 0;
     while (quitCount<maxAmountOfLines&&showGrid) {
         //draw line
-        drawLineThroughPointWithAngleInBounds(toReturn,startingx,startingy,gridAngleY,0,sx,0,sy,0xffaaaaaa,100);
+        drawLineThroughPointWithAngleInBounds(toReturn,startingx,startingy,effectiveGridAngleY,0,sx,0,sy,0xffaaaaaa,100);
         startingx-=deltax;
         startingy-=deltay;
         quitCount++;
     }
     //axis time
     if (showAxes) {
-        drawLineThroughPointWithAngleInBounds(toReturn,centerx,centery,gridAngleX,0,sx,0,sy,0xff000000,100);
-        drawLineThroughPointWithAngleInBounds(toReturn,centerx,centery,gridAngleY,0,sx,0,sy,0xff000000,100);
+        drawLineThroughPointWithAngleInBounds(toReturn,centerx,centery,effectiveGridAngleX,0,sx,0,sy,0xff000000,100);
+        drawLineThroughPointWithAngleInBounds(toReturn,centerx,centery,effectiveGridAngleY,0,sx,0,sy,0xff000000,100);
     }
     
     //now draw the functions

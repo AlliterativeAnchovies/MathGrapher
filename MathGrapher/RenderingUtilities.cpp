@@ -900,3 +900,36 @@ void sleepConsole() {
 void wakeConsole() {
 	std::cout.clear();
 }
+
+double snapToPiMultiples(double radians) {
+	//clamp to range
+	while (radians<0) {radians+=2*M_PI;}
+	while (radians>2*M_PI/2) {radians-=2*M_PI;}
+	//snap to pi
+	double epsilon = 0.00001;
+	if (abs(radians-M_PI/4)<epsilon) {
+		return M_PI/4;
+	}
+	else if (abs(radians-M_PI/2)<epsilon) {
+		return M_PI/2;
+	}
+	else if (abs(radians-3*M_PI/4)<epsilon) {
+		return 3*M_PI/4;
+	}
+	else if (abs(radians-M_PI)<epsilon) {
+		return M_PI;
+	}
+	else if (abs(radians-5*M_PI/4)<epsilon) {
+		return 5*M_PI/4;
+	}
+	else if (abs(radians-3*M_PI/2)<epsilon) {
+		return 3*M_PI/2;
+	}
+	else if (abs(radians-7*M_PI/4)<epsilon) {
+		return 7*M_PI/4;
+	}
+	else if (abs(radians-2*M_PI)<epsilon) {
+		return 2*M_PI;
+	}
+	return radians;
+}

@@ -101,6 +101,7 @@ bool stringContains(std::string theString,char toContain);
 void screenshot(std::string filename,SDL_Rect* bounds=NULL);
 void sleepConsole();//surpresses console messages
 void wakeConsole();//un-surpresses console messages
+double snapToPiMultiples(double radians);
 
 template<typename T> void fastSineCosine(T* sine,T* cosine,T angle) {
     //It's faster if I need a sine and cosine of 1 angle to use this
