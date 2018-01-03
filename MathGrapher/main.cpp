@@ -310,6 +310,9 @@ int main(int argc, const char * argv[]) {
     		//or "Run All" and then pressing space)
     		//When performing the video linking after recording it all
     		//(clicking "Record" and then pressing space)
+    		//When "re-entering" the application (if you left MathGrapher running,
+    		//but swapped over to chrome, then swapping back to MathGrapher would
+    		//trigger a fail by ~2 ms)
     		//Good news is that it only fails once at a time!  I've never seen
     		//two frame rate fails in a row. (of course, this depends on the
     		//quality of your computer...)
@@ -749,7 +752,7 @@ void load(std::string toLoad) {
 }
 
 void makeVideoFromBatch(int batchnum,std::string* listForConcatenation) {
-	std::cout << "Making Video Batch...";
+	std::cout << "Making Video Batch...\n";
 	std::string ffmpegLocation = "/usr/local/bin/";
 	std::string direcIn = dumstupidcurrentdirectorybs+"/resources/Screenshots/";
 	std::string direcOut = dumstupidcurrentdirectorybs+"/resources/Output/Intermediates/";
@@ -757,8 +760,28 @@ void makeVideoFromBatch(int batchnum,std::string* listForConcatenation) {
 	while (tstring.size()<3) {tstring="0"+tstring;};
 	std::string direcInPrime = direcIn+"intermediate"+tstring+"/";
 	std::string frameRateStr = std::to_string(FRAME_RATE);
-	std::string theCommand = ffmpegLocation+"ffmpeg -i '"+direcInPrime+"screenshot%03d.bmp' -framerate "+frameRateStr+
-								" -r "+frameRateStr+" -pix_fmt yuv420p "+direcOut+tstring+".mp4";
+	std::string batchsizeStr = std::to_string(VIDEO_BATCH_SIZE);
+	
+	std::fstream concaterFile;
+	std::string concaterFileFile = dumstupidcurrentdirectorybs+"/resources/Screenshots/concatImgFile.txt";
+	concaterFile.open((concaterFileFile).c_str(),std::fstream::out  | std::ofstream::trunc);
+	std::string durationString = std::to_string(1.0/FRAME_RATE);
+	for (int i = 0;i<(FRAME_NUM-1)%VIDEO_BATCH_SIZE;i++) {
+		std::string istring = tostring(i);
+		while (istring.size()<3) {istring="0"+istring;}
+		istring = "intermediate"+tstring+"/screenshot"+istring+".bmp";
+		concaterFile << "file '" << istring << "'\nduration "+durationString+"\n";
+	}
+	concaterFile.close();
+	std::string theCommand = ffmpegLocation+"ffmpeg -f concat -i "+concaterFileFile
+		+" -vsync vfr -pix_fmt yuv420p "+direcOut+tstring+".mp4";
+	//frame rate method
+	//std::string theCommand = ffmpegLocation+"ffmpeg -i '"+direcInPrime+"screenshot%03d.bmp' -framerate "+frameRateStr+
+	//							" -r "+frameRateStr+" -pix_fmt yuv420p "+direcOut+tstring+".mp4";
+	//duration method
+	//std::string videoLengthStr = std::to_string(VIDEO_BATCH_SIZE/FRAME_RATE);
+	//std::string theCommand = ffmpegLocation+"ffmpeg -i '"+direcInPrime+"screenshot%03d.bmp' "+
+	//							" -t "+videoLengthStr+" -pix_fmt yuv420p "+direcOut+tstring+".mp4";
 	std::system(theCommand.c_str());
 	*listForConcatenation+="file "+tstring+".mp4\n";
 	//delete the .bmps
@@ -768,7 +791,7 @@ void makeVideoFromBatch(int batchnum,std::string* listForConcatenation) {
 		std::string toRemove = direcInPrime+"screenshot"+numstr+".bmp";
 		std::remove(toRemove.c_str());
 	}
-	std::cout << "Batch Done!";
+	std::cout << "Batch Done!\n";
 }
 
 void makeVideo(std::string toSave) {
@@ -778,7 +801,7 @@ void makeVideo(std::string toSave) {
 	std::string direcIn = dumstupidcurrentdirectorybs+"/resources/Screenshots/";
 	std::string direcOut = dumstupidcurrentdirectorybs+"/resources/Output/Intermediates/";
 	makeVideoFromBatch(batchnum, &concatList);//make batch from remaining .bmps
-	std::cout << "Linking Video...";
+	std::cout << "Linking Video...\n";
 	//create concatenation file for ffmpeg
 	std::fstream concaterFile;
 	concaterFile.open((dumstupidcurrentdirectorybs+"/resources/Output/Intermediates/concatFile.txt").c_str(),
@@ -790,5 +813,5 @@ void makeVideo(std::string toSave) {
 	std::system(theCommand.c_str());
 	FRAME_NUM = 0;
 	concatList = "";
-	std::cout << "Video Linking Finished!";
+	std::cout << "Video Linking Finished!\n";
 }

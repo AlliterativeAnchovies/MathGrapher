@@ -160,7 +160,7 @@ Uint8 MainDisplay::handle(double mouseX,double mouseY,bool clicked) {
 		TTF_SizeUTF8((*fontgrab)(16), "Record", &recordx, &recordy);
 		drawTextWithBackground("Record", 16, SCREEN_WIDTH-200, controlBarY+5+rsy+5+loady+5, 0xff000000,0xff9fc9f2,0xff000000);
 		if (clicked&&pointInBounds(mouseX, mouseY, SCREEN_WIDTH-200, SCREEN_WIDTH-200+savex,controlBarY+5+rsy+5+loady+5,controlBarY+5+savey+rsy+5+loady+5)) {
-			std::cout << "Recording started...";
+			std::cout << "Recording started...\n";
 			runningVideo = true;
 			recordingVideo = true;
 			FRAME_NUM = 0;
