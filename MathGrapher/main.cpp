@@ -173,7 +173,7 @@ bool controlFlow() {
 		while (FRAME_NUM_FOLDER_str.size()<3) {FRAME_NUM_FOLDER_str = "0"+FRAME_NUM_FOLDER_str;}
 		if (FRAME_NUM%VIDEO_BATCH_SIZE==0) {
 			//make directory for new batch of .bmps
-			std::string dirstring = dumstupidcurrentdirectorybs+"/resources/Screenshots/intermediate"+FRAME_NUM_str;
+			std::string dirstring = dumstupidcurrentdirectorybs+"/resources/Screenshots/intermediate"+FRAME_NUM_FOLDER_str;
 			DIR* theDir;
 			if ((theDir = opendir(dirstring.c_str()))==NULL) {//if directory does not exist, create it
 				std::string mkdirCommand = "mkdir "+dirstring;

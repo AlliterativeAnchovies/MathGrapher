@@ -99,6 +99,8 @@ std::vector<std::string> splitAtColon(std::string input);
 std::vector<std::string> splitAt(std::string input,char splitter);
 bool stringContains(std::string theString,char toContain);
 void screenshot(std::string filename,SDL_Rect* bounds=NULL);
+void sleepConsole();//surpresses console messages
+void wakeConsole();//un-surpresses console messages
 
 template<typename T> void fastSineCosine(T* sine,T* cosine,T angle) {
     //It's faster if I need a sine and cosine of 1 angle to use this

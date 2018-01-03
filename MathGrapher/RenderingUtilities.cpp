@@ -893,3 +893,10 @@ void screenshot(std::string filename,SDL_Rect* bounds) {
 	SDL_FreeSurface(sshot);
 	SDL_FreeSurface(inbounds);
 }
+
+void sleepConsole() {
+	std::cout.setstate(std::ios_base::failbit);
+}
+void wakeConsole() {
+	std::cout.clear();
+}
