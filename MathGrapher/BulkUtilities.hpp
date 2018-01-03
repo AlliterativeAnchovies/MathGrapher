@@ -33,5 +33,6 @@ extern int FRAME_NUM;
 void load(std::string toLoad);//defined in main
 void save(std::string toSave);//defined in main
 void makeVideo(std::string toSave);//defined in main
+const int VIDEO_BATCH_SIZE = 600;
 
 #endif /* BulkUtilities_hpp */

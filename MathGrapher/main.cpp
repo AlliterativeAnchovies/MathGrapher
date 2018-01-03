@@ -163,11 +163,11 @@ bool controlFlow() {
 		screenrecord.y = 0;
 		screenrecord.w = RECORDABLE_WIDTH;
 		screenrecord.h = RECORDABLE_HEIGHT;
-		std::string FRAME_NUM_str = std::to_string(FRAME_NUM%600);
-		std::string FRAME_NUM_FOLDER_str = std::to_string(FRAME_NUM/600);
+		std::string FRAME_NUM_str = std::to_string(FRAME_NUM%VIDEO_BATCH_SIZE);
+		std::string FRAME_NUM_FOLDER_str = std::to_string(FRAME_NUM/VIDEO_BATCH_SIZE);
 		while (FRAME_NUM_str.size()<3) {FRAME_NUM_str = "0"+FRAME_NUM_str;}
 		while (FRAME_NUM_FOLDER_str.size()<3) {FRAME_NUM_FOLDER_str = "0"+FRAME_NUM_FOLDER_str;}
-		if (FRAME_NUM%600==0) {
+		if (FRAME_NUM%VIDEO_BATCH_SIZE==0) {
 			//mkdir(dumstupidcurrentdirectorybs+"/resources/Screenshots/intermediate"+FRAME_NUM_FOLDER_str);
 			std::string mkdirCommand = "mkdir "+dumstupidcurrentdirectorybs+"/resources/Screenshots/intermediate"+FRAME_NUM_FOLDER_str;
 			std::system(mkdirCommand.c_str());
@@ -714,6 +714,25 @@ void load(std::string toLoad) {
 	
 }
 
+void makeVideoFromBatch(int batchnum,std::string* listForConcatenation) {
+	std::string ffmpegLocation = "/usr/local/bin/";
+	std::string direcIn = dumstupidcurrentdirectorybs+"/resources/Screenshots/";
+	std::string direcOut = dumstupidcurrentdirectorybs+"/resources/Output/Intermediates/";
+	std::string tstring = std::to_string(batchnum);
+	while (tstring.size()<3) {tstring="0"+tstring;};
+	std::string direcInPrime = direcIn+"intermediate"+tstring+"/";
+	std::string theCommand = ffmpegLocation+"ffmpeg -i '"+direcInPrime+"screenshot%03d.bmp' -r 60 -pix_fmt yuv420p "+direcOut+tstring+".mp4";
+	std::system(theCommand.c_str());
+	*listForConcatenation+="file "+tstring+".mp4\n";
+	//delete the .bmps
+	for (int i = 0;i<VIDEO_BATCH_SIZE;i++) {
+		std::string numstr = std::to_string(i);
+		while (numstr.size()<3) {numstr="0"+numstr;}
+		std::string toRemove = direcInPrime+"screenshot"+numstr+".bmp";
+		std::remove(toRemove.c_str());
+	}
+}
+
 void makeVideo(std::string toSave) {
 	//call console command to ffmpeg, make mp4
 	//requires ffmpeg to be installed
@@ -721,13 +740,8 @@ void makeVideo(std::string toSave) {
 	std::string direcIn = dumstupidcurrentdirectorybs+"/resources/Screenshots/";
 	std::string direcOut = dumstupidcurrentdirectorybs+"/resources/Output/Intermediates/";
 	std::string concatList = "";
-	for (int i = 0;i<=FRAME_NUM/600;i++) {
-		std::string tstring = std::to_string(i);
-		while (tstring.size()<3) {tstring="0"+tstring;};
-		std::string direcInPrime = direcIn+"intermediate"+tstring+"/";
-		std::string theCommand = ffmpegLocation+"ffmpeg -i '"+direcInPrime+"screenshot%03d.bmp' -r 60 -pix_fmt yuv420p "+direcOut+tstring+".mp4";
-		std::system(theCommand.c_str());
-		concatList+="file "+tstring+".mp4\n";
+	for (int i = 0;i<=FRAME_NUM/VIDEO_BATCH_SIZE;i++) {
+		makeVideoFromBatch(i, &concatList);
 	}
 	std::fstream concaterFile;
 	concaterFile.open((dumstupidcurrentdirectorybs+"/resources/Output/Intermediates/concatFile.txt").c_str(),
