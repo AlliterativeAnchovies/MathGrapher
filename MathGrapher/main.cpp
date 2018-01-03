@@ -157,15 +157,23 @@ bool controlFlow() {
     
     
     //record screen
-    if (recordingVideo&&FRAME_NUM<120) {
+    if (recordingVideo) {
     	SDL_Rect screenrecord;
 		screenrecord.x = 0;
 		screenrecord.y = 0;
 		screenrecord.w = RECORDABLE_WIDTH;
 		screenrecord.h = RECORDABLE_HEIGHT;
-		std::string FRAME_NUM_str = std::to_string(FRAME_NUM);
-		while (FRAME_NUM_str.size()<5) {FRAME_NUM_str = "0"+FRAME_NUM_str;}
-    	screenshot(dumstupidcurrentdirectorybs+"/resources/Screenshots/screenshot"+FRAME_NUM_str+".bmp",
+		std::string FRAME_NUM_str = std::to_string(FRAME_NUM%600);
+		std::string FRAME_NUM_FOLDER_str = std::to_string(FRAME_NUM/600);
+		while (FRAME_NUM_str.size()<3) {FRAME_NUM_str = "0"+FRAME_NUM_str;}
+		while (FRAME_NUM_FOLDER_str.size()<3) {FRAME_NUM_FOLDER_str = "0"+FRAME_NUM_FOLDER_str;}
+		if (FRAME_NUM%600==0) {
+			//mkdir(dumstupidcurrentdirectorybs+"/resources/Screenshots/intermediate"+FRAME_NUM_FOLDER_str);
+			std::string mkdirCommand = "mkdir "+dumstupidcurrentdirectorybs+"/resources/Screenshots/intermediate"+FRAME_NUM_FOLDER_str;
+			std::system(mkdirCommand.c_str());
+		}
+    	screenshot(dumstupidcurrentdirectorybs+
+    			"/resources/Screenshots/intermediate"+FRAME_NUM_FOLDER_str+"/screenshot"+FRAME_NUM_str+".bmp",
     		&screenrecord);
     	FRAME_NUM++;
 	}
@@ -711,7 +719,23 @@ void makeVideo(std::string toSave) {
 	//requires ffmpeg to be installed
 	std::string ffmpegLocation = "/usr/local/bin/";
 	std::string direcIn = dumstupidcurrentdirectorybs+"/resources/Screenshots/";
-	std::string direcOut = dumstupidcurrentdirectorybs+"/resources/Output/";
-	std::string theCommand = ffmpegLocation+"ffmpeg -i '"+direcIn+"screenshot%05d.bmp' -r 60 -pix_fmt yuv420p "+direcOut+toSave+".mp4";
+	std::string direcOut = dumstupidcurrentdirectorybs+"/resources/Output/Intermediates/";
+	std::string concatList = "";
+	for (int i = 0;i<=FRAME_NUM/600;i++) {
+		std::string tstring = std::to_string(i);
+		while (tstring.size()<3) {tstring="0"+tstring;};
+		std::string direcInPrime = direcIn+"intermediate"+tstring+"/";
+		std::string theCommand = ffmpegLocation+"ffmpeg -i '"+direcInPrime+"screenshot%03d.bmp' -r 60 -pix_fmt yuv420p "+direcOut+tstring+".mp4";
+		std::system(theCommand.c_str());
+		concatList+="file "+tstring+".mp4\n";
+	}
+	std::fstream concaterFile;
+	concaterFile.open((dumstupidcurrentdirectorybs+"/resources/Output/Intermediates/concatFile.txt").c_str(),
+			std::fstream::out  | std::ofstream::trunc);
+	concaterFile << concatList;
+	concaterFile.close();
+	//ffmpeg -f concat -i list.txt -c copy merged.mp4
+	std::string theCommand = ffmpegLocation+"ffmpeg -f concat -i "+dumstupidcurrentdirectorybs+"/resources/Output/Intermediates/concatFile.txt -c copy "+dumstupidcurrentdirectorybs+"/resources/Output/"+toSave+".mp4";
 	std::system(theCommand.c_str());
+	FRAME_NUM = 0;
 }
