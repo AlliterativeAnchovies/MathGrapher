@@ -37,5 +37,6 @@ const int FRAME_RATE = 60;
 const int VIDEO_BATCH_SIZE = 600;	//don't make this larger than 999 - searches for screenshot###.bmp
 									//whereas screenshot1000 is of form screenshot####.bmp
 extern clock_t begin_time;//timer start
+#define FRAME_RATE_INFO//(un)comment to toggle debug outputs when frame rate is not met.
 
 #endif /* BulkUtilities_hpp */

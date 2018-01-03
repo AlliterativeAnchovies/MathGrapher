@@ -303,7 +303,9 @@ int main(int argc, const char * argv[]) {
     	if (delayMS>0) {SDL_Delay(delayMS);}
     	else {
     		//otherwise, uh-oh!  Not achieving proper frame rate!
-    		std::cout << "Frame rate fail by "<<(-delayMS)<<"ms\n";
+    		#ifdef FRAME_RATE_INFO
+    			std::cout << "Frame rate fail by "<<(-delayMS)<<"ms\n";
+    		#endif
     		//frame rate only fails on these occasions on my mac:
     		//Very first call to controlFlow()
     		//Occasionally when stopping a test run (clicking "Run Selected"
@@ -313,6 +315,10 @@ int main(int argc, const char * argv[]) {
     		//When "re-entering" the application (if you left MathGrapher running,
     		//but swapped over to chrome, then swapping back to MathGrapher would
     		//trigger a fail by ~2 ms)
+    		//When in an edit menu (this is because the text rendering system is wildly
+    		//inefficient.  This is the only one of these that is actually a wee bit of
+    		//a problem as if you are rendering too much text while recording, it'd happen
+    		//as well.)
     		//Good news is that it only fails once at a time!  I've never seen
     		//two frame rate fails in a row. (of course, this depends on the
     		//quality of your computer...)
@@ -762,6 +768,7 @@ void makeVideoFromBatch(int batchnum,std::string* listForConcatenation) {
 	std::string frameRateStr = std::to_string(FRAME_RATE);
 	std::string batchsizeStr = std::to_string(VIDEO_BATCH_SIZE);
 	
+	//demuxer method
 	std::fstream concaterFile;
 	std::string concaterFileFile = dumstupidcurrentdirectorybs+"/resources/Screenshots/concatImgFile.txt";
 	concaterFile.open((concaterFileFile).c_str(),std::fstream::out  | std::ofstream::trunc);
@@ -775,9 +782,21 @@ void makeVideoFromBatch(int batchnum,std::string* listForConcatenation) {
 	concaterFile.close();
 	std::string theCommand = ffmpegLocation+"ffmpeg -f concat -i "+concaterFileFile
 		+" -vsync vfr -pix_fmt yuv420p "+direcOut+tstring+".mp4";
+	//end of demuxer method
+	
+	//there's NO REASON why giving 600 frames at 60fps should produce a 24 second video, but yet
+	//with this code it does (two different methods listed here, one specifying frame rate 60fps
+	//and the other specifying 10 second duration.  The first produces a 24 second video at 60fps
+	//with random frames duplicated, the other produces a version of the first but cut-off at 10
+	//seconds (rather than scaled down to 10 seconds like I want)).  If you can figure out a way
+	//to fix one of these methods, it would be much appreciated as they are faster than the demuxer
+	//method which must create a 1200-line text file and then immediately read it again.  Also,
+	//these two methods are much simpler and smaller so they would be preferred if they would work.
+	
 	//frame rate method
 	//std::string theCommand = ffmpegLocation+"ffmpeg -i '"+direcInPrime+"screenshot%03d.bmp' -framerate "+frameRateStr+
 	//							" -r "+frameRateStr+" -pix_fmt yuv420p "+direcOut+tstring+".mp4";
+	
 	//duration method
 	//std::string videoLengthStr = std::to_string(VIDEO_BATCH_SIZE/FRAME_RATE);
 	//std::string theCommand = ffmpegLocation+"ffmpeg -i '"+direcInPrime+"screenshot%03d.bmp' "+
