@@ -21,7 +21,8 @@ Uint8 SaverPopup::handle(double mouseX,double mouseY,bool clicked) {
 	TTF_SizeUTF8((*fontgrab)(16), "Save", &offx, &offy);
 	drawTextWithBackground("Save", 16, px+sx-offx, py, 0xff000000, 0xff9fc9f2, 0xff000000);
 	if (clicked&&pointInBounds(mouseX, mouseY, px+sx-offx, px+sx, py, py+offy)) {
-		doSave(stringConcerned);
+		if (instringswitch==39) {doSave(instring);}
+		else {doSave(stringConcerned);}
 		toReturn = 0x02;
 	}
 	TTF_SizeUTF8((*fontgrab)(16), "Cancel", &offx, &offy);

@@ -73,7 +73,9 @@ bool controlFlow() {
                     if (runningVideo) {
                         runningVideo = false;
                         if (recordingVideo) {
-							makeVideo("testVideo");
+							//makeVideo("testVideo");
+							createPopup(SAVE_VIDEO_POPUP, 20, SCREEN_HEIGHT/2-25)
+								->concernWith(std::string("Generic_Video"));
 						}
                         recordingVideo = false;
                         for (DisplayObject* d : objects) {d->reset();}
