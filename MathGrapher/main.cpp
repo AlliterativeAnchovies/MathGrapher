@@ -173,8 +173,12 @@ bool controlFlow() {
 		while (FRAME_NUM_FOLDER_str.size()<3) {FRAME_NUM_FOLDER_str = "0"+FRAME_NUM_FOLDER_str;}
 		if (FRAME_NUM%VIDEO_BATCH_SIZE==0) {
 			//make directory for new batch of .bmps
-			std::string mkdirCommand = "mkdir "+dumstupidcurrentdirectorybs+"/resources/Screenshots/intermediate"+FRAME_NUM_FOLDER_str;
-			std::system(mkdirCommand.c_str());
+			std::string dirstring = dumstupidcurrentdirectorybs+"/resources/Screenshots/intermediate"+FRAME_NUM_str;
+			DIR* theDir;
+			if ((theDir = opendir(dirstring.c_str()))==NULL) {//if directory does not exist, create it
+				std::string mkdirCommand = "mkdir "+dirstring;
+				std::system(mkdirCommand.c_str());
+			} else {closedir(theDir);}
 			if (FRAME_NUM>0) {
 				//make intermediate .mp4 from batch of .bmps
 				int batchnumtemp = batchnum;
@@ -801,7 +805,16 @@ void makeVideoFromBatch(int batchnum,std::string* listForConcatenation) {
 	//std::string videoLengthStr = std::to_string(VIDEO_BATCH_SIZE/FRAME_RATE);
 	//std::string theCommand = ffmpegLocation+"ffmpeg -i '"+direcInPrime+"screenshot%03d.bmp' "+
 	//							" -t "+videoLengthStr+" -pix_fmt yuv420p "+direcOut+tstring+".mp4";
+	
+	//check if file already exists
+	struct stat buffer;
+	if (stat((direcOut+tstring+".mp4").c_str(),&buffer)==0) {
+		//file already exists!
+		remove((direcOut+tstring+".mp4").c_str());//delete it
+	}
+	//run command
 	std::system(theCommand.c_str());
+	//add to concatenation list for later linking of all batches
 	*listForConcatenation+="file "+tstring+".mp4\n";
 	//delete the .bmps
 	for (int i = 0;i<VIDEO_BATCH_SIZE;i++) {
@@ -827,8 +840,15 @@ void makeVideo(std::string toSave) {
 			std::fstream::out  | std::ofstream::trunc);
 	concaterFile << concatList;
 	concaterFile.close();
+	std::string outputFileName = dumstupidcurrentdirectorybs+"/resources/Output/"+toSave+".mp4";
+	//check if file already exists
+	struct stat buffer;
+	if (stat((outputFileName).c_str(),&buffer)==0) {
+		//file already exists!
+		remove((outputFileName).c_str());//delete it
+	}
 	//ffmpeg -f concat -i list.txt -c copy merged.mp4
-	std::string theCommand = ffmpegLocation+"ffmpeg -f concat -i "+dumstupidcurrentdirectorybs+"/resources/Output/Intermediates/concatFile.txt -c copy "+dumstupidcurrentdirectorybs+"/resources/Output/"+toSave+".mp4";
+	std::string theCommand = ffmpegLocation+"ffmpeg -f concat -i "+dumstupidcurrentdirectorybs+"/resources/Output/Intermediates/concatFile.txt -c copy "+outputFileName;
 	std::system(theCommand.c_str());
 	FRAME_NUM = 0;
 	concatList = "";

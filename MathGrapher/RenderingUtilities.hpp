@@ -27,6 +27,10 @@
 #include <algorithm>
 #include <fstream>//read & write files
 #include <thread>
+#include <sys/stat.h>	//just to check if the .mp4 files exist
+						//once compilers catch up to C++17 standard,
+						//then can replace with <system>, which is the
+						//standard library version.
 
 //My color palet:
 //0xff9fc9f2 - nice blue
