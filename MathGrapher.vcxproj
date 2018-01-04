@@ -108,13 +108,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="mathgrapher\BulkUtilities.hpp" />
-    <ClCompile Include="mathgrapher\DisplayObjects\DisplayObjects.hpp" />
-    <ClCompile Include="mathgrapher\DisplayObjects\Function.hpp" />
-    <ClCompile Include="mathgrapher\DisplayObjects\Graph.hpp" />
-    <ClCompile Include="mathgrapher\DisplayObjects\Interpolation.hpp" />
-    <ClCompile Include="mathgrapher\DisplayObjects\RawImage.hpp" />
-    <ClCompile Include="mathgrapher\DisplayObjects\RawText.hpp" />
-    <ClCompile Include="mathgrapher\DisplayObjects\Slider.hpp" />
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\DisplayObjects.hpp" />
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\Function.hpp" />
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\Graph.hpp" />
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\Interpolation.hpp" />
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\RawImage.hpp" />
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\RawText.hpp" />
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\Slider.hpp" />
     <ClCompile Include="mathgrapher\DisplayWrapper.hpp" />
     <ClCompile Include="mathgrapher\Functions.hpp" />
     <ClCompile Include="mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.hpp" />
@@ -146,13 +146,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="mathgrapher\BulkUtilities.cpp" />
-    <ClCompile Include="mathgrapher\DisplayObjects\DisplayObjects.cpp" />
-    <ClCompile Include="mathgrapher\DisplayObjects\Function.cpp" />
-    <ClCompile Include="mathgrapher\DisplayObjects\Graph.cpp" />
-    <ClCompile Include="mathgrapher\DisplayObjects\Interpolation.cpp" />
-    <ClCompile Include="mathgrapher\DisplayObjects\RawImage.cpp" />
-    <ClCompile Include="mathgrapher\DisplayObjects\RawText.cpp" />
-    <ClCompile Include="mathgrapher\DisplayObjects\Slider.cpp" />
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\DisplayObjects.cpp" />
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\Function.cpp" />
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\Graph.cpp" />
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\Interpolation.cpp" />
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\RawImage.cpp" />
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\RawText.cpp" />
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\Slider.cpp" />
     <ClCompile Include="mathgrapher\DisplayWrapper.cpp" />
     <ClCompile Include="mathgrapher\Functions.cpp" />
     <ClCompile Include="mathgrapher\main.cpp" />
