@@ -105,15 +105,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="mathgrapher\Functions.cpp" />
-    <ClCompile Include="mathgrapher\Graph.cpp" />
-    <ClCompile Include="mathgrapher\main.cpp" />
-    <ClCompile Include="mathgrapher\Popup.cpp" />
-    <ClCompile Include="mathgrapher\RenderingUtilities.cpp" />
-    <ClInclude Include="mathgrapher\Functions.hpp" />
-    <ClInclude Include="mathgrapher\Graph.hpp" />
-    <ClInclude Include="mathgrapher\Popup.hpp" />
-    <ClInclude Include="mathgrapher\RenderingUtilities.hpp" />
+    <ClCompile Include="mathgrapher\**" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
