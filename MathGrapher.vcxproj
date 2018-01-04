@@ -80,6 +80,7 @@
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>C:\Users\ebail\Desktop\dirent-1.23.1\include;C:\Users\ebail\Desktop\SDL2_ttf-2.0.14\include;C:\Users\ebail\Desktop\STUPIDITY INCARNATE\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/std:c++17 %(AdditionalOptions)</AdditionalOptions>
+      <ObjectFileName>$(IntDir)/%(RelativeDir)/</ObjectFileName>
     </ClCompile>
     <Link>
       <TargetMachine>MachineX86</TargetMachine>
