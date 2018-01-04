@@ -1,4 +1,39 @@
-﻿  main.cpp
+﻿  RenderingUtilities.cpp
+mathgrapher\RenderingUtilities.cpp(46): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\RenderingUtilities.cpp(45): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\RenderingUtilities.cpp(48): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\RenderingUtilities.cpp(47): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\RenderingUtilities.cpp(51): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\RenderingUtilities.cpp(56): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\RenderingUtilities.cpp(70): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\RenderingUtilities.cpp(72): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\RenderingUtilities.cpp(81): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\RenderingUtilities.cpp(83): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\RenderingUtilities.cpp(105): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\RenderingUtilities.cpp(223): warning C4018: '>': signed/unsigned mismatch
+mathgrapher\RenderingUtilities.cpp(239): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\RenderingUtilities.cpp(266): warning C4244: 'return': conversion from 'double' to 'Uint32', possible loss of data
+mathgrapher\RenderingUtilities.cpp(274): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\RenderingUtilities.cpp(380): warning C4244: 'initializing': conversion from 'double' to 'long', possible loss of data
+mathgrapher\RenderingUtilities.cpp(452): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\RenderingUtilities.cpp(458): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+mathgrapher\RenderingUtilities.cpp(528): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\RenderingUtilities.cpp(541): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\RenderingUtilities.cpp(545): warning C4018: '>': signed/unsigned mismatch
+mathgrapher\RenderingUtilities.cpp(565): warning C4018: '>': signed/unsigned mismatch
+mathgrapher\RenderingUtilities.cpp(708): warning C4018: '>=': signed/unsigned mismatch
+mathgrapher\RenderingUtilities.cpp(749): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\RenderingUtilities.cpp(757): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\RenderingUtilities.cpp(769): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\RenderingUtilities.cpp(787): warning C4018: '>=': signed/unsigned mismatch
+mathgrapher\RenderingUtilities.cpp(799): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\RenderingUtilities.cpp(830): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\RenderingUtilities.cpp(851): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\RenderingUtilities.cpp(867): warning C4018: '<': signed/unsigned mismatch
+  PopupWrapper.cpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\PopupWrapper.cpp(81): warning C4018: '<': signed/unsigned mismatch
+  main.cpp
 c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\main.cpp(131): warning C4018: '<': signed/unsigned mismatch
 c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(128): warning C4018: '<': signed/unsigned mismatch
@@ -18,54 +53,562 @@ mathgrapher\main.cpp(714): warning C4244: 'argument': conversion from 'double' t
 mathgrapher\main.cpp(725): warning C4244: 'initializing': conversion from 'double' to 'Uint32', possible loss of data
 mathgrapher\main.cpp(733): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\main.cpp(734): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-  DisplayWrapper.hpp
+  Functions.cpp
 c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
   DisplayWrapper.cpp
 c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\DisplayWrapper.cpp(61): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-  Generating Code...
-  Compiling...
+  BulkUtilities.cpp
+  RenderingUtilities.hpp
   PopupWrapper.hpp
 c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  Functions.hpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  DisplayWrapper.hpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  BulkUtilities.hpp
   Generating Code...
   Slider.cpp
-c1xx : fatal error C1083: Cannot open source file: 'mathgrapher\DisplayObjects\Slider.cpp': No such file or directory
+mathgrapher\DisplayObjectsFolder\Slider.cpp(38): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\DisplayObjectsFolder\Slider.cpp(44): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\DisplayObjectsFolder\Slider.cpp(47): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\DisplayObjectsFolder\Slider.cpp(70): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\DisplayObjectsFolder\Slider.cpp(113): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\DisplayObjectsFolder\Slider.cpp(129): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
   RawText.cpp
-c1xx : fatal error C1083: Cannot open source file: 'mathgrapher\DisplayObjects\RawText.cpp': No such file or directory
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\DisplayObjectsFolder\RawText.cpp(21): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\DisplayObjectsFolder\RawText.cpp(40): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\DisplayObjectsFolder\RawText.cpp(43): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\DisplayObjectsFolder\RawText.cpp(57): warning C4018: '<': signed/unsigned mismatch
   RawImage.cpp
-c1xx : fatal error C1083: Cannot open source file: 'mathgrapher\DisplayObjects\RawImage.cpp': No such file or directory
+mathgrapher\DisplayObjectsFolder\RawImage.cpp(19): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\DisplayObjectsFolder\RawImage.cpp(22): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\DisplayObjectsFolder\RawImage.cpp(36): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\DisplayObjectsFolder\RawImage.cpp(60): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\DisplayObjectsFolder\RawImage.cpp(70): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\DisplayObjectsFolder\RawImage.cpp(84): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\DisplayObjectsFolder\RawImage.cpp(92): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\DisplayObjectsFolder\RawImage.cpp(113): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
   Interpolation.cpp
-c1xx : fatal error C1083: Cannot open source file: 'mathgrapher\DisplayObjects\Interpolation.cpp': No such file or directory
   Graph.cpp
-c1xx : fatal error C1083: Cannot open source file: 'mathgrapher\DisplayObjects\Graph.cpp': No such file or directory
+mathgrapher\DisplayObjectsFolder\Graph.cpp(168): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\DisplayObjectsFolder\Graph.cpp(244): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\DisplayObjectsFolder\Graph.cpp(274): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\DisplayObjectsFolder\Graph.cpp(284): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\DisplayObjectsFolder\Graph.cpp(290): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\DisplayObjectsFolder\Graph.cpp(314): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\DisplayObjectsFolder\Graph.cpp(322): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\DisplayObjectsFolder\Graph.cpp(337): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\DisplayObjectsFolder\Graph.cpp(367): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\DisplayObjectsFolder\Graph.cpp(377): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\DisplayObjectsFolder\Graph.cpp(383): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\DisplayObjectsFolder\Graph.cpp(407): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\DisplayObjectsFolder\Graph.cpp(415): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\DisplayObjectsFolder\Graph.cpp(425): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\DisplayObjectsFolder\Graph.cpp(429): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\DisplayObjectsFolder\Graph.cpp(430): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\DisplayObjectsFolder\Graph.cpp(431): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\DisplayObjectsFolder\Graph.cpp(432): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\DisplayObjectsFolder\Graph.cpp(433): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\DisplayObjectsFolder\Graph.cpp(434): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\DisplayObjectsFolder\Graph.cpp(435): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\DisplayObjectsFolder\Graph.cpp(436): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\DisplayObjectsFolder\Graph.cpp(452): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\DisplayObjectsFolder\Graph.cpp(461): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\DisplayObjectsFolder\Graph.cpp(464): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\DisplayObjectsFolder\Graph.cpp(484): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\DisplayObjectsFolder\Graph.cpp(489): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\DisplayObjectsFolder\Graph.cpp(570): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\DisplayObjectsFolder\Graph.cpp(573): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\DisplayObjectsFolder\Graph.cpp(590): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\DisplayObjectsFolder\Graph.cpp(593): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\DisplayObjectsFolder\Graph.cpp(596): warning C4018: '<': signed/unsigned mismatch
   Function.cpp
-c1xx : fatal error C1083: Cannot open source file: 'mathgrapher\DisplayObjects\Function.cpp': No such file or directory
   DisplayObjects.cpp
-c1xx : fatal error C1083: Cannot open source file: 'mathgrapher\DisplayObjects\DisplayObjects.cpp': No such file or directory
-  Generating Code...
-  Compiling...
-  Function.hpp
-c1xx : fatal error C1083: Cannot open source file: 'mathgrapher\DisplayObjects\Function.hpp': No such file or directory
-  Generating Code...
-  Compiling...
-  Graph.hpp
-c1xx : fatal error C1083: Cannot open source file: 'mathgrapher\DisplayObjects\Graph.hpp': No such file or directory
-  Generating Code...
-  Compiling...
-  Interpolation.hpp
-c1xx : fatal error C1083: Cannot open source file: 'mathgrapher\DisplayObjects\Interpolation.hpp': No such file or directory
-  Generating Code...
-  Compiling...
-  RawImage.hpp
-c1xx : fatal error C1083: Cannot open source file: 'mathgrapher\DisplayObjects\RawImage.hpp': No such file or directory
-  Generating Code...
-  Compiling...
-  RawText.hpp
-c1xx : fatal error C1083: Cannot open source file: 'mathgrapher\DisplayObjects\RawText.hpp': No such file or directory
-  Generating Code...
-  Compiling...
   Slider.hpp
-c1xx : fatal error C1083: Cannot open source file: 'mathgrapher\DisplayObjects\Slider.hpp': No such file or directory
-  Generating Code...
-  Skipping... (no relevant changes detected)
+  RawText.hpp
+mathgrapher\DisplayObjectsFolder\RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  RawImage.hpp
+  Interpolation.hpp
+  Graph.hpp
+  Function.hpp
   DisplayObjects.hpp
+  Generating Code...
+  EditTextPopup.cpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditTextPopup.cpp(16): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditTextPopup.cpp(19): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditTextPopup.cpp(20): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditTextPopup.cpp(54): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditTextPopup.cpp(62): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditTextPopup.cpp(63): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditTextPopup.cpp(64): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditTextPopup.cpp(71): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\../Popup.hpp(143): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  mathgrapher\Popups\MajorPopups\Edit\EditTextPopup.cpp(26): note: see reference to function template instantiation 'bool handleEditableInfo<std::string>(double,double,int,int,double,double,std::string,std::string,T *,bool,int *,int *)' being compiled
+          with
+          [
+              T=std::string
+          ]
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\../Popup.hpp(146): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\../Popup.hpp(150): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\edit\../MajorPopup.hpp(26): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  mathgrapher\Popups\MajorPopups\Edit\EditTextPopup.cpp(54): note: see reference to function template instantiation 'bool EditPopup::drawInterpolationSidebar<RawText*>(int,int,bool,double,double,T)' being compiled
+          with
+          [
+              T=RawText *
+          ]
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\edit\../MajorPopup.hpp(33): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\edit\../MajorPopup.hpp(39): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\edit\../MajorPopup.hpp(41): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\edit\../MajorPopup.hpp(46): warning C4018: '<': signed/unsigned mismatch
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\edit\../MajorPopup.hpp(70): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  EditSliderPopup.cpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditSliderPopup.cpp(15): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditSliderPopup.cpp(17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditSliderPopup.cpp(18): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditSliderPopup.cpp(56): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditSliderPopup.cpp(58): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditSliderPopup.cpp(71): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditSliderPopup.cpp(73): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditSliderPopup.cpp(81): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditSliderPopup.cpp(88): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditSliderPopup.cpp(89): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditSliderPopup.cpp(90): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditSliderPopup.cpp(97): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\../Popup.hpp(143): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  mathgrapher\Popups\MajorPopups\Edit\EditSliderPopup.cpp(23): note: see reference to function template instantiation 'bool handleEditableInfo<std::string>(double,double,int,int,double,double,std::string,std::string,T *,bool,int *,int *)' being compiled
+          with
+          [
+              T=std::string
+          ]
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\../Popup.hpp(146): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\../Popup.hpp(150): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\edit\../MajorPopup.hpp(26): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  mathgrapher\Popups\MajorPopups\Edit\EditSliderPopup.cpp(81): note: see reference to function template instantiation 'bool EditPopup::drawInterpolationSidebar<Slider*>(int,int,bool,double,double,T)' being compiled
+          with
+          [
+              T=Slider *
+          ]
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\edit\../MajorPopup.hpp(33): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\edit\../MajorPopup.hpp(39): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\edit\../MajorPopup.hpp(41): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\edit\../MajorPopup.hpp(46): warning C4018: '<': signed/unsigned mismatch
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\edit\../MajorPopup.hpp(70): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  EditImagePopup.cpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditImagePopup.cpp(16): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditImagePopup.cpp(19): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditImagePopup.cpp(20): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditImagePopup.cpp(50): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditImagePopup.cpp(63): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditImagePopup.cpp(68): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditImagePopup.cpp(71): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditImagePopup.cpp(79): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditImagePopup.cpp(80): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditImagePopup.cpp(81): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditImagePopup.cpp(88): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\../Popup.hpp(143): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  mathgrapher\Popups\MajorPopups\Edit\EditImagePopup.cpp(25): note: see reference to function template instantiation 'bool handleEditableInfo<std::string>(double,double,int,int,double,double,std::string,std::string,T *,bool,int *,int *)' being compiled
+          with
+          [
+              T=std::string
+          ]
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\../Popup.hpp(146): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\../Popup.hpp(150): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\edit\../MajorPopup.hpp(26): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  mathgrapher\Popups\MajorPopups\Edit\EditImagePopup.cpp(71): note: see reference to function template instantiation 'bool EditPopup::drawInterpolationSidebar<RawImage*>(int,int,bool,double,double,T)' being compiled
+          with
+          [
+              T=RawImage *
+          ]
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\edit\../MajorPopup.hpp(33): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\edit\../MajorPopup.hpp(39): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\edit\../MajorPopup.hpp(41): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\edit\../MajorPopup.hpp(46): warning C4018: '<': signed/unsigned mismatch
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\edit\../MajorPopup.hpp(70): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  EditGraphPopup.cpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(14): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(18): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(75): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(77): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(83): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(85): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(93): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(97): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(100): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(101): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(105): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(108): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(116): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(119): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(126): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(129): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(136): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(140): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(143): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(144): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(148): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(151): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(159): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(162): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(169): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(171): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(179): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(185): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(186): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(187): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(198): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\../Popup.hpp(143): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(20): note: see reference to function template instantiation 'bool handleEditableInfo<std::string>(double,double,int,int,double,double,std::string,std::string,T *,bool,int *,int *)' being compiled
+          with
+          [
+              T=std::string
+          ]
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\../Popup.hpp(146): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\../Popup.hpp(150): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\edit\../MajorPopup.hpp(26): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(179): note: see reference to function template instantiation 'bool EditPopup::drawInterpolationSidebar<Graph*>(int,int,bool,double,double,T)' being compiled
+          with
+          [
+              T=Graph *
+          ]
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\edit\../MajorPopup.hpp(33): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\edit\../MajorPopup.hpp(39): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\edit\../MajorPopup.hpp(41): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\edit\../MajorPopup.hpp(46): warning C4018: '<': signed/unsigned mismatch
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\edit\../MajorPopup.hpp(70): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  EditTextPopup.hpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  EditSliderPopup.hpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  EditImagePopup.hpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  EditGraphPopup.hpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  Generating Code...
+  SaverPopup.cpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\SaverPopup.cpp(15): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\SaverPopup.cpp(22): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\SaverPopup.cpp(23): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\SaverPopup.cpp(29): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\SaverPopup.cpp(30): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\../Popup.hpp(143): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  mathgrapher\Popups\MajorPopups\SaverPopup.cpp(19): note: see reference to function template instantiation 'bool handleEditableInfo<std::string>(double,double,int,int,double,double,std::string,std::string,T *,bool,int *,int *)' being compiled
+          with
+          [
+              T=std::string
+          ]
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\../Popup.hpp(146): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\../Popup.hpp(150): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  MajorPopup.cpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  MainDisplay.cpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\MainDisplay.cpp(19): warning C4018: '<': signed/unsigned mismatch
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(128): warning C4018: '<': signed/unsigned mismatch
+  mathgrapher\Popups\MajorPopups\MainDisplay.cpp(25): note: see reference to function template instantiation 'auto map<MainDisplay::handle::<lambda_f888c7fc461af843a8ae4156f6e212c4>,DisplayObject*>(A,std::vector<DisplayObject *,std::allocator<_Ty>>)' being compiled
+          with
+          [
+              A=MainDisplay::handle::<lambda_f888c7fc461af843a8ae4156f6e212c4>,
+              _Ty=DisplayObject *
+          ]
+mathgrapher\Popups\MajorPopups\MainDisplay.cpp(47): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\MainDisplay.cpp(49): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\MainDisplay.cpp(50): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\MainDisplay.cpp(55): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\Popups\MajorPopups\MainDisplay.cpp(59): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\MainDisplay.cpp(64): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\MainDisplay.cpp(65): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\MainDisplay.cpp(75): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\MainDisplay.cpp(76): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\MainDisplay.cpp(100): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\MainDisplay.cpp(101): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\MainDisplay.cpp(103): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\Popups\MajorPopups\MainDisplay.cpp(119): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\MainDisplay.cpp(120): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\MainDisplay.cpp(132): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\MainDisplay.cpp(133): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\MainDisplay.cpp(145): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\MainDisplay.cpp(146): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\MainDisplay.cpp(154): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\MainDisplay.cpp(155): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\MainDisplay.cpp(161): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\MainDisplay.cpp(162): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\MainDisplay.cpp(179): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\MainDisplay.cpp(180): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\MainDisplay.cpp(182): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\MainDisplay.cpp(184): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\Popups\MajorPopups\MainDisplay.cpp(186): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\MainDisplay.cpp(187): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\MainDisplay.cpp(201): warning C4018: '<': signed/unsigned mismatch
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(114): warning C4018: '<': signed/unsigned mismatch
+  mathgrapher\Popups\MajorPopups\MainDisplay.cpp(25): note: see reference to function template instantiation 'C foldr<MainDisplay::handle::<lambda_2f8a84b0b67a8318cbc58be16a1865a7>,bool,bool>(A,std::vector<bool,std::allocator<_Ty>>,C)' being compiled
+          with
+          [
+              C=bool,
+              A=MainDisplay::handle::<lambda_2f8a84b0b67a8318cbc58be16a1865a7>,
+              _Ty=bool
+          ]
+  SaverPopup.hpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  MajorPopup.hpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  MainDisplay.hpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  Generating Code...
+  SaveVideoPopup.cpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  SaveFilePopup.cpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  SaveVideoPopup.hpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  SaveFilePopup.hpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  Generating Code...
+  Popup.cpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\Popup.cpp(136): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  Popup.hpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  Generating Code...
+  EditFunctionPopup.cpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\EditFunctionPopup.cpp(15): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\EditFunctionPopup.cpp(16): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\EditFunctionPopup.cpp(17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\EditFunctionPopup.cpp(18): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\EditFunctionPopup.cpp(31): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\EditFunctionPopup.cpp(38): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\EditFunctionPopup.cpp(49): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\EditFunctionPopup.cpp(55): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\EditFunctionPopup.cpp(67): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\quickcloserpopups\../Popup.hpp(143): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\EditFunctionPopup.cpp(24): note: see reference to function template instantiation 'bool handleEditableInfo<double>(double,double,int,int,double,double,std::string,std::string,T *,bool,int *,int *)' being compiled
+          with
+          [
+              T=double
+          ]
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\quickcloserpopups\../Popup.hpp(146): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\quickcloserpopups\../Popup.hpp(150): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  CreateSimpleInterpolation.cpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateSimpleInterpolation.cpp(15): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateSimpleInterpolation.cpp(16): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateSimpleInterpolation.cpp(18): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateSimpleInterpolation.cpp(19): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateSimpleInterpolation.cpp(35): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateSimpleInterpolation.cpp(51): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateSimpleInterpolation.cpp(52): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\quickcloserpopups\../Popup.hpp(143): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateSimpleInterpolation.cpp(27): note: see reference to function template instantiation 'bool handleEditableInfo<double>(double,double,int,int,double,double,std::string,std::string,T *,bool,int *,int *)' being compiled
+          with
+          [
+              T=double
+          ]
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\quickcloserpopups\../Popup.hpp(146): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\quickcloserpopups\../Popup.hpp(150): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  CreateResizeInterpolation.cpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateResizeInterpolation.cpp(15): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateResizeInterpolation.cpp(16): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateResizeInterpolation.cpp(18): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateResizeInterpolation.cpp(19): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateResizeInterpolation.cpp(34): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateResizeInterpolation.cpp(53): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateResizeInterpolation.cpp(61): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateResizeInterpolation.cpp(62): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\quickcloserpopups\../Popup.hpp(143): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateResizeInterpolation.cpp(26): note: see reference to function template instantiation 'bool handleEditableInfo<double>(double,double,int,int,double,double,std::string,std::string,T *,bool,int *,int *)' being compiled
+          with
+          [
+              T=double
+          ]
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\quickcloserpopups\../Popup.hpp(146): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\quickcloserpopups\../Popup.hpp(150): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  CreatePointOfInterest.cpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreatePointOfInterest.cpp(15): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreatePointOfInterest.cpp(16): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreatePointOfInterest.cpp(23): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreatePointOfInterest.cpp(24): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreatePointOfInterest.cpp(41): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreatePointOfInterest.cpp(46): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreatePointOfInterest.cpp(47): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreatePointOfInterest.cpp(55): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreatePointOfInterest.cpp(56): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\quickcloserpopups\../Popup.hpp(143): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreatePointOfInterest.cpp(32): note: see reference to function template instantiation 'bool handleEditableInfo<std::string>(double,double,int,int,double,double,std::string,std::string,T *,bool,int *,int *)' being compiled
+          with
+          [
+              T=std::string
+          ]
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\quickcloserpopups\../Popup.hpp(146): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\quickcloserpopups\../Popup.hpp(150): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  CreateHighlightInterpolation.cpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateHighlightInterpolation.cpp(15): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateHighlightInterpolation.cpp(16): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateHighlightInterpolation.cpp(18): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateHighlightInterpolation.cpp(19): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateHighlightInterpolation.cpp(55): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateHighlightInterpolation.cpp(56): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\quickcloserpopups\../Popup.hpp(143): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateHighlightInterpolation.cpp(24): note: see reference to function template instantiation 'bool handleEditableInfo<double>(double,double,int,int,double,double,std::string,std::string,T *,bool,int *,int *)' being compiled
+          with
+          [
+              T=double
+          ]
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\quickcloserpopups\../Popup.hpp(146): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\quickcloserpopups\../Popup.hpp(150): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  CreateFunctionRunInterpolation.cpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateFunctionRunInterpolation.cpp(14): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateFunctionRunInterpolation.cpp(15): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateFunctionRunInterpolation.cpp(17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateFunctionRunInterpolation.cpp(18): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateFunctionRunInterpolation.cpp(41): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateFunctionRunInterpolation.cpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\quickcloserpopups\../Popup.hpp(143): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateFunctionRunInterpolation.cpp(24): note: see reference to function template instantiation 'bool handleEditableInfo<double>(double,double,int,int,double,double,std::string,std::string,T *,bool,int *,int *)' being compiled
+          with
+          [
+              T=double
+          ]
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\quickcloserpopups\../Popup.hpp(146): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\quickcloserpopups\../Popup.hpp(150): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  EditFunctionPopup.hpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  CreateSimpleInterpolation.hpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  CreateResizeInterpolation.hpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  CreatePointOfInterest.hpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  CreateHighlightInterpolation.hpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  CreateFunctionRunInterpolation.hpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  Generating Code...
+  QuickCloserPopup.cpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  QuickCloserPopup.hpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  Generating Code...
+  LoadFilePopup.cpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\Select\LoadFilePopup.cpp(15): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\Select\LoadFilePopup.cpp(16): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\Select\LoadFilePopup.cpp(18): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\Popups\QuickCloserPopups\Select\LoadFilePopup.cpp(23): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\Select\LoadFilePopup.cpp(24): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\Select\LoadFilePopup.cpp(32): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  ChooseWhichImagePopup.cpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\Select\ChooseWhichImagePopup.cpp(15): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\Select\ChooseWhichImagePopup.cpp(16): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\Select\ChooseWhichImagePopup.cpp(18): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\Popups\QuickCloserPopups\Select\ChooseWhichImagePopup.cpp(21): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\Select\ChooseWhichImagePopup.cpp(22): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\Select\ChooseWhichImagePopup.cpp(35): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  ChoosePointConcernedForLinkingPopup.cpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\Select\ChoosePointConcernedForLinkingPopup.cpp(15): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\Select\ChoosePointConcernedForLinkingPopup.cpp(16): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\Select\ChoosePointConcernedForLinkingPopup.cpp(18): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\Popups\QuickCloserPopups\Select\ChoosePointConcernedForLinkingPopup.cpp(21): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\Select\ChoosePointConcernedForLinkingPopup.cpp(22): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\Select\ChoosePointConcernedForLinkingPopup.cpp(30): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  ChooseInterpolationPopup.cpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\Select\ChooseInterpolationPopup.cpp(15): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\Select\ChooseInterpolationPopup.cpp(16): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\Select\ChooseInterpolationPopup.cpp(35): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\Popups\QuickCloserPopups\Select\ChooseInterpolationPopup.cpp(43): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\Select\ChooseInterpolationPopup.cpp(44): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  ChooseFunctionPopup.cpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\Select\ChooseFunctionPopup.cpp(15): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\Select\ChooseFunctionPopup.cpp(16): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\Select\ChooseFunctionPopup.cpp(18): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\Popups\QuickCloserPopups\Select\ChooseFunctionPopup.cpp(21): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\Select\ChooseFunctionPopup.cpp(22): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\Select\ChooseFunctionPopup.cpp(36): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  ChooseFunctionInterpolation.cpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\Select\ChooseFunctionInterpolation.cpp(15): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\Select\ChooseFunctionInterpolation.cpp(16): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\Select\ChooseFunctionInterpolation.cpp(21): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\Select\ChooseFunctionInterpolation.cpp(22): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\Select\ChooseFunctionInterpolation.cpp(31): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\Select\ChooseFunctionInterpolation.cpp(32): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  AddObjectPopup.cpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\Select\AddObjectPopup.cpp(16): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\Select\AddObjectPopup.cpp(17): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\Select\AddObjectPopup.cpp(18): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\Select\AddObjectPopup.cpp(21): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\Select\AddObjectPopup.cpp(27): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\Select\AddObjectPopup.cpp(32): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\Select\AddObjectPopup.cpp(33): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\Select\AddObjectPopup.cpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\Select\AddObjectPopup.cpp(43): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\Select\AddObjectPopup.cpp(52): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\Select\AddObjectPopup.cpp(53): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  LoadFilePopup.hpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  ChooseWhichImagePopup.hpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  ChoosePointConcernedForLinkingPopup.hpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  ChooseInterpolationPopup.hpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  ChooseFunctionPopup.hpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  ChooseFunctionInterpolation.hpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  AddObjectPopup.hpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  Generating Code...
+Debug\/mathgrapher\/BulkUtilities.obj : warning LNK4042: object specified more than once; extras ignored
+Debug\/mathgrapher\/DisplayWrapper.obj : warning LNK4042: object specified more than once; extras ignored
+Debug\/mathgrapher\/Functions.obj : warning LNK4042: object specified more than once; extras ignored
+Debug\/mathgrapher\/PopupWrapper.obj : warning LNK4042: object specified more than once; extras ignored
+Debug\/mathgrapher\/RenderingUtilities.obj : warning LNK4042: object specified more than once; extras ignored
+Debug\/mathgrapher\DisplayObjectsFolder\/DisplayObjects.obj : warning LNK4042: object specified more than once; extras ignored
+Debug\/mathgrapher\DisplayObjectsFolder\/Function.obj : warning LNK4042: object specified more than once; extras ignored
+Debug\/mathgrapher\DisplayObjectsFolder\/Graph.obj : warning LNK4042: object specified more than once; extras ignored
+Debug\/mathgrapher\DisplayObjectsFolder\/Interpolation.obj : warning LNK4042: object specified more than once; extras ignored
+Debug\/mathgrapher\DisplayObjectsFolder\/RawImage.obj : warning LNK4042: object specified more than once; extras ignored
+Debug\/mathgrapher\DisplayObjectsFolder\/RawText.obj : warning LNK4042: object specified more than once; extras ignored
+Debug\/mathgrapher\DisplayObjectsFolder\/Slider.obj : warning LNK4042: object specified more than once; extras ignored
+Debug\/mathgrapher\Popups\MajorPopups\Edit\/EditGraphPopup.obj : warning LNK4042: object specified more than once; extras ignored
+Debug\/mathgrapher\Popups\MajorPopups\Edit\/EditImagePopup.obj : warning LNK4042: object specified more than once; extras ignored
+Debug\/mathgrapher\Popups\MajorPopups\Edit\/EditSliderPopup.obj : warning LNK4042: object specified more than once; extras ignored
+Debug\/mathgrapher\Popups\MajorPopups\Edit\/EditTextPopup.obj : warning LNK4042: object specified more than once; extras ignored
+Debug\/mathgrapher\Popups\MajorPopups\/MainDisplay.obj : warning LNK4042: object specified more than once; extras ignored
+Debug\/mathgrapher\Popups\MajorPopups\/MajorPopup.obj : warning LNK4042: object specified more than once; extras ignored
+Debug\/mathgrapher\Popups\MajorPopups\/SaverPopup.obj : warning LNK4042: object specified more than once; extras ignored
+Debug\/mathgrapher\Popups\MajorPopups\Savers\/SaveFilePopup.obj : warning LNK4042: object specified more than once; extras ignored
+Debug\/mathgrapher\Popups\MajorPopups\Savers\/SaveVideoPopup.obj : warning LNK4042: object specified more than once; extras ignored
+Debug\/mathgrapher\Popups\/Popup.obj : warning LNK4042: object specified more than once; extras ignored
+Debug\/mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\/CreateFunctionRunInterpolation.obj : warning LNK4042: object specified more than once; extras ignored
+Debug\/mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\/CreateHighlightInterpolation.obj : warning LNK4042: object specified more than once; extras ignored
+Debug\/mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\/CreatePointOfInterest.obj : warning LNK4042: object specified more than once; extras ignored
+Debug\/mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\/CreateResizeInterpolation.obj : warning LNK4042: object specified more than once; extras ignored
+Debug\/mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\/CreateSimpleInterpolation.obj : warning LNK4042: object specified more than once; extras ignored
+Debug\/mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\/EditFunctionPopup.obj : warning LNK4042: object specified more than once; extras ignored
+Debug\/mathgrapher\Popups\QuickCloserPopups\/QuickCloserPopup.obj : warning LNK4042: object specified more than once; extras ignored
+Debug\/mathgrapher\Popups\QuickCloserPopups\Select\/AddObjectPopup.obj : warning LNK4042: object specified more than once; extras ignored
+Debug\/mathgrapher\Popups\QuickCloserPopups\Select\/ChooseFunctionInterpolation.obj : warning LNK4042: object specified more than once; extras ignored
+Debug\/mathgrapher\Popups\QuickCloserPopups\Select\/ChooseFunctionPopup.obj : warning LNK4042: object specified more than once; extras ignored
+Debug\/mathgrapher\Popups\QuickCloserPopups\Select\/ChooseInterpolationPopup.obj : warning LNK4042: object specified more than once; extras ignored
+Debug\/mathgrapher\Popups\QuickCloserPopups\Select\/ChoosePointConcernedForLinkingPopup.obj : warning LNK4042: object specified more than once; extras ignored
+Debug\/mathgrapher\Popups\QuickCloserPopups\Select\/ChooseWhichImagePopup.obj : warning LNK4042: object specified more than once; extras ignored
+Debug\/mathgrapher\Popups\QuickCloserPopups\Select\/LoadFilePopup.obj : warning LNK4042: object specified more than once; extras ignored
+  MathGrapher.vcxproj -> C:\Users\ebail\Documents\GitHub\MathGrapher\Debug\MathGrapher.exe
