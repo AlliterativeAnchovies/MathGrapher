@@ -110,8 +110,6 @@
     <ClCompile Include="mathgrapher\main.cpp" />
     <ClCompile Include="mathgrapher\Popup.cpp" />
     <ClCompile Include="mathgrapher\RenderingUtilities.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="mathgrapher\Functions.hpp" />
     <ClInclude Include="mathgrapher\Graph.hpp" />
     <ClInclude Include="mathgrapher\Popup.hpp" />
