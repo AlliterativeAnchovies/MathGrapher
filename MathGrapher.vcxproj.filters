@@ -129,6 +129,8 @@
     <ClCompile Include="mathgrapher\BulkUtilities.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
     <ClCompile Include="mathgrapher\BulkUtilities.hpp">
       <Filter>Header Files</Filter>
     </ClCompile>
