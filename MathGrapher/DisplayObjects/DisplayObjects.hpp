@@ -13,11 +13,11 @@
 #include <iostream>
 #include <vector>
 #include <functional>
-#if defined _WINDOWS
+//#if defined _WINDOWS
 	#include "../BulkUtilities.hpp"
-#else
-	#include "BulkUtilities.hpp"
-#endif
+//#else
+//	#include "BulkUtilities.hpp"
+//#endif
 
 
 

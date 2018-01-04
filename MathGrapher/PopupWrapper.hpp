@@ -37,7 +37,7 @@
 //include these files.  But I do have to do it for DisplayObjects... wtf???
 
 
-#if defined _WINDOWS
+//#if defined _WINDOWS
 	#include "Popups/QuickCloserPopups/QuickCloserPopup.hpp"
 	#include "Popups/QuickCloserPopups/CreateOrEdit/CreateSimpleInterpolation.hpp"
 	#include "Popups/QuickCloserPopups/CreateOrEdit/CreateResizeInterpolation.hpp"
@@ -60,7 +60,7 @@
 	#include "Popups/MajorPopups/Edit/EditTextPopup.hpp"
 	#include "Popups/MajorPopups/Savers/SaveFilePopup.hpp"
 	#include "Popups/MajorPopups/Savers/SaveVideoPopup.hpp"
-#else
+/*#else
 	#include "QuickCloserPopup.hpp"
 	#include "CreateSimpleInterpolation.hpp"
 	#include "CreateResizeInterpolation.hpp"
@@ -84,7 +84,7 @@
 	#include "EditTextPopup.hpp"
 	#include "SaverPopup.hpp"
 	#include "SaveVideoPopup.hpp"
-#endif
+#endif*/
 
 void deletePopup(Popup* p);
 
