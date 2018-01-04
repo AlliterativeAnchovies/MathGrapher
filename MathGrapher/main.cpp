@@ -259,15 +259,24 @@ int main(int argc, const char * argv[]) {
     //DEBUG is XCode's automatic debug macro, _DEBUG is Visual Studio's
     #if defined DEBUG
 		std::cout << "Warning: Using a development build!\n";
-        //I manually found xcode's debug directory and dragged "resources"
-        //into it.  So if I add stuff to resources, I'll have to re-copy it
-        //there :(.  Which is stupid.  Stupid xcode.
+        //Note: This is accesses a copy of the resources folder of the project,
+		//so if I want any saves/videos I made to persist, I need to go in and pull
+		//them out myself.
+		//There may be something I can do on shutdown to copy the resources back to the
+		//right directory, IDK, but its not a priority atm.
 		dumstupidcurrentdirectorybs = ".";//getenv("PWD");
 	#elif defined _DEBUG
         std::cout << "Warning: Using a development build!\n";
         //The one instance where visual studio is better than xcode.  There
         //were no hijinks in making this work.  Yay.
-		dumstupidcurrentdirectorybs = ".";
+		//Its important to understand why this works, though - in XCode, I had
+		//to manually copy resources to the debug folder because the debug folder
+		//is in a completely different area of the computer than the project directory.
+		//In visual studios, the debug folder is a folder inside the project directory,
+		//so to get to resources (in the project directory) I have to pop out of the
+		//debug directory - hence the two dots instead of one - but I do not have to
+		//manually copy things anywhere.
+		dumstupidcurrentdirectorybs = "..";
 	#elif defined _WINDOWS
 		std::cout << "Visual Studio Compiling For Release";
 		//I have no idea how this works for windows and it doesn't really matter,
