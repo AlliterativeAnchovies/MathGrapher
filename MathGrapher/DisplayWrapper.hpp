@@ -17,13 +17,13 @@
 // DisplayObjects.hpp -> [All the display stuffs] -> DisplayWrapper.hpp
 //   declares stuff   ->      defines stuff  ->   groups everything together
 
-#include "DisplayObjects/DisplayObjects.hpp"
-#include "DisplayObjects/Graph.hpp"
-#include "DisplayObjects/Slider.hpp"
-#include "DisplayObjects/RawImage.hpp"
-#include "DisplayObjects/Interpolation.hpp"
-#include "DisplayObjects/Function.hpp"
-#include "DisplayObjects/RawText.hpp"
+#include "DisplayObjectsFolder/DisplayObjects.hpp"
+#include "DisplayObjectsFolder/Graph.hpp"
+#include "DisplayObjectsFolder/Slider.hpp"
+#include "DisplayObjectsFolder/RawImage.hpp"
+#include "DisplayObjectsFolder/Interpolation.hpp"
+#include "DisplayObjectsFolder/Function.hpp"
+#include "DisplayObjectsFolder/RawText.hpp"
 
 //Returns a vector containing all valid interpolations
 template<typename T> std::vector<std::string> getValidInterpolations() {

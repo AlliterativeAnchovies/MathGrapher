@@ -1,165 +1,71 @@
-﻿  Slider.cpp
-mathgrapher\DisplayObjects\Slider.cpp(38): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\DisplayObjects\Slider.cpp(44): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\DisplayObjects\Slider.cpp(47): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\DisplayObjects\Slider.cpp(70): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\DisplayObjects\Slider.cpp(113): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\DisplayObjects\Slider.cpp(129): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+﻿  main.cpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\main.cpp(131): warning C4018: '<': signed/unsigned mismatch
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(128): warning C4018: '<': signed/unsigned mismatch
+  mathgrapher\main.cpp(159): note: see reference to function template instantiation 'auto map<controlFlow::<lambda_d634d2136bd74156a311bcccdd915468>,Popup*>(A,std::vector<Popup *,std::allocator<_Ty>>)' being compiled
+          with
+          [
+              A=controlFlow::<lambda_d634d2136bd74156a311bcccdd915468>,
+              _Ty=Popup *
+          ]
+mathgrapher\main.cpp(303): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+mathgrapher\main.cpp(305): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+mathgrapher\main.cpp(307): warning C4244: 'argument': conversion from 'double' to 'Uint32', possible loss of data
+mathgrapher\main.cpp(332): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+mathgrapher\main.cpp(584): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\main.cpp(672): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\main.cpp(714): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\main.cpp(725): warning C4244: 'initializing': conversion from 'double' to 'Uint32', possible loss of data
+mathgrapher\main.cpp(733): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\main.cpp(734): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  DisplayWrapper.hpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  DisplayWrapper.cpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\DisplayWrapper.cpp(61): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  Generating Code...
+  Compiling...
+  PopupWrapper.hpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\DisplayObjectsFolder/RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  Generating Code...
+  Slider.cpp
+c1xx : fatal error C1083: Cannot open source file: 'mathgrapher\DisplayObjects\Slider.cpp': No such file or directory
   RawText.cpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjects\RawText.hpp(40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\DisplayObjects\RawText.cpp(21): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\DisplayObjects\RawText.cpp(40): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\DisplayObjects\RawText.cpp(43): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\DisplayObjects\RawText.cpp(57): warning C4018: '<': signed/unsigned mismatch
+c1xx : fatal error C1083: Cannot open source file: 'mathgrapher\DisplayObjects\RawText.cpp': No such file or directory
   RawImage.cpp
-mathgrapher\DisplayObjects\RawImage.cpp(19): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\DisplayObjects\RawImage.cpp(22): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\DisplayObjects\RawImage.cpp(36): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\DisplayObjects\RawImage.cpp(60): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\DisplayObjects\RawImage.cpp(70): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\DisplayObjects\RawImage.cpp(84): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\DisplayObjects\RawImage.cpp(92): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\DisplayObjects\RawImage.cpp(113): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c1xx : fatal error C1083: Cannot open source file: 'mathgrapher\DisplayObjects\RawImage.cpp': No such file or directory
   Interpolation.cpp
+c1xx : fatal error C1083: Cannot open source file: 'mathgrapher\DisplayObjects\Interpolation.cpp': No such file or directory
   Graph.cpp
-mathgrapher\DisplayObjects\Graph.cpp(168): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\DisplayObjects\Graph.cpp(244): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\DisplayObjects\Graph.cpp(274): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\DisplayObjects\Graph.cpp(284): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\DisplayObjects\Graph.cpp(290): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\DisplayObjects\Graph.cpp(314): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\DisplayObjects\Graph.cpp(322): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\DisplayObjects\Graph.cpp(337): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\DisplayObjects\Graph.cpp(367): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\DisplayObjects\Graph.cpp(377): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\DisplayObjects\Graph.cpp(383): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\DisplayObjects\Graph.cpp(407): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\DisplayObjects\Graph.cpp(415): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\DisplayObjects\Graph.cpp(425): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\DisplayObjects\Graph.cpp(429): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-mathgrapher\DisplayObjects\Graph.cpp(430): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-mathgrapher\DisplayObjects\Graph.cpp(431): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-mathgrapher\DisplayObjects\Graph.cpp(432): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-mathgrapher\DisplayObjects\Graph.cpp(433): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-mathgrapher\DisplayObjects\Graph.cpp(434): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-mathgrapher\DisplayObjects\Graph.cpp(435): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-mathgrapher\DisplayObjects\Graph.cpp(436): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-mathgrapher\DisplayObjects\Graph.cpp(452): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\DisplayObjects\Graph.cpp(461): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\DisplayObjects\Graph.cpp(464): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\DisplayObjects\Graph.cpp(484): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\DisplayObjects\Graph.cpp(489): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\DisplayObjects\Graph.cpp(570): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\DisplayObjects\Graph.cpp(573): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\DisplayObjects\Graph.cpp(590): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\DisplayObjects\Graph.cpp(593): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\DisplayObjects\Graph.cpp(596): warning C4018: '<': signed/unsigned mismatch
+c1xx : fatal error C1083: Cannot open source file: 'mathgrapher\DisplayObjects\Graph.cpp': No such file or directory
   Function.cpp
+c1xx : fatal error C1083: Cannot open source file: 'mathgrapher\DisplayObjects\Function.cpp': No such file or directory
   DisplayObjects.cpp
+c1xx : fatal error C1083: Cannot open source file: 'mathgrapher\DisplayObjects\DisplayObjects.cpp': No such file or directory
+  Generating Code...
+  Compiling...
+  Function.hpp
+c1xx : fatal error C1083: Cannot open source file: 'mathgrapher\DisplayObjects\Function.hpp': No such file or directory
+  Generating Code...
+  Compiling...
+  Graph.hpp
+c1xx : fatal error C1083: Cannot open source file: 'mathgrapher\DisplayObjects\Graph.hpp': No such file or directory
+  Generating Code...
+  Compiling...
+  Interpolation.hpp
+c1xx : fatal error C1083: Cannot open source file: 'mathgrapher\DisplayObjects\Interpolation.hpp': No such file or directory
+  Generating Code...
+  Compiling...
+  RawImage.hpp
+c1xx : fatal error C1083: Cannot open source file: 'mathgrapher\DisplayObjects\RawImage.hpp': No such file or directory
+  Generating Code...
+  Compiling...
+  RawText.hpp
+c1xx : fatal error C1083: Cannot open source file: 'mathgrapher\DisplayObjects\RawText.hpp': No such file or directory
+  Generating Code...
+  Compiling...
+  Slider.hpp
+c1xx : fatal error C1083: Cannot open source file: 'mathgrapher\DisplayObjects\Slider.hpp': No such file or directory
   Generating Code...
   Skipping... (no relevant changes detected)
-  Slider.hpp
-  RawText.hpp
-  RawImage.hpp
-  Interpolation.hpp
-  Graph.hpp
-  Function.hpp
   DisplayObjects.hpp
-Debug\/mathgrapher\/BulkUtilities.obj : warning LNK4042: object specified more than once; extras ignored
-Debug\/mathgrapher\/DisplayWrapper.obj : warning LNK4042: object specified more than once; extras ignored
-Debug\/mathgrapher\/Functions.obj : warning LNK4042: object specified more than once; extras ignored
-Debug\/mathgrapher\/PopupWrapper.obj : warning LNK4042: object specified more than once; extras ignored
-Debug\/mathgrapher\/RenderingUtilities.obj : warning LNK4042: object specified more than once; extras ignored
-Debug\/mathgrapher\DisplayObjects\/DisplayObjects.obj : warning LNK4042: object specified more than once; extras ignored
-Debug\/mathgrapher\DisplayObjects\/Function.obj : warning LNK4042: object specified more than once; extras ignored
-Debug\/mathgrapher\DisplayObjects\/Graph.obj : warning LNK4042: object specified more than once; extras ignored
-Debug\/mathgrapher\DisplayObjects\/Interpolation.obj : warning LNK4042: object specified more than once; extras ignored
-Debug\/mathgrapher\DisplayObjects\/RawImage.obj : warning LNK4042: object specified more than once; extras ignored
-Debug\/mathgrapher\DisplayObjects\/RawText.obj : warning LNK4042: object specified more than once; extras ignored
-Debug\/mathgrapher\DisplayObjects\/Slider.obj : warning LNK4042: object specified more than once; extras ignored
-Debug\/mathgrapher\Popups\MajorPopups\Edit\/EditGraphPopup.obj : warning LNK4042: object specified more than once; extras ignored
-Debug\/mathgrapher\Popups\MajorPopups\Edit\/EditImagePopup.obj : warning LNK4042: object specified more than once; extras ignored
-Debug\/mathgrapher\Popups\MajorPopups\Edit\/EditSliderPopup.obj : warning LNK4042: object specified more than once; extras ignored
-Debug\/mathgrapher\Popups\MajorPopups\Edit\/EditTextPopup.obj : warning LNK4042: object specified more than once; extras ignored
-Debug\/mathgrapher\Popups\MajorPopups\/MainDisplay.obj : warning LNK4042: object specified more than once; extras ignored
-Debug\/mathgrapher\Popups\MajorPopups\/MajorPopup.obj : warning LNK4042: object specified more than once; extras ignored
-Debug\/mathgrapher\Popups\MajorPopups\/SaverPopup.obj : warning LNK4042: object specified more than once; extras ignored
-Debug\/mathgrapher\Popups\MajorPopups\Savers\/SaveFilePopup.obj : warning LNK4042: object specified more than once; extras ignored
-Debug\/mathgrapher\Popups\MajorPopups\Savers\/SaveVideoPopup.obj : warning LNK4042: object specified more than once; extras ignored
-Debug\/mathgrapher\Popups\/Popup.obj : warning LNK4042: object specified more than once; extras ignored
-Debug\/mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\/CreateFunctionRunInterpolation.obj : warning LNK4042: object specified more than once; extras ignored
-Debug\/mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\/CreateHighlightInterpolation.obj : warning LNK4042: object specified more than once; extras ignored
-Debug\/mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\/CreatePointOfInterest.obj : warning LNK4042: object specified more than once; extras ignored
-Debug\/mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\/CreateResizeInterpolation.obj : warning LNK4042: object specified more than once; extras ignored
-Debug\/mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\/CreateSimpleInterpolation.obj : warning LNK4042: object specified more than once; extras ignored
-Debug\/mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\/EditFunctionPopup.obj : warning LNK4042: object specified more than once; extras ignored
-Debug\/mathgrapher\Popups\QuickCloserPopups\/QuickCloserPopup.obj : warning LNK4042: object specified more than once; extras ignored
-Debug\/mathgrapher\Popups\QuickCloserPopups\Select\/AddObjectPopup.obj : warning LNK4042: object specified more than once; extras ignored
-Debug\/mathgrapher\Popups\QuickCloserPopups\Select\/ChooseFunctionInterpolation.obj : warning LNK4042: object specified more than once; extras ignored
-Debug\/mathgrapher\Popups\QuickCloserPopups\Select\/ChooseFunctionPopup.obj : warning LNK4042: object specified more than once; extras ignored
-Debug\/mathgrapher\Popups\QuickCloserPopups\Select\/ChooseInterpolationPopup.obj : warning LNK4042: object specified more than once; extras ignored
-Debug\/mathgrapher\Popups\QuickCloserPopups\Select\/ChoosePointConcernedForLinkingPopup.obj : warning LNK4042: object specified more than once; extras ignored
-Debug\/mathgrapher\Popups\QuickCloserPopups\Select\/ChooseWhichImagePopup.obj : warning LNK4042: object specified more than once; extras ignored
-Debug\/mathgrapher\Popups\QuickCloserPopups\Select\/LoadFilePopup.obj : warning LNK4042: object specified more than once; extras ignored
-main.obj : error LNK2019: unresolved external symbol "public: __thiscall Font::Font(int)" (??0Font@@QAE@H@Z) referenced in function _main
-main.obj : error LNK2019: unresolved external symbol "double __cdecl numberFromString(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?numberFromString@@YANV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z) referenced in function "void __cdecl load(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?load@@YAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
-Graph.obj : error LNK2001: unresolved external symbol "double __cdecl numberFromString(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?numberFromString@@YANV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
-main.obj : error LNK2019: unresolved external symbol "unsigned int __cdecl hexFromString(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?hexFromString@@YAIV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z) referenced in function "void __cdecl load(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?load@@YAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
-main.obj : error LNK2019: unresolved external symbol "class std::vector<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::allocator<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > > > __cdecl splitAt(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,char)" (?splitAt@@YA?AV?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@D@Z) referenced in function "void __cdecl save(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?save@@YAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
-main.obj : error LNK2019: unresolved external symbol "void __cdecl screenshot(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,struct SDL_Rect *)" (?screenshot@@YAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAUSDL_Rect@@@Z) referenced in function "bool __cdecl controlFlow(void)" (?controlFlow@@YA_NXZ)
-main.obj : error LNK2019: unresolved external symbol "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __cdecl tostring<unsigned int>(unsigned int)" (??$tostring@I@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@I@Z) referenced in function "void __cdecl save(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?save@@YAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
-main.obj : error LNK2019: unresolved external symbol "public: static class ParsedFile * __cdecl ParsedFile::parseFile(class std::basic_fstream<char,struct std::char_traits<char> > *)" (?parseFile@ParsedFile@@SAPAV1@PAV?$basic_fstream@DU?$char_traits@D@std@@@std@@@Z) referenced in function "void __cdecl load(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?load@@YAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
-main.obj : error LNK2019: unresolved external symbol "public: class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __thiscall ParsedFile::valueOf(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)" (?valueOf@ParsedFile@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V23@H@Z) referenced in function "void __cdecl load(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?load@@YAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
-main.obj : error LNK2019: unresolved external symbol "public: class std::vector<class ParsedFile *,class std::allocator<class ParsedFile *> > __thiscall ParsedFile::componentFromString(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?componentFromString@ParsedFile@@QAE?AV?$vector@PAVParsedFile@@V?$allocator@PAVParsedFile@@@std@@@std@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@3@@Z) referenced in function "void __cdecl load(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?load@@YAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
-main.obj : error LNK2019: unresolved external symbol "public: class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __thiscall ParsedFile::getKey(void)" (?getKey@ParsedFile@@QAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ) referenced in function "void __cdecl load(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?load@@YAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
-main.obj : error LNK2019: unresolved external symbol "void __cdecl initBuiltins(void)" (?initBuiltins@@YAXXZ) referenced in function _main
-main.obj : error LNK2019: unresolved external symbol "class Function * __cdecl functionFromName(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?functionFromName@@YAPAVFunction@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z) referenced in function "void __cdecl load(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?load@@YAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
-main.obj : error LNK2019: unresolved external symbol "public: bool __thiscall Popup::isTagged(void)" (?isTagged@Popup@@QAE_NXZ) referenced in function "bool __cdecl controlFlow(void)" (?controlFlow@@YA_NXZ)
-main.obj : error LNK2019: unresolved external symbol "public: class Popup * __thiscall Popup::concernWith(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?concernWith@Popup@@QAEPAV1@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z) referenced in function "bool __cdecl controlFlow(void)" (?controlFlow@@YA_NXZ)
-main.obj : error LNK2019: unresolved external symbol "class Popup * __cdecl createPopup(unsigned char,double,double)" (?createPopup@@YAPAVPopup@@ENN@Z) referenced in function "bool __cdecl controlFlow(void)" (?controlFlow@@YA_NXZ)
-main.obj : error LNK2019: unresolved external symbol "void __cdecl deleteInStrings(void)" (?deleteInStrings@@YAXXZ) referenced in function "void __cdecl doInStringCalcs(unsigned char)" (?doInStringCalcs@@YAXE@Z)
-main.obj : error LNK2019: unresolved external symbol "bool __cdecl isDoubleTypeOfValueEditor(int)" (?isDoubleTypeOfValueEditor@@YA_NH@Z) referenced in function "void __cdecl doInStringCalcs(unsigned char)" (?doInStringCalcs@@YAXE@Z)
-main.obj : error LNK2019: unresolved external symbol "bool __cdecl isIntTypeOfValueEditor(int)" (?isIntTypeOfValueEditor@@YA_NH@Z) referenced in function "void __cdecl doInStringCalcs(unsigned char)" (?doInStringCalcs@@YAXE@Z)
-main.obj : error LNK2019: unresolved external symbol "bool __cdecl isStringTypeOfValueEditor(int)" (?isStringTypeOfValueEditor@@YA_NH@Z) referenced in function "void __cdecl doInStringCalcs(unsigned char)" (?doInStringCalcs@@YAXE@Z)
-main.obj : error LNK2019: unresolved external symbol "bool __cdecl isHexadecimalTypeOfValueEditor(int)" (?isHexadecimalTypeOfValueEditor@@YA_NH@Z) referenced in function "void __cdecl doInStringCalcs(unsigned char)" (?doInStringCalcs@@YAXE@Z)
-main.obj : error LNK2019: unresolved external symbol "void __cdecl deletePopup(class Popup *)" (?deletePopup@@YAXPAVPopup@@@Z) referenced in function "bool __cdecl controlFlow(void)" (?controlFlow@@YA_NXZ)
-main.obj : error LNK2001: unresolved external symbol "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > instring" (?instring@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A)
-main.obj : error LNK2001: unresolved external symbol "void * thingForInString" (?thingForInString@@3PAXA)
-main.obj : error LNK2001: unresolved external symbol "int instringswitch" (?instringswitch@@3HA)
-main.obj : error LNK2001: unresolved external symbol "bool spacePressed" (?spacePressed@@3_NA)
-main.obj : error LNK2001: unresolved external symbol "bool backspacePressed" (?backspacePressed@@3_NA)
-main.obj : error LNK2001: unresolved external symbol "class std::vector<struct SDL_Surface *,class std::allocator<struct SDL_Surface *> > gSurfaces" (?gSurfaces@@3V?$vector@PAUSDL_Surface@@V?$allocator@PAUSDL_Surface@@@std@@@std@@A)
-RawImage.obj : error LNK2001: unresolved external symbol "class std::vector<struct SDL_Surface *,class std::allocator<struct SDL_Surface *> > gSurfaces" (?gSurfaces@@3V?$vector@PAUSDL_Surface@@V?$allocator@PAUSDL_Surface@@@std@@@std@@A)
-main.obj : error LNK2001: unresolved external symbol "class std::vector<struct SDL_Texture *,class std::allocator<struct SDL_Texture *> > gTextures" (?gTextures@@3V?$vector@PAUSDL_Texture@@V?$allocator@PAUSDL_Texture@@@std@@@std@@A)
-main.obj : error LNK2001: unresolved external symbol "class std::vector<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::allocator<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > > > gStrings" (?gStrings@@3V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@A)
-RawImage.obj : error LNK2001: unresolved external symbol "class std::vector<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::allocator<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > > > gStrings" (?gStrings@@3V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@A)
-main.obj : error LNK2001: unresolved external symbol "class std::vector<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::allocator<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > > > loadableFiles" (?loadableFiles@@3V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@A)
-main.obj : error LNK2001: unresolved external symbol "bool leftMouseClicked" (?leftMouseClicked@@3_NA)
-main.obj : error LNK2001: unresolved external symbol "bool leftMouseHadBeenClicked" (?leftMouseHadBeenClicked@@3_NA)
-main.obj : error LNK2001: unresolved external symbol "bool leftMouseReleased" (?leftMouseReleased@@3_NA)
-main.obj : error LNK2001: unresolved external symbol "bool leftMouseHadBeenReleased" (?leftMouseHadBeenReleased@@3_NA)
-main.obj : error LNK2001: unresolved external symbol "bool shiftClicked" (?shiftClicked@@3_NA)
-main.obj : error LNK2001: unresolved external symbol "bool CAPS_LOCK" (?CAPS_LOCK@@3_NA)
-main.obj : error LNK2001: unresolved external symbol "bool runningVideo" (?runningVideo@@3_NA)
-main.obj : error LNK2001: unresolved external symbol "bool recordingVideo" (?recordingVideo@@3_NA)
-main.obj : error LNK2001: unresolved external symbol "int FRAME_NUM" (?FRAME_NUM@@3HA)
-main.obj : error LNK2001: unresolved external symbol "long begin_time" (?begin_time@@3JA)
-main.obj : error LNK2001: unresolved external symbol "class std::vector<class DisplayObject *,class std::allocator<class DisplayObject *> > objects" (?objects@@3V?$vector@PAVDisplayObject@@V?$allocator@PAVDisplayObject@@@std@@@std@@A)
-Graph.obj : error LNK2019: unresolved external symbol "struct SDL_Surface * __cdecl createBlankSurfaceWithSize(int,int)" (?createBlankSurfaceWithSize@@YAPAUSDL_Surface@@HH@Z) referenced in function "public: virtual struct SDL_Surface * __thiscall Graph::draw(double *,double *)" (?draw@Graph@@UAEPAUSDL_Surface@@PAN0@Z)
-RawImage.obj : error LNK2001: unresolved external symbol "struct SDL_Surface * __cdecl createBlankSurfaceWithSize(int,int)" (?createBlankSurfaceWithSize@@YAPAUSDL_Surface@@HH@Z)
-RawText.obj : error LNK2001: unresolved external symbol "struct SDL_Surface * __cdecl createBlankSurfaceWithSize(int,int)" (?createBlankSurfaceWithSize@@YAPAUSDL_Surface@@HH@Z)
-Slider.obj : error LNK2001: unresolved external symbol "struct SDL_Surface * __cdecl createBlankSurfaceWithSize(int,int)" (?createBlankSurfaceWithSize@@YAPAUSDL_Surface@@HH@Z)
-Graph.obj : error LNK2019: unresolved external symbol "void __cdecl drawLineOnSurface(struct SDL_Surface *,double,double,double,double,unsigned int)" (?drawLineOnSurface@@YAXPAUSDL_Surface@@NNNNI@Z) referenced in function "public: virtual struct SDL_Surface * __thiscall Graph::draw(double *,double *)" (?draw@Graph@@UAEPAUSDL_Surface@@PAN0@Z)
-Slider.obj : error LNK2001: unresolved external symbol "void __cdecl drawLineOnSurface(struct SDL_Surface *,double,double,double,double,unsigned int)" (?drawLineOnSurface@@YAXPAUSDL_Surface@@NNNNI@Z)
-Graph.obj : error LNK2019: unresolved external symbol "void __cdecl drawLineThroughPointWithAngleInBounds(struct SDL_Surface *,double,double,double,double,double,double,double,unsigned int,double)" (?drawLineThroughPointWithAngleInBounds@@YAXPAUSDL_Surface@@NNNNNNNIN@Z) referenced in function "public: virtual struct SDL_Surface * __thiscall Graph::draw(double *,double *)" (?draw@Graph@@UAEPAUSDL_Surface@@PAN0@Z)
-Graph.obj : error LNK2019: unresolved external symbol "bool __cdecl pointInBounds(int,int,int,int,int,int)" (?pointInBounds@@YA_NHHHHHH@Z) referenced in function "public: virtual bool __thiscall Graph::clickedIn(double,double)" (?clickedIn@Graph@@UAE_NNN@Z)
-RawText.obj : error LNK2001: unresolved external symbol "bool __cdecl pointInBounds(int,int,int,int,int,int)" (?pointInBounds@@YA_NHHHHHH@Z)
-Slider.obj : error LNK2001: unresolved external symbol "bool __cdecl pointInBounds(int,int,int,int,int,int)" (?pointInBounds@@YA_NHHHHHH@Z)
-Graph.obj : error LNK2019: unresolved external symbol "void __cdecl drawBorderedRect(int,int,int,int,unsigned int,unsigned int)" (?drawBorderedRect@@YAXHHHHII@Z) referenced in function "public: virtual void __thiscall Graph::highlight(void)" (?highlight@Graph@@UAEXXZ)
-Graph.obj : error LNK2019: unresolved external symbol "void __cdecl drawCircleOnSurface(struct SDL_Surface *,int,int,float,unsigned int)" (?drawCircleOnSurface@@YAXPAUSDL_Surface@@HHMI@Z) referenced in function "public: virtual struct SDL_Surface * __thiscall Graph::draw(double *,double *)" (?draw@Graph@@UAEPAUSDL_Surface@@PAN0@Z)
-Slider.obj : error LNK2001: unresolved external symbol "void __cdecl drawCircleOnSurface(struct SDL_Surface *,int,int,float,unsigned int)" (?drawCircleOnSurface@@YAXPAUSDL_Surface@@HHMI@Z)
-Graph.obj : error LNK2019: unresolved external symbol "double __cdecl snapToPiMultiples(double)" (?snapToPiMultiples@@YANN@Z) referenced in function "public: virtual struct SDL_Surface * __thiscall Graph::draw(double *,double *)" (?draw@Graph@@UAEPAUSDL_Surface@@PAN0@Z)
-RawText.obj : error LNK2019: unresolved external symbol "public: struct _TTF_Font * __thiscall Font::operator()(int)" (??RFont@@QAEPAU_TTF_Font@@H@Z) referenced in function "public: virtual bool __thiscall RawText::clickedIn(double,double)" (?clickedIn@RawText@@UAE_NNN@Z)
-RawText.obj : error LNK2019: unresolved external symbol "struct SDL_Surface * __cdecl getTextSurface(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int,int,int,unsigned int)" (?getTextSurface@@YAPAUSDL_Surface@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HHHI@Z) referenced in function "public: virtual struct SDL_Surface * __thiscall RawText::draw(double *,double *)" (?draw@RawText@@UAEPAUSDL_Surface@@PAN0@Z)
-Slider.obj : error LNK2001: unresolved external symbol "class std::vector<struct Wrap2<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class Function *>,class std::allocator<struct Wrap2<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class Function *> > > builtins" (?builtins@@3V?$vector@U?$Wrap2@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVFunction@@@@V?$allocator@U?$Wrap2@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@PAVFunction@@@@@std@@@std@@A)
-C:\Users\ebail\Documents\GitHub\MathGrapher\Debug\MathGrapher.exe : fatal error LNK1120: 51 unresolved externals
