@@ -9,7 +9,7 @@
 #ifndef ChoosePointConcernedForLinkingPopup_hpp
 #define ChoosePointConcernedForLinkingPopup_hpp
 
-#include "QuickCloserPopup.hpp"
+#include "../QuickCloserPopup.hpp"
 
 class ChoosePointConcernedForLinkingPopup: public QuickCloserPopup {
 	public:

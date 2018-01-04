@@ -9,7 +9,7 @@
 #ifndef CreateSimpleInterpolation_hpp
 #define CreateSimpleInterpolation_hpp
 
-#include "QuickCloserPopup.hpp"
+#include "../QuickCloserPopup.hpp"
 
 class CreateSimpleInterpolation: public QuickCloserPopup {
 	public:

@@ -9,7 +9,7 @@
 #ifndef CreatePointOfInterest_hpp
 #define CreatePointOfInterest_hpp
 
-#include "QuickCloserPopup.hpp"
+#include "../QuickCloserPopup.hpp"
 
 class CreatePointOfInterest: public QuickCloserPopup {
 	public:

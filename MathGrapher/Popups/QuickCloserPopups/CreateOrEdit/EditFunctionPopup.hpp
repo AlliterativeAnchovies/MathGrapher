@@ -9,7 +9,7 @@
 #ifndef EditFunctionPopup_hpp
 #define EditFunctionPopup_hpp
 
-#include "QuickCloserPopup.hpp"
+#include "../QuickCloserPopup.hpp"
 
 class EditFunctionPopup: public QuickCloserPopup {
 	public:

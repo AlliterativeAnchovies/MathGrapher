@@ -9,7 +9,7 @@
 #ifndef LoadFilePopup_hpp
 #define LoadFilePopup_hpp
 
-#include "QuickCloserPopup.hpp"
+#include "../QuickCloserPopup.hpp"
 
 class LoadFilePopup: public QuickCloserPopup {
 	public:

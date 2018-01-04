@@ -9,7 +9,7 @@
 #ifndef AddObjectPopup_hpp
 #define AddObjectPopup_hpp
 
-#include "QuickCloserPopup.hpp"
+#include "../QuickCloserPopup.hpp"
 
 class AddObjectPopup: public QuickCloserPopup {
 	public:

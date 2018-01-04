@@ -9,7 +9,7 @@
 #ifndef EditSliderPopup_hpp
 #define EditSliderPopup_hpp
 
-#include "MajorPopup.hpp"
+#include "../MajorPopup.hpp"
 
 class EditSliderPopup: public EditPopup {
 	public:

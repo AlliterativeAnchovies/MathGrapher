@@ -9,7 +9,7 @@
 #ifndef MajorPopup_hpp
 #define MajorPopup_hpp
 
-#include "Popup.hpp"
+#include "../Popup.hpp"
 
 class MajorPopup : public Popup {
 	public:

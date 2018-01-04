@@ -9,7 +9,7 @@
 #ifndef ChooseFunctionPopup_hpp
 #define ChooseFunctionPopup_hpp
 
-#include "QuickCloserPopup.hpp"
+#include "../QuickCloserPopup.hpp"
 
 class ChooseFunctionPopup: public QuickCloserPopup {
 	public:

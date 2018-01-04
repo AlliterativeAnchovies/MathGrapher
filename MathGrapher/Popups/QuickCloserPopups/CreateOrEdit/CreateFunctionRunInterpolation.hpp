@@ -9,7 +9,7 @@
 #ifndef CreateFunctionRunInterpolation_hpp
 #define CreateFunctionRunInterpolation_hpp
 
-#include "QuickCloserPopup.hpp"
+#include "../QuickCloserPopup.hpp"
 
 class CreateFunctionRunInterpolation: public QuickCloserPopup {
 	public:

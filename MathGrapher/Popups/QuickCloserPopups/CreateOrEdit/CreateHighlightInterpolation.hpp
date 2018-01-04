@@ -9,7 +9,7 @@
 #ifndef CreateHighlightInterpolation_hpp
 #define CreateHighlightInterpolation_hpp
 
-#include "QuickCloserPopup.hpp"
+#include "../QuickCloserPopup.hpp"
 
 class CreateHighlightInterpolation: public QuickCloserPopup {
 	public:

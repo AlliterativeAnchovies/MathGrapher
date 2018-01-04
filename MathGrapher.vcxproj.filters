@@ -15,34 +15,528 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="mathgrapher\Functions.cpp">
+    <ClCompile Include="mathgrapher\**">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="mathgrapher\Graph.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="mathgrapher\main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="mathgrapher\Popup.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="mathgrapher\RenderingUtilities.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="mathgrapher\Functions.hpp">
+    <ClCompile Include="mathgrapher\**">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="mathgrapher\Graph.hpp">
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="mathgrapher\Popup.hpp">
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="mathgrapher\RenderingUtilities.hpp">
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
       <Filter>Header Files</Filter>
-    </ClInclude>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\BulkUtilities.hpp" />
+    <ClCompile Include="mathgrapher\DisplayObjects\DisplayObjects.cpp" />
+    <ClCompile Include="mathgrapher\DisplayObjects\DisplayObjects.hpp" />
+    <ClCompile Include="mathgrapher\DisplayObjects\Function.cpp" />
+    <ClCompile Include="mathgrapher\DisplayObjects\Function.hpp" />
+    <ClCompile Include="mathgrapher\DisplayObjects\Graph.cpp" />
+    <ClCompile Include="mathgrapher\DisplayObjects\Graph.hpp" />
+    <ClCompile Include="mathgrapher\DisplayObjects\Interpolation.cpp" />
+    <ClCompile Include="mathgrapher\DisplayObjects\Interpolation.hpp" />
+    <ClCompile Include="mathgrapher\DisplayObjects\RawImage.cpp" />
+    <ClCompile Include="mathgrapher\DisplayObjects\RawImage.hpp" />
+    <ClCompile Include="mathgrapher\DisplayObjects\RawText.cpp" />
+    <ClCompile Include="mathgrapher\DisplayObjects\RawText.hpp" />
+    <ClCompile Include="mathgrapher\DisplayObjects\Slider.cpp" />
+    <ClCompile Include="mathgrapher\DisplayObjects\Slider.hpp" />
+    <ClCompile Include="mathgrapher\DisplayWrapper.cpp" />
+    <ClCompile Include="mathgrapher\DisplayWrapper.hpp" />
+    <ClCompile Include="mathgrapher\Functions.cpp" />
+    <ClCompile Include="mathgrapher\Functions.hpp" />
+    <ClCompile Include="mathgrapher\libfreetype-6.dll" />
+    <ClCompile Include="mathgrapher\main.cpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\Edit\EditImagePopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\Edit\EditImagePopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\Edit\EditSliderPopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\Edit\EditSliderPopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\Edit\EditTextPopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\Edit\EditTextPopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\MainDisplay.cpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\MainDisplay.hpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\MajorPopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\MajorPopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\SaverPopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\SaverPopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\Savers\SaveFilePopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\Savers\SaveFilePopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\Savers\SaveVideoPopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\Savers\SaveVideoPopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\Popup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\Popup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateFunctionRunInterpolation.cpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateFunctionRunInterpolation.hpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateHighlightInterpolation.cpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateHighlightInterpolation.hpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreatePointOfInterest.cpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreatePointOfInterest.hpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateResizeInterpolation.cpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateResizeInterpolation.hpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateSimpleInterpolation.cpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateSimpleInterpolation.hpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\EditFunctionPopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\EditFunctionPopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\QuickCloserPopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\QuickCloserPopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\AddObjectPopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\AddObjectPopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\ChooseFunctionInterpolation.cpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\ChooseFunctionInterpolation.hpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\ChooseFunctionPopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\ChooseFunctionPopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\ChooseInterpolationPopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\ChooseInterpolationPopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\ChoosePointConcernedForLinkingPopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\ChoosePointConcernedForLinkingPopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\ChooseWhichImagePopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\ChooseWhichImagePopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\LoadFilePopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\LoadFilePopup.hpp" />
+    <ClCompile Include="mathgrapher\PopupWrapper.cpp" />
+    <ClCompile Include="mathgrapher\PopupWrapper.hpp" />
+    <ClCompile Include="mathgrapher\RenderingUtilities.cpp" />
+    <ClCompile Include="mathgrapher\RenderingUtilities.hpp" />
+    <ClCompile Include="mathgrapher\SDL2.dll" />
+    <ClCompile Include="mathgrapher\SDL2_ttf.dll" />
+    <ClCompile Include="mathgrapher\zlib1.dll" />
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\**">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\BulkUtilities.hpp" />
+    <ClCompile Include="mathgrapher\DisplayObjects\DisplayObjects.cpp" />
+    <ClCompile Include="mathgrapher\DisplayObjects\DisplayObjects.hpp" />
+    <ClCompile Include="mathgrapher\DisplayObjects\Function.cpp" />
+    <ClCompile Include="mathgrapher\DisplayObjects\Function.hpp" />
+    <ClCompile Include="mathgrapher\DisplayObjects\Graph.cpp" />
+    <ClCompile Include="mathgrapher\DisplayObjects\Graph.hpp" />
+    <ClCompile Include="mathgrapher\DisplayObjects\Interpolation.cpp" />
+    <ClCompile Include="mathgrapher\DisplayObjects\Interpolation.hpp" />
+    <ClCompile Include="mathgrapher\DisplayObjects\RawImage.cpp" />
+    <ClCompile Include="mathgrapher\DisplayObjects\RawImage.hpp" />
+    <ClCompile Include="mathgrapher\DisplayObjects\RawText.cpp" />
+    <ClCompile Include="mathgrapher\DisplayObjects\RawText.hpp" />
+    <ClCompile Include="mathgrapher\DisplayObjects\Slider.cpp" />
+    <ClCompile Include="mathgrapher\DisplayObjects\Slider.hpp" />
+    <ClCompile Include="mathgrapher\DisplayWrapper.cpp" />
+    <ClCompile Include="mathgrapher\DisplayWrapper.hpp" />
+    <ClCompile Include="mathgrapher\Functions.cpp" />
+    <ClCompile Include="mathgrapher\Functions.hpp" />
+    <ClCompile Include="mathgrapher\libfreetype-6.dll" />
+    <ClCompile Include="mathgrapher\main.cpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\Edit\EditImagePopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\Edit\EditImagePopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\Edit\EditSliderPopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\Edit\EditSliderPopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\Edit\EditTextPopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\Edit\EditTextPopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\MainDisplay.cpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\MainDisplay.hpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\MajorPopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\MajorPopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\SaverPopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\SaverPopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\Savers\SaveFilePopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\Savers\SaveFilePopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\Savers\SaveVideoPopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\Savers\SaveVideoPopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\Popup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\Popup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateFunctionRunInterpolation.cpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateFunctionRunInterpolation.hpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateHighlightInterpolation.cpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateHighlightInterpolation.hpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreatePointOfInterest.cpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreatePointOfInterest.hpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateResizeInterpolation.cpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateResizeInterpolation.hpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateSimpleInterpolation.cpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateSimpleInterpolation.hpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\EditFunctionPopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\EditFunctionPopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\QuickCloserPopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\QuickCloserPopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\AddObjectPopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\AddObjectPopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\ChooseFunctionInterpolation.cpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\ChooseFunctionInterpolation.hpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\ChooseFunctionPopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\ChooseFunctionPopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\ChooseInterpolationPopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\ChooseInterpolationPopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\ChoosePointConcernedForLinkingPopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\ChoosePointConcernedForLinkingPopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\ChooseWhichImagePopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\ChooseWhichImagePopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\LoadFilePopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\LoadFilePopup.hpp" />
+    <ClCompile Include="mathgrapher\PopupWrapper.cpp" />
+    <ClCompile Include="mathgrapher\PopupWrapper.hpp" />
+    <ClCompile Include="mathgrapher\RenderingUtilities.cpp" />
+    <ClCompile Include="mathgrapher\RenderingUtilities.hpp" />
+    <ClCompile Include="mathgrapher\SDL2.dll" />
+    <ClCompile Include="mathgrapher\SDL2_ttf.dll" />
+    <ClCompile Include="mathgrapher\zlib1.dll" />
+    <ClCompile Include="mathgrapher\BulkUtilities.hpp" />
+    <ClCompile Include="mathgrapher\DisplayObjects\DisplayObjects.cpp" />
+    <ClCompile Include="mathgrapher\DisplayObjects\DisplayObjects.hpp" />
+    <ClCompile Include="mathgrapher\DisplayObjects\Function.cpp" />
+    <ClCompile Include="mathgrapher\DisplayObjects\Function.hpp" />
+    <ClCompile Include="mathgrapher\DisplayObjects\Graph.cpp" />
+    <ClCompile Include="mathgrapher\DisplayObjects\Graph.hpp" />
+    <ClCompile Include="mathgrapher\DisplayObjects\Interpolation.cpp" />
+    <ClCompile Include="mathgrapher\DisplayObjects\Interpolation.hpp" />
+    <ClCompile Include="mathgrapher\DisplayObjects\RawImage.cpp" />
+    <ClCompile Include="mathgrapher\DisplayObjects\RawImage.hpp" />
+    <ClCompile Include="mathgrapher\DisplayObjects\RawText.cpp" />
+    <ClCompile Include="mathgrapher\DisplayObjects\RawText.hpp" />
+    <ClCompile Include="mathgrapher\DisplayObjects\Slider.cpp" />
+    <ClCompile Include="mathgrapher\DisplayObjects\Slider.hpp" />
+    <ClCompile Include="mathgrapher\DisplayWrapper.cpp" />
+    <ClCompile Include="mathgrapher\DisplayWrapper.hpp" />
+    <ClCompile Include="mathgrapher\Functions.cpp" />
+    <ClCompile Include="mathgrapher\Functions.hpp" />
+    <ClCompile Include="mathgrapher\libfreetype-6.dll" />
+    <ClCompile Include="mathgrapher\main.cpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\Edit\EditImagePopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\Edit\EditImagePopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\Edit\EditSliderPopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\Edit\EditSliderPopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\Edit\EditTextPopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\Edit\EditTextPopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\MainDisplay.cpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\MainDisplay.hpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\MajorPopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\MajorPopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\SaverPopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\SaverPopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\Savers\SaveFilePopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\Savers\SaveFilePopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\Savers\SaveVideoPopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\Savers\SaveVideoPopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\Popup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\Popup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateFunctionRunInterpolation.cpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateFunctionRunInterpolation.hpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateHighlightInterpolation.cpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateHighlightInterpolation.hpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreatePointOfInterest.cpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreatePointOfInterest.hpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateResizeInterpolation.cpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateResizeInterpolation.hpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateSimpleInterpolation.cpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateSimpleInterpolation.hpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\EditFunctionPopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\EditFunctionPopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\QuickCloserPopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\QuickCloserPopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\AddObjectPopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\AddObjectPopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\ChooseFunctionInterpolation.cpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\ChooseFunctionInterpolation.hpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\ChooseFunctionPopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\ChooseFunctionPopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\ChooseInterpolationPopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\ChooseInterpolationPopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\ChoosePointConcernedForLinkingPopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\ChoosePointConcernedForLinkingPopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\ChooseWhichImagePopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\ChooseWhichImagePopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\LoadFilePopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\LoadFilePopup.hpp" />
+    <ClCompile Include="mathgrapher\PopupWrapper.cpp" />
+    <ClCompile Include="mathgrapher\PopupWrapper.hpp" />
+    <ClCompile Include="mathgrapher\RenderingUtilities.cpp" />
+    <ClCompile Include="mathgrapher\RenderingUtilities.hpp" />
+    <ClCompile Include="mathgrapher\SDL2.dll" />
+    <ClCompile Include="mathgrapher\SDL2_ttf.dll" />
+    <ClCompile Include="mathgrapher\zlib1.dll" />
+    <ClCompile Include="mathgrapher\BulkUtilities.hpp" />
+    <ClCompile Include="mathgrapher\DisplayObjects\DisplayObjects.cpp" />
+    <ClCompile Include="mathgrapher\DisplayObjects\DisplayObjects.hpp" />
+    <ClCompile Include="mathgrapher\DisplayObjects\Function.cpp" />
+    <ClCompile Include="mathgrapher\DisplayObjects\Function.hpp" />
+    <ClCompile Include="mathgrapher\DisplayObjects\Graph.cpp" />
+    <ClCompile Include="mathgrapher\DisplayObjects\Graph.hpp" />
+    <ClCompile Include="mathgrapher\DisplayObjects\Interpolation.cpp" />
+    <ClCompile Include="mathgrapher\DisplayObjects\Interpolation.hpp" />
+    <ClCompile Include="mathgrapher\DisplayObjects\RawImage.cpp" />
+    <ClCompile Include="mathgrapher\DisplayObjects\RawImage.hpp" />
+    <ClCompile Include="mathgrapher\DisplayObjects\RawText.cpp" />
+    <ClCompile Include="mathgrapher\DisplayObjects\RawText.hpp" />
+    <ClCompile Include="mathgrapher\DisplayObjects\Slider.cpp" />
+    <ClCompile Include="mathgrapher\DisplayObjects\Slider.hpp" />
+    <ClCompile Include="mathgrapher\DisplayWrapper.cpp" />
+    <ClCompile Include="mathgrapher\DisplayWrapper.hpp" />
+    <ClCompile Include="mathgrapher\Functions.cpp" />
+    <ClCompile Include="mathgrapher\Functions.hpp" />
+    <ClCompile Include="mathgrapher\libfreetype-6.dll" />
+    <ClCompile Include="mathgrapher\main.cpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\Edit\EditImagePopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\Edit\EditImagePopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\Edit\EditSliderPopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\Edit\EditSliderPopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\Edit\EditTextPopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\Edit\EditTextPopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\MainDisplay.cpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\MainDisplay.hpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\MajorPopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\MajorPopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\SaverPopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\SaverPopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\Savers\SaveFilePopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\Savers\SaveFilePopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\Savers\SaveVideoPopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\Savers\SaveVideoPopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\Popup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\Popup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateFunctionRunInterpolation.cpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateFunctionRunInterpolation.hpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateHighlightInterpolation.cpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateHighlightInterpolation.hpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreatePointOfInterest.cpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreatePointOfInterest.hpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateResizeInterpolation.cpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateResizeInterpolation.hpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateSimpleInterpolation.cpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateSimpleInterpolation.hpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\EditFunctionPopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\EditFunctionPopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\QuickCloserPopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\QuickCloserPopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\AddObjectPopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\AddObjectPopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\ChooseFunctionInterpolation.cpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\ChooseFunctionInterpolation.hpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\ChooseFunctionPopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\ChooseFunctionPopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\ChooseInterpolationPopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\ChooseInterpolationPopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\ChoosePointConcernedForLinkingPopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\ChoosePointConcernedForLinkingPopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\ChooseWhichImagePopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\ChooseWhichImagePopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\LoadFilePopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\LoadFilePopup.hpp" />
+    <ClCompile Include="mathgrapher\PopupWrapper.cpp" />
+    <ClCompile Include="mathgrapher\PopupWrapper.hpp" />
+    <ClCompile Include="mathgrapher\RenderingUtilities.cpp" />
+    <ClCompile Include="mathgrapher\RenderingUtilities.hpp" />
+    <ClCompile Include="mathgrapher\SDL2.dll" />
+    <ClCompile Include="mathgrapher\SDL2_ttf.dll" />
+    <ClCompile Include="mathgrapher\zlib1.dll" />
   </ItemGroup>
 </Project>

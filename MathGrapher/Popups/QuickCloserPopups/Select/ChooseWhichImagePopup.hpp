@@ -9,7 +9,7 @@
 #ifndef ChooseWhichImagePopup_hpp
 #define ChooseWhichImagePopup_hpp
 
-#include "QuickCloserPopup.hpp"
+#include "../QuickCloserPopup.hpp"
 
 class ChooseWhichImagePopup: public QuickCloserPopup {
 	public:

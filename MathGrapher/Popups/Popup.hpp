@@ -10,7 +10,7 @@
 #define Popup_hpp
 
 #include <stdio.h>
-#include "Functions.hpp"
+#include "../Functions.hpp"
 
 
 enum POPUP_IDS {

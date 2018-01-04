@@ -9,7 +9,7 @@
 #ifndef EditGraphPopup_hpp
 #define EditGraphPopup_hpp
 
-#include "MajorPopup.hpp"
+#include "../MajorPopup.hpp"
 
 class EditGraphPopup: public EditPopup {
 	public:

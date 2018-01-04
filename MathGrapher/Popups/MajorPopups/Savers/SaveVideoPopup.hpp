@@ -9,7 +9,7 @@
 #ifndef SaveVideoPopup_hpp
 #define SaveVideoPopup_hpp
 
-#include "SaverPopup.hpp"
+#include "../SaverPopup.hpp"
 
 class SaveVideoPopup: public SaverPopup {
 	public:
