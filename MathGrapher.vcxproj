@@ -88,6 +88,7 @@
       <SubSystem>Console</SubSystem>
       <AdditionalLibraryDirectories>C:\Users\ebail\Desktop\SDL2_ttf-2.0.14\lib\x86;C:\Users\ebail\Desktop\STUPIDITY INCARNATE\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
