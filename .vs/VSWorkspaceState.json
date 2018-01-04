@@ -1,11 +1,7 @@
 {
   "ExpandedNodes": [
     "",
-    "\\MathGrapher",
-    "\\MathGrapher\\Popups\\MajorPopups",
-    "\\MathGrapher\\Popups\\MajorPopups\\Savers",
-    "\\MathGrapher\\Popups\\QuickCloserPopups"
+    "\\MathGrapher"
   ],
-  "SelectedNode": "\\MathGrapher\\DisplayObjects",
   "PreviewInSolutionExplorer": false
 }
