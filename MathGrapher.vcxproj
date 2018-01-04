@@ -105,14 +105,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="mathgrapher\*.*" />
-    <ClCompile Include="mathgrapher\DisplayObjects\*.*" />
-    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\*.*" />
-    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\*.*" />
-    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\*.*" />
-    <ClCompile Include="mathgrapher\Popups\MajorPopups\*.*" />
-    <ClCompile Include="mathgrapher\Popups\MajorPopups\Savers\*.*" />
-    <ClCompile Include="mathgrapher\Popups\MajorPopups\Edit\*.*" />
+    <ClCompile Include="mathgrapher\**" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
