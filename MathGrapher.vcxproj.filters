@@ -18,25 +18,25 @@
     <ClCompile Include="mathgrapher\BulkUtilities.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="mathgrapher\DisplayObjects\DisplayObjects.cpp">
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\DisplayObjects.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="mathgrapher\DisplayObjects\Function.cpp">
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\Function.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="mathgrapher\DisplayObjects\Graph.cpp">
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\Graph.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="mathgrapher\DisplayObjects\Interpolation.cpp">
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\Interpolation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="mathgrapher\DisplayObjects\RawImage.cpp">
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\RawImage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="mathgrapher\DisplayObjects\RawText.cpp">
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\RawText.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="mathgrapher\DisplayObjects\Slider.cpp">
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\Slider.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="mathgrapher\DisplayWrapper.cpp">
@@ -134,25 +134,25 @@
     <ClCompile Include="mathgrapher\BulkUtilities.hpp">
       <Filter>Header Files</Filter>
     </ClCompile>
-    <ClCompile Include="mathgrapher\DisplayObjects\DisplayObjects.hpp">
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\DisplayObjects.hpp">
       <Filter>Header Files</Filter>
     </ClCompile>
-    <ClCompile Include="mathgrapher\DisplayObjects\Function.hpp">
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\Function.hpp">
       <Filter>Header Files</Filter>
     </ClCompile>
-    <ClCompile Include="mathgrapher\DisplayObjects\Graph.hpp">
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\Graph.hpp">
       <Filter>Header Files</Filter>
     </ClCompile>
-    <ClCompile Include="mathgrapher\DisplayObjects\Interpolation.hpp">
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\Interpolation.hpp">
       <Filter>Header Files</Filter>
     </ClCompile>
-    <ClCompile Include="mathgrapher\DisplayObjects\RawImage.hpp">
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\RawImage.hpp">
       <Filter>Header Files</Filter>
     </ClCompile>
-    <ClCompile Include="mathgrapher\DisplayObjects\RawText.hpp">
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\RawText.hpp">
       <Filter>Header Files</Filter>
     </ClCompile>
-    <ClCompile Include="mathgrapher\DisplayObjects\Slider.hpp">
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\Slider.hpp">
       <Filter>Header Files</Filter>
     </ClCompile>
     <ClCompile Include="mathgrapher\DisplayWrapper.hpp">
