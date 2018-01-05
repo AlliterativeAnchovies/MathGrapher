@@ -75,6 +75,7 @@ class Arrow: public DisplayObject {
 		Uint32* ptmColor() {return &color;}
 		void resizeSmooth(double lengthincrease,double thickincrease);
 		void rescaleHead(double headsizechange);
+		void changeColor(Uint32 nc) {color = nc;};
 };
 
 #endif /* Arrow_hpp */

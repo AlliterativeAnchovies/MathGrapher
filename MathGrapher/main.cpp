@@ -566,6 +566,17 @@ void save(std::string toSave) {
 			fs << "\t\tText: \"" << obj->getActualText() << "\"\n";
 			fs << "\t\tColor: " << tostring(obj->getColor()) << "\n";
 		}
+		else if (object->getID()=="Arrow") {
+			Arrow* obj = (Arrow*)object;
+			fs << "\t\tPX: " << obj->getPX() << "\n";
+			fs << "\t\tPY: " << obj->getPY() << "\n";
+			fs << "\t\tLength: " << obj->getLength() << "\n";
+			fs << "\t\tAngle: " << obj->getAngle() << "\n";
+			fs << "\t\tThickness: " << obj->getThickness() << "\n";
+			fs << "\t\tHead_Size: " << obj->getHeadSize() << "\n";
+			fs << "\t\tHead_Angle: " << obj->getHeadAngle() << "\n";
+			fs << "\t\tColor: " << tostring(obj->getColor()) << "\n";
+		}
 		else {
 			throw std::runtime_error("Have not taught object how to save!");
 		}
@@ -610,6 +621,7 @@ void load(std::string toLoad) {
 	}
 	objects = {};
 	pointsOfInterest = {};
+	selectedObjects = {};
 	
 	std::fstream loadedFile(toLoad);
 	ParsedFile* pf = ParsedFile::parseFile(&loadedFile);
@@ -723,6 +735,19 @@ void load(std::string toLoad) {
 			RawText* loadedObject = new RawText(px,py,fsize,theName);
 			*(loadedObject->ptmActualText()) = theText;
 			*(loadedObject->ptmColor()) = color;
+			theObject = loadedObject;
+		}
+		else if (theID=="Arrow") {
+			double px = numberFromString(object->valueOf("Data.PX"));
+			double py = numberFromString(object->valueOf("Data.PY"));
+			double length = numberFromString(object->valueOf("Data.Length"));
+			double angle = numberFromString(object->valueOf("Data.Angle"));
+			double thickness = numberFromString(object->valueOf("Data.Thickness"));
+			double headSize = numberFromString(object->valueOf("Data.Head_Size"));
+			double headAngle = numberFromString(object->valueOf("Data.Head_Angle"));
+			Uint32 color = hexFromString(object->valueOf("Data.Color"));
+			Arrow* loadedObject = new Arrow(px,py,length,thickness,headSize,angle,headAngle,theName);
+			loadedObject->changeColor(color);
 			theObject = loadedObject;
 		}
 		else {
