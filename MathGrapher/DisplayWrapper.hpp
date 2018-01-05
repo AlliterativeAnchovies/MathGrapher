@@ -24,6 +24,7 @@
 #include "DisplayObjectsFolder/Interpolation.hpp"
 #include "DisplayObjectsFolder/Function.hpp"
 #include "DisplayObjectsFolder/RawText.hpp"
+#include "DisplayObjectsFolder/Arrow.hpp"
 
 //Returns a vector containing all valid interpolations
 template<typename T> std::vector<std::string> getValidInterpolations() {
@@ -43,6 +44,7 @@ void addGraph(double x,double y);
 void addSlider(double x,double y);
 void addImage(double x,double y,int which);
 void addText(double x,double y);
+void addArrow(double x,double y);
 
 //Things to display that are selected
 extern std::vector<DisplayObject*> selectedObjects;

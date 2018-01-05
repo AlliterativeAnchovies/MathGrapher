@@ -57,5 +57,16 @@ Uint8 AddObjectPopup::handle(double mouseX,double mouseY,bool clicked) {
 		toReturn = 0x02;
 	}
 	
+	cury += 25;
+	int arroww,arrowh;
+	TTF_SizeUTF8((*fontgrab)(20), " Arrow ", &arroww, &arrowh);
+	drawTextWithBackground(" Arrow ", 20, px+5, cury, 0xff000000, 0xffffcf9e, 0xff000000);
+	if (clicked&&pointInBounds(mouseX, mouseY, px+5, px+5+arroww, cury, cury+arrowh)) {
+		//add arror!
+		addArrow(px, py);
+		clicked  = false;
+		toReturn = 0x02;
+	}
+	
 	return toReturn;
 }

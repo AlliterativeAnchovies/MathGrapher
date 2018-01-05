@@ -102,6 +102,10 @@ void screenshot(std::string filename,SDL_Rect* bounds=NULL);
 void sleepConsole();//surpresses console messages
 void wakeConsole();//un-surpresses console messages
 double snapToPiMultiples(double radians);
+SDL_Surface* makeArrow(double length,double thickness,double headSize,double angle,double headAngle,Uint32 color,
+	double* offx,double* offy);
+void fillTriangleOnSurface(SDL_Surface* toDraw,int x1,int y1,int x2,int y2,int x3,int y3,Uint32 color);
+bool pointInArrow(double mouseX,double mouseY,double length,double thickness,double headSize,double angle,double headAngle);
 
 template<typename T> void fastSineCosine(T* sine,T* cosine,T angle) {
     //It's faster if I need a sine and cosine of 1 angle to use this
@@ -156,6 +160,17 @@ template<typename T> class Point {
         }
         T magnitude() {return sqrt(x*x+y*y);}
         Point<T> norm() {return *this/magnitude();};
+        void rotate(double angle) {
+			double s,c;
+			fastSineCosine(&s, &c, angle);
+			rotate(s,c);
+		};
+		void rotate(double sin_,double cos_) {
+			T tx = cos_*x+sin_*y;
+			T ty = cos_*y-sin_*x;
+			x = tx;
+			y = ty;
+		};
 };
 template<typename T> Point<T> normalTo(Point<T> a) {
     return Point<T>(-a.y,a.x);
@@ -208,6 +223,11 @@ template<typename T> void drawParallelogramOnSurface(SDL_Surface* theSurface,Poi
         p=p+norm;
     }
 }
+void fillTriangleOnSurface(SDL_Surface* toDraw,Point<double> p1,Point<double> p2,Point<double> p3,Uint32 color);
+double findTriangleArea(Point<double> p1,Point<double> p2,Point<double> p3);
+bool pointInParallelogram(double mouseX,double mouseY,Point<double> topleft,Point<double> direc1,Point<double> direc2);
+bool pointInTriangle(double mouseX,double mouseY,Point<double> tri1,Point<double> tri2,Point<double> tri3);
+
 
 template<typename T> std::string tostring(T a) {
     return std::to_string(a);

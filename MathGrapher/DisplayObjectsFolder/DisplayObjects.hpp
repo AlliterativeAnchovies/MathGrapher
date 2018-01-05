@@ -42,6 +42,9 @@ class PointOfInterest;
 class Slider;
 class RawImage;
 class RawText;
+class Arrow;
+
+
 typedef Wrap2<std::string,Function*> FuncWrap;
 typedef std::vector<FuncWrap> FunctionList;
 extern FunctionList builtins;//defined in Functions.cpp

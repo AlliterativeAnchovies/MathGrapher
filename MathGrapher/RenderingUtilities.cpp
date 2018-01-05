@@ -933,3 +933,225 @@ double snapToPiMultiples(double radians) {
 	}
 	return radians;
 }
+
+SDL_Surface* makeArrow(double length,double thickness,double headSize,double angle,double headAngle,Uint32 color,
+	double* offx,double* offy) {
+	
+	//Length is size of arrow from base to point, thickness is how thick it is, headSize is size of 'head' of arrow
+	//Angle is angle arrow points to, headAngle is angle between center of arrow and the lines coming out of either
+	//side of the point of the arrow.
+	//offx,offy are the offsets this surface needed to fit it all on the surface while keeping the base of the arrow
+	//considered "(0,0)" for the maths.
+	
+	//Arrows come in 2 portions, the parallelogram, then the triangle.
+	
+	//The code to draw a parallelogram takes in 1 point and then 2 directions, let's find out those points/directions first:
+	
+	Point<double> topleft = Point<double>(thickness/2,0);
+	topleft.rotate(M_PI/2+angle);
+	Point<double> direc1 = Point<double>(-thickness,0);
+	direc1.rotate(M_PI/2+angle);
+	Point<double> direc2 = Point<double>(length-headSize*cos(headAngle),0);
+	direc2.rotate(angle);
+	
+	//Now let's find out triangle bounding points
+	
+	Point<double> tri1 = Point<double>(length,0);
+	tri1.rotate(angle);
+	Point<double> tri2 = Point<double>(headSize,0);
+	tri2.rotate(M_PI-headAngle+angle);
+	tri2 = tri2+tri1;
+	Point<double> tri3 = Point<double>(headSize,0);
+	tri3.rotate(M_PI+headAngle+angle);
+	tri3 = tri3+tri1;
+	
+	//Now we need to find the offset
+	std::vector<Point<double>> allPoints = {topleft,topleft+direc1,topleft+direc2,topleft+direc1+direc2,tri1,tri2,tri3};
+	//to find offset, we need to find the largest negative x and y positions.
+	double largestx = 0;
+	double largesty = 0;
+	for (auto p : allPoints) {
+		if (p.x<largestx) {largestx=p.x;}
+		if (p.y<largesty) {largesty=p.y;}
+	}
+	*offx = largestx;
+	*offy = largesty;
+	
+	//now we need to shift all the actual points
+	std::vector<Point<double>*> allTruePoints = {&topleft,&tri1,&tri2,&tri3};
+	Point<double> increasePoint = Point<double>(largestx,largesty);
+	for (auto p : allTruePoints) {
+		*p=*p-increasePoint;
+	}
+	
+	//now we need to find the largest positive x and y positions, to figure out the size we should create the image
+	double sizex = 0;
+	double sizey = 0;
+	allPoints = {topleft,topleft+direc1,topleft+direc2,topleft+direc1+direc2,tri1,tri2,tri3};
+	for (auto p : allPoints) {
+		if (p.x>sizex) {sizex=p.x;}
+		if (p.y>sizey) {sizey=p.y;}
+	}
+	
+	//Now we can actually create the surface
+	SDL_Surface* toReturn = createBlankSurfaceWithSize(sizex+1, sizey+1);
+	drawParallelogramOnSurface(toReturn, topleft, direc1, direc2, color);
+	fillTriangleOnSurface(toReturn, tri1, tri2, tri3, color);
+	
+	return toReturn;
+}
+
+double findTriangleArea(Point<double> p1,Point<double> p2,Point<double> p3) {
+	return abs((p1.x*(p2.y-p3.y)+p2.x*(p3.y-p1.y)+p3.x*(p1.y-p2.y))/2);
+}
+
+bool pointInParallelogram(double mouseX,double mouseY,Point<double> topleft,Point<double> direc1,Point<double> direc2) {
+	//can check if a point is in a parallelogram by checking if it exists in one of the 2 triangle halves of it!
+	return 	pointInTriangle(mouseX, mouseY, topleft,               topleft+direc1, topleft+direc2)||
+			pointInTriangle(mouseX, mouseY, topleft+direc1+direc2, topleft+direc1, topleft+direc2);
+}
+
+bool pointInTriangle(double mouseX,double mouseY,Point<double> tri1,Point<double> tri2,Point<double> tri3) {
+	//https://stackoverflow.com/questions/13300904/determine-whether-point-lies-inside-triangle
+	//I used the second answer here ^ Pretty cool math trick
+	Point<double> mousePoint = Point<double>(mouseX,mouseY);
+	double A =  findTriangleArea(tri1,       tri2,       tri3      );
+	double A1 = findTriangleArea(mousePoint, tri2,       tri3      );
+	double A2 = findTriangleArea(tri1,       mousePoint, tri3      );
+	double A3 = findTriangleArea(tri1,       tri2,       mousePoint);
+	double epsilon = 0.00000001;//floating point shenanigans
+	double val = abs(A1+A2+A3-A);
+	//check if A1+A2+A3==A
+	return val<epsilon;
+}
+
+bool pointInArrow(double mouseX,double mouseY,double length,double thickness,double headSize,double angle,double headAngle) {
+	//same inputs as makeArrow except no surface and instead position and no color
+	
+	
+	//parallelogram bounding:
+	
+	Point<double> topleft = Point<double>(thickness/2,0);
+	topleft.rotate(M_PI/2+angle);
+	Point<double> direc1 = Point<double>(-thickness,0);
+	direc1.rotate(M_PI/2+angle);
+	Point<double> direc2 = Point<double>(length-headSize*cos(headAngle),0);
+	direc2.rotate(angle);
+	
+	//Now let's find out triangle bounding points
+	
+	Point<double> tri1 = Point<double>(length,0);
+	tri1.rotate(angle);
+	Point<double> tri2 = Point<double>(headSize,0);
+	tri2.rotate(M_PI-headAngle+angle);
+	tri2 = tri2+tri1;
+	Point<double> tri3 = Point<double>(headSize,0);
+	tri3.rotate(M_PI+headAngle+angle);
+	tri3 = tri3+tri1;
+	
+	bool inTriangle = pointInTriangle(mouseX,mouseY,tri1,tri2,tri3);
+	bool inParallelogram = pointInParallelogram(mouseX,mouseY,topleft,direc1,direc2);
+	return inTriangle||inParallelogram;
+	//return pointInParallelogram(mouseX,mouseY,topleft,direc1,direc2)||pointInTriangle(mouseX,mouseY,tri1,tri2,tri3);
+}
+
+void fillTriangleOnSurface(SDL_Surface* toDraw,Point<double> p1,Point<double> p2,Point<double> p3,Uint32 color) {
+	fillTriangleOnSurface(toDraw, p1.x, p1.y, p2.x, p2.y, p3.x, p3.y, color);
+}
+
+void fillTriangleOnSurface(SDL_Surface* toDraw,int x1,int y1,int x2,int y2,int x3,int y3,Uint32 color) {
+    //first, draw borders, to try avoiding rounding error shenanigans:
+    //drawLineOnSurfaceSafe(toDraw, x1, y1, x2, y2, color);
+    //drawLineOnSurfaceSafe(toDraw, x1, y1, x3, y3, color);
+    //drawLineOnSurfaceSafe(toDraw, x2, y2, x3, y3, color);
+    //get points in order of height
+    int top_x =     (y1>=y2)?                //if y1 is larger than y2
+                        ((y1>=y3)?x1:x3):    //then check if it is larger than y3 - if so, it is largest, otherwise y3 is largest
+                        ((y2>=y3)?x2:x3);    //if y2>=y1, then check if y2 is greater than y3 - if so, y2 is largest, otherwise y3 is largest
+    int top_y =     (y1>=y2)?                //same as above ^
+                        ((y1>=y3)?y1:y3):
+                        ((y2>=y3)?y2:y3);
+    int bottom_x =  (y1<=y2)?                //if y1 is smaller than y2
+                        ((y1<=y3)?x1:x3):    //then check if it is smaller than y3, if so, it is the smallest, otherwise y3 is the smallest
+                        ((y2<=y3)?x2:x3);    //if y2<=y1, then check if y2 is less than y3 - is so, y2 is smallest, otherwise, y3 is smallest
+    int bottom_y =  (y1<=y2)?                //same as above ^
+                        ((y1<=y3)?y1:y3):
+                        ((y2<=y3)?y2:y3);
+    int middle_x =  (y1==top_y)?                    //if y1 is largest
+                        ((y2==bottom_y)?x3:x2):     //check if y2 is smallest - if so, y3 is middle, otherwise y3 must be smallest so y2 is middle
+                        ((y2==top_y)?               //if y1 is not largest, check if y2 is largest
+                            ((y1==bottom_y)?x3:x1): //if y2 is largest, check if y1 is smallest - if so, y3 is middle, otherwise y3 must be smallest so y1 is middle
+                            ((y1==bottom_y)?x2:x1)  //if y2 is not largest, y3 must be largest.  If y1 is smallest, then y2 must be middle, otherwise y1 is middle
+                        );
+    int middle_y =  (y1==top_y)?                    //same as above ^
+                        ((y2==bottom_y)?y3:y2):
+                        ((y2==top_y)?
+                            ((y1==bottom_y)?y3:y1):
+                            ((y1==bottom_y)?y2:y1)
+                        );
+    //find deltas
+    int del_tb_x = bottom_x-top_x;
+    int del_tb_y = bottom_y-top_y;
+    int del_tm_x = middle_x-top_x;
+    int del_tm_y = middle_y-top_y;
+    int del_mb_x = bottom_x-middle_x;
+    int del_mb_y = bottom_y-middle_y;
+    //now draw the lines
+    for (int y_pos = top_y;y_pos>=bottom_y;y_pos--) {
+        //need to figure out the two x points, along each line:
+        //slope = del_tb_y/del_tb_x
+        //slope = (b_y - y_pos)/(b_x - x_pos)
+        //del_tb_y/del_tb_x = (b_y - y_pos)/(b_x - x_pos)
+        //b_x-(del_tb_x/del_tb_y)*(b_y-y_pos) = x_pos
+        //x point along tb
+        int x_pos_1;
+        if (del_tb_y!=0) {
+            x_pos_1 = bottom_x-(1.0*del_tb_x/del_tb_y)*(bottom_y-y_pos);
+        }
+        else {//avoid divide-by-zero
+            if (bottom_y-y_pos>0) {
+                x_pos_1 = 0;
+            }
+            else if (bottom_y-y_pos<0) {
+                x_pos_1 = toDraw->w-1;
+            }
+            else {
+                x_pos_1 = bottom_x;
+            }
+        }
+        int x_pos_2;
+        if (y_pos>middle_y) {//x point along tm
+            if (del_tm_y!=0) {
+                x_pos_2 = middle_x-(1.0*del_tm_x/del_tm_y)*(middle_y-y_pos);
+            }
+            else {//avoid divide-by-zero
+                if (middle_y-y_pos>0) {
+                    x_pos_2 = 0;
+                }
+                else if (middle_y-y_pos<0) {
+                    x_pos_2 = toDraw->w-1;
+                }
+                else {
+                    x_pos_2 = middle_x;
+                }
+            }
+        }
+        else {//x point along mb
+            if (del_mb_y!=0) {
+                x_pos_2 = bottom_x-(1.0*del_mb_x/del_mb_y)*(bottom_y-y_pos);
+            }
+            else {//avoid divide-by-zero
+                if (bottom_y-y_pos>0) {
+                    x_pos_2 = 0;
+                }
+                else if (bottom_y-y_pos<0) {
+                    x_pos_2 = toDraw->w-1;
+                }
+                else {
+                    x_pos_2 = bottom_x;
+                }
+            }
+        }
+        drawLineOnSurface(toDraw, x_pos_1, y_pos, x_pos_2, y_pos, color);
+    }
+}

@@ -34,6 +34,7 @@ int TOTAL_GRAPHS = 0;
 int TOTAL_SLIDERS = 0;
 int TOTAL_IMAGES = 0;
 int TOTAL_TEXTS = 0;
+int TOTAL_ARROWS = 0;
 
 
 void addGraph(double x,double y) {
@@ -52,6 +53,11 @@ void addImage(double x,double y,int which) {
 void addText(double x,double y) {
     objects.push_back(new RawText(x,y,16,"Text "+std::to_string(TOTAL_TEXTS)));
     TOTAL_TEXTS++;
+}
+
+void addArrow(double x,double y) {
+    objects.push_back(new Arrow(x,y,100,20,30,0,M_PI/4,"Arrow "+std::to_string(TOTAL_ARROWS)));
+    TOTAL_ARROWS++;
 }
 
 void drawDisplayObject(DisplayObject* d) {
