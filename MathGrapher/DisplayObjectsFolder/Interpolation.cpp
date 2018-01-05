@@ -34,6 +34,9 @@ bool Interpolation::update() {
             else if (relatedDisplay->getID()=="Image") {
             	((RawImage*)relatedDisplay)->resizeSmooth(px/timeInterval,py/timeInterval);
 			}
+			else if (relatedDisplay->getID()=="Arrow") {
+            	((Arrow*)relatedDisplay)->resizeSmooth(px/timeInterval,py/timeInterval);
+			}
             break;
         case SMOOTH_GRID_RESIZE_STATIC_CENTER:
             ((Graph*)relatedDisplay)->moveGridSize(px/timeInterval, py/timeInterval,false);
@@ -53,8 +56,12 @@ bool Interpolation::update() {
 		case FIX_THINGAMAJIG:
 			((RawImage*)relatedDisplay)->fix();
 			break;
+		case RESCALE_HEAD:
+			((Arrow*)relatedDisplay)->rescaleHead(px/timeInterval);
         case DELAY:
             break;
+		default:
+			throw std::runtime_error("Interpolation not defined!");
     }
     
     timeAt+=1;
@@ -86,6 +93,8 @@ std::string Interpolation::getDisplay() {
             return "Highlight ("+getPXDisplay()+","+getPYDisplay()+") to ("+getSXDisplay()+","+getSYDisplay()+")";
 		case FIX_THINGAMAJIG:
 			return "Fix Image :)";
+		case RESCALE_HEAD:
+			return "Rescale Arrow Head by "+getPXDisplay();
         case DELAY:
             return "-DELAY-";
     }
@@ -221,6 +230,8 @@ Uint32 getColorOfInterpolation(Interpolation* i) {
             return 0xffffff00;
 		case FIX_THINGAMAJIG:
 			return 0xffff0088;
+		case RESCALE_HEAD:
+			return 0xff8800ff;
     }
     throw std::runtime_error("ERROR! Interpolation has no color.");
 }
@@ -246,6 +257,8 @@ std::string stringifyID(Uint8 id) {
             return "Highlight";
 		case FIX_THINGAMAJIG:
 			return "Fix";
+		case RESCALE_HEAD:
+			return "Rescale Head";
     }
     throw std::runtime_error("ERROR NO SUCH INTERPOLATION TO STRINGIFY");
 }

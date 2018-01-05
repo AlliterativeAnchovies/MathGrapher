@@ -65,6 +65,9 @@ Uint8 CreateSimpleInterpolation::handle(double mouseX,double mouseY,bool clicked
 			else if (textConcerned!=NULL) {
 				textConcerned->addInterpolation(interpolationConcerned);
 			}
+			else if (arrowConcerned!=NULL) {
+				arrowConcerned->addInterpolation(interpolationConcerned);
+			}
 			else {
 				throw std::runtime_error("Need to hook up interpolation to display object");
 			}

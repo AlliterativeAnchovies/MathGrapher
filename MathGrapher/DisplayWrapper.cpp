@@ -25,6 +25,10 @@ template<> std::vector<std::string> getValidInterpolations<RawText>() {
 	return {"Move"};
 }
 
+template<> std::vector<std::string> getValidInterpolations<Arrow>() {
+	return {"Move","Rescale","Rescale Head"};
+}
+
 //Things to draw
 std::vector<DisplayObject*> objects = {};
 std::vector<DisplayObject*> selectedObjects = {};

@@ -35,6 +35,34 @@ Uint8 EditArrowPopup::handle(double mouseX,double mouseY,bool clicked) {
 		"PY: ",tostring(arrowConcerned->getPY()),arrowConcerned->ptmPY(),clicked,&offx,&offy)
 		|| clickedEdit;
 	cury+=offy;
+	//edit field for length
+	clickedEdit = handleEditableInfo(curx,cury,20,43,mouseX,mouseY,
+		"Length: ",tostring(arrowConcerned->getLength()),arrowConcerned->ptmLength(),clicked,&offx,&offy)
+		|| clickedEdit;
+	//edit field for thickness
+	clickedEdit = handleEditableInfo(curx+offx,cury,20,44,mouseX,mouseY,
+		"Thickness: ",tostring(arrowConcerned->getThickness()),arrowConcerned->ptmThickness(),clicked,&offx,&offy)
+		|| clickedEdit;
+	cury+=offy;
+	//edit field for head size
+	clickedEdit = handleEditableInfo(curx,cury,20,45,mouseX,mouseY,
+		"Head Size: ",tostring(arrowConcerned->getHeadSize()),arrowConcerned->ptmHeadSize(),clicked,&offx,&offy)
+		|| clickedEdit;
+	cury+=offy;
+	//edit field for angle
+	clickedEdit = handleEditableInfo(curx,cury,20,46,mouseX,mouseY,
+		"Angle: ",tostring(arrowConcerned->getAngle()),arrowConcerned->ptmAngle(),clicked,&offx,&offy)
+		|| clickedEdit;
+	//edit field for head angle
+	clickedEdit = handleEditableInfo(curx+offx,cury,20,47,mouseX,mouseY,
+		"Head Angle: ",tostring(arrowConcerned->getHeadAngle()),arrowConcerned->ptmHeadAngle(),clicked,&offx,&offy)
+		|| clickedEdit;
+	cury+=offy;
+	//edit field for color
+	clickedEdit = handleEditableInfo(curx,cury,20,48,mouseX,mouseY,
+		"Head Size: ",tostring(arrowConcerned->getColor()),arrowConcerned->ptmColor(),clicked,&offx,&offy)
+		|| clickedEdit;
+	cury+=offy;
 	
 	//now we'll do the Interpolations stuff
 	bool clickedInterpol = drawInterpolationSidebar(px+5*sx/8,py,clicked,mouseX,mouseY,arrowConcerned);

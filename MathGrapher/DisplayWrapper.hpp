@@ -35,6 +35,7 @@ template<> std::vector<std::string> getValidInterpolations<RawImage>();
 template<> std::vector<std::string> getValidInterpolations<Slider>();
 template<> std::vector<std::string> getValidInterpolations<Graph>();
 template<> std::vector<std::string> getValidInterpolations<RawText>();
+template<> std::vector<std::string> getValidInterpolations<Arrow>();
 
 //Things to draw/interpolate
 extern std::vector<DisplayObject*> objects;

@@ -27,6 +27,9 @@ Uint8 ChooseInterpolationPopup::handle(double mouseX,double mouseY,bool clicked)
 	else if (textConcerned!=NULL) {
 		validInterpols = getValidInterpolations<RawText>();
 	}
+	else if (arrowConcerned!=NULL) {
+		validInterpols = getValidInterpolations<Arrow>();
+	}
 	else {
 		validInterpols = getValidInterpolations<DisplayObject>();
 	}

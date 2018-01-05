@@ -11,114 +11,6 @@
 //returns 0 if nothing happened,
 //return  2 if should delete,
 //return  1 if clicked in
-/*Uint8 Popup::handle(double mouseX,double mouseY,bool clicked) {
-	throw std::runtime_error("Error!  Should not be using default popup handling!");
-    Uint8 toReturn = 0x00;
-    clicked = clicked&&successfulRaycast&&!locked;
-    switch (popupID) {
-        case NULL_POPUP:
-            return 0x02;
-        case ADD_OBJECT_POPUP:
-            {
-                
-                
-            }
-            break;
-        case EDIT_GRAPH_POPUP:
-            {
-                
-            }
-            break;
-        case CHOOSE_FUNCTION_POPUP:
-            {
-                
-            }
-            break;
-        case CHOOSE_INTERPOLATION_POPUP:
-            {
-                
-                
-            }
-            break;
-        case CREATE_RESIZE_INTERPOLATION:
-        case CREATE_SIMPLE_INTERPOLATION:
-        case CREATE_FUNCTION_RUN_INTERPOLATION:
-            {
-                
-                
-            }
-            break;
-        case EDIT_FUNCTION_POPUP:
-            {
-                
-                
-                
-            }
-            break;
-        case CHOOSE_FUNCTION_INTERPOLATION:
-            {
-
-            }
-            break;
-        case CREATE_POINT_OF_INTEREST:
-            {
-                
-                
-                
-            }
-            break;
-        case CREATE_HIGHLIGHT_INTERPOLATION:
-            {
-			
-                
-            }
-            break;
-        case EDIT_SLIDER_POPUP:
-            {
-                
-                
-            }
-            break;
-        case CHOOSE_POINT_CONCERNED_FOR_LINKING_POPUP:
-            {
-                
-            }
-            break;
-        case CHOOSE_WHICH_IMAGE_POPUP:
-            {
-                
-            }
-            break;
-        case EDIT_IMAGE_POPUP:
-            {
-                
-            }
-            break;
-		case EDIT_TEXT_POPUP:
-			{
-				
-			
-			}
-			break;
-		case LOAD_FILE_POPUP:
-            {
-
-            }
-            break;
-		case SAVE_FILE_POPUP:
-            {
-                
-			}
-			break;
-		case MAIN:
-			{
-				
-				
-			}
-			break;
-    }
-    return toReturn;
-}*/
 
 void Popup::tag() {
     taggedForDeletion = true;
@@ -166,29 +58,6 @@ Popup* Popup::concernWith(Function* f) {
     return this;
 }
 
-/*bool isQuickCloser(Uint8 popup_id) {
-    return popup_id==ADD_OBJECT_POPUP||
-           popup_id==CHOOSE_FUNCTION_POPUP||
-           popup_id==CHOOSE_INTERPOLATION_POPUP||
-           popup_id==CREATE_SIMPLE_INTERPOLATION||
-           popup_id==CREATE_RESIZE_INTERPOLATION||
-           popup_id==EDIT_FUNCTION_POPUP||
-           popup_id==CHOOSE_FUNCTION_INTERPOLATION||
-           popup_id==CREATE_POINT_OF_INTEREST||
-           popup_id==CREATE_HIGHLIGHT_INTERPOLATION||
-           popup_id==CHOOSE_POINT_CONCERNED_FOR_LINKING_POPUP||
-           popup_id==CHOOSE_WHICH_IMAGE_POPUP||
-           popup_id==LOAD_FILE_POPUP;
-}
-
-bool isMajor(Uint8 popup_id) {
-    return  popup_id==EDIT_GRAPH_POPUP||
-            popup_id==EDIT_SLIDER_POPUP||
-            popup_id==EDIT_IMAGE_POPUP||
-            popup_id==EDIT_TEXT_POPUP||
-            popup_id==SAVE_FILE_POPUP;
-}*/
-
 
 void Popup::setUpInterpolation() {
     //called when concerning with a string
@@ -220,6 +89,9 @@ void Popup::setUpInterpolation() {
     else if (stringConcerned=="Fix") {
     	interpolID = FIX_THINGAMAJIG;
 	}
+	else if (stringConcerned=="Rescale Head") {
+    	interpolID = RESCALE_HEAD;
+	}
     else {
         throw std::runtime_error("Invalid Interpolation To Set Up");
     }
@@ -234,6 +106,9 @@ void Popup::setUpInterpolation() {
 	}
 	else if (textConcerned!=NULL) {
 		interpolationConcerned = new Interpolation(interpolID,0,0,FRAME_RATE,textConcerned);
+	}
+	else if (arrowConcerned!=NULL) {
+		interpolationConcerned = new Interpolation(interpolID,0,0,FRAME_RATE,arrowConcerned);
 	}
 	else {
 		throw std::runtime_error("Not set up adding interpolations to this type of display object!");
@@ -306,6 +181,11 @@ bool isDoubleTypeOfValueEditor(int instrswch) {
         case 35:
         case 41:
         case 42:
+        case 43:
+        case 44:
+        case 45:
+        case 46:
+        case 47:
             return true;
     }
     return false;
@@ -314,6 +194,7 @@ bool isDoubleTypeOfValueEditor(int instrswch) {
 bool isHexadecimalTypeOfValueEditor(int instrswch) {
 	switch (instrswch) {
 		case 38:
+		case 48:
 			return true;
 	}
 	return false;

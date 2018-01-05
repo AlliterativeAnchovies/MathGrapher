@@ -10,6 +10,18 @@
 #define Arrow_hpp
 
 #include "DisplayObjects.hpp"
+#include "Interpolation.hpp"
+
+struct ArrowImage {
+	double px = 0;
+	double py = 0;
+	double length = 0;
+	double angle = 0;
+	double thickness = 0;
+	double headAngle = M_PI/4;
+	double headSize = 0;
+	Uint32 color = 0xff000000;
+};
 
 class Arrow: public DisplayObject {
 	private:
@@ -28,6 +40,7 @@ class Arrow: public DisplayObject {
         //highlitations
         bool highlighted = false;
         Uint32 color = 0xff000000;
+        ArrowImage image;
     public:
 		void highlight() {highlighted = true;};
 		bool clickedIn(double mouseX,double mouseY);
@@ -48,6 +61,20 @@ class Arrow: public DisplayObject {
 		double getPY() {return py;}
 		double* ptmPX() {return &px;}
 		double* ptmPY() {return &py;}
+		double getLength() {return length;}
+		double getThickness() {return thickness;}
+		double getHeadSize() {return headSize;}
+		double getAngle() {return angle;}
+		double getHeadAngle() {return headAngle;}
+		double* ptmLength() {return &length;}
+		double* ptmThickness() {return &thickness;}
+		double* ptmHeadSize() {return &headSize;}
+		double* ptmAngle() {return &angle;}
+		double* ptmHeadAngle() {return &headAngle;}
+		Uint32 getColor() {return color;}
+		Uint32* ptmColor() {return &color;}
+		void resizeSmooth(double lengthincrease,double thickincrease);
+		void rescaleHead(double headsizechange);
 };
 
 #endif /* Arrow_hpp */

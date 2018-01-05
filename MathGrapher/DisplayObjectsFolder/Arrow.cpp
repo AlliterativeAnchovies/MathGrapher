@@ -10,14 +10,39 @@
 
 void Arrow::run() {
 	running = true;
+	image.px = px;
+	image.py = py;
+	image.length = length;
+	image.angle = angle;
+	image.thickness = thickness;
+	image.headAngle = headAngle;
+	image.headSize = headSize;
+	image.color = color;
 }
 
 void Arrow::reset() {
 	running = false;
+	px = image.px;
+	py = image.py;
+	length = image.length;
+	angle = image.angle;
+	thickness = image.thickness;
+	headAngle = image.headAngle;
+	headSize = image.headSize;
+	color = image.color;
 }
 
 void Arrow::update() {
-
+	for (int i = 0;i<interpolations.size();i++) {
+        if (interpolations[i]->update()) {
+            std::vector<Interpolation*> followups = interpolations[i]->getFollowups();
+            for (int j = 0;j<followups.size();j++) {
+                followups[j]->wait();
+                interpolations.push_back(followups[j]);
+            }
+            interpolations[i]->pause();
+        }
+    }
 }
 
 bool Arrow::clickedIn(double mouseX,double mouseY) {
@@ -41,4 +66,13 @@ Arrow::Arrow(double x,double y,double s,double t,double hS,double a,double hA,st
 	name = n;
 	headSize = hS;
 	headAngle = hA;
+}
+
+void Arrow::resizeSmooth(double lengthincrease,double thickincrease) {
+	thickness+=thickincrease;
+	length+=lengthincrease;
+}
+
+void Arrow::rescaleHead(double headsizechange) {
+	headSize+=headsizechange;
 }

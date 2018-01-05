@@ -13,6 +13,7 @@
 #include "Graph.hpp"
 #include "RawImage.hpp"
 #include "Slider.hpp"
+#include "Arrow.hpp"
 
 class Interpolation {
     private:
