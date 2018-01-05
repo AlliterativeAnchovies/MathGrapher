@@ -45,7 +45,17 @@ Uint8 ChooseInterpolationPopup::handle(double mouseX,double mouseY,bool clicked)
 		}
 		drawTextWithBackground(validInterpols[i], 16, curx, cury, 0xff000000, 0xffffcf9e, 0xff000000);
 		if (clicked&&pointInBounds(mouseX, mouseY, curx, curx+buttonSX, cury, cury+buttonSY)) {
-			createPopup(CREATE_SIMPLE_INTERPOLATION, mouseX, mouseY)
+			auto popupCreateID = CREATE_SIMPLE_INTERPOLATION;
+			if (validInterpols[i]=="Resize") {
+				popupCreateID = CREATE_RESIZE_INTERPOLATION;
+			}
+			else if (validInterpols[i]=="Run") {
+				popupCreateID = CREATE_FUNCTION_RUN_INTERPOLATION;
+			}
+			else if (validInterpols[i]=="Highlight") {
+				popupCreateID = CREATE_HIGHLIGHT_INTERPOLATION;
+			}
+			createPopup(popupCreateID, mouseX, mouseY)
 				->concernWithAllDisplayedObjects(this)
 				->concernWith(validInterpols[i])
 				->setUpInterpolation();

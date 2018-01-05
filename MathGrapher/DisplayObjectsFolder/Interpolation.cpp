@@ -58,6 +58,7 @@ bool Interpolation::update() {
 			break;
 		case RESCALE_HEAD:
 			((Arrow*)relatedDisplay)->rescaleHead(px/timeInterval);
+			break;
         case DELAY:
             break;
 		default:

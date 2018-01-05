@@ -30,6 +30,9 @@ void Arrow::reset() {
 	headAngle = image.headAngle;
 	headSize = image.headSize;
 	color = image.color;
+	for (int i = 0;i<interpolations.size();i++) {
+        interpolations[i]->reset();
+    }
 }
 
 void Arrow::update() {
