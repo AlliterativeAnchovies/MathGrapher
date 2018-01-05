@@ -176,8 +176,9 @@ bool controlFlow() {
 			std::string dirstring = dumstupidcurrentdirectorybs+"/resources/Screenshots/intermediate"+FRAME_NUM_FOLDER_str;
 			DIR* theDir;
 			if ((theDir = opendir(dirstring.c_str()))==NULL) {//if directory does not exist, create it
-				std::string mkdirCommand = "mkdir "+dirstring;
+				std::string mkdirCommand = "mkdir \""+dirstring+"\"";
 				std::system(mkdirCommand.c_str());
+				//throw std::runtime_error("");
 			} else {closedir(theDir);}
 			if (FRAME_NUM>0) {
 				//make intermediate .mp4 from batch of .bmps
@@ -267,15 +268,14 @@ int main(int argc, const char * argv[]) {
 		dumstupidcurrentdirectorybs = ".";//getenv("PWD");
 	#elif defined _DEBUG
         std::cout << "Warning: Using a development build!\n";
-        //The one instance where visual studio is better than xcode.  There
-        //were no hijinks in making this work.  Yay.
-		//Its important to understand why this works, though - in XCode, I had
-		//to manually copy resources to the debug folder because the debug folder
-		//is in a completely different area of the computer than the project directory.
-		//In visual studios, the debug folder is a folder inside the project directory,
-		//so to get to resources (in the project directory) I have to pop out of the
-		//debug directory - hence the two dots instead of one - but I do not have to
-		//manually copy things anywhere.
+        //VISUAL STUDIO CANNOT DECIDE WHETHER IT WANTS "." OR ".."!!!
+		//Depending on the build, it'll be unable to find images until you
+		//change this to the other one.
+		//Note the difference: "." references current directory, ".." is directory of
+		//current directory.  The "current directory", for whatever stupid reason, is not
+		//actually the directory of the project, but the directory the project is called from.
+		//So my guess is visual studio flipflops on whether to call the .exe from the directory
+		//it is in (Debug, requires ..), or the directory of the project (MathGrapher, requires .)
 		dumstupidcurrentdirectorybs = "..";
 	#elif defined _WINDOWS
 		std::cout << "Visual Studio Compiling For Release";
@@ -772,7 +772,11 @@ void load(std::string toLoad) {
 
 void makeVideoFromBatch(int batchnum,std::string* listForConcatenation) {
 	std::cout << "Making Video Batch...\n";
-	std::string ffmpegLocation = "/usr/local/bin/";
+	#ifdef _WINDOWS
+		std::string ffmpegLocation = "";
+	#else
+		std::string ffmpegLocation = "/usr/local/bin/";
+	#endif
 	std::string direcIn = dumstupidcurrentdirectorybs+"/resources/Screenshots/";
 	std::string direcOut = dumstupidcurrentdirectorybs+"/resources/Output/Intermediates/";
 	std::string tstring = std::to_string(batchnum);
@@ -793,8 +797,8 @@ void makeVideoFromBatch(int batchnum,std::string* listForConcatenation) {
 		concaterFile << "file '" << istring << "'\nduration "+durationString+"\n";
 	}
 	concaterFile.close();
-	std::string theCommand = ffmpegLocation+"ffmpeg -f concat -i "+concaterFileFile
-		+" -vsync vfr -pix_fmt yuv420p "+direcOut+tstring+".mp4";
+	std::string theCommand = ffmpegLocation+"ffmpeg -f concat -i \""+concaterFileFile
+		+"\" -vsync vfr -pix_fmt yuv420p \""+direcOut+tstring+".mp4\"";
 	//end of demuxer method
 	
 	//there's NO REASON why giving 600 frames at 60fps should produce a 24 second video, but yet
@@ -823,8 +827,10 @@ void makeVideoFromBatch(int batchnum,std::string* listForConcatenation) {
 	}
 	//run command
 	std::system(theCommand.c_str());
+	std::cout << theCommand;
+	//throw std::runtime_error("...");
 	//add to concatenation list for later linking of all batches
-	*listForConcatenation+="file "+tstring+".mp4\n";
+	*listForConcatenation+="file '"+tstring+".mp4'\n";
 	//delete the .bmps
 	for (int i = 0;i<VIDEO_BATCH_SIZE;i++) {
 		std::string numstr = std::to_string(i);
@@ -838,7 +844,11 @@ void makeVideoFromBatch(int batchnum,std::string* listForConcatenation) {
 void makeVideo(std::string toSave) {
 	//call console command to ffmpeg, make mp4
 	//requires ffmpeg to be installed
-	std::string ffmpegLocation = "/usr/local/bin/";
+	#ifdef _WINDOWS
+		std::string ffmpegLocation = "";
+	#else
+		std::string ffmpegLocation = "/usr/local/bin/";
+	#endif
 	std::string direcIn = dumstupidcurrentdirectorybs+"/resources/Screenshots/";
 	std::string direcOut = dumstupidcurrentdirectorybs+"/resources/Output/Intermediates/";
 	makeVideoFromBatch(batchnum, &concatList);//make batch from remaining .bmps
@@ -857,7 +867,7 @@ void makeVideo(std::string toSave) {
 		remove((outputFileName).c_str());//delete it
 	}
 	//ffmpeg -f concat -i list.txt -c copy merged.mp4
-	std::string theCommand = ffmpegLocation+"ffmpeg -f concat -i "+dumstupidcurrentdirectorybs+"/resources/Output/Intermediates/concatFile.txt -c copy "+outputFileName;
+	std::string theCommand = ffmpegLocation+"ffmpeg -f concat -i \""+dumstupidcurrentdirectorybs+"/resources/Output/Intermediates/concatFile.txt\" -c copy \""+outputFileName+"\"";
 	std::system(theCommand.c_str());
 	FRAME_NUM = 0;
 	concatList = "";
