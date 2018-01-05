@@ -1,9 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\MathGrapher",
-    "\\MathGrapher\\DisplayObjectsFolder"
+    "\\MathGrapher"
   ],
-  "SelectedNode": "\\MathGrapher\\DisplayObjectsFolder\\Function.hpp",
+  "SelectedNode": "\\MathGrapher",
   "PreviewInSolutionExplorer": false
 }
