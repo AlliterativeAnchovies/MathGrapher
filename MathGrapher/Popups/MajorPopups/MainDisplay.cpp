@@ -94,6 +94,11 @@ Uint8 MainDisplay::handle(double mouseX,double mouseY,bool clicked) {
 					blargh->concernWith((RawText*)selectedObjects[i]);
 					clicked = false;
 				}
+				else if (selectedObjects[i]->getID()=="Arrow") {
+					Popup* blargh = createPopup(EDIT_ARROW_POPUP, 10, 10);
+					blargh->concernWith((Arrow*)selectedObjects[i]);
+					clicked = false;
+				}
 			}
 			//draw delete button
 			TTF_SizeUTF8((*fontgrab)(16), "Delete", &w4, &h4);

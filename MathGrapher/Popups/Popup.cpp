@@ -257,6 +257,7 @@ bool isStringTypeOfValueEditor(int instrswch) {
         case 33:
         case 36:
         case 39:
+        case 40:
             return true;
     }
     return false;
@@ -303,6 +304,8 @@ bool isDoubleTypeOfValueEditor(int instrswch) {
         case 32:
         case 34:
         case 35:
+        case 41:
+        case 42:
             return true;
     }
     return false;

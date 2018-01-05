@@ -33,6 +33,7 @@
 #include "Popups/MajorPopups/Edit/EditTextPopup.hpp"
 #include "Popups/MajorPopups/Savers/SaveFilePopup.hpp"
 #include "Popups/MajorPopups/Savers/SaveVideoPopup.hpp"
+#include "Popups/MajorPopups/Edit/EditArrowPopup.hpp"
 
 void deletePopup(Popup* p);
 

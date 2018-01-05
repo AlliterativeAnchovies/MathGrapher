@@ -74,6 +74,9 @@ Popup* createPopup(Uint8 popup_id,double x,double y) {
 		case SAVE_VIDEO_POPUP:
 			blargh = new SaveVideoPopup(x,y);
 			break;
+		case EDIT_ARROW_POPUP:
+			blargh = new EditArrowPopup(x,y);
+			break;
 		default:
 			throw std::runtime_error("Error! Don't know how to create popup yet!");
 	}
@@ -153,6 +156,9 @@ void deletePopup(Popup* p) {
 			break;
 		case SAVE_VIDEO_POPUP:
 			delete (SaveVideoPopup*)p;
+			break;
+		case EDIT_ARROW_POPUP:
+			delete (EditArrowPopup*)p;
 			break;
 		default:
 			throw std::runtime_error("Error! Don't know how to delete popup yet!");

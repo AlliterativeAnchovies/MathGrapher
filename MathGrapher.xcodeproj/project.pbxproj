@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		86282B671FFFEC3900B19C4E /* Arrow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86282B651FFFEC3900B19C4E /* Arrow.cpp */; };
+		86282B6A200016AF00B19C4E /* EditArrowPopup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86282B68200016AF00B19C4E /* EditArrowPopup.cpp */; };
 		863C5C151FF5834A00F6FA18 /* resources in CopyFiles */ = {isa = PBXBuildFile; fileRef = 863C5C141FF5834A00F6FA18 /* resources */; };
 		863C5C1B1FF6EB2700F6FA18 /* DisplayWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 863C5C191FF6EB2700F6FA18 /* DisplayWrapper.cpp */; };
 		863C5C311FFB0BB500F6FA18 /* BulkUtilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 863C5C2F1FFB0BB500F6FA18 /* BulkUtilities.cpp */; };
@@ -66,6 +67,8 @@
 /* Begin PBXFileReference section */
 		86282B651FFFEC3900B19C4E /* Arrow.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Arrow.cpp; sourceTree = "<group>"; };
 		86282B661FFFEC3900B19C4E /* Arrow.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Arrow.hpp; sourceTree = "<group>"; };
+		86282B68200016AF00B19C4E /* EditArrowPopup.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = EditArrowPopup.cpp; sourceTree = "<group>"; };
+		86282B69200016AF00B19C4E /* EditArrowPopup.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = EditArrowPopup.hpp; sourceTree = "<group>"; };
 		863C5C141FF5834A00F6FA18 /* resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = resources; sourceTree = "<group>"; };
 		863C5C191FF6EB2700F6FA18 /* DisplayWrapper.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DisplayWrapper.cpp; sourceTree = "<group>"; };
 		863C5C1A1FF6EB2700F6FA18 /* DisplayWrapper.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DisplayWrapper.hpp; sourceTree = "<group>"; };
@@ -238,6 +241,8 @@
 		863C5C761FFB1CEB00F6FA18 /* Edit */ = {
 			isa = PBXGroup;
 			children = (
+				86282B68200016AF00B19C4E /* EditArrowPopup.cpp */,
+				86282B69200016AF00B19C4E /* EditArrowPopup.hpp */,
 				863C5C3D1FFB175100F6FA18 /* EditGraphPopup.cpp */,
 				863C5C3E1FFB175100F6FA18 /* EditGraphPopup.hpp */,
 				863C5C611FFB1B9D00F6FA18 /* EditSliderPopup.cpp */,
@@ -408,6 +413,7 @@
 				863C5C601FFB1B6A00F6FA18 /* CreateHighlightInterpolation.cpp in Sources */,
 				863C5C3B1FFB14A500F6FA18 /* AddObjectPopup.cpp in Sources */,
 				863C5C1B1FF6EB2700F6FA18 /* DisplayWrapper.cpp in Sources */,
+				86282B6A200016AF00B19C4E /* EditArrowPopup.cpp in Sources */,
 				86B40B781FFEB6810092BA4E /* RawImage.cpp in Sources */,
 				86B40B731FFEB6810092BA4E /* DisplayObjects.cpp in Sources */,
 				86B40B761FFEB6810092BA4E /* Interpolation.cpp in Sources */,

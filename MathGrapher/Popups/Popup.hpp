@@ -34,7 +34,8 @@ enum POPUP_IDS {
     LOAD_FILE_POPUP,
     SAVE_FILE_POPUP,
     MAIN,
-    SAVE_VIDEO_POPUP
+    SAVE_VIDEO_POPUP,
+    EDIT_ARROW_POPUP
 };
 
 const bool X_AXIS = true;
@@ -56,6 +57,7 @@ class Popup {
         Slider* sliderConcerned = NULL;
         RawImage* imageConcerned = NULL;
         RawText* textConcerned = NULL;
+        Arrow* arrowConcerned = NULL;
         bool isNewborn = true;
         bool successfulRaycast = false;
         bool locked = false;
@@ -74,11 +76,13 @@ class Popup {
         Popup* concernWith(Slider* s) {sliderConcerned = s;return this;}
         Popup* concernWith(RawImage* r) {imageConcerned = r;return this;}
         Popup* concernWith(RawText* t) {textConcerned = t;return this;}
+        Popup* concernWith(Arrow* a) {arrowConcerned = a;return this;}
         Popup* concernWithAllDisplayedObjects(Popup* p) {
         	graphConcerned=p->graphConcerned;
         	sliderConcerned=p->sliderConcerned;
         	imageConcerned=p->imageConcerned;
         	textConcerned=p->textConcerned;
+        	arrowConcerned=p->arrowConcerned;
         	return this;
 		}
         virtual bool inBounds(double mouseX,double mouseY);

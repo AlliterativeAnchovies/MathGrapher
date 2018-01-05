@@ -27,8 +27,6 @@ bool Arrow::clickedIn(double mouseX,double mouseY) {
 SDL_Surface* Arrow::draw(double* x,double* y) {
 	double offx,offy;
 	SDL_Surface* toReturn = makeArrow(length,thickness,headSize,angle,headAngle,color,&offx,&offy);
-	offx_storage = offx;
-	offy_storage = offy;
 	*x = px+offx;
 	*y = py+offy;
 	return toReturn;

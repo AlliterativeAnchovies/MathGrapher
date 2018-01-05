@@ -28,8 +28,6 @@ class Arrow: public DisplayObject {
         //highlitations
         bool highlighted = false;
         Uint32 color = 0xff000000;
-        double offx_storage = 0;
-        double offy_storage = 0;
     public:
 		void highlight() {highlighted = true;};
 		bool clickedIn(double mouseX,double mouseY);
@@ -45,6 +43,11 @@ class Arrow: public DisplayObject {
 		void addInterpolation(Interpolation* i) {interpolations.push_back(i);};
 		std::vector<Interpolation*> getInterpolations() {return interpolations;};
 		Arrow(double x,double y,double s,double t,double hS,double a,double hA,std::string n);
+		std::string* ptmName() {return &name;}
+		double getPX() {return px;}
+		double getPY() {return py;}
+		double* ptmPX() {return &px;}
+		double* ptmPY() {return &py;}
 };
 
 #endif /* Arrow_hpp */
