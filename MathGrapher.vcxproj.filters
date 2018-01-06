@@ -129,6 +129,9 @@
     <ClCompile Include="mathgrapher\BulkUtilities.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MathGrapher\DisplayObjectsFolder\Arrow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="mathgrapher\BulkUtilities.hpp">
@@ -239,5 +242,10 @@
     <ClCompile Include="mathgrapher\RenderingUtilities.hpp">
       <Filter>Header Files</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MathGrapher\DisplayObjectsFolder\Arrow.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
