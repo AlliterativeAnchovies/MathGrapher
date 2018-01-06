@@ -64,6 +64,7 @@ SDL_Surface* Arrow::draw(double* x,double* y) {
         SDL_FillRect(highlight, NULL, 0x6600ff00);
         SDL_BlitSurface(highlight,NULL,toReturn,NULL);
         SDL_FreeSurface(highlight);
+        highlighted=false;
 	};
 	return toReturn;
 }

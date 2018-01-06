@@ -59,6 +59,10 @@ bool controlFlow() {
     spacePressed = false;
     backspacePressed = false;
     SDL_GetMouseState(&mouseX, &mouseY);
+    const Uint8* keystates = SDL_GetKeyboardState(NULL);
+    if (keystates[SDL_SCANCODE_LSHIFT]||keystates[SDL_SCANCODE_RSHIFT]) {
+        shiftClicked = true;
+    }
     //get keyboard events
     while( SDL_PollEvent( &e ) != 0 ) {
         //Clicked the "x" in top left corner of window
@@ -114,10 +118,6 @@ bool controlFlow() {
                 leftMouseHadBeenReleased = true;
             }
         }
-    }
-    const Uint8* keystates = SDL_GetKeyboardState(NULL);
-    if (keystates[SDL_SCANCODE_LSHIFT]||keystates[SDL_SCANCODE_RSHIFT]) {
-        shiftClicked = true;
     }
     
     //find out what popup the mouse is over
@@ -441,7 +441,13 @@ void doInStringCalcs(Uint8 keypressed) {
                                         //and such, only keys like "A" or "?" should be
                                         //considered.
                     if (isStringTypeOfValueEditor(instringswitch)) {
-                        instring+=(CAPS_LOCK?toupper:tolower)(thing[0]);
+                    	if (shiftClicked) {
+							if (thing[0]=='1') {instring+='!';}
+							else {std::cout << "Warning! I'm not good with shift clicks\n";}
+						}
+						else {
+                        	instring+=(CAPS_LOCK?toupper:tolower)(thing[0]);
+                        }
                         changeToInString();
                     }
                     else if ((isDoubleTypeOfValueEditor(instringswitch)||isIntTypeOfValueEditor(instringswitch))&&isdigit(thing[0])) {

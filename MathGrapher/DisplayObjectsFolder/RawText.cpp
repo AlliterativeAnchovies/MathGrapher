@@ -22,6 +22,9 @@ SDL_Surface* RawText::draw(double* x,double* y) {
 	SDL_Surface* toReturn = getTextSurface(actualText, fontSize, px, py, theColor);
 	if (highlighted) {
 		SDL_Surface* highlight = createBlankSurfaceWithSize(toReturn->w,toReturn->h);
+		SDL_Surface* temp = SDL_ConvertSurface(toReturn, gScreenSurface->format, NULL);
+		SDL_FreeSurface(toReturn);
+		toReturn = temp;
 		SDL_FillRect(highlight, NULL, 0x6600ff00);
 		SDL_BlitSurface(highlight,NULL,toReturn,NULL);
 		SDL_FreeSurface(highlight);
