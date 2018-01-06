@@ -13,13 +13,14 @@ RawText::RawText(double x,double y,int fsize,std::string tobename) {
 	py = y;
 	fontSize = fsize;
 	name = tobename;
+	doublesize = fontSize;
 }
 
 SDL_Surface* RawText::draw(double* x,double* y) {
 	if (!visible) {*x=0;*y=0;return createBlankSurfaceWithSize(0, 0);}
 	*x = px;
 	*y = py;
-	SDL_Surface* toReturn = getTextSurface(actualText, fontSize, px, py, theColor);
+	SDL_Surface* toReturn = getTextSurface(actualText, doublesize, px, py, theColor);
 	if (highlighted) {
 		SDL_Surface* highlight = createBlankSurfaceWithSize(toReturn->w,toReturn->h);
 		SDL_Surface* temp = SDL_ConvertSurface(toReturn, gScreenSurface->format, NULL);
@@ -39,6 +40,7 @@ void RawText::run() {
 	image.py = py;
 	image.fontSize = fontSize;
 	image.actualText = actualText;
+	doublesize = fontSize;
 }
 void RawText::update() {
 	for (int i = 0;i<interpolations.size();i++) {
@@ -59,6 +61,7 @@ void RawText::reset() {
 	visible = true;
 	fontSize = image.fontSize;
 	actualText = image.actualText;
+	doublesize = fontSize;
     for (int i = 0;i<interpolations.size();i++) {
         interpolations[i]->reset();
     }

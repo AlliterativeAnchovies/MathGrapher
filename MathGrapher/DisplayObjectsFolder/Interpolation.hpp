@@ -14,6 +14,7 @@
 #include "RawImage.hpp"
 #include "Slider.hpp"
 #include "Arrow.hpp"
+#include "RawText.hpp"
 
 class Interpolation {
     private:

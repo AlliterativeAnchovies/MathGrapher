@@ -32,6 +32,7 @@ class RawText: public DisplayObject {
 		RawTextImage image;
 		std::vector<Interpolation*> interpolations = {};
 		bool visible = true;
+		double doublesize = 16;
 	public:
 		RawText(double x,double y,int fsize,std::string tobename);
 		void highlight() {highlighted = true;};
@@ -64,6 +65,7 @@ class RawText: public DisplayObject {
 		Uint32* ptmColor() {return &theColor;}
 		void makeInvisible() {visible=false;};
 		void makeVisibile() {visible=true;};
+		void resizeText(double c) {doublesize+=c;};
 	
 };
 

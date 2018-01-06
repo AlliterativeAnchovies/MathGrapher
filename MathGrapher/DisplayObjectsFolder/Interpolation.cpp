@@ -37,6 +37,9 @@ bool Interpolation::update() {
 			else if (relatedDisplay->getID()=="Arrow") {
             	((Arrow*)relatedDisplay)->resizeSmooth(px/timeInterval,py/timeInterval);
 			}
+			else if (relatedDisplay->getID()=="Text") {
+				((RawText*)relatedDisplay)->resizeText(px/timeInterval);
+			}
             break;
         case SMOOTH_GRID_RESIZE_STATIC_CENTER:
             ((Graph*)relatedDisplay)->moveGridSize(px/timeInterval, py/timeInterval,false);

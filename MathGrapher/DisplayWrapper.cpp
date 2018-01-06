@@ -22,7 +22,7 @@ template<> std::vector<std::string> getValidInterpolations<Graph>() {
 }
 
 template<> std::vector<std::string> getValidInterpolations<RawText>() {
-	return {"Move","Disappear","Appear"};
+	return {"Move","Disappear","Appear","Rescale"};
 }
 
 template<> std::vector<std::string> getValidInterpolations<Arrow>() {

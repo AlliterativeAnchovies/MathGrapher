@@ -286,6 +286,66 @@ object: {
 		Color: FF000000
 	}
 	Interpolations: {
+		Interpolation: {
+			Type: 13
+			PX: 0
+			PY: 0
+			SX: 0
+			SY: 0
+			Start: 0
+			Duration: 60
+			Function: None
+		}
+		Interpolation: {
+			Type: 12
+			PX: 0
+			PY: 0
+			SX: 0
+			SY: 0
+			Start: 60
+			Duration: 60
+			Function: None
+		}
+		Interpolation: {
+			Type: 4
+			PX: 20
+			PY: 0
+			SX: 0
+			SY: 0
+			Start: 60
+			Duration: 60
+			Function: None
+		}
+		Interpolation: {
+			Type: 13
+			PX: 0
+			PY: 0
+			SX: 0
+			SY: 0
+			Start: 120
+			Duration: 60
+			Function: None
+		}
+		Interpolation: {
+			Type: 4
+			PX: -20
+			PY: 0
+			SX: 0
+			SY: 0
+			Start: 120
+			Duration: 60
+			Function: None
+		}
+		Interpolation: {
+			Type: 12
+			PX: 0
+			PY: 0
+			SX: 0
+			SY: 0
+			Start: 180
+			Duration: 60
+			Function: None
+		}
 	}
 }
 object: {
@@ -299,6 +359,66 @@ object: {
 		Color: FF000000
 	}
 	Interpolations: {
+		Interpolation: {
+			Type: 13
+			PX: 0
+			PY: 0
+			SX: 0
+			SY: 0
+			Start: 0
+			Duration: 60
+			Function: None
+		}
+		Interpolation: {
+			Type: 12
+			PX: 0
+			PY: 0
+			SX: 0
+			SY: 0
+			Start: 120
+			Duration: 60
+			Function: None
+		}
+		Interpolation: {
+			Type: 4
+			PX: 20
+			PY: 0
+			SX: 0
+			SY: 0
+			Start: 120
+			Duration: 60
+			Function: None
+		}
+		Interpolation: {
+			Type: 13
+			PX: 0
+			PY: 0
+			SX: 0
+			SY: 0
+			Start: 180
+			Duration: 60
+			Function: None
+		}
+		Interpolation: {
+			Type: 4
+			PX: -20
+			PY: 0
+			SX: 0
+			SY: 0
+			Start: 180
+			Duration: 60
+			Function: None
+		}
+		Interpolation: {
+			Type: 12
+			PX: 0
+			PY: 0
+			SX: 0
+			SY: 0
+			Start: 240
+			Duration: 60
+			Function: None
+		}
 	}
 }
 object: {
@@ -312,6 +432,66 @@ object: {
 		Color: FF000000
 	}
 	Interpolations: {
+		Interpolation: {
+			Type: 13
+			PX: 0
+			PY: 0
+			SX: 0
+			SY: 0
+			Start: 0
+			Duration: 60
+			Function: None
+		}
+		Interpolation: {
+			Type: 12
+			PX: 0
+			PY: 0
+			SX: 0
+			SY: 0
+			Start: 180
+			Duration: 60
+			Function: None
+		}
+		Interpolation: {
+			Type: 4
+			PX: 20
+			PY: 0
+			SX: 0
+			SY: 0
+			Start: 180
+			Duration: 60
+			Function: None
+		}
+		Interpolation: {
+			Type: 13
+			PX: 0
+			PY: 0
+			SX: 0
+			SY: 0
+			Start: 240
+			Duration: 60
+			Function: None
+		}
+		Interpolation: {
+			Type: 4
+			PX: -20
+			PY: 0
+			SX: 0
+			SY: 0
+			Start: 240
+			Duration: 60
+			Function: None
+		}
+		Interpolation: {
+			Type: 12
+			PX: 0
+			PY: 0
+			SX: 0
+			SY: 0
+			Start: 300
+			Duration: 60
+			Function: None
+		}
 	}
 }
 object: {
@@ -325,5 +505,65 @@ object: {
 		Color: FFFF0000
 	}
 	Interpolations: {
+		Interpolation: {
+			Type: 13
+			PX: 0
+			PY: 0
+			SX: 0
+			SY: 0
+			Start: 0
+			Duration: 60
+			Function: None
+		}
+		Interpolation: {
+			Type: 12
+			PX: 0
+			PY: 0
+			SX: 0
+			SY: 0
+			Start: 240
+			Duration: 60
+			Function: None
+		}
+		Interpolation: {
+			Type: 4
+			PX: 20
+			PY: 0
+			SX: 0
+			SY: 0
+			Start: 240
+			Duration: 60
+			Function: None
+		}
+		Interpolation: {
+			Type: 13
+			PX: 0
+			PY: 0
+			SX: 0
+			SY: 0
+			Start: 300
+			Duration: 60
+			Function: None
+		}
+		Interpolation: {
+			Type: 4
+			PX: -20
+			PY: 0
+			SX: 0
+			SY: 0
+			Start: 300
+			Duration: 60
+			Function: None
+		}
+		Interpolation: {
+			Type: 12
+			PX: 0
+			PY: 0
+			SX: 0
+			SY: 0
+			Start: 360
+			Duration: 60
+			Function: None
+		}
 	}
 }

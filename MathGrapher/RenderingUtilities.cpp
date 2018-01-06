@@ -100,9 +100,23 @@ void drawLineOnSurface(SDL_Surface* theSurface,double x1,double y1,double x2,dou
 
     x = x1;
     y = y1;
+    int prevX = -1;
+    int prevY = -1;
     for(double i = 0; i < length; i += 1) {
         if (y>=0&&y<theSurface->h&&x>=0&&x<theSurface->w) {
             put_pixel32( theSurface, x, y, color );
+            if ((int)x!=prevX) {
+            	if (prevX!=-1) {
+            		put_pixel32(theSurface, prevX, y, color);
+            	}
+            	prevX = x;
+			}
+			if ((int)y!=prevY) {
+            	if (prevY!=-1) {
+            		put_pixel32(theSurface, x, prevY, color);
+            	}
+            	prevY = y;
+			}
         }
         x += addx;
         y += addy;
