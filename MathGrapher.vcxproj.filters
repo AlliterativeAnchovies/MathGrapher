@@ -242,8 +242,6 @@
     <ClCompile Include="mathgrapher\RenderingUtilities.hpp">
       <Filter>Header Files</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="MathGrapher\DisplayObjectsFolder\Arrow.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
