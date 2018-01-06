@@ -108,7 +108,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="mathgrapher\BulkUtilities.hpp" />
-    <ClCompile Include="MathGrapher\DisplayObjectsFolder\Arrow.cpp" />
+    <ClInclude Include="MathGrapher\DisplayObjectsFolder\Arrow.hpp" />
     <ClCompile Include="mathgrapher\DisplayObjectsFolder\DisplayObjects.hpp" />
     <ClCompile Include="mathgrapher\DisplayObjectsFolder\Function.hpp" />
     <ClCompile Include="mathgrapher\DisplayObjectsFolder\Graph.hpp" />
@@ -147,6 +147,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="mathgrapher\BulkUtilities.cpp" />
+    <ClCompile Include="MathGrapher\DisplayObjectsFolder\Arrow.cpp" />
     <ClCompile Include="mathgrapher\DisplayObjectsFolder\DisplayObjects.cpp" />
     <ClCompile Include="mathgrapher\DisplayObjectsFolder\Function.cpp" />
     <ClCompile Include="mathgrapher\DisplayObjectsFolder\Graph.cpp" />
@@ -183,9 +184,6 @@
     <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\Select\LoadFilePopup.cpp" />
     <ClCompile Include="mathgrapher\PopupWrapper.cpp" />
     <ClCompile Include="mathgrapher\RenderingUtilities.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="MathGrapher\DisplayObjectsFolder\Arrow.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
