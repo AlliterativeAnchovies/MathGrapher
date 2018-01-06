@@ -30,6 +30,7 @@ void Arrow::reset() {
 	headAngle = image.headAngle;
 	headSize = image.headSize;
 	color = image.color;
+	visible=true;
 	for (int i = 0;i<interpolations.size();i++) {
         interpolations[i]->reset();
     }
@@ -53,10 +54,17 @@ bool Arrow::clickedIn(double mouseX,double mouseY) {
 }
 
 SDL_Surface* Arrow::draw(double* x,double* y) {
+	if (!visible) {*x=0;*y=0;return createBlankSurfaceWithSize(0, 0);}
 	double offx,offy;
 	SDL_Surface* toReturn = makeArrow(length,thickness,headSize,angle,headAngle,color,&offx,&offy);
 	*x = px+offx;
 	*y = py+offy;
+	if (highlighted) {
+		SDL_Surface* highlight = createBlankSurfaceWithSize(toReturn->w,toReturn->h);
+        SDL_FillRect(highlight, NULL, 0x6600ff00);
+        SDL_BlitSurface(highlight,NULL,toReturn,NULL);
+        SDL_FreeSurface(highlight);
+	};
 	return toReturn;
 }
 

@@ -41,6 +41,7 @@ class Arrow: public DisplayObject {
         bool highlighted = false;
         Uint32 color = 0xff000000;
         ArrowImage image;
+        bool visible=true;
     public:
 		void highlight() {highlighted = true;};
 		bool clickedIn(double mouseX,double mouseY);
@@ -76,6 +77,8 @@ class Arrow: public DisplayObject {
 		void resizeSmooth(double lengthincrease,double thickincrease);
 		void rescaleHead(double headsizechange);
 		void changeColor(Uint32 nc) {color = nc;};
+		void makeInvisible() {visible=false;};
+		void makeVisibile() {visible=true;};
 };
 
 #endif /* Arrow_hpp */

@@ -31,6 +31,7 @@ class RawText: public DisplayObject {
 		std::string actualText = "Default";
 		RawTextImage image;
 		std::vector<Interpolation*> interpolations = {};
+		bool visible = true;
 	public:
 		RawText(double x,double y,int fsize,std::string tobename);
 		void highlight() {highlighted = true;};
@@ -61,6 +62,8 @@ class RawText: public DisplayObject {
 		int* ptmFontSize() {return &fontSize;}
 		std::string* ptmActualText() {return &actualText;}
 		Uint32* ptmColor() {return &theColor;}
+		void makeInvisible() {visible=false;};
+		void makeVisibile() {visible=true;};
 	
 };
 

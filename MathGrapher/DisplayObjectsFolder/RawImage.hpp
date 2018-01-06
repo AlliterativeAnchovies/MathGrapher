@@ -40,6 +40,7 @@ class RawImage: public DisplayObject {
     std::string name = "-IMAGE-";
     std::vector<Interpolation*> interpolations = {};
     RawImageImage image;
+    bool visible = true;
     public:
         double getPX() {return px;}
         double getPY() {return py;}
@@ -73,6 +74,8 @@ class RawImage: public DisplayObject {
         decltype(interpolations) getInterpolations() {return interpolations;}
         void resize(double x,double y);
         void resizeSmooth(double x,double y);
+        void makeInvisible() {visible=false;};
+		void makeVisibile() {visible=true;};
 };
 
 #endif /* RawImage_hpp */

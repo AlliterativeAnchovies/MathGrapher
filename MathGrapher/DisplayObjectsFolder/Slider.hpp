@@ -40,6 +40,9 @@ class Slider: public DisplayObject {
         std::string startingYString = "0";
         //stores current interpolation data
         std::vector<Interpolation*> interpolations = {};
+        double offx_stored = 0;//stored offsets to do collision code
+        double offy_stored = 0;//correctly
+        bool visible = true;
     public:
         //creates default slider at (x,y) with size s
         Slider(double x,double y,double s,std::string n);
@@ -89,6 +92,8 @@ class Slider: public DisplayObject {
 		decltype(interpolations) getInterpolations() {return interpolations;}
 		Function* getTickFunction() {return incrementFunction;}
 		Slider() {};
+		void makeInvisible() {visible=false;};
+		void makeVisibile() {visible=true;};
 };
 
 

@@ -33,6 +33,7 @@ void RawImage::reset() {
 	py = image.py;
 	sx = image.sx;
 	sy = image.sy;
+	visible = true;
     for (int i = 0;i<interpolations.size();i++) {
         interpolations[i]->reset();
     }
@@ -79,6 +80,7 @@ void RawImage::reclaim(SDL_Surface* reclaimed) {
 }
 
 SDL_Surface* RawImage::draw(double* x,double* y) {
+	if (!visible) {*x=0;*y=0;return createBlankSurfaceWithSize(0, 0);}
     //check if should resize
     if (needsResize()) {
         SDL_Surface* temp = createBlankSurfaceWithSize(sx, sy);

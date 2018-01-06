@@ -778,6 +778,7 @@ void load(std::string toLoad) {
 				if (voldemort==NULL) {throw std::runtime_error("ERROR! No such function for loading.");}
 				theIntpl->relateFunction(voldemort);
 			}
+			theIntpl->reset();
 			theObject->addInterpolation(theIntpl);
 		}
 		objects.push_back(theObject);

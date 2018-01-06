@@ -92,6 +92,12 @@ void Popup::setUpInterpolation() {
 	else if (stringConcerned=="Rescale Head") {
     	interpolID = RESCALE_HEAD;
 	}
+	else if (stringConcerned=="Disappear") {
+    	interpolID = DISAPPEAR;
+	}
+	else if (stringConcerned=="Appear") {
+    	interpolID = APPEAR;
+	}
     else {
         throw std::runtime_error("Invalid Interpolation To Set Up");
     }

@@ -53,6 +53,7 @@ Uint8 CreateSimpleInterpolation::handle(double mouseX,double mouseY,bool clicked
 		clicked = false;
 		toReturn = 0x02;
 		if (popupConcerned==NULL) {
+			interpolationConcerned->reset();
 			if (graphConcerned!=NULL) {
 				graphConcerned->addInterpolation(interpolationConcerned);
 			}

@@ -59,6 +59,12 @@ bool Interpolation::update() {
 		case RESCALE_HEAD:
 			((Arrow*)relatedDisplay)->rescaleHead(px/timeInterval);
 			break;
+		case APPEAR:
+			relatedDisplay->makeVisibile();
+			break;
+		case DISAPPEAR:
+			relatedDisplay->makeInvisible();
+			break;
         case DELAY:
             break;
 		default:
@@ -96,6 +102,10 @@ std::string Interpolation::getDisplay() {
 			return "Fix Image :)";
 		case RESCALE_HEAD:
 			return "Rescale Arrow Head by "+getPXDisplay();
+		case APPEAR:
+			return "Appear";
+		case DISAPPEAR:
+			return "Disappear";
         case DELAY:
             return "-DELAY-";
     }
@@ -233,6 +243,10 @@ Uint32 getColorOfInterpolation(Interpolation* i) {
 			return 0xffff0088;
 		case RESCALE_HEAD:
 			return 0xff8800ff;
+		case APPEAR:
+			return 0xff888888;
+		case DISAPPEAR:
+			return 0xff666666;
     }
     throw std::runtime_error("ERROR! Interpolation has no color.");
 }
@@ -260,6 +274,10 @@ std::string stringifyID(Uint8 id) {
 			return "Fix";
 		case RESCALE_HEAD:
 			return "Rescale Head";
+		case APPEAR:
+			return "Appear";
+		case DISAPPEAR:
+			return "Disappear";
     }
     throw std::runtime_error("ERROR NO SUCH INTERPOLATION TO STRINGIFY");
 }

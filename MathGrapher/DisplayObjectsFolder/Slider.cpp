@@ -33,6 +33,7 @@ void Slider::reset() {
 	py = image.py;
 	size = image.size;
 	angle = image.angle;
+	visible = true;
 	incrementFunction = image.incrementFunction;
 	tickAmount = image.tickAmount;
 	for (int i = 0;i<interpolations.size();i++) {
@@ -55,6 +56,7 @@ void Slider::update() {
 
 const int SLIDER_WIDTH = 30;
 SDL_Surface* Slider::draw(double* x,double* y) {
+	if (!visible) {*x=0;*y=0;return createBlankSurfaceWithSize(0, 0);}
     double sliderstartx = SLIDER_WIDTH/2;
     double sliderstarty = -size/2;
     double sliderendx = SLIDER_WIDTH/2;
@@ -119,14 +121,16 @@ SDL_Surface* Slider::draw(double* x,double* y) {
         SDL_BlitSurface(highlight,NULL,toReturn,NULL);
         SDL_FreeSurface(highlight);
     }
-    *x = px;
-    *y = py;
+    offx_stored = startx;
+    offy_stored = starty;
+    *x = px-startx;
+    *y = py-starty;
     highlighted = false;
     return toReturn;
 }
 
 bool Slider::clickedIn(double x,double y) {
-    return pointInBounds(x, y, px, px+storedsx, py, py+storedsy);
+    return pointInBounds(x, y, px-offx_stored, px+storedsx-offx_stored, py-offy_stored, py+storedsy-offy_stored);
 }
 
 void Slider::addInterpolation(Interpolation* i) {

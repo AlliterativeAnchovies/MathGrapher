@@ -57,6 +57,7 @@ Uint8 CreateHighlightInterpolation::handle(double mouseX,double mouseY,bool clic
 		clicked = false;
 		toReturn = 0x02;
 		if (popupConcerned==NULL) {
+			interpolationConcerned->reset();
 			graphConcerned->addInterpolation(interpolationConcerned);
 			interpolationConcerned->relateFunction(functionConcerned);
 			//if not NULL, then the interpolation already exists,

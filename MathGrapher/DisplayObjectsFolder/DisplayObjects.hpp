@@ -34,6 +34,8 @@ enum INTERPOLATIONS {
     HIGHLIGHT_GRAPH,
     FIX_THINGAMAJIG,
     RESCALE_HEAD,
+    APPEAR,
+    DISAPPEAR,
     DELAY
 };
 class Graph;
@@ -54,7 +56,7 @@ class DisplayObject {
     public:
         //IF YOU GET A "MISSING VTABLE" ERROR, it'll be caused by you not having defined all of these functions
         //in the child object (although the error only seems to happen if you give your class a nondefault constructor
-        //because otherwise the compiler can treat it as a virtual object too.)
+        //or call the default constructor because otherwise the compiler can treat it as a virtual class too.)
         virtual void highlight() = 0;
         virtual bool clickedIn(double mouseX,double mouseY) = 0;
         virtual std::string getID() = 0;
@@ -74,6 +76,8 @@ class DisplayObject {
         virtual void move(double x,double y)=0;
 		virtual void addInterpolation(Interpolation* i)=0;
 		virtual std::vector<Interpolation*> getInterpolations() = 0;
+		virtual void makeInvisible()=0;
+		virtual void makeVisibile()=0;
 };
 
 

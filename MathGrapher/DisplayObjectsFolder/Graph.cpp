@@ -163,6 +163,7 @@ void Graph::addInterpolation(Interpolation *i) {
 
 //returns surface of drawn graph, and stores its position in the input pointers
 SDL_Surface* Graph::draw(double* x,double* y) {
+	if (!visible) {*x=0;*y=0;return createBlankSurfaceWithSize(0, 0);}
     *x = px;
     *y = py;
     SDL_Surface* toReturn = createBlankSurfaceWithSize(sx+1, sy+1);
@@ -587,6 +588,7 @@ void Graph::reset() {
     gridSpacingY = image.gridSpacingY;
     gridAngleX = image.gridAngleX;
     gridAngleY = image.gridAngleY;
+    visible = true;
     for (int i = 0;i<interpolations.size();i++) {
         interpolations[i]->reset();
     }

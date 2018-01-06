@@ -16,6 +16,7 @@ RawText::RawText(double x,double y,int fsize,std::string tobename) {
 }
 
 SDL_Surface* RawText::draw(double* x,double* y) {
+	if (!visible) {*x=0;*y=0;return createBlankSurfaceWithSize(0, 0);}
 	*x = px;
 	*y = py;
 	SDL_Surface* toReturn = getTextSurface(actualText, fontSize, px, py, theColor);
@@ -52,6 +53,7 @@ void RawText::reset() {
 	running = false;
 	px = image.px;
 	py = image.py;
+	visible = true;
 	fontSize = image.fontSize;
 	actualText = image.actualText;
     for (int i = 0;i<interpolations.size();i++) {
