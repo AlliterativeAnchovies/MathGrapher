@@ -84,7 +84,7 @@ SDL_Surface* RawImage::draw(double* x,double* y) {
     //check if should resize
     if (needsResize()) {
         SDL_Surface* temp = createBlankSurfaceWithSize(sx, sy);
-        SDL_BlitScaled(surfaceConcerned,NULL,temp,NULL);
+        SDL_BlitScaled(origSurf,NULL,temp,NULL);
         SDL_FreeSurface(surfaceConcerned);
         surfaceConcerned = temp;
     }
