@@ -230,7 +230,21 @@ bool pointInTriangle(double mouseX,double mouseY,Point<double> tri1,Point<double
 
 
 template<typename T> std::string tostring(T a) {
-    return std::to_string(a);
+    std::string toReturn = std::to_string(a);
+    bool foundDecimal = false;
+    for (int i = 0;i<toReturn.size();i++) {
+		if (toReturn[i]=='.') {foundDecimal=true;break;}
+	}
+	if (foundDecimal) {
+		for (int i = (int)toReturn.size()-1;i>0;i--) {
+			if (toReturn[i]!='0'&&toReturn[i]!='.') {
+				break;
+			}
+			toReturn.pop_back();
+		}
+	}
+	
+	return toReturn;
 }
 template<> std::string tostring(std::string a); //since this is not technically a template (its specialized)
                                                 //it must be defined in .cpp
