@@ -122,6 +122,7 @@
     <ClCompile Include="mathgrapher\Popups\MajorPopups\Edit\EditImagePopup.hpp" />
     <ClCompile Include="mathgrapher\Popups\MajorPopups\Edit\EditSliderPopup.hpp" />
     <ClCompile Include="mathgrapher\Popups\MajorPopups\Edit\EditTextPopup.hpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\Edit\EditArrowPopup.hpp" />
     <ClCompile Include="mathgrapher\Popups\MajorPopups\MainDisplay.hpp" />
     <ClCompile Include="mathgrapher\Popups\MajorPopups\MajorPopup.hpp" />
     <ClCompile Include="mathgrapher\Popups\MajorPopups\SaverPopup.hpp" />
@@ -162,6 +163,7 @@
     <ClCompile Include="mathgrapher\Popups\MajorPopups\Edit\EditImagePopup.cpp" />
     <ClCompile Include="mathgrapher\Popups\MajorPopups\Edit\EditSliderPopup.cpp" />
     <ClCompile Include="mathgrapher\Popups\MajorPopups\Edit\EditTextPopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\Edit\EditArrowPopup.cpp" />
     <ClCompile Include="mathgrapher\Popups\MajorPopups\MainDisplay.cpp" />
     <ClCompile Include="mathgrapher\Popups\MajorPopups\MajorPopup.cpp" />
     <ClCompile Include="mathgrapher\Popups\MajorPopups\SaverPopup.cpp" />
