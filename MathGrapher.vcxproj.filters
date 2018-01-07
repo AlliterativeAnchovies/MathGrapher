@@ -146,9 +146,6 @@
     <ClCompile Include="mathgrapher\DisplayObjectsFolder\DisplayObjects.hpp">
       <Filter>Header Files</Filter>
     </ClCompile>
-    <ClCompile Include="mathgrapher\DisplayObjectsFolder\Arrow.hpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="mathgrapher\DisplayObjectsFolder\Function.hpp">
       <Filter>Header Files</Filter>
     </ClCompile>

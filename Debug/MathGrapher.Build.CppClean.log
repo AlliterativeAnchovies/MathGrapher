@@ -18,6 +18,7 @@ c:\users\ebail\documents\github\mathgrapher\debug\mathgrapher\popups\majorpopups
 c:\users\ebail\documents\github\mathgrapher\debug\mathgrapher\popups\majorpopups\edit\editimagepopup.obj
 c:\users\ebail\documents\github\mathgrapher\debug\mathgrapher\popups\majorpopups\edit\editsliderpopup.obj
 c:\users\ebail\documents\github\mathgrapher\debug\mathgrapher\popups\majorpopups\edit\edittextpopup.obj
+c:\users\ebail\documents\github\mathgrapher\debug\mathgrapher\popups\majorpopups\edit\editarrowpopup.obj
 c:\users\ebail\documents\github\mathgrapher\debug\mathgrapher\popups\majorpopups\maindisplay.obj
 c:\users\ebail\documents\github\mathgrapher\debug\mathgrapher\popups\majorpopups\majorpopup.obj
 c:\users\ebail\documents\github\mathgrapher\debug\mathgrapher\popups\majorpopups\saverpopup.obj
@@ -38,14 +39,12 @@ c:\users\ebail\documents\github\mathgrapher\debug\mathgrapher\popups\quickcloser
 c:\users\ebail\documents\github\mathgrapher\debug\mathgrapher\popups\quickcloserpopups\select\choosepointconcernedforlinkingpopup.obj
 c:\users\ebail\documents\github\mathgrapher\debug\mathgrapher\popups\quickcloserpopups\select\choosewhichimagepopup.obj
 c:\users\ebail\documents\github\mathgrapher\debug\mathgrapher\popups\quickcloserpopups\select\loadfilepopup.obj
+c:\users\ebail\documents\github\mathgrapher\debug\mathgrapher.exe
+c:\users\ebail\documents\github\mathgrapher\debug\mathgrapher.ilk
 c:\users\ebail\documents\github\mathgrapher\debug\mathgrapher.pdb
 c:\users\ebail\documents\github\mathgrapher\debug\mathgrapher.tlog\cl.command.1.tlog
 c:\users\ebail\documents\github\mathgrapher\debug\mathgrapher.tlog\cl.read.1.tlog
 c:\users\ebail\documents\github\mathgrapher\debug\mathgrapher.tlog\cl.write.1.tlog
-c:\users\ebail\documents\github\mathgrapher\debug\mathgrapher.tlog\link-cvtres.read.1.tlog
-c:\users\ebail\documents\github\mathgrapher\debug\mathgrapher.tlog\link-cvtres.write.1.tlog
-c:\users\ebail\documents\github\mathgrapher\debug\mathgrapher.tlog\link-rc.read.1.tlog
-c:\users\ebail\documents\github\mathgrapher\debug\mathgrapher.tlog\link-rc.write.1.tlog
 c:\users\ebail\documents\github\mathgrapher\debug\mathgrapher.tlog\link.command.1.tlog
 c:\users\ebail\documents\github\mathgrapher\debug\mathgrapher.tlog\link.read.1.tlog
 c:\users\ebail\documents\github\mathgrapher\debug\mathgrapher.tlog\link.write.1.tlog
