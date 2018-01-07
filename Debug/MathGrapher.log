@@ -142,9 +142,9 @@ c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\Raw
   DisplayObjects.cpp
   Arrow.cpp
 c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-MathGrapher\DisplayObjectsFolder\Arrow.cpp(34): warning C4018: '<': signed/unsigned mismatch
-MathGrapher\DisplayObjectsFolder\Arrow.cpp(40): warning C4018: '<': signed/unsigned mismatch
-MathGrapher\DisplayObjectsFolder\Arrow.cpp(43): warning C4018: '<': signed/unsigned mismatch
+mathGrapher\DisplayObjectsFolder\Arrow.cpp(34): warning C4018: '<': signed/unsigned mismatch
+mathGrapher\DisplayObjectsFolder\Arrow.cpp(40): warning C4018: '<': signed/unsigned mismatch
+mathGrapher\DisplayObjectsFolder\Arrow.cpp(43): warning C4018: '<': signed/unsigned mismatch
   Slider.hpp
 c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
   RawText.hpp
