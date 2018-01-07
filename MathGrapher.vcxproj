@@ -108,7 +108,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="mathgrapher\BulkUtilities.hpp" />
-    <ClInclude Include="mathGrapher\DisplayObjectsFolder\Arrow.hpp" />
+    <ClInclude Include="mathgrapher\DisplayObjectsFolder\Arrow.hpp" />
     <ClCompile Include="mathgrapher\DisplayObjectsFolder\DisplayObjects.hpp" />
     <ClCompile Include="mathgrapher\DisplayObjectsFolder\Function.hpp" />
     <ClCompile Include="mathgrapher\DisplayObjectsFolder\Graph.hpp" />
@@ -147,7 +147,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="mathgrapher\BulkUtilities.cpp" />
-    <ClCompile Include="mathGrapher\DisplayObjectsFolder\Arrow.cpp" />
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\Arrow.cpp" />
     <ClCompile Include="mathgrapher\DisplayObjectsFolder\DisplayObjects.cpp" />
     <ClCompile Include="mathgrapher\DisplayObjectsFolder\Function.cpp" />
     <ClCompile Include="mathgrapher\DisplayObjectsFolder\Graph.cpp" />
