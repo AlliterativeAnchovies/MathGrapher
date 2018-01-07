@@ -2,8 +2,7 @@
   "ExpandedNodes": [
     "",
     "\\MathGrapher",
-    "\\MathGrapher\\DisplayObjectsFolder",
-    "\\MathGrapher\\Popups\\MajorPopups"
+    "\\MathGrapher\\DisplayObjectsFolder"
   ],
   "PreviewInSolutionExplorer": false
 }

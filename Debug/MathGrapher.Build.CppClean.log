@@ -6,7 +6,6 @@ c:\users\ebail\documents\github\mathgrapher\debug\mathgrapher\functions.obj
 c:\users\ebail\documents\github\mathgrapher\debug\mathgrapher\popupwrapper.obj
 c:\users\ebail\documents\github\mathgrapher\debug\mathgrapher\renderingutilities.obj
 c:\users\ebail\documents\github\mathgrapher\debug\mathgrapher\main.obj
-c:\users\ebail\documents\github\mathgrapher\debug\mathgrapher\displayobjectsfolder\arrow.obj
 c:\users\ebail\documents\github\mathgrapher\debug\mathgrapher\displayobjectsfolder\displayobjects.obj
 c:\users\ebail\documents\github\mathgrapher\debug\mathgrapher\displayobjectsfolder\function.obj
 c:\users\ebail\documents\github\mathgrapher\debug\mathgrapher\displayobjectsfolder\graph.obj
@@ -14,6 +13,7 @@ c:\users\ebail\documents\github\mathgrapher\debug\mathgrapher\displayobjectsfold
 c:\users\ebail\documents\github\mathgrapher\debug\mathgrapher\displayobjectsfolder\rawimage.obj
 c:\users\ebail\documents\github\mathgrapher\debug\mathgrapher\displayobjectsfolder\rawtext.obj
 c:\users\ebail\documents\github\mathgrapher\debug\mathgrapher\displayobjectsfolder\slider.obj
+c:\users\ebail\documents\github\mathgrapher\debug\mathgrapher\displayobjectsfolder\arrow.obj
 c:\users\ebail\documents\github\mathgrapher\debug\mathgrapher\popups\majorpopups\edit\editgraphpopup.obj
 c:\users\ebail\documents\github\mathgrapher\debug\mathgrapher\popups\majorpopups\edit\editimagepopup.obj
 c:\users\ebail\documents\github\mathgrapher\debug\mathgrapher\popups\majorpopups\edit\editsliderpopup.obj
