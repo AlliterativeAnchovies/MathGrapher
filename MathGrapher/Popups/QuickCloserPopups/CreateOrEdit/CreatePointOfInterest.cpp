@@ -27,7 +27,7 @@ Uint8 CreatePointOfInterest::handle(double mouseX,double mouseY,bool clicked) {
 	//(If function is x-axis based, you are inputting
 	//the x, if y-axis based then the y, and if parametric
 	//then the t.
-	clickedEdit = handleEditableInfo(curx,cury,20,18,mouseX,mouseY,
+	clickedEdit = handleEditableInfo_internal(curx,cury,20,18,mouseX,mouseY,
 		header,stringConcerned,&stringConcerned
 		,clicked,&offx,&offy) || clickedEdit;
 

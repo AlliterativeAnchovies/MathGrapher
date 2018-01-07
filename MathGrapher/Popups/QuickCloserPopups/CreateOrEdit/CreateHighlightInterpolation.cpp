@@ -19,32 +19,32 @@ Uint8 CreateHighlightInterpolation::handle(double mouseX,double mouseY,bool clic
 	int cury = py+30;
 	int offx,offy;
 	//Edit field for top left position (X)
-	clickedEdit = handleEditableInfo(curx,cury,20,11,mouseX,mouseY,
+	clickedEdit = handleEditableInfo_internal(curx,cury,20,11,mouseX,mouseY,
 		"Top Left X: ",tostring(interpolationConcerned->getPX()),interpolationConcerned->ptmPX()
 		,clicked,&offx,&offy) || clickedEdit;
 	cury+=offy;
 	//Edit field for top left position (Y)
-	clickedEdit = handleEditableInfo(curx,cury,20,12,mouseX,mouseY,
+	clickedEdit = handleEditableInfo_internal(curx,cury,20,12,mouseX,mouseY,
 		"Top Left Y: ",tostring(interpolationConcerned->getPY()),interpolationConcerned->ptmPY()
 		,clicked,&offx,&offy) || clickedEdit;
 	cury+=offy;
 	//Edit field for bottom right position (X)
-	clickedEdit = handleEditableInfo(curx,cury,20,19,mouseX,mouseY,
+	clickedEdit = handleEditableInfo_internal(curx,cury,20,19,mouseX,mouseY,
 		"Bottom Right X: ",tostring(interpolationConcerned->getSX()),interpolationConcerned->ptmSX()
 		,clicked,&offx,&offy) || clickedEdit;
 	cury+=offy;
 	//Edit field for bottom right position (Y)
-	clickedEdit = handleEditableInfo(curx,cury,20,20,mouseX,mouseY,
+	clickedEdit = handleEditableInfo_internal(curx,cury,20,20,mouseX,mouseY,
 		"Bottom Right Y: ",tostring(interpolationConcerned->getSY()),interpolationConcerned->ptmSY()
 		,clicked,&offx,&offy) || clickedEdit;
 	cury+=offy;
 	//Edit field for starting time
-	clickedEdit = handleEditableInfo(curx,cury,20,13,mouseX,mouseY,
+	clickedEdit = handleEditableInfo_internal(curx,cury,20,13,mouseX,mouseY,
 		"Start Time: ",tostring(interpolationConcerned->getStart()),interpolationConcerned->ptmStart()
 		,clicked,&offx,&offy) || clickedEdit;
 	cury+=offy;
 	//Eddit field for duration
-	clickedEdit = handleEditableInfo(curx,cury,20,14,mouseX,mouseY,
+	clickedEdit = handleEditableInfo_internal(curx,cury,20,14,mouseX,mouseY,
 		"Duration: ",tostring(interpolationConcerned->getDuration()),interpolationConcerned->ptmDuration()
 		,clicked,&offx,&offy) || clickedEdit;
 	cury+=offy;

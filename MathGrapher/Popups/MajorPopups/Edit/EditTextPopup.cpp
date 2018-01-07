@@ -20,34 +20,8 @@ Uint8 EditTextPopup::handle(double mouseX,double mouseY,bool clicked) {
 	int cury = py+5;
 	int offx,offy;
 
-	//Edit field for name
-	clickedEdit = handleEditableInfo(curx,cury,24,33,mouseX,mouseY,
-		"",tostring(textConcerned->getName()),textConcerned->ptmName()
-		,clicked,&offx,&offy) || clickedEdit;
-	cury+=offy;
-	//Edit field for position (x)
-	clickedEdit = handleEditableInfo(curx,cury,20,34,mouseX,mouseY,
-		"PX: ",tostring(textConcerned->getPX()),textConcerned->ptmPX()
-		,clicked,&offx,&offy) || clickedEdit;
-	//Edit field for position (y)
-	clickedEdit = handleEditableInfo(curx+offx,cury,20,35,mouseX,mouseY,
-		"PY: ",tostring(textConcerned->getPY()),textConcerned->ptmPY()
-		,clicked,&offx,&offy) || clickedEdit;
-	cury+=offy;
-	//Edit field for actual text
-	clickedEdit = handleEditableInfo(curx,cury,20,36,mouseX,mouseY,
-		"Display Text: ",tostring(textConcerned->getActualText()),textConcerned->ptmActualText()
-		,clicked,&offx,&offy) || clickedEdit;
-	cury+=offy;
-	//Edit field for font size
-	clickedEdit = handleEditableInfo(curx,cury,20,37,mouseX,mouseY,
-		"Font Size: ",tostring(textConcerned->getFontSize()),textConcerned->ptmFontSize()
-		,clicked,&offx,&offy) || clickedEdit;
-	cury+=offy;
-	//Edit field for color
-	clickedEdit = handleEditableInfo(curx,cury,20,38,mouseX,mouseY,
-		"Color: 0x",tostring(textConcerned->getColor()),textConcerned->ptmColor()
-		,clicked,&offx,&offy) || clickedEdit;
+	//Edit fields
+	clickedEdit = handleEditableInfo(curx, cury, textConcerned, clicked, mouseX, mouseY, &offy);
 	cury+=offy;
 
 	//now we'll do the Interpolations stuff

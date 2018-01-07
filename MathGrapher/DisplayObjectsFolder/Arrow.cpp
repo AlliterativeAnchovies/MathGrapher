@@ -88,3 +88,17 @@ void Arrow::resizeSmooth(double lengthincrease,double thickincrease) {
 void Arrow::rescaleHead(double headsizechange) {
 	headSize+=headsizechange;
 }
+
+std::vector<EditFieldMenu> Arrow::getEditableFields() {
+	return {
+		{"",&name,_STRING,24,true},
+		{"PX: ",&px,_DOUBLE,20,false},
+		{"PY: ",&py,_DOUBLE,20,true},
+		{"Length: ",&length,_DOUBLE,20,false},
+		{"Thickness: ",&thickness,_DOUBLE,20,true},
+		{"Head Size: ",&headSize,_DOUBLE,20,true},
+		{"Angle: ",&angle,_DOUBLE,20,false},
+		{"Head Angle: ",&headAngle,_DOUBLE,20,true},
+		{"Color: ",&color,_HEXADECIMAL,20,true}
+	};
+}

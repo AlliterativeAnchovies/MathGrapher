@@ -139,7 +139,7 @@ bool isHexadecimalTypeOfValueEditor(int instrswch);
 //call it normally ("handleEditableInfo(...)") because the compiler is smart enough to know that this
 //function is wholly defined by what you pass in for pointerThing and so it uses that to do the right
 //template.
-template<typename T> bool handleEditableInfo(double px,double py,int fsize,int relevantinstringswitch,double mouseX,double mouseY,std::string preface,std::string display,T* pointerThing,bool clicked,int* offx,int* offy) {
+template<typename T> bool handleEditableInfo_internal(double px,double py,int fsize,int relevantinstringswitch,double mouseX,double mouseY,std::string preface,std::string display,T* pointerThing,bool clicked,int* offx,int* offy) {
     std::string cursorBeeper = (ticks%60<30)?"|":" ";
     if (instringswitch==relevantinstringswitch) {
         display = instring + cursorBeeper;
@@ -162,7 +162,7 @@ template<typename T> bool handleEditableInfo(double px,double py,int fsize,int r
     return false;
 }
 
-
+bool handleEditableInfo(double px,double py,DisplayObject* d,bool clicked,double mouseX,double mouseY,int* yoffset);
 
 
 #endif /* Popup_hpp */

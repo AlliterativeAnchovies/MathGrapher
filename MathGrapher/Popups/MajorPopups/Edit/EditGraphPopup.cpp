@@ -16,58 +16,9 @@ Uint8 EditGraphPopup::handle(double mouseX,double mouseY,bool clicked) {
 	int offx,offy;
 	int curx = px+5;
 	int cury = py+5;
-	bool clickedEdit = handleEditableInfo(curx,cury,24,0,mouseX,mouseY,"",
-		graphConcerned->getName(),graphConcerned->ptmName(),clicked,&offx,&offy);
-	cury+=offy;
-
-	//edit field for graph position (X)
-	clickedEdit = handleEditableInfo(curx,cury,20,1,mouseX,mouseY,
-		"PX: ",tostring(graphConcerned->getPosition().x),graphConcerned->ptmPX(),clicked,&offx,&offy)
-		|| clickedEdit;
-	//edit field for graph position (Y)
-	clickedEdit = handleEditableInfo(curx+offx,cury,20,2,mouseX,mouseY,
-		"PY: ",tostring(graphConcerned->getPosition().y),graphConcerned->ptmPY(),clicked,&offx,&offy)
-		|| clickedEdit;
-	cury+=offy;
-
-	//edit field for graph size (X)
-	clickedEdit = handleEditableInfo(curx,cury,20,3,mouseX,mouseY,
-		"SX: ",tostring(graphConcerned->getSize().x),graphConcerned->ptmSX(),clicked,&offx,&offy)
-		|| clickedEdit;
-	//edit field for graph size (Y)
-	clickedEdit = handleEditableInfo(curx+offx,cury,20,4,mouseX,mouseY,
-		"SY: ",tostring(graphConcerned->getSize().y),graphConcerned->ptmSY(),clicked,&offx,&offy)
-		|| clickedEdit;
-	cury+=offy;
-
-	//edit field for x-axis scale
-	clickedEdit = handleEditableInfo(curx,cury,20,5,mouseX,mouseY,
-		"scale X: ",tostring(graphConcerned->getGridScale().x),graphConcerned->ptmGridSpacingX()
-		,clicked,&offx,&offy) || clickedEdit;
-	//edit field for y-axis scale
-	clickedEdit = handleEditableInfo(curx+offx,cury,20,6,mouseX,mouseY,
-		"scale Y: ",tostring(graphConcerned->getGridScale().y),graphConcerned->ptmGridSpacingY()
-		,clicked,&offx,&offy) || clickedEdit;
-	cury+=offy;
-
-	//edit field for x-axis angle
-	clickedEdit = handleEditableInfo(curx,cury,20,7,mouseX,mouseY,
-		"x axis θ: ",tostring(graphConcerned->getGridAngle().x),graphConcerned->ptmGridAngleX()
-		,clicked,&offx,&offy) || clickedEdit;
-	//edit field for y-axis angle
-	clickedEdit = handleEditableInfo(curx+offx,cury,20,8,mouseX,mouseY,
-		"y axis θ: ",tostring(graphConcerned->getGridAngle().y),graphConcerned->ptmGridAngleY()
-		,clicked,&offx,&offy) || clickedEdit;
-	cury+=offy;
-
-	//edit field for origin (X)
-	clickedEdit = handleEditableInfo(curx,cury,20,9,mouseX,mouseY,
-		"x origin: ",tostring(graphConcerned->getOrigin().x),graphConcerned->ptmOX()
-		,clicked,&offx,&offy) || clickedEdit;
-	//edit field for origin (Y)
-	clickedEdit = handleEditableInfo(curx+offx,cury,20,10,mouseX,mouseY,
-		"y origin: ",tostring(graphConcerned->getOrigin().y),graphConcerned->ptmOY()
-		,clicked,&offx,&offy) || clickedEdit;
+	
+	//edit fields
+	bool clickedEdit = handleEditableInfo(curx, cury, graphConcerned, clicked, mouseX, mouseY, &offy);
 	cury+=offy;
 
 	int showgridy = cury;

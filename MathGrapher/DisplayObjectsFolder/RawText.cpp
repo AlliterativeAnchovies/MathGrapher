@@ -66,3 +66,15 @@ void RawText::reset() {
         interpolations[i]->reset();
     }
 }
+
+std::vector<EditFieldMenu> RawText::getEditableFields() {
+	return {
+		{"",&name,_STRING,24,true},
+		{"PX: ",&px,_DOUBLE,20,false},
+		{"PY: ",&py,_DOUBLE,20,true},
+		{"Display Text: ",&actualText,_STRING,20,true},
+		{"Font Size: ",&fontSize,_INT,20,true},
+		{"Color: ",&theColor,_HEXADECIMAL,20,true}
+	};
+};
+

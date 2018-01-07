@@ -76,6 +76,7 @@ class RawImage: public DisplayObject {
         void resizeSmooth(double x,double y);
         void makeInvisible() {visible=false;};
 		void makeVisibile() {visible=true;};
+		std::vector<EditFieldMenu> getEditableFields();
 };
 
 #endif /* RawImage_hpp */

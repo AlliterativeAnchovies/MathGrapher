@@ -79,6 +79,7 @@ class Arrow: public DisplayObject {
 		void changeColor(Uint32 nc) {color = nc;};
 		void makeInvisible() {visible=false;};
 		void makeVisibile() {visible=true;};
+		std::vector<EditFieldMenu> getEditableFields();
 };
 
 #endif /* Arrow_hpp */

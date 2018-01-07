@@ -127,3 +127,13 @@ void RawImage::resizeSmooth(double x,double y) {
 	sx+=x;
 	sy+=y;
 }
+
+std::vector<EditFieldMenu> RawImage::getEditableFields() {
+	return {
+		{"",&name,_STRING,24,true},
+		{"PX: ",&px,_DOUBLE,20,false},
+		{"PY: ",&py,_DOUBLE,20,true},
+		{"SX: ",&sx,_DOUBLE,20,false},
+		{"SY: ",&sy,_DOUBLE,20,true}
+	};
+};

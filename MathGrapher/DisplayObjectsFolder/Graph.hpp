@@ -167,6 +167,7 @@ class Graph: public DisplayObject {
 		void addYFunction_nocopy(Function* f) {yfunctions.push_back(f);}
 		void makeInvisible() {visible=false;};
 		void makeVisibile() {visible=true;};
+		std::vector<EditFieldMenu> getEditableFields();
 };
 
 

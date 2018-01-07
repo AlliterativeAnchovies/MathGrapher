@@ -22,25 +22,25 @@ Uint8 CreateSimpleInterpolation::handle(double mouseX,double mouseY,bool clicked
 
 		
 	//Edit field for interpolation first delta
-	clickedEdit = handleEditableInfo(curx,cury,20,11,mouseX,mouseY,
+	clickedEdit = handleEditableInfo_internal(curx,cury,20,11,mouseX,mouseY,
 		"∆X: ",tostring(interpolationConcerned->getPX()),interpolationConcerned->ptmPX()
 		,clicked,&offx,&offy) || clickedEdit;
 	curx+=offx;
 	
 	//Edit field for interpolation second delta
-	clickedEdit = handleEditableInfo(curx,cury,20,12,mouseX,mouseY,
+	clickedEdit = handleEditableInfo_internal(curx,cury,20,12,mouseX,mouseY,
 		"∆Y: ",tostring(interpolationConcerned->getPY()),interpolationConcerned->ptmPY()
 		,clicked,&offx,&offy) || clickedEdit;
 	cury+=offy;
 	curx = px+10;
 	
 	//Edit field for starting time
-	clickedEdit = handleEditableInfo(curx,cury,20,13,mouseX,mouseY,
+	clickedEdit = handleEditableInfo_internal(curx,cury,20,13,mouseX,mouseY,
 		"Start: ",tostring(interpolationConcerned->getStart()),interpolationConcerned->ptmStart()
 		,clicked,&offx,&offy) || clickedEdit;
 	cury+=offy;
 	//Edit field for duration
-	clickedEdit = handleEditableInfo(curx,cury,20,14,mouseX,mouseY,
+	clickedEdit = handleEditableInfo_internal(curx,cury,20,14,mouseX,mouseY,
 		"Duration: ",tostring(interpolationConcerned->getDuration()),interpolationConcerned->ptmDuration()
 		,clicked,&offx,&offy) || clickedEdit;
 	cury+=offy;

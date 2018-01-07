@@ -15,7 +15,7 @@ Uint8 SaverPopup::handle(double mouseX,double mouseY,bool clicked) {
 	drawBorderedRect(px, py, sx, sy, 0xffaaf2aa, 0xff000000);
 	//drawText(stringConcerned, 20, px+5, py+sy/2-10, 0xff000000);
 	int offx,offy;
-	bool clickedEdit = handleEditableInfo(px+5,py+sy/2-10,20,39,mouseX,mouseY,
+	bool clickedEdit = handleEditableInfo_internal(px+5,py+sy/2-10,20,2000,mouseX,mouseY,
 		"Save To: ",stringConcerned,&stringConcerned,clicked,&offx,&offy);
 	if (clickedEdit) {toReturn = 0x01;clicked=false;}
 	TTF_SizeUTF8((*fontgrab)(16), "Save", &offx, &offy);

@@ -52,6 +52,21 @@ typedef Wrap2<std::string,Function*> FuncWrap;
 typedef std::vector<FuncWrap> FunctionList;
 extern FunctionList builtins;//defined in Functions.cpp
 
+enum VALUE_TYPES {
+	_DOUBLE,
+	_STRING,
+	_INT,
+	_HEXADECIMAL
+};
+
+struct EditFieldMenu {
+	std::string prefix = "";
+	void* toEdit;
+	Uint32 valueType = _DOUBLE;
+	int fontSize = 16;
+	bool newLine = false;
+};
+
 class DisplayObject {
     public:
         //IF YOU GET A "MISSING VTABLE" ERROR, it'll be caused by you not having defined all of these functions
@@ -78,6 +93,7 @@ class DisplayObject {
 		virtual std::vector<Interpolation*> getInterpolations() = 0;
 		virtual void makeInvisible()=0;
 		virtual void makeVisibile()=0;
+		virtual std::vector<EditFieldMenu> getEditableFields()=0;
 };
 
 

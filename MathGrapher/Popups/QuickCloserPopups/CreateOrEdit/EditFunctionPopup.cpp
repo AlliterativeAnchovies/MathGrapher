@@ -19,7 +19,7 @@ Uint8 EditFunctionPopup::handle(double mouseX,double mouseY,bool clicked) {
 	int offx,offy;
 	bool clickedEdit = false;
 	//edit field for starting time.
-	clickedEdit = handleEditableInfo(curx,cury,20,15,mouseX,mouseY,
+	clickedEdit = handleEditableInfo_internal(curx,cury,20,15,mouseX,mouseY,
 		"Start Time: ",tostring(functionConcerned->getTime()),functionConcerned->ptmTime()
 		,clicked,&offx,&offy) || clickedEdit;
 	curx+=offx;
@@ -37,12 +37,12 @@ Uint8 EditFunctionPopup::handle(double mouseX,double mouseY,bool clicked) {
 	cury+=offy;
 	curx = px+10;
 	//Edit field for stretch (X)
-	clickedEdit = handleEditableInfo(curx,cury,20,16,mouseX,mouseY,
+	clickedEdit = handleEditableInfo_internal(curx,cury,20,16,mouseX,mouseY,
 		"X Stretch: ",tostring(functionConcerned->getStretchX()),functionConcerned->ptmStretchX()
 		,clicked,&offx,&offy) || clickedEdit;
 	curx+=offx;
 	//Edit field for stretch (Y)
-	clickedEdit = handleEditableInfo(curx,cury,20,17,mouseX,mouseY,
+	clickedEdit = handleEditableInfo_internal(curx,cury,20,17,mouseX,mouseY,
 		"Y Stretch: ",tostring(functionConcerned->getStretchY()),functionConcerned->ptmStretchY()
 		,clicked,&offx,&offy) || clickedEdit;
 	cury+=offy;

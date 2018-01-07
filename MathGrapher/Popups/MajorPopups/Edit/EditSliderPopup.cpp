@@ -17,40 +17,11 @@ Uint8 EditSliderPopup::handle(double mouseX,double mouseY,bool clicked) {
 	int curx = px+5;
 	int cury = py+5;
 	int offx,offy;
-	//Edit field for name
-	clickedEdit = handleEditableInfo(curx,cury,24,21,mouseX,mouseY,
-		"",tostring(sliderConcerned->getName()),sliderConcerned->ptmName()
-		,clicked,&offx,&offy) || clickedEdit;
+	
+	//Edit fields
+	clickedEdit = handleEditableInfo(curx, cury, sliderConcerned, clicked, mouseX, mouseY, &offy);
 	cury+=offy;
-	//Edit field for position (x)
-	clickedEdit = handleEditableInfo(curx,cury,20,22,mouseX,mouseY,
-		"PX: ",tostring(sliderConcerned->getPosition().x),sliderConcerned->ptmPX()
-		,clicked,&offx,&offy) || clickedEdit;
-	//Edit field for position (y)
-	clickedEdit = handleEditableInfo(curx+offx,cury,20,23,mouseX,mouseY,
-		"PY: ",tostring(sliderConcerned->getPosition().y),sliderConcerned->ptmPY()
-		,clicked,&offx,&offy) || clickedEdit;
-	cury+=offy;
-	//Edit field for size
-	clickedEdit = handleEditableInfo(curx,cury,20,24,mouseX,mouseY,
-		"Size: ",tostring(sliderConcerned->getSize()),sliderConcerned->ptmSize()
-		,clicked,&offx,&offy) || clickedEdit;
-	cury+=offy;
-	//Edit field for angle
-	clickedEdit = handleEditableInfo(curx,cury,20,25,mouseX,mouseY,
-		"θ: ",tostring(sliderConcerned->getAngle()),sliderConcerned->ptmAngle()
-		,clicked,&offx,&offy) || clickedEdit;
-	cury+=offy;
-	//Edit field for how high the pointer is on the slider at the start
-	clickedEdit = handleEditableInfo(curx,cury,20,26,mouseX,mouseY,
-		"Starting Y: ",tostring(sliderConcerned->getStartingY()),sliderConcerned->ptmStartingY()
-		,clicked,&offx,&offy) || clickedEdit;
-	cury+=offy;
-	//Edit field for how many ticks there are
-	clickedEdit = handleEditableInfo(curx,cury,20,27,mouseX,mouseY,
-		"Ticks: ",tostring(sliderConcerned->getTicks()),sliderConcerned->ptmTicks()
-		,clicked,&offx,&offy) || clickedEdit;
-	cury+=offy;
+	
 	//Select the function that will determine the spacing of the ticks
 	int w9,h9;
 	drawTextWithBackground("Tick Function: "+sliderConcerned->getFunction()->getName(), 20, px+5, cury, 0xff000000, 0xffffcf9e, 0xff000000);

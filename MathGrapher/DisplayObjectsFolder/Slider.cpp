@@ -136,3 +136,15 @@ bool Slider::clickedIn(double x,double y) {
 void Slider::addInterpolation(Interpolation* i) {
 	interpolations.push_back(i);
 }
+
+std::vector<EditFieldMenu> Slider::getEditableFields() {
+	return {
+		{"",&name,_STRING,24,true},
+		{"PX: ",&px,_DOUBLE,20,false},
+		{"PY: ",&py,_DOUBLE,20,true},
+		{"Size: ",&size,_DOUBLE,20,true},
+		{"θ: ",&angle,_DOUBLE,20,true},
+		{"Starting Y: ",&pointery,_DOUBLE,20,true},
+		{"Ticks: ",&tickAmount,_INT,20,true},
+	};
+};

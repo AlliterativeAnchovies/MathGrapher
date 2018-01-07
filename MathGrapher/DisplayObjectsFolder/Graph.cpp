@@ -603,5 +603,19 @@ bool Graph::isRunning() {
     return running;
 }
 
-
+std::vector<EditFieldMenu> Graph::getEditableFields() {
+	return {
+		{"",&name,_STRING,24,true},
+		{"PX: ",&px,_DOUBLE,20,false},
+		{"PY: ",&py,_DOUBLE,20,true},
+		{"SX: ",&sx,_DOUBLE,20,false},
+		{"SY: ",&sy,_DOUBLE,20,true},
+		{"Scale X: ",&gridSpacingX,_DOUBLE,20,false},
+		{"Scale Y: ",&gridSpacingY,_DOUBLE,20,true},
+		{"θX: ",&gridAngleY,_DOUBLE,20,false},//Y and X swapped on purpose
+		{"θY: ",&gridAngleX,_DOUBLE,20,true},
+		{"OX: ",&ox,_DOUBLE,20,false},
+		{"OY: ",&oy,_DOUBLE,20,true}
+	};
+}
 

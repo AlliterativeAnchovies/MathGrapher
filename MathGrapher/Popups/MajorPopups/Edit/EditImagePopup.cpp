@@ -19,28 +19,9 @@ Uint8 EditImagePopup::handle(double mouseX,double mouseY,bool clicked) {
 	int curx = px+5;
 	int cury = py+5;
 	int offx,offy;
-	//Edit field for name
-	clickedEdit = handleEditableInfo(curx,cury,24,28,mouseX,mouseY,
-		"",tostring(imageConcerned->getName()),imageConcerned->ptmName()
-		,clicked,&offx,&offy) || clickedEdit;
-	cury+=offy;
-	//Edit field for position (x)
-	clickedEdit = handleEditableInfo(curx,cury,20,29,mouseX,mouseY,
-		"PX: ",tostring(imageConcerned->getPX()),imageConcerned->ptmPX()
-		,clicked,&offx,&offy) || clickedEdit;
-	//Edit field for position (y)
-	clickedEdit = handleEditableInfo(curx+offx,cury,20,30,mouseX,mouseY,
-		"PY: ",tostring(imageConcerned->getPY()),imageConcerned->ptmPY()
-		,clicked,&offx,&offy) || clickedEdit;
-	cury+=offy;
-	//Edit field for size (x)
-	clickedEdit = handleEditableInfo(curx,cury,20,31,mouseX,mouseY,
-		"SX: ",tostring(imageConcerned->getSX()),imageConcerned->ptmSX()
-		,clicked,&offx,&offy) || clickedEdit;
-	//Edit field for size (y)
-	clickedEdit = handleEditableInfo(curx+offx,cury,20,32,mouseX,mouseY,
-		"SY: ",tostring(imageConcerned->getSY()),imageConcerned->ptmSY()
-		,clicked,&offx,&offy) || clickedEdit;
+	
+	//Edit fields
+	clickedEdit = handleEditableInfo(curx, cury, imageConcerned, clicked, mouseX, mouseY, &offy);
 	cury+=offy;
 
 	//change the image
