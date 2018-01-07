@@ -63,6 +63,9 @@
     <ClCompile Include="mathgrapher\Popups\MajorPopups\Edit\EditTextPopup.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\Edit\EditArrowPopup.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="mathgrapher\Popups\MajorPopups\MainDisplay.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -180,6 +183,9 @@
       <Filter>Header Files</Filter>
     </ClCompile>
     <ClCompile Include="mathgrapher\Popups\MajorPopups\Edit\EditTextPopup.hpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\Edit\EditArrowPopup.hpp">
       <Filter>Header Files</Filter>
     </ClCompile>
     <ClCompile Include="mathgrapher\Popups\MajorPopups\MainDisplay.hpp">
