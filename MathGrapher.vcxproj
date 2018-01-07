@@ -65,8 +65,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\ebail\Desktop\dirent-1.23.1;C:\Users\ebail\Desktop\SDL2_ttf-2.0.14;C:\Users\ebail\AppData\Local\Temp\Temp1_SDL2-2.0.7-win32-x64.zip;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\ebail\Desktop\dirent-1.23.1;C:\Users\ebail\Desktop\SDL2_ttf-2.0.14;C:\Users\ebail\AppData\Local\Temp\Temp1_SDL2-2.0.7-win32-x64.zip;$(LibraryPath)</LibraryPath>
+    <IncludePath>./Dependencies/dirent;./Dependencies/SDL_ttf;./Dependencies/SDL;$(IncludePath)</IncludePath>
+    <LibraryPath>./Dependencies/SDL;./Dependencies/SDL_ttf;./Dependencies/dirent;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>true</LinkIncremental>
@@ -78,7 +78,7 @@
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>C:\Users\ebail\Desktop\dirent-1.23.1\include;C:\Users\ebail\Desktop\SDL2_ttf-2.0.14\include;C:\Users\ebail\Desktop\STUPIDITY INCARNATE\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./Dependencies/SDL/include;./Dependencies/dirent/include;./Dependencies/SDL_ttf/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/std:c++17 %(AdditionalOptions)</AdditionalOptions>
       <ObjectFileName>$(IntDir)/%(RelativeDir)/</ObjectFileName>
     </ClCompile>
@@ -86,7 +86,7 @@
       <TargetMachine>MachineX86</TargetMachine>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
-      <AdditionalLibraryDirectories>C:\Users\ebail\Desktop\SDL2_ttf-2.0.14\lib\x86;C:\Users\ebail\Desktop\STUPIDITY INCARNATE\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>./Dependencies/SDL/lib/x86;./Dependencies/SDL_ttf/lib/x86;./Dependencies/dirent/lib/x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
     </Link>
