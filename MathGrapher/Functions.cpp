@@ -52,7 +52,7 @@ void initBuiltins() {
         {"Slider Scale",
             new Function([](double x,double t,double sx,double sy){return pow(sx*(abs(x+t/FRAME_RATE)),0.5)/sy;},
             [](double x,double t,double sx,double sy){return true;},
-            "(1-x)^2")},
+            "sqrt(1-x)")},
         //parametric functions
         {"Circle",
             new Function(
