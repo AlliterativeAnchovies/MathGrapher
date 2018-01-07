@@ -276,7 +276,7 @@ int main(int argc, const char * argv[]) {
 		//actually the directory of the project, but the directory the project is called from.
 		//So my guess is visual studio flipflops on whether to call the .exe from the directory
 		//it is in (Debug, requires ..), or the directory of the project (MathGrapher, requires .)
-		dumstupidcurrentdirectorybs = "..";
+		dumstupidcurrentdirectorybs = ".";
 	#elif defined _WINDOWS
 		std::cout << "Visual Studio Compiling For Release";
 		//I have no idea how this works for windows and it doesn't really matter,
