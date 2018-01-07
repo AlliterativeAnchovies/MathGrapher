@@ -39,6 +39,9 @@
     <ClCompile Include="mathgrapher\DisplayObjectsFolder\Slider.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\Arrow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="mathgrapher\DisplayWrapper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -139,6 +142,9 @@
     </ClCompile>
     <ClCompile Include="mathgrapher\DisplayObjectsFolder\DisplayObjects.hpp">
       <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\Arrow.hpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="mathgrapher\DisplayObjectsFolder\Function.hpp">
       <Filter>Header Files</Filter>
