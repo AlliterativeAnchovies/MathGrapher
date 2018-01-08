@@ -16,7 +16,7 @@
 #include "Arrow.hpp"
 #include "RawText.hpp"
 
-class Interpolation {
+class Interpolation: public Data {
     private:
         Uint8 type = NULL_INTERPOLATION;
         double px = 0;
@@ -99,6 +99,9 @@ class Interpolation {
         int* ptmStart() {return &timeStartCounter;}
         int* ptmDuration() {return &timeInterval;}
         Function* getFunction() {return relatedFunction;}
+        std::vector<SaveData> getSaveData();
+        std::string getID() {return "Interpolation";};
+        Interpolation() {};
 };
 
 

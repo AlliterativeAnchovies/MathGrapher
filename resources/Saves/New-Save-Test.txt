@@ -1,0 +1,103 @@
+version: 2.0
+tag: New-Save-Test
+object: {
+	ID: "Graph"
+	Name: "Graph 0"
+	PX: 151
+	PY: 66
+	Size_X: 1
+	Size_Y: 1
+	Origin_X: 5
+	Origin_Y: 5
+	Scale_X: 1
+	Scale_Y: 1
+	Angle_X: 0
+	Angle_Y: 1.570796
+	X_Functions: {
+		ID: Function
+		data: {
+			Name: "cos(x)"
+			Tag: FUNC_0
+			Stretch_X: 1
+			Stretch_Y: 1
+			Start_Time: 0
+			Visible: Yes
+			Points_Of_Interest: {
+				ID: Point_Of_Interest
+				data: {
+					Tag: POI_0
+					PX: 0
+					Visible: Yes
+				}
+			}
+		}
+	}
+	Y_Functions: {
+		None:"Empty Vector"
+	}
+	Interpolations: {
+		ID: Interpolation
+		data: {
+			Type: 00000007
+			PX: 0
+			PY: 0
+			SX: 0
+			SY: 0
+			Start: 0
+			Duration: 0
+			Function: {
+				ID: Function
+				Name: "cos(x)"
+				Tag: FUNC_1
+				Stretch_X: 1
+				Stretch_Y: 1
+				Start_Time: 0
+				Visible: Yes
+				Points_Of_Interest: {
+					ID: Point_Of_Interest
+					data: {
+						Tag: POI_1
+						PX: 0
+						Visible: Yes
+					}
+				}
+			}
+		}
+	}
+}
+object: {
+	ID: "Slider"
+	Name: "Slider 0"
+	PX: 395
+	PY: 117
+	Size: 1
+	Angle: 0
+	Starting_Y: 0
+	Tick_Amount: 4
+	Point_Of_Interest: {
+		ID: Point_Of_Interest
+		Tag: POI_2
+		PX: 0
+		Visible: Yes
+	}
+	Tick_Function: {
+		ID: Function
+		Name: "sqrt(1-x)"
+		Tag: FUNC_2
+		Stretch_X: 1
+		Stretch_Y: 1
+		Start_Time: 0
+		Visible: Yes
+		Points_Of_Interest: {
+			ID: Point_Of_Interest
+			data: {
+				Tag: POI_3
+				PX: 0
+				Visible: Yes
+			}
+		}
+	}
+	Interpolations: {
+		None:"Empty Vector"
+	}
+}

@@ -22,7 +22,7 @@ struct FunctionImage {
     bool visible;
 };
 
-class Function {
+class Function: public Data {
     private:
         internalFunc function=NULL;
         internalFunc function2=NULL;//if parametric
@@ -45,6 +45,7 @@ class Function {
         Function(internalFunc f,internalRange r,std::string n);
         //parametric definition
         Function(internalFunc f,internalFunc f2,internalRange r,std::string n);
+        Function() {};
         double eval(double x);
         double operator() (double x);
         Point<double> parametricEval(double x);
@@ -79,11 +80,13 @@ class Function {
         int tagForSaving = -1;//used for linking things while saving stuffs
 		void setStretchX(double s) {stretchx=s;}
         void setStretchY(double s) {stretchy=s;}
+        std::vector<SaveData> getSaveData();
+        std::string getID() {return "Function";}
 };
 
 extern std::vector<PointOfInterest*> pointsOfInterest;
 
-class PointOfInterest {
+class PointOfInterest: public Data {
     private:
         Graph* graphOn = NULL;
         Function* functionOn = NULL;
@@ -100,6 +103,9 @@ class PointOfInterest {
         double getPY();
         bool shouldDelete() {return taggedForDeletion;}
         void prepareForDelete() {taggedForDeletion=true;}
+        std::vector<SaveData> getSaveData();
+        std::string getID() {return "Point_Of_Interest";};
+        PointOfInterest() {};
 };
 
 

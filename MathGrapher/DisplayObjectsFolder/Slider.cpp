@@ -148,3 +148,18 @@ std::vector<EditFieldMenu> Slider::getEditableFields() {
 		{"Ticks: ",&tickAmount,_INT,20,true},
 	};
 };
+
+std::vector<SaveData> Slider::getSaveData() {
+	return {
+		{"Name",&name,_STRING},
+		{"PX",&px,_DOUBLE},
+		{"PY",&py,_DOUBLE},
+		{"Size",&size,_DOUBLE},
+		{"Angle",&angle,_DOUBLE},
+		{"Starting_Y",&pointery,_DOUBLE},
+		{"Tick_Amount",&tickAmount,_INT},
+		{"Point_Of_Interest",&pointConcerned,_POINT_OF_INTEREST},
+		{"Tick_Function",&incrementFunction,_FUNCTION},
+		{"Interpolations",&interpolations,_VECTOR}
+	};
+};

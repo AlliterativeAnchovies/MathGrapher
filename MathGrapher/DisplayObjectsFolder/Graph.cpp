@@ -619,3 +619,21 @@ std::vector<EditFieldMenu> Graph::getEditableFields() {
 	};
 }
 
+std::vector<SaveData> Graph::getSaveData() {
+	return {
+		{"Name",&name,_STRING},
+		{"PX",&px,_DOUBLE},
+		{"PY",&py,_DOUBLE},
+		{"Size_X",&sx,_DOUBLE},
+		{"Size_Y",&sy,_DOUBLE},
+		{"Origin_X",&ox,_DOUBLE},
+		{"Origin_Y",&oy,_DOUBLE},
+		{"Scale_X",&gridSpacingX,_DOUBLE},
+		{"Scale_Y",&gridSpacingY,_DOUBLE},
+		{"Angle_X",&gridAngleY,_DOUBLE},//swapped on purpose
+		{"Angle_Y",&gridAngleX,_DOUBLE},
+		{"X_Functions",&functions,_VECTOR},
+		{"Y_Functions",&yfunctions,_VECTOR},
+		{"Interpolations",&interpolations,_VECTOR}
+	};
+};

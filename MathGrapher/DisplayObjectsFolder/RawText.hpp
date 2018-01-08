@@ -67,6 +67,8 @@ class RawText: public DisplayObject {
 		void makeVisibile() {visible=true;};
 		void resizeText(double c) {doublesize+=c;};
 		std::vector<EditFieldMenu> getEditableFields();
+		std::vector<SaveData> getSaveData();
+		RawText() {};
 };
 
 #endif /* RawText_hpp */

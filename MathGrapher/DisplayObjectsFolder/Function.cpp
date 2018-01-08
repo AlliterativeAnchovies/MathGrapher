@@ -104,3 +104,25 @@ double PointOfInterest::getPY() {
     return (functionOn->isParametric())?functionOn->parametricEval(px).y:(*functionOn)(px);
 }
 
+std::vector<SaveData> Function::getSaveData() {
+	return {
+		{"Name",&name,_STRING},
+		{"Tag",this,_FUNC_TAG},
+		{"Stretch_X",&stretchx,_DOUBLE},
+		{"Stretch_Y",&stretchy,_DOUBLE},
+		{"Start_Time",&time,_DOUBLE},
+		{"Visible",&visible,_BOOLEAN},
+		{"Points_Of_Interest",&pointsOfInterest,_VECTOR}
+	};
+}
+
+std::vector<SaveData> PointOfInterest::getSaveData() {
+	return {
+		{"Tag",this,_POINT_TAG},
+		{"PX",&px,_DOUBLE},
+		{"Visible",&visible,_BOOLEAN}
+	};
+}
+
+
+

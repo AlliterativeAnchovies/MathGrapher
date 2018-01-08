@@ -78,3 +78,15 @@ std::vector<EditFieldMenu> RawText::getEditableFields() {
 	};
 };
 
+std::vector<SaveData> RawText::getSaveData() {
+	return {
+		{"Name",&name,_STRING},
+		{"PX",&px,_DOUBLE},
+		{"PY",&py,_DOUBLE},
+		{"Font_Size",&fontSize,_INT},
+		{"Text",&actualText,_STRING},
+		{"Color",&theColor,_HEXADECIMAL},
+		{"Interpolations",&interpolations,_VECTOR}
+	};
+};
+

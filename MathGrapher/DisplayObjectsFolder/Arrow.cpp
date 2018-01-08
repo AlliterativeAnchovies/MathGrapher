@@ -102,3 +102,19 @@ std::vector<EditFieldMenu> Arrow::getEditableFields() {
 		{"Color: ",&color,_HEXADECIMAL,20,true}
 	};
 }
+
+std::vector<SaveData> Arrow::getSaveData() {
+	return {
+		{"Name",&name,_STRING},
+		{"PX",&px,_DOUBLE},
+		{"PY",&py,_DOUBLE},
+		{"Length",&length,_DOUBLE},
+		{"Angle",&angle,_DOUBLE},
+		{"Thickness",&thickness,_DOUBLE},
+		{"Head_Size",&headSize,_DOUBLE},
+		{"Head_Angle",&headAngle,_DOUBLE},
+		{"Color",&color,_HEXADECIMAL},
+		{"Interpolations",&interpolations,_VECTOR}
+	};
+};
+

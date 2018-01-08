@@ -284,3 +284,17 @@ std::string stringifyID(Uint8 id) {
     }
     throw std::runtime_error("ERROR NO SUCH INTERPOLATION TO STRINGIFY");
 }
+
+
+std::vector<SaveData> Interpolation::getSaveData() {
+	return {
+		{"Type",&type,_MINIHEX},
+		{"PX",&px,_DOUBLE},
+		{"PY",&py,_DOUBLE},
+		{"SX",&sx,_DOUBLE},
+		{"SY",&sy,_DOUBLE},
+		{"Start",&timeStartCounter,_DOUBLE},
+		{"Duration",&timeInterval,_DOUBLE},
+		{"Function",&relatedFunction,_FUNCTION}
+	};
+}

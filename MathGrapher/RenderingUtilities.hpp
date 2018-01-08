@@ -250,6 +250,7 @@ template<> std::string tostring(std::string a); //since this is not technically 
                                                 //it must be defined in .cpp
 
 template<> std::string tostring(Uint32 a);
+template<> std::string tostring(Uint8 a);
 
 template<typename T> T fromstring(std::string a) {
     return (T)numberFromString(a);
@@ -258,6 +259,7 @@ template<typename T> T fromstring(std::string a) {
 template<> std::string fromstring(std::string a);
 
 template<> Uint32 fromstring(std::string a);
+
 
 class ValueEditorPrime {//polymorphic wrapper for all templates of ValueEditor
     public:

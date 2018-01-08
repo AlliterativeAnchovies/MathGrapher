@@ -381,6 +381,10 @@ template<> std::string tostring(std::string a) {
 template<> std::string fromstring(std::string a) {
     return a;
 }
+template<> std::string tostring(Uint8 a) {
+	Uint32 newA = a;
+	return tostring(newA);
+}
 template<> std::string tostring(Uint32 a) {
 	//we're taking in a 32-bit number, and want to display it as
 	//a hexadecimal thing (such as ff0088aa)

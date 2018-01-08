@@ -95,6 +95,7 @@ class Slider: public DisplayObject {
 		void makeInvisible() {visible=false;};
 		void makeVisibile() {visible=true;};
 		std::vector<EditFieldMenu> getEditableFields();
+		std::vector<SaveData> getSaveData();
 };
 
 

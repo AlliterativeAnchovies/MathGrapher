@@ -137,3 +137,16 @@ std::vector<EditFieldMenu> RawImage::getEditableFields() {
 		{"SY: ",&sy,_DOUBLE,20,true}
 	};
 };
+
+std::vector<SaveData> RawImage::getSaveData() {
+	return {
+		{"Name",&name,_STRING},
+		{"PX",&px,_DOUBLE},
+		{"PY",&py,_DOUBLE},
+		{"Size_X",&sx,_DOUBLE},
+		{"Size_Y",&sy,_DOUBLE},
+		{"File_Name",&origSurfName,_STRING},
+		{"Interpolations",&interpolations,_VECTOR}
+	};
+};
+

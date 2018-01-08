@@ -467,6 +467,133 @@ void doInStringCalcs(Uint8 keypressed) {
     }
 }
 
+std::string getIndents(int indents) {
+	std::string toReturn = "";
+	for (int i = 0;i<indents;i++) {
+		toReturn+='\t';
+	}
+	return toReturn;
+}
+
+std::string putDataOnStream(int indents,std::vector<SaveData> data,int* numpoints,int* numfuncs) {
+	std::string fs;
+	std::string ind = getIndents(indents);
+	for (auto d : data) {
+		fs += ind;
+		fs += d.prefix;
+		fs += ": ";
+		switch (d.valueType) {
+			case _STRING: {
+				fs += "\"" + *((std::string*)d.data) + "\"";
+				fs += "\n";
+				break;
+			}
+			case _DOUBLE: {
+				fs += tostring(*((double*)d.data));
+				fs += "\n";
+				break;
+			}
+			case _INT: {
+				fs += tostring(*((int*)d.data));
+				fs += "\n";
+				break;
+			}
+			case _HEXADECIMAL: {
+				fs += tostring(*((Uint32*)d.data));
+				fs += "\n";
+				break;
+			}
+			case _BOOLEAN: {
+				fs += ((*((bool*)d.data))?"Yes":"No");
+				fs += "\n";
+				break;
+			}
+			case _MINIHEX: {
+				fs += tostring(*((Uint8*)d.data));
+				fs += "\n";
+				break;
+			}
+			case _VECTOR: {
+				fs += "{\n";
+				std::vector<Data*> nestedData = *((std::vector<Data*>*)d.data);
+				std::string vecThing = "None";
+				if (!nestedData.empty()) {
+					vecThing = nestedData[0]->getID();
+					fs += ind+"\tID: "+vecThing+"\n";
+					for (auto nD : nestedData) {
+						fs += ind+"\tdata: {\n";
+						fs += putDataOnStream(indents+2, nD->getSaveData(), numpoints, numfuncs);
+						fs += ind+"\t}\n";
+					}
+				}
+				else {
+					fs += ind+"\tNone:\"Empty Vector\"\n";
+				}
+				fs += ind + "}\n";
+				break;
+			}
+			case _POINT_OF_INTEREST: {
+				fs += "{\n";
+				PointOfInterest* thePoint = *((PointOfInterest**)d.data);
+				fs += ind+"\tID: "+thePoint->getID()+"\n";
+				if (thePoint==NULL) {
+					fs += ind + "\tNone\n";
+				}
+				else {
+					fs += putDataOnStream(indents+1, thePoint->getSaveData(), numpoints, numfuncs);
+				}
+				fs += ind + "}\n";
+				break;
+			}
+			case _FUNCTION: {
+				fs += "{\n";
+				Function* theFunc = *((Function**)d.data);
+				fs += ind+"\tID: "+theFunc->getID()+"\n";
+				if (theFunc==NULL) {
+					fs += ind + "\tNone\n";
+				}
+				else {
+					fs += putDataOnStream(indents+1, theFunc->getSaveData(), numpoints, numfuncs);
+				}
+				fs += ind + "}\n";
+				break;
+			}
+			case _INTERPOLATION: {
+				fs += "{\n";
+				Interpolation* theInterpol = *((Interpolation**)d.data);
+				fs += ind+"\tID: "+theInterpol->getID()+"\n";
+				if (theInterpol==NULL) {
+					fs += ind + "\tNone\n";
+				}
+				else {
+					fs += putDataOnStream(indents+1, theInterpol->getSaveData(), numpoints, numfuncs);
+				}
+				fs += ind + "}\n";
+				break;
+			}
+			case _FUNC_TAG: {
+				fs += "FUNC_" + tostring(*numfuncs);
+				((Function*)d.data)->tagForSaving = *numfuncs;
+				(*numfuncs) += 1;
+				fs += "\n";
+				break;
+			}
+			case _POINT_TAG: {
+				fs += "POI_" + tostring(*numpoints);
+				((PointOfInterest*)d.data)->tagForSaving = *numpoints;
+				(*numpoints) += 1;
+				fs += "\n";
+				break;
+			}
+			default: {
+				throw std::runtime_error("Unknown ValueType!");
+			}
+			
+		}
+	}
+	return fs;
+}
+
 void save(std::string toSave) {
 	//Note to self: because of stupid XCODE, my saves are saved to a duplicate resources
 	//created at runtime, and so do not necessarily persist across builds.
@@ -484,123 +611,8 @@ void save(std::string toSave) {
   	for (auto object : objects) {
 		fs << "object: {\n";
 		
-		fs << "\tName: \"" << object->getName() << "\"\n";
 		fs << "\tID: \"" << object->getID() << "\"\n";
-		fs << "\tData: {\n";
-		if (object->getID()=="Graph") {
-			Graph* obj = (Graph*)object;
-			fs << "\t\tPX: " << tostring(obj->getPosition().x) << "\n";
-			fs << "\t\tPY: " << tostring(obj->getPosition().y) << "\n";
-			fs << "\t\tSize_X: " << tostring(obj->getSize().x) << "\n";
-			fs << "\t\tSize_Y: " << tostring(obj->getSize().y) << "\n";
-			fs << "\t\tOrigin_X: " << tostring(obj->getOrigin().x) << "\n";
-			fs << "\t\tOrigin_Y: " << tostring(obj->getOrigin().y) << "\n";
-			fs << "\t\tScale_X: " << tostring(obj->getGridScale().x) << "\n";
-			fs << "\t\tScale_Y: " << tostring(obj->getGridScale().y) << "\n";
-			fs << "\t\tAngle_X: " << tostring(obj->getGridAngle().y) << "\n";
-			fs << "\t\tAngle_Y: " << tostring(obj->getGridAngle().x) << "\n";
-			//functions
-			fs << "\t\tFunctions: {\n";
-			for (auto func : obj->getXFunctions()) {
-				fs << "\t\t\tx|" << func->getName() << ": {\n";
-				fs << "\t\t\t\tTag: FUNC_" << NUMBER_OF_FUNCTIONS << "\n";
-				func->tagForSaving = NUMBER_OF_FUNCTIONS;
-				NUMBER_OF_FUNCTIONS++;
-				fs << "\t\t\t\tStretch_X: " << func->getStretchX() << "\n";
-				fs << "\t\t\t\tStretch_Y: " << func->getStretchY() << "\n";
-				fs << "\t\t\t\tStart_Time: " << func->getTime() << "\n";
-				fs << "\t\t\t\tVisible: " << ((func->isVisible())?"Yes":"No") << "\n";
-				fs << "\t\t\t\tPoints_Of_Interest: {\n";
-				for (auto poi : func->getImportantPoints()) {
-					fs << "\t\t\t\t\tPOI_" << NUMBER_OF_INTERESTING_POINTS << ": {\n";
-					poi->tagForSaving = NUMBER_OF_INTERESTING_POINTS;
-					NUMBER_OF_INTERESTING_POINTS++;
-					fs << "\t\t\t\t\t\tPX: " << poi->getPX() << "\n";
-					fs << "\t\t\t\t\t\tVisible: " << ((poi->isVisible())?"Yes":"No") << "\n";
-					fs << "\t\t\t\t\t}\n";
-				}
-				fs << "\t\t\t\t}\n";
-				fs << "\t\t\t}\n";
-			}
-			for (auto func : obj->getYFunctions()) {
-				fs << "\t\t\ty|" << func->getName() << ": {\n";
-				fs << "\t\t\t\tTag: FUNC_" << NUMBER_OF_FUNCTIONS << "\n";
-				func->tagForSaving = NUMBER_OF_FUNCTIONS;
-				NUMBER_OF_FUNCTIONS++;
-				fs << "\t\t\t\tStretch_X: " << func->getStretchX() << "\n";
-				fs << "\t\t\t\tStretch_Y: " << func->getStretchY() << "\n";
-				fs << "\t\t\t\tStart_Time: " << func->getTime() << "\n";
-				fs << "\t\t\t\tVisible: " << ((func->isVisible())?"Yes":"No") << "\n";
-				fs << "\t\t\t\tPoints_Of_Interest: {\n";
-				for (auto poi : func->getImportantPoints()) {
-					fs << "\t\t\t\t\tPOI_" << NUMBER_OF_INTERESTING_POINTS << ": {\n";
-					poi->tagForSaving = NUMBER_OF_INTERESTING_POINTS;
-					NUMBER_OF_INTERESTING_POINTS++;
-					fs << "\t\t\t\t\t\tPX: " << poi->getPX() << "\n";
-					fs << "\t\t\t\t\t\tVisible: " << ((poi->isVisible())?"Yes":"No") << "\n";
-					fs << "\t\t\t\t\t}\n";
-				}
-				fs << "\t\t\t\t}\n";
-				fs << "\t\t\t}\n";
-			}
-			fs << "\t\t}\n";
-		}
-		else if (object->getID()=="Slider") {
-			Slider* obj = (Slider*)object;
-			fs << "\t\tPX: " << obj->getPosition().x << "\n";
-			fs << "\t\tPY: " << obj->getPosition().y << "\n";
-			fs << "\t\tSize: " << obj->getSize() << "\n";
-			fs << "\t\tAngle: " << obj->getAngle() << "\n";
-			fs << "\t\tStarting_Y: " << obj->getStartingY() << "\n";
-			fs << "\t\tTick_Amount: " << obj->getTicks() << "\n";
-			fs << "\t\tPoint_Of_Interest: " << ((obj->getPointConcerned()==NULL)?"NONE":"POI_"+std::to_string(obj->getPointConcerned()->tagForSaving)) << "\n";
-			fs << "\t\tTick_Function: " << obj->getTickFunction()->getName() << "\n";
-		}
-		else if (object->getID()=="Image") {
-			RawImage* obj = (RawImage*)object;
-			fs << "\t\tPX: " << obj->getPX() << "\n";
-			fs << "\t\tPY: " << obj->getPY() << "\n";
-			fs << "\t\tSize_X: " << obj->getSX() << "\n";
-			fs << "\t\tSize_Y: " << obj->getSY() << "\n";
-			fs << "\t\tFile_Name: \"" << obj->getOrigName() << "\"\n";
-		}
-		else if (object->getID()=="Text") {
-			RawText* obj = (RawText*)object;
-			fs << "\t\tPX: " << obj->getPX() << "\n";
-			fs << "\t\tPY: " << obj->getPY() << "\n";
-			fs << "\t\tFont_Size: " << obj->getFontSize() << "\n";
-			fs << "\t\tText: \"" << obj->getActualText() << "\"\n";
-			fs << "\t\tColor: " << tostring(obj->getColor()) << "\n";
-		}
-		else if (object->getID()=="Arrow") {
-			Arrow* obj = (Arrow*)object;
-			fs << "\t\tPX: " << obj->getPX() << "\n";
-			fs << "\t\tPY: " << obj->getPY() << "\n";
-			fs << "\t\tLength: " << obj->getLength() << "\n";
-			fs << "\t\tAngle: " << obj->getAngle() << "\n";
-			fs << "\t\tThickness: " << obj->getThickness() << "\n";
-			fs << "\t\tHead_Size: " << obj->getHeadSize() << "\n";
-			fs << "\t\tHead_Angle: " << obj->getHeadAngle() << "\n";
-			fs << "\t\tColor: " << tostring(obj->getColor()) << "\n";
-		}
-		else {
-			throw std::runtime_error("Have not taught object how to save!");
-		}
-		fs << "\t}\n";
-		fs << "\tInterpolations: {\n";
-		for (auto intpl : object->getInterpolations()) {
-			fs << "\t\tInterpolation: {\n";
-			fs << "\t\t\tType: " << tostring(intpl->getType()) << "\n";
-			fs << "\t\t\tPX: " << intpl->getPX() << "\n";
-			fs << "\t\t\tPY: " << intpl->getPY() << "\n";
-			fs << "\t\t\tSX: " << intpl->getSX() << "\n";
-			fs << "\t\t\tSY: " << intpl->getSY() << "\n";
-			fs << "\t\t\tStart: " << intpl->getStart() << "\n";
-			fs << "\t\t\tDuration: " << intpl->getDuration() << "\n";
-			fs << "\t\t\tFunction: " << ((intpl->getFunction()==NULL)?"None":"FUNC_"+(std::to_string(intpl->getFunction()->tagForSaving))) << "\n";
-			fs << "\t\t}\n";
-		}
-		fs << "\t}\n";
+		fs << putDataOnStream(1,object->getSaveData(),&NUMBER_OF_INTERESTING_POINTS,&NUMBER_OF_FUNCTIONS);
 		fs << "}\n";
 	}
   	fs.close();
@@ -615,6 +627,126 @@ void save(std::string toSave) {
 	if (!found) {
 		loadableFiles.push_back(dumstupidcurrentdirectorybs+"/resources/Saves/"+filename+".txt");
 	}
+}
+
+Data* dataFromID(std::string theID) {
+	Data* theObject;
+	if (theID=="Graph") {
+		theObject = new Graph();
+	}
+	else if (theID=="Slider") {
+		theObject = new Slider();
+	}
+	else if (theID=="Image") {
+		theObject = new RawImage();
+	}
+	else if (theID=="Text") {
+		theObject = new RawText();
+	}
+	else if (theID=="Arrow") {
+		theObject = new Arrow();
+	}
+	else if (theID=="Function") {
+		theObject = new Function();
+	}
+	else if (theID=="Point_Of_Interest") {
+		theObject = new PointOfInterest();
+	}
+	else if (theID=="Interpolation") {
+		theObject = new Interpolation();
+	}
+	else {
+		throw std::runtime_error("Need to hook it in to the loading stuffs!");
+	}
+	return theObject;
+}
+
+void loadData(Data** theObject,ParsedFile* object,std::string theID,std::vector<Data**>* allLoadedObjects) {
+	*theObject = dataFromID(theID);
+	auto aLO = *allLoadedObjects;
+	std::vector<SaveData> theData = (*theObject)->getSaveData();
+	for (auto d : theData) {
+		std::string toLookFor = d.prefix;
+		void* pointer = d.data;
+		switch (d.valueType) {
+			case _STRING: {
+				*((std::string*)pointer) = object->valueOf(toLookFor);
+				break;
+			}
+			case _DOUBLE: {
+				*((double*)pointer) = numberFromString(object->valueOf(toLookFor));
+				break;
+			}
+			case _INT: {
+				*((int*)pointer) = numberFromString(object->valueOf(toLookFor));
+				break;
+			}
+			case _HEXADECIMAL: {
+				*((Uint32*)pointer) = hexFromString(object->valueOf(toLookFor));
+				break;
+			}
+			case _MINIHEX: {
+				*((Uint8*)pointer) = hexFromString(object->valueOf(toLookFor));
+				break;
+			}
+			case _BOOLEAN: {
+				*((bool*)pointer) = object->valueOf(toLookFor)=="Yes";
+				break;
+			}
+			case _VECTOR: {
+				auto comps = object->componentFromString(toLookFor);
+				if (comps.empty()) {continue;}//don't need to do any setting up here
+				std::vector<ParsedFile*> theParse = comps[0]->componentFromString("data");
+				if (comps[0]->componentExists("None")) {continue;}//empty, ignore!
+				std::string id = comps[0]->valueOf("ID");
+				auto theVec = ((std::vector<decltype(dataFromID(id))>*)pointer);	//probably one of the most
+																					//convoluted lines I've
+																					//ever written...
+																					//(when you consider its implications)
+				for (auto p : theParse) {
+					Data* newObject = NULL;
+					loadData(&newObject, p, id,allLoadedObjects);
+					theVec->push_back(newObject);
+				}
+				break;
+			}
+			case _FUNCTION: {
+				//auto theFunc = (Function*)pointer;
+				if (object->componentFromString(toLookFor)[0]->componentExists("None")) {continue;}
+				ParsedFile* newObject = object->componentFromString(toLookFor)[0];
+				loadData((Data**)(pointer), newObject, newObject->valueOf("ID"),allLoadedObjects);
+				break;
+			}
+			case _POINT_OF_INTEREST: {
+				//auto thePoint = (PointOfInterest*)pointer;
+				if (object->componentFromString(toLookFor)[0]->componentExists("None")) {continue;}
+				ParsedFile* newObject = object->componentFromString(toLookFor)[0];
+				loadData((Data**)(pointer), newObject, newObject->valueOf("ID"),allLoadedObjects);
+				break;
+			}
+			case _INTERPOLATION: {
+				//auto theInterpol = (Interpolation*)pointer;
+				if (object->componentFromString(toLookFor)[0]->componentExists("None")) {continue;}
+				ParsedFile* newObject = object->componentFromString(toLookFor)[0];
+				loadData((Data**)(pointer), newObject, newObject->valueOf("ID"),allLoadedObjects);
+				break;
+			}
+			case _FUNC_TAG: {
+				break;
+			}
+			case _POINT_TAG: {
+				break;
+			}
+			default: {
+				throw std::runtime_error("Unknown ValueType!");
+			}
+		}
+	}
+	if (theObject==NULL) {
+		aLO = *allLoadedObjects;
+		std::cout << std::to_string((long)(*(aLO[0]))) << "\n";
+	}
+	(*allLoadedObjects).push_back(theObject);
 }
 
 void load(std::string toLoad) {
@@ -632,173 +764,42 @@ void load(std::string toLoad) {
 	std::fstream loadedFile(toLoad);
 	ParsedFile* pf = ParsedFile::parseFile(&loadedFile);
 	std::vector<ParsedFile*> comps =  pf->componentFromString("*");
-	std::vector<Wrap2<std::string, PointOfInterest*>> pointsToHookUp = {};
-	std::vector<Wrap2<std::string, Slider*>> slidersToHookIn = {};
+	//std::vector<Wrap2<std::string, PointOfInterest*>> pointsToHookUp = {};
+	//std::vector<Wrap2<std::string, Slider*>> slidersToHookIn = {};
+	//std::vector<Wrap2<std::string, Function*>> functionsToHookUp = {};
+	std::vector<Data**> allLoadedObjects = {};
 	for (auto object : comps) {
 		if (object->getKey()!="object"){continue;}
-		std::vector<Wrap2<std::string, Function*>> functionsToHookUp = {};
 		std::string theID = object->valueOf("ID");
-		std::string theName = object->valueOf("Name");
-		DisplayObject* theObject;
-		if (theID=="Graph") {
-			double px = numberFromString(object->valueOf("Data.PX"));
-			double py = numberFromString(object->valueOf("Data.PY"));
-			double sx = numberFromString(object->valueOf("Data.Size_X"));
-			double sy = numberFromString(object->valueOf("Data.Size_Y"));
-			double ox = numberFromString(object->valueOf("Data.Origin_X"));
-			double oy = numberFromString(object->valueOf("Data.Origin_Y"));
-			double scalex = numberFromString(object->valueOf("Data.Scale_X"));
-			double scaley = numberFromString(object->valueOf("Data.Scale_Y"));
-			double anglex = numberFromString(object->valueOf("Data.Angle_X"));
-			double angley = numberFromString(object->valueOf("Data.Angle_Y"));
-			Graph* loadedObject = new Graph();
-			loadedObject->changePosition(px, py);
-			loadedObject->changeName(theName);
-			loadedObject->changeGridAngle(angley, anglex);//flipped on purpose
-			loadedObject->changeGridScale(scalex, scaley);
-			loadedObject->resizeGrid(sx, sy,false);
-			loadedObject->changeOrigin(ox, oy);
-			theObject = loadedObject;
-			std::vector<ParsedFile*> funcs = object->componentFromString("Data.Functions.*");
-			for (auto func : funcs) {
-				//go through all the functions!
-				bool xFunc = func->getKey()[0]=='x';//otherwise, its a y func
-				std::string funcName = func->getKey();
-				funcName.erase(funcName.begin(), funcName.begin()+2);//get rid of "x|" or "y|"
-				Function* relevantFunction = new Function(functionFromName(funcName));
-				double stretchx = numberFromString(func->valueOf("Stretch_X"));
-				double stretchy = numberFromString(func->valueOf("Stretch_Y"));
-				relevantFunction->setStretchX(stretchx);
-				relevantFunction->setStretchY(stretchy);
-				double stime = numberFromString(func->valueOf("Start_Time"));
-				relevantFunction->setTime(stime);
-				bool visibility = func->valueOf("Visible")=="Yes";
-				if (!visibility) {relevantFunction->toggleVisibility();};
-				//go through all the points of interest
-				std::vector<ParsedFile*> POIs = func->componentFromString("Points_Of_Interest.*");
-				for (auto poi : POIs) {
-					double posx = numberFromString(poi->valueOf("PX"));
-					bool visbl = poi->valueOf("Visible")=="Yes";
-					PointOfInterest* toAdd = new PointOfInterest(loadedObject,relevantFunction,posx,visbl);
-					pointsOfInterest.push_back(toAdd);
-					relevantFunction->addPoint(toAdd);
-					pointsToHookUp.push_back({poi->getKey(),toAdd});
+		//std::string theName = object->valueOf("Name");
+		Data* theObject = NULL;
+		loadData(&theObject, object,theID,&allLoadedObjects);
+	}
+	for (auto thingy : allLoadedObjects) {
+		if ((*thingy)->getID()=="Point_Of_Interest") {
+			for (int i = 0;i<allLoadedObjects.size();i++) {
+				if ((*(allLoadedObjects[i]))->getID()=="Point_Of_Interest"&&thingy!=allLoadedObjects[i]
+					&&((PointOfInterest*)(*allLoadedObjects[i]))->tagForSaving==((PointOfInterest*)(*thingy))->tagForSaving ) {
+					
+					delete (PointOfInterest*)(*allLoadedObjects[i]);
+					*(allLoadedObjects[i])=*thingy;
+					allLoadedObjects[i]=thingy;
 				}
-				//add function to graph
-				if (xFunc) {loadedObject->addXFunction_nocopy(relevantFunction);}
-				else {loadedObject->addYFunction_nocopy(relevantFunction);}
-				functionsToHookUp.push_back({func->valueOf("Tag"),relevantFunction});
 			}
 		}
-		else if (theID=="Slider") {
-			double px = numberFromString(object->valueOf("Data.PX"));
-			double py = numberFromString(object->valueOf("Data.PY"));
-			double size = numberFromString(object->valueOf("Data.Size"));
-			double angle = numberFromString(object->valueOf("Data.Angle"));
-			double starty = numberFromString(object->valueOf("Data.Starting_Y"));
-			int ticknum = numberFromString(object->valueOf("Data.Tick_Amount"));
-			Function* tickFunction = new Function(functionFromName(object->valueOf("Data.Tick_Function")));
-			std::string pointTag = object->valueOf("Data.Point_Of_Interest");
-			Slider* loadedObject = new Slider();
-			loadedObject->changePX(px);
-			loadedObject->changePY(py);
-			loadedObject->changeSize(size);
-			loadedObject->changeAngle(angle);
-			loadedObject->changeStartingY(starty);
-			loadedObject->setTicks(ticknum);
-			loadedObject->setFunction(tickFunction);
-			slidersToHookIn.push_back({pointTag,loadedObject});	//will add POI later, once all POI
-																//have been created (because you
-																//could possibly be loading one that
-																//hasn't been created yet if you do
-																//it here)
-			loadedObject->changeName(theName);
-			theObject = loadedObject;
+		if ((*thingy)->getID()=="Interpolation") {
+			((Interpolation*)(*thingy))->reset();
 		}
-		else if (theID=="Image") {
-			double px = numberFromString(object->valueOf("Data.PX"));
-			double py = numberFromString(object->valueOf("Data.PY"));
-			double sx = numberFromString(object->valueOf("Data.Size_X"));
-			double sy = numberFromString(object->valueOf("Data.Size_Y"));
-			std::string fileName = object->valueOf("Data.File_Name");
-			//because images need to know the index of the data file, not the file's name,
-			//we have to find it now!
-			int index = -1;
-			for (std::string stdstring : gStrings) {
-				index++;
-				if (stdstring==fileName) {break;}
-			}
-			RawImage* loadedObject = new RawImage(px,py,index,theName);
-			loadedObject->resize(sx,sy);
-			theObject = loadedObject;
-		}
-		else if (theID=="Text") {
-			double px = numberFromString(object->valueOf("Data.PX"));
-			double py = numberFromString(object->valueOf("Data.PY"));
-			double fsize = numberFromString(object->valueOf("Data.Font_Size"));
-			std::string theText = object->valueOf("Data.Text");
-			Uint32 color = hexFromString(object->valueOf("Data.Color"));
-			RawText* loadedObject = new RawText(px,py,fsize,theName);
-			*(loadedObject->ptmActualText()) = theText;
-			*(loadedObject->ptmColor()) = color;
-			theObject = loadedObject;
-		}
-		else if (theID=="Arrow") {
-			double px = numberFromString(object->valueOf("Data.PX"));
-			double py = numberFromString(object->valueOf("Data.PY"));
-			double length = numberFromString(object->valueOf("Data.Length"));
-			double angle = numberFromString(object->valueOf("Data.Angle"));
-			double thickness = numberFromString(object->valueOf("Data.Thickness"));
-			double headSize = numberFromString(object->valueOf("Data.Head_Size"));
-			double headAngle = numberFromString(object->valueOf("Data.Head_Angle"));
-			Uint32 color = hexFromString(object->valueOf("Data.Color"));
-			Arrow* loadedObject = new Arrow(px,py,length,thickness,headSize,angle,headAngle,theName);
-			loadedObject->changeColor(color);
-			theObject = loadedObject;
-		}
-		else {
-			throw std::runtime_error("Does not know how to load the object!");
-		}
-		//now add the interpolations to this object!
-		std::vector<ParsedFile*> intpls = object->componentFromString("Interpolations.*");
-		for (auto intpl : intpls) {
-			Uint32 type = numberFromString(intpl->valueOf("Type"));
-			double px = numberFromString(intpl->valueOf("PX"));
-			double py = numberFromString(intpl->valueOf("PY"));
-			double sx = numberFromString(intpl->valueOf("SX"));
-			double sy = numberFromString(intpl->valueOf("SY"));
-			double start = numberFromString(intpl->valueOf("Start"));
-			double duration = numberFromString(intpl->valueOf("Duration"));
-			std::string funcname = intpl->valueOf("Function");
-			Interpolation* theIntpl = new Interpolation(type,px,py,duration,theObject);
-			theIntpl->changeStart(start);
-			theIntpl->changeSX(sx);
-			theIntpl->changeSY(sy);
-			if (funcname!="None") {
-				Function* voldemort = NULL;
-				for (auto possibleFunc : functionsToHookUp) {
-					if (possibleFunc.x==funcname) {
-						voldemort = possibleFunc.y;
-					}
-				}
-				if (voldemort==NULL) {throw std::runtime_error("ERROR! No such function for loading.");}
-				theIntpl->relateFunction(voldemort);
-			}
-			theIntpl->reset();
-			theObject->addInterpolation(theIntpl);
-		}
-		objects.push_back(theObject);
-		
 	}
 	//go through and hook up all points of interest
-	for (auto slid : slidersToHookIn) {
+	/*for (auto slid : slidersToHookIn) {
 		if (slid.x=="None") {continue;};
 		for (auto poi : pointsToHookUp) {
 			if (slid.x==poi.x) {
 				slid.y->setPointConcerned(poi.y);
 			}
 		}
-	}
+	}*/
 	
 }
 
