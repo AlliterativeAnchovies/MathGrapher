@@ -21,7 +21,7 @@
 #include "DisplayObjectsFolder/Graph.hpp"
 #include "DisplayObjectsFolder/Slider.hpp"
 #include "DisplayObjectsFolder/RawImage.hpp"
-#include "DisplayObjectsFolder/Interpolation.hpp"
+#include "DisplayObjectsFolder/InterpolationWrapper.hpp"
 #include "DisplayObjectsFolder/Function.hpp"
 #include "DisplayObjectsFolder/RawText.hpp"
 #include "DisplayObjectsFolder/Arrow.hpp"

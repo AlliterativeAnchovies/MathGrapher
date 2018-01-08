@@ -10,7 +10,7 @@
 #define RawImage_hpp
 
 #include "DisplayObjects.hpp"
-#include "Interpolation.hpp"
+#include "InterpolationWrapper.hpp"
 
 struct RawImageImage {
 	double px;

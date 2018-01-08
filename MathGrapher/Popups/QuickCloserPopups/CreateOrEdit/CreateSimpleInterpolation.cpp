@@ -13,7 +13,7 @@ Uint8 CreateSimpleInterpolation::handle(double mouseX,double mouseY,bool clicked
     clicked = clicked&&successfulRaycast&&!locked;
 	
 	drawBorderedRect(px, py, sx, sy, 0xffaaf2aa, 0xff000000);
-	drawText(stringConcerned, 24, px+5, py+5, 0xff000000);
+	drawText(interpolationConcerned->getID(), 24, px+5, py+5, 0xff000000);
 	std::string beep = (ticks%60<30)?"|":" ";
 	int curx = px+10;
 	int cury = py+35;
@@ -74,7 +74,7 @@ Uint8 CreateSimpleInterpolation::handle(double mouseX,double mouseY,bool clicked
 			else {
 				throw std::runtime_error("Need to hook up interpolation to display object");
 			}
-			interpolationConcerned->relateFunction(functionConcerned);
+			interpolationConcerned->relateData(functionConcerned);
 			//if popup not NULL, then the interpolation already exists,
 			//shouldn't add it twice!
 		}

@@ -90,7 +90,9 @@ class Data {
 		virtual std::vector<SaveData> getSaveData()=0;
 		virtual std::string getID()=0;
 		virtual bool isDisplayObject() {return false;}
+		virtual bool isInterpolation() {return false;}
 		virtual std::vector<EditFieldMenu> getEditableFields()=0;
+		virtual void init() {};
 };
 
 class DisplayObject: public Data {

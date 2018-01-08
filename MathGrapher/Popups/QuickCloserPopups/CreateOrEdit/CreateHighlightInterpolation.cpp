@@ -63,7 +63,7 @@ Uint8 CreateHighlightInterpolation::handle(double mouseX,double mouseY,bool clic
 		if (popupConcerned==NULL) {
 			interpolationConcerned->reset();
 			graphConcerned->addInterpolation(interpolationConcerned);
-			interpolationConcerned->relateFunction(functionConcerned);
+			interpolationConcerned->relateData(functionConcerned);
 			//if not NULL, then the interpolation already exists,
 			//shouldn't add it twice!
 		}

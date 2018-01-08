@@ -672,8 +672,11 @@ Data* dataFromID(std::string theID) {
 	else if (theID=="Point_Of_Interest") {
 		theObject = new PointOfInterest();
 	}
-	else if (theID=="Interpolation") {
-		theObject = new Interpolation();
+	else if (theID=="Move") {
+		theObject = new MoveInterpol();
+	}
+	else if (theID=="Highlight") {
+		theObject = new HighlightInterpol();
 	}
 	else {
 		throw std::runtime_error("Need to hook it in to the loading stuffs!");
@@ -830,12 +833,12 @@ void load(std::string toLoad) {
 			if (ti->tagForSaving!=-1) {
 				for (int j = 0;j<allthefuncs.size();j++) {
 					if (ti->tagForSaving==allthefuncs[j]->tagForSaving) {
-						ti->relateFunction(allthefuncs[j]);
+						ti->relateData(allthefuncs[j]);
 						break;
 					}
 				}
 			}
-			ti->reset();
+			//ti->reset();
 		}
 		if (starthingy->getID()=="Graph") {
 			//hook all functions
@@ -877,12 +880,15 @@ void load(std::string toLoad) {
 			}
 		}
 	}
-	for (int i = 0;i<objcount;i++) {//add interpolations
+	for (int i = 0;i<objcount;i++) {//add interpolations to the correct objects
 		if (!allLoadedObjects[i]->isDisplayObject()) {continue;}
 		auto interpols = ((DisplayObject*)allLoadedObjects[i])->getInterpolations();
 		for (auto interpol : interpols) {
-			interpol->relateDisplay((DisplayObject*)(allLoadedObjects[i]));
+			interpol->relateData((DisplayObject*)(allLoadedObjects[i]));
 		}
+	}
+	for (int i = 0;i<objcount;i++) {//perform any last initializations here
+		allLoadedObjects[i]->init();
 	}
 	std::cout << "Loading finished\n";
 }

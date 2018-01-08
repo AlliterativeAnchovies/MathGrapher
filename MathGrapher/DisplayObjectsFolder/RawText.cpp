@@ -45,11 +45,6 @@ void RawText::run() {
 void RawText::update() {
 	for (int i = 0;i<interpolations.size();i++) {
         if (interpolations[i]->update()) {
-            std::vector<Interpolation*> followups = interpolations[i]->getFollowups();
-            for (int j = 0;j<followups.size();j++) {
-                followups[j]->wait();
-                interpolations.push_back(followups[j]);
-            }
             interpolations[i]->pause();
         }
     }

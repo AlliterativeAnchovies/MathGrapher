@@ -60,10 +60,21 @@ Popup* Popup::concernWith(Function* f) {
 
 
 void Popup::setUpInterpolation() {
-    //called when concerning with a string
+	Data* intplObj;
+	if (graphConcerned!=NULL) {intplObj=graphConcerned;}//IMPROVE THIS
+    else if (sliderConcerned!=NULL) {intplObj=sliderConcerned;}
+	else if (imageConcerned!=NULL) {intplObj=imageConcerned;}
+	else if (textConcerned!=NULL) {intplObj=textConcerned;}
+	else if (arrowConcerned!=NULL) {intplObj=arrowConcerned;}
+	else {
+		throw std::runtime_error("Not set up adding interpolations to this type of display object!");
+	}
+	
+	
     Uint8 interpolID = 0x00;
     if (stringConcerned=="Move") {
         interpolID = SMOOTH_TRANSLATE;
+        interpolationConcerned = new MoveInterpol(0,0,(DisplayObject*)intplObj);
     }
     else if (stringConcerned=="Resize") {
         interpolID = SMOOTH_GRID_RESIZE_SMART_CENTER;
@@ -85,6 +96,7 @@ void Popup::setUpInterpolation() {
     }
     else if (stringConcerned=="Highlight") {
         interpolID = HIGHLIGHT_GRAPH;
+        interpolationConcerned = new HighlightInterpol(0,0,0,0,graphConcerned);
     }
     else if (stringConcerned=="Fix") {
     	interpolID = FIX_THINGAMAJIG;
@@ -101,7 +113,7 @@ void Popup::setUpInterpolation() {
     else {
         throw std::runtime_error("Invalid Interpolation To Set Up");
     }
-    if (graphConcerned!=NULL) {
+    /*if (graphConcerned!=NULL) {
     	interpolationConcerned = new Interpolation(interpolID,0,0,FRAME_RATE,graphConcerned);
     }
     else if (sliderConcerned!=NULL) {
@@ -118,7 +130,7 @@ void Popup::setUpInterpolation() {
 	}
 	else {
 		throw std::runtime_error("Not set up adding interpolations to this type of display object!");
-	}
+	}*/
 }
 
 void Popup::lock() {

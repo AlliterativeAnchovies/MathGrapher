@@ -46,7 +46,7 @@ Uint8 CreateResizeInterpolation::handle(double mouseX,double mouseY,bool clicked
 		,clicked,&offx,&offy) || clickedEdit;
 	cury+=offy;*/
 	
-
+	/*
 	//Select whether the scaling will try to move the origin along with it or not.
 	bool smart = interpolationConcerned->getType()==SMOOTH_GRID_RESIZE_SMART_CENTER;
 	int smartx,smarty;
@@ -95,7 +95,7 @@ Uint8 CreateResizeInterpolation::handle(double mouseX,double mouseY,bool clicked
 
 	if (clickedEdit) {
 		toReturn = 0x01;
-	}
+	}*/
 	
     return toReturn;
 }

@@ -55,11 +55,11 @@ void Graph::move(double x,double y) {
     py += y;
 }
 //moves smoothly
-Interpolation* Graph::smoothMove(double x,double y,int timeInterval,bool doNow) {
+/*Interpolation* Graph::smoothMove(double x,double y,int timeInterval,bool doNow) {
     Interpolation* toReturn = new Interpolation(SMOOTH_TRANSLATE,x,y,timeInterval,this);
     if (doNow) {interpolations.push_back(toReturn);}
     return toReturn;
-}
+}*/
 //moves immediately
 void Graph::changePosition(double x,double y) {
     px = x;
@@ -71,11 +71,11 @@ void Graph::moveOrigin(double x,double y) {
     oy += y;
 }
 //moves origin smoothly
-Interpolation* Graph::smoothMoveOrigin(double x,double y,int timeInterval,bool doNow) {
+/*Interpolation* Graph::smoothMoveOrigin(double x,double y,int timeInterval,bool doNow) {
     Interpolation* toReturn = new Interpolation(SMOOTH_ORIGIN_TRANSLATE,x,y,timeInterval,this);
     if (doNow) {interpolations.push_back(toReturn);}
     return toReturn;
-}
+}*/
 //moves origin immediately
 void Graph::changeOrigin(double x,double y) {
     ox = x;
@@ -97,11 +97,11 @@ void Graph::moveGridAngle(double x,double y) {
     if (gridAngleY>=2*M_PI) {gridAngleY-=2*M_PI;}
 }
 //changes grid angle smoothly
-Interpolation* Graph::smoothMoveGridAngle(double x,double y,int timeInterval,bool doNow) {
+/*Interpolation* Graph::smoothMoveGridAngle(double x,double y,int timeInterval,bool doNow) {
     Interpolation* toReturn = new Interpolation(SMOOTH_GRID_ROTATE,x,y,timeInterval,this);
     if (doNow) {interpolations.push_back(toReturn);}
     return toReturn;
-}
+}*/
 
 //changes grid scale immediately
 void Graph::changeGridScale(double x,double y) {
@@ -114,11 +114,11 @@ void Graph::moveGridScale(double x,double y) {
     gridSpacingY += y;
 }
 //changes grid scale smoothly
-Interpolation* Graph::smoothMoveGridScale(double x,double y,int timeInterval,bool doNow) {
+/*Interpolation* Graph::smoothMoveGridScale(double x,double y,int timeInterval,bool doNow) {
     Interpolation* toReturn = new Interpolation(SMOOTH_GRID_SCALE,x,y,timeInterval,this);
     if (doNow) {interpolations.push_back(toReturn);}
     return toReturn;
-}
+}*/
 
 //resizes grid immediately
 void Graph::resizeGrid(double x,double y,bool moveCenter) {
@@ -151,12 +151,12 @@ void Graph::moveGridSize(double x,double y,bool moveCenter) {
     sy += y;
 }
 //resizes grid smoothly
-Interpolation* Graph::smoothMoveGridSize(double x,double y,int timeInterval,bool moveCenter,bool doNow) {
+/*Interpolation* Graph::smoothMoveGridSize(double x,double y,int timeInterval,bool moveCenter,bool doNow) {
     Interpolation* toReturn = new Interpolation(((moveCenter)?SMOOTH_GRID_RESIZE_SMART_CENTER:SMOOTH_GRID_RESIZE_STATIC_CENTER)
                                                 ,x,y,timeInterval,this);
     if (doNow) {interpolations.push_back(toReturn);}
     return toReturn;
-}
+}*/
 void Graph::addInterpolation(Interpolation *i) {
     interpolations.push_back(i);
 }
@@ -425,16 +425,18 @@ SDL_Surface* Graph::draw(double* x,double* y) {
     fastSineCosine(&s2, &c2, gridAngleX-M_PI/2);//y axis angle
     for (int i = 0;i<interpolations.size();i++) {
         Interpolation* intpol = interpolations[i];
-        if (intpol->getType()!=HIGHLIGHT_GRAPH) {continue;}
+        //if (intpol->getType()!=HIGHLIGHT_GRAPH) {continue;}
+        if (intpol->getID()!="Highlight") {continue;}
+        auto d = intpol->getData();
         if (!intpol->isActive()) {continue;}
-        int rawX1 = numberFromString(intpol->getPXDisplay());//top left
-        int rawY1 = numberFromString(intpol->getPYDisplay());
-        int rawX2 = numberFromString(intpol->getSXDisplay());//bottom right
-        int rawY2 = numberFromString(intpol->getSYDisplay());
-        int rawX3 = numberFromString(intpol->getSXDisplay());//top right
-        int rawY3 = numberFromString(intpol->getPYDisplay());
-        int rawX4 = numberFromString(intpol->getPXDisplay());//bottom left
-        int rawY4 = numberFromString(intpol->getSYDisplay());
+        int rawX1 = (*((double*)d[0]));//top left
+        int rawY1 = (*((double*)d[1]));
+        int rawX2 = (*((double*)d[2]));//bottom right
+        int rawY2 = (*((double*)d[3]));
+        int rawX3 = (*((double*)d[2]));//top right
+        int rawY3 = (*((double*)d[1]));
+        int rawX4 = (*((double*)d[0]));//bottom left
+        int rawY4 = (*((double*)d[3]));
         double finalX1 = rawX1*c1/pixelToXValRatio-rawY1*s2/pixelToYValRatio;
         double finalY1 = rawX1*s1/pixelToXValRatio+rawY1*c2/pixelToYValRatio;
         double finalX2 = rawX2*c1/pixelToXValRatio-rawY2*s2/pixelToYValRatio;
@@ -461,11 +463,6 @@ SDL_Surface* Graph::draw(double* x,double* y) {
 void Graph::update() {
     for (int i = 0;i<interpolations.size();i++) {
         if (interpolations[i]->update()) {
-            std::vector<Interpolation*> followups = interpolations[i]->getFollowups();
-            for (int j = 0;j<followups.size();j++) {
-                followups[j]->wait();
-                interpolations.push_back(followups[j]);
-            }
             interpolations[i]->pause();
         }
     }

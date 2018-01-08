@@ -63,7 +63,7 @@ Uint8 CreateFunctionRunInterpolation::handle(double mouseX,double mouseY,bool cl
 			else {
 				throw std::runtime_error("Need to hook up interpolation to display object");
 			}
-			interpolationConcerned->relateFunction(functionConcerned);
+			interpolationConcerned->relateData(functionConcerned);
 			//if popup not NULL, then the interpolation already exists,
 			//shouldn't add it twice!
 		}

@@ -10,7 +10,13 @@
 
 //returns true if completed interpolation
 bool Interpolation::update() {
-    if (canceled) {return true;}
+	if (paused) {return false;}
+	if (waiting) {waiting=false;return false;}
+	if (timeStart>timeAt) {timeAt++;return false;}
+	run();
+	timeAt++;
+    return timeAt>=duration;
+    /*if (canceled) {return true;}
     if (paused) {return false;}
     if (waiting) {waiting = false;return false;}
     if (timeStart>0) {timeStart--;return false;}
@@ -76,8 +82,18 @@ bool Interpolation::update() {
     
     timeAt+=1;
     return timeAt>=timeInterval;
+    */
 }
 
+std::vector<SaveData> Interpolation::makeSaveData(std::vector<SaveData> s) {
+	return concatenate(s, {{"Start",&timeStart,_INT},{"Duration",&duration,_INT}});
+}
+std::vector<EditFieldMenu> Interpolation::makeEditableFields(std::vector<EditFieldMenu> s) {
+	return concatenate(s, {{"Start: ",&timeStart,_INT,20,false},{"Duration: ",&duration,_INT,20,true}});
+}
+
+
+/*
 std::string Interpolation::getDisplay() {
     std::string toReturn = "";
     switch (type) {
@@ -308,4 +324,4 @@ std::vector<EditFieldMenu> Interpolation::getEditableFields() {
 		{"Start: ",&px,_INT,20,false},
 		{"Duration: ",&py,_INT,20,true}
 	};
-}
+}*/

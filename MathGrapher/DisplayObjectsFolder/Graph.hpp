@@ -11,7 +11,7 @@
 
 #include "DisplayObjects.hpp"
 #include "Function.hpp"
-#include "Interpolation.hpp"
+#include "InterpolationWrapper.hpp"
 
 
 struct GraphImage {

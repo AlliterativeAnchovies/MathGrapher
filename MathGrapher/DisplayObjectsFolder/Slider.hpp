@@ -10,6 +10,7 @@
 #define Slider_hpp
 
 #include "DisplayObjects.hpp"
+#include "InterpolationWrapper.hpp"
 #include "Function.hpp"
 
 struct SliderImage {

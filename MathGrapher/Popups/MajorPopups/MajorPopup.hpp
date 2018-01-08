@@ -75,7 +75,7 @@ template<typename T> bool EditPopup::drawInterpolationSidebar(int interpolationx
 		else {
 			drawBorderedRect(       interpolationx+10+15*offset, intstart,
 									10,intend,
-									getColorOfInterpolation(interpolations[i]),0xff000000);
+									interpolations[i]->getColor(),0xff000000);
 		}
 		
 	}
@@ -89,14 +89,18 @@ template<typename T> bool EditPopup::drawInterpolationSidebar(int interpolationx
 		int intxstart = interpolationx+10+15*interpolhoveringoffset-170;
 		drawBorderedRect(       intxstart, intystart,
 								180,intyend,
-								getColorOfInterpolation(relevantInterpol),0xff000000);
+								relevantInterpol->getColor(),0xff000000);
 		//draw data
 		drawText(relevantInterpol->getDisplay(), 12, intxstart+5, intystart+5, 0xff000000);
-		drawText("Start Time: "+relevantInterpol->getStartDisplay(), 12, intxstart+5, intystart+20, 0xff000000);
-		drawText("Duration: "+relevantInterpol->getDurationDisplay(), 12, intxstart+5, intystart+35, 0xff000000);
+		drawText("Start Time: "+tostring(relevantInterpol->getStart()), 12, intxstart+5, intystart+20, 0xff000000);
+		drawText("Duration: "+tostring(relevantInterpol->getDuration()), 12, intxstart+5, intystart+35, 0xff000000);
 		drawText("Space to Edit, Backspace to Delete", 12, intxstart+5, intystart+50, 0xff000000);
 		if (spacePressed) {
-			Uint8 newID = CREATE_SIMPLE_INTERPOLATION;
+			createPopup(CREATE_SIMPLE_INTERPOLATION, mouseX-150, mouseY)
+				->concernWith(concernedThing)
+				->concernWith(relevantInterpol)
+				->concernWith(this);
+			/*Uint8 newID = CREATE_SIMPLE_INTERPOLATION;
 			if (relevantInterpol->getType()==SMOOTH_GRID_RESIZE_SMART_CENTER||
 				relevantInterpol->getType()==SMOOTH_GRID_RESIZE_STATIC_CENTER) {
 				newID = CREATE_RESIZE_INTERPOLATION;
@@ -108,7 +112,7 @@ template<typename T> bool EditPopup::drawInterpolationSidebar(int interpolationx
 				->concernWith(concernedThing)
 				->concernWith(relevantInterpol)
 				->concernWith(this)
-				->concernWith(stringifyID(relevantInterpol->getType()));
+				->concernWith(stringifyID(relevantInterpol->getType()));*/
 		}
 		else if (backspacePressed) {
 			relevantInterpol->cancel();

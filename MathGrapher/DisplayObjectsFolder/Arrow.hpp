@@ -10,7 +10,7 @@
 #define Arrow_hpp
 
 #include "DisplayObjects.hpp"
-#include "Interpolation.hpp"
+#include "InterpolationWrapper.hpp"
 
 struct ArrowImage {
 	double px = 0;

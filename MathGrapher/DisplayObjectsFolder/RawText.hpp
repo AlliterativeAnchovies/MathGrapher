@@ -10,7 +10,7 @@
 #define RawText_hpp
 
 #include "DisplayObjects.hpp"
-#include "Interpolation.hpp"
+#include "InterpolationWrapper.hpp"
 
 struct RawTextImage {
 	double px;
