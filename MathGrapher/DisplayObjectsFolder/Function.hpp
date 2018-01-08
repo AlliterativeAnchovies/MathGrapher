@@ -111,8 +111,8 @@ class PointOfInterest: public Data {
         std::vector<SaveData> getSaveData();
         std::string getID() {return "Point_Of_Interest";};
         PointOfInterest() {};
-        void giveGraph(Graph* g) {graphOn = g;};//ONLY USED WHEN LOADING
-        void giveFunction(Function* f) {functionOn = f;}//ONLY USED WHEN LOADING
+        void giveGraph(Graph* g) {graphOn = g;};
+        void giveFunction(Function* f) {functionOn = f;}
         std::vector<EditFieldMenu> getEditableFields();
 };
 

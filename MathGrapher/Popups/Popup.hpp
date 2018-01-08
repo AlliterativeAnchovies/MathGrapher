@@ -58,6 +58,7 @@ class Popup {
         RawImage* imageConcerned = NULL;
         RawText* textConcerned = NULL;
         Arrow* arrowConcerned = NULL;
+        PointOfInterest* pointConcerned = NULL;
         bool isNewborn = true;
         bool successfulRaycast = false;
         bool locked = false;
@@ -77,6 +78,7 @@ class Popup {
         Popup* concernWith(RawImage* r) {imageConcerned = r;return this;}
         Popup* concernWith(RawText* t) {textConcerned = t;return this;}
         Popup* concernWith(Arrow* a) {arrowConcerned = a;return this;}
+        Popup* concernWith(PointOfInterest* p) {pointConcerned = p;return this;}
         Popup* concernWithAllDisplayedObjects(Popup* p) {
         	graphConcerned=p->graphConcerned;
         	sliderConcerned=p->sliderConcerned;
@@ -144,9 +146,17 @@ template<typename T> bool handleEditableInfo_internal(double px,double py,int fs
     if (instringswitch==relevantinstringswitch) {
         display = instring + cursorBeeper;
     }
-    drawText(preface+display, fsize, px, py, 0xff000000);
+    std::vector<std::string> splitStuffs = splitAt(preface, "|__|");
+    std::string resultString;
+    if (splitStuffs.size()<=1) {
+    	resultString = preface+display;
+    }
+    else {
+    	resultString = splitStuffs[0]+display+splitStuffs[1];
+	}
+	drawText(resultString, fsize, px, py, 0xff000000);
     int w,h,w2,h2;
-    TTF_SizeUTF8((*fontgrab)(fsize),(preface+display).c_str(), &w, &h);
+    TTF_SizeUTF8((*fontgrab)(fsize),(resultString).c_str(), &w, &h);
     drawTextWithBackground("Edit", 16, px+w, py, 0xff000000, 0xffffcf9e, 0xff000000);
     TTF_SizeUTF8((*fontgrab)(16),"Edit", &w2, &h2);
     *offx = w+w2+5;

@@ -81,9 +81,13 @@ Uint8 EditFunctionPopup::handle(double mouseX,double mouseY,bool clicked) {
 	if (clicked&&pointInBounds(mouseX, mouseY, curx+intpx+5, curx+intpx+5+poix, cury, cury+poiy)) {
 		clicked = false;
 		toReturn = 0x01;
+		PointOfInterest* p = new PointOfInterest();
+		p->giveFunction(functionConcerned);
+		p->giveGraph(graphConcerned);
 		createPopup(CREATE_POINT_OF_INTEREST, mouseX, mouseY)
 			->concernWith(graphConcerned)
-			->concernWith(functionConcerned);
+			->concernWith(functionConcerned)
+			->concernWith(p);
 	}
 
 	if (clickedEdit) {

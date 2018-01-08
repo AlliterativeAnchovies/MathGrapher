@@ -1173,3 +1173,39 @@ void fillTriangleOnSurface(SDL_Surface* toDraw,int x1,int y1,int x2,int y2,int x
         drawLineOnSurface(toDraw, x_pos_1, y_pos, x_pos_2, y_pos, color);
     }
 }
+
+std::vector<std::string> splitAt(std::string input,std::string splitter) {
+	std::string buffer = "";
+	std::string holder = "";
+	int pointer = 0;
+	bool buffering = false;
+	std::vector<std::string> toReturn = {};
+	for (char c : input) {
+		if (c==splitter[pointer]) {
+			//on a promising path
+			buffering = true;
+			pointer++;
+			buffer+=c;
+			if (pointer==splitter.size()) {
+				toReturn.push_back(holder);
+				buffer = "";
+				holder = "";
+				pointer = 0;
+			}
+		}
+		else if (buffering) {
+			//failed the path, restart
+			holder+=buffer;
+			holder+=c;
+			buffer = "";
+			pointer = 0;
+		}
+		else {
+			//normal
+			holder+=c;
+		}
+	}
+	std::string excess = buffer+holder;
+	if (excess!="") {toReturn.push_back(excess);}
+	return toReturn;
+}

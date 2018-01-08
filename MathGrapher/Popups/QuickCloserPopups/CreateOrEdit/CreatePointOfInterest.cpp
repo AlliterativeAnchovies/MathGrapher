@@ -27,18 +27,18 @@ Uint8 CreatePointOfInterest::handle(double mouseX,double mouseY,bool clicked) {
 	//clickedEdit = handleEditableInfo_internal(curx,cury,20,18,mouseX,mouseY,
 	//	header,stringConcerned,&stringConcerned
 	//	,clicked,&offx,&offy) || clickedEdit;
-	clickedEdit = handleEditableInfo(curx, cury, interpolationConcerned, clicked, mouseX, mouseY, &offy);
+	clickedEdit = handleEditableInfo(curx, cury, pointConcerned, clicked, mouseX, mouseY, &offy);
 	cury+=offy;
 
-	std::string outputOfFunc = "py: "+((instringswitch==18)?"?":
+	/*std::string outputOfFunc = "py: "+((instringswitch==18)?"?":
 		std::to_string((*functionConcerned)(numberFromString(stringConcerned))));
 	if (functionConcerned->isParametric()) {
-		auto bothvals = functionConcerned->parametricEval(numberFromString(stringConcerned));
+		auto bothvals = functionConcerned->parametricEval((pointConcerned->getPX()));
 		outputOfFunc = "px: "+((instringswitch==18)?"?":std::to_string(bothvals.x))+
 					"   py: "+((instringswitch==18)?"?":std::to_string(bothvals.y));
 	}
 	drawText(outputOfFunc, 16, curx+offx, py+30, 0xff000000);
-	cury+=offy;
+	cury+=offy;*/
 
 	int visiblex,visibley;
 	TTF_SizeUTF8((*fontgrab)(16),boolConcerned?"Is Visible":"Is Hidden",&visiblex,&visibley);
@@ -56,9 +56,11 @@ Uint8 CreatePointOfInterest::handle(double mouseX,double mouseY,bool clicked) {
 		clicked = false;
 		toReturn = 0x02;
 		stringConcerned = stringConcerned==""?"0":stringConcerned;
-		PointOfInterest* newpoint = new PointOfInterest(graphConcerned,functionConcerned,numberFromString(stringConcerned),!boolConcerned);
-		pointsOfInterest.push_back(newpoint);
-		functionConcerned->addPoint(newpoint);
+		//PointOfInterest* newpoint = new PointOfInterest(graphConcerned,functionConcerned,numberFromString(stringConcerned),!boolConcerned);
+		pointConcerned->giveGraph(graphConcerned);
+		pointConcerned->giveFunction(functionConcerned);
+		pointsOfInterest.push_back(pointConcerned);
+		functionConcerned->addPoint(pointConcerned);
 		instring = "";
 		thingForInString = NULL;
 		instringswitch = -1;

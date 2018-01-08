@@ -133,9 +133,9 @@ std::vector<SaveData> PointOfInterest::getSaveData() {
 
 std::vector<EditFieldMenu> Function::getEditableFields() {
 	return {
-		{"Stretch_X: ",&stretchx,_DOUBLE,20,false},
-		{"Stretch_Y: ",&stretchy,_DOUBLE,20,true},
-		{"Start_Time: ",&time,_DOUBLE,20,true}
+		{"Stretch X: ",&stretchx,_DOUBLE,20,false},
+		{"Stretch Y: ",&stretchy,_DOUBLE,20,true},
+		{"Start Time: ",&time,_DOUBLE,20,true}
 	};
 }
 

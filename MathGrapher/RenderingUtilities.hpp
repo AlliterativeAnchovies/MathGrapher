@@ -97,6 +97,7 @@ bool stringIsWhitespace(std::string s);
 std::string trim(const std::string &s);
 std::vector<std::string> splitAtColon(std::string input);
 std::vector<std::string> splitAt(std::string input,char splitter);
+std::vector<std::string> splitAt(std::string input,std::string splitter);
 bool stringContains(std::string theString,char toContain);
 void screenshot(std::string filename,SDL_Rect* bounds=NULL);
 void sleepConsole();//surpresses console messages
