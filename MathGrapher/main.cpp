@@ -535,7 +535,7 @@ std::string putDataOnStream(int indents,std::vector<SaveData> data,int* numpoint
 			case _POINT_OF_INTEREST: {
 				fs += "{\n";
 				PointOfInterest* thePoint = *((PointOfInterest**)d.data);
-				fs += ind+"\tID: "+thePoint->getID()+"\n";
+				fs += ind+"\tID: \""+thePoint->getID()+"\"\n";
 				if (thePoint==NULL) {
 					fs += ind + "\tNone\n";
 				}
@@ -548,7 +548,7 @@ std::string putDataOnStream(int indents,std::vector<SaveData> data,int* numpoint
 			case _FUNCTION: {
 				fs += "{\n";
 				Function* theFunc = *((Function**)d.data);
-				fs += ind+"\tID: "+theFunc->getID()+"\n";
+				fs += ind+"\tID: \""+theFunc->getID()+"\"\n";
 				if (theFunc==NULL) {
 					fs += ind + "\tNone\n";
 				}
@@ -561,7 +561,7 @@ std::string putDataOnStream(int indents,std::vector<SaveData> data,int* numpoint
 			case _INTERPOLATION: {
 				fs += "{\n";
 				Interpolation* theInterpol = *((Interpolation**)d.data);
-				fs += ind+"\tID: "+theInterpol->getID()+"\n";
+				fs += ind+"\tID: \""+theInterpol->getID()+"\"\n";
 				if (theInterpol==NULL) {
 					fs += ind + "\tNone\n";
 				}
@@ -616,7 +616,7 @@ void save(std::string toSave) {
   	//fs << " more lorem ipsum";
   	int NUMBER_OF_INTERESTING_POINTS = 0;
   	int NUMBER_FUNCTIONS = 0;
-  	fs << "version: 2.0\n";
+  	fs << "version: 2.1\n";
   	fs << "tag: " << filename << "\n";
 	for (auto object : objects) {
 		if (object->getID() != "Graph") {continue;}	//it is imperative that graphs go first

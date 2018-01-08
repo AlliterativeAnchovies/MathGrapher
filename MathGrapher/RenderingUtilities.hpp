@@ -294,7 +294,7 @@ template<typename valueType> class ValueEditor: public ValueEditorPrime {
 
 
 //File Reading Functions and Classes
-const float PARSED_FILE_VERSION_NUMBER = 2.0;
+const float PARSED_FILE_VERSION_NUMBER = 2.1;
 class ParsedFile {
     private:
         float version = -1;                                 //Versions are used as safety measures
