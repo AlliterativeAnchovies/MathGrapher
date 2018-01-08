@@ -45,7 +45,7 @@ object: {
 			SY: 0
 			Start: 0
 			Duration: 10000
-			Tag: 1073741824
+			Tag: 0
 		}
 	}
 }
@@ -53,7 +53,7 @@ object: {
 	ID: "Slider"
 	Name: "Slider 0"
 	PX: 400
-	PY: 0
+	PY: 176
 	Size: 100
 	Angle: 0
 	Starting_Y: 0

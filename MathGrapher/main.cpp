@@ -777,7 +777,7 @@ void loadData(Data** theObject,ParsedFile* object,std::string theID,std::vector<
 			}
 		}
 	}
-	std::cout << (*theObject)->getID() << "\t@\t" << *theObject << "\n";
+	//std::cout << (*theObject)->getID() << "\t@\t" << *theObject << "\n";
 	//allLoadedObjects->push_back(theObject);
 	if (*objcount>1000) {throw std::runtime_error("ERROR! PROJECT TOO BIG!");};
 	(*allLoadedObjects)[*objcount] = *theObject;
@@ -810,7 +810,7 @@ void load(std::string toLoad) {
 		loadData(&theObject, object,theID,&allLoadedObjects,&objcount);
 	}
 	std::vector<Function*> allthefuncs = {};
-	for (int i = 0;i<objcount;i++) {
+	for (int i = 0;i<objcount;i++) {//first we group certain datas into lists for ease of use
 		Data* starthingy = (allLoadedObjects[i]);
 		if (starthingy->getID()=="Point_Of_Interest") {
 			pointsOfInterest.push_back((PointOfInterest*)starthingy);
@@ -819,7 +819,7 @@ void load(std::string toLoad) {
 			allthefuncs.push_back((Function*)starthingy);
 		}
 	}
-	for (int i = 0;i<objcount;i++) {
+	for (int i = 0;i<objcount;i++) {//do linking
 		Data* starthingy = (allLoadedObjects[i]);
 		if (starthingy->isDisplayObject()) {
 			objects.push_back((DisplayObject*)starthingy);
@@ -844,12 +844,14 @@ void load(std::string toLoad) {
 				func->giveGraph(tg);
 				for (auto poi : func->getImportantPoints()) {
 					poi->giveFunction(func);
+					poi->giveGraph(tg);
 				}
 			}
 			for (auto func : tg->getYFunctions()) {
 				func->giveGraph(tg);
 				for (auto poi : func->getImportantPoints()) {
 					poi->giveFunction(func);
+					poi->giveGraph(tg);
 				}
 			}
 		}
@@ -875,14 +877,14 @@ void load(std::string toLoad) {
 			}
 		}
 	}
-	for (int i = 0;i<objcount;i++) {
+	for (int i = 0;i<objcount;i++) {//add interpolations
 		if (!allLoadedObjects[i]->isDisplayObject()) {continue;}
 		auto interpols = ((DisplayObject*)allLoadedObjects[i])->getInterpolations();
 		for (auto interpol : interpols) {
 			interpol->relateDisplay((DisplayObject*)(allLoadedObjects[i]));
 		}
 	}
-	
+	std::cout << "Loading finished\n";
 }
 
 void makeVideoFromBatch(int batchnum,std::string* listForConcatenation) {

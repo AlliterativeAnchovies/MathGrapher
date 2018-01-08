@@ -111,7 +111,7 @@ class PointOfInterest: public Data {
         std::string getID() {return "Point_Of_Interest";};
         PointOfInterest() {};
         void giveGraph(Graph* g) {graphOn = g;};//ONLY USED WHEN LOADING
-        void giveFunction(Function* f) {functionOn = f;graphOn=functionOn->getGraph();}//ONLY USED WHEN LOADING
+        void giveFunction(Function* f) {functionOn = f;}//ONLY USED WHEN LOADING
 };
 
 
