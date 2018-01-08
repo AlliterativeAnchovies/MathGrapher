@@ -76,6 +76,13 @@ void Function::saveImage() {
     image.visible = visible;
 }
 
+void Function::meshWith(Function* f) {
+	function = f->function;
+	function2 = f->function2;
+	parametric = f->parametric;
+	range = f->range;
+}
+
 std::vector<PointOfInterest*> pointsOfInterest = {};
 
 std::string PointOfInterest::getDisplayLocation() {
@@ -107,12 +114,11 @@ double PointOfInterest::getPY() {
 std::vector<SaveData> Function::getSaveData() {
 	return {
 		{"Name",&name,_STRING},
-		{"Tag",this,_FUNC_TAG},
 		{"Stretch_X",&stretchx,_DOUBLE},
 		{"Stretch_Y",&stretchy,_DOUBLE},
 		{"Start_Time",&time,_DOUBLE},
 		{"Visible",&visible,_BOOLEAN},
-		{"Points_Of_Interest",&pointsOfInterest,_VECTOR}
+		{"Points_Of_Interest",&importantPoints,_VECTOR}
 	};
 }
 
@@ -123,6 +129,7 @@ std::vector<SaveData> PointOfInterest::getSaveData() {
 		{"Visible",&visible,_BOOLEAN}
 	};
 }
+
 
 
 

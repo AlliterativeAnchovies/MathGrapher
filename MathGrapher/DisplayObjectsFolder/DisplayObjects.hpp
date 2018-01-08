@@ -65,8 +65,8 @@ enum VALUE_TYPES {
 	_INTERPOLATION,
 	_POINT_OF_INTEREST,
 	_VECTOR,//things in the vector must derive from class "Data"
-	_FUNC_TAG,//tells the saving function to create a unique ID for this object for linking
-	_POINT_TAG
+	_POINT_TAG,
+	_POINT_HOOK
 };
 
 struct EditFieldMenu {
@@ -87,6 +87,7 @@ class Data {
 	public:
 		virtual std::vector<SaveData> getSaveData()=0;
 		virtual std::string getID()=0;
+		virtual bool isDisplayObject() {return false;}
 };
 
 class DisplayObject: public Data {
@@ -115,6 +116,7 @@ class DisplayObject: public Data {
 		virtual void makeInvisible()=0;
 		virtual void makeVisibile()=0;
 		virtual std::vector<EditFieldMenu> getEditableFields()=0;
+		bool isDisplayObject() {return true;}
 };
 
 

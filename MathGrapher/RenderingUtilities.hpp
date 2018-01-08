@@ -237,10 +237,14 @@ template<typename T> std::string tostring(T a) {
 	}
 	if (foundDecimal) {
 		for (int i = (int)toReturn.size()-1;i>0;i--) {
-			if (toReturn[i]!='0'&&toReturn[i]!='.') {
+			char thingFound = toReturn[i];
+			if (thingFound!='0'&&thingFound!='.') {
 				break;
 			}
 			toReturn.pop_back();
+			if (thingFound=='.') {
+				break;
+			}
 		}
 	}
 	

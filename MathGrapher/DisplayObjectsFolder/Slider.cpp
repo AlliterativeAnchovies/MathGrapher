@@ -158,7 +158,7 @@ std::vector<SaveData> Slider::getSaveData() {
 		{"Angle",&angle,_DOUBLE},
 		{"Starting_Y",&pointery,_DOUBLE},
 		{"Tick_Amount",&tickAmount,_INT},
-		{"Point_Of_Interest",&pointConcerned,_POINT_OF_INTEREST},
+		{"Point_Of_Interest",&pointConcerned,_POINT_HOOK},
 		{"Tick_Function",&incrementFunction,_FUNCTION},
 		{"Interpolations",&interpolations,_VECTOR}
 	};

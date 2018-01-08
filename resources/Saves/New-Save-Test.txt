@@ -48,7 +48,7 @@ object: {
 			Function: {
 				ID: Function
 				Name: "cos(x)"
-				Tag: FUNC_1
+				Tag: FUNC_0
 				Stretch_X: 1
 				Stretch_Y: 1
 				Start_Time: 0
@@ -56,7 +56,7 @@ object: {
 				Points_Of_Interest: {
 					ID: Point_Of_Interest
 					data: {
-						Tag: POI_1
+						Tag: POI_0
 						PX: 0
 						Visible: Yes
 					}
@@ -76,7 +76,7 @@ object: {
 	Tick_Amount: 4
 	Point_Of_Interest: {
 		ID: Point_Of_Interest
-		Tag: POI_2
+		Tag: POI_0
 		PX: 0
 		Visible: Yes
 	}
@@ -89,12 +89,7 @@ object: {
 		Start_Time: 0
 		Visible: Yes
 		Points_Of_Interest: {
-			ID: Point_Of_Interest
-			data: {
-				Tag: POI_3
-				PX: 0
-				Visible: Yes
-			}
+			None:"Empty Vector"
 		}
 	}
 	Interpolations: {
