@@ -475,7 +475,7 @@ std::string getIndents(int indents) {
 	return toReturn;
 }
 
-std::string putDataOnStream(int indents,std::vector<SaveData> data,int* numpoints) {
+std::string putDataOnStream(int indents,std::vector<SaveData> data,int* numpoints,int* numfuncs) {
 	std::string fs;
 	std::string ind = getIndents(indents);
 	for (auto d : data) {
@@ -522,7 +522,7 @@ std::string putDataOnStream(int indents,std::vector<SaveData> data,int* numpoint
 					fs += ind+"\tID: "+vecThing+"\n";
 					for (auto nD : nestedData) {
 						fs += ind+"\tdata: {\n";
-						fs += putDataOnStream(indents+2, nD->getSaveData(), numpoints);
+						fs += putDataOnStream(indents+2, nD->getSaveData(), numpoints,numfuncs);
 						fs += ind+"\t}\n";
 					}
 				}
@@ -540,7 +540,7 @@ std::string putDataOnStream(int indents,std::vector<SaveData> data,int* numpoint
 					fs += ind + "\tNone\n";
 				}
 				else {
-					fs += putDataOnStream(indents+1, thePoint->getSaveData(), numpoints);
+					fs += putDataOnStream(indents+1, thePoint->getSaveData(), numpoints,numfuncs);
 				}
 				fs += ind + "}\n";
 				break;
@@ -553,7 +553,7 @@ std::string putDataOnStream(int indents,std::vector<SaveData> data,int* numpoint
 					fs += ind + "\tNone\n";
 				}
 				else {
-					fs += putDataOnStream(indents+1, theFunc->getSaveData(), numpoints);
+					fs += putDataOnStream(indents+1, theFunc->getSaveData(), numpoints,numfuncs);
 				}
 				fs += ind + "}\n";
 				break;
@@ -566,7 +566,7 @@ std::string putDataOnStream(int indents,std::vector<SaveData> data,int* numpoint
 					fs += ind + "\tNone\n";
 				}
 				else {
-					fs += putDataOnStream(indents+1, theInterpol->getSaveData(), numpoints);
+					fs += putDataOnStream(indents+1, theInterpol->getSaveData(), numpoints,numfuncs);
 				}
 				fs += ind + "}\n";
 				break;
@@ -580,6 +580,18 @@ std::string putDataOnStream(int indents,std::vector<SaveData> data,int* numpoint
 			}
 			case _POINT_HOOK: {
 				fs += std::to_string(((PointOfInterest*)d.data)->tagForSaving);
+				fs += "\n";
+				break;
+			}
+			case _FUNCTION_TAG: {
+				fs += tostring(*numfuncs);
+				((PointOfInterest*)d.data)->tagForSaving = *numfuncs;
+				(*numfuncs) += 1;
+				fs += "\n";
+				break;
+			};
+			case _FUNCTION_HOOK: {
+				fs += std::to_string(((Function*)d.data)->tagForSaving);
 				fs += "\n";
 				break;
 			}
@@ -603,6 +615,7 @@ void save(std::string toSave) {
   	fs.open (dumstupidcurrentdirectorybs+"/resources/Saves/"+filename+".txt", std::fstream::out  | std::ofstream::trunc);
   	//fs << " more lorem ipsum";
   	int NUMBER_OF_INTERESTING_POINTS = 0;
+  	int NUMBER_FUNCTIONS = 0;
   	fs << "version: 2.0\n";
   	fs << "tag: " << filename << "\n";
 	for (auto object : objects) {
@@ -611,7 +624,7 @@ void save(std::string toSave) {
 		fs << "object: {\n";
 		
 		fs << "\tID: \"" << object->getID() << "\"\n";
-		fs << putDataOnStream(1,object->getSaveData(),&NUMBER_OF_INTERESTING_POINTS);
+		fs << putDataOnStream(1,object->getSaveData(),&NUMBER_OF_INTERESTING_POINTS,&NUMBER_FUNCTIONS);
 		fs << "}\n";
 	}
   	for (auto object : objects) {
@@ -619,7 +632,7 @@ void save(std::string toSave) {
 		fs << "object: {\n";
 		
 		fs << "\tID: \"" << object->getID() << "\"\n";
-		fs << putDataOnStream(1,object->getSaveData(),&NUMBER_OF_INTERESTING_POINTS);
+		fs << putDataOnStream(1,object->getSaveData(),&NUMBER_OF_INTERESTING_POINTS,&NUMBER_FUNCTIONS);
 		fs << "}\n";
 	}
   	fs.close();
@@ -747,6 +760,18 @@ void loadData(Data** theObject,ParsedFile* object,std::string theID,std::vector<
 				tohook->tagForSaving = hooknum;
 				break;
 			}
+			case _FUNCTION_HOOK: {
+				int hooknum = numberFromString(object->valueOf(toLookFor));
+				Interpolation* tohook = *((Interpolation**)theObject);
+				tohook->tagForSaving = hooknum;
+				break;
+			}
+			case _FUNCTION_TAG: {
+				int hooknum = numberFromString(object->valueOf(toLookFor));
+				Function* tohook = *((Function**)theObject);
+				tohook->tagForSaving = hooknum;
+				break;
+			}
 			default: {
 				throw std::runtime_error("Unknown ValueType!");
 			}
@@ -775,9 +800,6 @@ void load(std::string toLoad) {
 	std::fstream loadedFile(toLoad);
 	ParsedFile* pf = ParsedFile::parseFile(&loadedFile);
 	std::vector<ParsedFile*> comps =  pf->componentFromString("*");
-	//std::vector<Wrap2<std::string, PointOfInterest*>> pointsToHookUp = {};
-	//std::vector<Wrap2<std::string, Slider*>> slidersToHookIn = {};
-	//std::vector<Wrap2<std::string, Function*>> functionsToHookUp = {};
 	std::vector<Data*> allLoadedObjects = std::vector<Data*>(1000);
 	int objcount = 0;
 	for (auto object : comps) {
@@ -787,17 +809,33 @@ void load(std::string toLoad) {
 		Data* theObject = NULL;
 		loadData(&theObject, object,theID,&allLoadedObjects,&objcount);
 	}
+	std::vector<Function*> allthefuncs = {};
+	for (int i = 0;i<objcount;i++) {
+		Data* starthingy = (allLoadedObjects[i]);
+		if (starthingy->getID()=="Point_Of_Interest") {
+			pointsOfInterest.push_back((PointOfInterest*)starthingy);
+		}
+		if (starthingy->getID()=="Function") {
+			allthefuncs.push_back((Function*)starthingy);
+		}
+	}
 	for (int i = 0;i<objcount;i++) {
 		Data* starthingy = (allLoadedObjects[i]);
 		if (starthingy->isDisplayObject()) {
 			objects.push_back((DisplayObject*)starthingy);
 		}
-		if (starthingy->getID()=="Point_Of_Interest") {
-			pointsOfInterest.push_back((PointOfInterest*)starthingy);
-		}
 		if (starthingy->getID()=="Interpolation") {
 			//just do some prep work
-			((Interpolation*)starthingy)->reset();
+			Interpolation* ti = (Interpolation*) starthingy;
+			if (ti->tagForSaving!=-1) {
+				for (int j = 0;j<allthefuncs.size();j++) {
+					if (ti->tagForSaving==allthefuncs[j]->tagForSaving) {
+						ti->relateFunction(allthefuncs[j]);
+						break;
+					}
+				}
+			}
+			ti->reset();
 		}
 		if (starthingy->getID()=="Graph") {
 			//hook all functions
@@ -837,15 +875,13 @@ void load(std::string toLoad) {
 			}
 		}
 	}
-	//go through and hook up all points of interest
-	/*for (auto slid : slidersToHookIn) {
-		if (slid.x=="None") {continue;};
-		for (auto poi : pointsToHookUp) {
-			if (slid.x==poi.x) {
-				slid.y->setPointConcerned(poi.y);
-			}
+	for (int i = 0;i<objcount;i++) {
+		if (!allLoadedObjects[i]->isDisplayObject()) {continue;}
+		auto interpols = ((DisplayObject*)allLoadedObjects[i])->getInterpolations();
+		for (auto interpol : interpols) {
+			interpol->relateDisplay((DisplayObject*)(allLoadedObjects[i]));
 		}
-	}*/
+	}
 	
 }
 

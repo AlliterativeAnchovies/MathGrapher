@@ -102,6 +102,8 @@ class Interpolation: public Data {
         std::vector<SaveData> getSaveData();
         std::string getID() {return "Interpolation";};
         Interpolation() {};
+        int tagForSaving = -1;
+        void relateDisplay(DisplayObject* d) {relatedDisplay=d;}
 };
 
 

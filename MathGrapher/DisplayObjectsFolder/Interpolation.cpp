@@ -293,8 +293,8 @@ std::vector<SaveData> Interpolation::getSaveData() {
 		{"PY",&py,_DOUBLE},
 		{"SX",&sx,_DOUBLE},
 		{"SY",&sy,_DOUBLE},
-		{"Start",&timeStartCounter,_DOUBLE},
-		{"Duration",&timeInterval,_DOUBLE},
-		{"Function",&relatedFunction,_FUNCTION}
+		{"Start",&timeStartCounter,_INT},
+		{"Duration",&timeInterval,_INT},
+		{"Tag",&relatedFunction,_FUNCTION_HOOK}
 	};
 }

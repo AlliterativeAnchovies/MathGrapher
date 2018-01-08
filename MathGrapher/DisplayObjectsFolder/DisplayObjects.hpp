@@ -66,7 +66,9 @@ enum VALUE_TYPES {
 	_POINT_OF_INTEREST,
 	_VECTOR,//things in the vector must derive from class "Data"
 	_POINT_TAG,
-	_POINT_HOOK
+	_POINT_HOOK,
+	_FUNCTION_TAG,
+	_FUNCTION_HOOK
 };
 
 struct EditFieldMenu {

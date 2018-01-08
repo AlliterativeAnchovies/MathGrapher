@@ -114,6 +114,7 @@ double PointOfInterest::getPY() {
 std::vector<SaveData> Function::getSaveData() {
 	return {
 		{"Name",&name,_STRING},
+		{"Tag",&tagForSaving,_FUNCTION_TAG},
 		{"Stretch_X",&stretchx,_DOUBLE},
 		{"Stretch_Y",&stretchy,_DOUBLE},
 		{"Start_Time",&time,_DOUBLE},
