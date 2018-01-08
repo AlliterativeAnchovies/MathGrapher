@@ -24,12 +24,11 @@ Uint8 CreatePointOfInterest::handle(double mouseX,double mouseY,bool clicked) {
 	int cury = py+30;
 	int offx,offy;
 	//Edit field for position of point of interest
-	//(If function is x-axis based, you are inputting
-	//the x, if y-axis based then the y, and if parametric
-	//then the t.
-	clickedEdit = handleEditableInfo_internal(curx,cury,20,18,mouseX,mouseY,
-		header,stringConcerned,&stringConcerned
-		,clicked,&offx,&offy) || clickedEdit;
+	//clickedEdit = handleEditableInfo_internal(curx,cury,20,18,mouseX,mouseY,
+	//	header,stringConcerned,&stringConcerned
+	//	,clicked,&offx,&offy) || clickedEdit;
+	clickedEdit = handleEditableInfo(curx, cury, interpolationConcerned, clicked, mouseX, mouseY, &offy);
+	cury+=offy;
 
 	std::string outputOfFunc = "py: "+((instringswitch==18)?"?":
 		std::to_string((*functionConcerned)(numberFromString(stringConcerned))));

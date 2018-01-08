@@ -86,6 +86,7 @@ class Function: public Data {
         void giveGraph(Graph* g) {graphOn = g;}//ONLY USED WHEN LOADING
         Graph* getGraph() {return graphOn;}//ONLY USED WHEN LOADING
         void meshWith(Function* f);//takes all non-interpolatable fields from f and puts them on this
+        std::vector<EditFieldMenu> getEditableFields();
 };
 
 extern std::vector<PointOfInterest*> pointsOfInterest;
@@ -112,6 +113,7 @@ class PointOfInterest: public Data {
         PointOfInterest() {};
         void giveGraph(Graph* g) {graphOn = g;};//ONLY USED WHEN LOADING
         void giveFunction(Function* f) {functionOn = f;}//ONLY USED WHEN LOADING
+        std::vector<EditFieldMenu> getEditableFields();
 };
 
 

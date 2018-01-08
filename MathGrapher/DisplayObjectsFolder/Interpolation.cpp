@@ -298,3 +298,14 @@ std::vector<SaveData> Interpolation::getSaveData() {
 		{"Tag",&relatedFunction,_FUNCTION_HOOK}
 	};
 }
+
+std::vector<EditFieldMenu> Interpolation::getEditableFields() {
+	return {
+		{"PX: ",&px,_DOUBLE,20,false},
+		{"PY: ",&py,_DOUBLE,20,true},
+		{"SX: ",&sx,_DOUBLE,20,false},
+		{"SY: ",&sy,_DOUBLE,20,true},
+		{"Start: ",&px,_INT,20,false},
+		{"Duration: ",&py,_INT,20,true}
+	};
+}

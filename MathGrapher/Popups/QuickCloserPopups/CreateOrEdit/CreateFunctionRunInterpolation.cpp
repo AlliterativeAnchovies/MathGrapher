@@ -18,7 +18,11 @@ Uint8 CreateFunctionRunInterpolation::handle(double mouseX,double mouseY,bool cl
 	int cury = py+35;
 	int offx,offy;
 	bool clickedEdit = false;
-	//Edit field for interpolation delta
+	
+	clickedEdit = handleEditableInfo(curx, cury, interpolationConcerned, clicked, mouseX, mouseY, &offy);
+	cury+=offy;
+	
+	/*//Edit field for interpolation delta
 	clickedEdit = handleEditableInfo_internal(curx,cury,20,11,mouseX,mouseY,
 		"∆X: ",tostring(interpolationConcerned->getPX()),interpolationConcerned->ptmPX()
 		,clicked,&offx,&offy) || clickedEdit;
@@ -34,7 +38,7 @@ Uint8 CreateFunctionRunInterpolation::handle(double mouseX,double mouseY,bool cl
 	clickedEdit = handleEditableInfo_internal(curx,cury,20,14,mouseX,mouseY,
 		"Duration: ",tostring(interpolationConcerned->getDuration()),interpolationConcerned->ptmDuration()
 		,clicked,&offx,&offy) || clickedEdit;
-	cury+=offy;
+	cury+=offy;*/
 
 	int addx,addy;
 	TTF_SizeUTF8((*fontgrab)(16)," Add ",&addx,&addy);

@@ -131,6 +131,27 @@ std::vector<SaveData> PointOfInterest::getSaveData() {
 	};
 }
 
+std::vector<EditFieldMenu> Function::getEditableFields() {
+	return {
+		{"Stretch_X: ",&stretchx,_DOUBLE,20,false},
+		{"Stretch_Y: ",&stretchy,_DOUBLE,20,true},
+		{"Start_Time: ",&time,_DOUBLE,20,true}
+	};
+}
+
+std::vector<EditFieldMenu> PointOfInterest::getEditableFields() {
+	if (functionOn->isParametric()) {
+		auto bothvals = functionOn->parametricEval(px);
+		return {
+			{"T: |__| PX: "+std::to_string(bothvals.x)+" PY: "+std::to_string(bothvals.y),&px,_DOUBLE,20,true}
+		};
+	}
+	else {
+		return {
+			{"PX: |__| PY: "+std::to_string((*functionOn)(px)),&px,_DOUBLE,20,true}
+		};
+	}
+}
 
 
 

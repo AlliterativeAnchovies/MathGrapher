@@ -19,8 +19,10 @@ Uint8 CreateResizeInterpolation::handle(double mouseX,double mouseY,bool clicked
 	int cury = py+35;
 	int offx,offy;
 	bool clickedEdit = false;
-		
-	//Edit field for interpolation first delta
+	
+	clickedEdit = handleEditableInfo(curx, cury, interpolationConcerned, clicked, mouseX, mouseY, &offy);
+	cury+=offy;
+	/*//Edit field for interpolation first delta
 	clickedEdit = handleEditableInfo_internal(curx,cury,20,0,mouseX,mouseY,
 		"∆X: ",tostring(interpolationConcerned->getPX()),interpolationConcerned->ptmPX()
 		,clicked,&offx,&offy) || clickedEdit;
@@ -42,7 +44,7 @@ Uint8 CreateResizeInterpolation::handle(double mouseX,double mouseY,bool clicked
 	clickedEdit = handleEditableInfo_internal(curx,cury,20,3,mouseX,mouseY,
 		"Duration: ",tostring(interpolationConcerned->getDuration()),interpolationConcerned->ptmDuration()
 		,clicked,&offx,&offy) || clickedEdit;
-	cury+=offy;
+	cury+=offy;*/
 	
 
 	//Select whether the scaling will try to move the origin along with it or not.

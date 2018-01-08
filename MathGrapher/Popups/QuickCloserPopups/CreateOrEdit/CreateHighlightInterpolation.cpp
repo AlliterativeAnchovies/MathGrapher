@@ -18,7 +18,11 @@ Uint8 CreateHighlightInterpolation::handle(double mouseX,double mouseY,bool clic
 	int curx = px+5;
 	int cury = py+30;
 	int offx,offy;
-	//Edit field for top left position (X)
+	
+	clickedEdit = handleEditableInfo(curx, cury, interpolationConcerned, clicked, mouseX, mouseY, &offy);
+	cury+=offy;
+	
+	/*//Edit field for top left position (X)
 	clickedEdit = handleEditableInfo_internal(curx,cury,20,11,mouseX,mouseY,
 		"Top Left X: ",tostring(interpolationConcerned->getPX()),interpolationConcerned->ptmPX()
 		,clicked,&offx,&offy) || clickedEdit;
@@ -47,7 +51,7 @@ Uint8 CreateHighlightInterpolation::handle(double mouseX,double mouseY,bool clic
 	clickedEdit = handleEditableInfo_internal(curx,cury,20,14,mouseX,mouseY,
 		"Duration: ",tostring(interpolationConcerned->getDuration()),interpolationConcerned->ptmDuration()
 		,clicked,&offx,&offy) || clickedEdit;
-	cury+=offy;
+	cury+=offy;*/
 
 	//Add button
 	int addx,addy;

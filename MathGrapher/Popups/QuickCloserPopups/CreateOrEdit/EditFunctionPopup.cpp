@@ -18,8 +18,22 @@ Uint8 EditFunctionPopup::handle(double mouseX,double mouseY,bool clicked) {
 	int cury = py+35;
 	int offx,offy;
 	bool clickedEdit = false;
+	
+	clickedEdit = handleEditableInfo(curx, cury, functionConcerned, clicked, mouseX, mouseY, &offy);
+	cury+=offy;
+	//draw visibility
+	int visx,visy;
+	drawTextWithBackground((functionConcerned->isVisible())?"Is Visible":"Is Hidden", 16, curx+5, cury, 0xff000000, (functionConcerned->isVisible())?0xffffcf9e:0xffbd854d, 0xff000000);
+	TTF_SizeUTF8((*fontgrab)(16),((functionConcerned->isVisible())?"Is Visible":"Is Hidden"),&visx,&visy);
+	if (clicked&&pointInBounds(mouseX, mouseY, curx+5, curx+5+visx, cury, cury+visy)) {
+		functionConcerned->toggleVisibility();
+		clicked = false;
+		toReturn = 0x01;
+	}
+	cury+=visy;
+	
 	//edit field for starting time.
-	clickedEdit = handleEditableInfo_internal(curx,cury,20,15,mouseX,mouseY,
+	/*clickedEdit = handleEditableInfo_internal(curx,cury,20,15,mouseX,mouseY,
 		"Start Time: ",tostring(functionConcerned->getTime()),functionConcerned->ptmTime()
 		,clicked,&offx,&offy) || clickedEdit;
 	curx+=offx;
@@ -46,7 +60,7 @@ Uint8 EditFunctionPopup::handle(double mouseX,double mouseY,bool clicked) {
 		"Y Stretch: ",tostring(functionConcerned->getStretchY()),functionConcerned->ptmStretchY()
 		,clicked,&offx,&offy) || clickedEdit;
 	cury+=offy;
-	curx = px+10;
+	curx = px+10;*/
 
 	//draw add interpolations
 	int intpx,intpy;

@@ -169,7 +169,7 @@ void deleteInStrings() {
 Popup::~Popup() {
     deleteInStrings();
 }
-bool handleEditableInfo(double px,double py,DisplayObject* d,bool clicked,double mouseX,double mouseY,int* yoffset) {
+bool handleEditableInfo(double px,double py,Data* d,bool clicked,double mouseX,double mouseY,int* yoffset) {
 	bool clickedEdit = false;
 	auto editInfoList = d->getEditableFields();
 	

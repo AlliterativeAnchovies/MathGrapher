@@ -104,6 +104,7 @@ class Interpolation: public Data {
         Interpolation() {};
         int tagForSaving = -1;
         void relateDisplay(DisplayObject* d) {relatedDisplay=d;}
+        std::vector<EditFieldMenu> getEditableFields();
 };
 
 
