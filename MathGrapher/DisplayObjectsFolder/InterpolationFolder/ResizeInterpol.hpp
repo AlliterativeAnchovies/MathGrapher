@@ -10,7 +10,7 @@
 #define ResizeInterpol_hpp
 
 #include "Interpolation.hpp"
-#include "Graph.hpp"
+#include "../Graph.hpp"
 
 class ResizeInterpol: public Interpolation {
 	private:

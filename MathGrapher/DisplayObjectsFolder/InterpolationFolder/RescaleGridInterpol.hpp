@@ -10,7 +10,7 @@
 #define RescaleGridInterpol_hpp
 
 #include "Interpolation.hpp"
-#include "Graph.hpp"
+#include "../Graph.hpp"
 
 class RescaleGridInterpol: public Interpolation {
 	private:

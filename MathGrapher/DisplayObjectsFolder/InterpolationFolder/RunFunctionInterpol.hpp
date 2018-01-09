@@ -10,7 +10,7 @@
 #define RunFunctionInterpol_hpp
 
 #include "Interpolation.hpp"
-#include "Function.hpp"
+#include "../Function.hpp"
 
 class RunFunctionInterpol: public Interpolation {
 	private:

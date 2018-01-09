@@ -10,7 +10,7 @@
 #define ScaleTextInterpol_hpp
 
 #include "Interpolation.hpp"
-#include "RawText.hpp"
+#include "../RawText.hpp"
 
 class ScaleTextInterpol: public Interpolation {
 	private:

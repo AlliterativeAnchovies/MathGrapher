@@ -9,7 +9,7 @@
 #ifndef Interpolation_hpp
 #define Interpolation_hpp
 
-#include "DisplayObjects.hpp"
+#include "../DisplayObjects.hpp"
 
 class Interpolation: public Data {
 	private:

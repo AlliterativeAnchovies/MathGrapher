@@ -10,9 +10,9 @@
 #define ScaleInterpol_hpp
 
 #include "Interpolation.hpp"
-#include "Graph.hpp"
-#include "RawImage.hpp"
-#include "Arrow.hpp"
+#include "../Graph.hpp"
+#include "../RawImage.hpp"
+#include "../Arrow.hpp"
 
 class ScaleInterpol: public Interpolation {
 	private:

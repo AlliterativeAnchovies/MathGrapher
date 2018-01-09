@@ -10,7 +10,7 @@
 #define MoveOriginInterpol_hpp
 
 #include "Interpolation.hpp"
-#include "Graph.hpp"
+#include "../Graph.hpp"
 
 class MoveOriginInterpol: public Interpolation {
 	private:

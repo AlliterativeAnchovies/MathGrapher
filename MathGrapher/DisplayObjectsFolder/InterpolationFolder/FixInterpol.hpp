@@ -10,7 +10,7 @@
 #define FixInterpol_hpp
 
 #include "Interpolation.hpp"
-#include "RawImage.hpp"
+#include "../RawImage.hpp"
 
 class FixInterpol: public Interpolation {
 	private:

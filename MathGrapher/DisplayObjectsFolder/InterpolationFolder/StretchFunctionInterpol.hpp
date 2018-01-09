@@ -10,7 +10,7 @@
 #define StretchFunctionInterpol_hpp
 
 #include "Interpolation.hpp"
-#include "Function.hpp"
+#include "../Function.hpp"
 
 class StretchFunctionInterpol: public Interpolation {
 	private:

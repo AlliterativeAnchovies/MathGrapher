@@ -11,7 +11,7 @@
 
 
 #include "Interpolation.hpp"
-#include "Arrow.hpp"
+#include "../Arrow.hpp"
 
 class RescaleHeadInterpol: public Interpolation {
 	private:

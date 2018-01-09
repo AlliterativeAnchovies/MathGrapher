@@ -1,4 +1,5 @@
 ﻿  RenderingUtilities.cpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
 mathgrapher\RenderingUtilities.cpp(46): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\RenderingUtilities.cpp(45): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\RenderingUtilities.cpp(48): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
@@ -18,34 +19,48 @@ mathgrapher\RenderingUtilities.cpp(237): warning C4018: '>': signed/unsigned mis
 mathgrapher\RenderingUtilities.cpp(253): warning C4018: '<': signed/unsigned mismatch
 mathgrapher\RenderingUtilities.cpp(280): warning C4244: 'return': conversion from 'double' to 'Uint32', possible loss of data
 mathgrapher\RenderingUtilities.cpp(288): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\RenderingUtilities.cpp(394): warning C4244: 'initializing': conversion from 'double' to 'long', possible loss of data
-mathgrapher\RenderingUtilities.cpp(466): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\RenderingUtilities.cpp(472): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-mathgrapher\RenderingUtilities.cpp(542): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\RenderingUtilities.cpp(555): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\RenderingUtilities.cpp(559): warning C4018: '>': signed/unsigned mismatch
-mathgrapher\RenderingUtilities.cpp(579): warning C4018: '>': signed/unsigned mismatch
-mathgrapher\RenderingUtilities.cpp(722): warning C4018: '>=': signed/unsigned mismatch
-mathgrapher\RenderingUtilities.cpp(763): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\RenderingUtilities.cpp(771): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\RenderingUtilities.cpp(783): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\RenderingUtilities.cpp(801): warning C4018: '>=': signed/unsigned mismatch
-mathgrapher\RenderingUtilities.cpp(813): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\RenderingUtilities.cpp(844): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\RenderingUtilities.cpp(865): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\RenderingUtilities.cpp(881): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\RenderingUtilities.cpp(1011): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\RenderingUtilities.cpp(1073): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\RenderingUtilities.cpp(1123): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-mathgrapher\RenderingUtilities.cpp(1139): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-mathgrapher\RenderingUtilities.cpp(1155): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+mathgrapher\RenderingUtilities.cpp(398): warning C4244: 'initializing': conversion from 'double' to 'long', possible loss of data
+mathgrapher\RenderingUtilities.cpp(470): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\RenderingUtilities.cpp(476): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+mathgrapher\RenderingUtilities.cpp(546): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\RenderingUtilities.cpp(559): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\RenderingUtilities.cpp(563): warning C4018: '>': signed/unsigned mismatch
+mathgrapher\RenderingUtilities.cpp(583): warning C4018: '>': signed/unsigned mismatch
+mathgrapher\RenderingUtilities.cpp(726): warning C4018: '>=': signed/unsigned mismatch
+mathgrapher\RenderingUtilities.cpp(767): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\RenderingUtilities.cpp(775): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\RenderingUtilities.cpp(787): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\RenderingUtilities.cpp(805): warning C4018: '>=': signed/unsigned mismatch
+mathgrapher\RenderingUtilities.cpp(817): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\RenderingUtilities.cpp(848): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\RenderingUtilities.cpp(869): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\RenderingUtilities.cpp(885): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\RenderingUtilities.cpp(1015): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\RenderingUtilities.cpp(1077): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\RenderingUtilities.cpp(1127): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+mathgrapher\RenderingUtilities.cpp(1143): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+mathgrapher\RenderingUtilities.cpp(1159): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  mathgrapher\RenderingUtilities.cpp(401): note: see reference to function template instantiation 'std::string tostring<long>(T)' being compiled
+          with
+          [
+              T=long
+          ]
   PopupWrapper.cpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\PopupWrapper.cpp(84): warning C4018: '<': signed/unsigned mismatch
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\PopupWrapper.cpp(75): warning C4018: '<': signed/unsigned mismatch
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
   main.cpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\main.cpp(131): warning C4018: '<': signed/unsigned mismatch
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(132): warning C4018: '<': signed/unsigned mismatch
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(144): warning C4018: '<': signed/unsigned mismatch
   mathgrapher\main.cpp(159): note: see reference to function template instantiation 'auto map<controlFlow::<lambda_d634d2136bd74156a311bcccdd915468>,Popup*>(A,std::vector<Popup *,std::allocator<_Ty>>)' being compiled
           with
           [
@@ -56,69 +71,143 @@ mathgrapher\main.cpp(312): warning C4244: '=': conversion from 'float' to 'int',
 mathgrapher\main.cpp(314): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 mathgrapher\main.cpp(316): warning C4244: 'argument': conversion from 'double' to 'Uint32', possible loss of data
 mathgrapher\main.cpp(341): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-mathgrapher\main.cpp(610): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\main.cpp(699): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-mathgrapher\main.cpp(741): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\main.cpp(765): warning C4244: 'initializing': conversion from 'double' to 'Uint32', possible loss of data
-mathgrapher\main.cpp(773): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\main.cpp(774): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\main.cpp(642): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\main.cpp(669): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+mathgrapher\main.cpp(720): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\main.cpp(726): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\main.cpp(732): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\main.cpp(738): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+mathgrapher\main.cpp(799): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\main.cpp(839): warning C4018: '<': signed/unsigned mismatch
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
   Functions.cpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
   DisplayWrapper.cpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\DisplayWrapper.cpp(71): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\DisplayWrapper.cpp(79): warning C4018: '<': signed/unsigned mismatch
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
   BulkUtilities.cpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
   RenderingUtilities.hpp
+mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
   PopupWrapper.hpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
   Functions.hpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
   DisplayWrapper.hpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
   BulkUtilities.hpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
   Generating Code...
+  InterpolationWrapper.cpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
   Slider.cpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\DisplayObjectsFolder\Slider.cpp(39): warning C4018: '<': signed/unsigned mismatch
 mathgrapher\DisplayObjectsFolder\Slider.cpp(45): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\DisplayObjectsFolder\Slider.cpp(48): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\DisplayObjectsFolder\Slider.cpp(72): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\DisplayObjectsFolder\Slider.cpp(115): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\DisplayObjectsFolder\Slider.cpp(133): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\DisplayObjectsFolder\Slider.cpp(67): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\DisplayObjectsFolder\Slider.cpp(110): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\DisplayObjectsFolder\Slider.cpp(128): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
   RawText.cpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\DisplayObjectsFolder\RawText.cpp(23): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\DisplayObjectsFolder\RawText.cpp(46): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\DisplayObjectsFolder\RawText.cpp(49): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\DisplayObjectsFolder\RawText.cpp(65): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\DisplayObjectsFolder\RawText.cpp(60): warning C4018: '<': signed/unsigned mismatch
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
   RawImage.cpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\DisplayObjectsFolder\RawImage.cpp(19): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\DisplayObjectsFolder\RawImage.cpp(22): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\DisplayObjectsFolder\RawImage.cpp(37): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\DisplayObjectsFolder\RawImage.cpp(61): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\DisplayObjectsFolder\RawImage.cpp(71): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\DisplayObjectsFolder\RawImage.cpp(86): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\DisplayObjectsFolder\RawImage.cpp(94): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\DisplayObjectsFolder\RawImage.cpp(115): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-  Interpolation.cpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\DisplayObjectsFolder\RawImage.cpp(32): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\DisplayObjectsFolder\RawImage.cpp(56): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\DisplayObjectsFolder\RawImage.cpp(66): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\DisplayObjectsFolder\RawImage.cpp(81): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\DisplayObjectsFolder\RawImage.cpp(89): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\DisplayObjectsFolder\RawImage.cpp(110): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
   Graph.cpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\DisplayObjectsFolder\Graph.cpp(169): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\DisplayObjectsFolder\Graph.cpp(245): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\DisplayObjectsFolder\Graph.cpp(275): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\DisplayObjectsFolder\Graph.cpp(285): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\DisplayObjectsFolder\Graph.cpp(291): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\DisplayObjectsFolder\Graph.cpp(315): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\DisplayObjectsFolder\Graph.cpp(323): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\DisplayObjectsFolder\Graph.cpp(338): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\DisplayObjectsFolder\Graph.cpp(368): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\DisplayObjectsFolder\Graph.cpp(378): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\DisplayObjectsFolder\Graph.cpp(384): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\DisplayObjectsFolder\Graph.cpp(408): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\DisplayObjectsFolder\Graph.cpp(416): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\DisplayObjectsFolder\Graph.cpp(426): warning C4018: '<': signed/unsigned mismatch
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\DisplayObjectsFolder\Graph.cpp(166): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\DisplayObjectsFolder\Graph.cpp(242): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\DisplayObjectsFolder\Graph.cpp(272): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\DisplayObjectsFolder\Graph.cpp(282): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\DisplayObjectsFolder\Graph.cpp(288): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\DisplayObjectsFolder\Graph.cpp(312): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\DisplayObjectsFolder\Graph.cpp(320): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\DisplayObjectsFolder\Graph.cpp(335): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\DisplayObjectsFolder\Graph.cpp(365): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\DisplayObjectsFolder\Graph.cpp(375): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\DisplayObjectsFolder\Graph.cpp(381): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\DisplayObjectsFolder\Graph.cpp(405): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\DisplayObjectsFolder\Graph.cpp(413): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\DisplayObjectsFolder\Graph.cpp(423): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\DisplayObjectsFolder\Graph.cpp(429): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
 mathgrapher\DisplayObjectsFolder\Graph.cpp(430): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
 mathgrapher\DisplayObjectsFolder\Graph.cpp(431): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
 mathgrapher\DisplayObjectsFolder\Graph.cpp(432): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
@@ -126,59 +215,352 @@ mathgrapher\DisplayObjectsFolder\Graph.cpp(433): warning C4244: 'initializing': 
 mathgrapher\DisplayObjectsFolder\Graph.cpp(434): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
 mathgrapher\DisplayObjectsFolder\Graph.cpp(435): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
 mathgrapher\DisplayObjectsFolder\Graph.cpp(436): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-mathgrapher\DisplayObjectsFolder\Graph.cpp(437): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-mathgrapher\DisplayObjectsFolder\Graph.cpp(453): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\DisplayObjectsFolder\Graph.cpp(462): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\DisplayObjectsFolder\Graph.cpp(465): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\DisplayObjectsFolder\Graph.cpp(485): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\DisplayObjectsFolder\Graph.cpp(490): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\DisplayObjectsFolder\Graph.cpp(571): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\DisplayObjectsFolder\Graph.cpp(574): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\DisplayObjectsFolder\Graph.cpp(592): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\DisplayObjectsFolder\Graph.cpp(595): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\DisplayObjectsFolder\Graph.cpp(598): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\DisplayObjectsFolder\Graph.cpp(452): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\DisplayObjectsFolder\Graph.cpp(470): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\DisplayObjectsFolder\Graph.cpp(475): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\DisplayObjectsFolder\Graph.cpp(549): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\DisplayObjectsFolder\Graph.cpp(552): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\DisplayObjectsFolder\Graph.cpp(570): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\DisplayObjectsFolder\Graph.cpp(573): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\DisplayObjectsFolder\Graph.cpp(576): warning C4018: '<': signed/unsigned mismatch
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
   Function.cpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
   DisplayObjects.cpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
   Arrow.cpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\DisplayObjectsFolder\Arrow.cpp(34): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\DisplayObjectsFolder\Arrow.cpp(40): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\DisplayObjectsFolder\Arrow.cpp(43): warning C4018: '<': signed/unsigned mismatch
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
+  InterpolationWrapper.hpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
   Slider.hpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
   RawText.hpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
   RawImage.hpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-  Interpolation.hpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
   Graph.hpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
   Function.hpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
   DisplayObjects.hpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+  Generating Code...
+  DisappearInterpol.cpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+  AppearInterpol.cpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+  RescaleHeadInterpol.cpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
+  FixInterpol.cpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
+  StretchFunctionInterpol.cpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
+  RunFunctionInterpol.cpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
+  RescaleGridInterpol.cpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
+  ResizeInterpol.cpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
+  ScaleTextInterpol.cpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
+  ScaleInterpol.cpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
+  RotateInterpol.cpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
+  MoveOriginInterpol.cpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
+  HighlightInterpol.cpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\HighlightInterpol.hpp(25): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
+  MoveInterpol.cpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
+  Interpolation.cpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(113): warning C4018: '<': signed/unsigned mismatch
+  mathgrapher\DisplayObjectsFolder\InterpolationFolder\Interpolation.cpp(22): note: see reference to function template instantiation 'std::vector<SaveData,std::allocator<_Ty>> concatenate<SaveData>(std::vector<_Ty,std::allocator<_Ty>>,std::vector<_Ty,std::allocator<_Ty>>)' being compiled
+          with
+          [
+              _Ty=SaveData
+          ]
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(116): warning C4018: '<': signed/unsigned mismatch
+  DisappearInterpol.hpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+  AppearInterpol.hpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+  RescaleHeadInterpol.hpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
+  FixInterpol.hpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
+  StretchFunctionInterpol.hpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
+  Generating Code...
+  Compiling...
+  RunFunctionInterpol.hpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
+  RescaleGridInterpol.hpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
+  ResizeInterpol.hpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
+  ScaleTextInterpol.hpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
+  ScaleInterpol.hpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
+  RotateInterpol.hpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
+  MoveOriginInterpol.hpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
+  HighlightInterpol.hpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  mathgrapher\DisplayObjectsFolder\InterpolationFolder\HighlightInterpol.hpp(25): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
+  MoveInterpol.hpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  mathgrapher\DisplayObjectsFolder\InterpolationFolder\MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
+  Interpolation.hpp
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
   Generating Code...
   EditArrowPopup.cpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\MajorPopups\Edit\EditArrowPopup.cpp(16): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\MajorPopups\Edit\EditArrowPopup.cpp(20): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\MajorPopups\Edit\EditArrowPopup.cpp(21): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\MajorPopups\Edit\EditArrowPopup.cpp(68): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\MajorPopups\Edit\EditArrowPopup.cpp(75): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\MajorPopups\Edit\EditArrowPopup.cpp(76): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\MajorPopups\Edit\EditArrowPopup.cpp(77): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\MajorPopups\Edit\EditArrowPopup.cpp(84): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\../Popup.hpp(147): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-  mathgrapher\Popups\MajorPopups\Edit\EditArrowPopup.cpp(27): note: see reference to function template instantiation 'bool handleEditableInfo<std::string>(double,double,int,int,double,double,std::string,std::string,T *,bool,int *,int *)' being compiled
+mathgrapher\Popups\MajorPopups\Edit\EditArrowPopup.cpp(29): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditArrowPopup.cpp(36): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditArrowPopup.cpp(37): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditArrowPopup.cpp(38): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditArrowPopup.cpp(45): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditArrowPopup.cpp(22): warning C4101: 'offx': unreferenced local variable
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
           with
           [
-              T=std::string
+              T=double
           ]
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\../Popup.hpp(150): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\../Popup.hpp(154): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\edit\../MajorPopup.hpp(26): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-  mathgrapher\Popups\MajorPopups\Edit\EditArrowPopup.cpp(68): note: see reference to function template instantiation 'bool EditPopup::drawInterpolationSidebar<Arrow*>(int,int,bool,double,double,T)' being compiled
+  mathgrapher\Popups\MajorPopups\Edit\EditArrowPopup.cpp(29): note: see reference to function template instantiation 'bool EditPopup::drawInterpolationSidebar<Arrow*>(int,int,bool,double,double,T)' being compiled
           with
           [
               T=Arrow *
@@ -189,25 +571,25 @@ c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\edit\
 c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\edit\../MajorPopup.hpp(46): warning C4018: '<': signed/unsigned mismatch
 c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\edit\../MajorPopup.hpp(70): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
   EditTextPopup.cpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\MajorPopups\Edit\EditTextPopup.cpp(16): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\MajorPopups\Edit\EditTextPopup.cpp(19): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\MajorPopups\Edit\EditTextPopup.cpp(20): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\MajorPopups\Edit\EditTextPopup.cpp(54): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\MajorPopups\Edit\EditTextPopup.cpp(62): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\MajorPopups\Edit\EditTextPopup.cpp(63): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\MajorPopups\Edit\EditTextPopup.cpp(64): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\MajorPopups\Edit\EditTextPopup.cpp(71): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\../Popup.hpp(147): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-  mathgrapher\Popups\MajorPopups\Edit\EditTextPopup.cpp(26): note: see reference to function template instantiation 'bool handleEditableInfo<std::string>(double,double,int,int,double,double,std::string,std::string,T *,bool,int *,int *)' being compiled
+mathgrapher\Popups\MajorPopups\Edit\EditTextPopup.cpp(28): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditTextPopup.cpp(36): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditTextPopup.cpp(37): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditTextPopup.cpp(38): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditTextPopup.cpp(45): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditTextPopup.cpp(21): warning C4101: 'offx': unreferenced local variable
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
           with
           [
-              T=std::string
+              T=double
           ]
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\../Popup.hpp(150): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\../Popup.hpp(154): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\edit\../MajorPopup.hpp(26): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-  mathgrapher\Popups\MajorPopups\Edit\EditTextPopup.cpp(54): note: see reference to function template instantiation 'bool EditPopup::drawInterpolationSidebar<RawText*>(int,int,bool,double,double,T)' being compiled
+  mathgrapher\Popups\MajorPopups\Edit\EditTextPopup.cpp(28): note: see reference to function template instantiation 'bool EditPopup::drawInterpolationSidebar<RawText*>(int,int,bool,double,double,T)' being compiled
           with
           [
               T=RawText *
@@ -218,29 +600,29 @@ c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\edit\
 c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\edit\../MajorPopup.hpp(46): warning C4018: '<': signed/unsigned mismatch
 c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\edit\../MajorPopup.hpp(70): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
   EditSliderPopup.cpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\MajorPopups\Edit\EditSliderPopup.cpp(15): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\MajorPopups\Edit\EditSliderPopup.cpp(17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\MajorPopups\Edit\EditSliderPopup.cpp(18): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\MajorPopups\Edit\EditSliderPopup.cpp(56): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\MajorPopups\Edit\EditSliderPopup.cpp(58): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\MajorPopups\Edit\EditSliderPopup.cpp(71): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\MajorPopups\Edit\EditSliderPopup.cpp(73): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\MajorPopups\Edit\EditSliderPopup.cpp(81): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\MajorPopups\Edit\EditSliderPopup.cpp(88): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\MajorPopups\Edit\EditSliderPopup.cpp(89): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\MajorPopups\Edit\EditSliderPopup.cpp(90): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\MajorPopups\Edit\EditSliderPopup.cpp(97): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\../Popup.hpp(147): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-  mathgrapher\Popups\MajorPopups\Edit\EditSliderPopup.cpp(23): note: see reference to function template instantiation 'bool handleEditableInfo<std::string>(double,double,int,int,double,double,std::string,std::string,T *,bool,int *,int *)' being compiled
+mathgrapher\Popups\MajorPopups\Edit\EditSliderPopup.cpp(27): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditSliderPopup.cpp(29): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditSliderPopup.cpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditSliderPopup.cpp(44): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditSliderPopup.cpp(52): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditSliderPopup.cpp(59): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditSliderPopup.cpp(60): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditSliderPopup.cpp(61): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditSliderPopup.cpp(68): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditSliderPopup.cpp(19): warning C4101: 'offx': unreferenced local variable
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
           with
           [
-              T=std::string
+              T=double
           ]
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\../Popup.hpp(150): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\../Popup.hpp(154): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\edit\../MajorPopup.hpp(26): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-  mathgrapher\Popups\MajorPopups\Edit\EditSliderPopup.cpp(81): note: see reference to function template instantiation 'bool EditPopup::drawInterpolationSidebar<Slider*>(int,int,bool,double,double,T)' being compiled
+  mathgrapher\Popups\MajorPopups\Edit\EditSliderPopup.cpp(52): note: see reference to function template instantiation 'bool EditPopup::drawInterpolationSidebar<Slider*>(int,int,bool,double,double,T)' being compiled
           with
           [
               T=Slider *
@@ -251,28 +633,28 @@ c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\edit\
 c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\edit\../MajorPopup.hpp(46): warning C4018: '<': signed/unsigned mismatch
 c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\edit\../MajorPopup.hpp(70): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
   EditImagePopup.cpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\MajorPopups\Edit\EditImagePopup.cpp(16): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\MajorPopups\Edit\EditImagePopup.cpp(19): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\MajorPopups\Edit\EditImagePopup.cpp(20): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\MajorPopups\Edit\EditImagePopup.cpp(50): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\MajorPopups\Edit\EditImagePopup.cpp(63): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\MajorPopups\Edit\EditImagePopup.cpp(68): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\MajorPopups\Edit\EditImagePopup.cpp(71): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\MajorPopups\Edit\EditImagePopup.cpp(79): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\MajorPopups\Edit\EditImagePopup.cpp(80): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\MajorPopups\Edit\EditImagePopup.cpp(81): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\MajorPopups\Edit\EditImagePopup.cpp(88): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\../Popup.hpp(147): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-  mathgrapher\Popups\MajorPopups\Edit\EditImagePopup.cpp(25): note: see reference to function template instantiation 'bool handleEditableInfo<std::string>(double,double,int,int,double,double,std::string,std::string,T *,bool,int *,int *)' being compiled
+mathgrapher\Popups\MajorPopups\Edit\EditImagePopup.cpp(31): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditImagePopup.cpp(44): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditImagePopup.cpp(49): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditImagePopup.cpp(52): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditImagePopup.cpp(60): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditImagePopup.cpp(61): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditImagePopup.cpp(62): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditImagePopup.cpp(69): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditImagePopup.cpp(21): warning C4101: 'offx': unreferenced local variable
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
           with
           [
-              T=std::string
+              T=double
           ]
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\../Popup.hpp(150): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\../Popup.hpp(154): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\edit\../MajorPopup.hpp(26): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-  mathgrapher\Popups\MajorPopups\Edit\EditImagePopup.cpp(71): note: see reference to function template instantiation 'bool EditPopup::drawInterpolationSidebar<RawImage*>(int,int,bool,double,double,T)' being compiled
+  mathgrapher\Popups\MajorPopups\Edit\EditImagePopup.cpp(52): note: see reference to function template instantiation 'bool EditPopup::drawInterpolationSidebar<RawImage*>(int,int,bool,double,double,T)' being compiled
           with
           [
               T=RawImage *
@@ -283,49 +665,49 @@ c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\edit\
 c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\edit\../MajorPopup.hpp(46): warning C4018: '<': signed/unsigned mismatch
 c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\edit\../MajorPopup.hpp(70): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
   EditGraphPopup.cpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(14): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(18): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(75): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(26): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(28): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(34): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(36): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(44): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(48): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(51): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(52): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(56): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(59): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(67): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(70): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(77): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(83): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(85): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(93): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(97): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(100): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(101): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(105): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(108): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(116): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(119): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(126): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(129): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(80): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(87): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(91): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(94): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(95): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(99): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(102): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(110): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(113): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(120): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(122): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(130): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(136): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(140): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(143): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(144): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(148): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(151): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(159): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(162): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(169): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(171): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(179): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(185): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(186): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(187): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(198): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\../Popup.hpp(147): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-  mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(20): note: see reference to function template instantiation 'bool handleEditableInfo<std::string>(double,double,int,int,double,double,std::string,std::string,T *,bool,int *,int *)' being compiled
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(137): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(138): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(149): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(16): warning C4101: 'offx': unreferenced local variable
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
           with
           [
-              T=std::string
+              T=double
           ]
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\../Popup.hpp(150): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\../Popup.hpp(154): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\edit\../MajorPopup.hpp(26): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-  mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(179): note: see reference to function template instantiation 'bool EditPopup::drawInterpolationSidebar<Graph*>(int,int,bool,double,double,T)' being compiled
+  mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp(130): note: see reference to function template instantiation 'bool EditPopup::drawInterpolationSidebar<Graph*>(int,int,bool,double,double,T)' being compiled
           with
           [
               T=Graph *
@@ -336,37 +718,87 @@ c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\edit\
 c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\edit\../MajorPopup.hpp(46): warning C4018: '<': signed/unsigned mismatch
 c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\edit\../MajorPopup.hpp(70): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
   EditArrowPopup.hpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
   EditTextPopup.hpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
   EditSliderPopup.hpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
   EditImagePopup.hpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
   EditGraphPopup.hpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
   Generating Code...
   SaverPopup.cpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\MajorPopups\SaverPopup.cpp(15): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\MajorPopups\SaverPopup.cpp(22): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\MajorPopups\SaverPopup.cpp(23): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\MajorPopups\SaverPopup.cpp(29): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\MajorPopups\SaverPopup.cpp(30): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\../Popup.hpp(147): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-  mathgrapher\Popups\MajorPopups\SaverPopup.cpp(19): note: see reference to function template instantiation 'bool handleEditableInfo<std::string>(double,double,int,int,double,double,std::string,std::string,T *,bool,int *,int *)' being compiled
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\../Popup.hpp(154): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  mathgrapher\Popups\MajorPopups\SaverPopup.cpp(19): note: see reference to function template instantiation 'bool handleEditableInfo_internal<std::string>(double,double,int,int,double,double,std::string,std::string,T *,bool,int *,int *)' being compiled
           with
           [
               T=std::string
           ]
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\../Popup.hpp(150): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\../Popup.hpp(154): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\../Popup.hpp(157): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\majorpopups\../Popup.hpp(161): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
   MajorPopup.cpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
   MainDisplay.cpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\MajorPopups\MainDisplay.cpp(19): warning C4018: '<': signed/unsigned mismatch
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(132): warning C4018: '<': signed/unsigned mismatch
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(144): warning C4018: '<': signed/unsigned mismatch
   mathgrapher\Popups\MajorPopups\MainDisplay.cpp(25): note: see reference to function template instantiation 'auto map<MainDisplay::handle::<lambda_f888c7fc461af843a8ae4156f6e212c4>,DisplayObject*>(A,std::vector<DisplayObject *,std::allocator<_Ty>>)' being compiled
           with
           [
@@ -402,7 +834,13 @@ mathgrapher\Popups\MajorPopups\MainDisplay.cpp(189): warning C4018: '<': signed/
 mathgrapher\Popups\MajorPopups\MainDisplay.cpp(191): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\MajorPopups\MainDisplay.cpp(192): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\MajorPopups\MainDisplay.cpp(206): warning C4018: '<': signed/unsigned mismatch
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(118): warning C4018: '<': signed/unsigned mismatch
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(130): warning C4018: '<': signed/unsigned mismatch
   mathgrapher\Popups\MajorPopups\MainDisplay.cpp(25): note: see reference to function template instantiation 'C foldr<MainDisplay::handle::<lambda_2f8a84b0b67a8318cbc58be16a1865a7>,bool,bool>(A,std::vector<bool,std::allocator<_Ty>>,C)' being compiled
           with
           [
@@ -411,199 +849,289 @@ c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(1
               _Ty=bool
           ]
   SaverPopup.hpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
   MajorPopup.hpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
   MainDisplay.hpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
   Generating Code...
   SaveVideoPopup.cpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
   SaveFilePopup.cpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
   SaveVideoPopup.hpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
   SaveFilePopup.hpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
   Generating Code...
   Popup.cpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\Popup.cpp(28): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\Popup.cpp(173): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\Popup.hpp(154): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  mathgrapher\Popups\Popup.cpp(140): note: see reference to function template instantiation 'bool handleEditableInfo_internal<double>(double,double,int,int,double,double,std::string,std::string,T *,bool,int *,int *)' being compiled
+          with
+          [
+              T=double
+          ]
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\Popup.hpp(157): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\Popup.hpp(161): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
   Popup.hpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
   Generating Code...
   EditFunctionPopup.cpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\EditFunctionPopup.cpp(15): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\EditFunctionPopup.cpp(16): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\EditFunctionPopup.cpp(17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\EditFunctionPopup.cpp(18): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\EditFunctionPopup.cpp(31): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\EditFunctionPopup.cpp(38): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\EditFunctionPopup.cpp(49): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\EditFunctionPopup.cpp(55): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\EditFunctionPopup.cpp(67): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\quickcloserpopups\../Popup.hpp(147): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-  mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\EditFunctionPopup.cpp(24): note: see reference to function template instantiation 'bool handleEditableInfo<double>(double,double,int,int,double,double,std::string,std::string,T *,bool,int *,int *)' being compiled
+mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\EditFunctionPopup.cpp(28): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\EditFunctionPopup.cpp(69): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\EditFunctionPopup.cpp(81): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\EditFunctionPopup.cpp(19): warning C4101: 'offx': unreferenced local variable
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
           with
           [
               T=double
           ]
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\quickcloserpopups\../Popup.hpp(150): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\quickcloserpopups\../Popup.hpp(154): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
   CreateSimpleInterpolation.cpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateSimpleInterpolation.cpp(15): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateSimpleInterpolation.cpp(16): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateSimpleInterpolation.cpp(18): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateSimpleInterpolation.cpp(19): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateSimpleInterpolation.cpp(35): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateSimpleInterpolation.cpp(51): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateSimpleInterpolation.cpp(52): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\quickcloserpopups\../Popup.hpp(147): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-  mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateSimpleInterpolation.cpp(27): note: see reference to function template instantiation 'bool handleEditableInfo<double>(double,double,int,int,double,double,std::string,std::string,T *,bool,int *,int *)' being compiled
+mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateSimpleInterpolation.cpp(30): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateSimpleInterpolation.cpp(31): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateSimpleInterpolation.cpp(20): warning C4101: 'offx': unreferenced local variable
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
           with
           [
               T=double
           ]
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\quickcloserpopups\../Popup.hpp(150): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\quickcloserpopups\../Popup.hpp(154): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-  CreateResizeInterpolation.cpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateResizeInterpolation.cpp(15): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateResizeInterpolation.cpp(16): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateResizeInterpolation.cpp(18): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateResizeInterpolation.cpp(19): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateResizeInterpolation.cpp(34): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateResizeInterpolation.cpp(53): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateResizeInterpolation.cpp(61): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateResizeInterpolation.cpp(62): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\quickcloserpopups\../Popup.hpp(147): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-  mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateResizeInterpolation.cpp(26): note: see reference to function template instantiation 'bool handleEditableInfo<double>(double,double,int,int,double,double,std::string,std::string,T *,bool,int *,int *)' being compiled
-          with
-          [
-              T=double
-          ]
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\quickcloserpopups\../Popup.hpp(150): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\quickcloserpopups\../Popup.hpp(154): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
   CreatePointOfInterest.cpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreatePointOfInterest.cpp(15): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreatePointOfInterest.cpp(16): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreatePointOfInterest.cpp(23): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreatePointOfInterest.cpp(24): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreatePointOfInterest.cpp(41): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreatePointOfInterest.cpp(45): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreatePointOfInterest.cpp(46): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreatePointOfInterest.cpp(47): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreatePointOfInterest.cpp(54): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreatePointOfInterest.cpp(55): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreatePointOfInterest.cpp(56): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\quickcloserpopups\../Popup.hpp(147): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-  mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreatePointOfInterest.cpp(32): note: see reference to function template instantiation 'bool handleEditableInfo<std::string>(double,double,int,int,double,double,std::string,std::string,T *,bool,int *,int *)' being compiled
-          with
-          [
-              T=std::string
-          ]
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\quickcloserpopups\../Popup.hpp(150): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\quickcloserpopups\../Popup.hpp(154): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-  CreateHighlightInterpolation.cpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateHighlightInterpolation.cpp(15): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateHighlightInterpolation.cpp(16): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateHighlightInterpolation.cpp(18): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateHighlightInterpolation.cpp(19): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateHighlightInterpolation.cpp(55): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateHighlightInterpolation.cpp(56): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\quickcloserpopups\../Popup.hpp(147): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-  mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateHighlightInterpolation.cpp(24): note: see reference to function template instantiation 'bool handleEditableInfo<double>(double,double,int,int,double,double,std::string,std::string,T *,bool,int *,int *)' being compiled
+mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreatePointOfInterest.cpp(25): warning C4101: 'offx': unreferenced local variable
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
           with
           [
               T=double
           ]
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\quickcloserpopups\../Popup.hpp(150): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\quickcloserpopups\../Popup.hpp(154): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-  CreateFunctionRunInterpolation.cpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateFunctionRunInterpolation.cpp(14): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateFunctionRunInterpolation.cpp(15): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateFunctionRunInterpolation.cpp(17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateFunctionRunInterpolation.cpp(18): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateFunctionRunInterpolation.cpp(41): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateFunctionRunInterpolation.cpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\quickcloserpopups\../Popup.hpp(147): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-  mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateFunctionRunInterpolation.cpp(24): note: see reference to function template instantiation 'bool handleEditableInfo<double>(double,double,int,int,double,double,std::string,std::string,T *,bool,int *,int *)' being compiled
-          with
-          [
-              T=double
-          ]
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\quickcloserpopups\../Popup.hpp(150): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\popups\quickcloserpopups\../Popup.hpp(154): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
   EditFunctionPopup.hpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
   CreateSimpleInterpolation.hpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-  CreateResizeInterpolation.hpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
   CreatePointOfInterest.hpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-  CreateHighlightInterpolation.hpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-  CreateFunctionRunInterpolation.hpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
   Generating Code...
   QuickCloserPopup.cpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
   QuickCloserPopup.hpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
   Generating Code...
   LoadFilePopup.cpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\QuickCloserPopups\Select\LoadFilePopup.cpp(15): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\QuickCloserPopups\Select\LoadFilePopup.cpp(16): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\QuickCloserPopups\Select\LoadFilePopup.cpp(18): warning C4018: '<': signed/unsigned mismatch
 mathgrapher\Popups\QuickCloserPopups\Select\LoadFilePopup.cpp(23): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\QuickCloserPopups\Select\LoadFilePopup.cpp(24): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\QuickCloserPopups\Select\LoadFilePopup.cpp(32): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
   ChooseWhichImagePopup.cpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\QuickCloserPopups\Select\ChooseWhichImagePopup.cpp(15): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\QuickCloserPopups\Select\ChooseWhichImagePopup.cpp(16): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\QuickCloserPopups\Select\ChooseWhichImagePopup.cpp(18): warning C4018: '<': signed/unsigned mismatch
 mathgrapher\Popups\QuickCloserPopups\Select\ChooseWhichImagePopup.cpp(21): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\QuickCloserPopups\Select\ChooseWhichImagePopup.cpp(22): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\QuickCloserPopups\Select\ChooseWhichImagePopup.cpp(35): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
   ChoosePointConcernedForLinkingPopup.cpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\QuickCloserPopups\Select\ChoosePointConcernedForLinkingPopup.cpp(15): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\QuickCloserPopups\Select\ChoosePointConcernedForLinkingPopup.cpp(16): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\QuickCloserPopups\Select\ChoosePointConcernedForLinkingPopup.cpp(18): warning C4018: '<': signed/unsigned mismatch
 mathgrapher\Popups\QuickCloserPopups\Select\ChoosePointConcernedForLinkingPopup.cpp(21): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\QuickCloserPopups\Select\ChoosePointConcernedForLinkingPopup.cpp(22): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\QuickCloserPopups\Select\ChoosePointConcernedForLinkingPopup.cpp(30): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
   ChooseInterpolationPopup.cpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\QuickCloserPopups\Select\ChooseInterpolationPopup.cpp(15): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\QuickCloserPopups\Select\ChooseInterpolationPopup.cpp(16): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\QuickCloserPopups\Select\ChooseInterpolationPopup.cpp(38): warning C4018: '<': signed/unsigned mismatch
 mathgrapher\Popups\QuickCloserPopups\Select\ChooseInterpolationPopup.cpp(46): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\QuickCloserPopups\Select\ChooseInterpolationPopup.cpp(47): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
   ChooseFunctionPopup.cpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\QuickCloserPopups\Select\ChooseFunctionPopup.cpp(15): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\QuickCloserPopups\Select\ChooseFunctionPopup.cpp(16): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\QuickCloserPopups\Select\ChooseFunctionPopup.cpp(18): warning C4018: '<': signed/unsigned mismatch
 mathgrapher\Popups\QuickCloserPopups\Select\ChooseFunctionPopup.cpp(21): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\QuickCloserPopups\Select\ChooseFunctionPopup.cpp(22): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\QuickCloserPopups\Select\ChooseFunctionPopup.cpp(36): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
   ChooseFunctionInterpolation.cpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\QuickCloserPopups\Select\ChooseFunctionInterpolation.cpp(15): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\QuickCloserPopups\Select\ChooseFunctionInterpolation.cpp(16): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\QuickCloserPopups\Select\ChooseFunctionInterpolation.cpp(21): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\QuickCloserPopups\Select\ChooseFunctionInterpolation.cpp(22): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\QuickCloserPopups\Select\ChooseFunctionInterpolation.cpp(31): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\QuickCloserPopups\Select\ChooseFunctionInterpolation.cpp(32): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
   AddObjectPopup.cpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\QuickCloserPopups\Select\AddObjectPopup.cpp(16): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\QuickCloserPopups\Select\AddObjectPopup.cpp(17): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\QuickCloserPopups\Select\AddObjectPopup.cpp(18): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
@@ -617,20 +1145,75 @@ mathgrapher\Popups\QuickCloserPopups\Select\AddObjectPopup.cpp(52): warning C424
 mathgrapher\Popups\QuickCloserPopups\Select\AddObjectPopup.cpp(53): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\QuickCloserPopups\Select\AddObjectPopup.cpp(63): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\Popups\QuickCloserPopups\Select\AddObjectPopup.cpp(64): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
   LoadFilePopup.hpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
   ChooseWhichImagePopup.hpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
   ChoosePointConcernedForLinkingPopup.hpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
   ChooseInterpolationPopup.hpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
   ChooseFunctionPopup.hpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
   ChooseFunctionInterpolation.hpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
   AddObjectPopup.hpp
-c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
+  c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
+          with
+          [
+              T=double
+          ]
   Generating Code...
 Debug\/mathgrapher\/BulkUtilities.obj : warning LNK4042: object specified more than once; extras ignored
 Debug\/mathgrapher\/DisplayWrapper.obj : warning LNK4042: object specified more than once; extras ignored
@@ -640,10 +1223,25 @@ Debug\/mathgrapher\/RenderingUtilities.obj : warning LNK4042: object specified m
 Debug\/mathgrapher\DisplayObjectsFolder\/DisplayObjects.obj : warning LNK4042: object specified more than once; extras ignored
 Debug\/mathgrapher\DisplayObjectsFolder\/Function.obj : warning LNK4042: object specified more than once; extras ignored
 Debug\/mathgrapher\DisplayObjectsFolder\/Graph.obj : warning LNK4042: object specified more than once; extras ignored
-Debug\/mathgrapher\DisplayObjectsFolder\/Interpolation.obj : warning LNK4042: object specified more than once; extras ignored
 Debug\/mathgrapher\DisplayObjectsFolder\/RawImage.obj : warning LNK4042: object specified more than once; extras ignored
 Debug\/mathgrapher\DisplayObjectsFolder\/RawText.obj : warning LNK4042: object specified more than once; extras ignored
 Debug\/mathgrapher\DisplayObjectsFolder\/Slider.obj : warning LNK4042: object specified more than once; extras ignored
+Debug\/mathgrapher\DisplayObjectsFolder\/InterpolationWrapper.obj : warning LNK4042: object specified more than once; extras ignored
+Debug\/mathgrapher\DisplayObjectsFolder\InterpolationFolder\/Interpolation.obj : warning LNK4042: object specified more than once; extras ignored
+Debug\/mathgrapher\DisplayObjectsFolder\InterpolationFolder\/MoveInterpol.obj : warning LNK4042: object specified more than once; extras ignored
+Debug\/mathgrapher\DisplayObjectsFolder\InterpolationFolder\/HighlightInterpol.obj : warning LNK4042: object specified more than once; extras ignored
+Debug\/mathgrapher\DisplayObjectsFolder\InterpolationFolder\/MoveOriginInterpol.obj : warning LNK4042: object specified more than once; extras ignored
+Debug\/mathgrapher\DisplayObjectsFolder\InterpolationFolder\/RotateInterpol.obj : warning LNK4042: object specified more than once; extras ignored
+Debug\/mathgrapher\DisplayObjectsFolder\InterpolationFolder\/ScaleInterpol.obj : warning LNK4042: object specified more than once; extras ignored
+Debug\/mathgrapher\DisplayObjectsFolder\InterpolationFolder\/ScaleTextInterpol.obj : warning LNK4042: object specified more than once; extras ignored
+Debug\/mathgrapher\DisplayObjectsFolder\InterpolationFolder\/ResizeInterpol.obj : warning LNK4042: object specified more than once; extras ignored
+Debug\/mathgrapher\DisplayObjectsFolder\InterpolationFolder\/RescaleGridInterpol.obj : warning LNK4042: object specified more than once; extras ignored
+Debug\/mathgrapher\DisplayObjectsFolder\InterpolationFolder\/RunFunctionInterpol.obj : warning LNK4042: object specified more than once; extras ignored
+Debug\/mathgrapher\DisplayObjectsFolder\InterpolationFolder\/StretchFunctionInterpol.obj : warning LNK4042: object specified more than once; extras ignored
+Debug\/mathgrapher\DisplayObjectsFolder\InterpolationFolder\/FixInterpol.obj : warning LNK4042: object specified more than once; extras ignored
+Debug\/mathgrapher\DisplayObjectsFolder\InterpolationFolder\/RescaleHeadInterpol.obj : warning LNK4042: object specified more than once; extras ignored
+Debug\/mathgrapher\DisplayObjectsFolder\InterpolationFolder\/AppearInterpol.obj : warning LNK4042: object specified more than once; extras ignored
+Debug\/mathgrapher\DisplayObjectsFolder\InterpolationFolder\/DisappearInterpol.obj : warning LNK4042: object specified more than once; extras ignored
 Debug\/mathgrapher\Popups\MajorPopups\Edit\/EditGraphPopup.obj : warning LNK4042: object specified more than once; extras ignored
 Debug\/mathgrapher\Popups\MajorPopups\Edit\/EditImagePopup.obj : warning LNK4042: object specified more than once; extras ignored
 Debug\/mathgrapher\Popups\MajorPopups\Edit\/EditSliderPopup.obj : warning LNK4042: object specified more than once; extras ignored
@@ -655,10 +1253,7 @@ Debug\/mathgrapher\Popups\MajorPopups\/SaverPopup.obj : warning LNK4042: object 
 Debug\/mathgrapher\Popups\MajorPopups\Savers\/SaveFilePopup.obj : warning LNK4042: object specified more than once; extras ignored
 Debug\/mathgrapher\Popups\MajorPopups\Savers\/SaveVideoPopup.obj : warning LNK4042: object specified more than once; extras ignored
 Debug\/mathgrapher\Popups\/Popup.obj : warning LNK4042: object specified more than once; extras ignored
-Debug\/mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\/CreateFunctionRunInterpolation.obj : warning LNK4042: object specified more than once; extras ignored
-Debug\/mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\/CreateHighlightInterpolation.obj : warning LNK4042: object specified more than once; extras ignored
 Debug\/mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\/CreatePointOfInterest.obj : warning LNK4042: object specified more than once; extras ignored
-Debug\/mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\/CreateResizeInterpolation.obj : warning LNK4042: object specified more than once; extras ignored
 Debug\/mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\/CreateSimpleInterpolation.obj : warning LNK4042: object specified more than once; extras ignored
 Debug\/mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\/EditFunctionPopup.obj : warning LNK4042: object specified more than once; extras ignored
 Debug\/mathgrapher\Popups\QuickCloserPopups\/QuickCloserPopup.obj : warning LNK4042: object specified more than once; extras ignored
@@ -669,4 +1264,33 @@ Debug\/mathgrapher\Popups\QuickCloserPopups\Select\/ChooseInterpolationPopup.obj
 Debug\/mathgrapher\Popups\QuickCloserPopups\Select\/ChoosePointConcernedForLinkingPopup.obj : warning LNK4042: object specified more than once; extras ignored
 Debug\/mathgrapher\Popups\QuickCloserPopups\Select\/ChooseWhichImagePopup.obj : warning LNK4042: object specified more than once; extras ignored
 Debug\/mathgrapher\Popups\QuickCloserPopups\Select\/LoadFilePopup.obj : warning LNK4042: object specified more than once; extras ignored
-  MathGrapher.vcxproj -> C:\Users\ebail\Documents\GitHub\MathGrapher\Debug\MathGrapher.exe
+DisplayWrapper.obj : error LNK2019: unresolved external symbol "public: bool __thiscall Interpolation::update(void)" (?update@Interpolation@@QAE_NXZ) referenced in function "public: virtual void __thiscall DisplayObject::update(void)" (?update@DisplayObject@@UAEXXZ)
+RawImage.obj : error LNK2001: unresolved external symbol "public: bool __thiscall Interpolation::update(void)" (?update@Interpolation@@QAE_NXZ)
+RawText.obj : error LNK2001: unresolved external symbol "public: bool __thiscall Interpolation::update(void)" (?update@Interpolation@@QAE_NXZ)
+Slider.obj : error LNK2001: unresolved external symbol "public: bool __thiscall Interpolation::update(void)" (?update@Interpolation@@QAE_NXZ)
+DisplayWrapper.obj : error LNK2001: unresolved external symbol "public: virtual class std::vector<struct SaveData,class std::allocator<struct SaveData> > __thiscall MoveInterpol::getSaveData(void)" (?getSaveData@MoveInterpol@@UAE?AV?$vector@USaveData@@V?$allocator@USaveData@@@std@@@std@@XZ)
+DisplayWrapper.obj : error LNK2001: unresolved external symbol "public: virtual class std::vector<struct EditFieldMenu,class std::allocator<struct EditFieldMenu> > __thiscall MoveInterpol::getEditableFields(void)" (?getEditableFields@MoveInterpol@@UAE?AV?$vector@UEditFieldMenu@@V?$allocator@UEditFieldMenu@@@std@@@std@@XZ)
+DisplayWrapper.obj : error LNK2019: unresolved external symbol "public: __thiscall MoveInterpol::MoveInterpol(double,double)" (??0MoveInterpol@@QAE@NN@Z) referenced in function "class Data * __cdecl dataFromID(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?dataFromID@@YAPAVData@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+DisplayWrapper.obj : error LNK2001: unresolved external symbol "public: virtual void __thiscall MoveInterpol::relateData(class Data *)" (?relateData@MoveInterpol@@UAEXPAVData@@@Z)
+DisplayWrapper.obj : error LNK2001: unresolved external symbol "public: virtual class std::vector<struct SaveData,class std::allocator<struct SaveData> > __thiscall HighlightInterpol::getSaveData(void)" (?getSaveData@HighlightInterpol@@UAE?AV?$vector@USaveData@@V?$allocator@USaveData@@@std@@@std@@XZ)
+DisplayWrapper.obj : error LNK2001: unresolved external symbol "public: virtual class std::vector<struct EditFieldMenu,class std::allocator<struct EditFieldMenu> > __thiscall HighlightInterpol::getEditableFields(void)" (?getEditableFields@HighlightInterpol@@UAE?AV?$vector@UEditFieldMenu@@V?$allocator@UEditFieldMenu@@@std@@@std@@XZ)
+DisplayWrapper.obj : error LNK2019: unresolved external symbol "public: __thiscall HighlightInterpol::HighlightInterpol(double,double,double,double)" (??0HighlightInterpol@@QAE@NNNN@Z) referenced in function "class Data * __cdecl dataFromID(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?dataFromID@@YAPAVData@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+DisplayWrapper.obj : error LNK2001: unresolved external symbol "public: virtual void __thiscall HighlightInterpol::relateData(class Data *)" (?relateData@HighlightInterpol@@UAEXPAVData@@@Z)
+DisplayWrapper.obj : error LNK2019: unresolved external symbol "public: __thiscall MoveOriginInterpol::MoveOriginInterpol(double,double)" (??0MoveOriginInterpol@@QAE@NN@Z) referenced in function "class Data * __cdecl dataFromID(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?dataFromID@@YAPAVData@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+DisplayWrapper.obj : error LNK2019: unresolved external symbol "public: __thiscall RotateInterpol::RotateInterpol(double,double)" (??0RotateInterpol@@QAE@NN@Z) referenced in function "class Data * __cdecl dataFromID(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?dataFromID@@YAPAVData@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+DisplayWrapper.obj : error LNK2019: unresolved external symbol "public: __thiscall ScaleInterpol::ScaleInterpol(double,double)" (??0ScaleInterpol@@QAE@NN@Z) referenced in function "class Data * __cdecl dataFromID(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?dataFromID@@YAPAVData@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+DisplayWrapper.obj : error LNK2019: unresolved external symbol "public: __thiscall ScaleTextInterpol::ScaleTextInterpol(double,double)" (??0ScaleTextInterpol@@QAE@NN@Z) referenced in function "class Data * __cdecl dataFromID(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?dataFromID@@YAPAVData@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+DisplayWrapper.obj : error LNK2019: unresolved external symbol "public: __thiscall ResizeInterpol::ResizeInterpol(double,double)" (??0ResizeInterpol@@QAE@NN@Z) referenced in function "class Data * __cdecl dataFromID(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?dataFromID@@YAPAVData@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+DisplayWrapper.obj : error LNK2019: unresolved external symbol "public: __thiscall RescaleGridInterpol::RescaleGridInterpol(double,double)" (??0RescaleGridInterpol@@QAE@NN@Z) referenced in function "class Data * __cdecl dataFromID(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?dataFromID@@YAPAVData@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+DisplayWrapper.obj : error LNK2019: unresolved external symbol "public: __thiscall RunFunctionInterpol::RunFunctionInterpol(double)" (??0RunFunctionInterpol@@QAE@N@Z) referenced in function "class Data * __cdecl dataFromID(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?dataFromID@@YAPAVData@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+DisappearInterpol.obj : error LNK2001: unresolved external symbol "protected: class std::vector<struct SaveData,class std::allocator<struct SaveData> > __thiscall Interpolation::makeSaveData(class std::vector<struct SaveData,class std::allocator<struct SaveData> >)" (?makeSaveData@Interpolation@@IAE?AV?$vector@USaveData@@V?$allocator@USaveData@@@std@@@std@@V23@@Z)
+StretchFunctionInterpol.obj : error LNK2001: unresolved external symbol "protected: class std::vector<struct SaveData,class std::allocator<struct SaveData> > __thiscall Interpolation::makeSaveData(class std::vector<struct SaveData,class std::allocator<struct SaveData> >)" (?makeSaveData@Interpolation@@IAE?AV?$vector@USaveData@@V?$allocator@USaveData@@@std@@@std@@V23@@Z)
+FixInterpol.obj : error LNK2001: unresolved external symbol "protected: class std::vector<struct SaveData,class std::allocator<struct SaveData> > __thiscall Interpolation::makeSaveData(class std::vector<struct SaveData,class std::allocator<struct SaveData> >)" (?makeSaveData@Interpolation@@IAE?AV?$vector@USaveData@@V?$allocator@USaveData@@@std@@@std@@V23@@Z)
+RescaleHeadInterpol.obj : error LNK2001: unresolved external symbol "protected: class std::vector<struct SaveData,class std::allocator<struct SaveData> > __thiscall Interpolation::makeSaveData(class std::vector<struct SaveData,class std::allocator<struct SaveData> >)" (?makeSaveData@Interpolation@@IAE?AV?$vector@USaveData@@V?$allocator@USaveData@@@std@@@std@@V23@@Z)
+AppearInterpol.obj : error LNK2001: unresolved external symbol "protected: class std::vector<struct SaveData,class std::allocator<struct SaveData> > __thiscall Interpolation::makeSaveData(class std::vector<struct SaveData,class std::allocator<struct SaveData> >)" (?makeSaveData@Interpolation@@IAE?AV?$vector@USaveData@@V?$allocator@USaveData@@@std@@@std@@V23@@Z)
+DisappearInterpol.obj : error LNK2001: unresolved external symbol "protected: class std::vector<struct EditFieldMenu,class std::allocator<struct EditFieldMenu> > __thiscall Interpolation::makeEditableFields(class std::vector<struct EditFieldMenu,class std::allocator<struct EditFieldMenu> >)" (?makeEditableFields@Interpolation@@IAE?AV?$vector@UEditFieldMenu@@V?$allocator@UEditFieldMenu@@@std@@@std@@V23@@Z)
+StretchFunctionInterpol.obj : error LNK2001: unresolved external symbol "protected: class std::vector<struct EditFieldMenu,class std::allocator<struct EditFieldMenu> > __thiscall Interpolation::makeEditableFields(class std::vector<struct EditFieldMenu,class std::allocator<struct EditFieldMenu> >)" (?makeEditableFields@Interpolation@@IAE?AV?$vector@UEditFieldMenu@@V?$allocator@UEditFieldMenu@@@std@@@std@@V23@@Z)
+FixInterpol.obj : error LNK2001: unresolved external symbol "protected: class std::vector<struct EditFieldMenu,class std::allocator<struct EditFieldMenu> > __thiscall Interpolation::makeEditableFields(class std::vector<struct EditFieldMenu,class std::allocator<struct EditFieldMenu> >)" (?makeEditableFields@Interpolation@@IAE?AV?$vector@UEditFieldMenu@@V?$allocator@UEditFieldMenu@@@std@@@std@@V23@@Z)
+RescaleHeadInterpol.obj : error LNK2001: unresolved external symbol "protected: class std::vector<struct EditFieldMenu,class std::allocator<struct EditFieldMenu> > __thiscall Interpolation::makeEditableFields(class std::vector<struct EditFieldMenu,class std::allocator<struct EditFieldMenu> >)" (?makeEditableFields@Interpolation@@IAE?AV?$vector@UEditFieldMenu@@V?$allocator@UEditFieldMenu@@@std@@@std@@V23@@Z)
+AppearInterpol.obj : error LNK2001: unresolved external symbol "protected: class std::vector<struct EditFieldMenu,class std::allocator<struct EditFieldMenu> > __thiscall Interpolation::makeEditableFields(class std::vector<struct EditFieldMenu,class std::allocator<struct EditFieldMenu> >)" (?makeEditableFields@Interpolation@@IAE?AV?$vector@UEditFieldMenu@@V?$allocator@UEditFieldMenu@@@std@@@std@@V23@@Z)
+C:\Users\ebail\Documents\GitHub\MathGrapher\Debug\MathGrapher.exe : fatal error LNK1120: 18 unresolved externals

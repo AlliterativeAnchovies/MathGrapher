@@ -10,7 +10,7 @@
 #define RotateInterpol_hpp
 
 #include "Interpolation.hpp"
-#include "Graph.hpp"
+#include "../Graph.hpp"
 
 class RotateInterpol: public Interpolation {
 	private:
