@@ -26,7 +26,7 @@ class HighlightInterpol: public Interpolation {
 														+tostring(xSize )+","+tostring(ySize )+")"  ;};
 		std::vector<SaveData> getSaveData();
 		std::vector<EditFieldMenu> getEditableFields();
-		HighlightInterpol(double x,double y,double sx,double sy,Graph* d);
+		HighlightInterpol(double x,double y,double sx,double sy);
 		void relateData(Data* d);
 		std::vector<void*> getData() {return {&xStart,&yStart,&xSize,&ySize};};
 		HighlightInterpol() {};

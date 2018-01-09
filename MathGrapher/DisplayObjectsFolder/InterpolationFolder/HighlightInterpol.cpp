@@ -24,15 +24,14 @@ std::vector<EditFieldMenu> HighlightInterpol::getEditableFields() {
 		{"SY: ",&ySize,_DOUBLE,20,true},
 	});
 }
-HighlightInterpol::HighlightInterpol(double x,double y,double sx,double sy,Graph* d) {
+HighlightInterpol::HighlightInterpol(double x,double y,double sx,double sy) {
 	xStart = x;
 	yStart = y;
 	xSize = sx;
 	ySize = sy;
-	relateData((Data*)d);
 }
 
 void HighlightInterpol::relateData(Data *d) {
 	std::function<void(std::vector<double>)> f = [&](std::vector<double> v){};
-	giveFunction(&f);
+	giveFunction(f);
 }

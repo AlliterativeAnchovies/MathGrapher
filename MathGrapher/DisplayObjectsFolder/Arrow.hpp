@@ -33,8 +33,6 @@ class Arrow: public DisplayObject {
         double headAngle = M_PI/4;
         double headSize = 0;
         std::string name = "-ERROR-";
-        //stores current interpolation data
-        std::vector<Interpolation*> interpolations = {};
         //tagged for running interpolations
         bool running = false;
         //highlitations
@@ -50,12 +48,9 @@ class Arrow: public DisplayObject {
 		void run();
 		void reset();
 		bool isRunning() {return running;};
-		void update();
 		SDL_Surface* draw(double* x,double* y);
 		void reclaim(SDL_Surface* reclaimed) {SDL_FreeSurface(reclaimed);};
 		void move(double x,double y) {px+=x;py+=y;};
-		void addInterpolation(Interpolation* i) {interpolations.push_back(i);};
-		std::vector<Interpolation*> getInterpolations() {return interpolations;};
 		Arrow(double x,double y,double s,double t,double hS,double a,double hA,std::string n);
 		std::string* ptmName() {return &name;}
 		double getPX() {return px;}

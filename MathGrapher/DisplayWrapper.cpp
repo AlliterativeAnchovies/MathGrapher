@@ -72,3 +72,27 @@ void drawDisplayObject(DisplayObject* d) {
     d->reclaim(tempSurf);
     SDL_DestroyTexture(tempTexture);
 }
+
+
+//Update func for display objects
+void DisplayObject::update() {
+	for (int i = 0;i<interpolations.size();i++) {
+        if (interpolations[i]->update()) {
+            interpolations[i]->pause();
+        }
+    }
+}
+
+//gets rid of canceled interpolations
+void DisplayObject::cleanInterpolations() {
+    auto oldinterpolations = filter([](Interpolation* i){return i->isCanceled();},interpolations);
+    auto newinterpolations = filter([](Interpolation* i){return !i->isCanceled();},interpolations);
+    for (auto i : oldinterpolations) {delete i;}
+    interpolations = newinterpolations;
+}
+
+//adds a display object
+void DisplayObject::addInterpolation(Interpolation* i) {
+	interpolations.push_back(i);
+	i->relateData(this);
+}

@@ -196,8 +196,8 @@ Uint8 MainDisplay::handle(double mouseX,double mouseY,bool clicked) {
 	for (DisplayObject* d : objects) {
 		if (d->getID()=="Graph") {
 			((Graph*)d)->cleanFunctions();
-			((Graph*)d)->cleanInterpolations();
 		}
+		d->cleanInterpolations();
 		if (d->isRunning()) {d->update();}
 	}
 

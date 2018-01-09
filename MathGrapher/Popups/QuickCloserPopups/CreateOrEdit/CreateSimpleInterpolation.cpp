@@ -58,18 +58,23 @@ Uint8 CreateSimpleInterpolation::handle(double mouseX,double mouseY,bool clicked
 			interpolationConcerned->reset();
 			if (graphConcerned!=NULL) {
 				graphConcerned->addInterpolation(interpolationConcerned);
+				//interpolationConcerned->relateData(graphConcerned);
 			}
 			else if (sliderConcerned!=NULL) {
 				sliderConcerned->addInterpolation(interpolationConcerned);
+				//interpolationConcerned->relateData(sliderConcerned);
 			}
 			else if (imageConcerned!=NULL) {
 				imageConcerned->addInterpolation(interpolationConcerned);
+				//interpolationConcerned->relateData(imageConcerned);
 			}
 			else if (textConcerned!=NULL) {
 				textConcerned->addInterpolation(interpolationConcerned);
+				//interpolationConcerned->relateData(textConcerned);
 			}
 			else if (arrowConcerned!=NULL) {
 				arrowConcerned->addInterpolation(interpolationConcerned);
+				//interpolationConcerned->relateData(arrowConcerned);
 			}
 			else {
 				throw std::runtime_error("Need to hook up interpolation to display object");

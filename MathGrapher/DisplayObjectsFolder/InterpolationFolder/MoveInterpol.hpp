@@ -23,7 +23,7 @@ class MoveInterpol: public Interpolation {
 		std::string getDisplay() {return "Translate by ("+tostring(xChange)+","+tostring(yChange)+")";};
 		std::vector<SaveData> getSaveData();
 		std::vector<EditFieldMenu> getEditableFields();
-		MoveInterpol(double x,double y,DisplayObject* d);
+		MoveInterpol(double x,double y);
 		void relateData(Data* d);
 		MoveInterpol() {};
 };

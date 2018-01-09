@@ -157,9 +157,6 @@ void Graph::moveGridSize(double x,double y,bool moveCenter) {
     if (doNow) {interpolations.push_back(toReturn);}
     return toReturn;
 }*/
-void Graph::addInterpolation(Interpolation *i) {
-    interpolations.push_back(i);
-}
 
 //returns surface of drawn graph, and stores its position in the input pointers
 SDL_Surface* Graph::draw(double* x,double* y) {
@@ -459,15 +456,6 @@ SDL_Surface* Graph::draw(double* x,double* y) {
     }
     return toReturn;
 }
-//updates the Graph so it can smoothly animate things
-void Graph::update() {
-    for (int i = 0;i<interpolations.size();i++) {
-        if (interpolations[i]->update()) {
-            interpolations[i]->pause();
-        }
-    }
-    
-}
 
 //add a function to draw
 void Graph::addXFunction(Function* function) {
@@ -544,13 +532,6 @@ void Graph::cleanFunctions() {
     yfunctions = newyfunctions;
 }
 
-//gets rid of canceled interpolations
-void Graph::cleanInterpolations() {
-    auto oldinterpolations = filter([](Interpolation* i){return i->isCanceled();},interpolations);
-    auto newinterpolations = filter([](Interpolation* i){return !i->isCanceled();},interpolations);
-    for (auto i : oldinterpolations) {delete i;}
-    interpolations = newinterpolations;
-}
 
 //run graph interpolations
 void Graph::run() {

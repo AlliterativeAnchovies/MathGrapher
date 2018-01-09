@@ -70,8 +70,6 @@ class Graph: public DisplayObject {
         void changePosition(double x,double y);
         //returns surface of drawn graph, and stores its position in the input pointers
         SDL_Surface* draw(double* x,double* y);
-        //updates the Graph so it can smoothly animate things
-        void update();
         //moves the origin incrementally
         void moveOrigin(double x,double y);
         //moves origin smoothly
@@ -99,8 +97,6 @@ class Graph: public DisplayObject {
         //add a function to draw
         void addXFunction(Function* function);
         void addYFunction(Function* function);
-        //add an interpolation
-        void addInterpolation(Interpolation* i);
         //check if clicked on graph
         bool clickedIn(double mouseX,double mouseY);
         //draws rect around graph to indicate it is selected
@@ -133,16 +129,12 @@ class Graph: public DisplayObject {
         bool showingGrid() {return showGrid;}
         //get showing axes
         bool showingAxes() {return showAxes;}
-        //get interpolations
-        std::vector<Interpolation*> getInterpolations() {return interpolations;}
         //run graph interpolations
         void run();
         //resets graph interpolations
         void reset();
         //checks if graph is running
         bool isRunning();
-        //gets rid of canceled interpolations
-        void cleanInterpolations();
         //get name of class
         std::string getID() {return "Graph";}
         //custom deleter to clean up constituents

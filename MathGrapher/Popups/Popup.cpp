@@ -74,7 +74,7 @@ void Popup::setUpInterpolation() {
     Uint8 interpolID = 0x00;
     if (stringConcerned=="Move") {
         interpolID = SMOOTH_TRANSLATE;
-        interpolationConcerned = new MoveInterpol(0,0,(DisplayObject*)intplObj);
+        interpolationConcerned = new MoveInterpol(0,0);
     }
     else if (stringConcerned=="Resize") {
         interpolID = SMOOTH_GRID_RESIZE_SMART_CENTER;
@@ -96,7 +96,7 @@ void Popup::setUpInterpolation() {
     }
     else if (stringConcerned=="Highlight") {
         interpolID = HIGHLIGHT_GRAPH;
-        interpolationConcerned = new HighlightInterpol(0,0,0,0,graphConcerned);
+        interpolationConcerned = new HighlightInterpol(0,0,0,0);
     }
     else if (stringConcerned=="Fix") {
     	interpolID = FIX_THINGAMAJIG;

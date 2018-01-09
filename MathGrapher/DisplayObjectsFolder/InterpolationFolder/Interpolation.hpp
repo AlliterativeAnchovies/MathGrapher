@@ -18,16 +18,16 @@ class Interpolation: public Data {
 		bool canceled = false;//tags for deletion
 		int timeStart = 0;//measures in ticks
 		int timeAt = 0;
-		std::function<void(std::vector<double>)>* change;
+		std::function<void(std::vector<double>)> change;
 		int duration = 60;
 	protected:
 		void doChange(std::vector<double> v) {
 			for (double& _v : v) {//make it "smooth" by divinding by duration
 				_v/=duration;
 			}
-			(*change)(v);
+			change(v);
 		};
-		void giveFunction(std::function<void(std::vector<double>)>* c) {change=c;}
+		void giveFunction(std::function<void(std::vector<double>)> c) {change=c;}
 		std::vector<SaveData> makeSaveData(std::vector<SaveData> s);
 		std::vector<EditFieldMenu> makeEditableFields(std::vector<EditFieldMenu> s);
 	public:

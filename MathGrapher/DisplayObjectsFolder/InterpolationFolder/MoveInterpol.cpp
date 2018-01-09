@@ -20,16 +20,18 @@ std::vector<EditFieldMenu> MoveInterpol::getEditableFields() {
 		{"∆Y: ",&yChange,_DOUBLE,20,true},
 	});
 }
-MoveInterpol::MoveInterpol(double x,double y,DisplayObject* d) {
+MoveInterpol::MoveInterpol(double x,double y) {
 	xChange = x;
 	yChange = y;
-	relateData(d);
 }
 
 void MoveInterpol::relateData(Data *d) {
-	std::function<void(std::vector<double>)> f = [&](std::vector<double> v){
+	if (d==NULL) {return;}
+	if (!d->isDisplayObject()) {return;}
+	std::cout << d << "\n";
+	std::function<void(std::vector<double>)> f = ([=](std::vector<double> v){
 		((DisplayObject*)d)->move(v[0], v[1]);
-	};
-	giveFunction(&f);
+	});
+	giveFunction(f);
 }
 

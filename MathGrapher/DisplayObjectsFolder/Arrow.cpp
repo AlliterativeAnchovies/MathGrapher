@@ -36,13 +36,6 @@ void Arrow::reset() {
     }
 }
 
-void Arrow::update() {
-	for (int i = 0;i<interpolations.size();i++) {
-        if (interpolations[i]->update()) {
-            interpolations[i]->pause();
-        }
-    }
-}
 
 bool Arrow::clickedIn(double mouseX,double mouseY) {
 	return pointInArrow(mouseX-px,mouseY-py,length,thickness,headSize,angle,headAngle);
