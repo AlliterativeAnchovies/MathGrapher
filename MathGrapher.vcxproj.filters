@@ -27,9 +27,6 @@
     <ClCompile Include="mathgrapher\DisplayObjectsFolder\Graph.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="mathgrapher\DisplayObjectsFolder\Interpolation.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="mathgrapher\DisplayObjectsFolder\RawImage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -40,6 +37,54 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="mathgrapher\DisplayObjectsFolder\Arrow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\InterpolationFolder\Interpolation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\InterpolationFolder\MoveInterpol.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\InterpolationFolder\HighlightInterpol.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\InterpolationFolder\MoveOriginInterpol.cpp">
+     <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\InterpolationFolder\RotateInterpol.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\InterpolationFolder\ScaleInterpol.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\InterpolationFolder\ScaleTextInterpol.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\InterpolationFolder\ResizeInterpol.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\InterpolationFolder\RescaleGridInterpol.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\InterpolationFolder\RunFunctionInterpol.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\InterpolationFolder\StretchFunctionInterpol.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\InterpolationFolder\FixInterpol.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\InterpolationFolder\RescaleHeadInterpol.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\InterpolationFolder\AppearInterpol.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\InterpolationFolder\DisappearInterpol.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\InterpolationWrapper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="mathgrapher\DisplayWrapper.cpp">
@@ -152,9 +197,6 @@
     <ClCompile Include="mathgrapher\DisplayObjectsFolder\Graph.hpp">
       <Filter>Header Files</Filter>
     </ClCompile>
-    <ClCompile Include="mathgrapher\DisplayObjectsFolder\Interpolation.hpp">
-      <Filter>Header Files</Filter>
-    </ClCompile>
     <ClCompile Include="mathgrapher\DisplayObjectsFolder\RawImage.hpp">
       <Filter>Header Files</Filter>
     </ClCompile>
@@ -162,6 +204,54 @@
       <Filter>Header Files</Filter>
     </ClCompile>
     <ClCompile Include="mathgrapher\DisplayObjectsFolder\Slider.hpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\InterpolationFolder\Interpolation.hpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\InterpolationFolder\MoveInterpol.hpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\InterpolationFolder\HighlightInterpol.hpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\InterpolationFolder\MoveOriginInterpol.hpp">
+     <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\InterpolationFolder\RotateInterpol.hpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\InterpolationFolder\ScaleInterpol.hpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\InterpolationFolder\ScaleTextInterpol.hpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\InterpolationFolder\ResizeInterpol.hpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\InterpolationFolder\RescaleGridInterpol.hpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\InterpolationFolder\RunFunctionInterpol.hpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\InterpolationFolder\StretchFunctionInterpol.hpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\InterpolationFolder\FixInterpol.hpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\InterpolationFolder\RescaleHeadInterpol.hpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\InterpolationFolder\AppearInterpol.hpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\InterpolationFolder\DisappearInterpol.hpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mathgrapher\DisplayObjectsFolder\InterpolationWrapper.hpp">
       <Filter>Header Files</Filter>
     </ClCompile>
     <ClCompile Include="mathgrapher\DisplayWrapper.hpp">
