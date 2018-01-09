@@ -26,7 +26,7 @@ template<> std::vector<std::string> getValidInterpolations<RawText>() {
 }
 
 template<> std::vector<std::string> getValidInterpolations<Arrow>() {
-	return {"Move","Scale","Scale Head","Disappear","Appear"};
+	return {"Move","Scale","Rescale Head","Disappear","Appear"};
 }
 
 //Things to draw

@@ -70,45 +70,47 @@ void Popup::setUpInterpolation() {
 		throw std::runtime_error("Not set up adding interpolations to this type of display object!");
 	}
 	
-	
-    Uint8 interpolID = 0x00;
     if (stringConcerned=="Move") {
-        interpolID = SMOOTH_TRANSLATE;
         interpolationConcerned = new MoveInterpol(0,0);
     }
     else if (stringConcerned=="Resize") {
-        interpolID = SMOOTH_GRID_RESIZE_SMART_CENTER;
+        interpolationConcerned = new ResizeInterpol(0,0);
     }
-    else if (stringConcerned=="Rescale") {
-        interpolID = SMOOTH_GRID_SCALE;
+    else if (stringConcerned=="Rescale Grid") {
+        interpolationConcerned = new RescaleGridInterpol(0,0);
+    }
+    else if (stringConcerned=="Scale") {
+        interpolationConcerned = new ScaleInterpol(0,0);
+    }
+    else if (stringConcerned=="Rescale Text") {
+        interpolationConcerned = new ScaleTextInterpol(0,0);
     }
     else if (stringConcerned=="Rotate") {
-        interpolID = SMOOTH_GRID_ROTATE;
+        interpolationConcerned = new RotateInterpol(0,0);
     }
-    else if (stringConcerned=="Re-Origin") {
-        interpolID = SMOOTH_ORIGIN_TRANSLATE;
+    else if (stringConcerned=="Move Origin") {
+        interpolationConcerned = new MoveOriginInterpol(0,0);
     }
     else if (stringConcerned=="Stretch") {
-        interpolID = SMOOTH_FUNCTION_STRETCH;
+        interpolationConcerned = new StretchFunctionInterpol(0,0);
     }
     else if (stringConcerned=="Run") {
-        interpolID = SMOOTH_FUNCTION_RUN;
+        interpolationConcerned = new RunFunctionInterpol(0);
     }
     else if (stringConcerned=="Highlight") {
-        interpolID = HIGHLIGHT_GRAPH;
         interpolationConcerned = new HighlightInterpol(0,0,0,0);
     }
     else if (stringConcerned=="Fix") {
-    	interpolID = FIX_THINGAMAJIG;
+    	interpolationConcerned = new FixInterpol();
 	}
 	else if (stringConcerned=="Rescale Head") {
-    	interpolID = RESCALE_HEAD;
+    	interpolationConcerned = new RescaleHeadInterpol(0);
 	}
 	else if (stringConcerned=="Disappear") {
-    	interpolID = DISAPPEAR;
+    	interpolationConcerned = new DisappearInterpol();
 	}
 	else if (stringConcerned=="Appear") {
-    	interpolID = APPEAR;
+    	interpolationConcerned = new AppearInterpol();
 	}
     else {
         throw std::runtime_error("Invalid Interpolation To Set Up");

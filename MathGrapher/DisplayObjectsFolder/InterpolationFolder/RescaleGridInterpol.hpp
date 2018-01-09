@@ -18,7 +18,7 @@ class RescaleGridInterpol: public Interpolation {
 		double yChange = 0;
 		std::function<void(std::vector<double>)>* makeFunction();
 	public:
-		std::string getID() {return "Resize";};
+		std::string getID() {return "Rescale Grid";};
 		Uint32 getColor() {return 0xff00aaaa;};
 		void run() {doChange({xChange,yChange});};//calls change
 		std::string getDisplay() {return "Rescale Grid by ("+tostring(xChange)+","+tostring(yChange)+")";};

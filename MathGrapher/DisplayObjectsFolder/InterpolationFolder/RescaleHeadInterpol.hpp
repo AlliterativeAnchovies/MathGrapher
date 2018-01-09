@@ -13,21 +13,20 @@
 #include "Interpolation.hpp"
 #include "Arrow.hpp"
 
-class RescaleHeadInterpolation: public Interpolation {
+class RescaleHeadInterpol: public Interpolation {
 	private:
 		double xChange = 0;
-		double yChange = 0;
 		std::function<void(std::vector<double>)>* makeFunction();
 	public:
 		std::string getID() {return "Scale Head";};
 		Uint32 getColor() {return 0xff8800ff;};
-		void run() {doChange({xChange,yChange});};//calls change
-		std::string getDisplay() {return "Rescale Arrow Head by ("+tostring(xChange)+","+tostring(yChange)+")";};
+		void run() {doChange({xChange});};//calls change
+		std::string getDisplay() {return "Rescale Arrow Head by ("+tostring(xChange)+")";};
 		std::vector<SaveData> getSaveData();
 		std::vector<EditFieldMenu> getEditableFields();
-		RescaleHeadInterpolation(double x,double y);
+		RescaleHeadInterpol(double x);
 		void relateData(Data* d);
-		RescaleHeadInterpolation() {};
+		RescaleHeadInterpol() {};
 };
 
 #endif /* RescaleHeadInterpol_hpp */

@@ -21,7 +21,7 @@
 
 
 
-enum INTERPOLATIONS {
+/*enum INTERPOLATIONS {
     NULL_INTERPOLATION,
     SMOOTH_TRANSLATE,
     SMOOTH_ORIGIN_TRANSLATE,
@@ -37,7 +37,8 @@ enum INTERPOLATIONS {
     APPEAR,
     DISAPPEAR,
     DELAY
-};
+};*/
+
 class Graph;
 class Interpolation;
 class Function;
