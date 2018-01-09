@@ -12,21 +12,21 @@ template<> std::vector<std::string> getValidInterpolations<DisplayObject>() {
 	throw std::runtime_error("Error!  Trying to get genericly valid interpolations - be specific!");
 }
 template<> std::vector<std::string> getValidInterpolations<RawImage>() {
-	return {"Move","Rescale","Fix","Disappear","Appear"};
+	return {"Move","Scale","Fix","Disappear","Appear"};
 }
 template<> std::vector<std::string> getValidInterpolations<Slider>() {
 	return {"Move","Disappear","Appear"};
 }
 template<> std::vector<std::string> getValidInterpolations<Graph>() {
-	return {"Move","Resize","Rescale","Rotate","Re-Origin","Stretch","Highlight","Disappear","Appear"};
+	return {"Move","Resize","Scale","Rotate","Move Origin","Stretch","Highlight","Disappear","Appear","Rescale Grid"};
 }
 
 template<> std::vector<std::string> getValidInterpolations<RawText>() {
-	return {"Move","Disappear","Appear","Rescale"};
+	return {"Move","Disappear","Appear","Rescale Text"};
 }
 
 template<> std::vector<std::string> getValidInterpolations<Arrow>() {
-	return {"Move","Rescale","Rescale Head","Disappear","Appear"};
+	return {"Move","Scale","Scale Head","Disappear","Appear"};
 }
 
 //Things to draw

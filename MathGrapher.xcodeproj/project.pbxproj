@@ -12,6 +12,18 @@
 		86282B6E20041ED700B19C4E /* InterpolationWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86282B6C20041ED700B19C4E /* InterpolationWrapper.cpp */; };
 		86282B742004243700B19C4E /* MoveInterpol.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86282B722004243700B19C4E /* MoveInterpol.cpp */; };
 		86282B772004355000B19C4E /* HighlightInterpol.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86282B752004355000B19C4E /* HighlightInterpol.cpp */; };
+		86282B7A20044A6000B19C4E /* MoveOriginInterpol.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86282B7820044A6000B19C4E /* MoveOriginInterpol.cpp */; };
+		86282B7D20044BAA00B19C4E /* RotateInterpol.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86282B7B20044BAA00B19C4E /* RotateInterpol.cpp */; };
+		86282B8020044C4800B19C4E /* ScaleInterpol.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86282B7E20044C4800B19C4E /* ScaleInterpol.cpp */; };
+		86282B8320044D8C00B19C4E /* ScaleTextInterpol.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86282B8120044D8C00B19C4E /* ScaleTextInterpol.cpp */; };
+		86282B8620044F3000B19C4E /* ResizeInterpol.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86282B8420044F3000B19C4E /* ResizeInterpol.cpp */; };
+		86282B8C2004503800B19C4E /* RescaleGridInterpol.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86282B8A2004503800B19C4E /* RescaleGridInterpol.cpp */; };
+		86282B8F200451E100B19C4E /* RunFunctionInterpol.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86282B8D200451E100B19C4E /* RunFunctionInterpol.cpp */; };
+		86282B92200452C300B19C4E /* StretchFunctionInterpol.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86282B90200452C300B19C4E /* StretchFunctionInterpol.cpp */; };
+		86282B952004535900B19C4E /* FixInterpol.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86282B932004535900B19C4E /* FixInterpol.cpp */; };
+		86282B982004541300B19C4E /* RescaleHeadInterpol.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86282B962004541300B19C4E /* RescaleHeadInterpol.cpp */; };
+		86282B9E200454B600B19C4E /* AppearInterpol.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86282B9C200454B600B19C4E /* AppearInterpol.cpp */; };
+		86282BA12004553600B19C4E /* DisappearInterpol.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86282B9F2004553600B19C4E /* DisappearInterpol.cpp */; };
 		863C5C151FF5834A00F6FA18 /* resources in CopyFiles */ = {isa = PBXBuildFile; fileRef = 863C5C141FF5834A00F6FA18 /* resources */; };
 		863C5C1B1FF6EB2700F6FA18 /* DisplayWrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 863C5C191FF6EB2700F6FA18 /* DisplayWrapper.cpp */; };
 		863C5C311FFB0BB500F6FA18 /* BulkUtilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 863C5C2F1FFB0BB500F6FA18 /* BulkUtilities.cpp */; };
@@ -78,6 +90,30 @@
 		86282B732004243700B19C4E /* MoveInterpol.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MoveInterpol.hpp; sourceTree = "<group>"; };
 		86282B752004355000B19C4E /* HighlightInterpol.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = HighlightInterpol.cpp; sourceTree = "<group>"; };
 		86282B762004355000B19C4E /* HighlightInterpol.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = HighlightInterpol.hpp; sourceTree = "<group>"; };
+		86282B7820044A6000B19C4E /* MoveOriginInterpol.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MoveOriginInterpol.cpp; sourceTree = "<group>"; };
+		86282B7920044A6000B19C4E /* MoveOriginInterpol.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MoveOriginInterpol.hpp; sourceTree = "<group>"; };
+		86282B7B20044BAA00B19C4E /* RotateInterpol.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RotateInterpol.cpp; sourceTree = "<group>"; };
+		86282B7C20044BAA00B19C4E /* RotateInterpol.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = RotateInterpol.hpp; sourceTree = "<group>"; };
+		86282B7E20044C4800B19C4E /* ScaleInterpol.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ScaleInterpol.cpp; sourceTree = "<group>"; };
+		86282B7F20044C4800B19C4E /* ScaleInterpol.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ScaleInterpol.hpp; sourceTree = "<group>"; };
+		86282B8120044D8C00B19C4E /* ScaleTextInterpol.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ScaleTextInterpol.cpp; sourceTree = "<group>"; };
+		86282B8220044D8C00B19C4E /* ScaleTextInterpol.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ScaleTextInterpol.hpp; sourceTree = "<group>"; };
+		86282B8420044F3000B19C4E /* ResizeInterpol.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ResizeInterpol.cpp; sourceTree = "<group>"; };
+		86282B8520044F3000B19C4E /* ResizeInterpol.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ResizeInterpol.hpp; sourceTree = "<group>"; };
+		86282B8A2004503800B19C4E /* RescaleGridInterpol.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RescaleGridInterpol.cpp; sourceTree = "<group>"; };
+		86282B8B2004503800B19C4E /* RescaleGridInterpol.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = RescaleGridInterpol.hpp; sourceTree = "<group>"; };
+		86282B8D200451E100B19C4E /* RunFunctionInterpol.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RunFunctionInterpol.cpp; sourceTree = "<group>"; };
+		86282B8E200451E100B19C4E /* RunFunctionInterpol.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = RunFunctionInterpol.hpp; sourceTree = "<group>"; };
+		86282B90200452C300B19C4E /* StretchFunctionInterpol.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = StretchFunctionInterpol.cpp; sourceTree = "<group>"; };
+		86282B91200452C300B19C4E /* StretchFunctionInterpol.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = StretchFunctionInterpol.hpp; sourceTree = "<group>"; };
+		86282B932004535900B19C4E /* FixInterpol.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FixInterpol.cpp; sourceTree = "<group>"; };
+		86282B942004535900B19C4E /* FixInterpol.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = FixInterpol.hpp; sourceTree = "<group>"; };
+		86282B962004541300B19C4E /* RescaleHeadInterpol.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RescaleHeadInterpol.cpp; sourceTree = "<group>"; };
+		86282B972004541300B19C4E /* RescaleHeadInterpol.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = RescaleHeadInterpol.hpp; sourceTree = "<group>"; };
+		86282B9C200454B600B19C4E /* AppearInterpol.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AppearInterpol.cpp; sourceTree = "<group>"; };
+		86282B9D200454B600B19C4E /* AppearInterpol.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AppearInterpol.hpp; sourceTree = "<group>"; };
+		86282B9F2004553600B19C4E /* DisappearInterpol.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DisappearInterpol.cpp; sourceTree = "<group>"; };
+		86282BA02004553600B19C4E /* DisappearInterpol.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DisappearInterpol.hpp; sourceTree = "<group>"; };
 		863C5C141FF5834A00F6FA18 /* resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = resources; sourceTree = "<group>"; };
 		863C5C191FF6EB2700F6FA18 /* DisplayWrapper.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DisplayWrapper.cpp; sourceTree = "<group>"; };
 		863C5C1A1FF6EB2700F6FA18 /* DisplayWrapper.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DisplayWrapper.hpp; sourceTree = "<group>"; };
@@ -179,6 +215,30 @@
 				86282B732004243700B19C4E /* MoveInterpol.hpp */,
 				86282B752004355000B19C4E /* HighlightInterpol.cpp */,
 				86282B762004355000B19C4E /* HighlightInterpol.hpp */,
+				86282B7820044A6000B19C4E /* MoveOriginInterpol.cpp */,
+				86282B7920044A6000B19C4E /* MoveOriginInterpol.hpp */,
+				86282B7B20044BAA00B19C4E /* RotateInterpol.cpp */,
+				86282B7C20044BAA00B19C4E /* RotateInterpol.hpp */,
+				86282B7E20044C4800B19C4E /* ScaleInterpol.cpp */,
+				86282B7F20044C4800B19C4E /* ScaleInterpol.hpp */,
+				86282B8120044D8C00B19C4E /* ScaleTextInterpol.cpp */,
+				86282B8220044D8C00B19C4E /* ScaleTextInterpol.hpp */,
+				86282B8420044F3000B19C4E /* ResizeInterpol.cpp */,
+				86282B8520044F3000B19C4E /* ResizeInterpol.hpp */,
+				86282B8A2004503800B19C4E /* RescaleGridInterpol.cpp */,
+				86282B8B2004503800B19C4E /* RescaleGridInterpol.hpp */,
+				86282B8D200451E100B19C4E /* RunFunctionInterpol.cpp */,
+				86282B8E200451E100B19C4E /* RunFunctionInterpol.hpp */,
+				86282B90200452C300B19C4E /* StretchFunctionInterpol.cpp */,
+				86282B91200452C300B19C4E /* StretchFunctionInterpol.hpp */,
+				86282B932004535900B19C4E /* FixInterpol.cpp */,
+				86282B942004535900B19C4E /* FixInterpol.hpp */,
+				86282B962004541300B19C4E /* RescaleHeadInterpol.cpp */,
+				86282B972004541300B19C4E /* RescaleHeadInterpol.hpp */,
+				86282B9C200454B600B19C4E /* AppearInterpol.cpp */,
+				86282B9D200454B600B19C4E /* AppearInterpol.hpp */,
+				86282B9F2004553600B19C4E /* DisappearInterpol.cpp */,
+				86282BA02004553600B19C4E /* DisappearInterpol.hpp */,
 			);
 			path = InterpolationFolder;
 			sourceTree = "<group>";
@@ -416,16 +476,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86282B92200452C300B19C4E /* StretchFunctionInterpol.cpp in Sources */,
+				86282B9E200454B600B19C4E /* AppearInterpol.cpp in Sources */,
 				86939E921FFC52000075EB39 /* SaverPopup.cpp in Sources */,
 				86B40B791FFEB6810092BA4E /* Slider.cpp in Sources */,
 				86282B6E20041ED700B19C4E /* InterpolationWrapper.cpp in Sources */,
 				863C5C6F1FFB1C6800F6FA18 /* EditTextPopup.cpp in Sources */,
 				86928C731FE1319B00CBB286 /* RenderingUtilities.cpp in Sources */,
 				863C5C4F1FFB19AB00F6FA18 /* CreateResizeInterpolation.cpp in Sources */,
+				86282B7A20044A6000B19C4E /* MoveOriginInterpol.cpp in Sources */,
 				86282B671FFFEC3900B19C4E /* Arrow.cpp in Sources */,
 				863C5C341FFB113600F6FA18 /* PopupWrapper.cpp in Sources */,
 				863C5C3F1FFB175100F6FA18 /* EditGraphPopup.cpp in Sources */,
 				863C5C381FFB139900F6FA18 /* MajorPopup.cpp in Sources */,
+				86282B8020044C4800B19C4E /* ScaleInterpol.cpp in Sources */,
 				86928C791FE3225400CBB286 /* Functions.cpp in Sources */,
 				863C5C5A1FFB1AE400F6FA18 /* CreateFunctionRunInterpolation.cpp in Sources */,
 				863C5C751FFB1CCC00F6FA18 /* SaveFilePopup.cpp in Sources */,
@@ -433,6 +497,7 @@
 				863C5C461FFB186C00F6FA18 /* ChooseFunctionPopup.cpp in Sources */,
 				863C5C691FFB1C0200F6FA18 /* ChooseWhichImagePopup.cpp in Sources */,
 				86B40B741FFEB6810092BA4E /* Graph.cpp in Sources */,
+				86282B8620044F3000B19C4E /* ResizeInterpol.cpp in Sources */,
 				863C5C661FFB1BD600F6FA18 /* ChoosePointConcernedForLinkingPopup.cpp in Sources */,
 				863C5C601FFB1B6A00F6FA18 /* CreateHighlightInterpolation.cpp in Sources */,
 				863C5C3B1FFB14A500F6FA18 /* AddObjectPopup.cpp in Sources */,
@@ -441,11 +506,16 @@
 				86282B6A200016AF00B19C4E /* EditArrowPopup.cpp in Sources */,
 				86B40B781FFEB6810092BA4E /* RawImage.cpp in Sources */,
 				86B40B731FFEB6810092BA4E /* DisplayObjects.cpp in Sources */,
+				86282B952004535900B19C4E /* FixInterpol.cpp in Sources */,
+				86282B982004541300B19C4E /* RescaleHeadInterpol.cpp in Sources */,
 				86B40B761FFEB6810092BA4E /* Interpolation.cpp in Sources */,
+				86282B8320044D8C00B19C4E /* ScaleTextInterpol.cpp in Sources */,
 				863C5C6C1FFB1C4B00F6FA18 /* EditImagePopup.cpp in Sources */,
 				86928C761FE2C73300CBB286 /* Popup.cpp in Sources */,
+				86282BA12004553600B19C4E /* DisappearInterpol.cpp in Sources */,
 				863C5C311FFB0BB500F6FA18 /* BulkUtilities.cpp in Sources */,
 				863C5C631FFB1B9D00F6FA18 /* EditSliderPopup.cpp in Sources */,
+				86282B7D20044BAA00B19C4E /* RotateInterpol.cpp in Sources */,
 				863C5C791FFB1D0C00F6FA18 /* MainDisplay.cpp in Sources */,
 				86282B742004243700B19C4E /* MoveInterpol.cpp in Sources */,
 				86939E951FFC52D30075EB39 /* SaveVideoPopup.cpp in Sources */,
@@ -453,10 +523,12 @@
 				863C5C5D1FFB1B1500F6FA18 /* CreatePointOfInterest.cpp in Sources */,
 				863C5C721FFB1C9E00F6FA18 /* LoadFilePopup.cpp in Sources */,
 				863C5C521FFB19F900F6FA18 /* EditFunctionPopup.cpp in Sources */,
+				86282B8C2004503800B19C4E /* RescaleGridInterpol.cpp in Sources */,
 				863C5C421FFB179500F6FA18 /* QuickCloserPopup.cpp in Sources */,
 				863C5C491FFB18BF00F6FA18 /* ChooseInterpolationPopup.cpp in Sources */,
 				863C5C4C1FFB193900F6FA18 /* CreateSimpleInterpolation.cpp in Sources */,
 				86B40B751FFEB6810092BA4E /* Function.cpp in Sources */,
+				86282B8F200451E100B19C4E /* RunFunctionInterpol.cpp in Sources */,
 				863C5C571FFB1A9300F6FA18 /* ChooseFunctionInterpolation.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

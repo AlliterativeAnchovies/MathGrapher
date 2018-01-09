@@ -12,5 +12,17 @@
 #include "InterpolationFolder/Interpolation.hpp"
 #include "InterpolationFolder/MoveInterpol.hpp"
 #include "InterpolationFolder/HighlightInterpol.hpp"
+#include "InterpolationFolder/MoveOriginInterpol.hpp"
+#include "InterpolationFolder/RotateInterpol.hpp"
+#include "InterpolationFolder/ScaleInterpol.hpp"
+#include "InterpolationFolder/ScaleTextInterpol.hpp"
+#include "InterpolationFolder/ResizeInterpol.hpp"
+#include "InterpolationFolder/RescaleGridInterpol.hpp"
+#include "InterpolationFolder/RunFunctionInterpol.hpp"
+#include "InterpolationFolder/StretchFunctionInterpol.hpp"
+#include "InterpolationFolder/FixInterpol.hpp"
+#include "InterpolationFolder/RescaleHeadInterpol.hpp"
+#include "InterpolationFolder/AppearInterpol.hpp"
+#include "InterpolationFolder/DisappearInterpol.hpp"
 
 #endif /* InterpolationWrapper_hpp */
