@@ -96,3 +96,80 @@ void DisplayObject::addInterpolation(Interpolation* i) {
 	interpolations.push_back(i);
 	i->relateData(this);
 }
+
+Data* dataFromID(std::string theID) {
+	Data* theObject;
+	if (theID=="Graph") {
+		theObject = new Graph();
+	}
+	else if (theID=="Slider") {
+		theObject = new Slider();
+	}
+	else if (theID=="Image") {
+		theObject = new RawImage();
+	}
+	else if (theID=="Text") {
+		theObject = new RawText();
+	}
+	else if (theID=="Arrow") {
+		theObject = new Arrow();
+	}
+	else if (theID=="Function") {
+		theObject = new Function();
+	}
+	else if (theID=="Point_Of_Interest") {
+		theObject = new PointOfInterest();
+	}
+	else if (theID=="Move") {
+		theObject = new MoveInterpol();
+	}
+	else if (theID=="Highlight") {
+		theObject = new HighlightInterpol();
+	}
+	else if (theID=="Move") {
+        theObject = new MoveInterpol(0,0);
+    }
+    else if (theID=="Resize") {
+        theObject = new ResizeInterpol(0,0);
+    }
+    else if (theID=="Rescale Grid") {
+        theObject = new RescaleGridInterpol(0,0);
+    }
+    else if (theID=="Scale") {
+        theObject = new ScaleInterpol(0,0);
+    }
+    else if (theID=="Rescale Text") {
+        theObject = new ScaleTextInterpol(0,0);
+    }
+    else if (theID=="Rotate") {
+        theObject = new RotateInterpol(0,0);
+    }
+    else if (theID=="Move Origin") {
+        theObject = new MoveOriginInterpol(0,0);
+    }
+    else if (theID=="Stretch") {
+        theObject = new StretchFunctionInterpol(0,0);
+    }
+    else if (theID=="Run") {
+        theObject = new RunFunctionInterpol(0);
+    }
+    else if (theID=="Highlight") {
+        theObject = new HighlightInterpol(0,0,0,0);
+    }
+    else if (theID=="Fix") {
+    	theObject = new FixInterpol();
+	}
+	else if (theID=="Rescale Head") {
+    	theObject = new RescaleHeadInterpol(0);
+	}
+	else if (theID=="Disappear") {
+    	theObject = new DisappearInterpol();
+	}
+	else if (theID=="Appear") {
+    	theObject = new AppearInterpol();
+	}
+	else {
+		throw std::runtime_error("Need to hook data into the loading stuffs!");
+	}
+	return theObject;
+}

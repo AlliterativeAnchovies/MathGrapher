@@ -53,4 +53,7 @@ extern std::vector<DisplayObject*> selectedObjects;
 //Draw code
 void drawDisplayObject(DisplayObject* d);
 
+//Get a created object from the ID
+Data* dataFromID(std::string theID);
+
 #endif /* DisplayWrapper_hpp */

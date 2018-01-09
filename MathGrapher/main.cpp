@@ -649,41 +649,6 @@ void save(std::string toSave) {
 	}
 }
 
-Data* dataFromID(std::string theID) {
-	Data* theObject;
-	if (theID=="Graph") {
-		theObject = new Graph();
-	}
-	else if (theID=="Slider") {
-		theObject = new Slider();
-	}
-	else if (theID=="Image") {
-		theObject = new RawImage();
-	}
-	else if (theID=="Text") {
-		theObject = new RawText();
-	}
-	else if (theID=="Arrow") {
-		theObject = new Arrow();
-	}
-	else if (theID=="Function") {
-		theObject = new Function();
-	}
-	else if (theID=="Point_Of_Interest") {
-		theObject = new PointOfInterest();
-	}
-	else if (theID=="Move") {
-		theObject = new MoveInterpol();
-	}
-	else if (theID=="Highlight") {
-		theObject = new HighlightInterpol();
-	}
-	else {
-		throw std::runtime_error("Need to hook it in to the loading stuffs!");
-	}
-	return theObject;
-}
-
 void loadData(Data** theObject,ParsedFile* object,std::string theID,std::vector<Data*>* allLoadedObjects,int* objcount) {
 	*theObject = dataFromID(theID);
 	//auto aLO = *allLoadedObjects;

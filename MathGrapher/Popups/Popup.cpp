@@ -70,69 +70,7 @@ void Popup::setUpInterpolation() {
 		throw std::runtime_error("Not set up adding interpolations to this type of display object!");
 	}
 	
-    if (stringConcerned=="Move") {
-        interpolationConcerned = new MoveInterpol(0,0);
-    }
-    else if (stringConcerned=="Resize") {
-        interpolationConcerned = new ResizeInterpol(0,0);
-    }
-    else if (stringConcerned=="Rescale Grid") {
-        interpolationConcerned = new RescaleGridInterpol(0,0);
-    }
-    else if (stringConcerned=="Scale") {
-        interpolationConcerned = new ScaleInterpol(0,0);
-    }
-    else if (stringConcerned=="Rescale Text") {
-        interpolationConcerned = new ScaleTextInterpol(0,0);
-    }
-    else if (stringConcerned=="Rotate") {
-        interpolationConcerned = new RotateInterpol(0,0);
-    }
-    else if (stringConcerned=="Move Origin") {
-        interpolationConcerned = new MoveOriginInterpol(0,0);
-    }
-    else if (stringConcerned=="Stretch") {
-        interpolationConcerned = new StretchFunctionInterpol(0,0);
-    }
-    else if (stringConcerned=="Run") {
-        interpolationConcerned = new RunFunctionInterpol(0);
-    }
-    else if (stringConcerned=="Highlight") {
-        interpolationConcerned = new HighlightInterpol(0,0,0,0);
-    }
-    else if (stringConcerned=="Fix") {
-    	interpolationConcerned = new FixInterpol();
-	}
-	else if (stringConcerned=="Rescale Head") {
-    	interpolationConcerned = new RescaleHeadInterpol(0);
-	}
-	else if (stringConcerned=="Disappear") {
-    	interpolationConcerned = new DisappearInterpol();
-	}
-	else if (stringConcerned=="Appear") {
-    	interpolationConcerned = new AppearInterpol();
-	}
-    else {
-        throw std::runtime_error("Invalid Interpolation To Set Up");
-    }
-    /*if (graphConcerned!=NULL) {
-    	interpolationConcerned = new Interpolation(interpolID,0,0,FRAME_RATE,graphConcerned);
-    }
-    else if (sliderConcerned!=NULL) {
-		interpolationConcerned = new Interpolation(interpolID,0,0,FRAME_RATE,sliderConcerned);
-	}
-	else if (imageConcerned!=NULL) {
-		interpolationConcerned = new Interpolation(interpolID,0,0,FRAME_RATE,imageConcerned);
-	}
-	else if (textConcerned!=NULL) {
-		interpolationConcerned = new Interpolation(interpolID,0,0,FRAME_RATE,textConcerned);
-	}
-	else if (arrowConcerned!=NULL) {
-		interpolationConcerned = new Interpolation(interpolID,0,0,FRAME_RATE,arrowConcerned);
-	}
-	else {
-		throw std::runtime_error("Not set up adding interpolations to this type of display object!");
-	}*/
+    interpolationConcerned = (Interpolation*)dataFromID(stringConcerned);
 }
 
 void Popup::lock() {
