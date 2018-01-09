@@ -22,8 +22,8 @@ class Interpolation: public Data {
 		int duration = 60;
 	protected:
 		void doChange(std::vector<double> v) {
-			for (double& _v : v) {//make it "smooth" by divinding by duration
-				_v/=duration;
+			for (double& v_ : v) {//make it "smooth" by divinding by duration
+				v_/=duration;
 			}
 			change(v);
 		};
