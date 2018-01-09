@@ -152,10 +152,9 @@ c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(2
 c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
 c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\DisplayObjectsFolder\Slider.cpp(39): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\DisplayObjectsFolder\Slider.cpp(45): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\DisplayObjectsFolder\Slider.cpp(67): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\DisplayObjectsFolder\Slider.cpp(110): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\DisplayObjectsFolder\Slider.cpp(128): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\DisplayObjectsFolder\Slider.cpp(60): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\DisplayObjectsFolder\Slider.cpp(103): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\DisplayObjectsFolder\Slider.cpp(121): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
   c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
           with
@@ -166,8 +165,7 @@ c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(2
 c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
 c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 mathgrapher\DisplayObjectsFolder\RawText.cpp(23): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\DisplayObjectsFolder\RawText.cpp(46): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\DisplayObjectsFolder\RawText.cpp(60): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\DisplayObjectsFolder\RawText.cpp(53): warning C4018: '<': signed/unsigned mismatch
 c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
   c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
           with
@@ -177,13 +175,12 @@ c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(2
   RawImage.cpp
 c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(309): warning C4305: 'initializing': truncation from 'double' to 'float'
 c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\interpolationfolder\../RawText.hpp(42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\DisplayObjectsFolder\RawImage.cpp(19): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\DisplayObjectsFolder\RawImage.cpp(32): warning C4018: '<': signed/unsigned mismatch
-mathgrapher\DisplayObjectsFolder\RawImage.cpp(56): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\DisplayObjectsFolder\RawImage.cpp(66): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\DisplayObjectsFolder\RawImage.cpp(81): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\DisplayObjectsFolder\RawImage.cpp(89): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-mathgrapher\DisplayObjectsFolder\RawImage.cpp(110): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\DisplayObjectsFolder\RawImage.cpp(25): warning C4018: '<': signed/unsigned mismatch
+mathgrapher\DisplayObjectsFolder\RawImage.cpp(49): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\DisplayObjectsFolder\RawImage.cpp(59): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\DisplayObjectsFolder\RawImage.cpp(74): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\DisplayObjectsFolder\RawImage.cpp(82): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+mathgrapher\DisplayObjectsFolder\RawImage.cpp(103): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 c:\users\ebail\documents\github\mathgrapher\mathgrapher\RenderingUtilities.hpp(247): warning C4018: '<': signed/unsigned mismatch
   c:\users\ebail\documents\github\mathgrapher\mathgrapher\displayobjectsfolder\InterpolationFolder/MoveInterpol.hpp(23): note: see reference to function template instantiation 'std::string tostring<double>(T)' being compiled
           with
@@ -1265,9 +1262,6 @@ Debug\/mathgrapher\Popups\QuickCloserPopups\Select\/ChoosePointConcernedForLinki
 Debug\/mathgrapher\Popups\QuickCloserPopups\Select\/ChooseWhichImagePopup.obj : warning LNK4042: object specified more than once; extras ignored
 Debug\/mathgrapher\Popups\QuickCloserPopups\Select\/LoadFilePopup.obj : warning LNK4042: object specified more than once; extras ignored
 DisplayWrapper.obj : error LNK2019: unresolved external symbol "public: bool __thiscall Interpolation::update(void)" (?update@Interpolation@@QAE_NXZ) referenced in function "public: virtual void __thiscall DisplayObject::update(void)" (?update@DisplayObject@@UAEXXZ)
-RawImage.obj : error LNK2001: unresolved external symbol "public: bool __thiscall Interpolation::update(void)" (?update@Interpolation@@QAE_NXZ)
-RawText.obj : error LNK2001: unresolved external symbol "public: bool __thiscall Interpolation::update(void)" (?update@Interpolation@@QAE_NXZ)
-Slider.obj : error LNK2001: unresolved external symbol "public: bool __thiscall Interpolation::update(void)" (?update@Interpolation@@QAE_NXZ)
 DisplayWrapper.obj : error LNK2001: unresolved external symbol "public: virtual class std::vector<struct SaveData,class std::allocator<struct SaveData> > __thiscall MoveInterpol::getSaveData(void)" (?getSaveData@MoveInterpol@@UAE?AV?$vector@USaveData@@V?$allocator@USaveData@@@std@@@std@@XZ)
 DisplayWrapper.obj : error LNK2001: unresolved external symbol "public: virtual class std::vector<struct EditFieldMenu,class std::allocator<struct EditFieldMenu> > __thiscall MoveInterpol::getEditableFields(void)" (?getEditableFields@MoveInterpol@@UAE?AV?$vector@UEditFieldMenu@@V?$allocator@UEditFieldMenu@@@std@@@std@@XZ)
 DisplayWrapper.obj : error LNK2019: unresolved external symbol "public: __thiscall MoveInterpol::MoveInterpol(double,double)" (??0MoveInterpol@@QAE@NN@Z) referenced in function "class Data * __cdecl dataFromID(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?dataFromID@@YAPAVData@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
