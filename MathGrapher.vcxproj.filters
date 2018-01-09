@@ -129,16 +129,7 @@
     <ClCompile Include="mathgrapher\Popups\Popup.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateFunctionRunInterpolation.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateHighlightInterpolation.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreatePointOfInterest.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateResizeInterpolation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateSimpleInterpolation.cpp">
@@ -293,16 +284,7 @@
     <ClCompile Include="mathgrapher\Popups\Popup.hpp">
       <Filter>Header Files</Filter>
     </ClCompile>
-    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateFunctionRunInterpolation.hpp">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateHighlightInterpolation.hpp">
-      <Filter>Header Files</Filter>
-    </ClCompile>
     <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreatePointOfInterest.hpp">
-      <Filter>Header Files</Filter>
-    </ClCompile>
-    <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateResizeInterpolation.hpp">
       <Filter>Header Files</Filter>
     </ClCompile>
     <ClCompile Include="mathgrapher\Popups\QuickCloserPopups\CreateOrEdit\CreateSimpleInterpolation.hpp">
