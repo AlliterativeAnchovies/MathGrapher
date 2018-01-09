@@ -18,7 +18,6 @@ class ScaleInterpol: public Interpolation {
 	private:
 		double xChange = 0;
 		double yChange = 0;
-		std::function<void(std::vector<double>)>* makeFunction();
 	public:
 		std::string getID() {return "Scale";};
 		Uint32 getColor() {return 0xff0000ff;};

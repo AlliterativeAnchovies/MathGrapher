@@ -15,7 +15,6 @@
 class ScaleTextInterpol: public Interpolation {
 	private:
 		double fontChange = 0;
-		std::function<void(std::vector<double>)>* makeFunction();
 	public:
 		std::string getID() {return "Scale";};
 		Uint32 getColor() {return 0xff0000aa;};

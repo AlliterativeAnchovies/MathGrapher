@@ -16,7 +16,6 @@ class StretchFunctionInterpol: public Interpolation {
 	private:
 		double xChange = 0;
 		double yChange = 0;
-		std::function<void(std::vector<double>)>* makeFunction();
 	public:
 		std::string getID() {return "Stretch";};
 		Uint32 getColor() {return 0xff0088ff;};

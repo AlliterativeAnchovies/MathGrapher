@@ -15,7 +15,6 @@
 class RunFunctionInterpol: public Interpolation {
 	private:
 		double xChange = 0;
-		std::function<void(std::vector<double>)>* makeFunction();
 	public:
 		std::string getID() {return "Run";};
 		Uint32 getColor() {return 0xffff8800;};

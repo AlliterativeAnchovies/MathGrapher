@@ -12,8 +12,6 @@
 #include "Interpolation.hpp"
 
 class DisappearInterpol: public Interpolation {
-	private:
-		std::function<void(std::vector<double>)>* makeFunction();
 	public:
 		std::string getID() {return "Disappear";};
 		Uint32 getColor() {return 0xff666666;};

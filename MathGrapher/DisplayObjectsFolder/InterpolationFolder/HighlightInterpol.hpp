@@ -17,7 +17,6 @@ class HighlightInterpol: public Interpolation {
 		double yStart = 0;
 		double xSize = 0;
 		double ySize = 0;
-		std::function<void(std::vector<double>)>* makeFunction();
 	public:
 		std::string getID() {return "Highlight";};
 		Uint32 getColor() {return 0xffffff00;};

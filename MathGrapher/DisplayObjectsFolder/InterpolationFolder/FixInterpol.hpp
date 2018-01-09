@@ -13,8 +13,6 @@
 #include "../RawImage.hpp"
 
 class FixInterpol: public Interpolation {
-	private:
-		std::function<void(std::vector<double>)>* makeFunction();
 	public:
 		std::string getID() {return "Fix";};
 		Uint32 getColor() {return 0xffff0088;};

@@ -16,7 +16,6 @@
 class RescaleHeadInterpol: public Interpolation {
 	private:
 		double xChange = 0;
-		std::function<void(std::vector<double>)>* makeFunction();
 	public:
 		std::string getID() {return "Scale Head";};
 		Uint32 getColor() {return 0xff8800ff;};

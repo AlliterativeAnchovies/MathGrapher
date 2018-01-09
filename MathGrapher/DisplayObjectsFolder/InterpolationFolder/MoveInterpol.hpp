@@ -15,7 +15,6 @@ class MoveInterpol: public Interpolation {
 	private:
 		double xChange = 0;
 		double yChange = 0;
-		std::function<void(std::vector<double>)>* makeFunction();
 	public:
 		std::string getID() {return "Move";};
 		Uint32 getColor() {return 0xff00ff00;};

@@ -12,8 +12,6 @@
 #include "Interpolation.hpp"
 
 class AppearInterpol: public Interpolation {
-	private:
-		std::function<void(std::vector<double>)>* makeFunction();
 	public:
 		std::string getID() {return "Appear";};
 		Uint32 getColor() {return 0xff888888;};
