@@ -616,7 +616,7 @@ void save(std::string toSave) {
   	//fs << " more lorem ipsum";
   	int NUMBER_OF_INTERESTING_POINTS = 0;
   	int NUMBER_FUNCTIONS = 0;
-  	fs << "version: 2.1\n";
+  	fs << "version: "<<tostring(PARSED_FILE_VERSION_NUMBER)<<"\n";
   	fs << "tag: " << filename << "\n";
 	for (auto object : objects) {
 		if (object->getID() != "Graph") {continue;}	//it is imperative that graphs go first

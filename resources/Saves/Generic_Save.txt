@@ -1,10 +1,10 @@
-version: 2.1
+version: 2.2
 tag: Generic_Save
 object: {
 	ID: "Graph"
 	Name: "Graph 0"
-	PX: 179
-	PY: 159
+	PX: 169
+	PY: 67
 	Size_X: 100
 	Size_Y: 100
 	Origin_X: 50
@@ -16,7 +16,7 @@ object: {
 	X_Functions: {
 		ID: Function
 		data: {
-			Name: "cos(x)"
+			Name: "sin(x)"
 			Tag: 0
 			Stretch_X: 1
 			Stretch_Y: 1
@@ -36,24 +36,14 @@ object: {
 		None:"Empty Vector"
 	}
 	Interpolations: {
-		ID: Interpolation
-		data: {
-			Type: 00000007
-			PX: 50000
-			PY: 0
-			SX: 0
-			SY: 0
-			Start: 0
-			Duration: 10000
-			Tag: 0
-		}
+		None:"Empty Vector"
 	}
 }
 object: {
 	ID: "Slider"
 	Name: "Slider 0"
-	PX: 400
-	PY: 176
+	PX: 359
+	PY: 111
 	Size: 100
 	Angle: 0
 	Starting_Y: 0
