@@ -1,4 +1,114 @@
-﻿Debug\/mathgrapher\/BulkUtilities.obj : warning LNK4042: object specified more than once; extras ignored
+﻿  Skipping... (no relevant changes detected)
+  RenderingUtilities.cpp
+  PopupWrapper.cpp
+  main.cpp
+  Functions.cpp
+  DisplayWrapper.cpp
+  BulkUtilities.cpp
+  RenderingUtilities.hpp
+  PopupWrapper.hpp
+  Functions.hpp
+  DisplayWrapper.hpp
+  BulkUtilities.hpp
+  Skipping... (no relevant changes detected)
+  InterpolationWrapper.cpp
+  Slider.cpp
+  RawText.cpp
+  RawImage.cpp
+  Graph.cpp
+  Function.cpp
+  DisplayObjects.cpp
+  Arrow.cpp
+  InterpolationWrapper.hpp
+  Slider.hpp
+  RawText.hpp
+  RawImage.hpp
+  Graph.hpp
+  Function.hpp
+  DisplayObjects.hpp
+  Skipping... (no relevant changes detected)
+  DisappearInterpol.cpp
+  AppearInterpol.cpp
+  RescaleHeadInterpol.cpp
+  FixInterpol.cpp
+  StretchFunctionInterpol.cpp
+  RunFunctionInterpol.cpp
+  RescaleGridInterpol.cpp
+  ResizeInterpol.cpp
+  ScaleTextInterpol.cpp
+  ScaleInterpol.cpp
+  RotateInterpol.cpp
+  MoveOriginInterpol.cpp
+  HighlightInterpol.cpp
+  MoveInterpol.cpp
+  Interpolation.cpp
+  DisappearInterpol.hpp
+  AppearInterpol.hpp
+  RescaleHeadInterpol.hpp
+  FixInterpol.hpp
+  StretchFunctionInterpol.hpp
+  RunFunctionInterpol.hpp
+  RescaleGridInterpol.hpp
+  ResizeInterpol.hpp
+  ScaleTextInterpol.hpp
+  ScaleInterpol.hpp
+  RotateInterpol.hpp
+  MoveOriginInterpol.hpp
+  HighlightInterpol.hpp
+  MoveInterpol.hpp
+  Interpolation.hpp
+  Skipping... (no relevant changes detected)
+  EditArrowPopup.cpp
+  EditTextPopup.cpp
+  EditSliderPopup.cpp
+  EditImagePopup.cpp
+  EditGraphPopup.cpp
+  EditArrowPopup.hpp
+  EditTextPopup.hpp
+  EditSliderPopup.hpp
+  EditImagePopup.hpp
+  EditGraphPopup.hpp
+  Skipping... (no relevant changes detected)
+  SaverPopup.cpp
+  MajorPopup.cpp
+  MainDisplay.cpp
+  SaverPopup.hpp
+  MajorPopup.hpp
+  MainDisplay.hpp
+  Skipping... (no relevant changes detected)
+  SaveVideoPopup.cpp
+  SaveFilePopup.cpp
+  SaveVideoPopup.hpp
+  SaveFilePopup.hpp
+  Skipping... (no relevant changes detected)
+  Popup.cpp
+  Popup.hpp
+  Skipping... (no relevant changes detected)
+  EditFunctionPopup.cpp
+  CreateSimpleInterpolation.cpp
+  CreatePointOfInterest.cpp
+  EditFunctionPopup.hpp
+  CreateSimpleInterpolation.hpp
+  CreatePointOfInterest.hpp
+  Skipping... (no relevant changes detected)
+  QuickCloserPopup.cpp
+  QuickCloserPopup.hpp
+  Skipping... (no relevant changes detected)
+  LoadFilePopup.cpp
+  ChooseWhichImagePopup.cpp
+  ChoosePointConcernedForLinkingPopup.cpp
+  ChooseInterpolationPopup.cpp
+  ChooseFunctionPopup.cpp
+  ChooseFunctionInterpolation.cpp
+  AddObjectPopup.cpp
+  LoadFilePopup.hpp
+  ChooseWhichImagePopup.hpp
+  ChoosePointConcernedForLinkingPopup.hpp
+  ChooseInterpolationPopup.hpp
+  ChooseFunctionPopup.hpp
+  ChooseFunctionInterpolation.hpp
+  AddObjectPopup.hpp
+Debug\/mathgrapher\/BulkUtilities.obj : warning LNK4042: object specified more than once; extras ignored
 Debug\/mathgrapher\/DisplayWrapper.obj : warning LNK4042: object specified more than once; extras ignored
 Debug\/mathgrapher\/Functions.obj : warning LNK4042: object specified more than once; extras ignored
 Debug\/mathgrapher\/PopupWrapper.obj : warning LNK4042: object specified more than once; extras ignored
