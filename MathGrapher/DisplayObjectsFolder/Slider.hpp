@@ -77,13 +77,6 @@ class Slider: public DisplayObject {
         void update();
         void reset();
         bool isRunning() {return running;};
-        std::string* ptmName() {return &name;}
-        double* ptmPX() {return &px;}
-        double* ptmPY() {return &py;}
-        double* ptmSize() {return &size;}
-        double* ptmAngle() {return &angle;}
-        int* ptmTicks() {return &tickAmount;}
-        double* ptmStartingY() {return &pointery;}
         void reclaim(SDL_Surface* reclaimed) {
             //check is surface returned by draw() should be deleted or not
             SDL_FreeSurface(reclaimed);

@@ -75,9 +75,6 @@ class Function: public Data {
         bool isParametric() {return parametric;}
         //custom deleter to clean up points of interest
         ~Function();
-        double* ptmTime() {return &time;}
-        double* ptmStretchX() {return &stretchx;}
-        double* ptmStretchY() {return &stretchy;}
         int tagForSaving = -1;//used for linking things while saving stuffs
 		void setStretchX(double s) {stretchx=s;}
         void setStretchY(double s) {stretchy=s;}

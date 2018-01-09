@@ -23,29 +23,6 @@ Uint8 CreateSimpleInterpolation::handle(double mouseX,double mouseY,bool clicked
 	
 	clickedEdit = handleEditableInfo(curx, cury, interpolationConcerned, clicked, mouseX, mouseY, &offy);
 	cury+=offy;
-	/*//Edit field for interpolation first delta
-	clickedEdit = handleEditableInfo_internal(curx,cury,20,11,mouseX,mouseY,
-		"∆X: ",tostring(interpolationConcerned->getPX()),interpolationConcerned->ptmPX()
-		,clicked,&offx,&offy) || clickedEdit;
-	curx+=offx;
-	
-	//Edit field for interpolation second delta
-	clickedEdit = handleEditableInfo_internal(curx,cury,20,12,mouseX,mouseY,
-		"∆Y: ",tostring(interpolationConcerned->getPY()),interpolationConcerned->ptmPY()
-		,clicked,&offx,&offy) || clickedEdit;
-	cury+=offy;
-	curx = px+10;
-	
-	//Edit field for starting time
-	clickedEdit = handleEditableInfo_internal(curx,cury,20,13,mouseX,mouseY,
-		"Start: ",tostring(interpolationConcerned->getStart()),interpolationConcerned->ptmStart()
-		,clicked,&offx,&offy) || clickedEdit;
-	cury+=offy;
-	//Edit field for duration
-	clickedEdit = handleEditableInfo_internal(curx,cury,20,14,mouseX,mouseY,
-		"Duration: ",tostring(interpolationConcerned->getDuration()),interpolationConcerned->ptmDuration()
-		,clicked,&offx,&offy) || clickedEdit;
-	cury+=offy;*/
 	
 
 	int addx,addy;
@@ -58,23 +35,18 @@ Uint8 CreateSimpleInterpolation::handle(double mouseX,double mouseY,bool clicked
 			interpolationConcerned->reset();
 			if (graphConcerned!=NULL) {
 				graphConcerned->addInterpolation(interpolationConcerned);
-				//interpolationConcerned->relateData(graphConcerned);
 			}
 			else if (sliderConcerned!=NULL) {
 				sliderConcerned->addInterpolation(interpolationConcerned);
-				//interpolationConcerned->relateData(sliderConcerned);
 			}
 			else if (imageConcerned!=NULL) {
 				imageConcerned->addInterpolation(interpolationConcerned);
-				//interpolationConcerned->relateData(imageConcerned);
 			}
 			else if (textConcerned!=NULL) {
 				textConcerned->addInterpolation(interpolationConcerned);
-				//interpolationConcerned->relateData(textConcerned);
 			}
 			else if (arrowConcerned!=NULL) {
 				arrowConcerned->addInterpolation(interpolationConcerned);
-				//interpolationConcerned->relateData(arrowConcerned);
 			}
 			else {
 				throw std::runtime_error("Need to hook up interpolation to display object");

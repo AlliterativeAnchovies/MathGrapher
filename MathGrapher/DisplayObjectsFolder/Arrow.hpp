@@ -52,23 +52,14 @@ class Arrow: public DisplayObject {
 		void reclaim(SDL_Surface* reclaimed) {SDL_FreeSurface(reclaimed);};
 		void move(double x,double y) {px+=x;py+=y;};
 		Arrow(double x,double y,double s,double t,double hS,double a,double hA,std::string n);
-		std::string* ptmName() {return &name;}
 		double getPX() {return px;}
 		double getPY() {return py;}
-		double* ptmPX() {return &px;}
-		double* ptmPY() {return &py;}
 		double getLength() {return length;}
 		double getThickness() {return thickness;}
 		double getHeadSize() {return headSize;}
 		double getAngle() {return angle;}
 		double getHeadAngle() {return headAngle;}
-		double* ptmLength() {return &length;}
-		double* ptmThickness() {return &thickness;}
-		double* ptmHeadSize() {return &headSize;}
-		double* ptmAngle() {return &angle;}
-		double* ptmHeadAngle() {return &headAngle;}
 		Uint32 getColor() {return color;}
-		Uint32* ptmColor() {return &color;}
 		void resizeSmooth(double lengthincrease,double thickincrease);
 		void rescaleHead(double headsizechange);
 		void changeColor(Uint32 nc) {color = nc;};

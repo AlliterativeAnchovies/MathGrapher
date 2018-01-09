@@ -29,23 +29,14 @@ Popup* createPopup(Uint8 popup_id,double x,double y) {
 		case CREATE_SIMPLE_INTERPOLATION:
 			blargh = new CreateSimpleInterpolation(x,y);
 			break;
-		case CREATE_RESIZE_INTERPOLATION:
-			blargh = new CreateResizeInterpolation(x,y);
-			break;
 		case EDIT_FUNCTION_POPUP:
 			blargh = new EditFunctionPopup(x,y);
 			break;
 		case CHOOSE_FUNCTION_INTERPOLATION:
 			blargh = new ChooseFunctionInterpolation(x,y);
 			break;
-		case CREATE_FUNCTION_RUN_INTERPOLATION:
-			blargh = new CreateFunctionRunInterpolation(x,y);
-			break;
 		case CREATE_POINT_OF_INTEREST:
 			blargh = new CreatePointOfInterest(x,y);
-			break;
-		case CREATE_HIGHLIGHT_INTERPOLATION:
-			blargh = new CreateHighlightInterpolation(x,y);
 			break;
 		case EDIT_SLIDER_POPUP:
 			blargh = new EditSliderPopup(x,y);
@@ -93,7 +84,7 @@ Popup* createPopup(Uint8 popup_id,double x,double y) {
 }
 
 void deletePopup(Popup* p) {
-	switch (p->getID()) {
+	/*switch (p->getID()) {
 		case NULL_POPUP:
 			delete (NullPopup*)p;
 			break;
@@ -162,5 +153,5 @@ void deletePopup(Popup* p) {
 			break;
 		default:
 			throw std::runtime_error("Error! Don't know how to delete popup yet!");
-	}
+	}*/
 }

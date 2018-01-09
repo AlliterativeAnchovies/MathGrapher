@@ -13,11 +13,8 @@
 
 #include "Popups/QuickCloserPopups/QuickCloserPopup.hpp"
 #include "Popups/QuickCloserPopups/CreateOrEdit/CreateSimpleInterpolation.hpp"
-#include "Popups/QuickCloserPopups/CreateOrEdit/CreateResizeInterpolation.hpp"
 #include "Popups/QuickCloserPopups/CreateOrEdit/EditFunctionPopup.hpp"
-#include "Popups/QuickCloserPopups/CreateOrEdit/CreateFunctionRunInterpolation.hpp"
 #include "Popups/QuickCloserPopups/CreateOrEdit/CreatePointOfInterest.hpp"
-#include "Popups/QuickCloserPopups/CreateOrEdit/CreateHighlightInterpolation.hpp"
 #include "Popups/QuickCloserPopups/Select/AddObjectPopup.hpp"
 #include "Popups/QuickCloserPopups/Select/ChooseFunctionPopup.hpp"
 #include "Popups/QuickCloserPopups/Select/ChooseInterpolationPopup.hpp"

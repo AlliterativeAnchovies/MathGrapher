@@ -57,11 +57,6 @@ class RawImage: public DisplayObject {
         void run();
         void reset();
         void update();
-        std::string* ptmName() {return &name;}
-        double* ptmPX() {return &px;}
-        double* ptmPY() {return &py;}
-        double* ptmSX() {return &sx;}
-        double* ptmSY() {return &sy;}
         std::string getOrigName() {return origSurfName;}
         bool needsResize() {return (int)sx!=surfaceConcerned->w || (int)sy!=surfaceConcerned->h;}
         RawImage(double x,double y,int surfIndex,std::string n);

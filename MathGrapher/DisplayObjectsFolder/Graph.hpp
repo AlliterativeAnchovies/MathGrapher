@@ -139,18 +139,6 @@ class Graph: public DisplayObject {
         std::string getID() {return "Graph";}
         //custom deleter to clean up constituents
         ~Graph();
-        //pointers (used by value editors)
-        std::string* ptmName() {return &name;}
-        double* ptmPX() {return &px;}
-        double* ptmPY() {return &py;}
-        double* ptmSX() {return &sx;}
-        double* ptmSY() {return &sy;}
-        double* ptmOX() {return &ox;}
-        double* ptmOY() {return &oy;}
-        double* ptmGridSpacingX() {return &gridSpacingX;}
-        double* ptmGridSpacingY() {return &gridSpacingY;}
-        double* ptmGridAngleX() {return &gridAngleX;}
-        double* ptmGridAngleY() {return &gridAngleY;}
         void reclaim(SDL_Surface* reclaimed) {
             //check is surface returned by draw() should be deleted or not
             SDL_FreeSurface(reclaimed);

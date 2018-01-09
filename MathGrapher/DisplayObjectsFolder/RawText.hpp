@@ -57,12 +57,6 @@ class RawText: public DisplayObject {
 		double getPY() {return py;}
 		int getFontSize() {return fontSize;}
 		Uint32 getColor() {return theColor;}
-		std::string* ptmName() {return &name;}
-		double* ptmPX() {return &px;}
-		double* ptmPY() {return &py;}
-		int* ptmFontSize() {return &fontSize;}
-		std::string* ptmActualText() {return &actualText;}
-		Uint32* ptmColor() {return &theColor;}
 		void makeInvisible() {visible=false;};
 		void makeVisibile() {visible=true;};
 		void resizeText(double c) {doublesize+=c;};
