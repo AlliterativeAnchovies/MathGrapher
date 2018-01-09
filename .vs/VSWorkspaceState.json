@@ -2,11 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\MathGrapher",
-    "\\MathGrapher\\DisplayObjectsFolder",
-    "\\MathGrapher\\Popups",
+    "\\MathGrapher\\DisplayObjectsFolder\\InterpolationFolder",
     "\\MathGrapher\\Popups\\MajorPopups",
     "\\MathGrapher\\Popups\\MajorPopups\\Edit"
   ],
-  "SelectedNode": "\\MathGrapher\\DisplayWrapper.cpp",
+  "SelectedNode": "\\MathGrapher\\DisplayWrapper.hpp",
   "PreviewInSolutionExplorer": false
 }
