@@ -41,13 +41,6 @@ void Slider::reset() {
     }
 }
 
-void Slider::update() {
-	for (int i = 0;i<interpolations.size();i++) {
-        if (interpolations[i]->update()) {
-            interpolations[i]->pause();
-        }
-    }
-}
 
 const int SLIDER_WIDTH = 30;
 SDL_Surface* Slider::draw(double* x,double* y) {
@@ -128,9 +121,6 @@ bool Slider::clickedIn(double x,double y) {
     return pointInBounds(x, y, px-offx_stored, px+storedsx-offx_stored, py-offy_stored, py+storedsy-offy_stored);
 }
 
-void Slider::addInterpolation(Interpolation* i) {
-	interpolations.push_back(i);
-}
 
 std::vector<EditFieldMenu> Slider::getEditableFields() {
 	return {

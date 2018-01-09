@@ -56,7 +56,6 @@ class RawImage: public DisplayObject {
         std::string getName() {return name;}
         void run();
         void reset();
-        void update();
         std::string getOrigName() {return origSurfName;}
         bool needsResize() {return (int)sx!=surfaceConcerned->w || (int)sy!=surfaceConcerned->h;}
         RawImage(double x,double y,int surfIndex,std::string n);
@@ -65,8 +64,6 @@ class RawImage: public DisplayObject {
         void changeTo(int which);
         void fix();
         void move(double x,double y) {px+=x;py+=y;};
-        void addInterpolation(Interpolation* i) {interpolations.push_back(i);};
-        decltype(interpolations) getInterpolations() {return interpolations;}
         void resize(double x,double y);
         void resizeSmooth(double x,double y);
         void makeInvisible() {visible=false;};

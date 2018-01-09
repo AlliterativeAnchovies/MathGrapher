@@ -15,13 +15,6 @@ void RawImage::run() {
 	image.sx = sx;
 	image.sy = sy;
 }
-void RawImage::update() {
-	for (int i = 0;i<interpolations.size();i++) {
-        if (interpolations[i]->update()) {
-            interpolations[i]->pause();
-        }
-    }
-}
 void RawImage::reset() {
 	running = false;
 	px = image.px;

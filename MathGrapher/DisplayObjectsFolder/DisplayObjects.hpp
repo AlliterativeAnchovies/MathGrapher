@@ -92,7 +92,7 @@ class DisplayObject: public Data {
         virtual void run() =0;
         virtual void reset()=0;
         virtual bool isRunning()=0;
-        virtual void update();//defined in DisplayWrapper
+		virtual void update();//defined in DisplayWrapper
         virtual ~DisplayObject() {};//in a class C, the method ~C is the destructor of C.  Usually implicitly
                                     //defined, but if the class is virtual we also need to give it a virtual
                                     //destructor.  The function body is empty which means we just use the standard

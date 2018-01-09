@@ -46,12 +46,9 @@ class RawText: public DisplayObject {
 		void run();
 		void reset();
 		bool isRunning() {return running;};
-		void update();
 		SDL_Surface* draw(double* x,double* y);
 		void reclaim(SDL_Surface* reclaimed) {}
 		void move(double x,double y) {px+=x;py+=y;}
-		void addInterpolation(Interpolation* i) {interpolations.push_back(i);}
-		std::vector<Interpolation*> getInterpolations() {return interpolations;};
 		std::string getActualText() {return actualText;}
 		double getPX() {return px;}
 		double getPY() {return py;}

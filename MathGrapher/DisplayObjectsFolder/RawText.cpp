@@ -42,13 +42,6 @@ void RawText::run() {
 	image.actualText = actualText;
 	doublesize = fontSize;
 }
-void RawText::update() {
-	for (int i = 0;i<interpolations.size();i++) {
-        if (interpolations[i]->update()) {
-            interpolations[i]->pause();
-        }
-    }
-}
 void RawText::reset() {
 	running = false;
 	px = image.px;

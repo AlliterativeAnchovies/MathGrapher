@@ -74,7 +74,6 @@ class Slider: public DisplayObject {
         void setPointConcerned(PointOfInterest* p) {pointConcerned=p;}
         //get name of class
         std::string getID() {return "Slider";}
-        void update();
         void reset();
         bool isRunning() {return running;};
         void reclaim(SDL_Surface* reclaimed) {
@@ -82,8 +81,6 @@ class Slider: public DisplayObject {
             SDL_FreeSurface(reclaimed);
         }
         void move(double x,double y) {px+=x;py+=y;};
-		void addInterpolation(Interpolation* i);
-		decltype(interpolations) getInterpolations() {return interpolations;}
 		Function* getTickFunction() {return incrementFunction;}
 		Slider() {};
 		void makeInvisible() {visible=false;};
