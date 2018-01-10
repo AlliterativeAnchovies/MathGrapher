@@ -65,7 +65,7 @@ class Graph: public DisplayObject {
         //moves incrementally
         void move(double x,double y);
         //moves smoothly
-        Interpolation* smoothMove(double x,double y,int timeInterval,bool doNow = true);
+        [[deprecated]] Interpolation* smoothMove(double x,double y,int timeInterval,bool doNow = true);
         //moves immediately
         void changePosition(double x,double y);
         //returns surface of drawn graph, and stores its position in the input pointers
@@ -73,7 +73,7 @@ class Graph: public DisplayObject {
         //moves the origin incrementally
         void moveOrigin(double x,double y);
         //moves origin smoothly
-        Interpolation* smoothMoveOrigin(double x,double y,int timeInterval,bool doNow = true);
+        [[deprecated]] Interpolation* smoothMoveOrigin(double x,double y,int timeInterval,bool doNow = true);
         //moves origin immediately
         void changeOrigin(double x,double y);
         //changes grid angle immediately
@@ -81,19 +81,19 @@ class Graph: public DisplayObject {
         //changes grid angle incrementally
         void moveGridAngle(double x,double y);
         //changes grid angle smoothly
-        Interpolation* smoothMoveGridAngle(double x,double y,int timeInterval,bool doNow = true);
+        [[deprecated]] Interpolation* smoothMoveGridAngle(double x,double y,int timeInterval,bool doNow = true);
         //changes grid scale immediately
         void changeGridScale(double x,double y);
         //changes grid scale incrementally
         void moveGridScale(double x,double y);
         //changes grid scale smoothly
-        Interpolation* smoothMoveGridScale(double x,double y,int timeInterval,bool doNow = true);
+        [[deprecated]] Interpolation* smoothMoveGridScale(double x,double y,int timeInterval,bool doNow = true);
         //resizes grid immediately
         void resizeGrid(double x,double y,bool moveCenter = true);
         //resizes grid incrementally
         void moveGridSize(double x,double y,bool moveCenter = true);
         //resizes grid smoothly
-        Interpolation* smoothMoveGridSize(double x,double y,int timeInterval,bool moveCenter = true,bool doNow = true);
+        [[deprecated]] Interpolation* smoothMoveGridSize(double x,double y,int timeInterval,bool moveCenter = true,bool doNow = true);
         //add a function to draw
         void addXFunction(Function* function);
         void addYFunction(Function* function);
