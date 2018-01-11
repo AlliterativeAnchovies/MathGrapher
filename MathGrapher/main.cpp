@@ -173,10 +173,11 @@ bool controlFlow() {
 	
     //update graphs
 	for (DisplayObject* d : objects) {
-		if (d->getID()=="Graph") {
+		/*if (d->getID()=="Graph") {
 			((Graph*)d)->cleanFunctions();
-		}
-		d->cleanInterpolations();
+		}*/
+		d->clean();
+		//d->cleanInterpolations();
 		if (d->isRunning()) {d->update();}
 	}
 

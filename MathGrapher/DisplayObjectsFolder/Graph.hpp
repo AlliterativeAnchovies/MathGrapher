@@ -53,7 +53,6 @@ class Graph: public DisplayObject {
         bool showAxes = true;
         //tagged for running interpolations
         bool running = false;
-        bool visible = true;
     public:
         //full constructor
         Graph(double x,double y,double sizex,double sizey,double grid_spacing_x,double grid_spacing_y,double grid_angle_x,double grid_angle_y,std::string n="-NONAME-");
@@ -145,11 +144,10 @@ class Graph: public DisplayObject {
         }
         void addXFunction_nocopy(Function* f) {functions.push_back(f);}
 		void addYFunction_nocopy(Function* f) {yfunctions.push_back(f);}
-		void makeInvisible() {visible=false;};
-		void makeVisibile() {visible=true;};
 		std::vector<EditFieldMenu> getEditableFields();
 		std::vector<SaveData> getSaveData();
 		std::vector<std::string> getValidInterpolations();
+		void clean() {cleanFunctions();DisplayObject::clean();}
 };
 
 

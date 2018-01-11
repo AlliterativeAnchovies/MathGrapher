@@ -31,7 +31,6 @@ class RawText: public DisplayObject {
 		std::string actualText = "Default";
 		RawTextImage image;
 		std::vector<Interpolation*> interpolations = {};
-		bool visible = true;
 		double doublesize = 16;
 	public:
 		RawText(double x,double y,int fsize,std::string tobename);
@@ -54,8 +53,6 @@ class RawText: public DisplayObject {
 		double getPY() {return py;}
 		int getFontSize() {return fontSize;}
 		Uint32 getColor() {return theColor;}
-		void makeInvisible() {visible=false;};
-		void makeVisibile() {visible=true;};
 		void resizeText(double c) {doublesize+=c;};
 		std::vector<EditFieldMenu> getEditableFields();
 		std::vector<SaveData> getSaveData();

@@ -99,6 +99,7 @@ class DisplayObject: public SavableData {
 	protected:
 		//stores current interpolation data
         std::vector<Interpolation*> interpolations = {};
+        bool visible=true;
     public:
         //IF YOU GET A "MISSING VTABLE" ERROR, it'll be caused by you not having defined all of these functions
         //in the child object (although the error only seems to happen if you give your class a nondefault constructor
@@ -120,10 +121,11 @@ class DisplayObject: public SavableData {
         virtual void reclaim(SDL_Surface* reclaimed)=0;
         virtual void move(double x,double y)=0;
         virtual std::vector<std::string> getValidInterpolations()=0;
+        virtual void clean() {cleanInterpolations();}
 		void addInterpolation(Interpolation* i);//defined in DisplayWrapper
 		std::vector<Interpolation*> getInterpolations() {return interpolations;};
-		virtual void makeInvisible()=0;
-		virtual void makeVisibile()=0;
+		void makeInvisible() {visible=false;};
+		void makeVisibile() {visible=true;};
 		bool isDisplayObject() {return true;}
 		void cleanInterpolations();//defined in DisplayWrapper
 };

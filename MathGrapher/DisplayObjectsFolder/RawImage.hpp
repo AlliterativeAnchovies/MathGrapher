@@ -40,7 +40,6 @@ class RawImage: public DisplayObject {
     std::string name = "-IMAGE-";
     std::vector<Interpolation*> interpolations = {};
     RawImageImage image;
-    bool visible = true;
     public:
         double getPX() {return px;}
         double getPY() {return py;}
@@ -66,8 +65,6 @@ class RawImage: public DisplayObject {
         void move(double x,double y) {px+=x;py+=y;};
         void resize(double x,double y);
         void resizeSmooth(double x,double y);
-        void makeInvisible() {visible=false;};
-		void makeVisibile() {visible=true;};
 		std::vector<EditFieldMenu> getEditableFields();
 		std::vector<SaveData> getSaveData();
 		RawImage() {};
