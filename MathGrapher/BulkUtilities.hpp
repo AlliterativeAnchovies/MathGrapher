@@ -23,6 +23,10 @@ extern bool leftMouseClicked;
 extern bool leftMouseHadBeenClicked;
 extern bool leftMouseReleased;
 extern bool leftMouseHadBeenReleased;
+extern bool rightMouseClicked;
+extern bool rightMouseHadBeenClicked;
+extern bool rightMouseReleased;
+extern bool rightMouseHadBeenReleased;
 extern bool shiftClicked;
 extern bool CAPS_LOCK;
 extern bool runningVideo;
@@ -37,6 +41,8 @@ const int FRAME_RATE = 60;
 const int VIDEO_BATCH_SIZE = 300;	//don't make this larger than 999 - searches for screenshot###.bmp
 									//whereas screenshot1000 is of form screenshot####.bmp
 extern clock_t begin_time;//timer start
+const bool X_AXIS = true;
+const bool Y_AXIS = false;
 #define FRAME_RATE_INFO//(un)comment to toggle debug outputs when frame rate is not met.
 
 #endif /* BulkUtilities_hpp */

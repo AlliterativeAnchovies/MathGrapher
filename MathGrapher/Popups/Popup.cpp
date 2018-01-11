@@ -142,5 +142,9 @@ template<> Data* Popup::getConcernation<Popup*>() {
 	throw std::runtime_error("Error! Use member variable popupConcerned instead of this function.");
 };
 
+MouseClick::MouseClick(bool* a,Popup* p) {
+	wasClicked=a;
+	workingBool=p->clickAllowed(*a);
+}
 
 

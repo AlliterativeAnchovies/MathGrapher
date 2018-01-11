@@ -81,7 +81,6 @@ bool controlFlow() {
                     if (runningVideo) {
                         runningVideo = false;
                         if (recordingVideo) {
-							//makeVideo("testVideo");
 							createPopup(SAVE_VIDEO_POPUP, 20, SCREEN_HEIGHT/2-25)
 								->concernWith(std::string("Generic_Video"));
 						}
@@ -111,11 +110,19 @@ bool controlFlow() {
                 leftMouseClicked = true;
                 leftMouseHadBeenClicked = true;
             }
+            else if (e.button.button == SDL_BUTTON_RIGHT) {
+                rightMouseClicked = true;
+				rightMouseHadBeenClicked = true;
+            }
         }
         else if (e.type == SDL_MOUSEBUTTONUP) {
             if (e.button.button == SDL_BUTTON_LEFT) {
                 leftMouseReleased = true;
                 leftMouseHadBeenReleased = true;
+            }
+            else if (e.button.button == SDL_BUTTON_RIGHT) {
+                rightMouseReleased = true;
+				rightMouseHadBeenReleased = true;
             }
         }
     }
@@ -144,10 +151,16 @@ bool controlFlow() {
                 //clicked in popup but should not delete
                 newpopups.push_back(popups[i]);
                 leftMouseReleased = false;
+                rightMouseReleased = false;
+                leftMouseClicked = false;
+                rightMouseClicked = false;
             }
             else if (handling==0x02) {
                 //clicked, should delete
                 leftMouseReleased = false;
+                rightMouseReleased = false;
+                leftMouseClicked = false;
+                rightMouseClicked = false;
             }
             else {
                 deletePopup(popups[i]);
@@ -157,7 +170,27 @@ bool controlFlow() {
     }
     popups = newpopups;
     map([](Popup* x){x->age();x->resetRays();return NULL;}, popups);
-    
+	
+    //update graphs
+	for (DisplayObject* d : objects) {
+		if (d->getID()=="Graph") {
+			((Graph*)d)->cleanFunctions();
+		}
+		d->cleanInterpolations();
+		if (d->isRunning()) {d->update();}
+	}
+
+	//delete points of interest
+	std::vector<PointOfInterest*> newpoi = {};
+	for (int i = 0;i<pointsOfInterest.size();i++) {
+		if (pointsOfInterest[i]->shouldDelete()) {
+			delete pointsOfInterest[i];
+		}
+		else {
+			newpoi.push_back(pointsOfInterest[i]);
+		}
+	}
+	pointsOfInterest=newpoi;
     
     
     //record screen

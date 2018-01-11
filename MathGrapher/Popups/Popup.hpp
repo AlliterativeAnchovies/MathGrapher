@@ -35,8 +35,19 @@ enum POPUP_IDS {
     EDIT_ARROW_POPUP
 };
 
-const bool X_AXIS = true;
-const bool Y_AXIS = false;
+
+class MouseClick {	//Handles mouse clicks
+					//initialize in a popup with prepareMouse(), check with .status(),
+					//and when it has been successfully handled call .unclick() so that
+					//the mouse can't click things twice
+	private:
+		bool* wasClicked;
+		bool workingBool = false;
+	public:
+		void unclick() {*wasClicked=false;}
+		bool status() {return workingBool;}
+		MouseClick(bool* a,Popup* p);
+};
 class Popup {
     protected:
 		Uint8 popupID;
@@ -52,6 +63,8 @@ class Popup {
         Popup* popupConcerned = NULL;//because Popup is not yet a "complete" type, it freaks
 									//out when dealing with SFINAE in templates in member functions.
 									//so we handle it seperately
+	protected:
+		MouseClick prepareMouse(bool* a) {return MouseClick(a,this);};
     public:
         virtual Uint8 handle(double mouseX,double mouseY)=0;
         virtual bool inBounds(double mouseX,double mouseY);
