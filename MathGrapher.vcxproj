@@ -140,6 +140,7 @@
     <ClInclude Include="mathgrapher\Popups\MajorPopups\Edit\EditArrowPopup.hpp" />
     <ClInclude Include="mathgrapher\Popups\MajorPopups\MainDisplay.hpp" />
     <ClInclude Include="mathgrapher\Popups\MajorPopups\MajorPopup.hpp" />
+    <ClInclude Include="mathgrapher\Popups\MajorPopups\EditPopup.hpp" />
     <ClInclude Include="mathgrapher\Popups\MajorPopups\SaverPopup.hpp" />
     <ClInclude Include="mathgrapher\Popups\MajorPopups\Savers\SaveFilePopup.hpp" />
     <ClInclude Include="mathgrapher\Popups\MajorPopups\Savers\SaveVideoPopup.hpp" />
@@ -193,6 +194,7 @@
     <ClCompile Include="mathgrapher\Popups\MajorPopups\Edit\EditArrowPopup.cpp" />
     <ClCompile Include="mathgrapher\Popups\MajorPopups\MainDisplay.cpp" />
     <ClCompile Include="mathgrapher\Popups\MajorPopups\MajorPopup.cpp" />
+    <ClCompile Include="mathgrapher\Popups\MajorPopups\EditPopup.cpp" />
     <ClCompile Include="mathgrapher\Popups\MajorPopups\SaverPopup.cpp" />
     <ClCompile Include="mathgrapher\Popups\MajorPopups\Savers\SaveFilePopup.cpp" />
     <ClCompile Include="mathgrapher\Popups\MajorPopups\Savers\SaveVideoPopup.cpp" />
