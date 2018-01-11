@@ -18,7 +18,7 @@ Uint8 EditTextPopup::handle(double mouseX,double mouseY,bool clicked) {
 	bool clickedEdit = false;
 	int curx = px+5;
 	int cury = py+5;
-	int offx,offy;
+	int offy;
 
 	//Edit fields
 	clickedEdit = handleEditableInfo(curx, cury,getConcernationSD<RawText*>(), clicked, mouseX, mouseY, &offy);

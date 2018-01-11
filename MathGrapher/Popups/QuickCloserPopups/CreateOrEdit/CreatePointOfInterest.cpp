@@ -26,7 +26,7 @@ Uint8 CreatePointOfInterest::handle(double mouseX,double mouseY,bool clicked) {
 	bool clickedEdit = false;
 	int curx = px+5;
 	int cury = py+30;
-	int offx,offy;
+	int offy;
 	//Edit field for position of point of interest
 	//clickedEdit = handleEditableInfo_internal(curx,cury,20,18,mouseX,mouseY,
 	//	header,stringConcerned,&stringConcerned

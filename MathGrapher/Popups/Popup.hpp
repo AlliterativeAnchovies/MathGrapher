@@ -83,19 +83,37 @@ class Popup {
         	return this;
 		}
 		template<typename T> Popup* concernWith(
-        		std::enable_if<std::is_base_of<Data, T>::value,T> d){
+        		std::enable_if<std::is_base_of<Data, std::remove_pointer_t<T>>::value,T> d){
         	datas.push_back(d);
         	return this;
 		}
-		template<typename T, typename std::enable_if<std::is_base_of<Data, T>::value,int>::type=0>
-		void getConcernations_helper(std::vector<Data*>* ds,Data* d) {
-				T* example = new T();//evaluated at compile time
+	
+		template<typename T>
+		typename std::enable_if<
+				std::is_base_of<Data, std::remove_pointer_t<T>>::value &&
+				std::is_base_of<Interpolation, std::remove_pointer_t<T>>::value
+			,void>::type
+			getConcernations_helper(std::vector<Data*>* ds,Data* d) {
+				if (d->isInterpolation()) {
+					(*ds).push_back(d);
+					return;
+				}
+		}
+	
+		template<typename T>
+		typename std::enable_if<
+				std::is_base_of<Data, std::remove_pointer_t<T>>::value &&
+				!std::is_base_of<Interpolation, std::remove_pointer_t<T>>::value
+			,void>::type
+			getConcernations_helper(std::vector<Data*>* ds,Data* d) {
+				Data* example = (Data*)(new std::remove_pointer_t<T>());
 				if (example->getID()==d->getID()) {
 					(*ds).push_back(d);
 				}
 		}
-		template<typename T, typename std::enable_if<!std::is_base_of<Data, T>::value,int>::type=0>
-		void getConcernations_helper(std::vector<Data*>* ds,Data* d) {
+		template<typename T>
+		typename std::enable_if<!std::is_base_of<Data, std::remove_pointer_t<T>>::value,void>::type
+			getConcernations_helper(std::vector<Data*>* ds,Data* d) {
 				if (d->getID()==DerivedData<T>::staticID()) {
 					(*ds).push_back(d);
 				}
@@ -140,7 +158,7 @@ class Popup {
         void unlock();
         ~Popup();
         virtual bool isQuickCloser() {return false;}
-        RawImage* getImageConcerned() {return (RawImage*)getConcernation<RawImage>();}
+        RawImage* getImageConcerned() {return (RawImage*)getConcernation<RawImage*>();}
 };
 
 class NullPopup: public Popup {

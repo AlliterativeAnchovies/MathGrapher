@@ -19,7 +19,7 @@ Uint8 CreateSimpleInterpolation::handle(double mouseX,double mouseY,bool clicked
 	std::string beep = (ticks%60<30)?"|":" ";
 	int curx = px+10;
 	int cury = py+35;
-	int offx,offy;
+	int offy;
 	bool clickedEdit = false;
 
 	

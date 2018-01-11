@@ -13,7 +13,7 @@ Uint8 EditGraphPopup::handle(double mouseX,double mouseY,bool clicked) {
     clicked = clicked&&successfulRaycast&&!locked;
 	drawBorderedRect(px, py, sx, sy, 0xff9fc9f2, 0xff000000);
 	
-	int offx,offy;
+	int offy;
 	int curx = px+5;
 	int cury = py+5;
 	

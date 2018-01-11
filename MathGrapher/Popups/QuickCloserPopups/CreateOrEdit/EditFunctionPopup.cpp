@@ -19,7 +19,7 @@ Uint8 EditFunctionPopup::handle(double mouseX,double mouseY,bool clicked) {
 	drawText(functionConcerned->getName(), 24, px+5, py+5, 0xff000000);
 	int curx = px+10;
 	int cury = py+35;
-	int offx,offy;
+	int offy;
 	bool clickedEdit = false;
 	
 	clickedEdit = handleEditableInfo(curx, cury, functionConcerned, clicked, mouseX, mouseY, &offy);
