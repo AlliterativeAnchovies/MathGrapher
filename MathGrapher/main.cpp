@@ -81,7 +81,7 @@ bool controlFlow() {
                     if (runningVideo) {
                         runningVideo = false;
                         if (recordingVideo) {
-							createPopup(SAVE_VIDEO_POPUP, 20, SCREEN_HEIGHT/2-25)
+							(new SaveVideoPopup(20, SCREEN_HEIGHT/2-25))
 								->concernWith(std::string("Generic_Video"));
 						}
                         recordingVideo = false;
@@ -163,7 +163,8 @@ bool controlFlow() {
                 rightMouseClicked = false;
             }
             else {
-                deletePopup(popups[i]);
+                //deletePopup(popups[i]);
+                delete popups[i];
                 popups[i] = NULL;
             }
         }
@@ -335,7 +336,7 @@ int main(int argc, const char * argv[]) {
     fontgrab = new Font(24);
     initBuiltins();
 	
-    createPopup(MAIN, 0, 0);//create the main screen
+    new MainDisplay(0, 0);//create the main screen
 	std::cout << "Starting Program Now!\n";
 	begin_time = clock();
 	int start_time, end_time;//measured in milliseconds

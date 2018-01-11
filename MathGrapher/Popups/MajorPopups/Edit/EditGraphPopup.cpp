@@ -61,7 +61,7 @@ Uint8 EditGraphPopup::handle(double mouseX,double mouseY) {
 		if (clicked.status()&&pointInBounds(mouseX, mouseY, px+15+tx, px+15+tx+ex, x_functionsy, x_functionsy+ey)) {
 			clicked.unclick();
 			toReturn = 0x01;
-			createPopup(EDIT_FUNCTION_POPUP, mouseX, mouseY-200)
+			(new EditFunctionPopup(mouseX, mouseY-200))
 				->concernWith(graphConcerned)
 				->concernWith(xfunctionlist[i]);
 		}
@@ -80,7 +80,7 @@ Uint8 EditGraphPopup::handle(double mouseX,double mouseY) {
 	int funcsx,funcsy;
 	TTF_SizeUTF8((*fontgrab)(20),"Add Function",&funcsx,&funcsy);
 	if (clicked.status()&&pointInBounds(mouseX, mouseY, px+10, px+10+funcsx, x_functionsy, x_functionsy+funcsy)) {
-		createPopup(CHOOSE_FUNCTION_POPUP, mouseX, mouseY-200)
+		(new ChooseFunctionPopup(mouseX, mouseY-200))
 			->concernWith(graphConcerned)
 			->concernWith(X_AXIS);
 	}
@@ -104,7 +104,7 @@ Uint8 EditGraphPopup::handle(double mouseX,double mouseY) {
 		if (clicked.status()&&pointInBounds(mouseX, mouseY, px+15+tx, px+15+tx+ex, y_functionsy, y_functionsy+ey)) {
 			clicked.unclick();
 			toReturn = 0x01;
-			createPopup(EDIT_FUNCTION_POPUP, mouseX, mouseY-200)
+			(new EditFunctionPopup(mouseX, mouseY-200))
 				->concernWith(graphConcerned)
 				->concernWith(yfunctionlist[i]);
 		}
@@ -122,7 +122,7 @@ Uint8 EditGraphPopup::handle(double mouseX,double mouseY) {
 	drawTextWithBackground("Add Function", 16, px+10, y_functionsy, 0xff000000, 0xffffcf9e, 0xff000000);
 	TTF_SizeUTF8((*fontgrab)(20),"Add Function",&funcsx,&funcsy);
 	if (clicked.status()&&pointInBounds(mouseX, mouseY, px+10, px+10+funcsx, y_functionsy, y_functionsy+funcsy)) {
-		createPopup(CHOOSE_FUNCTION_POPUP, mouseX, mouseY-200)
+		(new ChooseFunctionPopup(mouseX, mouseY-200))
 			->concernWith(graphConcerned)
 			->concernWith(Y_AXIS);
 	}

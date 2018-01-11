@@ -46,6 +46,7 @@
 		863C5C721FFB1C9E00F6FA18 /* LoadFilePopup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 863C5C701FFB1C9E00F6FA18 /* LoadFilePopup.cpp */; };
 		863C5C751FFB1CCC00F6FA18 /* SaveFilePopup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 863C5C731FFB1CCC00F6FA18 /* SaveFilePopup.cpp */; };
 		863C5C791FFB1D0C00F6FA18 /* MainDisplay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 863C5C771FFB1D0C00F6FA18 /* MainDisplay.cpp */; };
+		864C6E2A2008116000A3352C /* EditPopup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 864C6E282008116000A3352C /* EditPopup.cpp */; };
 		86928C631FE125BF00CBB286 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86928C621FE125BF00CBB286 /* main.cpp */; };
 		86928C6C1FE1260500CBB286 /* SDL2_ttf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86928C6A1FE1260500CBB286 /* SDL2_ttf.framework */; };
 		86928C6D1FE1260500CBB286 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86928C6B1FE1260500CBB286 /* SDL2.framework */; };
@@ -154,6 +155,8 @@
 		863C5C741FFB1CCC00F6FA18 /* SaveFilePopup.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SaveFilePopup.hpp; sourceTree = "<group>"; };
 		863C5C771FFB1D0C00F6FA18 /* MainDisplay.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MainDisplay.cpp; sourceTree = "<group>"; };
 		863C5C781FFB1D0C00F6FA18 /* MainDisplay.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MainDisplay.hpp; sourceTree = "<group>"; };
+		864C6E282008116000A3352C /* EditPopup.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = EditPopup.cpp; sourceTree = "<group>"; };
+		864C6E292008116000A3352C /* EditPopup.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = EditPopup.hpp; sourceTree = "<group>"; };
 		86928C5F1FE125BF00CBB286 /* MathGrapher */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MathGrapher; sourceTree = BUILT_PRODUCTS_DIR; };
 		86928C621FE125BF00CBB286 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		86928C6A1FE1260500CBB286 /* SDL2_ttf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_ttf.framework; path = ../../../../Library/Frameworks/SDL2_ttf.framework; sourceTree = "<group>"; };
@@ -254,6 +257,8 @@
 				863C5C781FFB1D0C00F6FA18 /* MainDisplay.hpp */,
 				86939E901FFC52000075EB39 /* SaverPopup.cpp */,
 				86939E911FFC52000075EB39 /* SaverPopup.hpp */,
+				864C6E282008116000A3352C /* EditPopup.cpp */,
+				864C6E292008116000A3352C /* EditPopup.hpp */,
 				86939E8F1FFC51E40075EB39 /* Savers */,
 				863C5C761FFB1CEB00F6FA18 /* Edit */,
 			);
@@ -509,6 +514,7 @@
 				863C5C421FFB179500F6FA18 /* QuickCloserPopup.cpp in Sources */,
 				863C5C491FFB18BF00F6FA18 /* ChooseInterpolationPopup.cpp in Sources */,
 				863C5C4C1FFB193900F6FA18 /* CreateSimpleInterpolation.cpp in Sources */,
+				864C6E2A2008116000A3352C /* EditPopup.cpp in Sources */,
 				86B40B751FFEB6810092BA4E /* Function.cpp in Sources */,
 				86282B8F200451E100B19C4E /* RunFunctionInterpol.cpp in Sources */,
 				863C5C571FFB1A9300F6FA18 /* ChooseFunctionInterpolation.cpp in Sources */,

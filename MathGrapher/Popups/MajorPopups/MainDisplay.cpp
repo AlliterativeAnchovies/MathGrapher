@@ -75,27 +75,27 @@ Uint8 MainDisplay::handle(double mouseX,double mouseY) {
 			drawTextWithBackground("Edit", 16, totoff, controlBarY+5+h+h2, 0xff000000,0xff9fc9f2,0xff000000);
 			if (clicked.status()&&pointInBounds(mouseX, mouseY, totoff, totoff+w3, controlBarY+5+h+h2, controlBarY+5+h+h2+h3)) {
 				if (selectedObjects[i]->getID()=="Graph") {
-					Popup* blargh = createPopup(EDIT_GRAPH_POPUP, 10, 10);
+					Popup* blargh = new EditGraphPopup(10, 10);
 					blargh->concernWith((Graph*)selectedObjects[i]);
 					clicked.unclick();
 				}
 				else if (selectedObjects[i]->getID()=="Slider") {
-					Popup* blargh = createPopup(EDIT_SLIDER_POPUP, 10, 10);
+					Popup* blargh = new EditSliderPopup(10, 10);
 					blargh->concernWith((Slider*)selectedObjects[i]);
 					clicked.unclick();
 				}
 				else if (selectedObjects[i]->getID()=="Image") {
-					Popup* blargh = createPopup(EDIT_IMAGE_POPUP, 10, 10);
+					Popup* blargh = new EditImagePopup(10, 10);
 					blargh->concernWith((RawImage*)selectedObjects[i]);
 					clicked.unclick();
 				}
 				else if (selectedObjects[i]->getID()=="Text") {
-					Popup* blargh = createPopup(EDIT_TEXT_POPUP, 10, 10);
+					Popup* blargh = new EditTextPopup(10, 10);
 					blargh->concernWith((RawText*)selectedObjects[i]);
 					clicked.unclick();
 				}
 				else if (selectedObjects[i]->getID()=="Arrow") {
-					Popup* blargh = createPopup(EDIT_ARROW_POPUP, 10, 10);
+					Popup* blargh = new EditArrowPopup(10, 10);
 					blargh->concernWith((Arrow*)selectedObjects[i]);
 					clicked.unclick();
 				}
@@ -150,7 +150,7 @@ Uint8 MainDisplay::handle(double mouseX,double mouseY) {
 		drawTextWithBackground("Save", 16, SCREEN_WIDTH-200, controlBarY+5+rsy+5, 0xff000000,0xff9fc9f2,0xff000000);
 		if (clicked.status()&&pointInBounds(mouseX, mouseY, SCREEN_WIDTH-200, SCREEN_WIDTH-200+savex,controlBarY+5+rsy+5,controlBarY+5+savey+rsy+5)) {
 			//save();
-			createPopup(SAVE_FILE_POPUP, mouseX-500, mouseY-100)
+			(new SaveFilePopup(mouseX-500, mouseY-100))
 				->concernWith(std::string("Generic_Save"));
 		}
 		//draw load button
@@ -158,7 +158,7 @@ Uint8 MainDisplay::handle(double mouseX,double mouseY) {
 		TTF_SizeUTF8((*fontgrab)(16), "Load", &loadx, &loady);
 		drawTextWithBackground("Load", 16, SCREEN_WIDTH-200-5-savex, controlBarY+5+rsy+5, 0xff000000,0xff9fc9f2,0xff000000);
 		if (clicked.status()&&pointInBounds(mouseX, mouseY, SCREEN_WIDTH-200-5-savex, SCREEN_WIDTH-200-5-savex+loadx,controlBarY+5+rsy+5,controlBarY+5+savey+rsy+5)) {
-			createPopup(LOAD_FILE_POPUP, mouseX, mouseY-200);
+			new LoadFilePopup(mouseX, mouseY-200);
 		}
 		//draw record button
 		int recordx,recordy;
@@ -194,7 +194,7 @@ Uint8 MainDisplay::handle(double mouseX,double mouseY) {
 	
 	if (rClicked.status()&&!runningVideo) {
         if (mouseY<SCREEN_HEIGHT-100&&mouseX<SCREEN_WIDTH-150) {
-            createPopup(ADD_OBJECT_POPUP, mouseX, mouseY);
+            new AddObjectPopup(mouseX, mouseY);
             selectedObjects = {};
             rClicked.unclick();
         }

@@ -43,7 +43,7 @@ Uint8 EditFunctionPopup::handle(double mouseX,double mouseY) {
 	if (clicked.status()&&pointInBounds(mouseX, mouseY, curx, curx+intpx, cury, cury+intpy)) {
 		clicked.unclick();
 		toReturn = 0x01;
-		createPopup(CHOOSE_FUNCTION_INTERPOLATION, mouseX, mouseY)
+		(new ChooseFunctionInterpolation(mouseX, mouseY))
 			->concernWith(graphConcerned)
 			->concernWith(functionConcerned);
 	}
@@ -58,7 +58,7 @@ Uint8 EditFunctionPopup::handle(double mouseX,double mouseY) {
 		PointOfInterest* p = new PointOfInterest();
 		p->giveFunction(functionConcerned);
 		p->giveGraph(graphConcerned);
-		createPopup(CREATE_POINT_OF_INTEREST, mouseX, mouseY)
+		(new CreatePointOfInterest(mouseX, mouseY))
 			->concernWith(graphConcerned)
 			->concernWith(functionConcerned)
 			->concernWith(p);

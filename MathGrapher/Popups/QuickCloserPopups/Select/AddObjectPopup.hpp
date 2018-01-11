@@ -10,11 +10,12 @@
 #define AddObjectPopup_hpp
 
 #include "../QuickCloserPopup.hpp"
+#include "ChooseWhichImagePopup.hpp"
 
 class AddObjectPopup: public QuickCloserPopup {
 	public:
 		Uint8 handle(double mouseX,double mouseY);
-		AddObjectPopup(double x,double y) {px=x;py=y;sx=150;sy=200;popupID=ADD_OBJECT_POPUP;}
+		AddObjectPopup(double x,double y) {px=x;py=y;sx=150;sy=200;prepare();}
 };
 
 #endif /* AddObjectPopup_hpp */

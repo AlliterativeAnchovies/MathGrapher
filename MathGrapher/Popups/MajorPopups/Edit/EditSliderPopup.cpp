@@ -29,7 +29,7 @@ Uint8 EditSliderPopup::handle(double mouseX,double mouseY) {
 	drawTextWithBackground("Tick Function: "+sliderConcerned->getFunction()->getName(), 20, px+5, cury, 0xff000000, 0xffffcf9e, 0xff000000);
 	TTF_SizeUTF8((*fontgrab)(20), ("Tick Function: "+sliderConcerned->getFunction()->getName()).c_str(), &w9, &h9);
 	if (clicked.status()&&pointInBounds(mouseX, mouseY, px+5, px+5+w9, cury, cury+h9)) {
-		createPopup(CHOOSE_FUNCTION_POPUP, mouseX, mouseY)
+		(new ChooseFunctionPopup(mouseX, mouseY))
 			->concernWith(sliderConcerned);
 		clicked.unclick();
 		toReturn = 0x01;
@@ -44,7 +44,7 @@ Uint8 EditSliderPopup::handle(double mouseX,double mouseY) {
 	drawTextWithBackground(pointConcernedString, 16, px+5, cury, 0xff000000, 0xffffcf9e, 0xff000000);
 	TTF_SizeUTF8((*fontgrab)(16), (pointConcernedString).c_str(), &w10, &h10);
 	if (clicked.status()&&pointInBounds(mouseX, mouseY, px+5, px+5+w10, cury, cury+h10)) {
-		createPopup(CHOOSE_POINT_CONCERNED_FOR_LINKING_POPUP, mouseX, mouseY)
+		(new ChoosePointConcernedForLinkingPopup(mouseX, mouseY))
 			->concernWith(sliderConcerned);
 		clicked.unclick();
 		toReturn = 0x01;

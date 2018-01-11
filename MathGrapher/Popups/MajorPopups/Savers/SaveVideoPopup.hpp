@@ -14,7 +14,7 @@
 class SaveVideoPopup: public SaverPopup {
 	public:
 		//Uint8 handle(double mouseX,double mouseY,bool clicked);
-		SaveVideoPopup(double x,double y) {px=x;py=y;sx=600;sy=50;popupID=SAVE_FILE_POPUP;}
+		SaveVideoPopup(double x,double y) {px=x;py=y;sx=600;sy=50;prepare();}
 		void doSave(std::string toSave) {makeVideo(toSave);};
 };
 

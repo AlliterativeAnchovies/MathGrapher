@@ -23,7 +23,7 @@ Uint8 ChooseFunctionInterpolation::handle(double mouseX,double mouseY) {
 	TTF_SizeUTF8((*fontgrab)(16),"Stretch",&stretchsx,&stretchsy);
 	drawTextWithBackground("Run", 16, px+5, cury, 0xff000000, 0xffffcf9e, 0xff000000);
 	if (clicked.status()&&pointInBounds(mouseX, mouseY, px+5, px+5+runsx, cury, cury+runsy)) {
-		createPopup(CREATE_SIMPLE_INTERPOLATION, mouseX, mouseY)
+		(new CreateSimpleInterpolation(mouseX, mouseY))
 			->concernWith(graphConcerned)
 			->concernWith(std::string("Run"))
 			->concernWith(functionConcerned)
@@ -33,7 +33,7 @@ Uint8 ChooseFunctionInterpolation::handle(double mouseX,double mouseY) {
 	}
 	drawTextWithBackground("Stretch", 16, px+5+runsx+5, cury, 0xff000000, 0xffffcf9e, 0xff000000);
 	if (clicked.status()&&pointInBounds(mouseX, mouseY, px+5+runsx+5, px+5+runsx+5+stretchsx, cury, cury+stretchsy)) {
-		createPopup(CREATE_SIMPLE_INTERPOLATION, mouseX, mouseY)
+		(new CreateSimpleInterpolation(mouseX, mouseY))
 			->concernWith(graphConcerned)
 			->concernWith(std::string("Stretch"))
 			->concernWith(functionConcerned)

@@ -20,10 +20,6 @@ bool Popup::isTagged() {
     return taggedForDeletion;
 }
 
-Uint8 Popup::getID() {
-    return popupID;
-}
-
 bool Popup::inBounds(double mouseX,double mouseY) {
     return pointInBounds(mouseX, mouseY, px, px+sx, py, py+sy);//||isMajor(popupID);
 }

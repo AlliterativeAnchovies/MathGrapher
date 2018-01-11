@@ -27,7 +27,7 @@ Uint8 ChooseInterpolationPopup::handle(double mouseX,double mouseY) {
 		}
 		drawTextWithBackground(validInterpols[i], 16, curx, cury, 0xff000000, 0xffffcf9e, 0xff000000);
 		if (clicked.status()&&pointInBounds(mouseX, mouseY, curx, curx+buttonSX, cury, cury+buttonSY)) {
-			createPopup(CREATE_SIMPLE_INTERPOLATION, mouseX, mouseY)
+			(new CreateSimpleInterpolation(mouseX, mouseY))
 				->concernWithAllDisplayObjects(this)
 				->concernWith(validInterpols[i])
 				->setUpInterpolation();

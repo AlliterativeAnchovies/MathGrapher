@@ -13,28 +13,6 @@
 #include "../Functions.hpp"
 
 
-enum POPUP_IDS {
-    NULL_POPUP,
-    ADD_OBJECT_POPUP,
-    EDIT_GRAPH_POPUP,
-    CHOOSE_FUNCTION_POPUP,
-    CHOOSE_INTERPOLATION_POPUP,
-    CREATE_SIMPLE_INTERPOLATION,
-    EDIT_FUNCTION_POPUP,
-    CHOOSE_FUNCTION_INTERPOLATION,
-    CREATE_POINT_OF_INTEREST,
-    EDIT_SLIDER_POPUP,
-    CHOOSE_POINT_CONCERNED_FOR_LINKING_POPUP,
-    CHOOSE_WHICH_IMAGE_POPUP,
-    EDIT_TEXT_POPUP,
-    EDIT_IMAGE_POPUP,
-    LOAD_FILE_POPUP,
-    SAVE_FILE_POPUP,
-    MAIN,
-    SAVE_VIDEO_POPUP,
-    EDIT_ARROW_POPUP
-};
-
 
 class MouseClick {	//Handles mouse clicks
 					//initialize in a popup with prepareMouse(), check with .status(),
@@ -50,7 +28,6 @@ class MouseClick {	//Handles mouse clicks
 };
 class Popup {
     protected:
-		Uint8 popupID;
         double px;
         double py;
 		double sx = 0;
@@ -70,7 +47,6 @@ class Popup {
         virtual bool inBounds(double mouseX,double mouseY);
         virtual bool isQuickCloser() {return false;}
         bool clickAllowed(bool clickType) {return clickType&&successfulRaycast&&!locked;}
-		Uint8 getID();
         void tag();
         bool isTagged();
         Popup* concernWith(Data* d) {datas.push_back(d);return this;};
@@ -159,8 +135,18 @@ class Popup {
         void setUpInterpolation();
         void lock();
         void unlock();
-        ~Popup();
+        virtual ~Popup();
         RawImage* getImageConcerned() {return (RawImage*)getConcernation<RawImage*>();}
+        void prepare() {
+        	for (int i = 0;i<popups.size();i++) {
+				//get rid of all popups that close upon the creation of a new one
+				if (popups[i]==NULL) {break;}
+				if (popups[i]->isQuickCloser()) {
+					popups[i]->tag();
+				}
+			}
+			popups.push_back(this);
+		}
 };
 
 class NullPopup: public Popup {
@@ -169,7 +155,11 @@ class NullPopup: public Popup {
 		NullPopup(double x,double y) {px=x;py=y;};
 };
 
-Popup* createPopup(Uint8 popup_id,double x,double y);
+//Popup* createPopup(Uint8 popup_id,double x,double y);
+/*template<typename T> typename std::enable_if<
+			std::is_base_of<Popup, std::remove_pointer_t<T>>::value,std::remove_pointer_t<T>*
+		>::type
+	createPopup(double x,double y);*/
 //bool isQuickCloser(Uint8 popup_id);
 //bool isMajor(Uint8 popup_id);
 void deleteInStrings();

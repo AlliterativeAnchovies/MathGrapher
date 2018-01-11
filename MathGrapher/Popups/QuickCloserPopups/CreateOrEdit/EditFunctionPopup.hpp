@@ -11,10 +11,13 @@
 
 #include "../QuickCloserPopup.hpp"
 
+#include "../Select/ChooseFunctionInterpolation.hpp"
+#include "../CreateOrEdit/CreatePointOfInterest.hpp"
+
 class EditFunctionPopup: public QuickCloserPopup {
 	public:
 		Uint8 handle(double mouseX,double mouseY);
-		EditFunctionPopup(double x,double y) {px=x;py=y;sx=460;sy=120;popupID=EDIT_FUNCTION_POPUP;}
+		EditFunctionPopup(double x,double y) {px=x;py=y;sx=460;sy=120;prepare();}
 };
 
 #endif /* EditFunctionPopup_hpp */

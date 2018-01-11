@@ -9,12 +9,14 @@
 #ifndef EditSliderPopup_hpp
 #define EditSliderPopup_hpp
 
-#include "../MajorPopup.hpp"
+#include "../EditPopup.hpp"
+#include "../../QuickCloserPopups/Select/ChooseFunctionPopup.hpp"
+#include "../../QuickCloserPopups/Select/ChoosePointConcernedForLinkingPopup.hpp"
 
 class EditSliderPopup: public EditPopup {
 	public:
 		Uint8 handle(double mouseX,double mouseY);
-		EditSliderPopup(double x,double y) {px=x;py=y;sx=SCREEN_WIDTH-20-150;sy=SCREEN_HEIGHT-20;popupID=EDIT_SLIDER_POPUP;}
+		EditSliderPopup(double x,double y) {px=x;py=y;sx=SCREEN_WIDTH-20-150;sy=SCREEN_HEIGHT-20;prepare();}
 };
 
 #endif /* EditSliderPopup_hpp */

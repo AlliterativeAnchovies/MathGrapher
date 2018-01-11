@@ -42,7 +42,7 @@ Uint8 AddObjectPopup::handle(double mouseX,double mouseY) {
 	drawTextWithBackground(" Image ", 20, px+5, cury, 0xff000000, 0xffffcf9e, 0xff000000);
 	if (clicked.status()&&pointInBounds(mouseX, mouseY, px+5, px+5+imagew, cury, cury+imageh)) {
 		//add image!
-		createPopup(CHOOSE_WHICH_IMAGE_POPUP, px, py);
+		new ChooseWhichImagePopup(px, py);
 		clicked.unclick();
 		toReturn = 0x02;
 	}

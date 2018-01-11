@@ -33,7 +33,7 @@ Uint8 EditImagePopup::handle(double mouseX,double mouseY) {
 	if (clicked.status()&&pointInBounds(mouseX, mouseY, curx, curx+whichimgw, cury, cury+whichimgh)) {
 		clicked.unclick();
 		toReturn = 0x01;
-		createPopup(CHOOSE_WHICH_IMAGE_POPUP, mouseX, mouseY)
+		(new ChooseWhichImagePopup(mouseX, mouseY))
 			->concernWith(this);
 	}
 	curx+=whichimgw+5;
