@@ -14,7 +14,7 @@
 class SaveFilePopup: public SaverPopup {
 	public:
 		//Uint8 handle(double mouseX,double mouseY,bool clicked);
-		SaveFilePopup(double x,double y) {px=x;py=y;sx=600;sy=50;prepare();}
+		SaveFilePopup(double x,double y) {px=x;py=y;sx=600;sy=50;}
 		void doSave(std::string toSave) {save(toSave);};
 };
 

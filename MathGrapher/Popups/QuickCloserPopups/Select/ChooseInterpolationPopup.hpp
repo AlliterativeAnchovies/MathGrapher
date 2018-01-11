@@ -15,7 +15,7 @@
 class ChooseInterpolationPopup: public QuickCloserPopup {
 	public:
 		Uint8 handle(double mouseX,double mouseY);
-		ChooseInterpolationPopup(double x,double y) {px=x;py=y;sx=150;sy=200;prepare();}
+		ChooseInterpolationPopup(double x,double y) {px=x;py=y;sx=150;sy=200;}
 };
 
 

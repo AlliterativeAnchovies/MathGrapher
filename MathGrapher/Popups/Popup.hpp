@@ -147,6 +147,7 @@ class Popup {
 			}
 			popups.push_back(this);
 		}
+		Popup() {prepare();}//all derived classes call this constructor on construction, awesomely enough
 };
 
 class NullPopup: public Popup {

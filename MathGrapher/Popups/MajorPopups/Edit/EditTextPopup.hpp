@@ -14,7 +14,7 @@
 class EditTextPopup: public EditPopup {
 	public:
 		Uint8 handle(double mouseX,double mouseY);
-		EditTextPopup(double x,double y) {px=x;py=y;sx=SCREEN_WIDTH-20-150;sy=SCREEN_HEIGHT-20;prepare();}
+		EditTextPopup(double x,double y) {px=x;py=y;sx=SCREEN_WIDTH-20-150;sy=SCREEN_HEIGHT-20;}
 };
 
 #endif /* EditTextPopup_hpp */

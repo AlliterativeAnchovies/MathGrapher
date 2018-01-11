@@ -17,7 +17,7 @@
 class EditFunctionPopup: public QuickCloserPopup {
 	public:
 		Uint8 handle(double mouseX,double mouseY);
-		EditFunctionPopup(double x,double y) {px=x;py=y;sx=460;sy=120;prepare();}
+		EditFunctionPopup(double x,double y) {px=x;py=y;sx=460;sy=120;}
 };
 
 #endif /* EditFunctionPopup_hpp */

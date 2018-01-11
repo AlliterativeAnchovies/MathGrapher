@@ -15,7 +15,7 @@
 class ChooseWhichImagePopup: public QuickCloserPopup {
 	public:
 		Uint8 handle(double mouseX,double mouseY);
-		ChooseWhichImagePopup(double x,double y) {px=x;py=y;sx=150;sy=200;prepare();}
+		ChooseWhichImagePopup(double x,double y) {px=x;py=y;sx=150;sy=200;}
 };
 
 #endif /* ChooseWhichImagePopup_hpp */

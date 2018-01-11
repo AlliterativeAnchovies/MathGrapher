@@ -14,7 +14,7 @@
 class ChoosePointConcernedForLinkingPopup: public QuickCloserPopup {
 	public:
 		Uint8 handle(double mouseX,double mouseY);
-		ChoosePointConcernedForLinkingPopup(double x,double y) {px=x;py=y;sx=150;sy=200;prepare();}
+		ChoosePointConcernedForLinkingPopup(double x,double y) {px=x;py=y;sx=150;sy=200;}
 };
 
 #endif /* ChoosePointConcernedForLinkingPopup_hpp */

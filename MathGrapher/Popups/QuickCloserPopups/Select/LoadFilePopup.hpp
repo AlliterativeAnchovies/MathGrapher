@@ -14,7 +14,7 @@
 class LoadFilePopup: public QuickCloserPopup {
 	public:
 		Uint8 handle(double mouseX,double mouseY);
-		LoadFilePopup(double x,double y) {px=x;py=y;sx=150;sy=200;prepare();}
+		LoadFilePopup(double x,double y) {px=x;py=y;sx=150;sy=200;}
 };
 
 #endif /* LoadFilePopup_hpp */
