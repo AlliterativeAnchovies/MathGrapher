@@ -70,6 +70,9 @@ class Font {
         TTF_Font* operator() (int which);
 };
 
+typedef std::unique_ptr<SDL_Surface,decltype(&SDL_FreeSurface)> Surface_Pointer_unique;
+typedef std::unique_ptr<SDL_Texture,decltype(&SDL_DestroyTexture)> Texture_Pointer_unique;
+
 SDL_Surface* createBlankSurfaceWithSize(int sx,int sy);
 void drawLineOnSurface(SDL_Surface* theSurface,double x1,double y1,double x2,double y2,Uint32 color);
 Uint32 get_pixel32(SDL_Surface *surface, int x, int y);

@@ -60,7 +60,7 @@ Popup* Popup::concernWith(Function* f) {
 
 
 void Popup::setUpInterpolation() {
-	Data* intplObj;
+	SavableData* intplObj;
 	if (graphConcerned!=NULL) {intplObj=graphConcerned;}//IMPROVE THIS
     else if (sliderConcerned!=NULL) {intplObj=sliderConcerned;}
 	else if (imageConcerned!=NULL) {intplObj=imageConcerned;}
@@ -121,7 +121,7 @@ void deleteInStrings() {
 Popup::~Popup() {
     deleteInStrings();
 }
-bool handleEditableInfo(double px,double py,Data* d,bool clicked,double mouseX,double mouseY,int* yoffset) {
+bool handleEditableInfo(double px,double py,SavableData* d,bool clicked,double mouseX,double mouseY,int* yoffset) {
 	bool clickedEdit = false;
 	auto editInfoList = d->getEditableFields();
 	

@@ -70,15 +70,28 @@ struct SaveData {
 
 class Data {
 	public:
-		virtual std::vector<SaveData> getSaveData()=0;
 		virtual std::string getID()=0;
 		virtual bool isDisplayObject() {return false;}
 		virtual bool isInterpolation() {return false;}
+};
+
+template<typename T> class DerivedData: public Data {
+	private:
+		T thing;
+	public:
+		DerivedData(T t) {thing=t;};
+		operator T() {return thing;}
+		std::string getID() {return std::string(typeid(T));}
+};
+
+class SavableData: public Data {
+	public:
+		virtual std::vector<SaveData> getSaveData()=0;
 		virtual std::vector<EditFieldMenu> getEditableFields()=0;
 		virtual void init() {};
 };
 
-class DisplayObject: public Data {
+class DisplayObject: public SavableData {
 	protected:
 		//stores current interpolation data
         std::vector<Interpolation*> interpolations = {};
@@ -103,10 +116,10 @@ class DisplayObject: public Data {
         virtual void reclaim(SDL_Surface* reclaimed)=0;
         virtual void move(double x,double y)=0;
 		void addInterpolation(Interpolation* i);//defined in DisplayWrapper
-		std::vector<Interpolation*> getInterpolations() {return interpolations;};
+		std::vector<Interpolation*> getInterpolations() const {return interpolations;};
 		virtual void makeInvisible()=0;
 		virtual void makeVisibile()=0;
-		bool isDisplayObject() {return true;}
+		bool isDisplayObject() const {return true;}
 		void cleanInterpolations();//defined in DisplayWrapper
 };
 

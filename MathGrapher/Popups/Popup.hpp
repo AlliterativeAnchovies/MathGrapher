@@ -169,7 +169,7 @@ template<typename T> bool handleEditableInfo_internal(double px,double py,int fs
     return false;
 }
 
-bool handleEditableInfo(double px,double py,Data* d,bool clicked,double mouseX,double mouseY,int* yoffset);
+bool handleEditableInfo(double px,double py,SavableData* d,bool clicked,double mouseX,double mouseY,int* yoffset);
 
 
 #endif /* Popup_hpp */

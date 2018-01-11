@@ -24,6 +24,7 @@ class MoveInterpol: public Interpolation {
 		std::vector<EditFieldMenu> getEditableFields();
 		MoveInterpol(double x,double y);
 		void relateData(Data* d);
+		void relateData(SavableData* d) {relateData((Data*)d);};
 		MoveInterpol() {};
 };
 

@@ -97,8 +97,8 @@ void DisplayObject::addInterpolation(Interpolation* i) {
 	i->relateData(this);
 }
 
-Data* dataFromID(std::string theID) {
-	Data* theObject;
+SavableData* dataFromID(std::string theID) {
+	SavableData* theObject;
 	if (theID=="Graph") {
 		theObject = new Graph();
 	}

@@ -11,7 +11,7 @@
 
 #include "../DisplayObjects.hpp"
 
-class Interpolation: public Data {
+class Interpolation: public SavableData {
 	private:
 		bool waiting = false;//ignores for 1 tick
 		bool paused = false;//ignores until told otherwise

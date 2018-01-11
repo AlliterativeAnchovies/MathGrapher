@@ -515,7 +515,7 @@ std::string putDataOnStream(int indents,std::vector<SaveData> data,int* numpoint
 			}
 			case _VECTOR: {
 				fs += "{\n";
-				std::vector<Data*> nestedData = *((std::vector<Data*>*)d.data);
+				std::vector<SavableData*> nestedData = *((std::vector<SavableData*>*)d.data);
 				std::string vecThing = "None";
 				if (!nestedData.empty()) {
 					vecThing = nestedData[0]->getID();
@@ -649,7 +649,7 @@ void save(std::string toSave) {
 	}
 }
 
-void loadData(Data** theObject,ParsedFile* object,std::string theID,std::vector<Data*>* allLoadedObjects,int* objcount) {
+void loadData(SavableData** theObject,ParsedFile* object,std::string theID,std::vector<SavableData*>* allLoadedObjects,int* objcount) {
 	*theObject = dataFromID(theID);
 	//auto aLO = *allLoadedObjects;
 	std::vector<SaveData> theData = (*theObject)->getSaveData();
@@ -687,9 +687,9 @@ void loadData(Data** theObject,ParsedFile* object,std::string theID,std::vector<
 				std::vector<ParsedFile*> theParse = comps[0]->componentFromString("data");
 				if (comps[0]->componentExists("None")) {continue;}//empty, ignore!
 				std::string id = comps[0]->valueOf("ID");
-				auto theVec = ((std::vector<Data*>*)pointer);
+				auto theVec = ((std::vector<SavableData*>*)pointer);
 				for (auto p : theParse) {
-					Data* newObject = NULL;
+					SavableData* newObject = NULL;
 					loadData(&newObject, p, id,allLoadedObjects,objcount);
 					theVec->push_back(newObject);
 				}
@@ -699,21 +699,21 @@ void loadData(Data** theObject,ParsedFile* object,std::string theID,std::vector<
 				//auto theFunc = (Function*)pointer;
 				if (object->componentFromString(toLookFor)[0]->componentExists("None")) {continue;}
 				ParsedFile* newObject = object->componentFromString(toLookFor)[0];
-				loadData((Data**)(pointer), newObject, newObject->valueOf("ID"),allLoadedObjects,objcount);
+				loadData((SavableData**)(pointer), newObject, newObject->valueOf("ID"),allLoadedObjects,objcount);
 				break;
 			}
 			case _POINT_OF_INTEREST: {
 				//auto thePoint = (PointOfInterest*)pointer;
 				if (object->componentFromString(toLookFor)[0]->componentExists("None")) {continue;}
 				ParsedFile* newObject = object->componentFromString(toLookFor)[0];
-				loadData((Data**)(pointer), newObject, newObject->valueOf("ID"),allLoadedObjects,objcount);
+				loadData((SavableData**)(pointer), newObject, newObject->valueOf("ID"),allLoadedObjects,objcount);
 				break;
 			}
 			case _INTERPOLATION: {
 				//auto theInterpol = (Interpolation*)pointer;
 				if (object->componentFromString(toLookFor)[0]->componentExists("None")) {continue;}
 				ParsedFile* newObject = object->componentFromString(toLookFor)[0];
-				loadData((Data**)(pointer), newObject, newObject->valueOf("ID"),allLoadedObjects,objcount);
+				loadData((SavableData**)(pointer), newObject, newObject->valueOf("ID"),allLoadedObjects,objcount);
 				break;
 			}
 			case _POINT_HOOK: {
@@ -768,18 +768,18 @@ void load(std::string toLoad) {
 	std::fstream loadedFile(toLoad);
 	ParsedFile* pf = ParsedFile::parseFile(&loadedFile);
 	std::vector<ParsedFile*> comps =  pf->componentFromString("*");
-	std::vector<Data*> allLoadedObjects = std::vector<Data*>(1000);
+	std::vector<SavableData*> allLoadedObjects = std::vector<SavableData*>(1000);
 	int objcount = 0;
 	for (auto object : comps) {
 		if (object->getKey()!="object"){continue;}
 		std::string theID = object->valueOf("ID");
 		//std::string theName = object->valueOf("Name");
-		Data* theObject = NULL;
+		SavableData* theObject = NULL;
 		loadData(&theObject, object,theID,&allLoadedObjects,&objcount);
 	}
 	std::vector<Function*> allthefuncs = {};
 	for (int i = 0;i<objcount;i++) {//first we group certain datas into lists for ease of use
-		Data* starthingy = (allLoadedObjects[i]);
+		SavableData* starthingy = (allLoadedObjects[i]);
 		if (starthingy->getID()=="Point_Of_Interest") {
 			pointsOfInterest.push_back((PointOfInterest*)starthingy);
 		}
@@ -788,7 +788,7 @@ void load(std::string toLoad) {
 		}
 	}
 	for (int i = 0;i<objcount;i++) {//do linking
-		Data* starthingy = (allLoadedObjects[i]);
+		SavableData* starthingy = (allLoadedObjects[i]);
 		if (starthingy->isDisplayObject()) {
 			objects.push_back((DisplayObject*)starthingy);
 		}

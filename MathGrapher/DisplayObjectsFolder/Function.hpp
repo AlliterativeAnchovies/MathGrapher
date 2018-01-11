@@ -22,7 +22,7 @@ struct FunctionImage {
     bool visible;
 };
 
-class Function: public Data {
+class Function: public SavableData {
     private:
         internalFunc function=NULL;
         internalFunc function2=NULL;//if parametric
@@ -88,7 +88,7 @@ class Function: public Data {
 
 extern std::vector<PointOfInterest*> pointsOfInterest;
 
-class PointOfInterest: public Data {
+class PointOfInterest: public SavableData {
     private:
         Graph* graphOn = NULL;
         Function* functionOn = NULL;
