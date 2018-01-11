@@ -121,10 +121,10 @@ class DisplayObject: public SavableData {
         virtual void move(double x,double y)=0;
         virtual std::vector<std::string> getValidInterpolations()=0;
 		void addInterpolation(Interpolation* i);//defined in DisplayWrapper
-		std::vector<Interpolation*> getInterpolations() const {return interpolations;};
+		std::vector<Interpolation*> getInterpolations() {return interpolations;};
 		virtual void makeInvisible()=0;
 		virtual void makeVisibile()=0;
-		bool isDisplayObject() const {return true;}
+		bool isDisplayObject() {return true;}
 		void cleanInterpolations();//defined in DisplayWrapper
 };
 
