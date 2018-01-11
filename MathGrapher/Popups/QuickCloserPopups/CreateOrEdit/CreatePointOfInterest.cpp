@@ -8,9 +8,9 @@
 
 #include "CreatePointOfInterest.hpp"
 
-Uint8 CreatePointOfInterest::handle(double mouseX,double mouseY,bool clicked) {
+Uint8 CreatePointOfInterest::handle(double mouseX,double mouseY) {
 	Uint8 toReturn = 0x00;
-    clicked = clicked&&successfulRaycast&&!locked;
+    bool clicked = clickAllowed(leftMouseReleased);
 	
 	drawBorderedRect(px, py, sx, sy, 0xffaaf2aa, 0xff000000);
 	drawText("Point of Interest", 24, px, py, 0xff000000);

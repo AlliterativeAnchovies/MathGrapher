@@ -12,7 +12,7 @@
 #include "MajorPopup.hpp"
 class SaverPopup: public MajorPopup {
 	public:
-		Uint8 handle(double mouseX,double mouseY,bool clicked);
+		Uint8 handle(double mouseX,double mouseY);
 		virtual void doSave(std::string toSave)=0;
 };
 

@@ -45,17 +45,6 @@ class Popup {
 		double sx = 0;
         double sy = 0;
         bool taggedForDeletion = false;
-        /*Graph* graphConcerned = NULL;
-        bool boolConcerned = false;
-        std::string stringConcerned = "";
-        Interpolation* interpolationConcerned = NULL;
-        Popup* popupConcerned = NULL;
-        Function* functionConcerned = NULL;
-        Slider* sliderConcerned = NULL;
-        RawImage* imageConcerned = NULL;
-        RawText* textConcerned = NULL;
-        Arrow* arrowConcerned = NULL;
-        PointOfInterest* pointConcerned = NULL;*/
         std::vector<Data*> datas = {};
         bool isNewborn = true;
         bool successfulRaycast = false;
@@ -64,11 +53,13 @@ class Popup {
 									//out when dealing with SFINAE in templates in member functions.
 									//so we handle it seperately
     public:
-        //Popup(double x,double y) {px=x;py=y;}
-        virtual Uint8 handle(double mouseX,double mouseY,bool clicked)=0;
+        virtual Uint8 handle(double mouseX,double mouseY)=0;
+        virtual bool inBounds(double mouseX,double mouseY);
+        virtual bool isQuickCloser() {return false;}
+        bool clickAllowed(bool clickType) {return clickType&&successfulRaycast&&!locked;}
+		Uint8 getID();
         void tag();
         bool isTagged();
-        Uint8 getID();
         Popup* concernWith(Data* d) {datas.push_back(d);return this;};
         Popup* concernWith(Popup* d) {popupConcerned=d;return this;}
 		//compiler (erroneously) freaks out when I try to concernWith a bool
@@ -145,10 +136,9 @@ class Popup {
 			}
 			throw std::runtime_error("Error!  There is no display object this popup is aware of!");
 		}
-        virtual bool inBounds(double mouseX,double mouseY);
         bool newborn() {return isNewborn;}
         void age() {isNewborn=false;}
-        virtual bool raycast(double mouseX,double mouseY) {
+		bool raycast(double mouseX,double mouseY) {
             if (inBounds(mouseX, mouseY)) {successfulRaycast = true;}
             return successfulRaycast;
         }
@@ -157,13 +147,12 @@ class Popup {
         void lock();
         void unlock();
         ~Popup();
-        virtual bool isQuickCloser() {return false;}
         RawImage* getImageConcerned() {return (RawImage*)getConcernation<RawImage*>();}
 };
 
 class NullPopup: public Popup {
 	public:
-		Uint8 handle(double mouseX,double mouseY,bool clicked) {return 0x02;};
+		Uint8 handle(double mouseX,double mouseY) {return 0x02;};
 		NullPopup(double x,double y) {px=x;py=y;};
 };
 

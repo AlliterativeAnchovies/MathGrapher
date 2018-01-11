@@ -8,9 +8,9 @@
 
 #include "CreateSimpleInterpolation.hpp"
 
-Uint8 CreateSimpleInterpolation::handle(double mouseX,double mouseY,bool clicked) {
+Uint8 CreateSimpleInterpolation::handle(double mouseX,double mouseY) {
 	Uint8 toReturn = 0x00;
-    clicked = clicked&&successfulRaycast&&!locked;
+    bool clicked = clickAllowed(leftMouseReleased);
 	
 	Interpolation* interpolationConcerned = (Interpolation*)getConcernation<Interpolation*>();
 	

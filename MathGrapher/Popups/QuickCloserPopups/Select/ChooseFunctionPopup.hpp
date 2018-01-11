@@ -13,7 +13,7 @@
 
 class ChooseFunctionPopup: public QuickCloserPopup {
 	public:
-		Uint8 handle(double mouseX,double mouseY,bool clicked);
+		Uint8 handle(double mouseX,double mouseY);
 		ChooseFunctionPopup(double x,double y) {px=x;py=y;sx=150;sy=250;popupID=CHOOSE_FUNCTION_POPUP;}
 };
 

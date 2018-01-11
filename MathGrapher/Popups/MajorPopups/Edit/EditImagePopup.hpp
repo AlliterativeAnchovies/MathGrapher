@@ -13,7 +13,7 @@
 
 class EditImagePopup: public EditPopup {
 	public:
-		Uint8 handle(double mouseX,double mouseY,bool clicked);
+		Uint8 handle(double mouseX,double mouseY);
 		EditImagePopup(double x,double y) {px=x;py=y;sx=SCREEN_WIDTH-20-150;sy=SCREEN_HEIGHT-20;popupID=EDIT_IMAGE_POPUP;}
 };
 

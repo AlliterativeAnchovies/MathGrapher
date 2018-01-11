@@ -13,7 +13,7 @@
 
 class CreatePointOfInterest: public QuickCloserPopup {
 	public:
-		Uint8 handle(double mouseX,double mouseY,bool clicked);
+		Uint8 handle(double mouseX,double mouseY);
 		CreatePointOfInterest(double x,double y) {px=x;py=y;sx=450;sy=80;popupID=CREATE_POINT_OF_INTEREST;}
 };
 

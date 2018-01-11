@@ -13,7 +13,7 @@
 
 class EditSliderPopup: public EditPopup {
 	public:
-		Uint8 handle(double mouseX,double mouseY,bool clicked);
+		Uint8 handle(double mouseX,double mouseY);
 		EditSliderPopup(double x,double y) {px=x;py=y;sx=SCREEN_WIDTH-20-150;sy=SCREEN_HEIGHT-20;popupID=EDIT_SLIDER_POPUP;}
 };
 

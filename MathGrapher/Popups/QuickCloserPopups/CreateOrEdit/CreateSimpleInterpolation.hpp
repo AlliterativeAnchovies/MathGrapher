@@ -13,7 +13,7 @@
 
 class CreateSimpleInterpolation: public QuickCloserPopup {
 	public:
-		Uint8 handle(double mouseX,double mouseY,bool clicked);
+		Uint8 handle(double mouseX,double mouseY);
 		CreateSimpleInterpolation(double x,double y) {px=x;py=y;sx=400;sy=120;popupID=CREATE_SIMPLE_INTERPOLATION;}
 };
 

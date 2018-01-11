@@ -8,9 +8,9 @@
 
 #include "AddObjectPopup.hpp"
 
-Uint8 AddObjectPopup::handle(double mouseX,double mouseY,bool clicked) {
+Uint8 AddObjectPopup::handle(double mouseX,double mouseY) {
 	Uint8 toReturn = 0x00;
-    clicked = clicked&&successfulRaycast&&!locked;
+    bool clicked = clickAllowed(leftMouseReleased);
 
 	//main background
 	drawBorderedRect(px, py, sx, sy, 0xff9fc9f2, 0xff000000);

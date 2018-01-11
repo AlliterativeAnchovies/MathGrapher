@@ -8,9 +8,9 @@
 
 #include "MainDisplay.hpp"
 
-Uint8 MainDisplay::handle(double mouseX,double mouseY,bool clicked) {
+Uint8 MainDisplay::handle(double mouseX,double mouseY) {
 	Uint8 toReturn = 0x00;
-    clicked = clicked&&successfulRaycast&&!locked;
+    bool clicked = clickAllowed(leftMouseReleased);
 	
 	
 	//Fill screen to background

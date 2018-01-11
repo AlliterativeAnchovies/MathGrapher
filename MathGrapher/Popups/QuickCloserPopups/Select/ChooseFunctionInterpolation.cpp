@@ -8,9 +8,9 @@
 
 #include "ChooseFunctionInterpolation.hpp"
 
-Uint8 ChooseFunctionInterpolation::handle(double mouseX,double mouseY,bool clicked) {
+Uint8 ChooseFunctionInterpolation::handle(double mouseX,double mouseY) {
 	Uint8 toReturn = 0x00;
-    clicked = clicked&&successfulRaycast&&!locked;
+    bool clicked = clickAllowed(leftMouseReleased);
 	
 	Graph* graphConcerned = (Graph*)getConcernation<Graph*>();
 	Function* functionConcerned = (Function*)getConcernation<Function*>();

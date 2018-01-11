@@ -8,9 +8,9 @@
 
 #include "EditFunctionPopup.hpp"
 
-Uint8 EditFunctionPopup::handle(double mouseX,double mouseY,bool clicked) {
+Uint8 EditFunctionPopup::handle(double mouseX,double mouseY) {
 	Uint8 toReturn = 0x00;
-    clicked = clicked&&successfulRaycast&&!locked;
+    bool clicked = clickAllowed(leftMouseReleased);
 	
 	Function* functionConcerned = (Function*)getConcernation<Function*>();
 	Graph* graphConcerned = (Graph*)getConcernation<Graph*>();

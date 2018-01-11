@@ -131,7 +131,7 @@ bool controlFlow() {
     for (int i = 0;i<popups.size();i++) {
         if (popups[i]==NULL) {break;}
         if (!popups[i]->isTagged()) {
-            Uint8 handling = popups[i]->handle(mouseX, mouseY, leftMouseReleased);
+            Uint8 handling = popups[i]->handle(mouseX, mouseY);
             if (handling==0x00) {
                 //did not click in popup
                 if (!(popups[i]->isQuickCloser() && leftMouseHadBeenReleased && !popups[i]->newborn())) {

@@ -8,9 +8,9 @@
 
 #include "ChooseFunctionPopup.hpp"
 
-Uint8 ChooseFunctionPopup::handle(double mouseX,double mouseY,bool clicked) {
+Uint8 ChooseFunctionPopup::handle(double mouseX,double mouseY) {
 	Uint8 toReturn = 0x00;
-    clicked = clicked&&successfulRaycast&&!locked;
+    bool clicked = clickAllowed(leftMouseReleased);
 
 	drawBorderedRect(px, py, sx, sy, 0xffaaf2aa, 0xff000000);
 	drawText("Choose Function", 22, px, py, 0xff000000);

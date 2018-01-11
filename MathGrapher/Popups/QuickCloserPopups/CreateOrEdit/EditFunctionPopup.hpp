@@ -13,7 +13,7 @@
 
 class EditFunctionPopup: public QuickCloserPopup {
 	public:
-		Uint8 handle(double mouseX,double mouseY,bool clicked);
+		Uint8 handle(double mouseX,double mouseY);
 		EditFunctionPopup(double x,double y) {px=x;py=y;sx=460;sy=120;popupID=EDIT_FUNCTION_POPUP;}
 };
 
