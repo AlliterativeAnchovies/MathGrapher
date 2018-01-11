@@ -68,6 +68,7 @@ class Arrow: public DisplayObject {
 		std::vector<EditFieldMenu> getEditableFields();
 		std::vector<SaveData> getSaveData();
 		Arrow() {};
+		std::vector<std::string> getValidInterpolations();
 };
 
 #endif /* Arrow_hpp */

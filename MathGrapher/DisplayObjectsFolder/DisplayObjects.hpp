@@ -81,8 +81,12 @@ template<typename T> class DerivedData: public Data {
 	public:
 		DerivedData(T t) {thing=t;};
 		operator T() {return thing;}
-		std::string getID() {return std::string(typeid(T));}
+		static std::string staticID() {return typeid(T).name();}
+		std::string getID() {return staticID();}
+		T value() {return thing;}
+		T* pointer() {return &thing;}
 };
+
 
 class SavableData: public Data {
 	public:
@@ -115,6 +119,7 @@ class DisplayObject: public SavableData {
         virtual SDL_Surface* draw(double* x,double* y)=0;
         virtual void reclaim(SDL_Surface* reclaimed)=0;
         virtual void move(double x,double y)=0;
+        virtual std::vector<std::string> getValidInterpolations()=0;
 		void addInterpolation(Interpolation* i);//defined in DisplayWrapper
 		std::vector<Interpolation*> getInterpolations() const {return interpolations;};
 		virtual void makeInvisible()=0;

@@ -26,17 +26,6 @@
 #include "DisplayObjectsFolder/RawText.hpp"
 #include "DisplayObjectsFolder/Arrow.hpp"
 
-//Returns a vector containing all valid interpolations
-template<typename T> std::vector<std::string> getValidInterpolations() {
-	throw std::runtime_error("Error!  Have not defined interpolations for this object!");
-}
-template<> std::vector<std::string> getValidInterpolations<DisplayObject>();
-template<> std::vector<std::string> getValidInterpolations<RawImage>();
-template<> std::vector<std::string> getValidInterpolations<Slider>();
-template<> std::vector<std::string> getValidInterpolations<Graph>();
-template<> std::vector<std::string> getValidInterpolations<RawText>();
-template<> std::vector<std::string> getValidInterpolations<Arrow>();
-
 //Things to draw/interpolate
 extern std::vector<DisplayObject*> objects;
 

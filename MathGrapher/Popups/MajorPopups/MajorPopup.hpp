@@ -21,7 +21,8 @@ class EditPopup : public MajorPopup {
 		template<typename T> bool drawInterpolationSidebar(int interpolationx,int interpolationy,bool clicked,double mouseX,double mouseY,T concernedThing);
 };
 
-template<typename T> bool EditPopup::drawInterpolationSidebar(int interpolationx,int interpolationy,bool clicked,double mouseX,double mouseY,T concernedThing) {
+template<typename T> bool EditPopup::drawInterpolationSidebar(int interpolationx,int interpolationy,bool clicked,double mouseX,double mouseY,T inThing) {
+	DisplayObject* concernedThing = (DisplayObject*)inThing;
 	bool toReturn = false;
 	drawBorderedRect(interpolationx, interpolationy, 3*sx/8+1, sy, 0xff597bf5, 0xff000000);
 	drawText("Interpolations", 24, interpolationx+5, interpolationy, 0xff000000);

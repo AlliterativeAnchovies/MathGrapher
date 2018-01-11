@@ -106,3 +106,7 @@ std::vector<SaveData> Arrow::getSaveData() {
 	};
 };
 
+std::vector<std::string> Arrow::getValidInterpolations() {
+	return {"Move","Scale","Rescale Head","Disappear","Appear"};
+}
+

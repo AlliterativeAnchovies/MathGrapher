@@ -60,6 +60,7 @@ class RawText: public DisplayObject {
 		std::vector<EditFieldMenu> getEditableFields();
 		std::vector<SaveData> getSaveData();
 		RawText() {};
+		std::vector<std::string> getValidInterpolations();
 };
 
 #endif /* RawText_hpp */

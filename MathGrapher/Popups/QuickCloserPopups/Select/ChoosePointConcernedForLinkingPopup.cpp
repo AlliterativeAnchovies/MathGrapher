@@ -14,6 +14,7 @@ Uint8 ChoosePointConcernedForLinkingPopup::handle(double mouseX,double mouseY,bo
 	
 	drawBorderedRect(px, py, sx, sy, 0xffaaf2aa, 0xff000000);
 	drawText("Choose Point Of Interest", 22, px, py, 0xff000000);
+	Slider* sliderConcerned = (Slider*)getConcernation<Slider*>();
 	double cury = py+30;
 	for (int i = 0;i<pointsOfInterest.size();i++) {
 		int w,h;

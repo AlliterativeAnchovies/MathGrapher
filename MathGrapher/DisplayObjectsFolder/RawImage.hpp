@@ -71,6 +71,7 @@ class RawImage: public DisplayObject {
 		std::vector<EditFieldMenu> getEditableFields();
 		std::vector<SaveData> getSaveData();
 		RawImage() {};
+		std::vector<std::string> getValidInterpolations();
 };
 
 #endif /* RawImage_hpp */

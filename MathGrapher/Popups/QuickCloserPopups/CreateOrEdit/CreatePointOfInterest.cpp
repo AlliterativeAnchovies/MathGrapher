@@ -15,6 +15,10 @@ Uint8 CreatePointOfInterest::handle(double mouseX,double mouseY,bool clicked) {
 	drawBorderedRect(px, py, sx, sy, 0xffaaf2aa, 0xff000000);
 	drawText("Point of Interest", 24, px, py, 0xff000000);
 	std::string header = " px: ";
+	Function* functionConcerned = (Function*)getConcernation<Function*>();
+	std::string stringConcerned = (std::string)(*((DerivedData<std::string>*)getConcernation<std::string>()));
+	PointOfInterest* pointConcerned = (PointOfInterest*)getConcernation<PointOfInterest*>();
+	
 	if (functionConcerned->isParametric()) {header = " t: ";}
 	if (stringConcerned==""&&instringswitch!=18) {
 		header+="0";
@@ -39,6 +43,9 @@ Uint8 CreatePointOfInterest::handle(double mouseX,double mouseY,bool clicked) {
 	}
 	drawText(outputOfFunc, 16, curx+offx, py+30, 0xff000000);
 	cury+=offy;*/
+
+	bool boolConcerned = (bool)(*((DerivedData<bool>*)getConcernation<bool>()));
+	Graph* graphConcerned = (Graph*)getConcernation<Graph*>();
 
 	int visiblex,visibley;
 	TTF_SizeUTF8((*fontgrab)(16),boolConcerned?"Is Visible":"Is Hidden",&visiblex,&visibley);

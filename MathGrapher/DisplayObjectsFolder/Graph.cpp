@@ -615,3 +615,7 @@ std::vector<SaveData> Graph::getSaveData() {
 		{"Interpolations",&interpolations,_VECTOR}
 	};
 };
+
+std::vector<std::string> Graph::getValidInterpolations() {
+	return {"Move","Resize","Scale","Rotate","Move Origin","Stretch","Highlight","Disappear","Appear","Rescale Grid"};
+}

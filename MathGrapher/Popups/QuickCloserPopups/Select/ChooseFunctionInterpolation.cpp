@@ -12,6 +12,9 @@ Uint8 ChooseFunctionInterpolation::handle(double mouseX,double mouseY,bool click
 	Uint8 toReturn = 0x00;
     clicked = clicked&&successfulRaycast&&!locked;
 	
+	Graph* graphConcerned = (Graph*)getConcernation<Graph*>();
+	Function* functionConcerned = (Function*)getConcernation<Function*>();
+	
 	drawBorderedRect(px, py, sx, sy, 0xffaaf2aa, 0xff000000);
 	drawText("Interpolations", 22, px, py, 0xff000000);
 	double cury = py+30;

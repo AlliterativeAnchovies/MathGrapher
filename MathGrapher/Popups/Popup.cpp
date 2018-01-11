@@ -28,49 +28,13 @@ bool Popup::inBounds(double mouseX,double mouseY) {
     return pointInBounds(mouseX, mouseY, px, px+sx, py, py+sy);//||isMajor(popupID);
 }
 
-Popup* Popup::concernWith(Graph* g) {
-    graphConcerned = g;
-    return this;
-}
-
-Popup* Popup::concernWith(bool b) {
-    boolConcerned = b;
-    return this;
-}
-
-Popup* Popup::concernWith(std::string s) {
-    stringConcerned = s;
-    return this;
-}
-
-Popup* Popup::concernWith(Interpolation* i) {
-    interpolationConcerned = i;
-    return this;
-}
-
-Popup* Popup::concernWith(Popup* p) {
-    popupConcerned = p;
-    return this;
-}
-
-Popup* Popup::concernWith(Function* f) {
-    functionConcerned = f;
-    return this;
-}
 
 
 void Popup::setUpInterpolation() {
-	SavableData* intplObj;
-	if (graphConcerned!=NULL) {intplObj=graphConcerned;}//IMPROVE THIS
-    else if (sliderConcerned!=NULL) {intplObj=sliderConcerned;}
-	else if (imageConcerned!=NULL) {intplObj=imageConcerned;}
-	else if (textConcerned!=NULL) {intplObj=textConcerned;}
-	else if (arrowConcerned!=NULL) {intplObj=arrowConcerned;}
-	else {
-		throw std::runtime_error("Not set up adding interpolations to this type of display object!");
-	}
-	
-    interpolationConcerned = (Interpolation*)dataFromID(stringConcerned);
+	//DisplayObject* intplObj = getFirstDisplayObject();
+	std::string stringConcerned = (std::string)(*((DerivedData<std::string>*)(getConcernation<std::string>())));
+    Interpolation* interpolationConcerned = (Interpolation*)dataFromID(stringConcerned);
+    concernWith(interpolationConcerned);
 }
 
 void Popup::lock() {
@@ -174,6 +138,9 @@ bool handleEditableInfo(double px,double py,SavableData* d,bool clicked,double m
 	return clickedEdit;
 }
 
+template<> Data* Popup::getConcernation<Popup*>() {
+	throw std::runtime_error("Error! Use member variable popupConcerned instead of this function.");
+};
 
 
 

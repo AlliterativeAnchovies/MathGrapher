@@ -20,6 +20,8 @@ Uint8 EditImagePopup::handle(double mouseX,double mouseY,bool clicked) {
 	int cury = py+5;
 	int offx,offy;
 	
+	RawImage* imageConcerned = (RawImage*)getConcernation<RawImage*>();
+	
 	//Edit fields
 	clickedEdit = handleEditableInfo(curx, cury, imageConcerned, clicked, mouseX, mouseY, &offy);
 	cury+=offy;

@@ -149,6 +149,7 @@ class Graph: public DisplayObject {
 		void makeVisibile() {visible=true;};
 		std::vector<EditFieldMenu> getEditableFields();
 		std::vector<SaveData> getSaveData();
+		std::vector<std::string> getValidInterpolations();
 };
 
 

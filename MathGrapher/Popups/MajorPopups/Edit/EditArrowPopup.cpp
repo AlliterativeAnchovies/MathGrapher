@@ -22,11 +22,11 @@ Uint8 EditArrowPopup::handle(double mouseX,double mouseY,bool clicked) {
 	int offx,offy;
 
 	//Edit fields
-	clickedEdit = handleEditableInfo(curx, cury, arrowConcerned, clicked, mouseX, mouseY, &offy);
+	clickedEdit = handleEditableInfo(curx, cury, getConcernationSD<Arrow*>(), clicked, mouseX, mouseY, &offy);
 	cury+=offy;
 	
 	//now we'll do the Interpolations stuff
-	bool clickedInterpol = drawInterpolationSidebar(px+5*sx/8,py,clicked,mouseX,mouseY,arrowConcerned);
+	bool clickedInterpol = drawInterpolationSidebar(px+5*sx/8,py,clicked,mouseX,mouseY,getConcernationSD<Arrow*>());
 	if (clickedInterpol) {
 		clicked = false;
 		toReturn = 0x01;

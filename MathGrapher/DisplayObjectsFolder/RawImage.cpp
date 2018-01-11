@@ -138,3 +138,7 @@ std::vector<SaveData> RawImage::getSaveData() {
 	};
 };
 
+std::vector<std::string> RawImage::getValidInterpolations() {
+	return {"Move","Scale","Fix","Disappear","Appear"};
+}
+

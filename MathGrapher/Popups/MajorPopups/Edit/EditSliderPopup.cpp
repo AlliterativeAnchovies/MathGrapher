@@ -18,6 +18,8 @@ Uint8 EditSliderPopup::handle(double mouseX,double mouseY,bool clicked) {
 	int cury = py+5;
 	int offx,offy;
 	
+	Slider* sliderConcerned = (Slider*)getConcernation<Slider*>();
+	
 	//Edit fields
 	clickedEdit = handleEditableInfo(curx, cury, sliderConcerned, clicked, mouseX, mouseY, &offy);
 	cury+=offy;

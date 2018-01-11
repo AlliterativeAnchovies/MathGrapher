@@ -8,26 +8,7 @@
 
 #include "DisplayWrapper.hpp"
 
-template<> std::vector<std::string> getValidInterpolations<DisplayObject>() {
-	throw std::runtime_error("Error!  Trying to get genericly valid interpolations - be specific!");
-}
-template<> std::vector<std::string> getValidInterpolations<RawImage>() {
-	return {"Move","Scale","Fix","Disappear","Appear"};
-}
-template<> std::vector<std::string> getValidInterpolations<Slider>() {
-	return {"Move","Disappear","Appear"};
-}
-template<> std::vector<std::string> getValidInterpolations<Graph>() {
-	return {"Move","Resize","Scale","Rotate","Move Origin","Stretch","Highlight","Disappear","Appear","Rescale Grid"};
-}
 
-template<> std::vector<std::string> getValidInterpolations<RawText>() {
-	return {"Move","Disappear","Appear","Rescale Text"};
-}
-
-template<> std::vector<std::string> getValidInterpolations<Arrow>() {
-	return {"Move","Scale","Rescale Head","Disappear","Appear"};
-}
 
 //Things to draw
 std::vector<DisplayObject*> objects = {};

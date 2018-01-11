@@ -88,6 +88,7 @@ class Slider: public DisplayObject {
 		std::vector<EditFieldMenu> getEditableFields();
 		std::vector<SaveData> getSaveData();
 		int tagForLoading = -1;
+		std::vector<std::string> getValidInterpolations();
 };
 
 

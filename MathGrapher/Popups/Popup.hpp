@@ -45,7 +45,7 @@ class Popup {
 		double sx = 0;
         double sy = 0;
         bool taggedForDeletion = false;
-        Graph* graphConcerned = NULL;
+        /*Graph* graphConcerned = NULL;
         bool boolConcerned = false;
         std::string stringConcerned = "";
         Interpolation* interpolationConcerned = NULL;
@@ -55,34 +55,77 @@ class Popup {
         RawImage* imageConcerned = NULL;
         RawText* textConcerned = NULL;
         Arrow* arrowConcerned = NULL;
-        PointOfInterest* pointConcerned = NULL;
+        PointOfInterest* pointConcerned = NULL;*/
+        std::vector<Data*> datas = {};
         bool isNewborn = true;
         bool successfulRaycast = false;
         bool locked = false;
+        Popup* popupConcerned = NULL;//because Popup is not yet a "complete" type, it freaks
+									//out when dealing with SFINAE in templates in member functions.
+									//so we handle it seperately
     public:
         //Popup(double x,double y) {px=x;py=y;}
         virtual Uint8 handle(double mouseX,double mouseY,bool clicked)=0;
         void tag();
         bool isTagged();
         Uint8 getID();
-        Popup* concernWith(Graph* g);
-        Popup* concernWith(bool b);
-        Popup* concernWith(std::string s);
-        Popup* concernWith(Interpolation* i);
-        Popup* concernWith(Popup* p);
-        Popup* concernWith(Function* f);
-        Popup* concernWith(Slider* s) {sliderConcerned = s;return this;}
-        Popup* concernWith(RawImage* r) {imageConcerned = r;return this;}
-        Popup* concernWith(RawText* t) {textConcerned = t;return this;}
-        Popup* concernWith(Arrow* a) {arrowConcerned = a;return this;}
-        Popup* concernWith(PointOfInterest* p) {pointConcerned = p;return this;}
-        Popup* concernWithAllDisplayedObjects(Popup* p) {
-        	graphConcerned=p->graphConcerned;
-        	sliderConcerned=p->sliderConcerned;
-        	imageConcerned=p->imageConcerned;
-        	textConcerned=p->textConcerned;
-        	arrowConcerned=p->arrowConcerned;
+        Popup* concernWith(Data* d) {datas.push_back(d);return this;};
+        Popup* concernWith(Popup* d) {popupConcerned=d;return this;}
+		//compiler (erroneously) freaks out when I try to concernWith a bool
+		Popup* concernWith(bool d) {datas.push_back(new DerivedData<bool>(d));return this;}
+        template<typename T> Popup* concernWith(
+        		std::enable_if<std::is_fundamental<T>::value,T> d){
+        	datas.push_back(new DerivedData<T>(d));
         	return this;
+		}
+		Popup* concernWith(std::string d) {//std::string not fundamental type, we make an exception!
+			datas.push_back(new DerivedData<std::string>(d));
+        	return this;
+		}
+		template<typename T> Popup* concernWith(
+        		std::enable_if<std::is_base_of<Data, T>::value,T> d){
+        	datas.push_back(d);
+        	return this;
+		}
+		template<typename T, typename std::enable_if<std::is_base_of<Data, T>::value,int>::type=0>
+		void getConcernations_helper(std::vector<Data*>* ds,Data* d) {
+				T* example = new T();//evaluated at compile time
+				if (example->getID()==d->getID()) {
+					(*ds).push_back(d);
+				}
+		}
+		template<typename T, typename std::enable_if<!std::is_base_of<Data, T>::value,int>::type=0>
+		void getConcernations_helper(std::vector<Data*>* ds,Data* d) {
+				if (d->getID()==DerivedData<T>::staticID()) {
+					(*ds).push_back(d);
+				}
+		}
+		template<typename T> std::vector<Data*> getConcernationsOfType() {
+			std::vector<Data*> toReturn = {};
+			for (auto d : datas) {
+				getConcernations_helper<T>(&toReturn, d);
+			}
+			return toReturn;
+		}
+		template<typename T> Data* getConcernation() {
+			auto thingy = getConcernationsOfType<T>();
+			if (thingy.empty()) {return NULL;}
+			return thingy[0];
+		}
+		template<typename T> SavableData* getConcernationSD() {return (SavableData*)(getConcernationsOfType<T>()[0]);}
+		Popup* concernWithAllDisplayObjects(Popup* p) {
+			for (auto a : p->datas) {
+				if (a->isDisplayObject()) {
+					datas.push_back(a);
+				}
+			}
+			return this;
+		}
+        DisplayObject* getFirstDisplayObject() {
+        	for (auto a : datas) {
+        		if (a->isDisplayObject()) {return ((DisplayObject*)a);}
+			}
+			throw std::runtime_error("Error!  There is no display object this popup is aware of!");
 		}
         virtual bool inBounds(double mouseX,double mouseY);
         bool newborn() {return isNewborn;}
@@ -97,7 +140,7 @@ class Popup {
         void unlock();
         ~Popup();
         virtual bool isQuickCloser() {return false;}
-        RawImage* getImageConcerned() {return imageConcerned;}
+        RawImage* getImageConcerned() {return (RawImage*)getConcernation<RawImage>();}
 };
 
 class NullPopup: public Popup {

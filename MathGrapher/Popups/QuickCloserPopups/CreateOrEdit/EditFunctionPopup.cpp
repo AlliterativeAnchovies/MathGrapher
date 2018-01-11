@@ -12,6 +12,9 @@ Uint8 EditFunctionPopup::handle(double mouseX,double mouseY,bool clicked) {
 	Uint8 toReturn = 0x00;
     clicked = clicked&&successfulRaycast&&!locked;
 	
+	Function* functionConcerned = (Function*)getConcernation<Function*>();
+	Graph* graphConcerned = (Graph*)getConcernation<Graph*>();
+	
 	drawBorderedRect(px, py, sx, sy, 0xffaaf2aa, 0xff000000);
 	drawText(functionConcerned->getName(), 24, px+5, py+5, 0xff000000);
 	int curx = px+10;

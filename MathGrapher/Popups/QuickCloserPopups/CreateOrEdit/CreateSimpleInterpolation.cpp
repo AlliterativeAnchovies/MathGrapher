@@ -12,6 +12,8 @@ Uint8 CreateSimpleInterpolation::handle(double mouseX,double mouseY,bool clicked
 	Uint8 toReturn = 0x00;
     clicked = clicked&&successfulRaycast&&!locked;
 	
+	Interpolation* interpolationConcerned = (Interpolation*)getConcernation<Interpolation*>();
+	
 	drawBorderedRect(px, py, sx, sy, 0xffaaf2aa, 0xff000000);
 	drawText(interpolationConcerned->getID(), 24, px+5, py+5, 0xff000000);
 	std::string beep = (ticks%60<30)?"|":" ";
@@ -33,24 +35,8 @@ Uint8 CreateSimpleInterpolation::handle(double mouseX,double mouseY,bool clicked
 		toReturn = 0x02;
 		if (popupConcerned==NULL) {
 			interpolationConcerned->reset();
-			if (graphConcerned!=NULL) {
-				graphConcerned->addInterpolation(interpolationConcerned);
-			}
-			else if (sliderConcerned!=NULL) {
-				sliderConcerned->addInterpolation(interpolationConcerned);
-			}
-			else if (imageConcerned!=NULL) {
-				imageConcerned->addInterpolation(interpolationConcerned);
-			}
-			else if (textConcerned!=NULL) {
-				textConcerned->addInterpolation(interpolationConcerned);
-			}
-			else if (arrowConcerned!=NULL) {
-				arrowConcerned->addInterpolation(interpolationConcerned);
-			}
-			else {
-				throw std::runtime_error("Need to hook up interpolation to display object");
-			}
+			Function* functionConcerned = (Function*)getConcernation<Function*>();
+			getFirstDisplayObject()->addInterpolation(interpolationConcerned);
 			interpolationConcerned->relateData(functionConcerned);
 			//if popup not NULL, then the interpolation already exists,
 			//shouldn't add it twice!

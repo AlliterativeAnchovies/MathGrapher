@@ -78,3 +78,7 @@ std::vector<SaveData> RawText::getSaveData() {
 	};
 };
 
+std::vector<std::string> RawText::getValidInterpolations() {
+	return {"Move","Disappear","Appear","Rescale Text"};
+}
+

@@ -17,6 +17,8 @@ Uint8 EditGraphPopup::handle(double mouseX,double mouseY,bool clicked) {
 	int curx = px+5;
 	int cury = py+5;
 	
+	Graph* graphConcerned = (Graph*)getConcernation<Graph*>();
+	
 	//edit fields
 	bool clickedEdit = handleEditableInfo(curx, cury, graphConcerned, clicked, mouseX, mouseY, &offy);
 	cury+=offy;

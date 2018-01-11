@@ -15,6 +15,10 @@ Uint8 ChooseFunctionPopup::handle(double mouseX,double mouseY,bool clicked) {
 	drawBorderedRect(px, py, sx, sy, 0xffaaf2aa, 0xff000000);
 	drawText("Choose Function", 22, px, py, 0xff000000);
 	double cury = py+30;
+	Graph* graphConcerned = (Graph*)getConcernation<Graph*>();
+	Slider* sliderConcerned = (Slider*)getConcernation<Slider*>();
+	bool boolConcerned = (bool)getConcernation<bool>();
+	
 	for (int i = 0;i<builtins.size();i++) {
 		int w,h;
 		TTF_SizeUTF8((*fontgrab)(16),builtins[i].x.c_str(),&w,&h);

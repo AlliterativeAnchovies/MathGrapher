@@ -148,3 +148,7 @@ std::vector<SaveData> Slider::getSaveData() {
 		{"Interpolations",&interpolations,_VECTOR}
 	};
 };
+
+std::vector<std::string> Slider::getValidInterpolations() {
+	return {"Move","Disappear","Appear"};
+}
