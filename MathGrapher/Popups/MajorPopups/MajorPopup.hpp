@@ -18,10 +18,10 @@ class MajorPopup : public Popup {
 
 class EditPopup : public MajorPopup {
 	protected:
-		template<typename T> bool drawInterpolationSidebar(int interpolationx,int interpolationy,bool clicked,double mouseX,double mouseY,T concernedThing);
+		template<typename T> bool drawInterpolationSidebar(int interpolationx,int interpolationy,MouseClick* clicked,double mouseX,double mouseY,T concernedThing);
 };
 
-template<typename T> bool EditPopup::drawInterpolationSidebar(int interpolationx,int interpolationy,bool clicked,double mouseX,double mouseY,T inThing) {
+template<typename T> bool EditPopup::drawInterpolationSidebar(int interpolationx,int interpolationy,MouseClick* clicked,double mouseX,double mouseY,T inThing) {
 	DisplayObject* concernedThing = (DisplayObject*)inThing;
 	bool toReturn = false;
 	drawBorderedRect(interpolationx, interpolationy, 3*sx/8+1, sy, 0xff597bf5, 0xff000000);
@@ -31,7 +31,7 @@ template<typename T> bool EditPopup::drawInterpolationSidebar(int interpolationx
 	drawTextWithBackground("Add Interpolation", 20, interpolationx+5, interpolationy, 0xff000000, 0xffffcf9e, 0xff000000);
 	int intrplx,intrply;
 	TTF_SizeUTF8((*fontgrab)(20),"Add Interpolation",&intrplx,&intrply);
-	if (clicked&&pointInBounds(mouseX, mouseY, interpolationx+5, interpolationx+5+intrplx, interpolationy, interpolationy+intrply)) {
+	if (clicked->status()&&pointInBounds(mouseX, mouseY, interpolationx+5, interpolationx+5+intrplx, interpolationy, interpolationy+intrply)) {
 		createPopup(CHOOSE_INTERPOLATION_POPUP, mouseX-150, mouseY)
 			->concernWith(concernedThing);
 		toReturn = true;
@@ -101,19 +101,6 @@ template<typename T> bool EditPopup::drawInterpolationSidebar(int interpolationx
 				->concernWith(concernedThing)
 				->concernWith(relevantInterpol)
 				->concernWith(this);
-			/*Uint8 newID = CREATE_SIMPLE_INTERPOLATION;
-			if (relevantInterpol->getType()==SMOOTH_GRID_RESIZE_SMART_CENTER||
-				relevantInterpol->getType()==SMOOTH_GRID_RESIZE_STATIC_CENTER) {
-				newID = CREATE_RESIZE_INTERPOLATION;
-			}
-			else if (relevantInterpol->getType()==HIGHLIGHT_GRAPH) {
-				newID = CREATE_HIGHLIGHT_INTERPOLATION;
-			}
-			createPopup(newID, mouseX-150, mouseY)
-				->concernWith(concernedThing)
-				->concernWith(relevantInterpol)
-				->concernWith(this)
-				->concernWith(stringifyID(relevantInterpol->getType()));*/
 		}
 		else if (backspacePressed) {
 			relevantInterpol->cancel();

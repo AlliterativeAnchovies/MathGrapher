@@ -44,7 +44,7 @@ class MouseClick {	//Handles mouse clicks
 		bool* wasClicked;
 		bool workingBool = false;
 	public:
-		void unclick() {*wasClicked=false;}
+		void unclick() {*wasClicked=false;workingBool=false;}
 		bool status() {return workingBool;}
 		MouseClick(bool* a,Popup* p);
 };
@@ -201,7 +201,7 @@ bool isHexadecimalTypeOfValueEditor(int instrswch);
 //call it normally ("handleEditableInfo(...)") because the compiler is smart enough to know that this
 //function is wholly defined by what you pass in for pointerThing and so it uses that to do the right
 //template.
-template<typename T> bool handleEditableInfo_internal(double px,double py,int fsize,int relevantinstringswitch,double mouseX,double mouseY,std::string preface,std::string display,T* pointerThing,bool clicked,int* offx,int* offy) {
+template<typename T> bool handleEditableInfo_internal(double px,double py,int fsize,int relevantinstringswitch,double mouseX,double mouseY,std::string preface,std::string display,T* pointerThing,MouseClick* clicked,int* offx,int* offy) {
     std::string cursorBeeper = (ticks%60<30)?"|":" ";
     if (instringswitch==relevantinstringswitch) {
         display = instring + cursorBeeper;
@@ -221,18 +221,18 @@ template<typename T> bool handleEditableInfo_internal(double px,double py,int fs
     TTF_SizeUTF8((*fontgrab)(16),"Edit", &w2, &h2);
     *offx = w+w2+5;
     *offy = (h>h2)?h:h2;
-    if (clicked&&pointInBounds(mouseX, mouseY, px+w, px+w+w2, py, py+h2)) {
+    if (clicked->status()&&pointInBounds(mouseX, mouseY, px+w, px+w+w2, py, py+h2)) {
         //edit clicked
         instring = tostring(*pointerThing);
         thingForInString = new ValueEditor<T>(pointerThing);
         instringswitch = relevantinstringswitch;
-        clicked = false;
+        clicked->unclick();
         return true;
     }
     return false;
 }
 
-bool handleEditableInfo(double px,double py,SavableData* d,bool clicked,double mouseX,double mouseY,int* yoffset);
+bool handleEditableInfo(double px,double py,SavableData* d,MouseClick* clicked,double mouseX,double mouseY,int* yoffset);
 
 
 #endif /* Popup_hpp */

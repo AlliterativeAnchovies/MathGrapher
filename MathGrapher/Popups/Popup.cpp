@@ -85,7 +85,7 @@ void deleteInStrings() {
 Popup::~Popup() {
     deleteInStrings();
 }
-bool handleEditableInfo(double px,double py,SavableData* d,bool clicked,double mouseX,double mouseY,int* yoffset) {
+bool handleEditableInfo(double px,double py,SavableData* d,MouseClick* clicked,double mouseX,double mouseY,int* yoffset) {
 	bool clickedEdit = false;
 	auto editInfoList = d->getEditableFields();
 	
@@ -135,6 +135,9 @@ bool handleEditableInfo(double px,double py,SavableData* d,bool clicked,double m
 		}
 	}
 	*yoffset = cury-py;
+	if (clickedEdit) {
+		clicked->unclick();
+	}
 	return clickedEdit;
 }
 

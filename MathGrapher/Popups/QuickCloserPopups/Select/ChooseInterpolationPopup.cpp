@@ -10,7 +10,7 @@
 
 Uint8 ChooseInterpolationPopup::handle(double mouseX,double mouseY) {
 	Uint8 toReturn = 0x00;
-    bool clicked = clickAllowed(leftMouseReleased);
+    MouseClick clicked = prepareMouse(&leftMouseReleased);
 	
 	drawBorderedRect(px, py, sx, sy, 0xffaaf2aa, 0xff000000);
 	drawText("Interpolations", 22, px, py, 0xff000000);
@@ -26,7 +26,7 @@ Uint8 ChooseInterpolationPopup::handle(double mouseX,double mouseY) {
 			cury+=buttonSY+5;
 		}
 		drawTextWithBackground(validInterpols[i], 16, curx, cury, 0xff000000, 0xffffcf9e, 0xff000000);
-		if (clicked&&pointInBounds(mouseX, mouseY, curx, curx+buttonSX, cury, cury+buttonSY)) {
+		if (clicked.status()&&pointInBounds(mouseX, mouseY, curx, curx+buttonSX, cury, cury+buttonSY)) {
 			createPopup(CREATE_SIMPLE_INTERPOLATION, mouseX, mouseY)
 				->concernWithAllDisplayObjects(this)
 				->concernWith(validInterpols[i])

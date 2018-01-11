@@ -10,7 +10,7 @@
 
 Uint8 ChooseFunctionPopup::handle(double mouseX,double mouseY) {
 	Uint8 toReturn = 0x00;
-    bool clicked = clickAllowed(leftMouseReleased);
+    MouseClick clicked = prepareMouse(&leftMouseReleased);
 
 	drawBorderedRect(px, py, sx, sy, 0xffaaf2aa, 0xff000000);
 	drawText("Choose Function", 22, px, py, 0xff000000);
@@ -23,8 +23,8 @@ Uint8 ChooseFunctionPopup::handle(double mouseX,double mouseY) {
 		int w,h;
 		TTF_SizeUTF8((*fontgrab)(16),builtins[i].x.c_str(),&w,&h);
 		drawTextWithBackground(builtins[i].x, 16, px+5, cury, 0xff000000, 0xffffcf9e, 0xff000000);
-		if (clicked&&pointInBounds(mouseX, mouseY, px+5, px+5+w, cury, cury+h)) {
-			clicked = false;
+		if (clicked.status()&&pointInBounds(mouseX, mouseY, px+5, px+5+w, cury, cury+h)) {
+			clicked.unclick();
 			toReturn = 0x02;
 			if (graphConcerned!=NULL) {
 				if (boolConcerned==X_AXIS) {graphConcerned->addXFunction(builtins[i].y);}
@@ -37,7 +37,7 @@ Uint8 ChooseFunctionPopup::handle(double mouseX,double mouseY) {
 		cury+=h+5;
 		
 	}
-	if (clicked&&pointInBounds(mouseX, mouseY, px, px+sx, py, py+sy)) {
+	if (clicked.status()&&pointInBounds(mouseX, mouseY, px, px+sx, py, py+sy)) {
 		toReturn = 0x01;
 	}
 	return toReturn;

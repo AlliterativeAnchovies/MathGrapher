@@ -10,7 +10,7 @@
 
 Uint8 CreateSimpleInterpolation::handle(double mouseX,double mouseY) {
 	Uint8 toReturn = 0x00;
-    bool clicked = clickAllowed(leftMouseReleased);
+    MouseClick clicked = prepareMouse(&leftMouseReleased);
 	
 	Interpolation* interpolationConcerned = (Interpolation*)getConcernation<Interpolation*>();
 	
@@ -23,15 +23,15 @@ Uint8 CreateSimpleInterpolation::handle(double mouseX,double mouseY) {
 	bool clickedEdit = false;
 
 	
-	clickedEdit = handleEditableInfo(curx, cury, interpolationConcerned, clicked, mouseX, mouseY, &offy);
+	clickedEdit = handleEditableInfo(curx, cury, interpolationConcerned, &clicked, mouseX, mouseY, &offy);
 	cury+=offy;
 	
 
 	int addx,addy;
 	TTF_SizeUTF8((*fontgrab)(16)," Add ",&addx,&addy);
 	drawTextWithBackground(" Add ", 16, px+sx-40, py+5, 0xff000000, 0xffffcf9e, 0xff000000);
-	if (clicked&&pointInBounds(mouseX, mouseY, px+sx-40, px+sx-40+addx, py+5, py+5+addy)) {
-		clicked = false;
+	if (clicked.status()&&pointInBounds(mouseX, mouseY, px+sx-40, px+sx-40+addx, py+5, py+5+addy)) {
+		clicked.unclick();
 		toReturn = 0x02;
 		if (popupConcerned==NULL) {
 			interpolationConcerned->reset();
