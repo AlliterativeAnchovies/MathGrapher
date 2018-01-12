@@ -23,7 +23,7 @@ struct ArrowImage {
 	Uint32 color = 0xff000000;
 };
 
-class Arrow: public DisplayObject {
+class Arrow: public DisplayObject,Counter<Arrow> {
 	private:
 		double px = 0;
         double py = 0;

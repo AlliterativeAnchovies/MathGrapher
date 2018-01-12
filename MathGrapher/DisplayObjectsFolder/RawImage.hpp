@@ -19,7 +19,7 @@ struct RawImageImage {
 	double sy;
 };
 
-class RawImage: public DisplayObject {
+class RawImage: public DisplayObject,Counter<RawImage> {
     //If this class turns out to be an efficiency drain, there are numerous fixes:
     //Firstly, save 2 surfaces, one highlighted and one not, so that we don't have
     //to re-calculate the highlitations each frame.

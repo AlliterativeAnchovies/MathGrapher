@@ -29,7 +29,7 @@ struct GraphImage {
     double gridAngleY = 0;
 };
 
-class Graph: public DisplayObject {
+class Graph: public DisplayObject,Counter<Graph> {
     private:
         GraphImage image;
         double px = 0;

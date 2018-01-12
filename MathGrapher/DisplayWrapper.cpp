@@ -14,35 +14,23 @@
 std::vector<DisplayObject*> objects = {};
 std::vector<DisplayObject*> selectedObjects = {};
 
-//Internal counters of things
-int TOTAL_GRAPHS = 0;
-int TOTAL_SLIDERS = 0;
-int TOTAL_IMAGES = 0;
-int TOTAL_TEXTS = 0;
-int TOTAL_ARROWS = 0;
-
 
 void addGraph(double x,double y) {
-    objects.push_back(new Graph(x,y,100,100,"Graph "+std::to_string(TOTAL_GRAPHS)));
-    TOTAL_GRAPHS++;
+    objects.push_back(new Graph(x,y,100,100,"Graph "+std::to_string(Counter<Graph>::current_obj)));
 }
 
 void addSlider(double x,double y) {
-    objects.push_back(new Slider(x,y,100,"Slider "+std::to_string(TOTAL_SLIDERS)));
-    TOTAL_SLIDERS++;
+    objects.push_back(new Slider(x,y,100,"Slider "+std::to_string(Counter<Slider>::current_obj)));
 }
 void addImage(double x,double y,int which) {
-    objects.push_back(new RawImage(x,y,which,"Image "+std::to_string(TOTAL_IMAGES)));
-    TOTAL_IMAGES++;
+    objects.push_back(new RawImage(x,y,which,"Image "+std::to_string(Counter<RawImage>::current_obj)));
 }
 void addText(double x,double y) {
-    objects.push_back(new RawText(x,y,16,"Text "+std::to_string(TOTAL_TEXTS)));
-    TOTAL_TEXTS++;
+    objects.push_back(new RawText(x,y,16,"Text "+std::to_string(Counter<RawText>::current_obj)));
 }
 
 void addArrow(double x,double y) {
-    objects.push_back(new Arrow(x,y,100,20,30,0,M_PI/4,"Arrow "+std::to_string(TOTAL_ARROWS)));
-    TOTAL_ARROWS++;
+    objects.push_back(new Arrow(x,y,100,20,30,0,M_PI/4,"Arrow "+std::to_string(Counter<Arrow>::current_obj)));
 }
 
 void drawDisplayObject(DisplayObject* d) {

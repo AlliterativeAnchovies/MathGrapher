@@ -364,4 +364,20 @@ class ParsedFile {
 
 
 
+//Counts number of variables of a certain type
+//must be derived from (so can only count custom types)
+template <typename T> class Counter {
+	protected:
+		~Counter() {current_obj--;}//IDK why this is 'protected', but that's what wikipedia said!
+	public:
+		static int total_obj;
+		static int current_obj;
+		Counter() {total_obj++;current_obj++;}
+		Counter(const Counter& a) {total_obj++;current_obj++;}
+};
+template <typename T> int Counter<T>::total_obj( 0 );//initializes static variables. B/c of dumb reasons,
+template <typename T> int Counter<T>::current_obj( 0 );//you can't do this in the class
+
+
+
 #endif /* RenderingUtilities_hpp */

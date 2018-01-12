@@ -19,7 +19,7 @@ struct RawTextImage {
 	std::string actualText;
 };
 
-class RawText: public DisplayObject {
+class RawText: public DisplayObject,Counter<RawText> {
 	private:
 		bool highlighted = false;
 		bool running = false;

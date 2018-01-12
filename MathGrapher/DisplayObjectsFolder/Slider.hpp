@@ -22,7 +22,7 @@ struct SliderImage {
     int tickAmount;
 };
 
-class Slider: public DisplayObject {
+class Slider: public DisplayObject,Counter<Slider> {
     private:
         double px = 0;
         double py = 0;
