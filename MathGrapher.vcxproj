@@ -133,11 +133,6 @@
     <ClInclude Include="mathgrapher\DisplayObjectsFolder\InterpolationWrapper.hpp" />
     <ClInclude Include="mathgrapher\DisplayWrapper.hpp" />
     <ClInclude Include="mathgrapher\Functions.hpp" />
-    <ClInclude Include="mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.hpp" />
-    <ClInclude Include="mathgrapher\Popups\MajorPopups\Edit\EditImagePopup.hpp" />
-    <ClInclude Include="mathgrapher\Popups\MajorPopups\Edit\EditSliderPopup.hpp" />
-    <ClInclude Include="mathgrapher\Popups\MajorPopups\Edit\EditTextPopup.hpp" />
-    <ClInclude Include="mathgrapher\Popups\MajorPopups\Edit\EditArrowPopup.hpp" />
     <ClInclude Include="mathgrapher\Popups\MajorPopups\MainDisplay.hpp" />
     <ClInclude Include="mathgrapher\Popups\MajorPopups\MajorPopup.hpp" />
     <ClInclude Include="mathgrapher\Popups\MajorPopups\EditPopup.hpp" />
@@ -187,11 +182,6 @@
     <ClCompile Include="mathgrapher\DisplayWrapper.cpp" />
     <ClCompile Include="mathgrapher\Functions.cpp" />
     <ClCompile Include="mathgrapher\main.cpp" />
-    <ClCompile Include="mathgrapher\Popups\MajorPopups\Edit\EditGraphPopup.cpp" />
-    <ClCompile Include="mathgrapher\Popups\MajorPopups\Edit\EditImagePopup.cpp" />
-    <ClCompile Include="mathgrapher\Popups\MajorPopups\Edit\EditSliderPopup.cpp" />
-    <ClCompile Include="mathgrapher\Popups\MajorPopups\Edit\EditTextPopup.cpp" />
-    <ClCompile Include="mathgrapher\Popups\MajorPopups\Edit\EditArrowPopup.cpp" />
     <ClCompile Include="mathgrapher\Popups\MajorPopups\MainDisplay.cpp" />
     <ClCompile Include="mathgrapher\Popups\MajorPopups\MajorPopup.cpp" />
     <ClCompile Include="mathgrapher\Popups\MajorPopups\EditPopup.cpp" />
