@@ -104,6 +104,8 @@ class DisplayObject: public SavableData {
         //IF YOU GET A "MISSING VTABLE" ERROR, it'll be caused by you not having defined all of these functions
         //in the child object (although the error only seems to happen if you give your class a nondefault constructor
         //or call the default constructor because otherwise the compiler can treat it as a virtual class too.)
+        //IMPORTANT: All derivative objects must have a constructor taking no arguments and a constructor taking a
+        //position
         virtual void highlight()=0;
         virtual bool clickedIn(double mouseX,double mouseY)=0;
         virtual std::string getName()=0;

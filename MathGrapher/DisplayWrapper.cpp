@@ -15,7 +15,7 @@ std::vector<DisplayObject*> objects = {};
 std::vector<DisplayObject*> selectedObjects = {};
 
 
-void addGraph(double x,double y) {
+/*void addGraph(double x,double y) {
     objects.push_back(new Graph(x,y,100,100,"Graph "+std::to_string(Counter<Graph>::current_obj)));
 }
 
@@ -31,7 +31,7 @@ void addText(double x,double y) {
 
 void addArrow(double x,double y) {
     objects.push_back(new Arrow(x,y,100,20,30,0,M_PI/4,"Arrow "+std::to_string(Counter<Arrow>::current_obj)));
-}
+}*/
 
 void drawDisplayObject(DisplayObject* d) {
     double xdraw,ydraw = 0;

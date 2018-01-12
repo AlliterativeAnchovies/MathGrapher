@@ -58,6 +58,13 @@ class RawText: public DisplayObject,Counter<RawText> {
 		std::vector<SaveData> getSaveData();
 		RawText() {};
 		std::vector<std::string> getValidInterpolations();
+		RawText(int x,int y) {
+			px = x;
+			py = y;
+			fontSize = 16;
+			doublesize = 16;
+			name = "Text "+std::to_string(Counter<RawText>::current_obj);
+		}
 };
 
 #endif /* RawText_hpp */

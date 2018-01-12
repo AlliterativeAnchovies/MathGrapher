@@ -30,11 +30,16 @@
 extern std::vector<DisplayObject*> objects;
 
 //Object adders
-void addGraph(double x,double y);
+/*void addGraph(double x,double y);
 void addSlider(double x,double y);
 void addImage(double x,double y,int which);
 void addText(double x,double y);
-void addArrow(double x,double y);
+void addArrow(double x,double y);*/
+template<typename T> T* addDisplayObject(int x,int y) {
+	T* toReturn = new T(x,y);
+	objects.push_back(toReturn);
+	return toReturn;
+}
 
 //Things to display that are selected
 extern std::vector<DisplayObject*> selectedObjects;

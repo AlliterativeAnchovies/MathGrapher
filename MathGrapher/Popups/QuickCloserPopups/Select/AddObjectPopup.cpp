@@ -20,7 +20,7 @@ Uint8 AddObjectPopup::handle(double mouseX,double mouseY) {
 	TTF_SizeUTF8((*fontgrab)(20), " Graph ", &w, &h);
 	if (clicked.status()&&pointInBounds(mouseX, mouseY, px+5, px+5+w, py+35, py+35+h)) {
 		//add graph!
-		addGraph(px, py);
+		addDisplayObject<Graph>(px, py);
 		clicked.unclick();
 		toReturn = 0x02;
 	}
@@ -32,7 +32,7 @@ Uint8 AddObjectPopup::handle(double mouseX,double mouseY) {
 	drawTextWithBackground(" Slider ", 20, px+5+w+5, py+35, 0xff000000, 0xffffcf9e, 0xff000000);
 	if (clicked.status()&&pointInBounds(mouseX, mouseY, px+5+w+5, px+5+w+5+sliderw, py+35, py+35+sliderh)) {
 		//add slider!
-		addSlider(px, py);
+		addDisplayObject<Slider>(px, py);
 		clicked.unclick();
 		toReturn = 0x02;
 	}
@@ -52,7 +52,7 @@ Uint8 AddObjectPopup::handle(double mouseX,double mouseY) {
 	drawTextWithBackground(" Text ", 20, px+5+imagew+5, cury, 0xff000000, 0xffffcf9e, 0xff000000);
 	if (clicked.status()&&pointInBounds(mouseX, mouseY, px+5+imagew+5, px+5+textw+imagew+5, cury, cury+texth)) {
 		//add text!
-		addText(px, py);
+		addDisplayObject<RawText>(px, py);
 		clicked.unclick();
 		toReturn = 0x02;
 	}
@@ -63,7 +63,7 @@ Uint8 AddObjectPopup::handle(double mouseX,double mouseY) {
 	drawTextWithBackground(" Arrow ", 20, px+5, cury, 0xff000000, 0xffffcf9e, 0xff000000);
 	if (clicked.status()&&pointInBounds(mouseX, mouseY, px+5, px+5+arroww, cury, cury+arrowh)) {
 		//add arror!
-		addArrow(px, py);
+		addDisplayObject<Arrow>(px, py);
 		clicked.unclick();
 		toReturn = 0x02;
 	}

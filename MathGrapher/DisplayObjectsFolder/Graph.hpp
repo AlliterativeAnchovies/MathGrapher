@@ -148,6 +148,15 @@ class Graph: public DisplayObject,Counter<Graph> {
 		std::vector<SaveData> getSaveData();
 		std::vector<std::string> getValidInterpolations();
 		void clean() {cleanFunctions();DisplayObject::clean();}
+		Graph(int x,int y) {
+			sx = 100;
+			sy = 100;
+			ox = 50;
+			oy = 50;
+			px = x;
+			py = y;
+			name = "Graph "+std::to_string(Counter<Graph>::current_obj);
+		}
 };
 
 
