@@ -10,11 +10,7 @@
 #define MainDisplay_hpp
 
 #include "MajorPopup.hpp"
-#include "Edit/EditGraphPopup.hpp"
-#include "Edit/EditSliderPopup.hpp"
-#include "Edit/EditImagePopup.hpp"
-#include "Edit/EditTextPopup.hpp"
-#include "Edit/EditArrowPopup.hpp"
+#include "EditPopup.hpp"
 #include "Savers/SaveFilePopup.hpp"
 #include "../QuickCloserPopups/Select/LoadFilePopup.hpp"
 #include "../QuickCloserPopups/Select/AddObjectPopup.hpp"
