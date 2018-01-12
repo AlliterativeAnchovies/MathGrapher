@@ -127,7 +127,7 @@ template<typename C> Uint8 EditPopup<C>::handle(double mouseX,double mouseY) {
 	bool clickedEdit = handleEditableInfo(curx, cury, thingConcerned, &clicked, mouseX, mouseY, &offy);
 	cury+=offy;
 
-	thingConcerned->handleExtraData(&curx, &cury, mouseX,mouseY, {&clicked},&toReturn);
+	thingConcerned->handleExtraData(&curx, &cury, mouseX,mouseY, {&clicked},&toReturn,px,py);
 
 
 	//now we'll do the Interpolations stuff

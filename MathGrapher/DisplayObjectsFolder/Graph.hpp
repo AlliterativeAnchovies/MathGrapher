@@ -149,7 +149,7 @@ class Graph: public DisplayObject,Counter<Graph> {
 		std::vector<std::string> getValidInterpolations();
 		void clean() {cleanFunctions();DisplayObject::clean();}
 		void handleExtraData(int* curx_,int* cury_,int mouseX,int mouseY,std::vector<MouseClick*> clicked_,
-			Uint8* toReturn_);
+			Uint8* toReturn_,int locx,int locy);
 		Graph(int x,int y);
 };
 

@@ -87,7 +87,7 @@ class Slider: public DisplayObject,Counter<Slider> {
 		int tagForLoading = -1;
 		std::vector<std::string> getValidInterpolations();
 		void handleExtraData(int* curx_,int* cury_,int mouseX,int mouseY,std::vector<MouseClick*> clicked_,
-			Uint8* toReturn_);
+			Uint8* toReturn_,int locx,int locy);
 		Slider(int x,int y);
 };
 

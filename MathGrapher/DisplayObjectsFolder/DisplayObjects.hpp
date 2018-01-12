@@ -118,10 +118,10 @@ class DisplayObject: public SavableData {
                                     //object would be deleted by instructions A union S where S is the standard
                                     //deletion method).
 		virtual void handleExtraData(int* curx_,int* cury_,int mouseX,int mouseY,
-			std::vector<MouseClick*> clicked_,Uint8* toReturn_){};
+			std::vector<MouseClick*> clicked_,Uint8* toReturn_,int locx,int locy){};//all overloads in DisplayWrapper
         virtual void clean() {cleanInterpolations();}
-		void addInterpolation(Interpolation* i);//default defined in DisplayWrapper
 		virtual void update();//default defined in DisplayWrapper
+		void addInterpolation(Interpolation* i);//default defined in DisplayWrapper
 		std::vector<Interpolation*> getInterpolations() {return interpolations;};
 		void makeInvisible() {visible=false;};
 		void makeVisibile() {visible=true;};

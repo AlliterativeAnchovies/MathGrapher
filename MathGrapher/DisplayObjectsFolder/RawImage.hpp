@@ -70,7 +70,7 @@ class RawImage: public DisplayObject,Counter<RawImage> {
 		RawImage() {};
 		std::vector<std::string> getValidInterpolations();
 		void handleExtraData(int* curx_,int* cury_,int mouseX,int mouseY,std::vector<MouseClick*> clicked_,
-			Uint8* toReturn_);
+			Uint8* toReturn_,int locx,int locy);
 		RawImage(int x,int y);
 };
 
