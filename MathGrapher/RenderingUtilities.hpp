@@ -378,6 +378,17 @@ template <typename T> class Counter {
 template <typename T> int Counter<T>::total_obj( 0 );//initializes static variables. B/c of dumb reasons,
 template <typename T> int Counter<T>::current_obj( 0 );//you can't do this in the class
 
-
+class MouseClick {	//Handles mouse clicks
+					//initialize in a popup with prepareMouse(), check with .status(),
+					//and when it has been successfully handled call .unclick() so that
+					//the mouse can't click things twice
+	private:
+		bool* wasClicked;
+		bool workingBool = false;
+	public:
+		void unclick() {*wasClicked=false;workingBool=false;}
+		bool status() {return workingBool;}
+		MouseClick(bool* a,Popup* p);
+};
 
 #endif /* RenderingUtilities_hpp */

@@ -82,3 +82,10 @@ std::vector<std::string> RawText::getValidInterpolations() {
 	return {"Move","Disappear","Appear","Rescale Text"};
 }
 
+RawText::RawText(int x,int y) {
+	px = x;
+	py = y;
+	fontSize = 16;
+	doublesize = 16;
+	name = "Text "+std::to_string(Counter<RawText>::current_obj);
+}

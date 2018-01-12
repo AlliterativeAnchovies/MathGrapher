@@ -13,12 +13,7 @@
 #include <iostream>
 #include <vector>
 #include <functional>
-//#if defined _WINDOWS
-	#include "../BulkUtilities.hpp"
-//#else
-//	#include "BulkUtilities.hpp"
-//#endif
-
+#include "../BulkUtilities.hpp"
 
 
 class Graph;
@@ -112,19 +107,21 @@ class DisplayObject: public SavableData {
         virtual void run() =0;
         virtual void reset()=0;
         virtual bool isRunning()=0;
-		virtual void update();//defined in DisplayWrapper
+        virtual SDL_Surface* draw(double* x,double* y)=0;
+        virtual void reclaim(SDL_Surface* reclaimed)=0;
+        virtual void move(double x,double y)=0;
+        virtual std::vector<std::string> getValidInterpolations()=0;
         virtual ~DisplayObject() {};//in a class C, the method ~C is the destructor of C.  Usually implicitly
                                     //defined, but if the class is virtual we also need to give it a virtual
                                     //destructor.  The function body is empty which means we just use the standard
                                     //deletion method. (if it were full of an ordered set of instructions A, the
                                     //object would be deleted by instructions A union S where S is the standard
                                     //deletion method).
-        virtual SDL_Surface* draw(double* x,double* y)=0;
-        virtual void reclaim(SDL_Surface* reclaimed)=0;
-        virtual void move(double x,double y)=0;
-        virtual std::vector<std::string> getValidInterpolations()=0;
+		virtual void handleExtraData(int* curx_,int* cury_,int mouseX,int mouseY,
+			std::vector<MouseClick*> clicked_,Uint8* toReturn_){};
         virtual void clean() {cleanInterpolations();}
-		void addInterpolation(Interpolation* i);//defined in DisplayWrapper
+		void addInterpolation(Interpolation* i);//default defined in DisplayWrapper
+		virtual void update();//default defined in DisplayWrapper
 		std::vector<Interpolation*> getInterpolations() {return interpolations;};
 		void makeInvisible() {visible=false;};
 		void makeVisibile() {visible=true;};

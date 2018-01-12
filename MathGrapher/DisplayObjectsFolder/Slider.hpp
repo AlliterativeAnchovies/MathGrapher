@@ -86,14 +86,9 @@ class Slider: public DisplayObject,Counter<Slider> {
 		std::vector<SaveData> getSaveData();
 		int tagForLoading = -1;
 		std::vector<std::string> getValidInterpolations();
-		Slider(int x,int y) {
-			px = x;
-			py = y;
-			size = 100;
-			name = "Slider "+std::to_string(Counter<Slider>::current_obj);
-			tickAmount = 4;
-    		incrementFunction = new Function(builtins[SLIDER_DEFAULT_SCALE_BUILTIN_INDEX].y);
-		}
+		void handleExtraData(int* curx_,int* cury_,int mouseX,int mouseY,std::vector<MouseClick*> clicked_,
+			Uint8* toReturn_);
+		Slider(int x,int y);
 };
 
 

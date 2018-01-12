@@ -142,3 +142,12 @@ std::vector<std::string> RawImage::getValidInterpolations() {
 	return {"Move","Scale","Fix","Disappear","Appear"};
 }
 
+RawImage::RawImage(int x,int y) {
+	px = x;
+	py = y;
+	sx = 100;
+	sy = 100;
+	name = "Image "+std::to_string(Counter<RawImage>::current_obj);
+}
+
+

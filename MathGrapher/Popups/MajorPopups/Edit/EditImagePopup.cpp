@@ -26,29 +26,7 @@ Uint8 EditImagePopup::handle(double mouseX,double mouseY) {
 	clickedEdit = handleEditableInfo(curx, cury, imageConcerned, &clicked, mouseX, mouseY, &offy);
 	cury+=offy;
 
-	//change the image
-	int whichimgw,whichimgh;
-	TTF_SizeUTF8((*fontgrab)(16),imageConcerned->getOrigName().c_str(),&whichimgw,&whichimgh);
-	drawTextWithBackground(imageConcerned->getOrigName(), 16, curx, cury, 0xff000000, 0xffffcf9e, 0xff000000);
-	if (clicked.status()&&pointInBounds(mouseX, mouseY, curx, curx+whichimgw, cury, cury+whichimgh)) {
-		clicked.unclick();
-		toReturn = 0x01;
-		(new ChooseWhichImagePopup(mouseX, mouseY))
-			->concernWith(this);
-	}
-	curx+=whichimgw+5;
-
-	//rescale ("fix") to normal resolution so that its not weird
-	//only useful if you've changed the image
-	int fiximgw,fiximgh;
-	TTF_SizeUTF8((*fontgrab)(16),"Fix", &fiximgw, &fiximgh);
-	drawTextWithBackground("Fix", 16, curx, cury, 0xff000000, 0xffffcf9e, 0xff000000);
-	if (clicked.status()&&pointInBounds(mouseX, mouseY, curx, curx+fiximgw, cury, cury+fiximgh)) {
-		clicked.unclick();
-		toReturn = 0x01;
-		imageConcerned->fix();
-	}
-	curx = px+5;
+	imageConcerned->handleExtraData(&curx, &cury, mouseX, mouseY, {&clicked}, &toReturn);
 
 	//now we'll do the Interpolations stuff
 	bool clickedInterpol = drawInterpolationSidebar(px+5*sx/8,py,&clicked,mouseX,mouseY,imageConcerned);

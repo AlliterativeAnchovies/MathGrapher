@@ -22,7 +22,7 @@ Uint8 ChooseWhichImagePopup::handle(double mouseX,double mouseY) {
 		if (clicked.status()&&pointInBounds(mouseX, mouseY, px+5, px+5+w, cury, cury+h)) {
 			clicked.unclick();
 			toReturn = 0x02;
-			if (popupConcerned==NULL) {//creating a new image
+			if (getImageConcerned()==NULL) {//creating a new image
 				//addImage(px, py,i);
 				auto img = addDisplayObject<RawImage>(px,py);
 				img->changeTo(i);

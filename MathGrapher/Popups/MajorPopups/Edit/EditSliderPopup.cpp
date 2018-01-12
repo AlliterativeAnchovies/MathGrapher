@@ -24,31 +24,7 @@ Uint8 EditSliderPopup::handle(double mouseX,double mouseY) {
 	clickedEdit = handleEditableInfo(curx, cury, sliderConcerned, &clicked, mouseX, mouseY, &offy);
 	cury+=offy;
 	
-	//Select the function that will determine the spacing of the ticks
-	int w9,h9;
-	drawTextWithBackground("Tick Function: "+sliderConcerned->getFunction()->getName(), 20, px+5, cury, 0xff000000, 0xffffcf9e, 0xff000000);
-	TTF_SizeUTF8((*fontgrab)(20), ("Tick Function: "+sliderConcerned->getFunction()->getName()).c_str(), &w9, &h9);
-	if (clicked.status()&&pointInBounds(mouseX, mouseY, px+5, px+5+w9, cury, cury+h9)) {
-		(new ChooseFunctionPopup(mouseX, mouseY))
-			->concernWith(sliderConcerned);
-		clicked.unclick();
-		toReturn = 0x01;
-	}
-	cury += h9;
-	//Select a point to hook the slider up to
-	int w10,h10;
-	std::string pointConcernedString = "Point Concerned: None";
-	if (sliderConcerned->getPointConcerned()!=NULL) {
-		pointConcernedString = "Point Concerned: "+sliderConcerned->getPointConcerned()->getDisplayLocation();
-	}
-	drawTextWithBackground(pointConcernedString, 16, px+5, cury, 0xff000000, 0xffffcf9e, 0xff000000);
-	TTF_SizeUTF8((*fontgrab)(16), (pointConcernedString).c_str(), &w10, &h10);
-	if (clicked.status()&&pointInBounds(mouseX, mouseY, px+5, px+5+w10, cury, cury+h10)) {
-		(new ChoosePointConcernedForLinkingPopup(mouseX, mouseY))
-			->concernWith(sliderConcerned);
-		clicked.unclick();
-		toReturn = 0x01;
-	}
+	sliderConcerned->handleExtraData(&curx, &cury, mouseX, mouseY, {&clicked}, &toReturn);
 
 	//now we'll do the Interpolations stuff
 	bool clickedInterpol = drawInterpolationSidebar(px+5*sx/8,py,&clicked,mouseX,mouseY,sliderConcerned);

@@ -69,13 +69,9 @@ class RawImage: public DisplayObject,Counter<RawImage> {
 		std::vector<SaveData> getSaveData();
 		RawImage() {};
 		std::vector<std::string> getValidInterpolations();
-		RawImage(int x,int y) {
-			px = x;
-			py = y;
-			sx = 100;
-			sy = 100;
-			name = "Image "+std::to_string(Counter<RawImage>::current_obj);
-		}
+		void handleExtraData(int* curx_,int* cury_,int mouseX,int mouseY,std::vector<MouseClick*> clicked_,
+			Uint8* toReturn_);
+		RawImage(int x,int y);
 };
 
 #endif /* RawImage_hpp */

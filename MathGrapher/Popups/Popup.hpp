@@ -14,18 +14,6 @@
 
 
 
-class MouseClick {	//Handles mouse clicks
-					//initialize in a popup with prepareMouse(), check with .status(),
-					//and when it has been successfully handled call .unclick() so that
-					//the mouse can't click things twice
-	private:
-		bool* wasClicked;
-		bool workingBool = false;
-	public:
-		void unclick() {*wasClicked=false;workingBool=false;}
-		bool status() {return workingBool;}
-		MouseClick(bool* a,Popup* p);
-};
 class Popup {
     protected:
         double px;
@@ -136,7 +124,8 @@ class Popup {
         void lock();
         void unlock();
         virtual ~Popup();
-        RawImage* getImageConcerned() {return (RawImage*)getConcernation<RawImage*>();}
+        RawImage* getImageConcerned() {return (RawImage*)getConcernation<RawImage*>();}//will deprecate in future
+        template<typename T> T* getConcerned() {return (T*)getConcernation<T*>();}//use this instead
         void prepare() {
         	for (int i = 0;i<popups.size();i++) {
 				//get rid of all popups that close upon the creation of a new one

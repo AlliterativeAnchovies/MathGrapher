@@ -619,3 +619,14 @@ std::vector<SaveData> Graph::getSaveData() {
 std::vector<std::string> Graph::getValidInterpolations() {
 	return {"Move","Resize","Scale","Rotate","Move Origin","Stretch","Highlight","Disappear","Appear","Rescale Grid"};
 }
+
+Graph::Graph(int x,int y) {
+	sx = 100;
+	sy = 100;
+	ox = 50;
+	oy = 50;
+	px = x;
+	py = y;
+	name = "Graph "+std::to_string(Counter<Graph>::current_obj);
+}
+

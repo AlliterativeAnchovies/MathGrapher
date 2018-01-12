@@ -152,3 +152,13 @@ std::vector<SaveData> Slider::getSaveData() {
 std::vector<std::string> Slider::getValidInterpolations() {
 	return {"Move","Disappear","Appear"};
 }
+
+Slider::Slider(int x,int y) {
+	px = x;
+	py = y;
+	size = 100;
+	name = "Slider "+std::to_string(Counter<Slider>::current_obj);
+	tickAmount = 4;
+	incrementFunction = new Function(builtins[SLIDER_DEFAULT_SCALE_BUILTIN_INDEX].y);
+}
+

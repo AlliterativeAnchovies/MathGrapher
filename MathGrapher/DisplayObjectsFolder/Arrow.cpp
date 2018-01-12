@@ -110,3 +110,14 @@ std::vector<std::string> Arrow::getValidInterpolations() {
 	return {"Move","Scale","Rescale Head","Disappear","Appear"};
 }
 
+Arrow::Arrow(int x,int y) {
+			px = x;
+			py = y;
+			length = 100;
+			thickness = 20;
+			headSize = 30;
+			angle = 0;
+			headAngle = M_PI/4;
+			name ="Arrow "+std::to_string(Counter<Arrow>::current_obj);
+		};
+
