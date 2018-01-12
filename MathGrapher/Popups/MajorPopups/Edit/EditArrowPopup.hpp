@@ -11,10 +11,10 @@
 
 #include "../EditPopup.hpp"
 
-class EditArrowPopup: public EditPopup {
+class EditArrowPopup: public EditPopup<Graph> {
 	public:
 		Uint8 handle(double mouseX,double mouseY);
-		EditArrowPopup(double x,double y) {px=x;py=y;sx=SCREEN_WIDTH-20-150;sy=SCREEN_HEIGHT-20;}
+		//EditArrowPopup(double x,double y) {px=x;py=y;sx=SCREEN_WIDTH-20-150;sy=SCREEN_HEIGHT-20;}
 };
 
 #endif /* EditArrowPopup_hpp */

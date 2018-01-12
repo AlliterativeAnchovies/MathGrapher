@@ -13,10 +13,10 @@
 #include "../../QuickCloserPopups/CreateOrEdit/EditFunctionPopup.hpp"
 #include "../../QuickCloserPopups/Select/ChooseFunctionPopup.hpp"
 
-class EditGraphPopup: public EditPopup {
+class EditGraphPopup: public EditPopup<Graph> {
 	public:
 		Uint8 handle(double mouseX,double mouseY);
-		EditGraphPopup(double x,double y) {px=x;py=y;sx=SCREEN_WIDTH-20-150;sy=SCREEN_HEIGHT-20;}
+		//EditGraphPopup(double x,double y) {px=x;py=y;sx=SCREEN_WIDTH-20-150;sy=SCREEN_HEIGHT-20;}
 };
 
 #endif /* EditGraphPopup_hpp */

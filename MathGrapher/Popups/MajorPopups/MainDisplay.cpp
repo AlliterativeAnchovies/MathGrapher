@@ -75,27 +75,27 @@ Uint8 MainDisplay::handle(double mouseX,double mouseY) {
 			drawTextWithBackground("Edit", 16, totoff, controlBarY+5+h+h2, 0xff000000,0xff9fc9f2,0xff000000);
 			if (clicked.status()&&pointInBounds(mouseX, mouseY, totoff, totoff+w3, controlBarY+5+h+h2, controlBarY+5+h+h2+h3)) {
 				if (selectedObjects[i]->getID()=="Graph") {
-					Popup* blargh = new EditGraphPopup(10, 10);
+					Popup* blargh = new EditPopup<Graph>(10, 10);
 					blargh->concernWith((Graph*)selectedObjects[i]);
 					clicked.unclick();
 				}
 				else if (selectedObjects[i]->getID()=="Slider") {
-					Popup* blargh = new EditSliderPopup(10, 10);
+					Popup* blargh = new EditPopup<Slider>(10, 10);
 					blargh->concernWith((Slider*)selectedObjects[i]);
 					clicked.unclick();
 				}
 				else if (selectedObjects[i]->getID()=="Image") {
-					Popup* blargh = new EditImagePopup(10, 10);
+					Popup* blargh = new EditPopup<RawImage>(10, 10);
 					blargh->concernWith((RawImage*)selectedObjects[i]);
 					clicked.unclick();
 				}
 				else if (selectedObjects[i]->getID()=="Text") {
-					Popup* blargh = new EditTextPopup(10, 10);
+					Popup* blargh = new EditPopup<RawText>(10, 10);
 					blargh->concernWith((RawText*)selectedObjects[i]);
 					clicked.unclick();
 				}
 				else if (selectedObjects[i]->getID()=="Arrow") {
-					Popup* blargh = new EditArrowPopup(10, 10);
+					Popup* blargh = new EditPopup<Arrow>(10, 10);
 					blargh->concernWith((Arrow*)selectedObjects[i]);
 					clicked.unclick();
 				}

@@ -13,10 +13,10 @@
 #include "../../QuickCloserPopups/Select/ChooseFunctionPopup.hpp"
 #include "../../QuickCloserPopups/Select/ChoosePointConcernedForLinkingPopup.hpp"
 
-class EditSliderPopup: public EditPopup {
+class EditSliderPopup: public EditPopup<Graph> {
 	public:
 		Uint8 handle(double mouseX,double mouseY);
-		EditSliderPopup(double x,double y) {px=x;py=y;sx=SCREEN_WIDTH-20-150;sy=SCREEN_HEIGHT-20;}
+		//EditSliderPopup(double x,double y) {px=x;py=y;sx=SCREEN_WIDTH-20-150;sy=SCREEN_HEIGHT-20;}
 };
 
 #endif /* EditSliderPopup_hpp */

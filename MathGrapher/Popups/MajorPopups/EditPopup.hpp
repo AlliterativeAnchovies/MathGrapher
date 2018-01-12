@@ -13,12 +13,18 @@
 #include "../QuickCloserPopups/Select/ChooseInterpolationPopup.hpp"
 #include "../QuickCloserPopups/CreateOrEdit/CreateSimpleInterpolation.hpp"
 
-class EditPopup : public MajorPopup {
+template<typename C> class EditPopup : public MajorPopup {
 	protected:
 		template<typename T> bool drawInterpolationSidebar(int interpolationx,int interpolationy,MouseClick* clicked,double mouseX,double mouseY,T concernedThing);
+		public:
+			Uint8 handle(double mouseX,double mouseY);
+			EditPopup(double x,double y) {px=x;py=y;sx=SCREEN_WIDTH-20-150;sy=SCREEN_HEIGHT-20;}
 };
 
-template<typename T> bool EditPopup::drawInterpolationSidebar(int interpolationx,int interpolationy,MouseClick* clicked,double mouseX,double mouseY,T inThing) {
+template<typename C> template<typename T>//fancy-shmanshy double templating!
+ 		bool EditPopup<C>::drawInterpolationSidebar(int interpolationx,int interpolationy,
+		MouseClick* clicked,double mouseX,double mouseY,T inThing) {
+		
 	DisplayObject* concernedThing = (DisplayObject*)inThing;
 	bool toReturn = false;
 	drawBorderedRect(interpolationx, interpolationy, 3*sx/8+1, sy, 0xff597bf5, 0xff000000);
@@ -103,6 +109,51 @@ template<typename T> bool EditPopup::drawInterpolationSidebar(int interpolationx
 			relevantInterpol->cancel();
 		}
 	}
+	return toReturn;
+}
+
+template<typename C> Uint8 EditPopup<C>::handle(double mouseX,double mouseY) {
+	Uint8 toReturn = 0x00;
+    MouseClick clicked = prepareMouse(&leftMouseReleased);
+	drawBorderedRect(px, py, sx, sy, 0xff9fc9f2, 0xff000000);
+	
+	int offy;
+	int curx = px+5;
+	int cury = py+5;
+	
+	C* thingConcerned = getConcerned<C>();
+	
+	//edit fields
+	bool clickedEdit = handleEditableInfo(curx, cury, thingConcerned, &clicked, mouseX, mouseY, &offy);
+	cury+=offy;
+
+	thingConcerned->handleExtraData(&curx, &cury, mouseX,mouseY, {&clicked},&toReturn);
+
+
+	//now we'll do the Interpolations stuff
+	bool clickedInterpol = drawInterpolationSidebar(px+5*sx/8,py,&clicked,mouseX,mouseY,thingConcerned);
+	if (clickedInterpol) {
+		clicked.unclick();
+		toReturn = 0x01;
+	}
+
+	drawBorderedRect(px+sx-20, py, 20, 20, 0xffff0000, 0xff000000);
+	drawText("x", 20, px+sx-20+5, py-3, 0xff000000);
+	if (clicked.status()&&pointInBounds(mouseX, mouseY, px+sx-20, px+sx, py, py+20)) {
+		toReturn = 0x02;
+		clicked.unclick();
+		thingForInString = NULL;
+		instringswitch = -1;
+	}
+
+	if (clickedEdit) {
+		toReturn = 0x01;
+	}
+
+	if (clicked.status()&&pointInBounds(mouseX, mouseY, px, px+sx, py, py+sy)) {
+		toReturn = 0x01;
+	}
+	
 	return toReturn;
 }
 
