@@ -373,7 +373,7 @@ template <typename T> class Counter {
 		static int total_obj;
 		static int current_obj;
 		Counter() {total_obj++;current_obj++;}
-		Counter(const Counter& a) {total_obj++;current_obj++;}
+		Counter(bool b) {}
 };
 template <typename T> int Counter<T>::total_obj( 0 );//initializes static variables. B/c of dumb reasons,
 template <typename T> int Counter<T>::current_obj( 0 );//you can't do this in the class

@@ -64,7 +64,7 @@ class Arrow: public DisplayObject,Counter<Arrow> {
 		void changeColor(Uint32 nc) {color = nc;};
 		std::vector<EditFieldMenu> getEditableFields();
 		std::vector<SaveData> getSaveData();
-		Arrow() {};
+		Arrow():Counter<Arrow>(false) {};
 		Arrow(int x,int y);
 		std::vector<std::string> getValidInterpolations();
 };

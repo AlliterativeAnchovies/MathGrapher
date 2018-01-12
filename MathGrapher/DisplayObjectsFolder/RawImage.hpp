@@ -67,7 +67,7 @@ class RawImage: public DisplayObject,Counter<RawImage> {
         void resizeSmooth(double x,double y);
 		std::vector<EditFieldMenu> getEditableFields();
 		std::vector<SaveData> getSaveData();
-		RawImage() {};
+		RawImage():Counter<RawImage>(false) {};
 		std::vector<std::string> getValidInterpolations();
 		void handleExtraData(int* curx_,int* cury_,int mouseX,int mouseY,std::vector<MouseClick*> clicked_,
 			Uint8* toReturn_,int locx,int locy);

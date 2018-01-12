@@ -81,7 +81,7 @@ class Slider: public DisplayObject,Counter<Slider> {
         }
         void move(double x,double y) {px+=x;py+=y;};
 		Function* getTickFunction() {return incrementFunction;}
-		Slider() {};
+		Slider():Counter<Slider>(false) {};
 		std::vector<EditFieldMenu> getEditableFields();
 		std::vector<SaveData> getSaveData();
 		int tagForLoading = -1;

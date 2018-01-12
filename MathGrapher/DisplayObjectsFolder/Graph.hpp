@@ -60,7 +60,7 @@ class Graph: public DisplayObject,Counter<Graph> {
         Graph(double x,double y,double sizex,double sizey,std::string n="-NONAME-");
         Graph(double x,double y,double sizex,double sizey,double grid_spacing_x,double grid_spacing_y,
             std::string n="-NONAME-");
-		Graph() {};
+		Graph():Counter<Graph>(false) {};
         //moves incrementally
         void move(double x,double y);
         //moves smoothly

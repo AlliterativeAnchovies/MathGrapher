@@ -56,7 +56,7 @@ class RawText: public DisplayObject,Counter<RawText> {
 		void resizeText(double c) {doublesize+=c;};
 		std::vector<EditFieldMenu> getEditableFields();
 		std::vector<SaveData> getSaveData();
-		RawText() {};
+		RawText():Counter<RawText>(false) {};
 		std::vector<std::string> getValidInterpolations();
 		RawText(int x,int y);
 };
