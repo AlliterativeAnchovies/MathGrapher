@@ -43,6 +43,7 @@ template<typename T> T* addDisplayObject(int x,int y) {
 
 //Things to display that are selected
 extern std::vector<DisplayObject*> selectedObjects;
+extern DisplayObject* dragObject;
 
 //Draw code
 void drawDisplayObject(DisplayObject* d);

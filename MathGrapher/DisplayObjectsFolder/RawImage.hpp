@@ -30,8 +30,6 @@ class RawImage: public DisplayObject,Counter<RawImage> {
     //are more fun though.
     bool running = false;
     bool highlighted = false;
-    double px = 0;
-    double py = 0;
     double sx = 0;//size
     double sy = 0;
     SDL_Surface* surfaceConcerned = NULL;
@@ -72,6 +70,7 @@ class RawImage: public DisplayObject,Counter<RawImage> {
 		void handleExtraData(int* curx_,int* cury_,int mouseX,int mouseY,std::vector<MouseClick*> clicked_,
 			Uint8* toReturn_,int locx,int locy);
 		RawImage(int x,int y);
+		Point<double> getCenterOffsetForDrag() {return Point<double>(sx/2,py/2);}
 };
 
 #endif /* RawImage_hpp */

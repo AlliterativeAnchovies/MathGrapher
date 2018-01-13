@@ -24,8 +24,6 @@ class RawText: public DisplayObject,Counter<RawText> {
 		bool highlighted = false;
 		bool running = false;
 		std::string name = "-ERROR-";
-		double px = 0;
-		double py = 0;
 		int fontSize = 16;
 		Uint32 theColor = 0xff000000;
 		std::string actualText = "Default";
@@ -59,6 +57,12 @@ class RawText: public DisplayObject,Counter<RawText> {
 		RawText():Counter<RawText>(false) {};
 		std::vector<std::string> getValidInterpolations();
 		RawText(int x,int y);
+		Point<double> getCenterOffsetForDrag() {
+			int w,h;
+			TTF_SizeUTF8((*fontgrab)(fontSize), actualText.c_str(), &w, &h);
+			return Point<double>(w/2,h/2);
+			
+		}
 };
 
 #endif /* RawText_hpp */

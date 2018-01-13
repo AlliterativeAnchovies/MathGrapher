@@ -95,6 +95,8 @@ class DisplayObject: public SavableData {
 		//stores current interpolation data
         std::vector<Interpolation*> interpolations = {};
         bool visible=true;
+        double px = 0;
+        double py = 0;
     public:
         //IF YOU GET A "MISSING VTABLE" ERROR, it'll be caused by you not having defined all of these functions
         //in the child object (although the error only seems to happen if you give your class a nondefault constructor
@@ -111,6 +113,7 @@ class DisplayObject: public SavableData {
         virtual void reclaim(SDL_Surface* reclaimed)=0;
         virtual void move(double x,double y)=0;
         virtual std::vector<std::string> getValidInterpolations()=0;
+        virtual Point<double> getCenterOffsetForDrag()=0;//for drawing the arrow for moving a DisplayObject in edit mode
         virtual ~DisplayObject() {};//in a class C, the method ~C is the destructor of C.  Usually implicitly
                                     //defined, but if the class is virtual we also need to give it a virtual
                                     //destructor.  The function body is empty which means we just use the standard
@@ -127,6 +130,7 @@ class DisplayObject: public SavableData {
 		void makeVisibile() {visible=true;};
 		bool isDisplayObject() {return true;}
 		void cleanInterpolations();//defined in DisplayWrapper
+		Point<double> getPosition() {return Point<double>(px,py);}
 };
 
 

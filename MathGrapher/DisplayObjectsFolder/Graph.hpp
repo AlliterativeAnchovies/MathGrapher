@@ -32,8 +32,6 @@ struct GraphImage {
 class Graph: public DisplayObject,Counter<Graph> {
     private:
         GraphImage image;
-        double px = 0;
-        double py = 0;
         double sx = 0;
         double sy = 0;
         double ox = 0;
@@ -151,6 +149,7 @@ class Graph: public DisplayObject,Counter<Graph> {
 		void handleExtraData(int* curx_,int* cury_,int mouseX,int mouseY,std::vector<MouseClick*> clicked_,
 			Uint8* toReturn_,int locx,int locy);
 		Graph(int x,int y);
+		Point<double> getCenterOffsetForDrag() {return Point<double>(sx/2,sy/2);}
 };
 
 

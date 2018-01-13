@@ -13,25 +13,9 @@
 //Things to draw
 std::vector<DisplayObject*> objects = {};
 std::vector<DisplayObject*> selectedObjects = {};
+DisplayObject* dragObject = NULL;
 
 
-/*void addGraph(double x,double y) {
-    objects.push_back(new Graph(x,y,100,100,"Graph "+std::to_string(Counter<Graph>::current_obj)));
-}
-
-void addSlider(double x,double y) {
-    objects.push_back(new Slider(x,y,100,"Slider "+std::to_string(Counter<Slider>::current_obj)));
-}
-void addImage(double x,double y,int which) {
-    objects.push_back(new RawImage(x,y,which,"Image "+std::to_string(Counter<RawImage>::current_obj)));
-}
-void addText(double x,double y) {
-    objects.push_back(new RawText(x,y,16,"Text "+std::to_string(Counter<RawText>::current_obj)));
-}
-
-void addArrow(double x,double y) {
-    objects.push_back(new Arrow(x,y,100,20,30,0,M_PI/4,"Arrow "+std::to_string(Counter<Arrow>::current_obj)));
-}*/
 
 void drawDisplayObject(DisplayObject* d) {
     double xdraw,ydraw = 0;

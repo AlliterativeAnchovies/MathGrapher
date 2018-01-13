@@ -17,6 +17,14 @@ Uint8 MainDisplay::handle(double mouseX,double mouseY) {
     drawRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 0xffffe8e2);
 	for (DisplayObject* d : selectedObjects) {d->highlight();}
 	for (int i = 0;i<objects.size();i++) {
+		if (dragObject!=NULL&&(clicked.status()||rClicked.status())) {
+			clicked.unclick();
+			rClicked.unclick();
+			Point<double> curPos = dragObject->getPosition();
+			Point<double> offst = dragObject->getCenterOffsetForDrag();
+			dragObject->move(mouseX-curPos.x-offst.x, mouseY-curPos.y-offst.y);
+			dragObject = NULL;
+		}
 		if (clicked.status()&&objects[i]->clickedIn(mouseX,mouseY)) {
 			if (!shiftClicked) {
 				selectedObjects = {objects[i]};
@@ -37,6 +45,11 @@ Uint8 MainDisplay::handle(double mouseX,double mouseY) {
 				}
 			}
 			clicked.unclick();
+		}
+		else if (rClicked.status()&&objects[i]->clickedIn(mouseX,mouseY)) {
+			//drag
+			dragObject=objects[i];
+			rClicked.unclick();
 		}
 		std::string specificObject = objects[i]->getID();
 		drawDisplayObject(objects[i]);
@@ -199,6 +212,21 @@ Uint8 MainDisplay::handle(double mouseX,double mouseY) {
             rClicked.unclick();
         }
     }
+	
+    //draw dragObject arrow
+	if (dragObject!=NULL) {
+		Point<double> centerOff = dragObject->getCenterOffsetForDrag();
+		Point<double> drawAt = dragObject->getPosition()+centerOff;
+		Point<double> mousePoint = Point<double>(mouseX,mouseY);
+		double arrlngth = (Point<double>(mouseX,mouseY)-drawAt).magnitude();
+		double arrang = -(mousePoint-drawAt).angle();
+		double arroffx, arroffy;
+		SDL_Surface* toDraw = makeArrow(arrlngth, 1, 20, arrang, M_PI/6, 0xff000000, &arroffx, &arroffy);
+		SDL_Texture* drawThis = SDL_CreateTextureFromSurface(gRenderer, toDraw);
+		drawGraphic(drawAt.x+arroffx, drawAt.y+arroffy, toDraw->w, toDraw->h, drawThis);
+		SDL_FreeSurface(toDraw);
+		SDL_DestroyTexture(drawThis);
+	}
 	
     return toReturn;
 }

@@ -24,8 +24,6 @@ struct SliderImage {
 
 class Slider: public DisplayObject,Counter<Slider> {
     private:
-        double px = 0;
-        double py = 0;
         double size = 0;
         double angle = 0;
         std::string name = "-SLIDER-";
@@ -89,6 +87,11 @@ class Slider: public DisplayObject,Counter<Slider> {
 		void handleExtraData(int* curx_,int* cury_,int mouseX,int mouseY,std::vector<MouseClick*> clicked_,
 			Uint8* toReturn_,int locx,int locy);
 		Slider(int x,int y);
+		Point<double> getCenterOffsetForDrag() {
+			double s,c;
+			fastSineCosine(&s,&c,angle);
+			return Point<double>(size*s/2+15,size*c/2);
+		}
 };
 
 

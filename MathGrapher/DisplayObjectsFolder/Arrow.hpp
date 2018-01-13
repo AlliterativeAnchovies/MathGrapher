@@ -25,8 +25,6 @@ struct ArrowImage {
 
 class Arrow: public DisplayObject,Counter<Arrow> {
 	private:
-		double px = 0;
-        double py = 0;
         double length = 0;
         double angle = 0;
         double thickness = 0;
@@ -67,6 +65,11 @@ class Arrow: public DisplayObject,Counter<Arrow> {
 		Arrow():Counter<Arrow>(false) {};
 		Arrow(int x,int y);
 		std::vector<std::string> getValidInterpolations();
+		Point<double> getCenterOffsetForDrag() {
+			double s,c;
+			fastSineCosine(&s,&c,angle);
+			return Point<double>(length*c/2,length*s/2);
+		}
 };
 
 #endif /* Arrow_hpp */

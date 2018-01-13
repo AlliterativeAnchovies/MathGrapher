@@ -186,6 +186,18 @@ template<typename T> class Point {
 			x = tx;
 			y = ty;
 		};
+		double dotWith(Point<T> p) {
+			return p.x*x+p.y*y;
+		}
+		double areaWith(Point<T> p) {
+			return p.x*y-x*p.y;
+		}
+		double angleWith(Point<T> p) {
+			return atan2(areaWith(p),dotWith(p));
+		}
+		double angle() {
+			return angleWith(Point<double>(1,0));
+		}
 };
 template<typename T> Point<T> normalTo(Point<T> a) {
     return Point<T>(-a.y,a.x);
