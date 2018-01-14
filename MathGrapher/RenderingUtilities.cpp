@@ -922,7 +922,7 @@ void wakeConsole() {
 double snapToPiMultiples(double radians) {
 	//clamp to range
 	while (radians<0) {radians+=2*M_PI;}
-	while (radians>2*M_PI/2) {radians-=2*M_PI;}
+	while (radians>2*M_PI) {radians-=2*M_PI;}
 	//snap to pi
 	double epsilon = 0.00001;
 	if (abs(radians-M_PI/4)<epsilon) {
@@ -971,11 +971,17 @@ SDL_Surface* makeArrow(double length,double thickness,double headSize,double ang
 	direc1.rotate(M_PI/2+angle);
 	Point<double> direc2 = Point<double>(length-headSize*cos(headAngle),0);
 	direc2.rotate(angle);
+	if (snapToPiMultiples(angle)>=M_PI&&snapToPiMultiples(angle)<=3*M_PI/2) {
+		direc2=Point<double>(-direc2.x,direc2.y);//no idea why this is necessary, but it makes it work XD
+	}
 	
 	//Now let's find out triangle bounding points
 	
 	Point<double> tri1 = Point<double>(length,0);
 	tri1.rotate(angle);
+	if (snapToPiMultiples(angle)>=M_PI&&snapToPiMultiples(angle)<=3*M_PI/2) {
+		tri1=Point<double>(-tri1.x,tri1.y);//ditto
+	}
 	Point<double> tri2 = Point<double>(headSize,0);
 	tri2.rotate(M_PI-headAngle+angle);
 	tri2 = tri2+tri1;
