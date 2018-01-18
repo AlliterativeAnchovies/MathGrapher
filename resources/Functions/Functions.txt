@@ -1,0 +1,138 @@
+version: 2.2
+tag: Functions
+
+basefunctions: {//if function is parametric or derived from base functions, goes below
+
+	Identity: {//name of the function as it appears in drop down menu
+		definition:"x"//algebraic name of function
+		taylorSeries: {//each line is the nth (starting with 0) derivative of the function
+			0//0th derivative
+			1//1st derivative
+		}
+		about:0//This is the point the derivative is taken about.  Normally 0, unless
+				//the function is not defined at 0, then we take it about some other num
+		excludedRange: {//leave empty if defined everywhere
+		}
+	}
+
+	Parabola: {
+		definition:"x^2"
+		taylorSeries: {
+			0
+			0
+			1
+		}
+		about:0
+		excludedRange: {
+		}
+	}
+
+	Sine: {
+		definition:"sin(x)"
+		taylorSeries: {
+			0
+			1
+			0
+			-1
+			0
+			1
+			0
+			-1
+		}
+		about:0
+		excludedRange: {
+		}
+	}
+
+	Cosine: {
+		definition:"cos(x)"
+		taylorSeries: {
+			1
+			0
+			-1
+			0
+			1
+			0
+			-1
+			0
+			1
+		}
+		about:0
+		excludedRange: {
+		}
+	}
+
+	Reciprocal: {
+		definition:"1/x"
+		taylorSeries: {
+			1
+			-1
+			2
+			-6
+			24
+			-120
+		}
+		about:1//notice the taylor series is about 1 here
+		excludedRange: {
+			0,0//not defined on range [0,0] - aka 0
+		}
+	}
+
+	AbsoluteValue: {//to be defined later!
+		definition:"|x|"
+		taylorSeries: {
+			0
+			0
+			0
+			0
+		}
+	}
+
+	SquareRoot: {
+		definition:"sqrt(x)"
+		taylorSeries: {//to be defined later!
+			0
+			0
+			0
+			0
+		}
+	}
+}
+
+derivedfunctions: {//all functions best expressed in terms of others go here
+	//nesting like Sine:{Cosine}
+	//also use add,sub,div,mult	
+
+	Tangent: {
+		definition:"tan(x)"
+		derivation: {
+			div: {//division, first on top second on bottom
+				Sine //use names when doing func composition
+				Cosine
+			}
+		}
+	}
+
+	SliderScale: {
+		definition:"sqrt(|x|)"
+		derivation: {
+			SquareRoot: {
+				AbsoluteValue
+			}
+		}
+		hidden	//marks this function as hidden so it doesn't show up in menus
+				//this is a good idea if the func is only needed for inner workings
+				//stuff or if its just needed to define a parametric function down
+				//belowb
+	}
+
+}
+
+parametricfunctions: {//all functions that take a t-arg rather than an x-arg, and thus
+						//return a point (x(t),y(t)) rather than a value y(x)
+	Circle: {
+		definition:"x^2+y^2=1"
+		x: Cosine //name of function used for x
+		y: Sine //name of function used for y
+	}
+}
