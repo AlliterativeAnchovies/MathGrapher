@@ -32,7 +32,10 @@ class Function: public SavableData {
         //internalRange range;
         std::vector<Point<double>> range = {};//for every input point (a,b), the function is NOT defined on that range
         std::string name = "-FUNCTION-";
+        ParsedFile* derivation = NULL;
+        bool derived = false;//is a composition of other functions
         bool tagged = false;
+        bool hidden = false;
         double stretchx = 1;
         double stretchy = 1;
         double time = 0;
@@ -55,8 +58,9 @@ class Function: public SavableData {
         Function(std::vector<double> t1,std::vector<Point<double>> r,std::string n,double tsa = 0);
         Function(std::vector<double> t1,std::vector<double> t2,std::vector<Point<double>> r,std::string n,double tsa1 = 0,
         		double tsa2 = 0);
+		Function(ParsedFile* d,std::string n);
         Function() {};
-        double eval(double x);
+        double eval(double x,bool stretchyuse = true);
         double operator() (double x);
         Point<double> parametricEval(double x);
         double inRange(double x);
@@ -94,6 +98,8 @@ class Function: public SavableData {
         void meshWith(Function* f);//takes all non-interpolatable fields from f and puts them on this
         std::vector<EditFieldMenu> getEditableFields();
         static double evalTaylor(std::vector<double> taylor,double pointAt,double tsa);
+        void hide() {hidden=true;}
+        bool isHidden() {return hidden;}
 };
 
 extern std::vector<PointOfInterest*> pointsOfInterest;
@@ -123,5 +129,7 @@ class PointOfInterest: public SavableData {
         std::vector<EditFieldMenu> getEditableFields();
 };
 
+Function* functionFromName(std::string name);//defined in functionwrapper
+bool functionExists(std::string name);
 
 #endif /* Function_hpp */

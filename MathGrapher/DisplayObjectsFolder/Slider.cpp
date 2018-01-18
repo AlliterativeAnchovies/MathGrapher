@@ -14,7 +14,8 @@ Slider::Slider(double x,double y,double s,std::string n) {
     size = s;
     name = n;
     tickAmount = 4;
-    incrementFunction = new Function(builtins[SLIDER_DEFAULT_SCALE_BUILTIN_INDEX].y);
+    incrementFunction = new Function(functionFromName("SliderScale"));
+    //new Function(builtins[SLIDER_DEFAULT_SCALE_BUILTIN_INDEX].y);
 }
 
 void Slider::run() {
@@ -159,6 +160,7 @@ Slider::Slider(int x,int y) {
 	size = 100;
 	name = "Slider "+std::to_string(Counter<Slider>::current_obj);
 	tickAmount = 4;
-	incrementFunction = new Function(builtins[SLIDER_DEFAULT_SCALE_BUILTIN_INDEX].y);
+	incrementFunction = new Function(functionFromName("SliderScale"));
+	//new Function(builtins[SLIDER_DEFAULT_SCALE_BUILTIN_INDEX].y);
 }
 

@@ -50,6 +50,15 @@ Function::Function(std::vector<double> t,std::vector<double> t2,std::vector<Poin
     taylorSeriesAbout = tsa1;
     taylorSeriesAbout2 = tsa2;
 }
+
+Function::Function(ParsedFile* d,std::string n) {
+	derived = true;
+	derivation = d;
+	name = n;
+	parametric = false;
+}
+
+
 Function::~Function() {
     for (auto point : importantPoints) {point->prepareForDelete();}
 }
@@ -62,8 +71,20 @@ double Function::evalTaylor(std::vector<double> taylor,double pointAt,double tsa
 	return toReturn;
 }
 
-double Function::eval(double x) {
-	return stretchy*evalTaylor(taylorSeries1, stretchx*x+time/FRAME_RATE,taylorSeriesAbout);
+double Function::eval(double x,bool stretchyuse) {
+	if (!derived) {
+		return ((stretchyuse)?stretchy:1)*evalTaylor(taylorSeries1, stretchx*x+time/FRAME_RATE,taylorSeriesAbout);
+	}
+	else {
+		std::vector<ParsedFile*> p = derivation->componentFromString("*");
+		if (functionExists(p[0]->getValue())) {
+			return ((stretchyuse)?stretchy:1)*functionFromName(p[0]->getKey())->eval(x);
+		}
+		else {
+			return 0;//finish this function later!
+		}
+		
+	}
     //return function(x,time,stretchx,stretchy);
 }
 double Function::operator() (double x) {
@@ -129,7 +150,9 @@ void Function::meshWith(Function* f) {
     taylorSeriesAbout2 = f->taylorSeriesAbout2;
 	parametric = f->parametric;
 	range = f->range;
+	derived = f->derived;
 }
+
 
 std::vector<PointOfInterest*> pointsOfInterest = {};
 

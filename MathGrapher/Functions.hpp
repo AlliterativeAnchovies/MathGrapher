@@ -12,7 +12,6 @@
 
 #include <stdio.h>
 
-void initBuiltins();
-Function* functionFromName(std::string name);
+void initBuiltins();//defined in main
 
 #endif /* Functions_hpp */

@@ -18,7 +18,7 @@ extern std::vector<SDL_Surface*> gSurfaces;
 extern std::vector<SDL_Texture*> gTextures;
 extern std::vector<std::string>  gStrings;
 extern std::vector<std::string> loadableFiles;
-const int SLIDER_DEFAULT_SCALE_BUILTIN_INDEX = 7;//what function sliders start with
+//const int SLIDER_DEFAULT_SCALE_BUILTIN_INDEX = 7;//what function sliders start with
 extern bool leftMouseClicked;
 extern bool leftMouseHadBeenClicked;
 extern bool leftMouseReleased;

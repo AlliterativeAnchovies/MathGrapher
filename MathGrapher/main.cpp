@@ -889,6 +889,43 @@ void load(std::string toLoad) {
 	std::cout << "Loading finished\n";
 }
 
+void initBuiltins() {
+	std::fstream loadedFile(dumstupidcurrentdirectorybs+"/resources/Functions/Functions.txt");
+	ParsedFile* pf = ParsedFile::parseFile(&loadedFile);
+	std::vector<ParsedFile*> basefunctions = pf->componentFromString("basefunctions.*");
+	for (auto b : basefunctions) {
+		std::vector<double> taylor = {};
+		std::vector<ParsedFile*> taylors = b->componentFromString("taylorSeries.*");
+		for (auto t : taylors) {
+			taylor.push_back(numberFromString(t->getValue()));
+		}
+		std::vector<Point<double>> range = {};
+		std::vector<ParsedFile*> ranges = b->componentFromString("excludedRange.*");
+		for (auto r : ranges) {
+			auto splitthing = splitAt(r->getValue(), ',');
+			Point<double> p = Point<double>(numberFromString(splitthing[0]),numberFromString(splitthing[1]));
+			range.push_back(p);
+		}
+		FuncWrap topushback = {
+			b->getKey(),
+			new Function(taylor,range,b->valueOf("definition"))
+		};
+		if (b->componentExists("hidden")) {topushback.y->hide();}
+		builtins.push_back(topushback);
+	}
+	std::vector<ParsedFile*> derivedfunctions = pf->componentFromString("derivedfunctions.*");
+	for (auto d : derivedfunctions) {
+		ParsedFile* derivation = d->componentFromString("derivation")[0];
+		FuncWrap topushback = {
+			d->getKey(),
+			new Function(derivation,d->valueOf("definition"))
+		};
+		if (d->componentExists("hidden")) {topushback.y->hide();}
+		builtins.push_back(topushback);
+	}
+	
+}
+
 void makeVideoFromBatch(int batchnum,std::string* listForConcatenation) {
 	std::cout << "Making Video Batch...\n";
 	#ifdef _WINDOWS

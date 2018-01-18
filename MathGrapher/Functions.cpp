@@ -18,7 +18,7 @@ bool tangentRange(double in) {
     return (rounded>5&&rounded<85);
 }
 
-void initBuiltins() {
+/*void initBuiltins() {
 	builtins = {
 		//Standard Functions
 		{"Identity",
@@ -48,7 +48,7 @@ void initBuiltins() {
 			new Function({1,0,-1,0,1,0,-1},{0,1,0,-1,0,1,0,-1},{Point<double>(0,1)},"x^2+y^2=1")
 		},
 	};
-}
+}*/
 
 /*void initBuiltins() {
     builtins = {
@@ -96,6 +96,15 @@ void initBuiltins() {
             "x^2+y^2=1")},
     };
 }*/
+
+bool functionExists(std::string name) {
+	for (auto f : builtins) {
+		if (f.y->getName()==name) {
+			return true;
+		}
+	}
+	return false;
+}
 
 Function* functionFromName(std::string name) {
 	for (auto f : builtins) {
