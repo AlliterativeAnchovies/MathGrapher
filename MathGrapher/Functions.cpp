@@ -106,6 +106,24 @@ bool functionExists(std::string name) {
 	return false;
 }
 
+bool functionExistsFromTag(std::string t) {
+	for (auto f : builtins) {
+		if (f.x==t) {
+			return true;
+		}
+	}
+	return false;
+}
+
+Function* functionFromTag(std::string t) {
+	for (auto f : builtins) {
+		if (f.x==t) {
+			return f.y;
+		}
+	}
+	throw std::runtime_error("Error! No such function: "+t);
+}
+
 Function* functionFromName(std::string name) {
 	for (auto f : builtins) {
 		if (f.y->getName()==name) {

@@ -131,5 +131,7 @@ class PointOfInterest: public SavableData {
 
 Function* functionFromName(std::string name);//defined in functionwrapper
 bool functionExists(std::string name);
+Function* functionFromTag(std::string t);//defined in functionwrapper
+bool functionExistsFromTag(std::string t);
 
 #endif /* Function_hpp */

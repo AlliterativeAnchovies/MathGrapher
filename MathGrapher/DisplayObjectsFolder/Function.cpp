@@ -78,7 +78,7 @@ double Function::eval(double x,bool stretchyuse) {
 	else {
 		std::vector<ParsedFile*> p = derivation->componentFromString("*");
 		if (functionExists(p[0]->getValue())) {
-			return ((stretchyuse)?stretchy:1)*functionFromName(p[0]->getKey())->eval(x);
+			return ((stretchyuse)?stretchy:1)*functionFromTag(p[0]->getKey())->eval(x);
 		}
 		else {
 			return 0;//finish this function later!
