@@ -111,6 +111,8 @@ SDL_Surface* makeArrow(double length,double thickness,double headSize,double ang
 void fillTriangleOnSurface(SDL_Surface* toDraw,int x1,int y1,int x2,int y2,int x3,int y3,Uint32 color);
 bool pointInArrow(double mouseX,double mouseY,double length,double thickness,double headSize,double angle,double headAngle);
 
+
+
 template<typename T> std::vector<T> concatenate(std::vector<T> a,std::vector<T> b) {
 	std::vector<T> toReturn = std::vector<T>(a.size()+b.size());
 	for (int i = 0;i<a.size();i++) {

@@ -24,28 +24,37 @@ struct FunctionImage {
 
 class Function: public SavableData {
     private:
-        internalFunc function=NULL;
-        internalFunc function2=NULL;//if parametric
+        //internalFunc function=NULL;
+        //internalFunc function2=NULL;//if parametric
+        std::vector<double> taylorSeries1 = {0};
+		std::vector<double> taylorSeries2 = {0};//if parametric
         bool parametric = false;
-        internalRange range;
+        //internalRange range;
+        std::vector<Point<double>> range = {};//for every input point (a,b), the function is NOT defined on that range
         std::string name = "-FUNCTION-";
         bool tagged = false;
         double stretchx = 1;
         double stretchy = 1;
         double time = 0;
-        std::string stretchxstring = "1";
-        std::string stretchystring = "1";
+        double taylorSeriesAbout = 0;
+        double taylorSeriesAbout2 = 0;//for parametric
+        [[deprecated]] std::string stretchxstring = "1";
+        [[deprecated]] std::string stretchystring = "1";
         bool visible = true;
         FunctionImage image;
         std::vector<PointOfInterest*> importantPoints = {};
         Graph* graphOn = NULL;
     public:
         //basic definition ('degenerate')
-        Function(internalFunc f);
+        //Function(internalFunc f);
         //standard definition
-        Function(internalFunc f,internalRange r,std::string n);
+        //Function(internalFunc f,internalRange r,std::string n);
         //parametric definition
-        Function(internalFunc f,internalFunc f2,internalRange r,std::string n);
+        //Function(internalFunc f,internalFunc f2,internalRange r,std::string n);
+        Function(std::vector<double> t1);//degenerate definition, use others in general
+        Function(std::vector<double> t1,std::vector<Point<double>> r,std::string n,double tsa = 0);
+        Function(std::vector<double> t1,std::vector<double> t2,std::vector<Point<double>> r,std::string n,double tsa1 = 0,
+        		double tsa2 = 0);
         Function() {};
         double eval(double x);
         double operator() (double x);
@@ -60,10 +69,10 @@ class Function: public SavableData {
         double getTime() {return time;}
         double getStretchX() {return stretchx;}
         double getStretchY() {return stretchy;}
-        std::string getStretchXString() {return stretchxstring;}
-        std::string getStretchYString() {return stretchystring;}
-        void setStretchX(std::string s) {stretchxstring = s;stretchx=numberFromString(s);}//deprecated
-        void setStretchY(std::string s) {stretchystring = s;stretchy=numberFromString(s);}//deprecated
+        [[deprecated]] std::string getStretchXString() {return stretchxstring;}
+        [[deprecated]] std::string getStretchYString() {return stretchystring;}
+        [[deprecated]] void setStretchX(std::string s) {stretchxstring = s;stretchx=numberFromString(s);}//deprecated
+        [[deprecated]] void setStretchY(std::string s) {stretchystring = s;stretchy=numberFromString(s);}//deprecated
         void setTime(double t) {time = t;}
         bool isVisible() {return visible;}
         void toggleVisibility() {visible=!visible;}
@@ -84,6 +93,7 @@ class Function: public SavableData {
         Graph* getGraph() {return graphOn;}//ONLY USED WHEN LOADING
         void meshWith(Function* f);//takes all non-interpolatable fields from f and puts them on this
         std::vector<EditFieldMenu> getEditableFields();
+        static double evalTaylor(std::vector<double> taylor,double pointAt,double tsa);
 };
 
 extern std::vector<PointOfInterest*> pointsOfInterest;

@@ -8,41 +8,82 @@
 
 #include "Function.hpp"
 
-Function::Function(internalFunc f) {
+/*Function::Function(internalFunc f) {
     function = f;
     parametric = false;
+}*/
+
+Function::Function(std::vector<double> t) {
+	taylorSeries1 = t;
+	parametric = false;
 }
 
-Function::Function(internalFunc f,internalRange r,std::string n) {
+/*Function::Function(internalFunc f,internalRange r,std::string n) {
     function = f;
     name = n;
     range = r;
     parametric = false;
+}*/
+
+Function::Function(std::vector<double> t,std::vector<Point<double>> r,std::string n,double tsa) {
+    taylorSeries1 = t;
+    name = n;
+    range = r;
+    parametric = false;
+    taylorSeriesAbout = tsa;
 }
 
-Function::Function(internalFunc f,internalFunc f2,internalRange r,std::string n) {
+/*Function::Function(internalFunc f,internalFunc f2,internalRange r,std::string n) {
     function = f;
     function2 = f2;
     name = n;
     range = r;
     parametric = true;
+}*/
+Function::Function(std::vector<double> t,std::vector<double> t2,std::vector<Point<double>> r,std::string n,
+					double tsa1,double tsa2) {
+    taylorSeries1 = t;
+    taylorSeries2 = t2;
+    name = n;
+    range = r;
+    parametric = true;
+    taylorSeriesAbout = tsa1;
+    taylorSeriesAbout2 = tsa2;
 }
 Function::~Function() {
     for (auto point : importantPoints) {point->prepareForDelete();}
 }
 
+double Function::evalTaylor(std::vector<double> taylor,double pointAt,double tsa) {
+	double toReturn = 0;
+	for (int i = 0;i<taylor.size();i++) {
+		toReturn += (taylor[i] / tgamma(i+1)) * pow(pointAt-tsa,i);
+	}
+	return toReturn;
+}
+
 double Function::eval(double x) {
-    return function(x,time,stretchx,stretchy);
+	return stretchy*evalTaylor(taylorSeries1, stretchx*x+time/FRAME_RATE,taylorSeriesAbout);
+    //return function(x,time,stretchx,stretchy);
 }
 double Function::operator() (double x) {
     return eval(x);
 }
 Point<double> Function::parametricEval(double x) {
-    return Point<double>(function(x,time,stretchx,stretchy),function2(x,time,stretchx,stretchy));
+	double toretx = evalTaylor(taylorSeries1, x+time/FRAME_RATE, taylorSeriesAbout);
+	double torety = evalTaylor(taylorSeries2, x+time/FRAME_RATE, taylorSeriesAbout2);
+	return Point<double>(stretchx*toretx,stretchy*torety);
+    //return Point<double>(function(x,time,stretchx,stretchy),function2(x,time,stretchx,stretchy));
 }
 
 double Function::inRange(double x) {
-    return range(x,time,stretchx,stretchy);
+	for (auto p : range) {
+		if (x<=p.y&&x>=p.x) {
+			return false;
+		}
+	}
+	return true;
+    //return range(x,time,stretchx,stretchy);
 }
 
 std::string Function::getName() {
@@ -54,8 +95,12 @@ void Function::setName(std::string n) {
 
 Function::Function(Function* a) {
     name = a->name;
-    function = a->function;
-    function2 = a->function2;
+    //function = a->function;
+    //function2 = a->function2;
+    taylorSeries1 = a->taylorSeries1;
+    taylorSeries2 = a->taylorSeries2;
+    taylorSeriesAbout = a->taylorSeriesAbout;
+    taylorSeriesAbout2 = a->taylorSeriesAbout2;
     parametric = a->parametric;
     range = a->range;
 }
@@ -65,8 +110,8 @@ void Function::reset() {
     stretchy = image.stretchy;
     time    = image.time;
     visible = image.visible;
-    stretchxstring = std::to_string(stretchx);
-    stretchystring = std::to_string(stretchy);
+    //stretchxstring = std::to_string(stretchx);
+    //stretchystring = std::to_string(stretchy);
 }
 
 void Function::saveImage() {
@@ -77,8 +122,11 @@ void Function::saveImage() {
 }
 
 void Function::meshWith(Function* f) {
-	function = f->function;
-	function2 = f->function2;
+	//maintains all stretch/etc vals but changes the actual function to f.
+	taylorSeries1 = f->taylorSeries1;
+    taylorSeries2 = f->taylorSeries2;
+    taylorSeriesAbout = f->taylorSeriesAbout;
+    taylorSeriesAbout2 = f->taylorSeriesAbout2;
 	parametric = f->parametric;
 	range = f->range;
 }
