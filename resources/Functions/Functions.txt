@@ -78,15 +78,20 @@ basefunctions: {//if function is parametric or derived from base functions, goes
 		}
 	}
 
-	AbsoluteValue: {//to be defined later!
+	AbsoluteValue: {
 		definition:"|x|"
 		taylorSeries: {
 			0
-			0
-			0
-			0
+			-1
 		}
-		about:1
+		flags: {//flags are special commands
+				//for example, |x| is not a continous function,
+				//so to use the taylor series method, we need to
+				//mirror it
+				//the left side is unmirrored version, right is mirrored
+			mirror:0
+		}
+		about:0
 	}
 
 	SquareRoot: {

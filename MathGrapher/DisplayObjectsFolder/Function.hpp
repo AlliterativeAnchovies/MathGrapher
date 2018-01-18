@@ -47,6 +47,9 @@ class Function: public SavableData {
         FunctionImage image;
         std::vector<PointOfInterest*> importantPoints = {};
         Graph* graphOn = NULL;
+        std::vector<Wrap2<std::string, double>> flags = {};
+        bool hasFlag(std::string s);
+        double flagValue(std::string s);
     public:
         //basic definition ('degenerate')
         //Function(internalFunc f);
@@ -99,6 +102,7 @@ class Function: public SavableData {
         static double evalTaylor(std::vector<double> taylor,double pointAt,double tsa);
         void hide() {hidden=true;}
         bool isHidden() {return hidden;}
+        void addFlag(Wrap2<std::string,double> f) {flags.push_back(f);}
 };
 
 extern std::vector<PointOfInterest*> pointsOfInterest;

@@ -69,9 +69,34 @@ double Function::evalTaylor(std::vector<double> taylor,double pointAt,double tsa
 	return toReturn;
 }
 
+bool Function::hasFlag(std::string s) {
+	for (auto f : flags) {
+		if (f.x==s) {
+			return true;
+		}
+	}
+	return false;
+}
+
+double Function::flagValue(std::string s) {
+	for (auto f : flags) {
+		if (f.x==s) {
+			return f.y;
+		}
+	}
+	throw std::runtime_error("Error no such flag!");
+}
+
 double Function::eval(double x) {
 	if (!derived) {
-		return stretchy*evalTaylor(taylorSeries1, stretchx*x+time/FRAME_RATE,taylorSeriesAbout);
+		double xToPutIn = x;
+		if (hasFlag("mirror")) {
+			double v = flagValue("mirror");
+			if (x>v) {
+				x = x-2*(x-v);
+			}
+		}
+		return stretchy*evalTaylor(taylorSeries1, stretchx*xToPutIn+time/FRAME_RATE,taylorSeriesAbout);
 	}
 	else {
 		std::vector<ParsedFile*> p = derivation->componentFromString("*");

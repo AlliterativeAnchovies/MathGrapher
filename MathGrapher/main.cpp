@@ -912,6 +912,12 @@ void initBuiltins() {
 			new Function(taylor,range,b->valueOf("definition"),about)
 		};
 		if (b->componentExists("hidden")) {topushback.y->hide();}
+		if (b->componentExists("flags")) {
+			std::vector<ParsedFile*> flags = b->componentFromString("flags.*");
+			for (auto f: flags) {
+				topushback.y->addFlag((Wrap2<std::string, double>){f->getKey(),numberFromString(f->getValue())});
+			}
+		}
 		builtins.push_back(topushback);
 	}
 	std::vector<ParsedFile*> derivedfunctions = pf->componentFromString("derivedfunctions.*");
