@@ -40,15 +40,13 @@ Function::Function(std::vector<double> t,std::vector<Point<double>> r,std::strin
     range = r;
     parametric = true;
 }*/
-Function::Function(std::vector<double> t,std::vector<double> t2,std::vector<Point<double>> r,std::string n,
-					double tsa1,double tsa2) {
-    taylorSeries1 = t;
-    taylorSeries2 = t2;
-    name = n;
-    range = r;
+
+Function::Function(Function* f1,Function* f2,Point<double> r,std::string n) {//for parametric functions
     parametric = true;
-    taylorSeriesAbout = tsa1;
-    taylorSeriesAbout2 = tsa2;
+    parafunc1 = f1;
+    parafunc2 = f2;
+    name = n;
+    range = {r};
 }
 
 Function::Function(ParsedFile* d,std::string n) {
@@ -71,14 +69,14 @@ double Function::evalTaylor(std::vector<double> taylor,double pointAt,double tsa
 	return toReturn;
 }
 
-double Function::eval(double x,bool stretchyuse) {
+double Function::eval(double x) {
 	if (!derived) {
-		return ((stretchyuse)?stretchy:1)*evalTaylor(taylorSeries1, stretchx*x+time/FRAME_RATE,taylorSeriesAbout);
+		return stretchy*evalTaylor(taylorSeries1, stretchx*x+time/FRAME_RATE,taylorSeriesAbout);
 	}
 	else {
 		std::vector<ParsedFile*> p = derivation->componentFromString("*");
 		if (functionExists(p[0]->getValue())) {
-			return ((stretchyuse)?stretchy:1)*functionFromTag(p[0]->getKey())->eval(x);
+			return stretchy*functionFromTag(p[0]->getKey())->eval(x*stretchx);
 		}
 		else {
 			return 0;//finish this function later!
@@ -91,13 +89,16 @@ double Function::operator() (double x) {
     return eval(x);
 }
 Point<double> Function::parametricEval(double x) {
-	double toretx = evalTaylor(taylorSeries1, x+time/FRAME_RATE, taylorSeriesAbout);
-	double torety = evalTaylor(taylorSeries2, x+time/FRAME_RATE, taylorSeriesAbout2);
-	return Point<double>(stretchx*toretx,stretchy*torety);
+	//double toretx = evalTaylor(taylorSeries1, x+time/FRAME_RATE, taylorSeriesAbout);
+	//double torety = evalTaylor(taylorSeries2, x+time/FRAME_RATE, taylorSeriesAbout2);
+	return Point<double>(stretchx*parafunc1->eval(x*stretchx),stretchy*parafunc2->eval(x*stretchx));
     //return Point<double>(function(x,time,stretchx,stretchy),function2(x,time,stretchx,stretchy));
 }
 
 double Function::inRange(double x) {
+	if (parametric) {
+		return range[0].x<=x&&range[0].y>=x;
+	}
 	for (auto p : range) {
 		if (x<=p.y&&x>=p.x) {
 			return false;
@@ -116,14 +117,13 @@ void Function::setName(std::string n) {
 
 Function::Function(Function* a) {
     name = a->name;
-    //function = a->function;
-    //function2 = a->function2;
+    parafunc1 = a->parafunc1;
+    parafunc2 = a->parafunc2;
     taylorSeries1 = a->taylorSeries1;
-    taylorSeries2 = a->taylorSeries2;
     taylorSeriesAbout = a->taylorSeriesAbout;
-    taylorSeriesAbout2 = a->taylorSeriesAbout2;
     parametric = a->parametric;
     range = a->range;
+    derived = a->derived;
 }
 
 void Function::reset() {
@@ -145,9 +145,7 @@ void Function::saveImage() {
 void Function::meshWith(Function* f) {
 	//maintains all stretch/etc vals but changes the actual function to f.
 	taylorSeries1 = f->taylorSeries1;
-    taylorSeries2 = f->taylorSeries2;
     taylorSeriesAbout = f->taylorSeriesAbout;
-    taylorSeriesAbout2 = f->taylorSeriesAbout2;
 	parametric = f->parametric;
 	range = f->range;
 	derived = f->derived;

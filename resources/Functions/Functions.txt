@@ -86,16 +86,21 @@ basefunctions: {//if function is parametric or derived from base functions, goes
 			0
 			0
 		}
+		about:1
 	}
 
 	SquareRoot: {
 		definition:"sqrt(x)"
 		taylorSeries: {//to be defined later!
-			0
-			0
-			0
-			0
+			1
+			0.5
+			-0.25
+			0.375
+			-0.9375
+			3.28125
+			-14.7656
 		}
+		about:1
 	}
 }
 
@@ -120,7 +125,7 @@ derivedfunctions: {//all functions best expressed in terms of others go here
 				AbsoluteValue
 			}
 		}
-		hidden	//marks this function as hidden so it doesn't show up in menus
+		hidden:yes	//marks this function as hidden so it doesn't show up in menus
 				//this is a good idea if the func is only needed for inner workings
 				//stuff or if its just needed to define a parametric function down
 				//belowb
@@ -134,5 +139,6 @@ parametricfunctions: {//all functions that take a t-arg rather than an x-arg, an
 		definition:"x^2+y^2=1"
 		x: Cosine //name of function used for x
 		y: Sine //name of function used for y
+		range: 0,360
 	}
 }

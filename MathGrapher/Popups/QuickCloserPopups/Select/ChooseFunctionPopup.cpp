@@ -20,6 +20,7 @@ Uint8 ChooseFunctionPopup::handle(double mouseX,double mouseY) {
 	bool boolConcerned = (bool)getConcernation<bool>();
 	
 	for (int i = 0;i<builtins.size();i++) {
+		if (builtins[i].y->isHidden()) {continue;}
 		int w,h;
 		TTF_SizeUTF8((*fontgrab)(16),builtins[i].x.c_str(),&w,&h);
 		drawTextWithBackground(builtins[i].x, 16, px+5, cury, 0xff000000, 0xffffcf9e, 0xff000000);

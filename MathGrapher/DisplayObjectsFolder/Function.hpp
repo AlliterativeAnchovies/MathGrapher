@@ -27,8 +27,9 @@ class Function: public SavableData {
         //internalFunc function=NULL;
         //internalFunc function2=NULL;//if parametric
         std::vector<double> taylorSeries1 = {0};
-		std::vector<double> taylorSeries2 = {0};//if parametric
         bool parametric = false;
+        Function* parafunc1 = NULL;//if parametric;
+        Function* parafunc2 = NULL;//if parametric
         //internalRange range;
         std::vector<Point<double>> range = {};//for every input point (a,b), the function is NOT defined on that range
         std::string name = "-FUNCTION-";
@@ -40,7 +41,6 @@ class Function: public SavableData {
         double stretchy = 1;
         double time = 0;
         double taylorSeriesAbout = 0;
-        double taylorSeriesAbout2 = 0;//for parametric
         [[deprecated]] std::string stretchxstring = "1";
         [[deprecated]] std::string stretchystring = "1";
         bool visible = true;
@@ -56,11 +56,10 @@ class Function: public SavableData {
         //Function(internalFunc f,internalFunc f2,internalRange r,std::string n);
         Function(std::vector<double> t1);//degenerate definition, use others in general
         Function(std::vector<double> t1,std::vector<Point<double>> r,std::string n,double tsa = 0);
-        Function(std::vector<double> t1,std::vector<double> t2,std::vector<Point<double>> r,std::string n,double tsa1 = 0,
-        		double tsa2 = 0);
 		Function(ParsedFile* d,std::string n);
+		Function(Function* f1,Function* f2,Point<double> r,std::string n);//for parametric functions
         Function() {};
-        double eval(double x,bool stretchyuse = true);
+        double eval(double x);
         double operator() (double x);
         Point<double> parametricEval(double x);
         double inRange(double x);

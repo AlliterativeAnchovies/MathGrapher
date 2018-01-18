@@ -906,9 +906,10 @@ void initBuiltins() {
 			Point<double> p = Point<double>(numberFromString(splitthing[0]),numberFromString(splitthing[1]));
 			range.push_back(p);
 		}
+		double about = numberFromString(b->valueOf("about"));
 		FuncWrap topushback = {
 			b->getKey(),
-			new Function(taylor,range,b->valueOf("definition"))
+			new Function(taylor,range,b->valueOf("definition"),about)
 		};
 		if (b->componentExists("hidden")) {topushback.y->hide();}
 		builtins.push_back(topushback);
@@ -921,6 +922,17 @@ void initBuiltins() {
 			new Function(derivation,d->valueOf("definition"))
 		};
 		if (d->componentExists("hidden")) {topushback.y->hide();}
+		builtins.push_back(topushback);
+	}
+	std::vector<ParsedFile*> parametricfunctions = pf->componentFromString("parametricfunctions.*");
+	for (auto p : parametricfunctions) {
+		std::string range_s = p->valueOf("range");
+		std::vector<std::string> range_v = splitAt(range_s, ',');
+		Point<double> range_p = Point<double>(numberFromString(range_v[0]),numberFromString(range_v[1]));
+		FuncWrap topushback = {
+			p->getKey(),
+			new Function(functionFromTag(p->valueOf("x")),functionFromTag(p->valueOf("y")),range_p,p->valueOf("definition"))
+		};
 		builtins.push_back(topushback);
 	}
 	
