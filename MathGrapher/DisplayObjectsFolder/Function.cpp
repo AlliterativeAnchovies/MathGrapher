@@ -8,22 +8,10 @@
 
 #include "Function.hpp"
 
-/*Function::Function(internalFunc f) {
-    function = f;
-    parametric = false;
-}*/
-
 Function::Function(std::vector<double> t) {
 	taylorSeries1 = t;
 	parametric = false;
 }
-
-/*Function::Function(internalFunc f,internalRange r,std::string n) {
-    function = f;
-    name = n;
-    range = r;
-    parametric = false;
-}*/
 
 Function::Function(std::vector<double> t,std::vector<Point<double>> r,std::string n,double tsa) {
     taylorSeries1 = t;
@@ -32,14 +20,6 @@ Function::Function(std::vector<double> t,std::vector<Point<double>> r,std::strin
     parametric = false;
     taylorSeriesAbout = tsa;
 }
-
-/*Function::Function(internalFunc f,internalFunc f2,internalRange r,std::string n) {
-    function = f;
-    function2 = f2;
-    name = n;
-    range = r;
-    parametric = true;
-}*/
 
 Function::Function(Function* f1,Function* f2,Point<double> r,std::string n) {//for parametric functions
     parametric = true;
@@ -55,6 +35,7 @@ Function::Function(ParsedFile* d,std::string n) {
 	name = n;
 	parametric = false;
 }
+
 
 
 Function::~Function() {

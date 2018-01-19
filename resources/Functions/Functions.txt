@@ -104,6 +104,11 @@ basefunctions: {//if function is parametric or derived from base functions, goes
 			-0.9375
 			3.28125
 			-14.7656
+			81.2109
+			-527.871
+			3959.03
+			-33651.8
+			319692
 		}
 		about:1
 	}
