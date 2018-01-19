@@ -19,38 +19,6 @@ bool tangentRange(double in) {
 }
 
 void initBuiltins() {
-	builtins = {
-		//Standard Functions
-		{"Identity",
-			new Function({0,1},{},"x")
-		},
-		{"Parabola",
-			new Function({0,0,1},{},"x^2")
-		},
-		{"Sine",
-			new Function({0,1,0,-1,0,1,0,-1},{},"sin(x)")
-		},
-		{"Cosine",
-			new Function({1,0,-1,0,1,0,-1},{},"cos(x)")
-		},
-		{"Tangent",
-			new Function({1,0,3,0,16,0,272},{},"tan(x)")
-		},
-		{"Reciprocal",
-			new Function({1,-1,2,-6,24,-120},{},"1/x",1)//note that the taylor series is about 1 here, not 0 (the default)
-		},
-		{"Slider Scale",
-			new Function({1,0.5,-0.25,0.375,-0.9375},{},"sqrt(|x|)",1)//about 1 not 0 b/c absolute value gets funky at 0
-		},
-		//Parametric Functions
-		//Remember that these MUST have a range
-		{"Circle",
-			new Function({1,0,-1,0,1,0,-1},{0,1,0,-1,0,1,0,-1},{Point<double>(0,1)},"x^2+y^2=1")
-		},
-	};
-}
-
-/*void initBuiltins() {
     builtins = {
         //standard functions
         {"Identity",
@@ -95,7 +63,7 @@ void initBuiltins() {
                 },
             "x^2+y^2=1")},
     };
-}*/
+}
 
 Function* functionFromName(std::string name) {
 	for (auto f : builtins) {
