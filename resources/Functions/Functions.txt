@@ -96,7 +96,7 @@ basefunctions: {//if function is parametric or derived from base functions, goes
 
 	SquareRoot: {
 		definition:"sqrt(x)"
-		taylorSeries: {//to be defined later!
+		taylorSeries: {
 			1
 			0.5
 			-0.25

@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MathGrapher/Popups/QuickCloserPopups/Select/AddObjectPopup.cpp"
-            timestampString = "537972539.336584"
+            timestampString = "538048457.43817"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "22"
@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MathGrapher/main.cpp"
-            timestampString = "537972539.3368959"
+            timestampString = "538048457.438489"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "159"
@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MathGrapher/Popups/MajorPopups/EditPopup.hpp"
-            timestampString = "537972539.337164"
+            timestampString = "538048457.438697"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "127"
@@ -151,7 +151,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MathGrapher/Popups/MajorPopups/EditPopup.hpp"
-            timestampString = "537972539.337393"
+            timestampString = "538048457.438886"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "130"
@@ -244,7 +244,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MathGrapher/Popups/MajorPopups/MainDisplay.cpp"
-            timestampString = "537972539.3374521"
+            timestampString = "538048457.4389369"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "222"
@@ -260,7 +260,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MathGrapher/RenderingUtilities.cpp"
-            timestampString = "537972539.337646"
+            timestampString = "538048457.4391119"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "973"
@@ -276,7 +276,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MathGrapher/DisplayObjectsFolder/Function.cpp"
-            timestampString = "537972539.337849"
+            timestampString = "538048457.439296"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "119"
@@ -292,7 +292,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MathGrapher/main.cpp"
-            timestampString = "537972539.338388"
+            timestampString = "538048457.43989"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "939"
@@ -308,12 +308,214 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MathGrapher/Popups/QuickCloserPopups/Select/ChooseFunctionPopup.cpp"
-            timestampString = "537972539.338447"
+            timestampString = "538048457.43995"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "29"
             endingLineNumber = "29"
             landmarkName = "ChooseFunctionPopup::handle(double mouseX,double mouseY)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MathGrapher/DisplayObjectsFolder/Function.cpp"
+            timestampString = "538048457.44013"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "Function::eval(double x)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MathGrapher/DisplayObjectsFolder/Function.cpp"
+            timestampString = "538048457.440357"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "Function::eval(double x)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MathGrapher/main.cpp"
+            timestampString = "538048457.440652"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "916"
+            endingLineNumber = "916"
+            landmarkName = "initBuiltins()"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MathGrapher/main.cpp"
+            timestampString = "538048457.440722"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "944"
+            endingLineNumber = "944"
+            landmarkName = "initBuiltins()"
+            landmarkType = "9">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "initBuiltins()"
+                  moduleName = "MathGrapher"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/baileyandrew/Documents/GitHub/MathGrapher/MathGrapher/main.cpp"
+                  timestampString = "538048319.034318"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "945"
+                  endingLineNumber = "945"
+                  offsetFromSymbolStart = "3594">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "initBuiltins()"
+                  moduleName = "MathGrapher"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/baileyandrew/Documents/GitHub/MathGrapher/MathGrapher/main.cpp"
+                  timestampString = "538048319.037092"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "945"
+                  endingLineNumber = "945"
+                  offsetFromSymbolStart = "3682">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "initBuiltins()"
+                  moduleName = "MathGrapher"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/baileyandrew/Documents/GitHub/MathGrapher/MathGrapher/main.cpp"
+                  timestampString = "538048319.03957"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "945"
+                  endingLineNumber = "945"
+                  offsetFromSymbolStart = "3734">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "initBuiltins()"
+                  moduleName = "MathGrapher"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/baileyandrew/Documents/GitHub/MathGrapher/MathGrapher/main.cpp"
+                  timestampString = "538048319.042285"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "945"
+                  endingLineNumber = "945"
+                  offsetFromSymbolStart = "5619">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "initBuiltins()"
+                  moduleName = "MathGrapher"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/baileyandrew/Documents/GitHub/MathGrapher/MathGrapher/main.cpp"
+                  timestampString = "538048319.044879"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "945"
+                  endingLineNumber = "945"
+                  offsetFromSymbolStart = "8472">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "initBuiltins()"
+                  moduleName = "MathGrapher"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/baileyandrew/Documents/GitHub/MathGrapher/MathGrapher/main.cpp"
+                  timestampString = "538048319.047322"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "945"
+                  endingLineNumber = "945"
+                  offsetFromSymbolStart = "8497">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "initBuiltins()"
+                  moduleName = "MathGrapher"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/baileyandrew/Documents/GitHub/MathGrapher/MathGrapher/main.cpp"
+                  timestampString = "538048319.050024"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "945"
+                  endingLineNumber = "945"
+                  offsetFromSymbolStart = "11166">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "initBuiltins()"
+                  moduleName = "MathGrapher"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/baileyandrew/Documents/GitHub/MathGrapher/MathGrapher/main.cpp"
+                  timestampString = "538048319.0522031"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "945"
+                  endingLineNumber = "945"
+                  offsetFromSymbolStart = "14950">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MathGrapher/DisplayObjectsFolder/Function.cpp"
+            timestampString = "538048457.440789"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "Function::eval(double x)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

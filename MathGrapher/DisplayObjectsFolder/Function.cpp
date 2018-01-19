@@ -93,7 +93,7 @@ double Function::eval(double x) {
 		if (hasFlag("mirror")) {
 			double v = flagValue("mirror");
 			if (x>v) {
-				x = x-2*(x-v);
+				xToPutIn = x-2*(x-v);
 			}
 		}
 		return stretchy*evalTaylor(taylorSeries1, stretchx*xToPutIn+time/FRAME_RATE,taylorSeriesAbout);
@@ -149,6 +149,7 @@ Function::Function(Function* a) {
     parametric = a->parametric;
     range = a->range;
     derived = a->derived;
+    flags = a->flags;
 }
 
 void Function::reset() {
@@ -174,6 +175,7 @@ void Function::meshWith(Function* f) {
 	parametric = f->parametric;
 	range = f->range;
 	derived = f->derived;
+	flags = f->flags;
 }
 
 
