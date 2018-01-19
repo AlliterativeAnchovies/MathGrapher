@@ -32,7 +32,8 @@ Function::~Function() {
 }
 
 double Function::eval(double x) {
-    return function(x,time,stretchx,stretchy);
+	return nthDerivative([=](double n){return function(n,time,stretchx,stretchy);} , x, whichDeriv);
+    //return function(x,time,stretchx,stretchy);
 }
 double Function::operator() (double x) {
     return eval(x);
@@ -135,7 +136,8 @@ std::vector<EditFieldMenu> Function::getEditableFields() {
 	return {
 		{"Stretch X: ",&stretchx,_DOUBLE,20,false},
 		{"Stretch Y: ",&stretchy,_DOUBLE,20,true},
-		{"Start Time: ",&time,_DOUBLE,20,true}
+		{"Start Time: ",&time,_DOUBLE,20,true},
+		{"Nth Derivative: ",&whichDeriv,_INT,20,true}
 	};
 }
 

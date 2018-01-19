@@ -1215,3 +1215,32 @@ std::vector<std::string> splitAt(std::string input,std::string splitter) {
 	if (excess!="") {toReturn.push_back(excess);}
 	return toReturn;
 }
+
+double limit(std::function<double(double)> function,double startingValue,double approachingValue,double* prevVal) {
+	if (prevVal==NULL) {
+		double f = function(startingValue);
+		return limit(function,startingValue,approachingValue,&f);
+	}
+	startingValue+= 0.5*(approachingValue-startingValue);
+	double curVal = function(startingValue);
+	double epsilon = 0.0000001;
+	if (abs(curVal-*prevVal)<=epsilon) {
+		return curVal;
+	}
+	if (isnan(curVal)||isnan(*prevVal)) {
+		return 0;//undefined :/
+	}
+	return limit(function,startingValue,approachingValue,&curVal);
+}
+
+double derivative(std::function<double(double)> function,double atPoint) {
+	return limit( [=](double h){return (function(atPoint+h)-function(atPoint))/h;} , 1,0);
+}
+
+double nthDerivative(std::function<double(double)> function,double atPoint,int n) {
+	if (n<0) {throw std::runtime_error("ERROR NEG DERIV NOT ALLOWED... yet");};
+	if (n==0) {return function(atPoint);}
+	else {
+		return nthDerivative([=](double x){return derivative(function, x);},atPoint,n-1);
+	}
+}

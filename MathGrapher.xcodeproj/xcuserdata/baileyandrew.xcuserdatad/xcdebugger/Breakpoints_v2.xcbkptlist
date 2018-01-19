@@ -260,13 +260,61 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MathGrapher/RenderingUtilities.cpp"
-            timestampString = "538051870.302399"
+            timestampString = "538053774.9136879"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "973"
             endingLineNumber = "973"
             landmarkName = "makeArrow(double length,double thickness,double headSize,double angle,double headAngle,Uint32 color, double* offx,double* offy)"
             landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MathGrapher/DisplayObjectsFolder/Function.cpp"
+            timestampString = "538053774.914127"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "Function::eval(double x)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Function::eval(double)"
+                  moduleName = "MathGrapher"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/baileyandrew/Documents/GitHub/MathGrapher/MathGrapher/DisplayObjectsFolder/Function.cpp"
+                  timestampString = "538053635.289325"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "38">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Function::eval(double)::$_0::operator()(double) const"
+                  moduleName = "MathGrapher"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/baileyandrew/Documents/GitHub/MathGrapher/MathGrapher/DisplayObjectsFolder/Function.cpp"
+                  timestampString = "538053635.291455"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

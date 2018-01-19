@@ -110,24 +110,9 @@ SDL_Surface* makeArrow(double length,double thickness,double headSize,double ang
 	double* offx,double* offy);
 void fillTriangleOnSurface(SDL_Surface* toDraw,int x1,int y1,int x2,int y2,int x3,int y3,Uint32 color);
 bool pointInArrow(double mouseX,double mouseY,double length,double thickness,double headSize,double angle,double headAngle);
-
-template<typename T> double limit(T function,double startingValue,double approachingValue,double* prevVal=NULL) {
-	if (prevVal==NULL) {
-		double f = function(startingValue);
-		return limit(function,startingValue,approachingValue,&f);
-	}
-	startingValue+= 0.5*(approachingValue-startingValue);
-	double curVal = function(startingValue);
-	double epsilon = 0.0000001;
-	if (abs(curVal-*prevVal)<=epsilon) {
-		return curVal;
-	}
-	return limit(function,startingValue,approachingValue,&curVal);
-}
-
-template<typename T> double derivative(T function,double atPoint) {
-	return limit( [=](double h){return (function(atPoint+h)-function(atPoint))/h;} , 1,0);
-}
+double limit(std::function<double(double)> function,double startingValue,double approachingValue,double* prevVal=NULL);
+double derivative(std::function<double(double)> function,double atPoint);
+double nthDerivative(std::function<double(double)> function,double atPoint,int n);
 
 template<typename T> std::vector<T> concatenate(std::vector<T> a,std::vector<T> b) {
 	std::vector<T> toReturn = std::vector<T>(a.size()+b.size());

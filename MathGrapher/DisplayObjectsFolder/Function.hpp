@@ -39,6 +39,7 @@ class Function: public SavableData {
         FunctionImage image;
         std::vector<PointOfInterest*> importantPoints = {};
         Graph* graphOn = NULL;
+        int whichDeriv = 0;
     public:
         //basic definition ('degenerate')
         Function(internalFunc f);
