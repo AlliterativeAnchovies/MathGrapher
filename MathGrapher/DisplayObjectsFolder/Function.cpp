@@ -10,6 +10,7 @@
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 Function::Function(std::vector<double> t) {
 	taylorSeries1 = t;
 	parametric = false;
@@ -49,11 +50,19 @@ Function::Function(internalFunc f) {
     parametric = false;
 }
 
+=======
+Function::Function(internalFunc f) {
+    function = f;
+    parametric = false;
+}
+
+>>>>>>> parent of aa7b4bf... Started reworking functions to be defined by taylor series instead of raw code definitions
 Function::Function(internalFunc f,internalRange r,std::string n) {
     function = f;
     name = n;
     range = r;
     parametric = false;
+<<<<<<< HEAD
 }
 
 Function::Function(internalFunc f,internalFunc f2,internalRange r,std::string n) {
@@ -63,6 +72,8 @@ Function::Function(internalFunc f,internalFunc f2,internalRange r,std::string n)
     range = r;
 <<<<<<< HEAD
     parametric = false;
+=======
+>>>>>>> parent of aa7b4bf... Started reworking functions to be defined by taylor series instead of raw code definitions
 }
 
 Function::Function(internalFunc f,internalFunc f2,internalRange r,std::string n) {
@@ -71,9 +82,12 @@ Function::Function(internalFunc f,internalFunc f2,internalRange r,std::string n)
     name = n;
     range = r;
     parametric = true;
+<<<<<<< HEAD
 >>>>>>> parent of aa7b4bf... Started reworking functions to be defined by taylor series instead of raw code definitions
 =======
     parametric = true;
+>>>>>>> parent of aa7b4bf... Started reworking functions to be defined by taylor series instead of raw code definitions
+=======
 >>>>>>> parent of aa7b4bf... Started reworking functions to be defined by taylor series instead of raw code definitions
 }
 
@@ -83,6 +97,7 @@ Function::~Function() {
     for (auto point : importantPoints) {point->prepareForDelete();}
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 double Function::evalTaylor(std::vector<double> taylor,double pointAt,double tsa) {
@@ -141,11 +156,16 @@ double Function::eval(double x) {
 double Function::eval(double x) {
     return function(x,time,stretchx,stretchy);
 >>>>>>> parent of aa7b4bf... Started reworking functions to be defined by taylor series instead of raw code definitions
+=======
+double Function::eval(double x) {
+    return function(x,time,stretchx,stretchy);
+>>>>>>> parent of aa7b4bf... Started reworking functions to be defined by taylor series instead of raw code definitions
 }
 double Function::operator() (double x) {
     return eval(x);
 }
 Point<double> Function::parametricEval(double x) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 	//double toretx = evalTaylor(taylorSeries1, x+time/FRAME_RATE, taylorSeriesAbout);
@@ -179,6 +199,13 @@ double Function::inRange(double x) {
 double Function::inRange(double x) {
     return range(x,time,stretchx,stretchy);
 >>>>>>> parent of aa7b4bf... Started reworking functions to be defined by taylor series instead of raw code definitions
+=======
+    return Point<double>(function(x,time,stretchx,stretchy),function2(x,time,stretchx,stretchy));
+}
+
+double Function::inRange(double x) {
+    return range(x,time,stretchx,stretchy);
+>>>>>>> parent of aa7b4bf... Started reworking functions to be defined by taylor series instead of raw code definitions
 }
 
 std::string Function::getName() {
@@ -192,10 +219,15 @@ Function::Function(Function* a) {
     name = a->name;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     parafunc1 = a->parafunc1;
     parafunc2 = a->parafunc2;
     taylorSeries1 = a->taylorSeries1;
     taylorSeriesAbout = a->taylorSeriesAbout;
+=======
+    function = a->function;
+    function2 = a->function2;
+>>>>>>> parent of aa7b4bf... Started reworking functions to be defined by taylor series instead of raw code definitions
 =======
     function = a->function;
     function2 = a->function2;
@@ -229,9 +261,14 @@ void Function::saveImage() {
 void Function::meshWith(Function* f) {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	//maintains all stretch/etc vals but changes the actual function to f.
 	taylorSeries1 = f->taylorSeries1;
     taylorSeriesAbout = f->taylorSeriesAbout;
+=======
+	function = f->function;
+	function2 = f->function2;
+>>>>>>> parent of aa7b4bf... Started reworking functions to be defined by taylor series instead of raw code definitions
 =======
 	function = f->function;
 	function2 = f->function2;
