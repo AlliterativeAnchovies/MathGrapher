@@ -1233,8 +1233,14 @@ double limit(std::function<double(double)> function,double startingValue,double 
 	return limit(function,startingValue,approachingValue,&curVal);
 }
 
-double derivative(std::function<double(double)> function,double atPoint) {
+/*double derivative(std::function<double(double)> function,double atPoint) {
 	return limit( [=](double h){return (function(atPoint+h)-function(atPoint))/h;} , 1,0);
+}*/
+
+double derivative(std::function<double(double)> function,double atPoint) {
+	double delta = 0.00000001;
+	return (function(atPoint+delta)-function(atPoint))/delta;//instead of doing limit, lets just directly use a
+																//very small number
 }
 
 double nthDerivative(std::function<double(double)> function,double atPoint,int n) {
