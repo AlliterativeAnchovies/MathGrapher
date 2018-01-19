@@ -39,7 +39,17 @@ double Function::operator() (double x) {
     return eval(x);
 }
 Point<double> Function::parametricEval(double x) {
-    return Point<double>(function(x,time,stretchx,stretchy),function2(x,time,stretchx,stretchy));
+	if (whichDeriv==0) {
+    	return Point<double>(function(x,time,stretchx,stretchy),function2(x,time,stretchx,stretchy));
+    }
+    else if (whichDeriv>0) {
+    	//parametric derivative is expressed as [y'(t)]/[x'(t)]
+    	auto xderi = [=](double m){return derivative([=](double n){return function(n,time,stretchx,stretchy);} , m);};
+    	auto yderi = [=](double m){return derivative([=](double n){return function2(n,time,stretchx,stretchy);} , m);};
+    	auto deri = [=](double n){return yderi(n)/xderi(n);};
+		return Point<double> (x, nthDerivative(deri, x, whichDeriv-1));
+	}
+	throw std::runtime_error("ERR NEG DERIV NO NO ;)");
 }
 
 double Function::inRange(double x) {

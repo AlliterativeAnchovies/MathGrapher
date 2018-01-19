@@ -260,7 +260,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MathGrapher/RenderingUtilities.cpp"
-            timestampString = "538056178.381464"
+            timestampString = "538069195.011597"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "973"
@@ -276,7 +276,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MathGrapher/DisplayObjectsFolder/Function.cpp"
-            timestampString = "538056178.381899"
+            timestampString = "538069195.011703"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "35"
@@ -312,6 +312,69 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "35"
                   endingLineNumber = "35"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MathGrapher/DisplayObjectsFolder/Function.cpp"
+            timestampString = "538069195.012105"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "Function::parametricEval(double x)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Function::parametricEval(double)"
+                  moduleName = "MathGrapher"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/baileyandrew/Documents/GitHub/MathGrapher/MathGrapher/DisplayObjectsFolder/Function.cpp"
+                  timestampString = "538069122.764122"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
+                  offsetFromSymbolStart = "249">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Function::parametricEval(double)::$_2::operator()(double) const"
+                  moduleName = "MathGrapher"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/baileyandrew/Documents/GitHub/MathGrapher/MathGrapher/DisplayObjectsFolder/Function.cpp"
+                  timestampString = "538069122.766345"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
+                  offsetFromSymbolStart = "41">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Function::parametricEval(double)::$_2::operator()(double) const::&apos;lambda&apos;(double)::operator()(double) const"
+                  moduleName = "MathGrapher"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/baileyandrew/Documents/GitHub/MathGrapher/MathGrapher/DisplayObjectsFolder/Function.cpp"
+                  timestampString = "538069122.768222"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
                   offsetFromSymbolStart = "24">
                </Location>
             </Locations>
