@@ -26,7 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MathGrapher/Popups/QuickCloserPopups/Select/AddObjectPopup.cpp"
+<<<<<<< HEAD
             timestampString = "538050201.890695"
+=======
+            timestampString = "537621193.306682"
+>>>>>>> parent of aa7b4bf... Started reworking functions to be defined by taylor series instead of raw code definitions
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "22"
@@ -42,7 +46,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MathGrapher/main.cpp"
+<<<<<<< HEAD
             timestampString = "538050201.891008"
+=======
+            timestampString = "537621193.306754"
+>>>>>>> parent of aa7b4bf... Started reworking functions to be defined by taylor series instead of raw code definitions
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "159"
@@ -58,7 +66,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MathGrapher/Popups/MajorPopups/EditPopup.hpp"
+<<<<<<< HEAD
             timestampString = "538050201.89183"
+=======
+            timestampString = "537621193.3068039"
+>>>>>>> parent of aa7b4bf... Started reworking functions to be defined by taylor series instead of raw code definitions
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "127"
@@ -151,7 +163,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MathGrapher/Popups/MajorPopups/EditPopup.hpp"
+<<<<<<< HEAD
             timestampString = "538050201.89214"
+=======
+            timestampString = "537621193.306847"
+>>>>>>> parent of aa7b4bf... Started reworking functions to be defined by taylor series instead of raw code definitions
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "130"
@@ -244,7 +260,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MathGrapher/Popups/MajorPopups/MainDisplay.cpp"
+<<<<<<< HEAD
             timestampString = "538050201.892199"
+=======
+            timestampString = "537621193.306892"
+>>>>>>> parent of aa7b4bf... Started reworking functions to be defined by taylor series instead of raw code definitions
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "222"
@@ -260,7 +280,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MathGrapher/RenderingUtilities.cpp"
+<<<<<<< HEAD
             timestampString = "538050201.892391"
+=======
+            timestampString = "537621193.306936"
+>>>>>>> parent of aa7b4bf... Started reworking functions to be defined by taylor series instead of raw code definitions
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "973"

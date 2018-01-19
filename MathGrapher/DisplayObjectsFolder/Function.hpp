@@ -25,6 +25,7 @@ struct FunctionImage {
 class Function: public SavableData {
     private:
 <<<<<<< HEAD
+<<<<<<< HEAD
         //internalFunc function=NULL;
         //internalFunc function2=NULL;//if parametric
         std::vector<double> taylorSeries1 = {0};
@@ -33,6 +34,12 @@ class Function: public SavableData {
         Function* parafunc2 = NULL;//if parametric
         //internalRange range;
         std::vector<Point<double>> range = {};//for every input point (a,b), the function is NOT defined on that range
+=======
+        internalFunc function=NULL;
+        internalFunc function2=NULL;//if parametric
+        bool parametric = false;
+        internalRange range;
+>>>>>>> parent of aa7b4bf... Started reworking functions to be defined by taylor series instead of raw code definitions
 =======
         internalFunc function=NULL;
         internalFunc function2=NULL;//if parametric
@@ -48,9 +55,14 @@ class Function: public SavableData {
         double stretchy = 1;
         double time = 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
         double taylorSeriesAbout = 0;
         [[deprecated]] std::string stretchxstring = "1";
         [[deprecated]] std::string stretchystring = "1";
+=======
+        std::string stretchxstring = "1";
+        std::string stretchystring = "1";
+>>>>>>> parent of aa7b4bf... Started reworking functions to be defined by taylor series instead of raw code definitions
 =======
         std::string stretchxstring = "1";
         std::string stretchystring = "1";
@@ -69,11 +81,15 @@ class Function: public SavableData {
         Function(internalFunc f,internalRange r,std::string n);
         //parametric definition
 <<<<<<< HEAD
+<<<<<<< HEAD
         //Function(internalFunc f,internalFunc f2,internalRange r,std::string n);
         Function(std::vector<double> t1);//degenerate definition, use others in general
         Function(std::vector<double> t1,std::vector<Point<double>> r,std::string n,double tsa = 0);
 		Function(ParsedFile* d,std::string n);
 		Function(Function* f1,Function* f2,Point<double> r,std::string n);//for parametric functions
+=======
+        Function(internalFunc f,internalFunc f2,internalRange r,std::string n);
+>>>>>>> parent of aa7b4bf... Started reworking functions to be defined by taylor series instead of raw code definitions
 =======
         Function(internalFunc f,internalFunc f2,internalRange r,std::string n);
 >>>>>>> parent of aa7b4bf... Started reworking functions to be defined by taylor series instead of raw code definitions
@@ -116,10 +132,13 @@ class Function: public SavableData {
         void meshWith(Function* f);//takes all non-interpolatable fields from f and puts them on this
         std::vector<EditFieldMenu> getEditableFields();
 <<<<<<< HEAD
+<<<<<<< HEAD
         static double evalTaylor(std::vector<double> taylor,double pointAt,double tsa);
         void hide() {hidden=true;}
         bool isHidden() {return hidden;}
         void addFlag(Wrap2<std::string,double> f) {flags.push_back(f);}
+=======
+>>>>>>> parent of aa7b4bf... Started reworking functions to be defined by taylor series instead of raw code definitions
 =======
 >>>>>>> parent of aa7b4bf... Started reworking functions to be defined by taylor series instead of raw code definitions
 };

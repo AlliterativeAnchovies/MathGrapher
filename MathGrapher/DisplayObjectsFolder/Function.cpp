@@ -9,6 +9,7 @@
 #include "Function.hpp"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 Function::Function(std::vector<double> t) {
 	taylorSeries1 = t;
 	parametric = false;
@@ -42,9 +43,25 @@ Function::Function(internalFunc f) {
 }
 
 Function::Function(internalFunc f,internalRange r,std::string n) {
+=======
+Function::Function(internalFunc f) {
+    function = f;
+    parametric = false;
+}
+
+Function::Function(internalFunc f,internalRange r,std::string n) {
     function = f;
     name = n;
     range = r;
+    parametric = false;
+}
+
+Function::Function(internalFunc f,internalFunc f2,internalRange r,std::string n) {
+>>>>>>> parent of aa7b4bf... Started reworking functions to be defined by taylor series instead of raw code definitions
+    function = f;
+    name = n;
+    range = r;
+<<<<<<< HEAD
     parametric = false;
 }
 
@@ -55,6 +72,9 @@ Function::Function(internalFunc f,internalFunc f2,internalRange r,std::string n)
     range = r;
     parametric = true;
 >>>>>>> parent of aa7b4bf... Started reworking functions to be defined by taylor series instead of raw code definitions
+=======
+    parametric = true;
+>>>>>>> parent of aa7b4bf... Started reworking functions to be defined by taylor series instead of raw code definitions
 }
 
 
@@ -63,6 +83,7 @@ Function::~Function() {
     for (auto point : importantPoints) {point->prepareForDelete();}
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 double Function::evalTaylor(std::vector<double> taylor,double pointAt,double tsa) {
 	double toReturn = 0;
@@ -116,11 +137,16 @@ double Function::eval(double x) {
 double Function::eval(double x) {
     return function(x,time,stretchx,stretchy);
 >>>>>>> parent of aa7b4bf... Started reworking functions to be defined by taylor series instead of raw code definitions
+=======
+double Function::eval(double x) {
+    return function(x,time,stretchx,stretchy);
+>>>>>>> parent of aa7b4bf... Started reworking functions to be defined by taylor series instead of raw code definitions
 }
 double Function::operator() (double x) {
     return eval(x);
 }
 Point<double> Function::parametricEval(double x) {
+<<<<<<< HEAD
 <<<<<<< HEAD
 	//double toretx = evalTaylor(taylorSeries1, x+time/FRAME_RATE, taylorSeriesAbout);
 	//double torety = evalTaylor(taylorSeries2, x+time/FRAME_RATE, taylorSeriesAbout2);
@@ -146,6 +172,13 @@ double Function::inRange(double x) {
 double Function::inRange(double x) {
     return range(x,time,stretchx,stretchy);
 >>>>>>> parent of aa7b4bf... Started reworking functions to be defined by taylor series instead of raw code definitions
+=======
+    return Point<double>(function(x,time,stretchx,stretchy),function2(x,time,stretchx,stretchy));
+}
+
+double Function::inRange(double x) {
+    return range(x,time,stretchx,stretchy);
+>>>>>>> parent of aa7b4bf... Started reworking functions to be defined by taylor series instead of raw code definitions
 }
 
 std::string Function::getName() {
@@ -158,10 +191,15 @@ void Function::setName(std::string n) {
 Function::Function(Function* a) {
     name = a->name;
 <<<<<<< HEAD
+<<<<<<< HEAD
     parafunc1 = a->parafunc1;
     parafunc2 = a->parafunc2;
     taylorSeries1 = a->taylorSeries1;
     taylorSeriesAbout = a->taylorSeriesAbout;
+=======
+    function = a->function;
+    function2 = a->function2;
+>>>>>>> parent of aa7b4bf... Started reworking functions to be defined by taylor series instead of raw code definitions
 =======
     function = a->function;
     function2 = a->function2;
@@ -190,9 +228,14 @@ void Function::saveImage() {
 
 void Function::meshWith(Function* f) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 	//maintains all stretch/etc vals but changes the actual function to f.
 	taylorSeries1 = f->taylorSeries1;
     taylorSeriesAbout = f->taylorSeriesAbout;
+=======
+	function = f->function;
+	function2 = f->function2;
+>>>>>>> parent of aa7b4bf... Started reworking functions to be defined by taylor series instead of raw code definitions
 =======
 	function = f->function;
 	function2 = f->function2;

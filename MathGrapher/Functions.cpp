@@ -19,6 +19,7 @@ bool tangentRange(double in) {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*void initBuiltins() {
 	builtins = {
 		//Standard Functions
@@ -52,6 +53,9 @@ bool tangentRange(double in) {
 }*/
 
 /*void initBuiltins() {
+=======
+void initBuiltins() {
+>>>>>>> parent of aa7b4bf... Started reworking functions to be defined by taylor series instead of raw code definitions
 =======
 void initBuiltins() {
 >>>>>>> parent of aa7b4bf... Started reworking functions to be defined by taylor series instead of raw code definitions
@@ -100,6 +104,7 @@ void initBuiltins() {
             "x^2+y^2=1")},
     };
 }
+<<<<<<< HEAD
 
 bool functionExists(std::string name) {
 	for (auto f : builtins) {
@@ -127,6 +132,8 @@ Function* functionFromTag(std::string t) {
 	}
 	throw std::runtime_error("Error! No such function: "+t);
 }
+=======
+>>>>>>> parent of aa7b4bf... Started reworking functions to be defined by taylor series instead of raw code definitions
 
 Function* functionFromName(std::string name) {
 	for (auto f : builtins) {
