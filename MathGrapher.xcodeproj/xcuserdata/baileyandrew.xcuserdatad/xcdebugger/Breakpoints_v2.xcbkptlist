@@ -281,7 +281,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "106"
             endingLineNumber = "106"
-            landmarkName = "Function::parametricEval(double x)"
+            landmarkName = "Function::Function(ParsedFile* d,std::string n)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -329,7 +329,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "81"
             endingLineNumber = "81"
-            landmarkName = "Function::eval(double x)"
+            landmarkName = "Function::Function(ParsedFile* d,std::string n)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -345,7 +345,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "79"
             endingLineNumber = "79"
-            landmarkName = "Function::eval(double x)"
+            landmarkName = "Function::Function(ParsedFile* d,std::string n)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -515,7 +515,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "83"
             endingLineNumber = "83"
-            landmarkName = "Function::eval(double x)"
+            landmarkName = "Function::Function(ParsedFile* d,std::string n)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -531,7 +531,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "52"
             endingLineNumber = "52"
-            landmarkName = "Function::evalTaylor(std::vector&lt;double&gt; taylor,double pointAt,double tsa)"
+            landmarkName = "Function::Function(ParsedFile* d,std::string n)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -18,6 +18,7 @@ bool tangentRange(double in) {
     return (rounded>5&&rounded<85);
 }
 
+<<<<<<< HEAD
 /*void initBuiltins() {
 	builtins = {
 		//Standard Functions
@@ -51,6 +52,9 @@ bool tangentRange(double in) {
 }*/
 
 /*void initBuiltins() {
+=======
+void initBuiltins() {
+>>>>>>> parent of aa7b4bf... Started reworking functions to be defined by taylor series instead of raw code definitions
     builtins = {
         //standard functions
         {"Identity",
@@ -95,7 +99,7 @@ bool tangentRange(double in) {
                 },
             "x^2+y^2=1")},
     };
-}*/
+}
 
 bool functionExists(std::string name) {
 	for (auto f : builtins) {
