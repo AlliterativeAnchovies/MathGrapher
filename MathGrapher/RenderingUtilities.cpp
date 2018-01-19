@@ -1240,13 +1240,15 @@ double limit(std::function<double(double)> function,double startingValue,double 
 double derivative(std::function<double(double)> function,double atPoint) {
 	double delta = 0.00000001;
 	return (function(atPoint+delta)-function(atPoint))/delta;//instead of doing limit, lets just directly use a
-																//very small number
+																//very small number.  Should be fine for our
+																//purposes.
 }
 
 double nthDerivative(std::function<double(double)> function,double atPoint,int n) {
 	if (n<0) {throw std::runtime_error("ERROR NEG DERIV NOT ALLOWED... yet");};
 	if (n==0) {return function(atPoint);}
 	else {
-		return nthDerivative([=](double x){return derivative(function, x);},atPoint,n-1);
+		std::function<double(double)> derivFunc = [=](double x){return derivative(function, x);};
+		return nthDerivative(derivFunc,atPoint,n-1);
 	}
 }
