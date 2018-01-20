@@ -1,0 +1,48 @@
+version: 2.2
+tag: CalcDemo
+object: {
+	ID: "Graph"
+	Name: "Graph 1"
+	PX: 20
+	PY: 20
+	Size_X: 600
+	Size_Y: 300
+	Origin_X: 300
+	Origin_Y: 150
+	Scale_X: 50
+	Scale_Y: 50
+	Angle_X: 0
+	Angle_Y: 1.570796
+	X_Functions: {
+		ID: Function
+		data: {
+			Name: "sin(x)"
+			Tag: 0
+			Stretch_X: 1
+			Stretch_Y: 1
+			Start_Time: 0
+			Visible: Yes
+			Points_Of_Interest: {
+				ID: Point_Of_Interest
+				data: {
+					Tag: 0
+					PX: 2
+					Visible: Yes
+					ShowsSlope: Yes
+				}
+			}
+		}
+	}
+	Y_Functions: {
+		None:"Empty Vector"
+	}
+	Interpolations: {
+		ID: Run
+		data: {
+			∆X: 10000
+			Tag: 0
+			Start: 0
+			Duration: 5000
+		}
+	}
+}
