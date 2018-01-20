@@ -96,6 +96,7 @@ class PointOfInterest: public SavableData {
         double px = 0;
         bool visible = true;
         bool taggedForDeletion = false;
+        bool showsSlope = false;
     public:
     	int tagForSaving = -1;//used for linking things while saving stuffs
         PointOfInterest(Graph* g,Function* f,double d,bool v);
@@ -112,6 +113,51 @@ class PointOfInterest: public SavableData {
         void giveGraph(Graph* g) {graphOn = g;};
         void giveFunction(Function* f) {functionOn = f;}
         std::vector<EditFieldMenu> getEditableFields();
+        bool isShowingSlope() {return showsSlope;}
+        void showSlope() {showsSlope=true;}
+        void dontShowSlope() {showsSlope=false;}
+        void toggleSlope() {showsSlope=!showsSlope;}
+        void toggleVisibility() {visible=!visible;}
+        void draw(Function* f,double pixelToXValRatio,double pixelToYValRatio,double ox,double oy,
+        			double s1,double c1,double s2,double c2,SDL_Surface* toReturn,bool axis) {
+        	if (!isVisible()) {return;}
+        	if (f->isParametric()) {
+				Point<double> rawPoint = f->parametricEval(getPX());
+				double finalX;
+				double finalY;
+				if (axis) {//x
+					finalX = rawPoint.x*c1/pixelToXValRatio-rawPoint.y*s2/pixelToYValRatio;
+					finalY = rawPoint.x*s1/pixelToXValRatio+rawPoint.y*c2/pixelToYValRatio;
+				}
+				else {//y
+					finalY = rawPoint.y*c1/pixelToXValRatio-rawPoint.x*s2/pixelToYValRatio;
+					finalX = rawPoint.y*s1/pixelToXValRatio+rawPoint.x*c2/pixelToYValRatio;
+				}
+				finalX+=ox;
+				finalY*=-1;//invert y coord because programming coords start in top not bottom
+				finalY+=oy;
+				drawCircleOnSurface(toReturn, finalX, finalY, 3, 0xff000099);
+			}
+			else {
+				double rawX = getPX();
+				if (!f->inRange(rawX)) {return;}
+				double rawY = (*f)(rawX);
+				double finalX;
+				double finalY;
+				if (axis) {//x
+					finalX = rawX*c1/pixelToXValRatio-rawY*s2/pixelToYValRatio;
+					finalY = rawX*s1/pixelToXValRatio+rawY*c2/pixelToYValRatio;
+				}
+				else {//y
+					finalY = rawY*c1/pixelToXValRatio-rawX*s2/pixelToYValRatio;
+					finalX = rawY*s1/pixelToXValRatio+rawX*c2/pixelToYValRatio;
+				}
+				finalX+=ox;
+				finalY*=-1;//invert y coord because programming coords start in top not bottom
+				finalY+=oy;
+				drawCircleOnSurface(toReturn, finalX, finalY, 3, 0xff000099);
+            }
+		}
 };
 
 

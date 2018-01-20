@@ -270,16 +270,7 @@ SDL_Surface* Graph::draw(double* x,double* y) {
         //draw all important points of a function!
         auto importantPoints = f->getImportantPoints();
         for (int j = 0;j<importantPoints.size();j++) {
-            if (!importantPoints[j]->isVisible()) {continue;}
-            double rawX = importantPoints[j]->getPX();
-            if (!f->inRange(rawX)) {continue;}
-            double rawY = (*f)(rawX);
-            double finalX = rawX*c1/pixelToXValRatio-rawY*s2/pixelToYValRatio;
-            double finalY = rawX*s1/pixelToXValRatio+rawY*c2/pixelToYValRatio;
-            finalX+=ox;
-            finalY*=-1;//invert y coord because programming coords start in top not bottom
-            finalY+=oy;
-            drawCircleOnSurface(toReturn, finalX, finalY, 3, 0xff000099);
+            importantPoints[j]->draw(f, pixelToXValRatio, pixelToYValRatio, ox, oy, s1, c1, s2, c2, toReturn,X_AXIS);
         }
     }
     
@@ -310,14 +301,7 @@ SDL_Surface* Graph::draw(double* x,double* y) {
         //draw all important points of a function!
         auto importantPoints = f->getImportantPoints();
         for (int j = 0;j<importantPoints.size();j++) {
-            if (!importantPoints[j]->isVisible()) {continue;}
-            Point<double> rawPoint = f->parametricEval(importantPoints[j]->getPX());
-            double finalX = rawPoint.x*c1/pixelToXValRatio-rawPoint.y*s2/pixelToYValRatio;
-            double finalY = rawPoint.x*s1/pixelToXValRatio+rawPoint.y*c2/pixelToYValRatio;
-            finalX+=ox;
-            finalY*=-1;//invert y coord because programming coords start in top not bottom
-            finalY+=oy;
-            drawCircleOnSurface(toReturn, finalX, finalY, 3, 0xff000099);
+        	importantPoints[j]->draw(f, pixelToXValRatio, pixelToYValRatio, ox, oy, s1, c1, s2, c2, toReturn,X_AXIS);
         }
     }
     
@@ -363,16 +347,7 @@ SDL_Surface* Graph::draw(double* x,double* y) {
         //draw all important points of a function!
         auto importantPoints = f->getImportantPoints();
         for (int j = 0;j<importantPoints.size();j++) {
-            if (!importantPoints[j]->isVisible()) {continue;}
-            double rawX = importantPoints[j]->getPX();
-            if (!f->inRange(rawX)) {continue;}
-            double rawY = (*f)(rawX);
-            double finalX = rawX*c1/pixelToXValRatio-rawY*s2/pixelToYValRatio;
-            double finalY = rawX*s1/pixelToXValRatio+rawY*c2/pixelToYValRatio;
-            finalX+=ox;
-            finalY*=-1;//invert y coord because programming coords start in top not bottom
-            finalY+=oy;
-            drawCircleOnSurface(toReturn, finalX, finalY, 3, 0xff000099);
+            importantPoints[j]->draw(f, pixelToXValRatio, pixelToYValRatio, ox, oy, s1, c1, s2, c2, toReturn,Y_AXIS);
         }
     }
     
@@ -403,14 +378,7 @@ SDL_Surface* Graph::draw(double* x,double* y) {
         //draw all important points of a function!
         auto importantPoints = f->getImportantPoints();
         for (int j = 0;j<importantPoints.size();j++) {
-            if (!importantPoints[j]->isVisible()) {continue;}
-            Point<double> rawPoint = f->parametricEval(importantPoints[j]->getPX());
-            double finalX = rawPoint.y*c1/pixelToXValRatio-rawPoint.x*s2/pixelToYValRatio;
-            double finalY = rawPoint.y*s1/pixelToXValRatio+rawPoint.x*c2/pixelToYValRatio;
-            finalX+=ox;
-            finalY*=-1;//invert y coord because programming coords start in top not bottom
-            finalY+=oy;
-            drawCircleOnSurface(toReturn, finalX, finalY, 3, 0xff000099);
+            importantPoints[j]->draw(f, pixelToXValRatio, pixelToYValRatio, ox, oy, s1, c1, s2, c2, toReturn,Y_AXIS);
         }
     }
     

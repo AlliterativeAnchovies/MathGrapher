@@ -17,7 +17,7 @@ Uint8 ChooseFunctionPopup::handle(double mouseX,double mouseY) {
 	double cury = py+30;
 	Graph* graphConcerned = (Graph*)getConcernation<Graph*>();
 	Slider* sliderConcerned = (Slider*)getConcernation<Slider*>();
-	bool boolConcerned = (bool)getConcernation<bool>();
+	bool boolConcerned = ((DerivedData<bool>*)getConcernation<bool>())->value();
 	
 	for (int i = 0;i<builtins.size();i++) {
 		int w,h;
