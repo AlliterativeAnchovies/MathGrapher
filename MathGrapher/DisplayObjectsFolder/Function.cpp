@@ -149,7 +149,8 @@ std::vector<SaveData> PointOfInterest::getSaveData() {
 	return {
 		{"Tag",this,_POINT_TAG},
 		{"PX",&px,_DOUBLE},
-		{"Visible",&visible,_BOOLEAN}
+		{"Visible",&visible,_BOOLEAN},
+		{"ShowsSlope",&showsSlope,_BOOLEAN}
 	};
 }
 
@@ -221,16 +222,16 @@ void PointOfInterest::draw(Function* f,double pixelToXValRatio,double pixelToYVa
 		double starty1;
 		double starty2;
 		if (axis) {
-			startx1 = finalX+15;
-			startx2 = finalX-15;
-			starty1 = finalY-15*theSlope;//subtractions/additions swapped for ys because, well, you know:
-			starty2 = finalY+15*theSlope;//programming goes down up rather than up down
+			startx1 = finalX+(1/pixelToXValRatio);
+			startx2 = finalX-(1/pixelToXValRatio);
+			starty1 = finalY-(1/pixelToXValRatio)*theSlope;//subtractions/additions swapped for ys because, well, you know:
+			starty2 = finalY+(1/pixelToXValRatio)*theSlope;//programming goes down up rather than up down
 		}
 		else {
-			startx1 = finalX+15*theSlope;
-			startx2 = finalX-15*theSlope;
-			starty1 = finalY-15;
-			starty2 = finalY+15;
+			startx1 = finalX+(1/pixelToXValRatio)*theSlope;
+			startx2 = finalX-(1/pixelToXValRatio)*theSlope;
+			starty1 = finalY-(1/pixelToXValRatio);
+			starty2 = finalY+(1/pixelToXValRatio);
 		}
 		drawLineOnSurface(toReturn, startx1, starty1, startx2, starty2, 0xff000000);
 	}

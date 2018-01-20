@@ -38,7 +38,6 @@ class Slider: public DisplayObject,Counter<Slider> {
         PointOfInterest* pointConcerned = NULL;
         std::string startingYString = "0";
         //stores current interpolation data
-        std::vector<Interpolation*> interpolations = {};
         double offx_stored = 0;//stored offsets to do collision code
         double offy_stored = 0;//correctly
     public:

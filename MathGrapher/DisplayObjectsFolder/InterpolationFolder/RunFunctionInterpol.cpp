@@ -11,6 +11,7 @@
 std::vector<SaveData> RunFunctionInterpol::getSaveData() {
 	return makeSaveData({
 		{"∆X",&xChange,_DOUBLE},
+		{"Tag",&funcConcerned,_FUNCTION_HOOK}
 	});
 }
 std::vector<EditFieldMenu> RunFunctionInterpol::getEditableFields() {
@@ -25,9 +26,11 @@ RunFunctionInterpol::RunFunctionInterpol(double x) {
 void RunFunctionInterpol::relateData(Data *d) {
 	if (d==NULL) {return;}
 	if (d->getID()!="Function") {return;}
+	funcConcerned = (Function*)d;
 	std::function<void(std::vector<double>)> f = ([=](std::vector<double> v){
 		//(*((Function*)d))(v[0]);
 		((Function*)d)->run(v[0]);
 	});
 	giveFunction(f);
 }
+

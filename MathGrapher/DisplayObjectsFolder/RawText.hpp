@@ -28,7 +28,6 @@ class RawText: public DisplayObject,Counter<RawText> {
 		Uint32 theColor = 0xff000000;
 		std::string actualText = "Default";
 		RawTextImage image;
-		std::vector<Interpolation*> interpolations = {};
 		double doublesize = 16;
 	public:
 		RawText(double x,double y,int fsize,std::string tobename);

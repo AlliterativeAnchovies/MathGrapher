@@ -41,8 +41,6 @@ class Graph: public DisplayObject,Counter<Graph> {
         double gridAngleX = M_PI/2;
         double gridAngleY = 0;
         std::string name = "-NONAME-";
-        //stores current interpolation data
-        std::vector<Interpolation*> interpolations = {};
         //all functions it should draw
         std::vector<Function*> functions = {};
         std::vector<Function*> yfunctions = {};

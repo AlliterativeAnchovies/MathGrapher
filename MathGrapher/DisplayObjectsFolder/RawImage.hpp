@@ -36,7 +36,6 @@ class RawImage: public DisplayObject,Counter<RawImage> {
     SDL_Surface* origSurf = NULL;//store original surface for scaling and such
     std::string origSurfName = "";
     std::string name = "-IMAGE-";
-    std::vector<Interpolation*> interpolations = {};
     RawImageImage image;
     public:
         double getPX() {return px;}

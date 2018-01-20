@@ -823,7 +823,7 @@ void load(std::string toLoad) {
 		if (starthingy->isDisplayObject()) {
 			objects.push_back((DisplayObject*)starthingy);
 		}
-		if (starthingy->getID()=="Interpolation") {
+		if (starthingy->isInterpolation()) {
 			//just do some prep work
 			Interpolation* ti = (Interpolation*) starthingy;
 			if (ti->tagForSaving!=-1) {
