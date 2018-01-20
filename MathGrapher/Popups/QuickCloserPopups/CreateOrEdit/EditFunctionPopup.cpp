@@ -61,7 +61,8 @@ Uint8 EditFunctionPopup::handle(double mouseX,double mouseY) {
 		(new CreatePointOfInterest(mouseX, mouseY))
 			->concernWith(graphConcerned)
 			->concernWith(functionConcerned)
-			->concernWith(p);
+			->concernWith(p)
+			->concernWith(true);
 	}
 
 	if (clickedEdit) {
