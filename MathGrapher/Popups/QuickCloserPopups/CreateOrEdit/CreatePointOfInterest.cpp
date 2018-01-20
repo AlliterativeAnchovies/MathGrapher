@@ -37,7 +37,7 @@ Uint8 CreatePointOfInterest::handle(double mouseX,double mouseY) {
 
 	int visiblex,visibley;
 	TTF_SizeUTF8((*fontgrab)(16),visibility?"Is Visible":"Is Hidden",&visiblex,&visibley);
-	drawTextWithBackground(!visibility?"Is Visible":"Is Hidden", 16, px+5, py+50, 0xff000000, !visibility?0xffffcf9e:0xffbd854d, 0xff000000);
+	drawTextWithBackground(visibility?"Is Visible":"Is Hidden", 16, px+5, py+50, 0xff000000, visibility?0xffffcf9e:0xffbd854d, 0xff000000);
 	if (clicked.status()&&pointInBounds(mouseX, mouseY, curx, curx+visiblex, cury, cury+visibley)) {
 		clicked.unclick();
 		toReturn = 0x01;
@@ -47,7 +47,7 @@ Uint8 CreatePointOfInterest::handle(double mouseX,double mouseY) {
 	
 	int showx,showy;
 	TTF_SizeUTF8((*fontgrab)(16),showslope?"Shows Slope":"Does Not Show Slope",&showx,&showy);
-	drawTextWithBackground(!showslope?"Shows Slope":"Does Not Show Slope", 16, px+5, cury, 0xff000000, !showslope?0xffffcf9e:0xffbd854d, 0xff000000);
+	drawTextWithBackground(showslope?"Shows Slope":"Does Not Show Slope", 16, px+5, cury, 0xff000000, showslope?0xffffcf9e:0xffbd854d, 0xff000000);
 	if (clicked.status()&&pointInBounds(mouseX, mouseY, curx, curx+showx, cury, cury+showy)) {
 		clicked.unclick();
 		toReturn = 0x01;

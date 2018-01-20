@@ -26,7 +26,8 @@ void RunFunctionInterpol::relateData(Data *d) {
 	if (d==NULL) {return;}
 	if (d->getID()!="Function") {return;}
 	std::function<void(std::vector<double>)> f = ([=](std::vector<double> v){
-		(*((Function*)d))(v[0]);
+		//(*((Function*)d))(v[0]);
+		((Function*)d)->run(v[0]);
 	});
 	giveFunction(f);
 }
