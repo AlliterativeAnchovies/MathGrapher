@@ -216,10 +216,22 @@ void PointOfInterest::draw(Function* f,double pixelToXValRatio,double pixelToYVa
 	//now, we try to get the slope and display that if showing slopes
 	if (showsSlope) {
 		double theSlope = f->getSlope(getPX());
-		double startx1 = finalX+10;
-		double startx2 = finalX-10;
-		double starty1 = finalY-10*theSlope;//subtractions/additions swapped for ys because, well, you know:
-		double starty2 = finalY+10*theSlope;//programming goes down up rather than up down
+		double startx1;
+		double startx2;
+		double starty1;
+		double starty2;
+		if (axis) {
+			startx1 = finalX+15;
+			startx2 = finalX-15;
+			starty1 = finalY-15*theSlope;//subtractions/additions swapped for ys because, well, you know:
+			starty2 = finalY+15*theSlope;//programming goes down up rather than up down
+		}
+		else {
+			startx1 = finalX+15*theSlope;
+			startx2 = finalX-15*theSlope;
+			starty1 = finalY-15;
+			starty2 = finalY+15;
+		}
 		drawLineOnSurface(toReturn, startx1, starty1, startx2, starty2, 0xff000000);
 	}
 }
