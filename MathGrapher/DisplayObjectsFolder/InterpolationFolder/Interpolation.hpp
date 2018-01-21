@@ -36,7 +36,7 @@ class Interpolation: public SavableData {
 		void unpause() {paused=false;};
 		void wait() {waiting=true;};
 		void cancel() {canceled=true;}
-		void reset() {paused=false;waiting=false;}//called when want to prep interpol
+		void reset() {paused=false;waiting=false;timeAt=0;}//called when want to prep interpol
 		void init() {reset();};//overloaded from Data
 		int getStart() {return timeStart;}
 		int getDuration() {return duration;}
