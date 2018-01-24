@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MathGrapher/main.cpp"
-            timestampString = "538499132.558468"
+            timestampString = "538500471.727993"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "159"
@@ -260,7 +260,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MathGrapher/RenderingUtilities.cpp"
-            timestampString = "538499132.559231"
+            timestampString = "538500471.728978"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "973"
@@ -276,7 +276,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MathGrapher/DisplayObjectsFolder/Function.cpp"
-            timestampString = "538499132.559629"
+            timestampString = "538500471.729277"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "35"
@@ -324,7 +324,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MathGrapher/DisplayObjectsFolder/Function.cpp"
-            timestampString = "538499132.559986"
+            timestampString = "538500471.729562"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "57"
@@ -403,7 +403,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MathGrapher/Popups/QuickCloserPopups/Select/ChooseFunctionPopup.cpp"
-            timestampString = "538499132.56016"
+            timestampString = "538500471.729691"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "28"
@@ -419,7 +419,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MathGrapher/Popups/QuickCloserPopups/Select/ChooseFunctionPopup.cpp"
-            timestampString = "538499132.5605201"
+            timestampString = "538500471.729975"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "20"
@@ -467,7 +467,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MathGrapher/DisplayObjectsFolder/InterpolationFolder/RunFunctionInterpol.cpp"
-            timestampString = "538499132.560766"
+            timestampString = "538500471.730121"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "30"
@@ -515,7 +515,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MathGrapher/DisplayObjectsFolder/Function.cpp"
-            timestampString = "538499132.561095"
+            timestampString = "538500471.7303931"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "231"
@@ -531,7 +531,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MathGrapher/DisplayObjectsFolder/Function.cpp"
-            timestampString = "538499132.561186"
+            timestampString = "538500471.730471"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "225"
@@ -547,7 +547,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MathGrapher/DisplayObjectsFolder/Graph.cpp"
-            timestampString = "538499132.561361"
+            timestampString = "538500471.730544"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "569"
@@ -563,7 +563,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MathGrapher/main.cpp"
-            timestampString = "538499132.561695"
+            timestampString = "538500471.730816"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "178"
@@ -579,11 +579,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MathGrapher/main.cpp"
-            timestampString = "538499132.561781"
+            timestampString = "538500471.731243"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "828"
-            endingLineNumber = "828"
+            startingLineNumber = "830"
+            endingLineNumber = "830"
             landmarkName = "load(std::string toLoad)"
             landmarkType = "9">
          </BreakpointContent>
@@ -595,11 +595,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MathGrapher/main.cpp"
-            timestampString = "538499132.56189"
+            timestampString = "538500471.731618"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "822"
-            endingLineNumber = "822"
+            startingLineNumber = "824"
+            endingLineNumber = "824"
             landmarkName = "load(std::string toLoad)"
             landmarkType = "9">
          </BreakpointContent>
@@ -611,7 +611,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MathGrapher/main.cpp"
-            timestampString = "538499132.561951"
+            timestampString = "538500471.731975"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "88"
@@ -650,6 +650,54 @@
                   offsetFromSymbolStart = "1291">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MathGrapher/main.cpp"
+            timestampString = "538500471.732335"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "595"
+            endingLineNumber = "595"
+            landmarkName = "putDataOnStream(int indents,std::vector&lt;SaveData&gt; data,int* numpoints,int* numfuncs)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MathGrapher/main.cpp"
+            timestampString = "538500471.732661"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "718"
+            endingLineNumber = "718"
+            landmarkName = "loadData(SavableData** theObject,ParsedFile* object,std::string theID,std::vector&lt;SavableData*&gt;* allLoadedObjects,int* objcount)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MathGrapher/main.cpp"
+            timestampString = "538500471.73297"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "725"
+            endingLineNumber = "725"
+            landmarkName = "loadData(SavableData** theObject,ParsedFile* object,std::string theID,std::vector&lt;SavableData*&gt;* allLoadedObjects,int* objcount)"
+            landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

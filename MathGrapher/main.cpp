@@ -549,10 +549,12 @@ std::string putDataOnStream(int indents,std::vector<SaveData> data,int* numpoint
 				std::vector<SavableData*> nestedData = *((std::vector<SavableData*>*)d.data);
 				std::string vecThing = "None";
 				if (!nestedData.empty()) {
-					vecThing = nestedData[0]->getID();
-					fs += ind+"\tID: "+vecThing+"\n";
+					//vecThing = nestedData[0]->getID();
+					//fs += ind+"\tID: "+vecThing+"\n";
 					for (auto nD : nestedData) {
-						fs += ind+"\tdata: {\n";
+						vecThing = nD->getID();
+						fs += ind+"\t"+vecThing+": {\n";
+						//fs += ind+"\tdata: {\n";
 						fs += putDataOnStream(indents+2, nD->getSaveData(), numpoints,numfuncs);
 						fs += ind+"\t}\n";
 					}
@@ -715,13 +717,13 @@ void loadData(SavableData** theObject,ParsedFile* object,std::string theID,std::
 			case _VECTOR: {
 				auto comps = object->componentFromString(toLookFor);
 				if (comps.empty()) {continue;}//don't need to do any setting up here
-				std::vector<ParsedFile*> theParse = comps[0]->componentFromString("data");
+				std::vector<ParsedFile*> theParse = comps[0]->componentFromString("*");
 				if (comps[0]->componentExists("None")) {continue;}//empty, ignore!
-				std::string id = comps[0]->valueOf("ID");
+				//std::string id = comps[0]->componentFromString("*")[0]->getKey(); //comps[0]->valueOf("ID");
 				auto theVec = ((std::vector<SavableData*>*)pointer);
 				for (auto p : theParse) {
 					SavableData* newObject = NULL;
-					loadData(&newObject, p, id,allLoadedObjects,objcount);
+					loadData(&newObject, p, p->getKey(),allLoadedObjects,objcount);
 					theVec->push_back(newObject);
 				}
 				break;
