@@ -1,0 +1,40 @@
+version: 2.3
+tag: Generic_Save-test
+object: {
+	ID: "Text"
+	Name: "Text 1"
+	PX: 132
+	PY: 263
+	Font_Size: 16
+	Text: "Rich: So, Bailz, did that orange juice machine ever arrive?"
+	Color: FF000000
+	Interpolations: {
+		Disappear: {
+			Start: 60
+			Duration: 1
+		}
+	}
+}
+object: {
+	ID: "Text"
+	Name: "Text 1"
+	PX: 132
+	PY: 263
+	Font_Size: 16
+	Text: "Bailz: Yeah, but I think I’m gonna return it."
+	Color: FF000000
+	Interpolations: {
+		Disappear: {
+			Start: 0
+			Duration: 1
+		}
+		Appear: {
+			Start: 60
+			Duration: 1
+		}
+		Disappear: {
+			Start: 120
+			Duration: 1
+		}
+	}
+}
