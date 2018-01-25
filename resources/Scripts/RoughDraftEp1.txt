@@ -1,0 +1,72 @@
+Rich: So, Bailz, did that orange juice machine ever arrive?
+Bailz: Yeah, but I think I’m gonna return it.
+Rich: Why’s that?
+Bailz: Well, I accidentally bought the Juicer DX 5000 instead of the newer OJ Pro 18.  My machine only makes 2 glasses for every orange, whereas the OJ Pro 18 gives 3 glasses!
+Rich: Do you really need that many glasses of orange juice?  3 seems a little much?
+Bailz: Of course!  I can never have enough OJ - if there were a machine that gave me 10 glasses, I’d buy it.  Hell, if there were a machine that squared the amount of oranges, I’d buy it!
+Rich: Wouldn’t the 10 glasses machine be better, though?
+Bailz: What do you mean?
+Rich: Well, if you put in one orange to the 10 glasses machine, you’d obviously get 10 glasses!  But if you put one orange in to the squaring machine, you’d only get 1!
+Bailz: Yeah, but if I put 11 oranges in to the squaring machine, I’d have 121 glasses!  I’d only have 110 if I put them in the 10 glasses machine.
+Rich: So, somehow, the squaring machine catches up to the 10 glasses machine?  That’s pretty cool!
+Bailz: Yeah, now that I think about it, it is interesting…  I wonder, how fast is it catching up?
+Rich: Well, it catches up at 11 oranges.
+Bailz: Yes, that’s when it’s catching up, but how fast is it going to catch up?  Like, the 10 glasses machine is improving at a rate of 10 glasses per orange - every orange you add, 10 more glasses come out.  The squaring machine has to be improving faster than that, right? So it can catch up?
+Rich: I think it’s slower, though.  If I put in 1 orange, I get 1 glass.  If I put in 2, I get 4 glasses.  So it only improved by 3 glasses, instead of 10.
+Bailz: Yeah, but if I put in 3 oranges, I get 9 glasses.  So it will have improved by 5 glasses that time.
+Rich: So, I guess that the squaring machine is improving at a changing rate, but the 10 glasses machine is always improving at a constant rate.  Eventually, the squaring machine will start improving faster than the 10 glass machine, and catch up.
+Bailz: Exactly!
+Rich: But I think I’ve found a problem.
+Bailz: What’s that?
+Rich: Well, what if you add in half an orange?
+Bailz: I don’t know?  Why would I do that?
+Rich: Suppose you were really hungry one day, and so you ate an orange.  But mid-orange, you realize you have nothing to drink!  Suddenly, you realize that this was your last orange!  Suppose you wanted to quench your thirst - then, you might use half an orange instead of a whole one!
+Bailz: I don’t know, I usually eat my oranges whole…
+Rich: Just bear with me, then - let’s say instead of going from 3 oranges to 4 oranges, you went from 3 oranges to 3 and a half oranges?
+Bailz: Then I’d have, uh…  Hold on, I have to wolfram alpha this.  3.5 squared is - ah, it’d be 12.25.  So I’d have gone from 9 glasses to 12 and a fourth.  So I increased by three and a fourth glasses!
+Rich: Almost - yes, you directly increased by three and a fourth glasses, but we’re concerned with the rate of increase.  Like how speed is measured as distance over time, if we want the rate of increase we need to divide increase by change in oranges.
+Bailz: I see - so, since we increased by half an orange, I’d divide three and a fourth by one half?
+Rich: Yes - Which is the same as multiplying by two, so your rate of increase would be six and a half.
+Bailz: Okay, but I don’t see what the issue is?
+Rich: Well, if you went from 3 oranges to 4, your rate of increase would be seven.  So it doesn’t just matter when you start measuring the rate of increase - the rate of increase changes depending on how long you measure it, too!
+Bailz: Wait, yeah, that’s kind of weird…  So what is its actual rate of increase, then?
+Rich: Well, it’ll change depending on when you measure it, and how long you measure it.
+Bailz: Maybe, but aren’t we kind of just taking approximations for the rate of increase right now?
+Rich: Why?
+Bailz: Well, let’s talk about another example for a second - let’s say I move forward 1 meter, in one second.  Then, I stand still for another second.  How fast am I moving after two seconds?
+Rich: Let’s see - distance is 1 meter, over time, which is 2 seconds - so you’re moving half a meter per second!
+Bailz: Wrong!  I’m moving 0 meters per second - I told you that I was standing still, remember?
+Rich: But I did the math right, didn’t I?
+Bailz: Not quite - all you did was approximate my speed.  If you took a smaller measurement, you would have been more accurate!  For example, if you only measured the last second, you would have gotten the correct speed of 0.
+Rich: So if we’ve only been approximating the rate of increase, how do we find out the actual rate?
+Bailz: We agree that the approximation gets better if you take less time to measure, right?  Measuring a second-long gap is better than a two-second gap.
+Rich: Yes.
+Bailz: So, if we want an infinitely good approximation, we need to take an infinitely small time measurement.
+Rich: Wouldn’t that be zero?  Zero time?  But then distance over time would be dividing by zero!  And you can’t do that, can you?
+Bailz: No, I guess you can’t.
+Rich: But wait - maybe we could!  In a way.
+Bailz: How?
+Rich: Well, instead of trying to measure zero time, why don’t we just measure smaller and smaller times, and see what the rate would be if we were allowed to divide by zero!
+Bailz: I don’t know, that seems like some kind of black magic voodoo hijinks.
+Rich: Bear with me - the formula we’ve been using for speed is distance over change in time, right?
+Bailz: Yeah
+Rich: Well, for our OJ machine, the distance would be the change in glasses, right?  And the change in time would be the change in oranges.  Isn’t this kind of like the formula for the slope of a line?
+Bailz: I don’t know - what was the formula, again?
+Rich: It was change in y over change in x.
+Bailz: Oh yeah - I think I see where you’re going with this.  So, if we graphed the output of the squaring machine, and measured the slope of the line, we’d get the rate of increase?
+Rich: Exactly!  Let’s try it.
+*Show graph of x^2 *
+Bailz: Oh…  But, I don’t see any lines.  It’s all… curvy.
+Rich: Yeah.  Oh well.
+Bailz: Wait, let’s not give up yet!  What if we acted as if it were a line?
+*Show this.  We should show the slope formula alongside it, showing numerical results*
+Rich: And, like I said, it’s just an approximation - so to get a better approximation, we need to move those two points together.
+Bailz: But then we get a divide by zero error when we do the slope formula.
+Rich: But that doesn’t stop us drawing the line, right?
+Bailz: Oh yeah!  So we can still draw the line, so we can measure its slope!
+Rich: Exactly!  So, it looks like right here, when you put in three glasses, it has a slope of six, and when you put in four glasses, it has a slope of eight.
+Bailz: And at five glasses, a slope of ten…  I think there’s a pattern!
+Rich: Yeah, I think so too!  The rate seems to be double the amount of oranges you put in!
+Bailz: You know, this is all pretty interesting, but I’m getting pretty thirsty, so I’m gonna get a glass of OJ.
+Rich: Can you bring me one?
+Bailz: Sure.  And when I come back, we need to investigate this further.  
