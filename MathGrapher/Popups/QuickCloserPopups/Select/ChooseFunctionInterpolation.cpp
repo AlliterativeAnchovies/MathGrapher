@@ -18,9 +18,10 @@ Uint8 ChooseFunctionInterpolation::handle(double mouseX,double mouseY) {
 	drawBorderedRect(px, py, sx, sy, 0xffaaf2aa, 0xff000000);
 	drawText("Interpolations", 22, px, py, 0xff000000);
 	double cury = py+30;
-	int runsx,runsy,stretchsx,stretchsy;
+	int runsx,runsy,stretchsx,stretchsy,secantx,secanty;
 	TTF_SizeUTF8((*fontgrab)(16),"Run",&runsx,&runsy);
 	TTF_SizeUTF8((*fontgrab)(16),"Stretch",&stretchsx,&stretchsy);
+	TTF_SizeUTF8((*fontgrab)(16),"Draw Secant",&secantx,&secanty);
 	drawTextWithBackground("Run", 16, px+5, cury, 0xff000000, 0xffffcf9e, 0xff000000);
 	if (clicked.status()&&pointInBounds(mouseX, mouseY, px+5, px+5+runsx, cury, cury+runsy)) {
 		(new CreateSimpleInterpolation(mouseX, mouseY))
@@ -36,6 +37,16 @@ Uint8 ChooseFunctionInterpolation::handle(double mouseX,double mouseY) {
 		(new CreateSimpleInterpolation(mouseX, mouseY))
 			->concernWith(graphConcerned)
 			->concernWith(std::string("Stretch"))
+			->concernWith(functionConcerned)
+			->setUpInterpolation();
+		clicked.unclick();
+		toReturn = 0x00;
+	}
+	drawTextWithBackground("Draw Secant", 16, px+5+runsx+5+stretchsx+5, cury, 0xff000000, 0xffffcf9e, 0xff000000);
+	if (clicked.status()&&pointInBounds(mouseX, mouseY, px+5+runsx+5+stretchsx+5, px+5+runsx+5+stretchsx+stretchsx+5, cury, cury+stretchsy)) {
+		(new CreateSimpleInterpolation(mouseX, mouseY))
+			->concernWith(graphConcerned)
+			->concernWith(std::string("Draw Secant"))
 			->concernWith(functionConcerned)
 			->setUpInterpolation();
 		clicked.unclick();

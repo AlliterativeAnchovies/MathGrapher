@@ -24,5 +24,6 @@
 #include "InterpolationFolder/RescaleHeadInterpol.hpp"
 #include "InterpolationFolder/AppearInterpol.hpp"
 #include "InterpolationFolder/DisappearInterpol.hpp"
+#include "InterpolationFolder/SecantInterpol.hpp"
 
 #endif /* InterpolationWrapper_hpp */

@@ -58,6 +58,7 @@
 		86B40B781FFEB6810092BA4E /* RawImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86B40B701FFEB6810092BA4E /* RawImage.cpp */; };
 		86B40B791FFEB6810092BA4E /* Slider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86B40B711FFEB6810092BA4E /* Slider.cpp */; };
 		86DBFA9C2019E9A9006B382B /* LoadScriptPopup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86DBFA9A2019E9A9006B382B /* LoadScriptPopup.cpp */; };
+		86DBFA9F201A36CE006B382B /* SecantInterpol.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86DBFA9D201A36CE006B382B /* SecantInterpol.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -173,6 +174,8 @@
 		86B40B721FFEB6810092BA4E /* RawText.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RawText.hpp; sourceTree = "<group>"; };
 		86DBFA9A2019E9A9006B382B /* LoadScriptPopup.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LoadScriptPopup.cpp; sourceTree = "<group>"; };
 		86DBFA9B2019E9A9006B382B /* LoadScriptPopup.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LoadScriptPopup.hpp; sourceTree = "<group>"; };
+		86DBFA9D201A36CE006B382B /* SecantInterpol.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SecantInterpol.cpp; sourceTree = "<group>"; };
+		86DBFA9E201A36CE006B382B /* SecantInterpol.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SecantInterpol.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +200,8 @@
 				86282B732004243700B19C4E /* MoveInterpol.hpp */,
 				86282B752004355000B19C4E /* HighlightInterpol.cpp */,
 				86282B762004355000B19C4E /* HighlightInterpol.hpp */,
+				86DBFA9D201A36CE006B382B /* SecantInterpol.cpp */,
+				86DBFA9E201A36CE006B382B /* SecantInterpol.hpp */,
 				86282B7820044A6000B19C4E /* MoveOriginInterpol.cpp */,
 				86282B7920044A6000B19C4E /* MoveOriginInterpol.hpp */,
 				86282B7B20044BAA00B19C4E /* RotateInterpol.cpp */,
@@ -451,6 +456,7 @@
 				86282B8020044C4800B19C4E /* ScaleInterpol.cpp in Sources */,
 				86928C791FE3225400CBB286 /* Functions.cpp in Sources */,
 				863C5C751FFB1CCC00F6FA18 /* SaveFilePopup.cpp in Sources */,
+				86DBFA9F201A36CE006B382B /* SecantInterpol.cpp in Sources */,
 				86B40B771FFEB6810092BA4E /* RawText.cpp in Sources */,
 				863C5C461FFB186C00F6FA18 /* ChooseFunctionPopup.cpp in Sources */,
 				863C5C691FFB1C0200F6FA18 /* ChooseWhichImagePopup.cpp in Sources */,

@@ -121,6 +121,9 @@ SavableData* dataFromID(std::string theID) {
 	else if (theID=="Appear") {
     	theObject = new AppearInterpol();
 	}
+	else if (theID=="Draw Secant") {
+		theObject = new SecantInterpol();
+	}
 	else {
 		throw std::runtime_error("Need to hook data into the loading stuffs!");
 	}

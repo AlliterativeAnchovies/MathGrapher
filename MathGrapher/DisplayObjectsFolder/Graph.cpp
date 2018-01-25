@@ -422,6 +422,38 @@ SDL_Surface* Graph::draw(double* x,double* y) {
         SDL_BlitSurface(parasurf,NULL,toReturn,NULL);
         SDL_FreeSurface(parasurf);
     }
+    for (int i = 0;i<interpolations.size();i++) {//secants
+        Interpolation* intpol = interpolations[i];
+        if (intpol->getID()!="Draw Secant") {continue;}
+        auto d = intpol->getData();
+        if (!intpol->isActive()) {continue;}
+        Function* secfunc = (Function*)d[2];
+        double rawX1,rawY1,rawX2,rawY2;
+        if (!secfunc->isParametric()) {
+			rawX1 = (*((double*)d[0]));//top left
+			rawY1 = (*secfunc)(rawX1);
+			rawX2 = (*((double*)d[1]));//bottom right
+			rawY2 = (*secfunc)(rawX2);
+        }
+        else {
+        	auto raw1 = secfunc->parametricEval(*((double*)d[0]));
+        	auto raw2 = secfunc->parametricEval(*((double*)d[1]));
+        	rawX1 = raw1.x;
+        	rawY1 = raw1.y;
+        	rawX2 = raw2.x;
+        	rawY2 = raw2.y;
+		}
+		double finalX1 = rawX1*c1/pixelToXValRatio-rawY1*s2/pixelToYValRatio;
+        double finalY1 = rawX1*s1/pixelToXValRatio+rawY1*c2/pixelToYValRatio;
+        double finalX2 = rawX2*c1/pixelToXValRatio-rawY2*s2/pixelToYValRatio;
+        double finalY2 = rawX2*s1/pixelToXValRatio+rawY2*c2/pixelToYValRatio;
+        finalX1+=ox;finalY1*=-1;finalY1+=oy;
+        finalX2+=ox;finalY2*=-1;finalY2+=oy;
+        SDL_Surface* parasurf = createBlankSurfaceWithSize(sx+1, sy+1);
+        drawLineOnSurface(parasurf, finalX1, finalY1, finalX2, finalY2, 0xff000000);
+		SDL_BlitSurface(parasurf,NULL,toReturn,NULL);
+        SDL_FreeSurface(parasurf);
+    }
     return toReturn;
 }
 
