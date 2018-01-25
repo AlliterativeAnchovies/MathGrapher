@@ -169,8 +169,8 @@ Uint8 MainDisplay::handle(double mouseX,double mouseY) {
 		//draw load button
 		int loadx,loady;
 		TTF_SizeUTF8((*fontgrab)(16), "Load", &loadx, &loady);
-		drawTextWithBackground("Load", 16, SCREEN_WIDTH-200-5-savex, controlBarY+5+rsy+5, 0xff000000,0xff9fc9f2,0xff000000);
-		if (clicked.status()&&pointInBounds(mouseX, mouseY, SCREEN_WIDTH-200-5-savex, SCREEN_WIDTH-200-5-savex+loadx,controlBarY+5+rsy+5,controlBarY+5+savey+rsy+5)) {
+		drawTextWithBackground("Load", 16, SCREEN_WIDTH-200-5-loadx, controlBarY+5+rsy+5, 0xff000000,0xff9fc9f2,0xff000000);
+		if (clicked.status()&&pointInBounds(mouseX, mouseY, SCREEN_WIDTH-200-5-loadx, SCREEN_WIDTH-200-5,controlBarY+5+rsy+5,controlBarY+5+savey+rsy+5)) {
 			new LoadFilePopup(mouseX, mouseY-200);
 		}
 		//draw record button
@@ -188,6 +188,13 @@ Uint8 MainDisplay::handle(double mouseX,double mouseY) {
 			selectedObjects = {};
 			newselectedobjects = {};
 			clicked.unclick();
+		}
+		//draw s load button
+		int sloadx,sloady;
+		TTF_SizeUTF8((*fontgrab)(16), "S. Load", &sloadx, &sloady);
+		drawTextWithBackground("S. Load", 16, SCREEN_WIDTH-200-5-sloadx, controlBarY+5+rsy+5+loady+5, 0xff000000,0xff9fc9f2,0xff000000);
+		if (clicked.status()&&pointInBounds(mouseX, mouseY, SCREEN_WIDTH-200-5-sloadx, SCREEN_WIDTH-200,controlBarY+5+rsy+5+loady+5,controlBarY+5+savey+rsy+5+loady+5)) {
+			new LoadScriptPopup(mouseX, mouseY-200);
 		}
 	}
 

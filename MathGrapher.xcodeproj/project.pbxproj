@@ -57,6 +57,7 @@
 		86B40B771FFEB6810092BA4E /* RawText.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86B40B6C1FFEB6800092BA4E /* RawText.cpp */; };
 		86B40B781FFEB6810092BA4E /* RawImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86B40B701FFEB6810092BA4E /* RawImage.cpp */; };
 		86B40B791FFEB6810092BA4E /* Slider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86B40B711FFEB6810092BA4E /* Slider.cpp */; };
+		86DBFA9C2019E9A9006B382B /* LoadScriptPopup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86DBFA9A2019E9A9006B382B /* LoadScriptPopup.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -170,6 +171,8 @@
 		86B40B701FFEB6810092BA4E /* RawImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RawImage.cpp; sourceTree = "<group>"; };
 		86B40B711FFEB6810092BA4E /* Slider.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Slider.cpp; sourceTree = "<group>"; };
 		86B40B721FFEB6810092BA4E /* RawText.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = RawText.hpp; sourceTree = "<group>"; };
+		86DBFA9A2019E9A9006B382B /* LoadScriptPopup.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LoadScriptPopup.cpp; sourceTree = "<group>"; };
+		86DBFA9B2019E9A9006B382B /* LoadScriptPopup.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LoadScriptPopup.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -277,6 +280,8 @@
 				863C5C681FFB1C0200F6FA18 /* ChooseWhichImagePopup.hpp */,
 				863C5C701FFB1C9E00F6FA18 /* LoadFilePopup.cpp */,
 				863C5C711FFB1C9E00F6FA18 /* LoadFilePopup.hpp */,
+				86DBFA9A2019E9A9006B382B /* LoadScriptPopup.cpp */,
+				86DBFA9B2019E9A9006B382B /* LoadScriptPopup.hpp */,
 			);
 			path = Select;
 			sourceTree = "<group>";
@@ -462,6 +467,7 @@
 				86B40B761FFEB6810092BA4E /* Interpolation.cpp in Sources */,
 				86282B8320044D8C00B19C4E /* ScaleTextInterpol.cpp in Sources */,
 				86928C761FE2C73300CBB286 /* Popup.cpp in Sources */,
+				86DBFA9C2019E9A9006B382B /* LoadScriptPopup.cpp in Sources */,
 				86282BA12004553600B19C4E /* DisappearInterpol.cpp in Sources */,
 				863C5C311FFB0BB500F6FA18 /* BulkUtilities.cpp in Sources */,
 				86282B7D20044BAA00B19C4E /* RotateInterpol.cpp in Sources */,

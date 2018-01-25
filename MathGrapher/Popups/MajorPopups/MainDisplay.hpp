@@ -14,6 +14,7 @@
 #include "Savers/SaveFilePopup.hpp"
 #include "../QuickCloserPopups/Select/LoadFilePopup.hpp"
 #include "../QuickCloserPopups/Select/AddObjectPopup.hpp"
+#include "../QuickCloserPopups/Select/LoadScriptPopup.hpp"
 
 const int RECORDABLE_WIDTH=SCREEN_WIDTH-150;
 const int RECORDABLE_HEIGHT=SCREEN_HEIGHT-100;

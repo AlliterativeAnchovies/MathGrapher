@@ -22,6 +22,7 @@
 #include "Popups/QuickCloserPopups/Select/ChoosePointConcernedForLinkingPopup.hpp"
 #include "Popups/QuickCloserPopups/Select/ChooseWhichImagePopup.hpp"
 #include "Popups/QuickCloserPopups/Select/LoadFilePopup.hpp"
+#include "Popups/QuickCloserPopups/Select/LoadScriptPopup.hpp"
 #include "Popups/MajorPopups/MajorPopup.hpp"
 #include "Popups/MajorPopups/MainDisplay.hpp"
 #include "Popups/MajorPopups/EditPopup.hpp"

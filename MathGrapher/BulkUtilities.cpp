@@ -12,6 +12,7 @@ std::vector<SDL_Surface*> gSurfaces = {};
 std::vector<SDL_Texture*> gTextures = {};
 std::vector<std::string>  gStrings  = {};
 std::vector<std::string> loadableFiles = {};
+std::vector<std::string> sloadableFiles = {};
 
 bool leftMouseClicked = false;
 bool leftMouseHadBeenClicked = false;

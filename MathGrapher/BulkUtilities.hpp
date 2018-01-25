@@ -18,6 +18,7 @@ extern std::vector<SDL_Surface*> gSurfaces;
 extern std::vector<SDL_Texture*> gTextures;
 extern std::vector<std::string>  gStrings;
 extern std::vector<std::string> loadableFiles;
+extern std::vector<std::string> sloadableFiles;//"script load"
 const int SLIDER_DEFAULT_SCALE_BUILTIN_INDEX = 7;//what function sliders start with
 extern bool leftMouseClicked;
 extern bool leftMouseHadBeenClicked;
@@ -37,6 +38,7 @@ extern int FRAME_NUM;
 void load(std::string toLoad);//defined in main
 void save(std::string toSave);//defined in main
 void makeVideo(std::string toSave);//defined in main
+void sload(std::string toLoad);//defined in main
 const int FRAME_RATE = 60;
 const int VIDEO_BATCH_SIZE = 300;	//don't make this larger than 999 - searches for screenshot###.bmp
 									//whereas screenshot1000 is of form screenshot####.bmp

@@ -418,7 +418,19 @@ bool loadMedia() {
         }
         closedir (dir);
     }
-    else {throw std::runtime_error("Error - could not load images - tried filepath "+dumstupidcurrentdirectorybs +"/resources/Images");}
+    else {throw std::runtime_error("Error - could not load saves - tried filepath "+dumstupidcurrentdirectorybs +"/resources/Saves");}
+	
+    if ((dir = opendir ((dumstupidcurrentdirectorybs + "/resources/Scripts").c_str())) != NULL) {
+        // print all the files and directories within directory
+        while ((ent = readdir (dir)) != NULL) {
+            if (ent->d_name[0]!='.') {
+                std::string path = ent->d_name;
+                sloadableFiles.push_back(dumstupidcurrentdirectorybs+"/resources/Scripts/"+path);
+            }
+        }
+        closedir (dir);
+    }
+    else {throw std::runtime_error("Error - could not load scripts - tried filepath "+dumstupidcurrentdirectorybs +"/resources/Scripts");}
     
     
 
@@ -993,4 +1005,84 @@ void makeVideo(std::string toSave) {
 	FRAME_NUM = 0;
 	concatList = "";
 	std::cout << "Video Linking Finished!\n";
+}
+
+const double BAILZ_WPM = 150;
+const double RICH_WPM = 150;
+
+int getDurationOfLineBeingSaid(std::string line,double wpm) {
+	long words = splitAt(line, ' ').size();
+	double minutesPerWord = 1/wpm;
+	double secondsPerWord = 60*minutesPerWord;
+	double framesPerWord = FRAME_RATE*secondsPerWord;
+	return framesPerWord*words;
+}
+
+void sload(std::string toLoad) {
+	std::fstream sloadedFile(toLoad);
+	auto temp = splitAt(toLoad, '/');
+	toLoad = splitAt(temp[temp.size()-1],'.')[0];//remove .txt
+	int curDuration = 0;
+	std::fstream fs;
+	fs.open (dumstupidcurrentdirectorybs+"/resources/Saves/"+toLoad+"_loaded.txt", std::fstream::out  | std::ofstream::trunc);
+	
+	fs << "version: " << PARSED_FILE_VERSION_NUMBER << "\n";
+	fs << "tag: " << toLoad << "_loaded\n";
+	bool isFirst = true;
+	std::string curline;
+	while ( getline (sloadedFile,curline,'\n') ) {//go through every line
+		std::vector<std::string> whoseLine = splitAt(curline, ':');
+		if (whoseLine.size()==1) {continue;}//ignore line
+		double wpm;
+		if (whoseLine[0]=="Rich") {wpm = RICH_WPM;}
+		else if (whoseLine[0]=="Bailz") {wpm = BAILZ_WPM;}
+		else {continue;}//ignore line
+		int timeToSay = getDurationOfLineBeingSaid(curline, wpm);
+		fs << "object: {\n";
+		fs << "\tID: \"Text\"\n";
+		fs << "\tName: \"Text 1\"\n";
+		fs << "\tPX: 132\n";
+		fs << "\tPY: 263\n";
+		fs << "\tFont_Size: 16\n";
+		fs << "\tText: \" " << curline << " \"\n";
+		fs << "\tColor: FF000000\n";
+		fs << "\tInterpolations: {\n";
+		if (isFirst) {
+			fs << "\t\tDisappear: {\n";
+			fs << "\t\t\tStart: "<< timeToSay <<"\n";
+			fs << "\t\t\tDuration: 1\n";
+			fs << "\t\t}\n";
+			isFirst = false;
+		}
+		else {
+			fs << "\t\tDisappear: {\n";
+			fs << "\t\t\tStart: 0\n";
+			fs << "\t\t\tDuration: 1\n";
+			fs << "\t\t}\n";
+			fs << "\t\tAppear: {\n";
+			fs << "\t\t\tStart: "<<curDuration<<"\n";
+			fs << "\t\t\tDuration: 1\n";
+			fs << "\t\t}\n";
+			fs << "\t\tDisappear: {\n";
+			fs << "\t\t\tStart: "<<(curDuration+timeToSay)<<"\n";
+			fs << "\t\t\tDuration: 1\n";
+			fs << "\t\t}\n";
+		}
+		fs << "\t}\n";
+		fs << "}\n";
+		curDuration+=timeToSay;
+	}
+	fs.close();
+	sloadedFile.close();
+	
+	//add file to list to load from
+  	bool found = false;
+  	for (int i = 0;i<loadableFiles.size();i++) {
+		auto temp = splitAt(loadableFiles[i], '/');
+		std::string theNameOfFile = temp[temp.size()-1];
+		if (theNameOfFile==toLoad+"_loaded.txt") {found=true;break;}//already on list
+	}
+	if (!found) {
+		loadableFiles.push_back(dumstupidcurrentdirectorybs+"/resources/Saves/"+toLoad+"_loaded.txt");
+	}
 }
