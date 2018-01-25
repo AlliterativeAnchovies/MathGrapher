@@ -1018,6 +1018,12 @@ int getDurationOfLineBeingSaid(std::string line,double wpm) {
 	return framesPerWord*words;
 }
 
+double getWPM(std::string speaker) {
+	if (speaker=="Rich"||speaker=="Richard") {return RICH_WPM;}
+	else if (speaker=="Bailz"||speaker=="Bails"||speaker=="Bail"||speaker=="Bailey") {return BAILZ_WPM;}
+	return -1;
+}
+
 void sload(std::string toLoad) {
 	std::fstream sloadedFile(toLoad);
 	auto temp = splitAt(toLoad, '/');
@@ -1033,10 +1039,8 @@ void sload(std::string toLoad) {
 	while ( getline (sloadedFile,curline,'\n') ) {//go through every line
 		std::vector<std::string> whoseLine = splitAt(curline, ':');
 		if (whoseLine.size()==1) {continue;}//ignore line
-		double wpm;
-		if (whoseLine[0]=="Rich") {wpm = RICH_WPM;}
-		else if (whoseLine[0]=="Bailz") {wpm = BAILZ_WPM;}
-		else {continue;}//ignore line
+		double wpm = getWPM(whoseLine[0]);
+		if (wpm==-1) {continue;}//ignore line
 		int timeToSay = getDurationOfLineBeingSaid(curline, wpm);
 		fs << "object: {\n";
 		fs << "\tID: \"Text\"\n";
