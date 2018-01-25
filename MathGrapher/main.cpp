@@ -1079,6 +1079,8 @@ void sload(std::string toLoad) {
 	fs.close();
 	sloadedFile.close();
 	
+	std::cout << "Duration of Script: " << (curDuration/FRAME_RATE) << " seconds.";
+	
 	//add file to list to load from
   	bool found = false;
   	for (int i = 0;i<loadableFiles.size();i++) {

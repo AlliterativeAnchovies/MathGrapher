@@ -1,0 +1,62 @@
+Rich: Hey Bailz, you’re a bit late.
+Bailz: Yeah, sorry about that - the juice machines are so slow in the cafeteria, the line was practically out the door!
+Rich: Which machine did you use?  There’s three.
+Bailz: I used the middle one - its the fastest, in my experience.
+Rich: Actually, the third one’s the fastest.  You should use that one next time.
+Bailz: Are you sure?  That one takes forever!  I can never stand to wait for it to finish.
+Rich: It just takes a while to get going, once it gets going it’s faster than the others.
+Bailz: I don’t know, it’s so slow I don’t think it’s ever possible for it to catch up.
+Rich: Well, why don’t we look it up - hold on…  Ah, here we go!  Each machine has an associated speed rating with it - the first is “0.5x”, the second is “1x”, and the third is “x^2”
+Bailz: But what do those mean?
+Rich: It looks like it measures glasses filled per minute.  You replace ‘x’ with the amount of minutes, so for example in 1 minute the first machine fills half a glass.  The second machine fills a whole glass, and the third machine also fills a whole glass.
+Bailz: So I guess we were both right then - they are equally fast!  But how is that possible?  The third one starts off so slow!  Fifteen seconds in, its only filled one sixteenth of my glass!  But the second one will have filled one fourth.
+Rich: Why don’t we actually calculate the speed, then?  To settle this debate.
+Bailz: Okay - so, the formula for speed is distance over time, right?
+Rich: Not quite, I don’t think - that’s the formula for the speed of a moving object.  We’re not measuring distance right now, we’re measuring glasses filled.  So the speed would be glasses filled over time.
+Bailz: Oh, that’s pretty cool!  So we can really measure the speed of anything, right?  So if I ate 3 bananas in one second, I’d have a speed of 3!
+Rich: Almost - units are important.  You don’t have a speed of ‘3’, you’d have a speed of ‘3 bananas eaten per second’.
+Bailz: Why is that important?
+Rich: Well, let’s say you could run one meter in one second, right?  Then, by your logic, you’d have a speed of ‘1’.
+Bailz: Exactly!
+Rich: But what if you could run a kilometer in a second?
+Bailz: No, that’s impossible.
+Rich: You’re right - however, if I were to use your logic, you’d still have a speed of ‘1’.  So your speed would be the same as if you had only run one meter.
+Bailz: Ah, I see the problem.  So I would have to say I ran one meter per second, or, in the second case, one kilometer per second.
+Rich: Yep.
+Baliz: So, for the 0.5x machine, in 1 minute, it makes 0.5 glasses.  So it has a speed of 0.5 glasses per minute.
+Rich: Right, and for the 1x machine, you have 1 glass in 1 minute.  So it has a speed of one glass per minute.
+Bailz: And the x^2 machine also has 1 glass in 1 minute…  so the speed is the same?
+Rich: Yep.
+Bailz: But the x^2 machine definitely starts out slower.  This makes no sense!
+Rich: I don’t know what to tell you, Bailz - we just did the math.
+Bailz: Wait, hold on - I think I’ve found a problem.
+Rich: What’s that?
+Bailz: Let’s say I run 1 meter in 1 second, and then stop for 1 second.  What’s my speed after 2 seconds?
+Rich: Well, 1 meter in 2 seconds means you have a speed of half a meter per second!
+Bailz: Wrong!  I told you, I had stopped moving.  My speed is zero!
+Rich: So speed can change depending on how long you measure it?
+Bailz: Yes!  Or rather, I think that the speed is always the same.  We’re just better at approximating it with a smaller time interval.  For example, if you had only measured my speed during my 1 second stop, you would have arrived at the correct answer of 0 meters per second.
+Rich: So if we’re only approximating it, how can we figure out what it would actually be?
+Bailz: Well, if our approximations are better with smaller time…  What’s the smallest number?
+Rich: Zero, of course.
+Bailz: So, that would give us the best possible approximation - an infinitely good approximation, in fact!
+Rich: But this makes no sense.  The formula is glasses divided by time - if time is zero, you’re dividing by zero, and that’s, like, the biggest no-no in mathematics!
+Bailz: You’re right…  So, what if, instead of actually dividing by zero, which is impossible, we figured out what the answer would be if we could divide by zero!
+Rich: I’m not sure I understand.
+Bailz: Well, think about our formula for speed - change in glasses divided by the change in time.
+Rich: Uh-huh.
+Bailz: Well, the formula for the slope of a line is change in y over change in x.
+Rich: Ah!  And, if we graph these equations, the y will be glasses and the x will be time!  So slope is the same as speed!
+Bailz: Exactly!
+Rich: But I don’t see how this helps us find the speed.  The graph of x^2 isn’t the graph of a line - it’s all curvey!  So it doesn’t have a slope, right?
+Bailz: Yep - the reason why speed is just an approximation is exactly because x^2 is a curve.  What we’re really doing when we’re approximating speed, is choosing 2 points on the graph, drawing a line through them, and calculating its slope.
+Rich: So how do we find its speed then?
+Bailz: The approximation gets better if we move points closer together, right?  Because that corresponds with a smaller time interval.  So, the closest the 2 points could possibly be is if they were right on top of eachother!
+Rich: I see!  So, if we drew the line between the points, and then moved the points together, whichever way the line is pointing at the end will tell us their speed!
+Bailz: Yes!  So, if we take a look at the speed at 15 seconds, it looks like its approximately 0.5 glasses per second.  Which is much slower than the 1x machine, which is always 1 glass per second
+Rich: And at 45 seconds, it looks to be about 1.5 glasses per second - which is a lot faster!
+Bailz: And that must be how it catches up!  Unlike the 1x machine, which has a constant speed, the x^2 machine’s speed changes.
+Rich: So, have we just found a way to, given any graph, find the speed?  By drawing lines and measuring their slopes?
+Bailz: I think we have!  Although, drawing lines is kind of tedious.  I wonder if there’s a way to find the speed without having to draw lines.
+Rich: I don’t know, but all this talk about water is making me thirsty.  We’ll continue talking about this later.
+Bailz: Good luck!  The line is even longer than it was when I was in it.
