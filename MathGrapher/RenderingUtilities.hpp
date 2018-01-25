@@ -178,6 +178,7 @@ template<typename T> class Point {
         }
         T magnitude() {return sqrt(x*x+y*y);}
         Point<T> norm() {return *this/magnitude();};
+        void normalize() {x=norm().x;y=norm().y;}
         void rotate(double angle) {
 			double s,c;
 			fastSineCosine(&s, &c, angle);

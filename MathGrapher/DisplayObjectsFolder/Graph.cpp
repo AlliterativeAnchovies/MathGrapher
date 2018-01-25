@@ -429,6 +429,7 @@ SDL_Surface* Graph::draw(double* x,double* y) {
         if (!intpol->isActive()) {continue;}
         Function* secfunc = (Function*)d[2];
         double rawX1,rawY1,rawX2,rawY2;
+        double origrawX1,origrawY1,origrawX2,origrawY2;
         if (!secfunc->isParametric()) {
 			rawX1 = (*((double*)d[0]));//top left
 			rawY1 = (*secfunc)(rawX1);
@@ -443,14 +444,30 @@ SDL_Surface* Graph::draw(double* x,double* y) {
         	rawX2 = raw2.x;
         	rawY2 = raw2.y;
 		}
+		origrawX1=rawX1;origrawX2=rawX2;origrawY1=rawY1;origrawY2=rawY2;
+		Point<double> overhang = Point<double>(rawX2,rawY2)-Point<double>(rawX1,rawY1);
+		overhang.normalize();
+		//overhang*=sqrt(pixelToXValRatio*pixelToYValRatio);
+		rawX1-=overhang.x;
+		rawX2+=overhang.x;
+		rawY1-=overhang.y;
+		rawY2+=overhang.y;
 		double finalX1 = rawX1*c1/pixelToXValRatio-rawY1*s2/pixelToYValRatio;
         double finalY1 = rawX1*s1/pixelToXValRatio+rawY1*c2/pixelToYValRatio;
         double finalX2 = rawX2*c1/pixelToXValRatio-rawY2*s2/pixelToYValRatio;
         double finalY2 = rawX2*s1/pixelToXValRatio+rawY2*c2/pixelToYValRatio;
+        double origfinalX1 = origrawX1*c1/pixelToXValRatio-origrawY1*s2/pixelToYValRatio;
+        double origfinalY1 = origrawX1*s1/pixelToXValRatio+origrawY1*c2/pixelToYValRatio;
+        double origfinalX2 = origrawX2*c1/pixelToXValRatio-origrawY2*s2/pixelToYValRatio;
+        double origfinalY2 = origrawX2*s1/pixelToXValRatio+origrawY2*c2/pixelToYValRatio;
         finalX1+=ox;finalY1*=-1;finalY1+=oy;
         finalX2+=ox;finalY2*=-1;finalY2+=oy;
+        origfinalX1+=ox;origfinalY1*=-1;origfinalY1+=oy;
+        origfinalX2+=ox;origfinalY2*=-1;origfinalY2+=oy;
         SDL_Surface* parasurf = createBlankSurfaceWithSize(sx+1, sy+1);
         drawLineOnSurface(parasurf, finalX1, finalY1, finalX2, finalY2, 0xff000000);
+        drawCircleOnSurface(toReturn, origfinalX1, origfinalY1, 3, 0xff000099);
+        drawCircleOnSurface(toReturn, origfinalX2, origfinalY2, 3, 0xff000099);
 		SDL_BlitSurface(parasurf,NULL,toReturn,NULL);
         SDL_FreeSurface(parasurf);
     }
